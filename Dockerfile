@@ -22,3 +22,4 @@ RUN chmod 777 -R .  && ls -aFl \
 
 CMD chmod 777 -R . && jekyll serve --watch --incremental
 
+
