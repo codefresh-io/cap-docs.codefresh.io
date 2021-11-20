@@ -55,7 +55,7 @@ Freestyle steps are a secure replacement for `docker run` commands.
 
 ## Step directory
 
-In the case of freestyle steps we also offer a [plugin marketplace](https://codefresh.io/steps/) with several existing plugins for popular integrations.
+In the case of freestyle steps we also offer a [plugin marketplace](https://github.com/codefresh-io/2.0-marketplace) with several existing plugins for popular integrations.
 
 {% include 
 image.html 
@@ -1101,7 +1101,7 @@ There are two important points here:
 
 In the `stepsTemplate` block we use Golang template keywoards such as `range`, `len` and template variables (such as `git_project`). You can use all the capabilities of Go templates (e.g. `if`, `range`, `with`) as well as the extra methods of [gomplate](https://docs.gomplate.ca/) such as math and net functions.
 
-Creating the [marketplace entry](https://codefresh.io/steps/step/kostis-codefresh%2Fmulti-git-clone) for a step with templates is exactly the same as any other step:
+Creating the [marketplace entry](https://github.com/codefresh-io/2.0-marketplacestep/kostis-codefresh%2Fmulti-git-clone) for a step with templates is exactly the same as any other step:
 
 ```
 codefresh create step-type -f multi-clone-step.yml

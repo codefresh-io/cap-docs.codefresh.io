@@ -8,7 +8,7 @@ toc: true
 
 The plugin marketplace offers several freestyle steps that can be used in your Codefresh pipeline through steps.
 
-One of those steps is the [Jira Issue Manager](https://codefresh.io/steps/step/jira-issue-manager). 
+One of those steps is the [Jira Issue Manager](https://github.com/codefresh-io/2.0-marketplacestep/jira-issue-manager). 
 
 Prerequisites
 * [Have a Codefresh Pipeline]({{site.baseurl}}/docs/getting-started/create-a-basic-pipeline/) set-up

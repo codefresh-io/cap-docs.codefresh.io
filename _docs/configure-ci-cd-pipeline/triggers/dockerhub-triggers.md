@@ -70,7 +70,7 @@ It is possible to use `codefresh` command line client (`CLI`) to manage DockerHu
 
 It is possible to trigger a Codefresh CD pipeline(s) when a new Docker image pushed into DockerHub.
 
-You can use [Codefresh CLI](https://cli.codefresh.io/) to setup a Codefresh trigger for DockerHub.
+You can use [Codefresh CLI](https://github.com/codefresh-io/cli-v2#installation/) to setup a Codefresh trigger for DockerHub.
 
 #### Create DockerHub trigger-event
 

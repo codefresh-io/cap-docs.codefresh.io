@@ -150,7 +150,7 @@ If you have issues please contact us (or open a support ticket) and let us know 
 
 - [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/) 
 - [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/) 
-- [Plugin marketplace](https://codefresh.io/steps/) 
+- [Plugin marketplace](https://github.com/codefresh-io/2.0-marketplace) 
 
 
 

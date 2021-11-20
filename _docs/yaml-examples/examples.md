@@ -77,7 +77,7 @@ Codefresh has support for both [unit]({{site.baseurl}}/docs/testing/unit-tests/)
 
 ## Secrets
 
-Codefresh can automatically export secret key-value pairs using the Vault plugin from the [Step Marketplace](https://codefresh.io/steps/step/vault).
+Codefresh can automatically export secret key-value pairs using the Vault plugin from the [Step Marketplace](https://github.com/codefresh-io/2.0-marketplacestep/vault).
 
 - [Vault Secrets in the Pipeline]({{site.baseurl}}/docs/yaml-examples/examples/vault-secrets-in-the-pipeline)
 - [Decryption with Mozilla SOPS]({{site.baseurl}}/docs/yaml-examples/examples/decryption-with-mozilla-sops)

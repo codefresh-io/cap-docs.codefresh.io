@@ -117,10 +117,10 @@ codefresh_login:      "https://g.codefresh.io/login"
 codefresh_signup:     "https://g.codefresh.io/signup"
 
 link_main:            "https://codefresh.io"
-link_cli:             "https://cli.codefresh.io"
+link_cli:             "https://github.com/codefresh-io/cli-v2#installation"
 link_git_examples:    "https://github.com/codefresh-examples/examples/"
 link_api:             "https://g.codefresh.io/api/"
-link_plugins:         "https://codefresh.io/steps/"
+link_plugins:         "https://github.com/codefresh-io/2.0-marketplace"
 link_community:       "https://community.codefresh.io/"
 
 ga_tracking_code:     "UA-53554200-2"

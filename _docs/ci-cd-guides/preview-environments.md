@@ -118,7 +118,7 @@ This pipeline has the following steps
 1. A step for [Sonar analysis]({{site.baseurl}}/docs/testing/sonarqube-integration/)
 1. A step that clones [a second Git repository](https://github.com/codefresh-contrib/unlimited-test-environments-manifests) that has the [Helm chart]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/) of the app
 1. A step that deploys the source code to a new namespace.
-1. A step that [adds a comment on the Pull Request](https://codefresh.io/steps/step/kostis-codefresh%2Fgithub-pr-comment) with the URL of the temporary environment
+1. A step that [adds a comment on the Pull Request](https://github.com/codefresh-io/2.0-marketplacestep/kostis-codefresh%2Fgithub-pr-comment) with the URL of the temporary environment
 1. A step that runs smoke tests against the temporary test environment
 
 Note that the integration tests and security scans are just examples of what you can do before the Pull Request is deployed. You can insert your own steps that check the contents of a Pull Request.

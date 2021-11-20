@@ -20,7 +20,7 @@ max-width="40%"
 
 There are many ways to perform an [analysis with SonarQube](https://docs.sonarqube.org/latest/setup/overview/) but the easiest one would be to use the one that matches the build system of your application.
 
-This section shows how to use the [SonarQube plugin](https://codefresh.io/steps/step/sonar-scanner-cli) on Codefresh from the plugin directory. Once set-up your code will automatically be analysed everytime your pipeline runs.  
+This section shows how to use the [SonarQube plugin](https://github.com/codefresh-io/2.0-marketplacestep/sonar-scanner-cli) on Codefresh from the plugin directory. Once set-up your code will automatically be analysed everytime your pipeline runs.  
 
 ## Prerequisites for SonarQube integration
 

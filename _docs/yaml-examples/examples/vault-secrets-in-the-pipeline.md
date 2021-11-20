@@ -6,7 +6,7 @@ sub_group: examples
 toc: true
 ---
 
-Codefresh offers a Vault plugin you may use from the [Step Marketplace](https://codefresh.io/steps/step/vault).  The plugin imports key-value pairs from the Vault server, and exports them into the pipeline. 
+Codefresh offers a Vault plugin you may use from the [Step Marketplace](https://github.com/codefresh-io/2.0-marketplacestep/vault).  The plugin imports key-value pairs from the Vault server, and exports them into the pipeline. 
 ## Prerequisites
 
 - A [free Codefresh account](https://codefresh.io/docs/docs/getting-started/create-a-codefresh-account/)

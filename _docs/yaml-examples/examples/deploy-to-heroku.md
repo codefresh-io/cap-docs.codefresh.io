@@ -98,7 +98,7 @@ The above pipeline does the following:
 
 1. A [git-clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step that clones the main repository
 2. A [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that installs dependencies and runs the unit tests
-3. A freestyle step that deploys the application to Heroku using the heroku-deployer plugin from the [Step Marketplace](https://codefresh.io/steps/step/heroku-deployer)
+3. A freestyle step that deploys the application to Heroku using the heroku-deployer plugin from the [Step Marketplace](https://github.com/codefresh-io/2.0-marketplacestep/heroku-deployer)
 
 ## Pipeline Example #2: Deploy a Docker Image to Heroku
 

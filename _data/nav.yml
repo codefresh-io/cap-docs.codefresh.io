@@ -37,7 +37,7 @@
     - title: "Monitoring Pipelines"
     - title: "Shared Configuration"
     - title: Using Secrets
-      url: "/secrets-store"    
+      url: "/secrets-store"
     - title: "Caching"
       url: "/pipeline-caching"
     - title: "Public logs and status badges"
@@ -47,94 +47,27 @@
     - title: Debugging pipelines
       url: "/debugging-pipelines"
 
-
-- title: Learn by example
-  url: "/learn-by-example"
-  pages:
-    - title: Go
-      url: "/golang"
-      sub-pages:
-        - title: 'Go Web Docker'
-          url: "/golang-hello-world"
-        - title: 'Go CLI'
-          url: "/goreleaser"
-    - title: Java
-      url: "/java"
-      sub-pages:
-        - title: Spring Boot 2/Maven
-          url: "/spring-boot-2"
-        - title: Gradle
-          url: "/gradle"
-        - title: Publish JAR
-          url: "/publish-jar"
-    - title: Node.js
-      url: "/nodejs"
-      sub-pages:
-        - title: Let's Chat
-          url: "/lets-chat"
-        - title: Voting app
-          url: "/voting-app"
-        - title: React
-          url: "/react"
-    - title: Php
-      url: "/php"
-    - title: Python
-      url: "/python"
-      sub-pages:
-        - title: Django
-          url: "/django"
-        - title: Voting app
-          url: "/voting-app"
-    - title: Ruby On Rails
-      url: "/ruby"
-    - title: "C/C++"
-      url: "/cc"
-      sub-pages:
-        - title: 'C'
-          url: "/c-make"
-        - title: 'C++'
-          url: "/cpp-cmake"
-    - title: Rust
-      url: "/rust"          
-    - title: C# (.NET Core)
-      url: "/dotnet"
-    - title: Scala
-      url: "/scala"
-      sub-pages:
-        - title: 'Scala: Hello World'
-          url: "/scala-hello-world"
-    - title: Mobile
-      url: "/mobile"
-      sub-pages:
-        - title: 'Android'
-          url: "/android"
-    - title: General
-      url: "/general"
-      sub-pages:
-        - title: Selenium test
-          url: "/selenium-test"
-
 - title: CI/CD Guides
   url: "/ci-cd-guides"
   pages:
     - title: "Build your app"
-      url: "/packaging-compilation"  
+      url: "/packaging-compilation"
     - title: "Building Docker Images"
       url: "/building-docker-images"
     - title: "Working with Docker registries"
-      url: "/working-with-docker-registries"      
+      url: "/working-with-docker-registries"
     - title: "Pull Requests and branches"
       url: "/pull-request-branches"
     - title: "Pipelines for Microservices"
       url: "/microservices"
     - title: "Production and Staging deployments"
-      url: "/environment-deployments"   
+      url: "/environment-deployments"
     - title: "Preview Environments"
-      url: "/preview-environments"            
+      url: "/preview-environments"
     - title: "GitOps Deployments"
-      url: "/gitops-deployments"      
+      url: "/gitops-deployments"
     - title: "Progressive Delivery"
-      url: "/progressive-delivery" 
+      url: "/progressive-delivery"
 
 - title: Codefresh YAML
   url: "/codefresh-yaml"
@@ -179,7 +112,7 @@
     - title: "Hooks"
       url: "/hooks"
     - title: "Docker image Metadata"
-      url: "/docker-image-metadata"      
+      url: "/docker-image-metadata"
     - title: "Annotations"
       url: "/annotations"
 
@@ -252,7 +185,7 @@
         - title: Populate a database with existing data
           url: "/populate-a-database-with-existing-data"
         - title: Shared volumes for composition
-          url: "/shared-volumes-of-service-from-composition-step-for-other-yml-steps"          
+          url: "/shared-volumes-of-service-from-composition-step-for-other-yml-steps"
         - title: Import data to MongoDB
           url: "/import-data-to-mongodb"
     - title: "Deployments"
@@ -279,11 +212,11 @@
         - title: Deploy with Kustomize
           url: "/deploy-with-kustomize"
         - title: Deploy to Docker Swarm
-          url: "/docker-swarm"  
+          url: "/docker-swarm"
         - title: Amazon ECS/Fargate
           url: "/amazon-ecs"
         - title: Elastic Beanstalk
-          url: "/elastic-beanstalk"          
+          url: "/elastic-beanstalk"
     - title: "Secrets"
       url: "/examples"
       sub-pages:
@@ -292,7 +225,7 @@
         - title: Decryption with Mozilla SOPS
           url: "/decryption-with-mozilla-sops"
         - title: GitOps secrets
-          url: "/gitops-secrets"          
+          url: "/gitops-secrets"
     - title: "Compositions"
       url: "/examples"
       sub-pages:
@@ -390,11 +323,11 @@
     - title: Kubernetes
       url: "/kubernetes"
     - title: Amazon Services
-      url: "/amazon-web-services" 
+      url: "/amazon-web-services"
     - title: Microsoft Azure
-      url: "/microsoft-azure"            
+      url: "/microsoft-azure"
     - title: Google Cloud
-      url: "/google-cloud"   
+      url: "/google-cloud"
     - title: "Docker Registries"
       url: "/docker-registries"
       sub-pages:
@@ -417,34 +350,34 @@
         - title: "DigitalOcean Container Registry"
           url: "/digital-ocean-container-registry"
         - title: "Other Registries"
-          url: "/other-registries"  
+          url: "/other-registries"
     - title: Secret Storage
       url: "/secret-storage"
     - title: Hashicorp Vault
-      url: "/hashicorp-vault"              
+      url: "/hashicorp-vault"
     - title: Helm Integration
-      url: "/helm" 
+      url: "/helm"
     - title: ArgoCD Integration
-      url: "/argo-cd"       
+      url: "/argo-cd"
     - title: Jira Integration
-      url: "/jira"       
+      url: "/jira"
     - title: Jenkins Integration
       url: "/jenkins-integration"
     - title: Codecov Integration
-      url: "/codecov-integration"                
+      url: "/codecov-integration"
     - title: Google Cloud builder
       url: "/gcloud-builder"
     - title: Google Marketplace Installation
       url: "/google-marketplace"
     - title: GitHub Actions
-      url: "/github-actions"  
+      url: "/github-actions"
     - title: Notifications
       url: "/notifications"
       sub-pages:
         - title: Slack
           url: "/slack-integration"
         - title: Jira
-          url: "/jira-integration"          
+          url: "/jira-integration"
     - title: Codefresh API
       url: "/codefresh-api"
 
@@ -569,4 +502,4 @@
     - title: Privacy Policy
       url: "/privacy-policy"
     - title: Service Commitment
-      url: "/sla"      
+      url: "/sla"

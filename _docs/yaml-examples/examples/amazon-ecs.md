@@ -143,7 +143,7 @@ The `codefreshplugins/cf-deploy-ecs` step performs the following:
     * The `cfecs-update` command exits with a timeout error if after --timeout (default = 900s) `runningCount` does not equal `desiredCount`
     * The `cfecs-update` exits with an error if --max-failed (default = 2) or more ECS tasks were stopped with error for the task definition that you are deploying.      ECS continuously retries failed tasks.
 
-You can also find the same step in the form of a [Codefresh plugin](https://codefresh.io/steps/step/ecs-deploy).
+You can also find the same step in the form of a [Codefresh plugin](https://github.com/codefresh-io/2.0-marketplacestep/ecs-deploy).
 
 ## What to read next
 

@@ -8,7 +8,7 @@ redirect_from:
 toc: true
 ---
 
-We have created a [special Helm step](https://codefresh.io/steps/step/helm) for easy integration of Helm in Codefresh pipelines. The Helm step facilitates authentication, configuration and execution of Helm commands.
+We have created a [special Helm step](https://github.com/codefresh-io/2.0-marketplacestep/helm) for easy integration of Helm in Codefresh pipelines. The Helm step facilitates authentication, configuration and execution of Helm commands.
 
 > You can always use the regular `helm` cli in a freestyle step, if you have a special use case that is not covered by the Codefresh Helm step. In this case, you can use the simpler container `codefresh/kube-helm` which includes only the Kubectl and helm tools. kube-helm is available on DockerHub: [https://hub.docker.com/r/codefresh/kube-helm/](https://hub.docker.com/r/codefresh/kube-helm/).
 
@@ -92,7 +92,7 @@ of this limitation and will soon improve the way Codefresh works with multiple H
 
 ## Helm usage in a pipeline step
 
-You can use the helm typed step from the [Step Marketplace](https://codefresh.io/steps/step/helm)
+You can use the helm typed step from the [Step Marketplace](https://github.com/codefresh-io/2.0-marketplacestep/helm)
 
 The Helm step can be configured using environment variables, which can be provided in any of the various ways supported by Codefresh as described [here]({{site.baseurl}}/docs/codefresh-yaml/variables/#user-provided-variables).  
 
@@ -161,7 +161,7 @@ You can also look at the [GitHub repository](https://github.com/codefresh-contri
 
 ### Example: Installing a Chart
 
-The following example demonstrates the minimum configuration for installing a chart from a repository. For more configuration options, see the [Arguments reference](https://codefresh.io/steps/step/helm).  
+The following example demonstrates the minimum configuration for installing a chart from a repository. For more configuration options, see the [Arguments reference](https://github.com/codefresh-io/2.0-marketplacestep/helm).  
 
 ```yaml
 deploy:

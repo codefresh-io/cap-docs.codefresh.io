@@ -131,5 +131,5 @@ This pipeline does the following:
 * [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
 * [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
 * [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
-* [Pipeline plugins](https://codefresh.io/steps/)
+* [Pipeline plugins](https://github.com/codefresh-io/2.0-marketplace)
 * [Triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/)

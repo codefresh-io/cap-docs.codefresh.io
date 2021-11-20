@@ -35,7 +35,7 @@ Enter your token (see the previous section) and a name (user-defined) for this i
 
 Using Codecov in a Codefresh Pipeline:
 
-With the integration in place, you can use it by name in any Codefresh pipeline by using the [Codecov reporter step](https://codefresh.io/steps/step/codecov-reporter).
+With the integration in place, you can use it by name in any Codefresh pipeline by using the [Codecov reporter step](https://github.com/codefresh-io/2.0-marketplacestep/codecov-reporter).
 
 `codefresh.yml`
 ```yaml

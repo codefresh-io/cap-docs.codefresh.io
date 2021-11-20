@@ -20,7 +20,7 @@ Codefresh integrates with Jira in a variety of ways:
 
 The step marketplace offers several freestyle steps that can be used in your Codefresh pipeline through steps.
 
-One of those steps is the [Jira Issue Manager](https://codefresh.io/steps/step/jira-issue-manager). It can be used to:
+One of those steps is the [Jira Issue Manager](https://github.com/codefresh-io/2.0-marketplacestep/jira-issue-manager). It can be used to:
 * Create a Jira issue
 * Comment on existing Jira issues
 * Change the status of an issue e.g. once the build is successful

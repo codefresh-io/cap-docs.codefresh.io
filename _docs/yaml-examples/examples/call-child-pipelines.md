@@ -6,7 +6,7 @@ sub_group: examples
 toc: true
 ---
 
-In Codefresh you can easily create nested pipelines by calling other pipelines from within an existing pipeline. This is easily accomplished with the [codefresh-run plugin](https://codefresh.io/steps/step/codefresh-run) that allows you to launch another pipeline and optionally wait for its completion.
+In Codefresh you can easily create nested pipelines by calling other pipelines from within an existing pipeline. This is easily accomplished with the [codefresh-run plugin](https://github.com/codefresh-io/2.0-marketplacestep/codefresh-run) that allows you to launch another pipeline and optionally wait for its completion.
 
 {% include image.html
 lightbox="true"
@@ -105,4 +105,4 @@ The last two steps use [pipeline conditionals]({{site.baseurl}}/docs/codefresh-y
 * [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
 * [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
 * [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
-* [Pipeline plugins](https://codefresh.io/steps/)
+* [Pipeline plugins](https://github.com/codefresh-io/2.0-marketplace)

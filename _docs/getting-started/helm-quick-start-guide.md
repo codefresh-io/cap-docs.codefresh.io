@@ -69,7 +69,7 @@ max-width="70%"
 
 ## Deploying a Helm Release to your Kubernetes cluster
 
-Codefresh provides a special [Helm step](https://codefresh.io/steps/step/helm) that you can use to perform a deployment.
+Codefresh provides a special [Helm step](https://github.com/codefresh-io/2.0-marketplacestep/helm) that you can use to perform a deployment.
 At its most basic form you can put the following step in your [codefresh.yml]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) file.
 
 `YAML`

@@ -105,10 +105,10 @@ Creating a CI pipeline for GitOps is no different than a [standard pipeline]({{s
   max-width="100%"
  %}
 
-To take advantage of the GitOps dashboard facilities you also need to setup the correlation between the Docker image and the Pull Requests/issues associated with it. This correlation happens via [annotations]({{site.baseurl}}/docs/codefresh-yaml/annotations/). The easiest way to annotate your image is by using the [pipeline plugins](https://codefresh.io/steps/) offered by Codefresh for this purpose. Currently we offer the following plugins:
+To take advantage of the GitOps dashboard facilities you also need to setup the correlation between the Docker image and the Pull Requests/issues associated with it. This correlation happens via [annotations]({{site.baseurl}}/docs/codefresh-yaml/annotations/). The easiest way to annotate your image is by using the [pipeline plugins](https://github.com/codefresh-io/2.0-marketplace) offered by Codefresh for this purpose. Currently we offer the following plugins:
 
-* [Record Pull Request information](https://codefresh.io/steps/step/image-enricher)
-* [Record Jira Issue information](https://codefresh.io/steps/step/jira-issue-extractor)
+* [Record Pull Request information](https://github.com/codefresh-io/2.0-marketplacestep/image-enricher)
+* [Record Jira Issue information](https://github.com/codefresh-io/2.0-marketplacestep/jira-issue-extractor)
 
 Here is an example Pipeline definition:
 
@@ -246,7 +246,7 @@ steps:
 {% endraw %}
 {% endhighlight %}  
 
-The pipeline is using the [argo-sync plugin](https://codefresh.io/steps/step/argocd-sync) that can be used by Codefresh to start the sync process of an application from the Git repo to the cluster.
+The pipeline is using the [argo-sync plugin](https://github.com/codefresh-io/2.0-marketplacestep/argocd-sync) that can be used by Codefresh to start the sync process of an application from the Git repo to the cluster.
 
 The name of the `context` parameter should be the same name you used for your [ArgoCD integration]({{site.baseurl}}/docs/integrations/argo-cd/).
 
@@ -573,9 +573,9 @@ This pipeline:
 1. Enriches the image with the Pull request and ticket information as explained in the previous sections
 1. Checks out the Git repository that contains the Kubernetes manifests
 1. Performs a text replacement on the manifest updating the `containers` segment with the new Docker image
-1. Commits the change back using the [Git commit plugin](https://codefresh.io/steps/step/git-commit) to the Git repository that contains the manifests.
+1. Commits the change back using the [Git commit plugin](https://github.com/codefresh-io/2.0-marketplacestep/git-commit) to the Git repository that contains the manifests.
 
-The CD pipeline (described in the previous section) will detect that commit and use the [sync plugin](https://codefresh.io/steps/step/argocd-sync) to instruct ArgoCD to deploy the new tag. Alternatively you can setup the ArgoCD project to auto-sync on its own if it detects changes in the Git repository with the manifests.
+The CD pipeline (described in the previous section) will detect that commit and use the [sync plugin](https://github.com/codefresh-io/2.0-marketplacestep/argocd-sync) to instruct ArgoCD to deploy the new tag. Alternatively you can setup the ArgoCD project to auto-sync on its own if it detects changes in the Git repository with the manifests.
 
 ## Using the App-of-Apps pattern
 

@@ -19,7 +19,7 @@ A. Codefresh is a [Continuous Integration/Delivery](https://en.wikipedia.org/wik
 A. Yes. Codefresh is offered in [SAAS, Hybrid and on-premises modes]({{site.baseurl}}/docs/enterprise/installation-security/). Before you consider on-premises please look at the [hybrid mode first]({{site.baseurl}}/docs/enterprise/behind-the-firewall/). In this mode Codefresh runs the Web UI while you only maintain the build nodes behind the firewall.
 
 **Q. Is Codefresh open-source?**   
-A. The Web UI is not open source. All the [pipeline plugins](https://codefresh.io/steps/) and the [Codefresh Runner]({{site.baseurl}}/docs/enterprise/codefresh-runner/) are open-source. We also publish several open-source [components](https://github.com/codefresh-io), [examples](https://github.com/codefresh-contrib) and [demos](https://github.com/codefreshdemo/).
+A. The Web UI is not open source. All the [pipeline plugins](https://github.com/codefresh-io/2.0-marketplace) and the [Codefresh Runner]({{site.baseurl}}/docs/enterprise/codefresh-runner/) are open-source. We also publish several open-source [components](https://github.com/codefresh-io), [examples](https://github.com/codefresh-contrib) and [demos](https://github.com/codefreshdemo/).
 
 **Q. How is pricing structured?**      
 A. Pricing is per concurrent build. In practice this means how many pull requests you can process *at the same time*. See the [pricing page](https://codefresh.io/pricing/) for more details.
@@ -85,7 +85,7 @@ A. Yes, although notice that these [are powered by Docker swarm]({{site.baseurl}
 A. Yes, you can checkout code [from other source control systems]({{site.baseurl}}/docs/yaml-examples/examples/non-git-checkout/). 
 
 **Q. Does Codefresh support git submodules?**    
-A. Yes, there is a [git submodule plugin](https://codefresh.io/steps/step/git-submodules). 
+A. Yes, there is a [git submodule plugin](https://github.com/codefresh-io/2.0-marketplacestep/git-submodules). 
 
 **Q. Does Codefresh support git monorepos?**    
 A. Yes, there is built-in support for [monorepos]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/#monorepo-support-modified-files).
@@ -94,7 +94,7 @@ A. Yes, there is built-in support for [monorepos]({{site.baseurl}}/docs/configur
 A. Yes, all pipelines can be stored in a git repository (the same one as the application code or a different one). You can also [create pipelines]({{site.baseurl}}/docs/integrations/codefresh-api/#example---creating-codefresh-pipelines-externally) programmatically with our [CLI](https://codefresh-io.github.io/cli/).
 
 **Q. Does Codefresh support secrets?**    
-A. For basic usage, feel free to use the [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/) facility. For production grade security we suggest a dedicated solution such as [Hashicorp Vault](https://www.vaultproject.io/). We offer a [vault plugin](https://codefresh.io/steps/step/vault) for this purpose.
+A. For basic usage, feel free to use the [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/) facility. For production grade security we suggest a dedicated solution such as [Hashicorp Vault](https://www.vaultproject.io/). We offer a [vault plugin](https://github.com/codefresh-io/2.0-marketplacestep/vault) for this purpose.
 
 **Q. Can I call external service X in a pipeline?**    
 A. Yes, everything that has an API or CLI can be called in a Codefresh pipeline (Artifactory/S3/Slack/SonarQube/Twistlock/Codecov etc)

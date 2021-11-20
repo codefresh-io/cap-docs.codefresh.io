@@ -59,7 +59,7 @@ It is also possible to use the Codefresh Command Line client (`CLI`) to manage C
 
 It is possible to trigger a Codefresh CD pipeline(s) periodically, using `cron` expression.
 
-You can use [Codefresh CLI](https://cli.codefresh.io/) to setup a Codefresh `cron` trigger.
+You can use [Codefresh CLI](https://github.com/codefresh-io/cli-v2#installation/) to setup a Codefresh `cron` trigger.
 
 #### Create Cron trigger-event
 
