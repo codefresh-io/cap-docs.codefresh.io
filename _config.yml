@@ -1,5 +1,5 @@
 title:              Codefresh | Docs
-description:        "Codefresh is a Docker-native CI/CD platform. Instantly build , test and deploy Docker images."
+description:        "Codefresh DevOps platform for Argo. Ditch the scripts of the past. Get the best of DevOps in a single platform."
 
 # Server
 source:         "."
@@ -116,7 +116,7 @@ schedule_demo:        "https://codefresh.io/schedule-a-demo/"
 codefresh_login:      "https://g.codefresh.io/login"
 codefresh_signup:     "https://g.codefresh.io/signup"
 
-link_main:            "https://codefresh.io"
+link_main:            "https://codefresh.io/codefresh-argo-platform/"
 link_cli:             "https://github.com/codefresh-io/cli-v2#installation"
 link_git_examples:    "https://github.com/codefresh-examples/examples/"
 link_api:             "https://g.codefresh.io/api/"
