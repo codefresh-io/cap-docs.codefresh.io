@@ -2,63 +2,80 @@
   icon: images/home-icons/started.svg
   url: ''
   links:
-  - title: Setup Codefresh Account
-    localurl: /docs/getting-started/create-a-codefresh-account/
-  - title: Your first CI/CD pipeline
-    localurl: /docs/getting-started/create-a-basic-pipeline/
-  - title: Kubernetes Quick start guide
-    localurl: /docs/getting-started/deployment-to-kubernetes-quick-start-guide/
-  - title: Helm Quick start guide
-    localurl: /docs/getting-started/helm-quick-start-guide/
-  - title: Frequently Asked Questions
+  - title: Accesing CAP
+    localurl: /docs/getting-started/accessing-cap/
+  - title: Frequently asked questions
     localurl: /docs/getting-started/faq/
+  - title: Classic vs CAP
+    localurl: /docs/getting-started/v1-vs-v2/
+  - title: Entity model
+    localurl: /docs/getting-started/entity-model/
+  - title: Architecture
+    localurl: /docs/getting-started/architecture/
+  - title: GitOps approach
+    localurl: /docs/getting-started/gitops/
 
-- title: CI/CD guides
-  icon: images/home-icons/guides.png
+- title: Pipelines
+  icon: images/home-icons/pipeline.svg
   url: ''
   links:
-  - title: Build your app
-    localurl: /docs/ci-cd-guides/packaging-compilation/
-  - title: Building Docker images
-    localurl: /docs/ci-cd-guides/building-docker-images/
-  - title: Working with Docker registries
-    localurl: /docs/ci-cd-guides/working-with-docker-registries/
-  - title: Pull Requests and branches
-    localurl: /docs/ci-cd-guides/pull-request-branches/
-  - title: Pipelines for Microservices
-    localurl: /docs/ci-cd-guides/microservices/
-  - title: Production and Staging deployments
-    new: true
-    localurl: /docs/ci-cd-guides/environment-deployments/
-  - title: Preview Environments
-    new: true
-    localurl: /docs/ci-cd-guides/preview-environments/
-  - title: GitOps deployments
-    new: true
-    localurl: /docs/ci-cd-guides/gitops-deployments/
-  - title: Progressive Delivery
-    new: true
-    localurl: /docs/ci-cd-guides/progressive-delivery/
+  - title: Managing your pipelines
+    localurl: /docs/pipelines/managing-pipelines/
+  - title: Using secrets
+    localurl: /docs/pipelines/using-secrets/
+  - title: Sharing file system
+    localurl: /docs/pipelines/sharing-file-system/
+  - title: Using Docker
+    localurl: /docs/pipelines/docker-operations/
 
-- title: "Administration"
+- title: Runtime
   icon: images/home-icons/integrations.svg
   url: ''
   links:
-  - title: Installation Options
-    localurl: /docs/administration/installation-security
-  - title: Codefresh CLI
-    url: http://cli.codefresh.io/
-  - title: Codefresh behind the firewall
-    localurl: /docs/administration/behind-the-firewall
-  - title: Codefresh Runner
-    localurl: /docs/administration/codefresh-runner
-  - title: User Settings
+    - title: Installation and configuration
+      localurl: /docs/runtime/installation
+    - title: Managing your Git Sources
+      localurl: /docs/runtime/git-sources
+
+- title: Migration from v1 to v2
+  icon: images/home-icons/plugins.svg
+  url: ''
+  links:
+  - title: Pipelines
+    localurl: /docs/migration/pipelines
+  - title: GitOps dashboard
+    localurl: /docs/migration/gitops-dashboard
+
+- title: CI/CD Guides
+  icon: images/home-icons/guides.png
+  url: ''
+  links:
+  - title: Coming soon
+    localurl: /docs/ci-cd-guides/coming-soon/
+
+- title: Administration
+  icon: images/home-icons/integrations.svg
+  url: ''
+  links:
+  - title: Add users
+    localurl: /docs/administration/add-users
+  - title: User settings
     localurl: /docs/administration/user-settings
   - title: Single Sign on
     localurl: /docs/administration/single-sign-on
-  - title: Access Control
+  - title: Access Control (coming soon)
     localurl: /docs/administration/access-control
   - title: Audit Logs
     localurl: /docs/administration/audit-logs
-  - title: Platform IPs
+  - title: Codefresh platform IPs
     localurl: /docs/administration/platform-ip-addresses
+
+- title: Troubleshooting
+  icon: images/home-icons/integrations.svg
+  url: ''
+  links:
+    - title: Common issues
+      localurl: /docs/troubleshooting/common-issues
+    - title: Runtime issues
+      localurl: /docs/troubleshooting/runtime-issues
+

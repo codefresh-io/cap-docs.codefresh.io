@@ -1,138 +1,85 @@
 - title: Getting started
   pages:
-  - title: Create a Codefresh Account
-  - title: Create a Basic Pipeline
-  - title: Frequently Asked Questions
+  - title: Accessing CAP
+    url: "accessing-cap"
+  - title: Frequently asked questions
     url: "/faq"
-  - title: On-demand environments
-  - title: Deployment to Kubernetes
-    url: "/deployment-to-kubernetes-quick-start-guide"
-  - title: Deployment to Kubernetes with Helm
-    url: "/helm-quick-start-guide"
+  - title: Classic vs CAP
+    url: "/v1-vs-v2"
+  - title: Entity model
+    url: "/entity-model"
+  - title: Architecture
+    url: "/architecture"
+  - title: GitOps approach
+    url: "/gitops"
+
+- title: Pipelines
+  url: "/pipelines"
+  pages:
+    - title: Managing your pipelines
+      url: "/managing-pipelines"
+    - title: Using secrets
+      url: "/using-secrets"
+    - title: Sharing file system
+      url: "/sharing-file-system"
+    - title: Using Docker
+      url: "/docker-operations"
+
+- title: Runtime
+  url: "/runtime"
+  pages:
+    - title: Installation and configuration
+      url: "/installation"
+    - title: Managing your Git Sources
+      url: "/git-sources"
+
+
+- title: Migration from v1 to v2
+  url: "/migration"
+  pages:
+    - title: Pipelines
+      url: "/pipelines"
+    - title: GitOps dashboard
+      url: "/gitops-dashboard"
 
 - title: CI/CD Guides
   url: "/ci-cd-guides"
   pages:
-    - title: "Build your app"
-      url: "/packaging-compilation"
-    - title: "Building Docker Images"
-      url: "/building-docker-images"
-    - title: "Working with Docker registries"
-      url: "/working-with-docker-registries"
-    - title: "Pull Requests and branches"
-      url: "/pull-request-branches"
-    - title: "Pipelines for Microservices"
-      url: "/microservices"
-    - title: "Production and Staging deployments"
-      url: "/environment-deployments"
-    - title: "Preview Environments"
-      url: "/preview-environments"
-    - title: "GitOps Deployments"
-      url: "/gitops-deployments"
-    - title: "Progressive Delivery"
-      url: "/progressive-delivery"
+    - title: "Coming Soon"
+      url: "/coming-soon"
 
 - title: Administration
   url: "/administration"
   pages:
-    - title: Installation Options
-      url: "/installation-security"
-    - title: Codefresh behind the firewall
-      url: "/behind-the-firewall"
-    - title: Codefresh Runner
-      url: "/codefresh-runner"
-    - title: Codefresh On-Premises
-      url: "/codefresh-on-prem"
-    - title: Add Users
-      url: "/invite-your-team-member"
-    - title: User Settings
+    - title: Add users
+      url: "/add-users"
+    - title: User settings
       url: "/user-settings"
-    - title: Pipeline Execution Context
-      url: "/pipeline-execution-context"
-    - title: Pipeline Settings
-      url: "/pipeline-settings"
     - title: Single Sign-On
       url: "/single-sign-on"
-      sub-pages:
-        - title: SAML2
-          url: "/sso-setup-saml2"
-        - title: OpenID Connect
-          url: "/sso-setup-oauth2"
-        - title: Auth0
-          url: "/sso-auth0"
-        - title: Azure
-          url: "/sso-azure"
-        - title: Google
-          url: "/sso-google"
-        - title: LDAP
-          url: "/sso-ldap"
-        - title: Okta
-          url: "/sso-okta"
-        - title: OneLogin
-          url: "/sso-onelogin"
-    - title: Access Control
+    - title: Access Control (coming soon)
       url: "/access-control"
-    - title: Audit Logs
-      url: "/audit-logs"
-    - title: Hybrid installation (legacy)
-      url: "/codefresh-hybrid"
-    - title: Codefresh Platform IPs
+    - title: Audit logs
+      url: "/audit"
+    - title: Codefresh platform IPs
       url: "/platform-ip-addresses"
+
 
 - title: Troubleshooting
   url: "/troubleshooting"
   pages:
-    - title: Common Issues
+    - title: Common issues
       url: "/common-issues"
       sub-pages:
-        - title: Can't find your organization repositories
-          url: "/cant-find-your-organization-repositories"
-        - title: Can’t find your private repositories
-          url: "/cant-find-your-private-repositories"
-        - title: 'Clone step failed: Command [git checkout $REVISION] exited with code [1]'
-          url: "/git-clone-step-issue"
-        - title: Handling commit messages with a quote character
-          url: "/handling-commit-messages-with-quotes"
-        - title: The docker image does not exist or no pull access
-          url: "/the-docker-image-does-not-exist-or-no-pull-access"
-        - title: 'Build step: No such file or directory'
-          url: "/build-step-no-such-file-or-directory"
-        - title: No Dockerfile found
-          url: "/no-dockerfile-found"
-        - title: Could not tag image
-          url: "/could-not-tag-image"
-        - title: Error Code 137
-          url: "/error-code-137"
-        - title: Too many Requests
-          url: "/dockerhub-rate-limit"
-        - title: Restoring data from pre-existing image hangs on
-          url: "/restoring-data-from-pre-existing-image-hangs-on"
-        - title: Disabling codefresh caching mechanisms
-          url: "/disabling-codefresh-caching-mechanisms"
-        - title: Pinning codefresh.yml for multi-git triggers
-          url: "/multi-git-triggers"
-        - title: Workflow terminated by the system
-          url: "/workflow-terminated-by-system"
-        - title: cf_export limitations
-          url: "/cf-export-limitations"
-        - title: Validation Port warnings
-          url: "/validation-port-warnings"
-        - title: Forbidden Cluster Resources
-          url: "/forbidden-cluster-resources"
-        - title: How to use SSH keys in freestyle steps
-          url: "using-ssh-keys"
-        - title: Failed to get accounts clusters during workflow
-          url: "/failed-to-get-accounts-clusters-during-workflow"
-        - title: API Paging issues
-          url: "/paging-issues-builds-images"
-    - title: Git step migration
-      url: "/git-step-migration"
-    - title: Personal Git Deprecation
-      url: "/personal-git-deprecation"
+        - title: Non admin users can are thrown out back to classic Codefresh
+          url: "/non-admin-users-support"
+    - title: Runtime issues
+      url: "/runtime-issues"
+
 - title: What's New?
   url: "/whats-new"
   pages:
-    - title: What's New In Codefresh?
+    - title: What's New In CAP?
       url: "/whats-new"
 
 - title: Terms and Privacy Policy
