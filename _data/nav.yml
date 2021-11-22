@@ -1,9 +1,17 @@
 - title: Getting started
   pages:
+  - title: Getting started quickly
+    url: "/getting-started-quickly"
+  - title: Main concepts
+    url: "/main-concepts"
   - title: Accessing CAP
-    url: "accessing-cap"
+    url: "/accessing-cap"
+  - title: CLI
+    url: "/cli"
   - title: Frequently asked questions
     url: "/faq"
+  - title: Argo vs CAP
+    url: "/argo-vs-cap"
   - title: Classic vs CAP
     url: "/v1-vs-v2"
   - title: Entity model
@@ -12,6 +20,13 @@
     url: "/architecture"
   - title: GitOps approach
     url: "/gitops"
+
+- title: Deployment
+  url: "/deployment"
+  pages:
+    - title: GitOps dashboard overview
+      url: "/gitops-dashboard"
+
 
 - title: Pipelines
   url: "/pipelines"
@@ -24,29 +39,25 @@
       url: "/sharing-file-system"
     - title: Using Docker
       url: "/docker-operations"
+    - title: Codefresh marketplace
+      url: "/marketplace"
 
 - title: Runtime
   url: "/runtime"
   pages:
+    - title: System requirements
+      url: "/requirements"
     - title: Installation and configuration
       url: "/installation"
     - title: Managing your Git Sources
       url: "/git-sources"
 
 
-- title: Migration from v1 to v2
-  url: "/migration"
-  pages:
-    - title: Pipelines
-      url: "/pipelines"
-    - title: GitOps dashboard
-      url: "/gitops-dashboard"
-
 - title: CI/CD Guides
   url: "/ci-cd-guides"
   pages:
-    - title: "Coming Soon"
-      url: "/coming-soon"
+    - title: Create your first pipeline
+      url: "/first-pipeline"
 
 - title: Administration
   url: "/administration"
@@ -64,6 +75,13 @@
     - title: Codefresh platform IPs
       url: "/platform-ip-addresses"
 
+- title: Migration from v1 to v2
+  url: "/migration"
+  pages:
+    - title: Pipelines
+      url: "/pipelines"
+    - title: GitOps dashboard
+      url: "/gitops-dashboard"
 
 - title: Troubleshooting
   url: "/troubleshooting"

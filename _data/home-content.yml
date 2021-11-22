@@ -2,10 +2,18 @@
   icon: images/home-icons/started.svg
   url: ''
   links:
+  - title: Getting started quickly
+    localurl: /docs/getting-started/getting-started-quickly/
+  - title: Main concepts
+    localurl: /docs/getting-started/main-concepts/
   - title: Accesing CAP
     localurl: /docs/getting-started/accessing-cap/
+  - title: CLI
+    localurl: /docs/getting-started/cli/
   - title: Frequently asked questions
     localurl: /docs/getting-started/faq/
+  - title: Argo vs CAP
+    localurl: /docs/getting-started/argo-vs-CAP/
   - title: Classic vs CAP
     localurl: /docs/getting-started/v1-vs-v2/
   - title: Entity model
@@ -14,6 +22,13 @@
     localurl: /docs/getting-started/architecture/
   - title: GitOps approach
     localurl: /docs/getting-started/gitops/
+
+- title: Deployment
+  icon: images/home-icons/deployment.svg
+  url: ''
+  links:
+    - title: GitOps dashboard overview
+      localurl: /docs/deployment/gitops-dashboard/
 
 - title: Pipelines
   icon: images/home-icons/pipeline.svg
@@ -27,31 +42,26 @@
     localurl: /docs/pipelines/sharing-file-system/
   - title: Using Docker
     localurl: /docs/pipelines/docker-operations/
+  - title: Codefresh marketplace
+    localurl: /docs/pipelines/marketplace/
 
 - title: Runtime
   icon: images/home-icons/integrations.svg
   url: ''
   links:
+    - title: System requirements
+      localurl: /docs/runtime/requirements
     - title: Installation and configuration
       localurl: /docs/runtime/installation
     - title: Managing your Git Sources
       localurl: /docs/runtime/git-sources
 
-- title: Migration from v1 to v2
-  icon: images/home-icons/plugins.svg
-  url: ''
-  links:
-  - title: Pipelines
-    localurl: /docs/migration/pipelines
-  - title: GitOps dashboard
-    localurl: /docs/migration/gitops-dashboard
-
 - title: CI/CD Guides
   icon: images/home-icons/guides.png
   url: ''
   links:
-  - title: Coming soon
-    localurl: /docs/ci-cd-guides/coming-soon/
+  - title: Create your first pipeline
+    localurl: /docs/ci-cd-guides/first-pipeline/
 
 - title: Administration
   icon: images/home-icons/integrations.svg
@@ -70,6 +80,15 @@
   - title: Codefresh platform IPs
     localurl: /docs/administration/platform-ip-addresses
 
+- title: Migration from v1 to v2
+  icon: images/home-icons/plugins.svg
+  url: ''
+  links:
+    - title: Pipelines
+      localurl: /docs/migration/pipelines
+    - title: GitOps dashboard
+      localurl: /docs/migration/gitops-dashboard
+
 - title: Troubleshooting
   icon: images/home-icons/integrations.svg
   url: ''
@@ -78,4 +97,3 @@
       localurl: /docs/troubleshooting/common-issues
     - title: Runtime issues
       localurl: /docs/troubleshooting/runtime-issues
-
