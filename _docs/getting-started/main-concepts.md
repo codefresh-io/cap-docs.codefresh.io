@@ -5,6 +5,6 @@ group: getting-started
 toc: true
 ---
 
-Coming soon
+hello
 
 An overview page that explains what workflows, trigger, events etc, how all pieces fit together and what is GitOps
