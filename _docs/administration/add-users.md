@@ -35,7 +35,6 @@ For guidelines on access control, see [Access control]({{site.baseurl}}/docs/adm
    caption="Add new user"
    max-width="100%" 
    %}
-   {:start="a"}    
    1. Type the **User's email address**.  
    1. **Assign a role**, by selecting either **User** or **Administrator**.  
    1. If SSO is configured for the account, **Select SSO provider**, and then configure the settings.  
