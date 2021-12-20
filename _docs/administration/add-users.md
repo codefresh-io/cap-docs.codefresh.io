@@ -26,7 +26,7 @@ For guidelines on access control, see [Access control]({{site.baseurl}}/docs/adm
    %}
 {:start="3"} 
 1. Select **Users**, and then select **+ [Add User]**.
-   
+
    {% include 
    image.html 
    lightbox="true" 
@@ -36,7 +36,6 @@ For guidelines on access control, see [Access control]({{site.baseurl}}/docs/adm
    caption="Add new user"
    max-width="100%" 
    %}  
-
 
    1. Type the **User's email address**.  
    1. **Assign a role**, by selecting either **User** or **Administrator**.  
