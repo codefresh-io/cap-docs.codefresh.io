@@ -1,5 +1,5 @@
 ---
-title: "Add users"
+title: "Manage users"
 description: "Add other Codefresh users to your account"
 group: administration
 toc: true
@@ -54,3 +54,4 @@ The Status column shows Invite sent until the user accepts the invitation, when 
 ### Troubleshoot add users
 [User is prompted to enter an organization name](https://support.codefresh.io/hc/en-us/articles/360020177959-User-is-prompted-to-enter-an-organization-name)  
 [Account invitation not permitting login](https://support.codefresh.io/hc/en-us/articles/360015251000-Account-invitation-not-permitting-login)
+
