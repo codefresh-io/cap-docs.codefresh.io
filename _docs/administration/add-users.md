@@ -35,22 +35,22 @@ For guidelines on access control, see [Access control]({{site.baseurl}}/docs/adm
    caption="Add new user"
    max-width="100%" 
    %}
-   1. Type the **User's email address**.  
-   1. **Assign a role**, by selecting either **User** or **Administrator**.  
-   1. If SSO is configured for the account, **Select SSO provider**, and then configure the settings.  
-      * [SAML2]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-saml2.md) 
-      * [OpenID Connect]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2.md) 
-      * [Auth0]({{site.baseurl}}/docs/administration/single-sign-on/sso-auth0.md) 
-      * [Azure]({{site.baseurl}}/docs/administration/single-sign-on/sso-azure.md)  
-      * [Google]({{site.baseurl}}/docs/administration/single-sign-on/sso-google.md)
-      * [LDAP]({{site.baseurl}}/docs/administration/single-sign-on/sso-ldap.md)
-      * [Okta]({{site.baseurl}}/docs/administration/single-sign-on/sso-okta.md)
-      * [OneLogin]({{site.baseurl}}/docs/administration/single-sign-on/sso-onelogin.md)
+    1. Type the **User's email address**.  
+    1. **Assign a role**, by selecting either **User** or **Administrator**.  
+    1. If SSO is configured for the account, **Select SSO provider**, and then configure the settings.  
+       * [SAML2]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-saml2.md) 
+       * [OpenID Connect]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2.md) 
+       * [Auth0]({{site.baseurl}}/docs/administration/single-sign-on/sso-auth0.md) 
+       * [Azure]({{site.baseurl}}/docs/administration/single-sign-on/sso-azure.md)  
+       * [Google]({{site.baseurl}}/docs/administration/single-sign-on/sso-google.md)
+       * [LDAP]({{site.baseurl}}/docs/administration/single-sign-on/sso-ldap.md)
+       * [Okta]({{site.baseurl}}/docs/administration/single-sign-on/sso-okta.md)
+       * [OneLogin]({{site.baseurl}}/docs/administration/single-sign-on/sso-onelogin.md)
 
 
 The user receives an email invitation, and the Users page is updated with information on the user. 
 The Status column shows Invite sent until the user accepts the invitation, when the user account is created. For the duration that the invitation is pending, you can resend the invitation, by clicking Resend invite.
 
-### Troubleshoot add user
+### Troubleshoot add users
 [User is prompted to enter an organization name](https://support.codefresh.io/hc/en-us/articles/360020177959-User-is-prompted-to-enter-an-organization-name)  
 [Account invitation not permitting login](https://support.codefresh.io/hc/en-us/articles/360015251000-Account-invitation-not-permitting-login)
