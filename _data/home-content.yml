@@ -53,6 +53,8 @@
       localurl: /docs/runtime/requirements
     - title: Installation and configuration
       localurl: /docs/runtime/installation
+    - title: Monitoring and management
+      localurl: /docs/runtime/monitor-manage-runtimes
     - title: Managing your Git Sources
       localurl: /docs/runtime/git-sources
 

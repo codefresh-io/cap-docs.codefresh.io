@@ -47,9 +47,9 @@
   pages:
     - title: System requirements
       url: "/requirements"
-    - title: Runtime installation and configuration
+    - title: Installation and configuration
       url: "/installation"
-    - title: Runtime monitoring and management
+    - title: Monitoring and management
       url: "/monitor-manage-runtimes"
     - title: Managing your Git Sources
       url: "/git-sources"
