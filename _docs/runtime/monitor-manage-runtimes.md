@@ -1,5 +1,5 @@
 ---
-title: "Runtime mmonitoring and management"
+title: "Draft:  Management"
 description: ""
 group: runtime
 toc: true
@@ -11,10 +11,15 @@ The Runtime page displays all the runtimes installed, their current version, and
 ### Drill down into a runtime
 Click a runtime name to see the list and status of its components.  
 
- (SCREENSHOT)
-
-TBD: One-line description if needed of what each component corresponds to
-
+  {% include 
+	image.html 
+	lightbox="true" 
+	file="/images/runtime/runtime-list.png" 
+	url="/images/runtime/runtime-list.png" 
+	alt="Runtime list" 
+	caption="Runtime list"
+  max-width="70%" 
+%}
 
 ### Upgrade runtimes
 Upgrade existing runtimes to have the latest version of all components. An Update Available notification in the Version column indicates that there are new versions of the runtime. Mouse over and view all the commits in the change logs and then decide if to upgrade.
@@ -23,7 +28,15 @@ Upgrade existing runtimes to have the latest version of all components. An Updat
 1. On the top-right, select **Upgrade**. 
 1. If you have installed the Codefresh CLI, proceed with the runtime upgrade on the lower part of the Install Upgrades panel.
 
-  (SCREENSHOT TBD)
+  {% include 
+	image.html 
+	lightbox="true" 
+	file="/images/runtime/component-upgrade.png" 
+	url="/images/runtime/rcomponent-upgrade.png" 
+	alt="Upgrade runtime" 
+	caption="Upgrade runtime"
+  max-width="70%" 
+%}  
 
 
 ### Troubleshoot health and sync errors 
