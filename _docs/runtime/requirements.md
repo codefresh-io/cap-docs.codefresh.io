@@ -8,12 +8,15 @@ toc: true
 
 The requirements listed are the **_minimum_** requirements for CSDP (Codefresh Software Developement Platform).
 
-### Memory and CPU
+### Kubernetes cluster
+Kubernetes cluster version 1.20, without Argo Project components
+> In the documentation, Kubernetes and K8s are used interchangeably. 
 
-Memory: 3000 MB  
-CPU: 2
+### Node requirements
+* Memory: 3000 MB
+* CPU: 2
 
-### RBAC permissions for resources
+### Runtime namespace permissions for resources
 
 {: .table .table-bordered .table-hover}
 |  Resource                   |  Permissions Required|  
