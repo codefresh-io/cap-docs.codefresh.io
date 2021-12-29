@@ -1,5 +1,5 @@
 ---
-title: "DRAFT: Git Source management"
+title: "Draft: Git Source management"
 description: ""
 group: runtime
 toc: true
@@ -8,7 +8,7 @@ toc: true
 A Git Source in CSDP is an ArgoCD application that references a Git repository. CSDP uses Git Sources to sync Argo Workflow and Argo Events resources to the cluster. 
 Git Sources are always associated with a specific runtime. A single runtime can have multiple Git Sources.
 
-When you provision a Codefresh runtime, a default Git Source is automatically created. This Git Source houses the Argo Event resources such as Workflow Templates, Event Sources, and  Sensors. 
+When you provision a Codefresh runtime, a default Git Source is automatically created. This Git Source houses the Argo Event resources such as Workflow Templates, Event Sources, and Sensors. 
 
 
 ### View Git Sources
@@ -41,11 +41,11 @@ Git Sources are displayed when you drill down on a runtime.
 	url="/images/runtime/create-git-source.png" 
 	alt="Create Git Source" 
 	caption="Create Git Source"
-    max-width="70%" 
+    max-width="50%" 
 %}
 
 {:start="3"}
-1. If you have already installed the Codefresh CLI, select **I already have...**, and continue with Git Source creation instructions in the lower part of the panel.
+1. If you have already installed the Codefresh CLI, select **I already have...**, and continue with Git Source creation in the lower part of the panel.
   >If you created a new GitOps repo for the Git Source, make sure that the Git token has admin rights to the new repo.
 
 
