@@ -58,20 +58,31 @@ Before you install the CSDP runtime, make sure you have the following:
    Scope: `repo`
 
 #### Runtime installation
-Follow the steps in the runtime installation section, noting the following:
+To install a CSDP runtime, you can either pass the flags in the runtime install command, or run  `cf runtime install`, and follow the prompts in the CSDP CLI wizard to enter the required flags.
+
+#### Runtime installation flags
 
 **Runtime name**  
-  Remember that the runtime name must start with a lower-case character, and can include up to 62 lower-case characters and numbers.
-**Mandatory flags**  
-  1. In addition to the runtime name and the runtime installation Git repository, you must pass the Git token to the runtime command. 
-    `--git-token`: The Git token authenticating access to the Git installation repository defined.  
-   
-  When you run `cf runtime install`, you are prompted for:  
+   The runtime name must start with a lower-case character, and can include up to 62 lower-case characters and numbers.
 
-  * **Kube context**  
-    Select the Kube context from the list of available contexts.
-  * **Ingress host**
-    The IP address/host name/FQDN of the ingress controller component.
+**Kube context**  
+  Select the Kube context from the list of available contexts. The current context, which is the cluster currently the default for kubectl,
+   is selected by default.  
+
+**Repository URLs**  
+  The GitHub repository to house the installation definitions. If the repo doesn't exist, CSDP creates it during runtime installation.  
+
+**Git provider API token**
+  The Git token authenticating access to the GitHub installation repository.  
+
+**Ingress host**
+  The IP address/host name/FQDN of the ingress controller component. 
+    * For Docker desktop, use `http://localhost`
+    * For k3d, use, `http://localhost:8081`
+    * For eks, use `https://<external ip of ingress-nginx-controller>`
+
+**Codefresh demo resources**
+  Installs demo pipelines you can use as a starting point to create your own pipelines.
 
 #### Runtime components
 
