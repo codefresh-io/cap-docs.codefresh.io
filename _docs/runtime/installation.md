@@ -15,7 +15,7 @@ There are two parts to installing runtimes:
    * Runtime install repo: The installation repo that manages the runtime itself with Argo CD. If the repo URL does not exist, runtime creates it automatically.   
    * Git Source repo: Created automatically during runtime installation. The repo where you store manifests to run CSDP pipelines. 
 
-Before installation, review [CSDP architecture]({{site.baseurl}}/docs/getting-started/architecture), and also verify [system requirements]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes).
+Before installation, review [CSDP architecture]({{site.baseurl}}/docs/getting-started/architecture).
 
 
 ### Where do you install runtimes?
@@ -29,36 +29,16 @@ Before installation, review [CSDP architecture]({{site.baseurl}}/docs/getting-st
 ### Installing the CSDP runtime
 
 #### Runtime prerequisites
-Before you install the CSDP runtime, make sure you have the following: 
-
-* **Ingress controller in Kubernetes cluster**  
-
-  Configure your Kubernetes cluster with an Ingress controller component, that is exposed from the cluster. For detailed information, see the [Kubernetes documentation on ingress controllers](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/).
-  Note down the external address of the Ingress controller, as you will need this when you install the runtime. 
-
-* **Default `IngressClass`**  
-
-  If you do not have any `IngressClass` resource tagged as the default, add this `ingressclass.kubernetes.io/is-default-class` annotation with the value of `true` to the resource.
-  
-  ```yaml
-  apiVersion: networking.k8s.io/v1
-  kind: IngressClass
-  metadata:
-  annotations:
-    ingressclass.kubernetes.io/is-default-class: "true" 
-  ```
-
-* **Git tokens**  
-
-  For GitHub, you need a Personal Access Token (PAT) for authentication to the Git installation repo, that you will create or select during runtime installation.   
+Before you install the CSDP runtime, verify that:
+* Your deployment conforms to our [system requirements]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes
+* You have a Personal Access Token (PAT) for authentication to the Git installation repo, that you will create or select during runtime installation.   
   To create a Git token, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
-
   > When you create the Git token, set the correct expiration date and scope: 
    Expiration: Default is `30 days`  
    Scope: `repo`
 
 #### Runtime installation
-To install a CSDP runtime, you can either pass the flags in the runtime install command, or run  `cf runtime install`, and follow the prompts in the CSDP CLI wizard to enter the required flags.
+To install a CSDP runtime, you can either pass the flags in the runtime install command in the UI, or run `cf runtime install`, and follow the prompts in the CSDP CLI wizard to enter the required flags.
 
 #### Runtime installation flags
 
@@ -73,7 +53,6 @@ To install a CSDP runtime, you can either pass the flags in the runtime install 
   The GitHub repository to house the installation definitions. If the repo doesn't exist, CSDP creates it during runtime installation.  
 
 **Git provider API token**  
-
   The Git token authenticating access to the GitHub installation repository.  
 
 **Ingress host**  
@@ -85,7 +64,7 @@ To install a CSDP runtime, you can either pass the flags in the runtime install 
 
 **Codefresh demo resources**  
 
-  Optional. Install demo pipelines you can use as a starting point to create your own pipelines.
+  Optional. Install demo pipelines to use as a starting point to create your own pipelines.
 
 #### Runtime components
 
