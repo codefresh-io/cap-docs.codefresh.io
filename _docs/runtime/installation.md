@@ -15,7 +15,7 @@ There are two parts to installing runtimes:
    * Runtime install repo: The installation repo that manages the runtime itself with Argo CD. If the repo URL does not exist, runtime creates it automatically.   
    * Git Source repo: Created automatically during runtime installation. The repo where you store manifests to run CSDP pipelines. 
 
-Before installation, review [CSDP architecture]({{site.baseurl}}/docs/getting-started/architecture)], and also verify [system requirements]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes).
+Before installation, review [CSDP architecture]({{site.baseurl}}/docs/getting-started/architecture), and also verify [system requirements]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes).
 
 
 ### Where do you install runtimes?
@@ -72,17 +72,20 @@ To install a CSDP runtime, you can either pass the flags in the runtime install 
 **Repository URLs**  
   The GitHub repository to house the installation definitions. If the repo doesn't exist, CSDP creates it during runtime installation.  
 
-**Git provider API token**
+**Git provider API token**  
+
   The Git token authenticating access to the GitHub installation repository.  
 
-**Ingress host**
-  The IP address/host name/FQDN of the ingress controller component. 
-    * For Docker desktop, use `http://localhost`
-    * For k3d, use, `http://localhost:8081`
-    * For eks, use `https://<external ip of ingress-nginx-controller>`
+**Ingress host**  
 
-**Codefresh demo resources**
-  Installs demo pipelines you can use as a starting point to create your own pipelines.
+  The IP address/host name/FQDN of the ingress controller component.  
+  * For Docker desktop, use `http://localhost`
+  * For k3d, use, `http://localhost:8081`
+  * For eks, use `https://<external ip of ingress-nginx-controller>`
+
+**Codefresh demo resources**  
+
+  Optional. Install demo pipelines you can use as a starting point to create your own pipelines.
 
 #### Runtime components
 
