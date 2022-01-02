@@ -46,7 +46,7 @@ To install a CSDP runtime, you can either pass the flags in the runtime install 
    The runtime name must start with a lower-case character, and can include up to 62 lower-case characters and numbers.
 
 **Kube context**  
-  Select the Kube context from the list of available contexts. The current context, which is the cluster currently the default for kubectl,
+  Select the Kube context from the list of available contexts. The current context, which is the cluster currently the default for `kubectl`,
    is selected by default.  
 
 **Repository URLs**  
@@ -58,9 +58,7 @@ To install a CSDP runtime, you can either pass the flags in the runtime install 
 **Ingress host**  
 
   The IP address/host name/FQDN of the ingress controller component.  
-  * For Docker desktop, use `http://localhost`
-  * For k3d, use, `http://localhost:8081`
-  * For eks, use `https://<external ip of ingress-nginx-controller>`
+
 
 **Codefresh demo resources**  
 
