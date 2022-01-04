@@ -1,5 +1,5 @@
 ---
-title: "Draft: System requirements"
+title: "System requirements"
 description: ""
 group: runtime
 toc: true
