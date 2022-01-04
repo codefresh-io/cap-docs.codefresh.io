@@ -5,7 +5,7 @@ group: runtime
 toc: true
 ---
 
-A Git Source in CSDP is an Argo CD application that references a Git repository. CSDP uses Git Sources to sync Argo Workflow and Argo Events resources in your repo to the cluster. 
+A Git Source in CSDP is an Argo CD application that references a Git repository with resources. CSDP uses Git Sources to sync Argo Workflow and Argo Events resources in your repo to the cluster. 
 Git Sources are associated with a specific runtime. A single runtime can have multiple Git Sources.
 
 When you provision a Codefresh runtime, a default Git Source is automatically created. This Git Source houses the Argo Event resources such as Workflow Templates, Event Sources, and Sensors. 
