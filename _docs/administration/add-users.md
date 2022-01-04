@@ -22,7 +22,7 @@ For guidelines on access control, see [Access control]({{site.baseurl}}/docs/adm
    url="/images/administration/users/users-list.png"
    alt="Users list"
    caption="Users list"
-   max-width="100%"
+   max-width="50%"
    %}
 {:start="3"} 
 1. Select **Users**, and then select **+ [Add User]**.
@@ -34,7 +34,7 @@ For guidelines on access control, see [Access control]({{site.baseurl}}/docs/adm
    url="/images/administration/users/invite-user.png" 
    alt="Add new user" 
    caption="Add new user"
-   max-width="100%" 
+   max-width="30%" 
    %}  
 
    1. Type the **User's email address**.  
@@ -52,7 +52,11 @@ For guidelines on access control, see [Access control]({{site.baseurl}}/docs/adm
 
 
 The user receives an email invitation, and the Users page is updated with information on the user. 
-The Status column shows Invite sent until the user accepts the invitation, when the user account is created. For the duration that the invitation is pending, you can resend the invitation, by clicking Resend invite.
+The Status column shows Invite sent until the user accepts the invitation, when the user account is created. 
+
+> To resend an invitation that is pending accept, select **Resend invite** ![](/images/administration/users/icon-Send.png?display=inline-block).    
+> To change account settings, select **Edit** ![](/images/administration/users/icon-Edit.png?display=inline-block).  
+> To delete a user account, select **Delete** ![](/images/administration/users/icon-Delete.png?display=inline-block). 
 
 ### Troubleshoot add users
 [User is prompted to enter an organization name](https://support.codefresh.io/hc/en-us/articles/360020177959-User-is-prompted-to-enter-an-organization-name)  
