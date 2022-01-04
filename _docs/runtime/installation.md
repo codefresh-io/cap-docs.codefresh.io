@@ -30,7 +30,8 @@ Before installation, review [CSDP architecture]({{site.baseurl}}/docs/getting-st
 
 #### Runtime prerequisites
 Before you install the CSDP runtime, verify that:
-* Your deployment conforms to our [system requirements]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes)
+
+* Your deployment conforms to our [system requirements]({{site.baseurl}}/docs/runtime/requirements)
 * You have a Personal Access Token (PAT) for authentication to the GitHub installation repo, that you will create or select during runtime installation.   
   To create a GitHub PAT, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
   > When you create the GitHub PAT token, set the correct expiration date and scope: 
@@ -38,7 +39,9 @@ Before you install the CSDP runtime, verify that:
    Scope: `repo`
 
 #### Runtime installation
+
 To install a CSDP runtime, you can either pass the flags in the runtime install command in the UI, or run `cf runtime install`, and follow the prompts in the CSDP CLI wizard to enter the required parameters.
+
 
 #### Runtime installation flags
 
@@ -57,18 +60,24 @@ To install a CSDP runtime, you can either pass the flags in the runtime install 
 
 **Ingress host**  
 
+
   The external IP address of the ingress controller component.  
+
 
 
 **Codefresh demo resources**  
 
+
   Optional. Install two demo Hello World pipelines to use as a starting point to create your own pipelines.
+
 
 #### Runtime components
 
 **Git repositories**   
  
+
 * Runtime install repo: The installation repo contains three folders: apps, bootstrap and projects, to manage the runtime definitions with ArgoCD.  
+
 * Git source repository: Created with the name `[repo_name]_git-source`. This repo stores manifests to run pipelines aka sources, events, workflow templates.
 
 **Argo CD components**  
