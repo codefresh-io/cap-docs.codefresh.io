@@ -4,16 +4,8 @@
     url: "/getting-started-quickly"
   - title: Main concepts
     url: "/main-concepts"
-  - title: Accessing CAP
-    url: "/accessing-cap"
-  - title: CLI
-    url: "/cli"
   - title: Frequently asked questions
     url: "/faq"
-  - title: Argo vs CAP
-    url: "/argo-vs-cap"
-  - title: Classic vs CAP
-    url: "/v1-vs-v2"
   - title: Entity model
     url: "/entity-model"
   - title: Architecture
@@ -47,11 +39,11 @@
   pages:
     - title: System requirements
       url: "/requirements"
-    - title: Installation and configuration
+    - title: Installation
       url: "/installation"
-    - title: Monitoring and management
+    - title: Management
       url: "/monitor-manage-runtimes"
-    - title: Managing your Git Sources
+    - title: Git Source management
       url: "/git-sources"
 
 
@@ -70,6 +62,23 @@
       url: "/user-settings"
     - title: Single Sign-On
       url: "/single-sign-on"
+      sub-pages:
+        - title: SAML2
+          url: "/sso-setup-saml2"
+        - title: OpenID Connect
+          url: "/sso-setup-oauth2"
+        - title: Auth0
+          url: "/sso-auth0"
+        - title: Azure
+          url: "/sso-azure"
+        - title: Google
+          url: "/sso-google"
+        - title: LDAP
+          url: "/sso-ldap"
+        - title: Okta
+          url: "/sso-okta"
+        - title: OneLogin
+          url: "/sso-onelogin"
     - title: Access Control (coming soon)
       url: "/access-control"
     - title: Audit logs
