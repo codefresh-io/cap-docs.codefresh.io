@@ -30,7 +30,15 @@ See [GitHub article](https://docs.github.com/en/authentication/keeping-your-acco
 1. Download the Codefresh CLI:
   * Select one of the methods. 
   * Generate the API key and create the authentication context. 
-
+    {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/getting-started/quick-start/quick-start-download-cli.png" 
+   url="/images/getting-started/quick-start/quick-start-download-cli.png" 
+   alt="Example Git Hub repo with demo resources" 
+   caption="Example Git Hub repo with demo resources"
+   max-width="30%" 
+   %} 
 ### Install CSDP runtime
 For the quick start, you will install the runtime through the CLI. 
 
@@ -80,14 +88,14 @@ In the Git Source repo containing the demo resources, commit a change `event-sou
   {% include 
    image.html 
    lightbox="true" 
-   file="/images/getting-started//quick-start/quick-start-git-source-repo.png" 
-   url="/images/getting-started/quick-start/quick-start-git-source-repo.png" 
+   file="/images/getting-started/quick-start/quick-start-download-cli.png" 
+   url="/images/getting-started/quick-start/quick-start-download-cli.png" 
    alt="Example Git Hub repo with demo resources" 
    caption="Example Git Hub repo with demo resources"
    max-width="30%" 
    %} 
 
-{start="4"}  
+{:start="4"}  
 1. Edit `event-source.git-source.yaml` and commit the change.   
 1. Return to the **Pipelines** page. You will now see statistics for `githb/hello-world`.
 
