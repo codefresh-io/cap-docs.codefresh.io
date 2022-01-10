@@ -1,17 +1,28 @@
 - title: Getting started
   pages:
-  - title: Getting started quickly
-    url: "/getting-started-quickly"
+  - title: Introduction to CSDP
+    url: "/getting-started/introduction" 
+  - title: Quick start
+    url: "/getting-started/quick-start"
+    sub-pages:
+      - title: Verify system requirements
+        url:  "/getting-started/verify-requirements"
+      - title: Create a user account
+        url: "/getting-started/quick-start-add-user"
+      - title: Install runtime
+        url: "/getting-started/quick-start-runtime"
+      - title: Create your first pipeline
+        url: "/getting-started/quick-start-pipeline"
   - title: Main concepts
     url: "/main-concepts"
-  - title: Frequently asked questions
-    url: "/faq"
   - title: Entity model
     url: "/entity-model"
   - title: Architecture
     url: "/architecture"
   - title: GitOps approach
     url: "/gitops"
+  - title: Frequently asked questions
+    url: "/faq"
 
 - title: Deployment
   url: "/deployment"
