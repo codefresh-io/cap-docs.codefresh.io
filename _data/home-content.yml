@@ -47,8 +47,8 @@
       localurl: /docs/runtime/requirements
     - title: Installation
       localurl: /docs/runtime/installation
-    - title: Managing your Git Sources
-      localurl: /docs/runtime/git-sources
+    - title: Git Source management
+      localurl: /docs/runtime/git-sources  
 
 - title: CI/CD Guides
   icon: images/home-icons/guides.png
@@ -61,7 +61,7 @@
   icon: images/home-icons/integrations.svg
   url: ''
   links:
-  - title: Add users
+  - title: Manage users
     localurl: /docs/administration/add-users
   - title: User settings
     localurl: /docs/administration/user-settings

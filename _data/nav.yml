@@ -53,7 +53,7 @@
     - title: Installation
       url: "/installation"
     - title: Management
-      url: "/management"
+      url: "/monitor-manage-runtimes"
     - title: Git Source management
       url: "/git-sources"
 
@@ -67,7 +67,7 @@
 - title: Administration
   url: "/administration"
   pages:
-    - title: Add users
+    - title: Manage users
       url: "/add-users"
     - title: User settings
       url: "/user-settings"
