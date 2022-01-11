@@ -4,3 +4,100 @@ description: ""
 group: getting-started
 toc: true
 ---
+
+Now that you have set up and triggered the Hello World demo pipeline, let’s try a more advanced pipeline.  
+
+You will create a basic CI pipeline, both via Git and from the CSDP UI.  
+
+The basic CI pipeline you create:
+* Clones a Git repository
+* Builds a docker image using `kaniko`
+* Pushes the built image to Docker Hub
+* Sends the image information to CSDP
+* Runs an example testing step
+
+### Download and commit pipeline resource files 
+The basic CI pipeline comprises resource files that you must download and then commit to the Git repository. For the purposes of the quick start, you will commit them to the Git repo you used or created during runtime installation.
+
+1. Download the following resource files:
+  * Github-ci EventSource (`event-source.git-ci-source.yaml`). Download 
+  * Express-ci Sensor (`sensor.express-ci.yaml`). Download 
+  * ci-simple WorkflowTemplate (`workflow-template.ci-simple.yaml`) Download 
+1. Save and commit to the `resource_<runtime-name>` folder in the `<runtime-name>-gitsource` repo that was created during runtime installation. 
+CSDP syncs these resource definitions to your cluster, and create the resources in the cluster.  
+
+View the newly created pipeline in [Pipelines]((https://g.codefresh.io/2.0/pipelines){:target="\_blank"}) in the CSDP UI.
+
+### Create a Personal Access Token
+
+
+1. Create a PAT.
+1. Create a new file `github_access.yaml`.
+1. Paste the content into the file:
+  ```yaml
+    apiVersion: v1
+    kind: Secret
+    metadata:
+      name: github-access
+    type: Opaque
+    data:
+      token: <paste-your-pat-token-here> 
+  ```
+1. Replace the placeholder for the `token` field with your PAT token.
+1. Save and apply the file to your cluster:
+  `kubectl apply -n <csdp-runtime-namespace> -f github_access.yaml`  
+  where `<csdp-runtime-namespace>` is the namespace created during runtime installation.
+1. Open `workflow-template.ci-simple.yaml` and update the `value` for `GIT_TOKEN_SECRET` 
+  ```yaml
+    ...
+    name: GIT_TOKEN_SECRET
+    value: <paste-your-pat-token-here> 
+  ```
+
+  
+### Set up `dockerconfig.json`
+TBD
+
+### Configure pipeline with demo micro service application
+
+1. Fork the repository: ??
+2. Update the event source to listen to events from the forked repository.
+  1. Open `eventSource.git-ci-source.yaml`. 
+  1. In line **22**, update `names` and `owner` for `repositories`:  
+    For `names`, verify that `express-microservice`, the name of the forked demo service is displayed.  
+    For `owner`, add your GitHub username.  
+
+    ```yaml
+     ...
+     repositories:
+        - names:
+          - express-microservice
+        owner: <github-user-name>
+     ...
+    ```
+  1. In line **32**, paste the public URL with access to your cluster to enable the Webhook.
+    > Remember not to add the trailing `/`.
+    ```yaml
+     ...
+     webhook:
+      url: <your-public-url>
+     ...
+    ```
+1. Commit the file. 
+1. Confirm the file has been updated:
+  * Go to [Pipelines]((https://g.codefresh.io/2.0/pipelines){:target="\_blank"}) in the UI. 
+  * Select the **Manifest** tab, and then select the `eventsource` resource. It may take a few seconds to update. 
+  * Verify that you see your changes.
+1. On the 
+
+
+### Trigger an event for the CI pipeline
+To conclude,you will trigger an event that runs the pipeline 
+1. Update the `readme.md` file in the root of the Git repo and commit the changes. 
+Now navigate to the simple-ci pipeline and see that new workflow has been created.
+Click on the workflow to view it’s execution details
+This pipeline clones the express-microserivce repo, builds and image, pushes the image to your dockerhub and then updates codefresh with the image information.
+Let’s see the image by going to the images dashboard (screenshot)
+
+
+
