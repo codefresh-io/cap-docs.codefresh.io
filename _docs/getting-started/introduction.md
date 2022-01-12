@@ -1,10 +1,9 @@
 ---
-title: "Introducing Codefresh Software Delivery Platform"
+title: "Introducing CSDP"
 description: ""
 group: getting-started
 toc: true
 ---
-
 The Codefresh Software Delivery Platform (CSDP), is a full-featured, turn-key solution for application deployments and releases. Powered by the Argo Project, CSDP uses Argo CD, Argo Workflows, Argo Events, and Argo Rollouts, extended with unique functionality and features essential for enterprise deployments. CSDP offers security, maintainability, traceability, and most importantly, a single control plane for all stakeholders, be they developers, operators, product owners or project managers.
  
 With CSDP teams can:
@@ -44,3 +43,8 @@ And finally, the CSDP UI gives you easy access to all the functionality, and vis
   No matter what the volume and frequency of deployments, our Application dashboards make it super easy to track them. Search for Jira issues, commit messages, committers, and see exactly when and if the change was applied to a specific application. 
 * Pipelines for CI/CD  
   Pipelines are where all the magic happens in CSDP. Our pipeline creation wizard removes the complexity when creating, validating, and maintaining pipelines. Every stage has multi-layered views of all the related Git change information for the pipeline.  
+
+### What to read next
+[Try our Getting Started tutorials]()
+
+

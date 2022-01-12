@@ -6,7 +6,7 @@
     localurl: /docs/getting-started/csdp-introduction/
   - title: Quick start
     localurl: /docs/getting-started/quick-start/
-  - title: Main concepts
+  - title: Concepts
     localurl: /docs/getting-started/main-concepts/
   - title: Entity model
     localurl: /docs/getting-started/entity-model/
@@ -15,7 +15,8 @@
   - title: GitOps approach
     localurl: /docs/getting-started/gitops/
   - title: Frequently asked questions
-    localurl: /docs/getting-started/v1-vs-v2/
+    localurl: /docs/getting-started/faq/
+
 
 - title: Deployment
   icon: images/home-icons/deployment.svg
@@ -43,12 +44,14 @@
   icon: images/home-icons/integrations.svg
   url: ''
   links:
-    - title: System requirements
-      localurl: /docs/runtime/requirements
+    - title: Runtime requirements
+      localurl: /docs/runtime/requirements/
     - title: Installation
       localurl: /docs/runtime/installation
-    - title: Git Source management
-      localurl: /docs/runtime/git-sources  
+    - title: Management
+      localurl: /docs/runtime/monitor-manage-runtimes/
+    - title:  Git Source management
+      localurl: /docs/runtime/git-sources/
 
 - title: CI/CD Guides
   icon: images/home-icons/guides.png
@@ -74,14 +77,6 @@
   - title: Codefresh platform IPs
     localurl: /docs/administration/platform-ip-addresses
 
-- title: Migration from v1 to v2
-  icon: images/home-icons/plugins.svg
-  url: ''
-  links:
-    - title: Pipelines
-      localurl: /docs/migration/pipelines
-    - title: GitOps dashboard
-      localurl: /docs/migration/gitops-dashboard
 
 - title: Troubleshooting
   icon: images/home-icons/integrations.svg

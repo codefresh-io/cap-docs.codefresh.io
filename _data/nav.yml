@@ -98,13 +98,6 @@
     - title: Codefresh platform IPs
       url: "/platform-ip-addresses"
 
-- title: Migration from v1 to v2
-  url: "/migration"
-  pages:
-    - title: Pipelines
-      url: "/pipelines"
-    - title: GitOps dashboard
-      url: "/gitops-dashboard"
 
 - title: Troubleshooting
   url: "/troubleshooting"
