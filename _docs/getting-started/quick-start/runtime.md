@@ -2,6 +2,7 @@
 title: "WIP: 3. Install runtime"
 description: ""
 group: getting-started
+sub-group: quick-start
 toc: true
 ---
 

@@ -2,6 +2,7 @@
 title: "WIP: 4. Create your first CI pipeline"
 description: ""
 group: getting-started
+sub-group: quick-start
 toc: true
 ---
 
