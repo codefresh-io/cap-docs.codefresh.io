@@ -10,11 +10,11 @@ toc: true
 Installing the runtime installs the Codefresh Software Development Platform (CSDP), comprising Argo project components and CSDP-specific components. We maintain an enterprise-supported version of the Argo CD components, derived from a conformed fork of the Argo ecosystem.
 
 ### About runtime installation
-There are two parts to installing runtimes:  
-1. Installing the CSDP CLI, a one-time action, typically required only for initial CDSP setup.  
-2. Installing the CSDP runtime from the CLI in a specific namespace on your cluster. 
+Installing a runtime includes installing the:  
+1. CSDP CLI.  
+2. CSDP runtime from the CLI in a specific namespace on your cluster. 
   Every runtime installation makes commits to two Git repos: 
-   * Runtime install repo: The installation repo that manages the runtime itself with Argo CD. If the repo URL you provide does not exist, CSDP untime creates it automatically.   
+   * Runtime install repo: The installation repo that manages the runtime itself with Argo CD. If the repo URL you provide does not exist, CSDP runtime creates it automatically.   
    * Git Source repo: Created automatically during runtime installation. The repo with the demo resources required for the sample `Hello World` pipelines we provide. 
 
 ### Before you begin
@@ -62,26 +62,47 @@ For the quick start, you will install the runtime through the CSDP CLI that you 
 	* **Ingress host (required)**: The external IP address or host name of the ingress host controller configured for your cluster.
 	* **Install Codefresh demo resources?** Press Enter to confirm. Demo resources are saved in a new Git Source repo, created by CSDP. They include resources for two Hello World pipelines, one with a Cron trigger condition and the other with a Git event trigger condition.
 	* **Do you wish to continue with runtime install?** Press Enter to confirm and start runtime installation.
+1. Wait for the runtime installed successfully message.
 
-When the runtime installed successfully message is displayed, go to the [**Runtimes**]((https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}) dashboard in CSDP.  
+### Validate successful installation 
+The **Runtimes** dashboard shows the runtime you just installed. You can drill down into the runtime to see its components and Git Sources.   
 
-### View runtime components and Git Sources
-The **Runtimes** dashboard shows the runtime you just installed. You can drill down into the runtime to see its components and Git Sources. 
-1. Select the runtime name to drill down.
+1. In the CSDP UI, go to the [**Runtimes**]((https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}) dashboard.  
 
-  
+   {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/getting-started/quick-start/quick-start-runtime-dashboard.png" 
+   url="/images/getting-started/quick-start/quick-start-runtime-dashboard.png"
+   alt="Runtime dashboard after successful installation" 
+   caption="Runtime dashboard after successful installation"
+   max-width="30%" 
+   %} 
 
+1. Select the runtime name to drill down, and then select the tabs to view the runtime components and Git Sources.
+  * Runtime components  
+     {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/getting-started/quick-start/quick-start-runtime-components.png" 
+   url="/images/getting-started/quick-start/quick-start-runtime-components.png"
+   alt="Runtime components tab" 
+   caption="Runtime components tab"
+   max-width="30%" 
+   %} 
+
+ 
 
   {% include 
    image.html 
    lightbox="true" 
-   file="/images/getting-started/quick-start/quick-start-git-sourcess.png" 
-   url="/images/getting-started/quick-start/quick-start-git-sources.png"
-   alt="Git Source tab in runtime" 
-   caption="Git Source tab in runtime"
+   file="/images/getting-started/quick-start/quick-start-git-source.png" 
+   url="/images/getting-started/quick-start/quick-start-git-source.png"
+   alt="Git Source tab" 
+   caption="Git Source tab"
    max-width="30%" 
    %} 
 
 
 ### What to do next
-[Trigger the demo Hello World pipeline]({{site.baseurl}}/docs/getting-started/quick-start-hello-world)
+[Trigger the demo Hello World pipeline]({{site.baseurl}}/docs/getting-started/quick-start/hello-world)

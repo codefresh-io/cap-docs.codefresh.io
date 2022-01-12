@@ -10,4 +10,4 @@ toc: true
 Review and confirm that your deployment conforms to the minimum requirements for installing CSDP. See [system requirements]({{site.baseurl}}/docs/runtime/requirements).
 
 ### What to do next
-[(Optional) Create a user account]({{site.baseurl}}/docs/getting-started/quick-start-add-user)
+[Install runtime]({{site.baseurl}}/docs/getting-started/quick-start/runtime)
