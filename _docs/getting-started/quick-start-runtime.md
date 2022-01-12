@@ -6,12 +6,12 @@ toc: true
 ---
 
 
-Installing the runtime installs the Codefresh Software Development Platform (CSDP), comprising Argo project components and CSDP-specific components. We maintain an enteprise-supported version of the Argo CD components, derived from a conformed fork of the Argo ecosystem.
+Installing the runtime installs the Codefresh Software Development Platform (CSDP), comprising Argo project components and CSDP-specific components. We maintain an enterprise-supported version of the Argo CD components, derived from a conformed fork of the Argo ecosystem.
 
 ### About runtime installation
 There are two parts to installing runtimes:  
 1. Installing the CSDP CLI, a one-time action, typically required only for initial CDSP setup.  
-2. Installing the CSDP runtime from the CLI. The runtime is installed in a specific namespace on your cluster. You can install more runtimes on different clusters in your deployment.  
+2. Installing the CSDP runtime from the CLI in a specific namespace on your cluster. 
   Every runtime installation makes commits to two Git repos: 
    * Runtime install repo: The installation repo that manages the runtime itself with Argo CD. If the repo URL you provide does not exist, CSDP untime creates it automatically.   
    * Git Source repo: Created automatically during runtime installation. The repo with the demo resources required for the sample `Hello World` pipelines we provide. 
@@ -45,8 +45,8 @@ Downloading the CSDP CLI requires you to select the download mode and OS, genera
    lightbox="true" 
    file="/images/getting-started/quick-start/quick-start-download-cli.png" 
    url="/images/getting-started/quick-start/quick-start-download-cli.png" 
-   alt="Example Git Hub repo with demo resources" 
-   caption="Example Git Hub repo with demo resources"
+   alt="Download CLI to install runtime" 
+   caption="Download CLI to install runtime"
    max-width="30%" 
    %} 
 ### Install CSDP runtime
@@ -68,34 +68,19 @@ When the runtime installed successfully message is displayed, go to the [**Runti
 The **Runtimes** dashboard shows the runtime you just installed. You can drill down into the runtime to see its components and Git Sources. 
 1. Select the runtime name to drill down.
 
+  
+
 
   {% include 
    image.html 
    lightbox="true" 
-   file="/images/getting-started/quick-start/quick-start-git-source-tab.png" 
-   url="/images/getting-started/quick-start/quick-start-git-source-tab.png"
+   file="/images/getting-started/quick-start/quick-start-git-sourcess.png" 
+   url="/images/getting-started/quick-start/quick-start-git-sources.png"
    alt="Git Source tab in runtime" 
    caption="Git Source tab in runtime"
    max-width="30%" 
    %} 
 
-
-
-
-
-
- The `cron/hello-world` pipeline shows statistics as it has already been triggered based on the cron interval.  
-* The `githb/hello-world` pipelines has not been triggered as it requires a Git-event. As the final step of the runtime, you will trigger this pipeline.  
-
-{% include 
-   image.html 
-   lightbox="true" 
-   file="/images/getting-started/quick-start/quick-start-pipelines.png" 
-   url="/images/getting-started/quick-start/quick-start-pipelines.png"
-   alt="Demo pipelines after runtime imstall" 
-   caption="Demo pipelines after runtime imstall"
-   max-width="30%" 
-%} 
 
 ### What to do next
 [Trigger the demo Hello World pipeline]({{site.baseurl}}/docs/getting-started/quick-start-hello-world)
