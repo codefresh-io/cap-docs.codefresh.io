@@ -21,9 +21,10 @@ Some tasks are common to both methods of creating pipelines.
 ### Create a Personal Access Token (PAT)
 Required for: Git and CSDP UI.
 
-Create your personal token with a valid `expiration` date and `scope` with `base64` encoding.
+1. Create your personal token with a valid `expiration` date and `scope` with `base64` encoding.
 
- For CSDP pipelines, you need `repo` and `admin-repo.hook`:  
+  For CSDP pipelines, you need `repo` and `admin-repo.hook`:  
+  
   {% include 
    image.html 
    lightbox="true" 
@@ -34,9 +35,7 @@ Create your personal token with a valid `expiration` date and `scope` with `base
    max-width="30%" 
    %}  
 
-
-
-1. Create a PAT.
+{:start="2"}
 1. Create a new file `github_access.yaml`.
 1. Paste the content into the file:
   ```yaml
@@ -61,7 +60,28 @@ Create your personal token with a valid `expiration` date and `scope` with `base
     value: <paste-your-pat-token-here> 
     ...
   ```
+
+### Set up `dockerconfig.json`
+Required for: Git and CSDP UI  
+
+Create a secret to use with Docker registry in `dockerconfig.json`.  
+
+1. Do one of the following:
+  * Follow the instructions in this [link](​​https://jamesdefabia.github.io/docs/user-guide/kubectl/kubectl_create_secret_docker-registry/)
+  * Run this command:
+     `kubectl create secret docker-registry <docker-registry-name> --docker-username=<docker-registry-username> --docker-password=<docker-registry-password> --docker-email=<docker-registry-email> [--docker-server=string] [--from-literal=key1=value1] [--dry-run]`  
+     where:  
+     * `<docker-registry-name>` is the Docker Registry for which to create the secret.
+     * `<docker-registry-username>` and <docker-registry-password> are your username and password authentication credentials.
+     * `<docker-registry-email>` is the ???.
+
 ### Git: Create CI pipeline 
+Create a CI pipeline via Git. Make sure you have your personal Git token and the secret for the Docker Registry before you start.  
+
+#### Before you begin
+1. Create a personal Git token
+1. Create the Docker Registry secret
+1. Fork the repo, `<repo_name>` to work with the quick start micro service application
 
 #### Download and commit CI pipeline resource files 
 The basic CI pipeline comprises resource files that you must download and then commit to the Git repository. For the purposes of the quick start, you will commit them to the Git repo you selected or created during runtime installation.
@@ -73,19 +93,6 @@ The basic CI pipeline comprises resource files that you must download and then c
 1. Save and commit to the `resource_<runtime-name>` folder in the `<runtime-name>_git.source` repo that was created during runtime installation.   
   CSDP syncs these resource definitions to your cluster, and create the resources in the cluster.  
 1. In the CSDP UI, view the newly created pipeline in [Pipelines]((https://g.codefresh.io/2.0/pipelines){:target="\_blank"}).
-
-  
-#### Set up `dockerconfig.json`
-Create a secret to use with Docker registry in `dockerconfig.json`.
-1. Do one of the following:
-  * Follow the instructions in this [link](​​https://jamesdefabia.github.io/docs/user-guide/kubectl/kubectl_create_secret_docker-registry/)
-  * Run this command:
-     `kubectl create secret docker-registry <docker-registry-name> --docker-username=<docker-registry-username> --docker-password=<docker-registry-password> --docker-email=<docker-registry-email> [--docker-server=string] [--from-literal=key1=value1] [--dry-run]`  
-     where:  
-     * `<docker-registry-name>` is the Docker Registry for which to create the secret.
-     * `<docker-registry-username>` and <docker-registry-password> are your username and password authentication credentials.
-     * `<docker-registry-email>` is the ???.
-
 
 #### Configure pipeline with demo micro service application
 
@@ -123,7 +130,7 @@ Create a secret to use with Docker registry in `dockerconfig.json`.
 
 
 #### Trigger an event for the CI pipeline
-To complete the CI pipeline, trigger an event that runs the pipeline.  
+To complete the CI pipeline, trigger an event that runs the pipeline.    
 
 1. Update the `readme.md` file in the root of the Git repo and commit the changes. 
 1. Now navigate to the simple-ci pipeline and see that new workflow has been created.
@@ -136,12 +143,14 @@ To complete the CI pipeline, trigger an event that runs the pipeline.
 1. In the CSDP UI, go to [Images]((https://g.codefresh.io/2.0/images){:target="\_blank"}).
 
 
-### Create a CI pipeline in CSDP
-Use our pipeline creation wizard to create the CI pipeline.
+### CSDP: Create a CI pipeline with Create Pipeline wizard
+Use our pipeline creation wizard to create the CI pipeline. Make sure you have your personal Git token and the secret for the Docker Registry before you start. rs 
 
 #### Before you begin
-* Create a PAT, as described in [Create a Personal Access Token (PAT)]({{site.baseurl}}/docs/getting-started/quick-start/create-ci-pipeline/#Create-a-Personal-Access-Token-(PAT))
+1. Create a personal Git token
+1. Create the Docker Registry secret
 
+#### Set up the pipeline
 1. In the CSDP UI, go to [Pipelines]((https://g.codefresh.io/2.0/pipelines){:target="\_blank"}).
 1. Select **+ Add Pipeline**.
 
@@ -157,14 +166,16 @@ Use our pipeline creation wizard to create the CI pipeline.
 
 {:start="3"}
 1. Enter a name for the pipeline.  
-  The name is created from the names of the sensor and the trigger for the pipeline.   
+  The name is created from the names of the sensor and the trigger event for the pipeline.   
   * **Sensor Name**: The name of the sensor resource, for example, `sensor-csdp-ci`.
-  * **Trigger Name**: The trigger attribute configured in the sensor to trigger the Workflow Template, for example, `trigger-csdp-ci`.
-1. For the quick start, select **Codefresh Starter Workflow Template**.
+  * **Trigger Name**: The event configured in the sensor to trigger the Workflow Template, for example, `trigger-csdp-ci`.
+1. Select **Codefresh Starter Workflow Template**.
 1. From the list of Git Sources, select the Git Source to which to commit the resources for this pipeline.  
   For the quick start, you can select ???
-1. To confirm, select **Next**. 
+1. Your workflow template is now set. Select **Next** to define the trigger conditions.
+1. In the **Configuration** tab, select **Trigger Conditions**. 
+1. From the **Add** dropdown, select **Git Event**.
+
 
 
   
-  > If the same sensor is configured with more than one trigger, CSDP creates a different pipeline for every trigger type. 
