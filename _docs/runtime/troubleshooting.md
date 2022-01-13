@@ -25,7 +25,7 @@ toc: true
 #### Failed adding git integration <...> 404 not found
 
 **Possible cause**  
-Another process is probably occupying the address you provided as your ingress-host.  
+Another process is probably occupying the address you provided as your `ingress-host`.  
 
 **Possible actions** 
 * Terminate the process to free up the address.
@@ -37,7 +37,7 @@ Another process is probably occupying the address you provided as your ingress-h
 
 **Possible actions** 
 Without terminating the runtime install, do the following steps:
-\
+
 1. In the Argo CD UI, check the status of your apps:
   * Port forward your argo-cd server pod (use default 8080 ports).
   * Access it via `localhost:8080` with the Username `admin`, and Password which is the decoded `argocd-initial-admin-secret` in your cluster.  
