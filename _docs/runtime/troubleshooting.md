@@ -36,7 +36,8 @@ Another process is probably occupying the address you provided as your ingress-h
   CSDP runtime installation syncs app status at 10-minute intervals. The timeout occurs if after the last status check, at least one application is either not synced or healthy.   
 
 **Possible actions** 
-Without terminating the runtime install, do the following: 
+Without terminating the runtime install, do the following steps:
+\
 1. In the Argo CD UI, check the status of your apps:
   * Port forward your argo-cd server pod (use default 8080 ports).
   * Access it via `localhost:8080` with the Username `admin`, and Password which is the decoded `argocd-initial-admin-secret` in your cluster.  

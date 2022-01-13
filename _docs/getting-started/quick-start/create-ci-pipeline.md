@@ -144,13 +144,13 @@ To complete the CI pipeline, trigger an event that runs the pipeline.
 
 
 ### CSDP: Create a CI pipeline with Create Pipeline wizard
-Use our pipeline creation wizard to create the CI pipeline. Make sure you have your personal Git token and the secret for the Docker Registry before you start. rs 
+Use our pipeline creation wizard to create the CI pipeline. Make sure you have your personal Git token and the secret for the Docker Registry before you start. 
 
 #### Before you begin
 1. Create a personal Git token
 1. Create the Docker Registry secret
 
-#### Set up the pipeline
+#### Create the pipeline
 1. In the CSDP UI, go to [Pipelines]((https://g.codefresh.io/2.0/pipelines){:target="\_blank"}).
 1. Select **+ Add Pipeline**.
 
@@ -174,7 +174,40 @@ Use our pipeline creation wizard to create the CI pipeline. Make sure you have y
   For the quick start, you can select ???
 1. Your workflow template is now set. Select **Next** to define the trigger conditions.
 1. In the **Configuration** tab, select **Trigger Conditions**. 
-1. From the **Add** dropdown, select **Git Event**.
+1. From the **Add** dropdown, select **Git Events**.
+1. In the **Arguments** field, enter the arguments required by the Workflow Template:  
+  These arguments are populated with the required values from the event payload. 
+  Type `$` and from the list of predefined variables, select each of these in turn:
+  * `GIT_REPO_NAME`  
+  * `IMAGE_NAME`
+  * `TAG` 
+  * `GIT_REVISION` 
+  * `GIT_BRANCH` 
+  * `GIT_COMMIT_URL`
+  * `GIT_COMMIT_MESSAGE`  
+
+  Your Git pipeline is now set up to run with parameters from the commit event.
+1. Add a filter on the payload to trigger this pipeline _only_ when there is a commit to the `main` branch:
+  * In the Event filter select `BRANCH`, and click **Add**.
+  * Make sure you select the `=` operator and in the value field enter `master`.
+1. Select **Apply** and then **Commit** to preview the resources you are committing.
+1. Enter the commit message and then select **Commit**.
+1. In the **Pipelines** page to which you are redirected, verify that your pipeline is displayed.  
+  It may take a few seconds while the pipeline is synced from Git to the cluster.
+
+#### Trigger the pipeline with a Git commit event
+Make a change to a file in the Git repository to trigger the pipeline.
+
+1. Go to the Git repository you defined or selected for the trigger condition.
+1. Make a change to any file to get a commit event.
+1. In the CSDP UI, go back to o [Pipelines]((https://g.codefresh.io/2.0/pipelines){:target="\_blank"})) to see the new workflow for the pipeline.
+1. Select the workflow to see detailed 
+
+
+Continue to tweak the pipeline and add more capabilities. 
+
+
+
 
 
 
