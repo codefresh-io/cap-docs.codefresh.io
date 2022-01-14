@@ -16,8 +16,8 @@ image.html
 lightbox="true"
 file="/images/getting-started/architecture/architecture.png"
 url="/images/getting-started/architecture/architecture.png"
-alt="Notifications"
-caption="Notifications"
+alt="Architecture"
+caption="Architecture"
 max-width="100%"
 %}
 
