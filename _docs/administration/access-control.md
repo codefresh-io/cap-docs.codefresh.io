@@ -35,7 +35,6 @@ CSDP application proxy will securely store the git credentials and user them to 
 
 In order to add your git personal token navigate to your [user settings](https://g.codefresh.io/2.0/user-settings)
 
-![img.png](img.png)
 {% include
 image.html
 lightbox="true"
