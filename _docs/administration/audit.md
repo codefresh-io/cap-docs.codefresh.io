@@ -1,5 +1,5 @@
 ---
-title: "Audit logs"
+title: "Audit"
 description: ""
 group: administration
 toc: true
