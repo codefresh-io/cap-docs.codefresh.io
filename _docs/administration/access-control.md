@@ -40,8 +40,8 @@ image.html
 lightbox="true"
 file="/images/administration/access-control/pat.png"
 url="/images/administration/access-control/pat.png"
-alt="Invite users"
-caption="Invite users"
+alt="Add personal access token"
+caption="Add personal access token"
 max-width="100%"
 %}
 
