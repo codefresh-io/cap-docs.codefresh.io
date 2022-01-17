@@ -6,7 +6,7 @@ toc: true
 
 ---
 Access control defines the access policy for resources within an enterprise.   
-In CSDP, access control to an entity is derived from the entity type, which we can categorize into one of the following:
+In CSDP, access control to an entity is derived from the entity type, which can be categorized into one of the following:
 
 * **GitOps-controlled entities**  
   Entities whose entire lifecyle - creation, update, and deletion, are fully GitOps-controlled.  
@@ -71,12 +71,12 @@ From the user's perspective, this means that:
 * Notifications are displayed only for resources with read permissions.
 
 
-> Currently, we do not enforce Analytics views according to read permissions for pipelines. We will be enforcing this policy in the upcoming releases.
+> Currently, we do not enforce Analytics views according to read permissions for pipelines. 
 
 #### Write operations on dynamically-created entities
 These are operations users can perform on dynamically-created entities, such as workflows for example. Typically, the permissions for such entities are derived from those of the parent entity.  
 
-For now, all users with view permissions, can also terminate and retry workflows. 
+Currently, all users with view permissions, can also terminate and retry workflows. 
 
 
 ### Non-GitOps-controlled entities
