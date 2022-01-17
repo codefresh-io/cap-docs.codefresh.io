@@ -27,7 +27,7 @@ The CSDP platform:
 * Controls authentication, user management, and billing
 
 ### CSDP runtime
-The CSDP runtime is a logical box installed on the customer's k8s cluster. It contains the enterprise distribution of the Argo ecosystem and the Codefresh application proxy.  
+The CSDP runtime is a logical box installed on the customer's K8s cluster. It contains the enterprise distribution of the Argo ecosystem and the Codefresh application proxy.  
 
 The CSDP runtime:
 * Makes sure that the installation repository and the Git Sources are always in sync, and applies changes back to the cluster
