@@ -59,14 +59,14 @@ caption="Add personal access token"
 max-width="100%"
 %}
 
-#### Read view permissions
+#### Read permissions
 CSDP enforces read permissions by checking if the user has Git permissions to view the Kubernetes manifest in the repository.  
-Read-view permissions to entities created dynamically from changes in resource state are inherited from the parent entity's permissions.
+Read permissions to entities created dynamically from changes in resource state, are inherited from the parent entity's permissions.
 
 From the user's perspective, this means that:
 
-* If the user does not have read-view permissions from the Git provider to the Sensor's Kubernetes manifest, the user does not have visibility into pipelines.  
-  Workflow entities that are dynamically created, derive their read-view permissions from pipeline permissions. 
+* If the user does not have read permissions from the Git provider for the Sensor's Kubernetes manifest, the user does not have visibility into pipelines.  
+  Workflow entities that are dynamically created, derive their read permissions from pipeline permissions. 
 
 * Notifications are displayed only for resources with read permissions.
 
@@ -82,7 +82,7 @@ Currently, all users with view permissions, can also terminate and retry workflo
 ### Non-GitOps-controlled entities
 For now, users can view all `image` entity types. These are resources reported to CSDP as built artifacts, but not stored using the GitOps approach.
 
-### Account-configuration for non-GitOps controlled entities
+### Account-configuration for non-GitOps-controlled entities
 All account-configuration entities you have access to are listed in your account settings, and are exposed only to account admins.  
 
 When adding a user account, you can assign the `admin` role to the user. The `admin` role automatically enables all account-configurations.
