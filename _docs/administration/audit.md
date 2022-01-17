@@ -5,17 +5,18 @@ group: administration
 toc: true
 ---
 
-Most entities in CSDP are GitOps compliant, and fully controlled via the GitOps approach. 
+Most entities in CSDP are GitOps-compliant, and fully controlled via the GitOps approach. 
 
 For information on which entities and how they are controlled, review [access control]({{site.baseurl}}/docs/administration/access-control/).  
 
-View audit logs:
+Audit logs are available for GitOps-compliant entities. View audit logs:  
+
 * In the **Notifications** panel, for Git Sources
 * In the **Update History** tab, for pipeline entities
 * In your Git repository
 
 ### Git Source changes in Notifications
-The **Notifications** panel is a pull-down panel, always available in the CSDP toolbar. The panel shows a recent view of important changes to main entities like Git Sources.
+The **Notifications** panel is a pull-down panel, always available in the CSDP toolbar. The panel shows a recent view of important changes to entities such as Git Sources.
 
 
 {% include
@@ -45,7 +46,7 @@ max-width="30%"
 ### Git repo change log
 
 A change to a GitOps-controlled resource in CSDP is made by CSDP impersonating and pushing commits to your Git Sources.
-The Git repository linked to the Git Source shows all the commits . 
+The Git repository linked to the Git Source shows all the commits. 
 
 {% include
 image.html
@@ -59,5 +60,4 @@ max-width="30%"
 
 ### (Future) Centralized audit log in account settings
 We plan to create a centralized location from which to view all API operations.
-
 

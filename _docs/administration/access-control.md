@@ -6,10 +6,10 @@ toc: true
 
 ---
 Access control defines the access policy for resources within an enterprise.   
-In CSDP, access control to an entity is derived from the entity type, that can be categorized into one of the following:
+In CSDP, access control to an entity is derived from the entity type, which we can categorize into one of the following:
 
 * **GitOps-controlled entities**  
-  These are entities whose entire lifecyle - creation, update, and deletion, are fully GitOps-controlled.  
+  Entities whose entire lifecyle - creation, update, and deletion, are fully GitOps-controlled.  
   Examples of such entities in CSDP include:
   * Runtimes
   * Git Sources
@@ -18,12 +18,16 @@ In CSDP, access control to an entity is derived from the entity type, that can b
 
 * **Non-GitOps-controlled entities**  
 
-  These are entities reported to CSDP as built artifacts, but not GitOps-controlled.
+  Entities reported to CSDP as built artifacts, not GitOps-controlled.
+    
+  Examples of such entities in CSDP include:
   * Images
 
 * **Account-configuration entities (currently non-GitOps-controlled)**  
 
-  These are entities whose state is not stored in a Git repository for now.
+  Entities whose state is not currently stored in a Git repository.  
+  Examples of such entities in CSDP include:
+
   * Account configuration collaborators
   * Account configuration security
   * Account configuration Single Sign-On (SSO)
@@ -31,7 +35,7 @@ In CSDP, access control to an entity is derived from the entity type, that can b
 
 
 ### GitOps-controlled entities
-CSDP stores the state of your account entities based on GitOps principles and policies. 
+CSDP stores the state of your account entities according to GitOps principles and policies. 
 
 #### Write permissions
 Users with write permissions can access and manage files directly in the Git repository. Any action on the file such as create, update, or delete, is immediately reflected in the user account.  
@@ -43,7 +47,7 @@ The CSDP application proxy uses these credentials:
 * For Git-provider operations
 * To update CSDP with the read/write permissions to all existing repositories linked to the Git Source defined for a runtime. The CSDP client can perform client-side validations.
 
-To add your Git personal token, in the CSDP UI, go to [user settings](https://g.codefresh.io/2.0/user-settings).
+To add your Git personal token, in the CSDP UI, go to your avatar and then select [user settings](https://g.codefresh.io/2.0/user-settings).
 
 {% include
 image.html
@@ -57,7 +61,7 @@ max-width="100%"
 
 #### Read view permissions
 CSDP enforces read permissions by checking if the user has Git permissions to view the Kubernetes manifest in the repository.  
-Read-view permissions to entities created dynamically from changes in resource state are inherited from the permissions of the parent entity.
+Read-view permissions to entities created dynamically from changes in resource state are inherited from the parent entity's permissions.
 
 From the user's perspective, this means that:
 
@@ -70,13 +74,13 @@ From the user's perspective, this means that:
 > Currently, we do not enforce Analytics views according to read permissions for pipelines. We will be enforcing this policy in the upcoming releases.
 
 #### Write operations on dynamically-created entities
-These are operations users can perform on dynamically-created entities, such as workflows, for example. Typically, the permissions for such entities are derived from those of the parent entity.  
+These are operations users can perform on dynamically-created entities, such as workflows for example. Typically, the permissions for such entities are derived from those of the parent entity.  
 
 For now, all users with view permissions, can also terminate and retry workflows. 
 
 
-### Non-GitOps controlled entities
-Users can for now view all `image` entity types. These are resources reported to CSDP as built artifacts, but not stored using the GitOps approach.
+### Non-GitOps-controlled entities
+For now, users can view all `image` entity types. These are resources reported to CSDP as built artifacts, but not stored using the GitOps approach.
 
 ### Account-configuration for non-GitOps controlled entities
 All account-configuration entities you have access to are listed in your account settings, and are exposed only to account admins.  
@@ -86,7 +90,7 @@ When adding a user account, you can assign the `admin` role to the user. The `ad
 ### Runtime account-configuration 
 Runtime configuration is also exposed in the account settings dedicated area and only exposed to admins but is fully controlled via the GitOps approach after installation. <br>
 
-Users with write permissions to the runtime installation repository in Git can make changes to the runtime, and create/delete/update Git Sources defined for that runtime.
+Users with write permissions to the runtime installation repository in Git can make changes to the runtime, and create, update, or delete Git Sources defined for that runtime.
 We are at present exposing the runtime configuration under the account settings only to account admins.   
 Be aware though that these can also be changed directly through Git by users who are not admin users in CSDP. <br>
 
@@ -94,8 +98,11 @@ For now, CSDP admin users can see all runtimes and Git Sources even if they don'
 
 
 ### Upcoming enhancements to access control
-We are continuing to enhance our access control model by adding another layer to provide the ability to define:
+We are working to enhance our access control model by adding another layer to provide the ability to define:
 * Permissions on write operations for entities that are non-GitOps controlled, such as account configuration and workflow operations
 * Read permissions for entities that are completely non-GitOps controlled
 * A more granular permission model for entities that are GitOps-controlled, but without sufficient access control policies in place
 * A more granular permission model for dynamic resources that are non-GitOps controlled, but created from a GitOps-controlled entity, for example, workflows
+
+### What to read next
+[CSDP architecture](({{site.baseurl}}/docs/getting-started/architecture/))
