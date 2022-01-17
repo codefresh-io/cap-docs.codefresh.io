@@ -5,7 +5,7 @@ group: getting-started
 toc: true
 ---
 
-The Codefresh Software Development Platform (CSDP) architecture is built around an enterprise version of the Argo ecosystem, that is fully GitOps compliant, with industry-standard security.
+The architecture of the Codefresh Software Development Platform (CSDP) solution is built around an enterprise version of the Argo ecosystem, that is fully GitOps-compliant, with industry-standard security.
 
 
 {% include
