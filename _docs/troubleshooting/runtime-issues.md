@@ -17,7 +17,7 @@ toc: true
   1. Remove the Argo Project components from your cluster.
   1. Reinstall the CSDP runtime.
 
-#### Pre installation error: please upgrade to the latest cli version: `v<number>` 
+#### Pre-installation error: please upgrade to the latest cli version: `v<number>` 
 
 **Possible cause**  
   CSDP has a new CLI version.   
