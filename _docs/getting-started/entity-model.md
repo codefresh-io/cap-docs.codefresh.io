@@ -5,7 +5,13 @@ group: getting-started
 toc: true
 ---
 
-CSDP entity model can be splited into 4 different categories
+The CSDP entity model is derieved from these entity types:
+* CSDP account/user management entities, 
+* Argo ecosystem entities
+* Workflow, runtime, and Git Source entities, 
+* CSDP-specific entities such as pipelines, images, and applications
+
+
 
 ### CSDP account/user management
 The CSDP account/user management category includes entities that do not share a direct relationship to the CSDP domain. These are enterprise-specific entities in standard SAAS solution.
@@ -13,7 +19,7 @@ The CSDP account/user management category includes entities that do not share a 
 #### Account
 Every user who signs in to CSDP gets a private administrator user account.
 
-If you received an invitation to CSDP, instead of a private user account, you are added as a collaborator to the main account. Your permissions are based on those assigned to you.
+If you received an invitation to CSDP, instead of a private user account, you are added as a collaborator to the main account. Your permissions are based on those explicitly assigned to you.
 
 The number of collaborators in an account is defined by the current plan associated with it.
 
@@ -49,7 +55,7 @@ Workflows with pipelines display links to the pipelines. Users can terminate or 
 ### Runtime
 A runtime represents an installation of CSDP on the customer's K8s cluster, and contains all the components required to perform all tasks on the cluster.
 
-Review [CSDP architecture]({{site.baseurl}}/docs/getting-started/architecture/), and then read [runtime installation ]({{site.baseurl}}/docs/runtime/installation/).
+Review [CSDP architecture]({{site.baseurl}}/docs/getting-started/architecture/), and [runtime installation ]({{site.baseurl}}/docs/runtime/installation/).
 
 ### Git Source
 A Git Source is a link to a Git repository that stores GitOps-controlled entities. You can create as many as Git Sources as you require.
