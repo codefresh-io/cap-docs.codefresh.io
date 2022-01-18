@@ -1,5 +1,5 @@
 ---
-title: "Install CLI"
+title: "Download CLI"
 description: ""
 group: clients
 toc: true
