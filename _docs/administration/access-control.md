@@ -13,8 +13,8 @@ In CSDP, access control to an entity is derived from the entity type, which can 
   Examples of such entities in CSDP include:
   * Runtimes
   * Git Sources
-  * Pipelines comprising Argo Workflow/Event resources such as the Workflow Template, Sensor, Event Sources
-  * Applications comprising Argo CD/Rollouts resources project, applicationSet, application, rollout)
+  * Pipelines comprising Argo Workflow/Events resources such as the Workflow Template, Sensor, Event Sources
+  * Applications comprising Argo CD/Rollouts resources project, Application Set, applications, rollout
 
 * **Non-GitOps-controlled entities**  
 
@@ -40,7 +40,7 @@ CSDP stores the state of your account entities according to GitOps principles an
 #### Write permissions
 Users with write permissions can access and manage files directly in the Git repository. Any action on the file such as create, update, or delete, is immediately reflected in the user account.  
 
-Any user action via a CSDP client (UI or CLI), on a GitOps-controlled resource, is impersonated with the user's Git permissions. If the user does not have permissions for an action in Git, then the user is automatically denied access to the same action from a CSDP client.  
+Any user action via a CSDP client (UI or CLI), on a GitOps-controlled resource, is impersonated with the user's Git permissions. If the user does not have permissions for an action in Git, then the user is automatically denied access to the same action in a CSDP client.  
 
 For CSDP to impersonate the user, the user must provide Git credentials for every runtime. The credentials are securely stored by the CSDP application proxy.  
 The CSDP application proxy uses these credentials:
@@ -56,7 +56,7 @@ file="/images/administration/access-control/pat.png"
 url="/images/administration/access-control/pat.png"
 alt="Add personal access token"
 caption="Add personal access token"
-max-width="100%"
+max-width="30%"
 %}
 
 #### Read permissions
