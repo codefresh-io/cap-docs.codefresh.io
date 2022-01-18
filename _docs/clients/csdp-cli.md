@@ -36,3 +36,4 @@ Downloading the CSDP CLI requires you to select the download mode and OS, genera
 |             | Linux - X64 |`curl -L --output - https://github.com/codefresh-io/cli-v2/releases/latest/download/cf-linux-amd64.tar.gz | tar zx && mv ./cf-linux-amd64 /usr/local/bin/cf && cf version` |       
 |              | Linux - ARM  |  `curl -L --output - https://github.com/codefresh-io/cli-v2/releases/latest/download/cf-linux-arm64.tar.gz | tar zx && mv ./cf-linux-arm64 /usr/local/bin/cf && cf version`|     
 | `brew` | N/A| `brew tap codefresh-io/cli && brew install cf2`|
+
