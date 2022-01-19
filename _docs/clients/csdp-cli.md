@@ -7,7 +7,7 @@ toc: true
 
 You need the CSDP CLI to install CSDP runtimes. For the initial download, you also need to generate the API key and create the API authentication context, all from the CSDP UI.  
 
-Subsequent downloads for upgrade purposes only require you to run the download command, using existing API credentials. 
+Subsequent downloads for upgrade purposes require you to only run the download command, using existing API credentials. 
 
 ### Download CSDP CLI
 Downloading the CSDP CLI requires you to select the download mode and OS, generate an API key, and authentication context.
