@@ -1,5 +1,5 @@
 ---
-title: "Create a basic CI pipeline"
+title: "Create a basic CI delivery pipeline"
 description: ""
 group: getting-started
 sub-group: quick-start
@@ -37,19 +37,8 @@ You must have a PAT to clone the repository.
    %}  
 
 {:start="2"}
-1. Download [`github-token.secret.example.yaml`](https://github.com/eti-codefresh/quickstart_resources/blob/add491550d4a652fc62780173ce4fc9bfba24e58/github-token.secret.example.yaml).  
+1. Download [github-token.secret.example.yaml](https://github.com/eti-codefresh/quickstart_resources/blob/add491550d4a652fc62780173ce4fc9bfba24e58/github-token.secret.example.yaml).  
 1. Replace the placeholder for the `token` field value with your PAT token.
-
-  ```yaml
-    apiVersion: v1
-    kind: Secret
-    metadata:
-      name: github-access
-    type: Opaque
-    data:
-      token: <paste-your-pat-token-here> 
-  ```
-{:start="3"}
 1. Save and apply the file to your cluster in the namespace created when you installed the CSDP Runtime:  
 
    `kubectl apply -n <csdp-runtime-namespace> -f github-token.secret.example.yaml`  
@@ -67,7 +56,7 @@ To push the image to a Docker registry, create a secret to use with Docker regis
   * Create a secret resource.
   * Download [`registry-creds.secret.example.yaml`](https://github.com/eti-codefresh/quickstart_resources/blob/add491550d4a652fc62780173ce4fc9bfba24e58/registry-creds.secret.example.yaml).
   * Replace the `username`, `password` and `domain` with your `base64` encoded credentials.
-1. Save and apply the file to your cluster in the namespace created when you installed the CSDP Runtime:  
+1. Save and apply the file to your cluster in the namespace created when you installed the CSDP Runtime:    
 
    `kubectl apply -n <csdp-runtime-namespace> -f registry-creds.secret.example.yaml`  
     where:  
