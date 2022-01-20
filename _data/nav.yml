@@ -16,8 +16,7 @@
         url: "/create-ci-pipeline"
       - title: Create in CSDP
         url:  "/csdp-create-ci-pipeline"
-      - title: Create via Git
-        url:  "/git-create-ci-pipeline"
+
         
   - title: Main concepts
     url: "/main-concepts"
