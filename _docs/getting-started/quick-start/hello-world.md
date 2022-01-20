@@ -13,6 +13,8 @@ The two Hello World example pipelines are triggered by different event condition
 
 For the quick start, let's focus on the `github/hello-world` pipeline.
 
+### Create a PAT token
+
 ### View pipelines
 View the pipelines in CSDP. 
 1. In the CSDP UI, go to [Pipelines]((https://g.codefresh.io/2.0/pipelines){:target="\_blank"}). 
@@ -47,29 +49,13 @@ As we don't have a workflow for this pipeline, you will configure the Git Source
   
   You can see these resources:    
 
-  * Event Source (`event-source.git-source.yaml`)
+  * Event Source (`event-source.git-source.yaml`).
   * Sensor (`sensor.git-source.yaml`)
   * Workflow Template (`workflow-template.hellow-world.yaml`)  
 
 
   > The pipeline is configured to run on a `PUSH` event in the Git repository.
 
-{:start="3"}
-1. Update the public URL for the Webhook event:
-  * From the expanded resource manifest, select `event-source.git-source.yaml`.
-  * Select **Edit** and scroll to **line 29** in the resource file.    
-  * Replace the placeholder with a valid URL which can be accessed by the cluster, and to which to send Webhooks. 
-  * Select **Commit** to commit your changes.  
-  
-     {% include 
-    image.html 
-   lightbox="true" 
-   file="/images/getting-started/quick-start/quick-start-git-source-manifest-edit.png" 
-   url="/images/getting-started/quick-start/quick-start-git-source-manifest-edit.png" 
-   alt="Edit `event-source.git-source.yaml` in Manifests tab" 
-   caption="Edit `event-source.git-source.yaml` in Manifests tab"
-   max-width="30%" 
-    %} 
 
 CSDP does the following:
 * Commits the changes to your Git repository.

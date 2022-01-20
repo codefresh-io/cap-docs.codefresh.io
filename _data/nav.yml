@@ -12,8 +12,14 @@
         url: "/runtime"
       - title: Trigger the Hello World example pipeline
         url: "/hello-world"
-      - title: Create a basic CI pipeline
+      - title: Create a basic CI delivery pipeline
         url: "/create-ci-pipeline"
+        sub-pages:
+        - title: Create via CSDP
+          url:  "/quick-start/ci-pipeline/csdp-create-ci-pipeline"
+        - title: Create via Git
+          url:  "/quick-start/ci-pipeline/git-create-ci-pipeline"
+        
   - title: Main concepts
     url: "/main-concepts"
   - title: Entity model
