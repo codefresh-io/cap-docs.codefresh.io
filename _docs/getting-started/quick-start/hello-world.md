@@ -14,10 +14,27 @@ The two Hello World example pipelines are triggered by different event condition
 For the quick start, let's focus on the `github/hello-world` pipeline.
 
 ### Create a PAT token
+To commit resources for the `github/hello-world` pipeline, you need to add a PAT to CSDP.
+
+1. Create your personal token with a valid `expiration` date and `scope` with `base64` encoding.  
+  For the pipeline, you need `repo` and `admin-repo.hook` scopes:  
+  
+  {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/getting-started/quick-start/quick-start-git-event-permissions.png" 
+   url="/images/getting-started/quick-start/quick-start-git-event-permissions.png" 
+   alt="GitHub PAT permissions for Hello World pipeline" 
+   caption="GitHub PAT permissions for Hello World pipeline"
+   max-width="30%" 
+   %}  
+
+{:start="2"}
+1. In the CSDP UI, go to [User Settings](https://g.codefresh.io/2.0/user-settings), add your token.
 
 ### View pipelines
 View the pipelines in CSDP. 
-1. In the CSDP UI, go to [Pipelines]((https://g.codefresh.io/2.0/pipelines){:target="\_blank"}). 
+1. In the CSDP UI, go to [Delivery Pipelines]((https://g.codefresh.io/2.0/pipelines){:target="\_blank"}). 
 
   {% include 
    image.html 

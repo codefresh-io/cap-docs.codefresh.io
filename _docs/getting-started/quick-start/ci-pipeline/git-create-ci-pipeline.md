@@ -39,18 +39,7 @@ The basic CI delivery pipeline comprises resource files that you must download a
         owner: <github-user-name>
      ...
     ```  
-    <br>
-
-  * In line **32**, paste the public URL with access to your cluster to enable the Webhook. Remember not to add the trailing `/`.   
-
-    ```yaml
-       ...
-       webhook:
-       url: <your-public-url>
-       ...
-  
-    ```    
-
+ 
 {:start="2"}
 1. Commit the file. 
 1. Confirm the file has been updated:

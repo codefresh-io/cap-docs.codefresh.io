@@ -7,8 +7,6 @@ toc: true
 ---
 
 
-#### Create the delivery pipeline in CSDP
-
 
 1. In the CSDP UI, go to [Delivery Pipelines]((https://g.codefresh.io/2.0/pipelines){:target="\_blank"}).
 1. Select **+ Add Delivery Pipeline**.
@@ -18,8 +16,8 @@ toc: true
    lightbox="true" 
    file="/images/getting-started/quick-start/quick-start-new-pipeline.png" 
    url="/images/getting-started/quick-start/quick-start-new-pipeline.png" 
-   alt="Add Pipeline panel in CSDP" 
-   caption="Add Pipeline panel in CSDP"
+   alt="Add Delivery Pipeline panel in CSDP" 
+   caption="Add Delivery Pipeline panel in CSDP"
    max-width="30%" 
    %}  
 
@@ -37,10 +35,11 @@ toc: true
 1. From the **Add** dropdown, select **Git Events**.
 1. In the **Git Repository URLs** field, select one or more GitHub repositories to which to listen for the selected event. 
 1. From the **Event** dropdown, select the event, in our case, **Commit pushed**.
-  CSDP displays all the **Arguments** used by our Starter Workflow Template.  
-  For each argument, you can define a value that is instantiated from the event payload, or any custom value.
-  These arguments are populated with the required values from the event payload.  
-  In each field, type `$` and from the list of predefined variables, select each of these in turn:
+  CSDP displays all the **Arguments** used by our Starter Workflow Template.    
+  For each argument, you can define a value that is instantiated from the event payload, or any custom value.  
+  These arguments are populated with the required values from the event payload.    
+  In each field, type `$` and from the list of predefined variables, select each of these in turn:  
+  
   * **REPO**: Required. The repository to clone during the build step. Select `Repository name`.
   * **IMAGE_NAME**: Required. The name for the built image. Enter the name in the format `([docker_url]/[account]/[image_name]`.
   * **TAG**: Optional. The tag for the built image. If not defined, uses the default tag `latest`. Enter `1.0`.

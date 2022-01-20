@@ -17,7 +17,8 @@ The delivery pipeline:
 * Runs an example testing step
 * Sends the image information to CSDP
 
-Some tasks such as creating a Personal Access Token (PAT), and a Docker secret are common to both methods of creating pipelines.
+Our CI pipeline interacts with third-party services such as GitHub and a Docker Registry. We need to first add secrets to the cluster to store the credentials required. These tasks are common to both methods of creating pipelines.  
+
 
 #### Create a Personal Access Token (PAT)
 You must have a PAT to clone the repository. 
@@ -36,8 +37,9 @@ You must have a PAT to clone the repository.
    %}  
 
 {:start="2"}
-1. Create a new file `github_access.yaml`.
-1. Paste the content into the file:
+1. Download [`github-token.secret.example.yaml`](https://github.com/eti-codefresh/quickstart_resources/blob/add491550d4a652fc62780173ce4fc9bfba24e58/github-token.secret.example.yaml).  
+1. Replace the placeholder for the `token` field value with your PAT token.
+
   ```yaml
     apiVersion: v1
     kind: Secret
@@ -47,110 +49,33 @@ You must have a PAT to clone the repository.
     data:
       token: <paste-your-pat-token-here> 
   ```
-1. Replace the placeholder for the `token` field value with your PAT token.
+{:start="3"}
 1. Save and apply the file to your cluster in the namespace created when you installed the CSDP Runtime:  
 
-   `kubectl apply -n <csdp-runtime-namespace> -f github_access.yaml`  
+   `kubectl apply -n <csdp-runtime-namespace> -f github-token.secret.example.yaml`  
     where:  
       `<csdp-runtime-namespace>` is the namespace created during runtime installation.
-1. Open `workflow-template.ci-simple.yaml`, and update the `value` for `GIT_TOKEN_SECRET`: 
-  ```yaml
-    ...
-    name: GIT_TOKEN_SECRET
-    value: <paste-your-pat-token-here> 
-    ...
-  ```
 
-#### Create Docker-regsitry secret
 
-To push the image to a Docker registry, create a secret to use with Docker registry in `dockerconfig.json`.  
+#### Create Docker-registry secret
 
-1. Do one of the following:
-  * Follow the instructions in this [link](​​https://jamesdefabia.github.io/docs/user-guide/kubectl/kubectl_create_secret_docker-registry/).
-  * Run this command:  
+To push the image to a Docker registry, create a secret to use with Docker registry.  
 
-    `kubectl create secret docker-registry <docker-registry-name> --docker-username=<docker-registry-username> --docker-password=<docker-registry-password> --docker-email=<docker-registry-email> [--docker-server=string] [--from-literal=key1=value1] [--dry-run]`    
+1. Create the Docker-registry secret by following the instructions in this [link](​​https://jamesdefabia.github.io/docs/user-guide/kubectl/kubectl_create_secret_docker-registry/).
+1. Create the secret for our `image-reporter` step:  
 
+  * Create a secret resource.
+  * Download [`registry-creds.secret.example.yaml`](https://github.com/eti-codefresh/quickstart_resources/blob/add491550d4a652fc62780173ce4fc9bfba24e58/registry-creds.secret.example.yaml).
+  * Replace the `username`, `password` and `domain` with your `base64` encoded credentials.
+1. Save and apply the file to your cluster in the namespace created when you installed the CSDP Runtime:  
+
+   `kubectl apply -n <csdp-runtime-namespace> -f registry-creds.secret.example.yaml`  
     where:  
-
-      * `<docker-registry-name>` is the Docker Registry for which to create the secret.
-      * `<docker-registry-username>` and `<docker-registry-password>` are your username and password authentication credentials.
-      * `<docker-registry-email>` is the email of the Docker registry.
+      `<csdp-runtime-namespace>` is the namespace created during runtime installation.
 
 
-### What to do next
+### Continue with
 [CSDP: Create a CI delivery pipeline]({{site.baseurl}}/docs/getting-started/quick-start/ci-pipeline/csdp-create-ci-pipeline)  
 [Git: Create a CI delivery pipeline]({{site.baseurl}}/docs/getting-started/quick-start/ci-pipeline/git-create-ci-pipeline)  
 
 
-### CSDP: Create a CI delivery pipeline
-Use our pipeline creation wizard to create the CI delivery pipeline. Make sure you have your personal Git token and the secret for the Docker Registry before you start. 
-Creating the CI delivery pipeline incluxes
-1. Creating a Git PAT
-1. Creating the Docker Registry secret
-1. In the CSDP UI, defining the:
-  * Pipeline name and the Git Source to which to commit resources 
-  * Trigger conditions that determine when the pipeline is executed. 
-
-#### Before you begin
-1. Create a personal Git token
-1. 
-
-#### Create the delivery pipeline in CSDP
-
-
-1. In the CSDP UI, go to [Delivery Pipelines]((https://g.codefresh.io/2.0/pipelines){:target="\_blank"}).
-1. Select **+ Add Delivery Pipeline**.
-
-   {% include 
-   image.html 
-   lightbox="true" 
-   file="/images/getting-started/quick-start/quick-start-new-pipeline.png" 
-   url="/images/getting-started/quick-start/quick-start-new-pipeline.png" 
-   alt="Add Pipeline panel in CSDP" 
-   caption="Add Pipeline panel in CSDP"
-   max-width="30%" 
-   %}  
-
-{:start="3"}
-1. Enter a name for the delivery pipeline.  
-  The name is created from the names of the sensor and the trigger event for the delivery pipeline.   
-  * **Sensor Name**: The name of the sensor resource, for example, `sensor-csdp-ci`.
-  * **Trigger Name**: The event configured in the sensor to trigger the Workflow Template, for example, `push-csdp-ci`.
-1. From the list of **Git Sources**, select the Git Source to which to commit the resources for this delivery pipeline.  
-  > Do not select the marketplace Git Source as you cannot commit to it.   
-    If you have multiple runtimes installed, the Git Source you select also determines the runtime that executes the pipeline.
-1. Select **Next**.  
-  In the **Configuration** tab, **Workflow Templates** is selected. This is our CI Starter Workflow Template, that builds a Docker image using Kaniko, reports image metadata to CSDP, and tests the image.
-1. Select **Trigger Conditions**. 
-1. From the **Add** dropdown, select **Git Events**.
-1. In the **Git Repository URLs** field, select one or more GitHub repositories to which to listen for the selected event. 
-1. From the **Event** dropdown, select the event, in our case, **Commit pushed**.
-  CSDP displays all the **Arguments** used by our Starter Workflow Template.  
-  For each argument, you can define a value that is instantiated from the event payload, or any custom value.
-  These arguments are populated with the required values from the event payload.  
-  In each field, type `$` and from the list of predefined variables, select each of these in turn:
-  * **REPO**: Required. The repository to clone during the build step. Select `Repository name`.
-  * **IMAGE_NAME**: Required. The name for the built image. Enter the name in the format `([docker_url]/[account]/[image_name]`.
-  * **TAG**: Optional. The tag for the built image. If not defined, uses the default tag `latest`. Enter `1.0`.
-  * **GIT_REVISION**: Optional. The Git revision to report to CSDP. Select `Git revision`.
-  * **GIT_BRANCH**: Optional. The Git branch to report to CSDP. Select `Git branch`.
-  * **GIT_COMMIT_URL**: Optional. The Git commit URL to report to CSDP. Select `Commit url`.
-  * **GIT_COMMIT_MESSAGE**: Optional. The Git commit message to report to Codefresh. Select `Commit message`.  
-  You are now ready to commit the delivery pipeline to the Git Source.
-1. Select **Apply**, and then **Commit** on the top-right.
-  The Commit Changes panel shows the files to be committed.
-1. Enter the commit message and then select **Commit**.
-1. In the **Delivery Pipelines** page to which you are redirected, verify that your pipeline is displayed. 
-
-  Behind the scenes, we have committed the pipeline to your Git repository, and are syncing the resources to your cluster.  
-  It may take a few seconds for the Git-to-cluster sync to complete, and then your pipeline should be displayed.
-
-#### Trigger the pipeline with a Git commit event
-Make a change to a file in the Git repository to trigger the pipeline.
-
-1. Go to the Git repository selected for the trigger condition.
-1. Make a change to any file to get a commit event.
-1. In the CSDP UI, go back to [Delivery Pipelines]((https://g.codefresh.io/2.0/pipelines){:target="\_blank"}) to see the new workflow for the pipeline.  
-
-Continue to tweak the pipeline and enhance its capabilities. 
