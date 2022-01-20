@@ -11,7 +11,6 @@ Create a CI delivery pipeline via Git. Make sure you have your personal Git toke
 ### Before you begin
 1. [Create a personal Git token]({{site.baseurl}}/docs/getting-started/quick-start/create-ci-pipeline#/#create-a-personal-access-token-pat)
 1. [Create the Docker Registry secret]({{site.baseurl}}/docs/getting-started/quick-start/create-ci-pipeline/#create-docker-regsitry-secret)
-1. Fork the repo, `<repo_name>` to work with the quick start microservice application
 
 ### Download and commit CI delivery pipeline resource files 
 The basic CI delivery pipeline comprises resource files that you must download and then commit to the Git repository. For the purposes of the quick start, you will commit them to the Git repo you selected or created during runtime installation.

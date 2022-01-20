@@ -8,7 +8,7 @@ toc: true
 
 Now that you have configured and run the Hello World demo pipeline, let's create a more advanced pipeline.  
 
-For the quick start, you will create a basic CI delivery pipeline in CSDP.  
+For the quick start, you'll create a basic CI delivery pipeline in CSDP.  
 
 The delivery pipeline:  
 * Clones a Git repository
@@ -17,7 +17,7 @@ The delivery pipeline:
 * Runs an example testing step
 * Sends the image information to CSDP
 
-Our CI pipeline interacts with third-party services such as GitHub and a Docker Registry. We need to first add secrets to the cluster to store the credentials required. 
+Our CI pipeline interacts with third-party services such as GitHub and a Docker Registry. You need to first add secrets to the cluster to store the credentials required. 
 
 
 #### Create a Personal Access Token (PAT)
