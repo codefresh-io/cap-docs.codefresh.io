@@ -108,12 +108,12 @@ To push the image to a Docker registry, create a secret to use with Docker regis
   In each field, type `$` and from the list of predefined variables, select each of these in turn:  
 
   * **REPO**: Required. The repository to clone during the build step. Select `Repository name`.  
-  **IMAGE_NAME**: Required. The name for the built image. Enter the name in the format `([docker_url]/[account]/[image_name]`.  
-  **TAG**: Optional. The tag for the built image. If not defined, uses the default tag `latest`. Enter `1.0`.  
-  **GIT_REVISION**: Optional. The Git revision to report to CSDP. Select `Git revision`.  
-  **GIT_BRANCH**: Optional. The Git branch to report to CSDP. Select `Git branch`.  
-  **GIT_COMMIT_URL**: Optional. The Git commit URL to report to CSDP. Select `Commit url`.  
-  **GIT_COMMIT_MESSAGE**: Optional. The Git commit message to report to Codefresh. Select `Commit message`.   
+  * **IMAGE_NAME**: Required. The name for the built image. Enter the name in the format `([docker_url]/[account]/[image_name]`.  
+  * **TAG**: Optional. The tag for the built image. If not defined, uses the default tag `latest`. Enter `1.0`.  
+  * **GIT_REVISION**: Optional. The Git revision to report to CSDP. Select `Git revision`.  
+  * **GIT_BRANCH**: Optional. The Git branch to report to CSDP. Select `Git branch`.  
+  * **GIT_COMMIT_URL**: Optional. The Git commit URL to report to CSDP. Select `Commit url`.  
+  * **GIT_COMMIT_MESSAGE**: Optional. The Git commit message to report to Codefresh. Select `Commit message`.   
   
   You are now ready to commit the delivery pipeline to the Git Source.  
 
@@ -131,7 +131,7 @@ Make a change to a file in the Git repository to trigger the pipeline.
 
 1. Go to the Git repository selected for the trigger condition.
 1. Make a change to any file to get a commit event.
-1. In the CSDP UI, go back to [Delivery Pipelines]((https://g.codefresh.io/2.0/pipelines){:target="\_blank"}) to see the new workflow for the pipeline.  
+1. In the CSDP UI, go back to [Delivery Pipelines](https://g.codefresh.io/2.0/pipelines){:target="\_blank"} to see the new workflow for the pipeline.  
 
 Continue to tweak the pipeline and enhance its capabilities. 
 
