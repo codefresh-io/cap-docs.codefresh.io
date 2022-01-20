@@ -55,15 +55,17 @@ To push the image to a Docker registry, create a secret to use with Docker regis
 
   * Create a secret resource.
   * Download [`registry-creds.secret.example.yaml`](https://github.com/eti-codefresh/quickstart_resources/blob/add491550d4a652fc62780173ce4fc9bfba24e58/registry-creds.secret.example.yaml).
-  * Replace the `username`, `password` and `domain` with your `base64` encoded credentials.
+  * Replace the `username`, `password` and `domain` with your `base64` encoded credentials.  
+{:start="3"} 
 1. Save and apply the file to your cluster in the namespace created when you installed the CSDP Runtime:    
 
-   `kubectl apply -n <csdp-runtime-namespace> -f registry-creds.secret.example.yaml`  
-    where:  
-      `<csdp-runtime-namespace>` is the namespace created during runtime installation.
+  `kubectl apply -n <csdp-runtime-namespace> -f registry-creds.secret.example.yaml`  
+  where:  
+  `<csdp-runtime-namespace>` is the namespace created during runtime installation.
 
 
 ### Create the CI delivery pipeline
+
 
 1. In the CSDP UI, go to [Delivery Pipelines](https://g.codefresh.io/2.0/pipelines){:target="\_blank"}.
 1. Select **+ Add Delivery Pipeline**.
