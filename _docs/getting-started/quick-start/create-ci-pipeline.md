@@ -52,10 +52,10 @@ To push the image to a Docker registry, create a secret to use with Docker regis
 
 1. Create the Docker-registry secret by following the instructions in this [link](​​https://jamesdefabia.github.io/docs/user-guide/kubectl/kubectl_create_secret_docker-registry/).
 1. Create the secret for our `image-reporter` step:  
-
   * Create a secret resource.
   * Download [`registry-creds.secret.example.yaml`](https://github.com/eti-codefresh/quickstart_resources/blob/add491550d4a652fc62780173ce4fc9bfba24e58/registry-creds.secret.example.yaml).
-  * Replace the `username`, `password` and `domain` with your `base64` encoded credentials.  
+  * Replace the `username`, `password` and `domain` with your `base64` encoded credentials.   
+ 
 {:start="3"} 
 1. Save and apply the file to your cluster in the namespace created when you installed the CSDP Runtime:    
 
