@@ -14,8 +14,6 @@
         url: "/hello-world"
       - title: Create a basic CI delivery pipeline
         url: "/create-ci-pipeline"
-      - title: Create in CSDP
-        url:  "/csdp-create-ci-pipeline"
 
         
   - title: Main concepts

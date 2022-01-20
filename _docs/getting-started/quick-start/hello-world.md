@@ -30,12 +30,12 @@ To commit resources for the `github/hello-world` pipeline, you need to add a PAT
    %}  
 
 {:start="2"}
-1. In the CSDP UI, go to [User Settings](https://g.codefresh.io/2.0/user-settings), add your token.
+1. In the CSDP UI, go to [User Settings](https://g.codefresh.io/2.0/user-settings){:target="\_blank"}, add your token.
 
 ### View pipelines
 View the pipelines in CSDP. 
 
-1. In the CSDP UI, go to [Delivery Pipelines]((https://g.codefresh.io/2.0/pipelines){:target="\_blank"}). 
+1. In the CSDP UI, go to [Delivery Pipelines](https://g.codefresh.io/2.0/pipelines){:target="\_blank"}. 
 
   {% include 
    image.html 
