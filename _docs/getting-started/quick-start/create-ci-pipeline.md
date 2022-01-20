@@ -20,7 +20,7 @@ The delivery pipeline:
 Our CI pipeline interacts with third-party services such as GitHub and a Docker Registry. You need to first add secrets to the cluster to store the credentials required. 
 
 
-#### Create a Personal Access Token (PAT)
+### Create a Personal Access Token (PAT)
 You must have a PAT to clone the repository. 
 
 1. Create your personal token with a valid `expiration` date and `scope` with `base64` encoding.  
@@ -46,7 +46,7 @@ You must have a PAT to clone the repository.
       `<csdp-runtime-namespace>` is the namespace created during runtime installation.
 
 
-#### Create Docker-registry secret
+### Create Docker-registry secret
 
 To push the image to a Docker registry, create a secret to use with Docker registry.  
 
@@ -107,7 +107,7 @@ To push the image to a Docker registry, create a secret to use with Docker regis
      
   In each field, type `$` and from the list of predefined variables, select each of these in turn:  
 
-  **REPO**: Required. The repository to clone during the build step. Select `Repository name`.  
+  * **REPO**: Required. The repository to clone during the build step. Select `Repository name`.  
   **IMAGE_NAME**: Required. The name for the built image. Enter the name in the format `([docker_url]/[account]/[image_name]`.  
   **TAG**: Optional. The tag for the built image. If not defined, uses the default tag `latest`. Enter `1.0`.  
   **GIT_REVISION**: Optional. The Git revision to report to CSDP. Select `Git revision`.  
