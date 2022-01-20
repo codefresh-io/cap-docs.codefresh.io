@@ -15,9 +15,9 @@
       - title: Create a basic CI delivery pipeline
         url: "/create-ci-pipeline"
       - title: Create in CSDP
-        url:  "/quick-start/ci-pipeline/csdp-create-ci-pipeline"
+        url:  "/csdp-create-ci-pipeline"
       - title: Create via Git
-        url:  "/quick-start/ci-pipeline/git-create-ci-pipeline"
+        url:  "/git-create-ci-pipeline"
         
   - title: Main concepts
     url: "/main-concepts"
