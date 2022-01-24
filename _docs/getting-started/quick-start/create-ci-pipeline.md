@@ -40,13 +40,13 @@ You must have a PAT to clone the repository.
 
 {:start="2"}
 1. Define your PAT and namespace by replacing the values in these commands:
-   ```bash
+  ```
    export GIT_TOKEN=[PAT token]
    export NAMESPACE=[CSDP runtime namespace]
   ```
 {:start="3"} 
 1. Create a generic Kubernetes secret with your PAT token:
-  ```bash
+  ```
   kubectl create secret generic github-token \
   --from-literal=token=$GIT_TOKEN --dry-run=client \
   --save-config -o yaml | kubectl apply -f - -n $NAMESPACE
