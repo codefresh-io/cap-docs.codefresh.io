@@ -24,7 +24,8 @@ Our CI pipeline interacts with third-party services such as GitHub and a Docker 
 You must have a PAT to clone the repository. 
 
 1. Create your PAT (Personal Access Token) with `base64` encoding, and valid `expiration` date and `scope`.  
-  Base64 encoding: Use this [tool to encode token in base64](https://www.base64encode.net/){:target="\_blank"} 
+  Base64 encoding: Use this [tool to encode token in base64](https://www.base64encode.net/){:target="\_blank"}  
+   
   Scopes: `repo` and `admin-repo.hook`  
   
   {% include 
