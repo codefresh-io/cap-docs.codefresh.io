@@ -25,7 +25,7 @@ You must have a PAT to clone the repository.
 
 1. Create your PAT (Personal Access Token) with `base64`encoding, and valid `expiration` date and `scope`.  
   Encoding: Use this [tool to encode in base64](https://www.base64encode.net/)  
-  
+
   Scopes: `repo` and `admin-repo.hook`
   
   {% include 
@@ -57,14 +57,16 @@ To push the image to a Docker registry, we'll need the credentials on our cluste
 > The Docker registry secret is different from the registry secret.
 
 1. Export the values for the Docker registry's `server`, `username`, `password`, and `email`:
-  ```bash
+  
+  ```
   export DOCKER_REGISTRY_SERVER=[Server]
   export DOCKER_USER=[Username]
   export DOCKER_PASSWORD=[Password]
   export DOCKER_EMAIL=[Email]
   ```
 1. Create the secret: 
-  ```bash 
+  
+  ``` 
   kubectl create secret docker-registry <my-secret> \
   --from-literal=server=$DOCKER_REGISTRY_SERVER \
   --from-literal=username=$DOCKER_USER \
@@ -72,19 +74,20 @@ To push the image to a Docker registry, we'll need the credentials on our cluste
   --from-literal=domain=$DOCKER_EMAIl \
   --dry-run=client --save-config -o yaml | kubectl apply -f - -n $NAMESPACE
   ```
- > In the Workflow Template, the Docker registry name defaults to  `docker-registry`
+ > In the Workflow Template, the Docker registry name defaults to `docker-registry`
 
 
 ### Create registry-creds secret
 
+
 1. Export the values for your registry's `username`, `password`, and `domain`:
-  ```bash
+  ```
   export DOCKER_USER=[Username]
   export DOCKER_PASSWORD=[Password]
   export DOCKER_DOMAIN=[Domain]
   ```
 1. Create the secret:
-  ```bash
+  ```
   kubectl create secret generic registry-creds \
   --from-literal=username=$DOCKER_USER \
   --from-literal=password=$DOCKER_PASSWORD \
