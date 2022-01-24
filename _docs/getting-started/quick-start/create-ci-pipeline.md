@@ -1,4 +1,3 @@
-
 ---
 title: "Create a basic CI delivery pipeline"
 description: ""
@@ -24,8 +23,9 @@ Our CI pipeline interacts with third-party services such as GitHub and a Docker 
 ### Create a Personal Access Token (PAT)
 You must have a PAT to clone the repository. 
 
-1. Create your PAT (Personal Access Token) with a valid `expiration` date and `scope`.  
-  Encoding: `base64` ()
+1. Create your PAT (Personal Access Token) with `base64`encoding, and valid `expiration` date and `scope`.  
+  Encoding: Use this [tool to encode in base64](https://www.base64encode.net/)  
+  
   Scopes: `repo` and `admin-repo.hook`
   
   {% include 
