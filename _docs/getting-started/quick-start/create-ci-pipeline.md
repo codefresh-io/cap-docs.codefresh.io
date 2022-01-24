@@ -24,7 +24,7 @@ Our CI pipeline interacts with third-party services such as GitHub and a Docker 
 ### Create a Personal Access Token (PAT)
 You must have a PAT to clone the repository. 
 
-1. Create your personal token with a valid `expiration` date and `scope`.  
+1. Create your PAT (Personal Access Token) with a valid `expiration` date and `scope`.  
   For CSDP pipelines, you need `repo` and `admin-repo.hook` scopes:  
   
   {% include 
@@ -38,14 +38,15 @@ You must have a PAT to clone the repository.
    %}  
 
 {:start="2"}
- 
-1. Set your personal access token and namespace values by replacing the values in these commands.  
-```bash
+1. Define your personal access token and namespace values by replacing the values in these commands:
+
+  ```bash
 export GIT_TOKEN=[PAT token]
 export NAMESPACE=[CSDP Runtime Namespace]
 ```
-1. Create a generic kubernetes secret with your PAT token by running the following command:
- 
+{:start="3"}
+1. Create a generic Kubernetes secret with your PAT token:
+
  ```bash
 kubectl create secret generic github-token \
 --from-literal=token=$GIT_TOKEN --dry-run=client \
