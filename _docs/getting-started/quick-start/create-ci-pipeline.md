@@ -24,9 +24,8 @@ Our CI pipeline interacts with third-party services such as GitHub and a Docker 
 You must have a PAT to clone the repository. 
 
 1. Create your PAT (Personal Access Token) with `base64`encoding, and valid `expiration` date and `scope`.  
-  Encoding: Use this [tool to encode in base64](https://www.base64encode.net/)  
-
-  Scopes: `repo` and `admin-repo.hook`
+  Base64 encoding: Use this [tool to encode in base64](https://www.base64encode.net/)  
+  Scopes: `repo` and `admin-repo.hook`  
   
   {% include 
    image.html 
@@ -37,14 +36,12 @@ You must have a PAT to clone the repository.
    caption="GitHub PAT permissions for CI pipeline"
    max-width="30%" 
    %}  
-
 {:start="2"}
 1. Define your PAT and namespace by replacing the values in these commands:
   ```
    export GIT_TOKEN=[PAT token]
    export NAMESPACE=[CSDP runtime namespace]
   ```
-{:start="3"} 
 1. Create a generic Kubernetes secret with your PAT token:
   ```
   kubectl create secret generic github-token \
@@ -64,6 +61,7 @@ To push the image to a Docker registry, we'll need the credentials on our cluste
   export DOCKER_PASSWORD=[Password]
   export DOCKER_EMAIL=[Email]
   ```
+{:start="2"}
 1. Create the secret: 
   
   ``` 
