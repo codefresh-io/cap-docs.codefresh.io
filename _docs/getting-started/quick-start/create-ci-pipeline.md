@@ -53,17 +53,14 @@ You must have a PAT to clone the repository.
 To push the image to a Docker registry, we'll need the credentials on our cluster.
 > The Docker registry secret is different from the registry secret.
 
-1. Export the values for the Docker registry's `server`, `username`, `password`, and `email`:
-  
+1. Export the values for the Docker registry's `server`, `username`, `password`, and `email`:  
   ```
   export DOCKER_REGISTRY_SERVER=[Server]
   export DOCKER_USER=[Username]
   export DOCKER_PASSWORD=[Password]
   export DOCKER_EMAIL=[Email]
   ```
-{:start="2"}
-1. Create the secret: 
-  
+1. Create the secret:   
   ``` 
   kubectl create secret docker-registry <my-secret> \
   --from-literal=server=$DOCKER_REGISTRY_SERVER \
