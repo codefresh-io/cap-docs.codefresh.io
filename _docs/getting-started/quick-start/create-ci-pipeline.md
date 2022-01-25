@@ -23,6 +23,7 @@ Our CI pipeline interacts with third-party services such as GitHub and a Docker 
 ### Create a Personal Access Token (PAT)
 You must have a PAT to clone the repository. 
 
+
 1. Create your PAT (Personal Access Token) with a valid `expiration` date and `scope`.  
   Scopes: `repo` and `admin-repo.hook`  
   
@@ -50,9 +51,11 @@ You must have a PAT to clone the repository.
 
 ### Create Docker-registry secret
 To push the image to a Docker registry, we'll need the credentials on our cluster.
+
 > The Docker registry secret is different from the general registry secret.
 
 1. Export the values for the Docker registry's `server`, `username`, `password`, `email`, and `namespace`:  
+
   ```
   export DOCKER_REGISTRY_SERVER=[Server]
   export DOCKER_USER=[Username]
@@ -69,6 +72,7 @@ To push the image to a Docker registry, we'll need the credentials on our cluste
   --from-literal=domain=$DOCKER_EMAIl \
   --dry-run=client --save-config -o yaml | kubectl apply -f - -n $NAMESPACE
   ```
+
  > In the Workflow Template, the Docker registry name defaults to `docker-config`.
 
 
