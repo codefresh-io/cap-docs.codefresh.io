@@ -59,6 +59,7 @@ To install a CSDP runtime, you can either pass the flags in the runtime install 
 
 **Ingress host**  
   The IP address or host name of the ingress controller component.  
+  If you have configured, `NGINX` on an `eks` cluster, enter this as the value: ```https://<external-ip-nginx-ingress-controller>```
 
 
 **Codefresh demo resources**  
