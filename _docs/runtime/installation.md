@@ -29,8 +29,7 @@ There are two parts to installing runtimes:
 Install CSDP runtime through the CLI wizard, or by running a silent install:
 * CLI wizard: Run `cf runtime install`, and follow the prompts to enter the required values
 * Silent install: Pass the mandatory flags in the install command:  
-  `cf runtime install <runtime-name> --repo <git-repo> --git-token <git-token> --silent`
-
+  `cf runtime install <runtime-name> --repo <git-repo> --git-token <git-token> --silent`  
 
 #### Runtime prerequisites
 Before you install the CSDP runtime, verify that:
