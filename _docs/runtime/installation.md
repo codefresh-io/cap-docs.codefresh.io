@@ -56,7 +56,7 @@ Before you install the CSDP runtime, verify that:
 **Ingress class**  
   * If you have more than one ingress class configured on your cluster:
     * CLI wizard: Select the ingress class for runtime installation from the list displayed. 
-    * Silent install: Explicitly specify the ingress class through the `--ingress class` flag. Otherwise, runtime installation fails.
+    * Silent install: Explicitly specify the ingress class through the `--ingress-class` flag. Otherwise, runtime installation fails.
   * If the ingress class does not have a valid SSL certificate, you can continue with the installation in insecure mode, which disables certificate validation.  
     Silent install: If the ingress host does not have a valid certificate, to continue with the installation, add the `--insecure-ingress-host` flag, and set the value to `true`.  
 
