@@ -38,6 +38,14 @@
       localurl: /docs/runtime/monitor-manage-runtimes/
     - title:  Git Source management
       localurl: /docs/runtime/git-sources/
+   
+
+- title: Pipelines
+  icon: images/home-icons/runtimes.svg
+  url: ''
+  links:
+    - title: Concurrency
+      localurl: /docs/pipelines/concurrency-limit/
 
 
 - title: Administration
