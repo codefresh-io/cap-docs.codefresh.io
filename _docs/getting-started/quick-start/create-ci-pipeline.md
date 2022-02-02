@@ -63,6 +63,7 @@ To push the image to a Docker registry, we'll need the credentials on our cluste
   export DOCKER_EMAIL=[Email]
   export NAMESPACE=[CSDP runtime namespace]
   ```
+
 {:start="2"}
 1. Create the secret:   
   ``` 
@@ -70,7 +71,7 @@ To push the image to a Docker registry, we'll need the credentials on our cluste
   --docker-server=$DOCKER_REGISTRY_SERVER \
   --docker-username=$DOCKER_USER \
   --docker-password=$DOCKER_PASSWORD \
-  --docker-email=$DOCKER_EMAIl -n $NAMESPACE
+  --docker-email=$DOCKER_EMAIL -n $NAMESPACE
   ```
 
  > In the Workflow Template, the Docker registry name defaults to `docker-config`.
@@ -90,11 +91,11 @@ Create a general registry secret to send the image information to CSDP.
 {:start="2"}
 1. Create the secret:
   ```
-  kubectl create secret docker-registry <my-secret> \
-  --docker-server=$DOCKER_REGISTRY_SERVER \
-  --docker-username=$DOCKER_USER \
-  --docker-password=$DOCKER_PASSWORD \
-  --docker-email=$DOCKER_EMAIL -n $NAMESPACE
+  kubectl create secret generic registry-creds \
+  --from-literal=username=$USER \
+  --from-literal=password=$PASSWORD \
+  --from-literal=domain=$DOMAIN \
+  --dry-run=client --save-config -o yaml | kubectl apply -f - -n $NAMESPACE
   ```
 
 ### Create the CI delivery pipeline
