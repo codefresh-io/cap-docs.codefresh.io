@@ -63,14 +63,14 @@ To push the image to a Docker registry, we'll need the credentials on our cluste
   export DOCKER_EMAIL=[Email]
   export NAMESPACE=[CSDP runtime namespace]
   ```
+{:start="2"}
 1. Create the secret:   
   ``` 
   kubectl create secret docker-registry <my-secret> \
-  --from-literal=server=$DOCKER_REGISTRY_SERVER \
-  --from-literal=username=$DOCKER_USER \
-  --from-literal=password=$DOCKER_PASSWORD \
-  --from-literal=domain=$DOCKER_EMAIl \
-  --dry-run=client --save-config -o yaml | kubectl apply -f - -n $NAMESPACE
+  --docker-server=$DOCKER_REGISTRY_SERVER \
+  --docker-username=$DOCKER_USER \
+  --docker-password=$DOCKER_PASSWORD \
+  --docker-email=$DOCKER_EMAIl -n $NAMESPACE
   ```
 
  > In the Workflow Template, the Docker registry name defaults to `docker-config`.
