@@ -12,7 +12,7 @@ The requirements listed are the **_minimum_** requirements for CSDP (Codefresh S
 This section lists cluster requirements.
 
 #### Cluster version
-Kubernetes cluster version 1.20 or higher, without Argo Project components
+Kubernetes cluster version 1.20 or higher (currently up to 1.21.8) , without Argo Project components
 > In the documentation, Kubernetes and K8s are used interchangeably. 
 
 #### Ingress controller
