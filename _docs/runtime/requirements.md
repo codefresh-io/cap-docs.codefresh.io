@@ -30,7 +30,7 @@ Kubernetes cluster version 1.20 or higher, without Argo Project components
 1. Verify you see a valid external IP address:  
   ```kubectl get svc ingress-nginx-controller -n ingress-nginx```  
 
-**How to install Ingress NGINX on other clusters**
+**Provider specific instructions for installing Ingress NGINX**
 * [MiniKube](https://kubernetes.github.io/ingress-nginx/deploy/#minikube)
 * [MicroK8s](https://kubernetes.github.io/ingress-nginx/deploy/#microk8s)
 * [Docker Desktop](https://kubernetes.github.io/ingress-nginx/deploy/#docker-desktop)
