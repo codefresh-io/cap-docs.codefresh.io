@@ -1,5 +1,5 @@
 ---
-title: "Configure atrifact repository"
+title: "Configure artifact repository"
 description: ""
 group: pipelines
 toc: true
