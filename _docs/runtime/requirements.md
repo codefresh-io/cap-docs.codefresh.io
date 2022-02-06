@@ -12,7 +12,7 @@ The requirements listed are the **_minimum_** requirements for CSDP (Codefresh S
 This section lists cluster requirements.
 
 #### Cluster version
-Kubernetes cluster version 1.20 or higher, without Argo Project components
+Kubernetes cluster, server version 1.20 or higher, without Argo Project components
 > In the documentation, Kubernetes and K8s are used interchangeably. 
 
 #### Ingress controller
@@ -42,7 +42,7 @@ To install on an EKS, cluster, follow the instructions. For other providers, see
 * [MicroK8s](https://kubernetes.github.io/ingress-nginx/deploy/#microk8s)
 * [Docker Desktop](https://kubernetes.github.io/ingress-nginx/deploy/#docker-desktop)
 * [AWS](https://kubernetes.github.io/ingress-nginx/deploy/#aws)
-* [Google Kubernetes Engine (GCP GKE)](https://kubernetes.github.io/ingress-nginx/deploy/#gce-gke)
+* [Google Kubernetes Engine (GCP GKE)](https://kubernetes.github.io/ingress-nginx/deploy/#gce-gke) (see section on **Specific requirements for Google Kubernetes Engine (GCP GKE)**)
 * [Azure](https://kubernetes.github.io/ingress-nginx/deploy/#azure)
 * [Digital Ocean](https://kubernetes.github.io/ingress-nginx/deploy/#digital-ocean)
 * [Scale Away](https://kubernetes.github.io/ingress-nginx/deploy/#scaleway)
@@ -53,7 +53,7 @@ To install on an EKS, cluster, follow the instructions. For other providers, see
 
 **Specific requirements for Google Kubernetes Engine (GCP GKE)**  
 
-GKE by default limits outbound requests from nodes. In order for the runtime to communicate with the control-plane in Codefresh a firewall specific rule must be added.
+GKE by default limits outbound requests from nodes. For the runtime to communicate with the control-plane in CSDP, add a firewall-specific rule.
 
 1. Find your cluster's network:   
   `gcloud container clusters describe [CLUSTER_NAME] --format=get"(network)"`
@@ -91,7 +91,14 @@ This section lists the requirements for Git installation repositories.
 If you are using an existing repo, make sure it is empty.
 
 #### Git token
-CSDP requires a GitHub Personal Access Token (PAT) for runtime installation.
+CSDP requires GitHub Personal Access Tokens (PATs) for runtime installation, and to authorize state-change operations in CSDP.
+
+Git runtime token
+
+Git access token
+
+Git Source 
+
 For detailed information on GitHub, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).  
 
 The token must have:
