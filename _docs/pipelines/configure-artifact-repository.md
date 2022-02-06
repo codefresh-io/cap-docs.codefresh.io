@@ -8,11 +8,12 @@ toc: true
 To run Argo Workflows that use artifacts, configure an artifact repository. Configure any Argo-supported, S3-compatible repository, such as AWS, GCS or Minio.    
 Artifact repos are also required to archive pipeline logs when automatic logging is enabled for pipelines.  
 
-To configure an artifact repository:  
+To configure an artifact repository, do the following:  
 
 * Create a `ConfigMap` with the specifications; for more information, see Argo Workflows documentation on [Configuring Your Artifact Repository](https://argoproj.github.io/argo-workflows/configure-artifact-repository/){:target="\_blank"}
 * Configure `RBAC` permissions for the workflow controller
 * Update the `serviceAccountName` to match the storage bucket 
+* Recreate `argo-server` pod to get the permissions 
 
 ### Create ConfigMap for artifact repository 
 Create a `ConfigMap` with the specs to connect to the storage bucket configured as the artifact repository, and enable pipeline logging to the same. The settings apply to all workflows by default, unless overridden by a specific `Workflow Template` or `Workflow` resource.
@@ -168,3 +169,10 @@ patchesStrategicMerge:
         spec:
           serviceAccountName: <service-account-name> # must be identical to the service account name in rbac.yaml       
 ```
+
+### Recreate `argo-server` pod to get the permissions
+As the final step in configuring the artifact repository, for the `argo-server` pod to have the permissions needed to access the S3 bucket, manually delete the `argo-server` pod and let it recreate itself.
+
+1. Wait for the configuration changes to take effect on the cluster.
+1. Check the `argo-server` service accountת and verify that it is updated with the user-provided `annotation`. 
+1. Select the `argo-server-<#>` pod and delete it.
