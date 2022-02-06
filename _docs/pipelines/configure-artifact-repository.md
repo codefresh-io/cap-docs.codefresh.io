@@ -10,16 +10,17 @@ Artifact repos are also required to archive pipeline logs when automatic logging
 
 To configure an artifact repository:  
 
-Create a `ConfigMap` with the specifications   
-Configure `RBAC` permissions for the workflow controller
-Update the `serviceAccountName` to match the storage
+* Create a `ConfigMap` with the specifications; for more information, see Argo Workflows documentation on [Configuring Your Artifact Repository](https://argoproj.github.io/argo-workflows/configure-artifact-repository/){:target="\_blank"}
+* Configure `RBAC` permissions for the workflow controller
+* Update the `serviceAccountName` to match the storage bucket 
 
 ### Create ConfigMap for artifact repository 
-Create a `ConfigMap` with the specs to connect to the storage bucket configured as the artifact repository, and enable pipeline logging to the same. The settings apply to all workflows by default, unless overridden by a specific workflow template or workflow.
+Create a `ConfigMap` with the specs to connect to the storage bucket configured as the artifact repository, and enable pipeline logging to the same. The settings apply to all workflows by default, unless overridden by a specific `Workflow Template` or `Workflow` resource.
+
 
 1. Go to your CSDP runtime installation repository:  
    `<runtime_installation_repo>/apps/workflows/overlays/<runtime-name>/`  
-1. Create a new file entitled `artifact-repo.yaml`,and update `bucket`,`endpoint`, and `region`:  
+1. Create a new file entitled `artifact-repo.yaml`,and update `bucket`, `endpoint`, and `region`:  
 ```yaml
 ---
 apiVersion: v1
@@ -48,7 +49,7 @@ Grant the workflow controller sufficient permissions for S3 bucket operations.
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: workflow
+  name: <service-account-name> # for example, workflow
   annotations: # change below as needed 
     <endpoint>/role-arn: <role-arn> # example s3.amazonaws.com/role-arn = arn:aws:iam::559963890471:role/argo-workflows-s3-artifact-repo
 ---
@@ -132,10 +133,38 @@ Define the correct Service Account that with the roles and permissions for workf
 1. Go to the same CSDP runtime installation repository:  
   `<runtime_installation_repo>/apps/workflows/overlays/<runtime-name>`  
 1. Open `kustomization.yaml`.
-1. Change the `serviceAccountName`:
+1. Change the `annotation` and the `serviceAccountName` to be identical to those defined in `rbac.yaml`:
 ```yaml
-data:
-  workflowDefaults: |
-    spec:
-      serviceAccountName: <service-account-name> # IMPORTANT! Provides access to S3 artifact repo              
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: lognext
+patches:
+- path: ingress-patch.json
+  target:
+    group: apps
+    kind: Deployment
+    name: argo-server
+    version: v1
+resources:
+  - ../../base
+  - ingress.yaml       # created after the installation
+  - rbac.yaml.         # created earlier as part of this process
+  - artifact-repo.yaml # created earlier as part of this process
+patchesStrategicMerge:
+  - |
+    apiVersion: v1
+    kind: ServiceAccount
+    metadata:
+      name: argo-server
+      annotations:
+        <endpoint>/role-arn: <role-arn>  # must be identical to annotation of the service account in rbac.yaml file
+  - |
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: workflow-controller-configmap
+    data:
+      workflowDefaults: |
+        spec:
+          serviceAccountName: <service-account-name> # must be identical to the service account name in rbac.yaml       
 ```
