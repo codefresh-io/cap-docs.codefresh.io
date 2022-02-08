@@ -60,13 +60,14 @@ Before you install the CSDP runtime, verify that:
   * If you have more than one ingress class configured on your cluster:
     * CLI wizard: Select the ingress class for runtime installation from the list displayed. 
     * Silent install: Explicitly specify the ingress class through the `--ingress-class` flag. Otherwise, runtime installation fails.
-  * If the ingress class does not have a valid SSL certificate, you can continue with the installation in insecure mode, which disables certificate validation.  
-    Silent install: If the ingress host does not have a valid certificate, to continue with the installation, add the `--insecure-ingress-host` flag.  
-
+ 
 **Ingress host**  
-  The IP address or host name of the ingress controller component.  
-  * CLI wizard: Automatically selects and displays the NGINX host, either from the cluster or the NGINX ingress controller associated with the **Ingress class**.  
-  * Silent install: Add the `--ingress-host` flag. If a value is not provided, then uses NGINX host, either from the cluster or the NGINX ingress controller associated with the **Ingress class**. 
+  * The IP address or host name of the ingress controller component.  
+    * CLI wizard: Automatically selects and displays the NGINX host, either from the cluster or the NGINX ingress controller associated with the **Ingress class**.  
+    * Silent install: Add the `--ingress-host` flag. If a value is not provided, then uses NGINX host, either from the cluster or the NGINX ingress controller associated with the **Ingress class**. 
+ * If the ingress host does not have a valid SSL certificate, you can continue with the installation in insecure mode, which disables certificate validation.  
+    * CLI wizard: Prompts you to confirm continuing with the installation in insecure mode.  
+    * Silent install: To continue with the installation in insecure mode, add the `--insecure-ingress-host` flag.  
 
 **Insecure flag**  
    For _on-premises installations_, if the Ingress controller does not have a valid SSL certificate, to continue with the installation, add the `--insecure` flag to the installation command.  
@@ -81,17 +82,6 @@ Before you install the CSDP runtime, verify that:
   The Git token authenticating access to the GitHub installation repository.  
 
   Silent install: Mandatory. Add the `--git-token` flag.  
-
-**Git Source token**  
-  The Git token for access to the Git Source automatically created during installation to house the demo resources.  
-
-  Silent install: Optional. Add the `--git-token` flag.  
-
-
-**Git access token**  
-  The Git token to authorize every state-change operation in CSDP to  ???.  
-
-  Silent install: Optional. Add the `--git-token` flag.  
 
 
 **Codefresh demo resources**  
