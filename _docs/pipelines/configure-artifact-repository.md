@@ -128,7 +128,7 @@ subjects:
 ```
   
 
-### Update serviceAccountName for artifact repository
+### Update `serviceAccountName` for artifact repository
 Define the correct Service Account that with the roles and permissions for workflows to access the artifact repository.  
 {:start="1"}
 1. Go to the same CSDP runtime installation repository:  
