@@ -98,10 +98,10 @@ This section lists the requirements for Git installation repositories.
 If you are using an existing repo, make sure it is empty.
 
 #### Git access tokens
-CSDP requires personal two access tokens, one for runtime installation, and the other for Git actions from within CSDP. 
+CSDP requires personal two access tokens, one for runtime installation, and the other for your Git actions in CSDP. 
 
 ##### Git runtime token
-The Git Personal Access Tokens (PATs) is mandatory runtime installation.
+The Git runtime token is mandatory for runtime installation.
 
 The token must have valid:
   * Expiration date: Default is `30 days`  
@@ -112,16 +112,16 @@ The token must have valid:
    lightbox="true" 
    file="/images/getting-started/quick-start/quick-start-git-event-permissions.png" 
    url="/images/getting-started/quick-start/quick-start-git-event-permissions.png" 
-   alt="GitHub PAT permissions for runtime" 
-   caption="GitHub PAT permissions for runtime"
+   alt="Scopes for Git runtime token" 
+   caption="Scopes for Git runtime token"
    max-width="30%" 
    %}  
 
-##### Git personal access token for Git-based actions
-The Git access token is used to authenticate every Git-action you take in CSDP. You can supply this token during runtime installation, or add it at any time from the CSDP UI.   
+##### Git personal user token for Git-based actions
+The Git personal user token is used to authenticate every Git-based action you take in CSDP. You can supply this token during runtime installation, or add it at any time from the CSDP UI.   
 
-  The token must have:
-  * Valid expiration: Default is `30 days`  
+  The token must have a valid:
+  * Expiration: Default is `30 days`  
   * Scope: `repo`
   
   {% include 
@@ -129,8 +129,8 @@ The Git access token is used to authenticate every Git-action you take in CSDP. 
    lightbox="true" 
    file="/images/runtime/git-token-scope-resource-repos.png" 
    url="/images/runtime/git-token-scope-resource-repos.png" 
-   alt="Git personal access token for Git actions" 
-   caption="Git personal access token for Git actions"
+   alt="Scope for Git personal user token" 
+   caption="Scope for Git personal user token"
    max-width="30%" 
    %}  
 

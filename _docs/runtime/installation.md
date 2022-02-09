@@ -84,7 +84,7 @@ Before you install the CSDP runtime, verify that:
   Silent install: Mandatory. Add the `--git-token` flag.  
 
 **Personal Git token**  
-  The Git token authenticating actions in GitHub from CSDP.  
+  The Git token authenticating actions in GitHub from CSDP.   
 
   Silent install: Mandatory. Add the `--personal-git-token` flag.   
 
