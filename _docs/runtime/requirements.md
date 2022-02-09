@@ -132,9 +132,10 @@ The Git personal user token is used to authenticate every Git-based action you t
    alt="Scope for Git personal user token" 
    caption="Scope for Git personal user token"
    max-width="30%" 
-   %}  
-
+   %}    
+   
 For detailed information on GitHub tokens, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).  
+
 
 ### What to read next
 [Runtime installation]({{site.baseurl}}/docs/runtime/installation/)
