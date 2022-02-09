@@ -83,6 +83,11 @@ Before you install the CSDP runtime, verify that:
 
   Silent install: Mandatory. Add the `--git-token` flag.  
 
+**Personal Git token**  
+  The Git token authenticating actions in GitHub from CSDP.  
+
+  Silent install: Mandatory. Add the `--personal-git-token` flag.   
+
 
 **Codefresh demo resources**  
   Optional. Install demo pipelines to use as a starting point to create your own pipelines. We recommend installing the demo resources as these are used in our quick start tutorials.  

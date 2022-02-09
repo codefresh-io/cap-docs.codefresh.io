@@ -97,11 +97,14 @@ This section lists the requirements for Git installation repositories.
 #### Git installation repo
 If you are using an existing repo, make sure it is empty.
 
-#### Git personal access token
-CSDP requires GitHub Personal Access Tokens (PATs) for runtime installation, and to authorize state-change operations in CSDP both in the UI or via CLI.
+#### Git access tokens
+CSDP requires personal two access tokens, one for runtime installation, and the other for Git actions from within CSDP. 
 
-The token must have:
-  * Valid expiration: Default is `30 days`  
+##### Git runtime token
+The Git Personal Access Tokens (PATs) is mandatory runtime installation.
+
+The token must have valid:
+  * Expiration date: Default is `30 days`  
   * Scope: `repo` and `admin-repo.hook` 
   
   {% include 
@@ -114,7 +117,24 @@ The token must have:
    max-width="30%" 
    %}  
 
-For detailed information on GitHub token, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).  
+##### Git personal access token for Git-based actions
+The Git access token is used to authenticate every Git-action you take in CSDP. You can supply this token during runtime installation, or add it at any time from the CSDP UI.   
+
+  The token must have:
+  * Valid expiration: Default is `30 days`  
+  * Scope: `repo`
+  
+  {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/runtime/git-token-scope-resource-repos.png" 
+   url="/images/runtime/git-token-scope-resource-repos.png" 
+   alt="Git personal access token for Git actions" 
+   caption="Git personal access token for Git actions"
+   max-width="30%" 
+   %}  
+
+For detailed information on GitHub tokens, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).  
 
 ### What to read next
 [Runtime installation]({{site.baseurl}}/docs/runtime/installation/)
