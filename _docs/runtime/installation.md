@@ -85,9 +85,9 @@ Before you install the CSDP runtime, verify that:
 
 
 **Personal Git token**  
-  The Git token authenticating actions in GitHub from CSDP.   
+  The personal Git token of each user, to authenticate the user's actions in GitHub from CSDP.   
 
-  Silent install: Mandatory. Add the `--personal-git-token` flag.   
+  Silent install: Mandatory. Add the `--personal-git-token` flag.  If the flag is not passed, CSDP uses the runtime token as the user's personal Git token instead.
 
 
 **Codefresh demo resources**  

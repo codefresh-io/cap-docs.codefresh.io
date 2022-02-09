@@ -117,8 +117,8 @@ The token must have valid:
    max-width="30%" 
    %}  
 
-##### Git personal user token for Git-based actions
-The Git personal user token is used to authenticate every Git-based action you take in CSDP. You can supply this token during runtime installation, or add it at any time from the CSDP UI.   
+##### Git user token for Git-based actions
+The Git user token is a personal token per user, used to authenticate every Git-based action of the user in CSDP. You can supply this token during runtime installation, or add it at any time from the CSDP UI.   
 
   The token must have a valid:
   * Expiration: Default is `30 days`  
