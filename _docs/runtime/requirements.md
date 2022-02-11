@@ -51,6 +51,11 @@ See additional configuration options in the [ingress-nginx documentation for AWS
 See additional configuration options in the [ingress-nginx documentation for AKS](https://docs.microsoft.com/en-us/azure/aks/ingress-internal-ip?tabs=azure-cli#create-an-ingress-controller).
 
 ##### Bare Metal Clusters
+**Using Ingress-Nginx**
+1. Apply `kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.1/deploy/static/provider/baremetal/deploy.yaml`
+1. Verify a valid external address exists `kubectl get svc ingress-nginx-controller -n ingress-nginx`
+
+Bare metal clusters often have additional considerations. Please review the [ingress-nginx documentation](https://kubernetes.github.io/ingress-nginx/deploy/baremetal/).
 
 ##### Digital Ocean
 **Using Ingress-Nginx**
