@@ -30,36 +30,51 @@ Kubernetes cluster, server version 1.20 or higher, without Argo Project componen
 * Valid SSL certificate  
   The ingress controller must have a valid SSL certificate from an authorized CA (Certificate Authority) for secure runtime installation.  
 
- 
 
-#### Provider-specific NGINX-ingress installation
-To install on an EKS cluster, follow the instructions below. For other providers, see the list of provider-specific installation links.
+#### Provider Specific Instrucitons
 
-##### Install NGINX-ingress on EKS cluster
+Codefresh Software Delivery Platform is tested and supported in major providers. For convenience, provider-specific instructions for providers both supported and untested are included below.
 
-1. Apply:  
-  ```kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.0/deploy/static/provider/aws/deploy.yaml```
+##### AWS
 
-1. Verify you see a valid external IP address:  
-  ```kubectl get svc ingress-nginx-controller -n ingress-nginx``` 
+**Using Ingress-Nginx**
+1. Apply `kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.1/deploy/static/provider/aws/deploy.yaml`
+1. Verify a valid external address exists `kubectl get svc ingress-nginx-controller -n ingress-nginx`
 
-##### Provider-specific installation links
+See additional configuration options in the [ingress-nginx documentation for AWS](https://kubernetes.github.io/ingress-nginx/deploy/#aws).
 
-* [MiniKube](https://kubernetes.github.io/ingress-nginx/deploy/#minikube)
-* [MicroK8s](https://kubernetes.github.io/ingress-nginx/deploy/#microk8s)
-* [Docker Desktop](https://kubernetes.github.io/ingress-nginx/deploy/#docker-desktop)
-* [AWS](https://kubernetes.github.io/ingress-nginx/deploy/#aws)
-* [Google Kubernetes Engine (GCP GKE)](https://kubernetes.github.io/ingress-nginx/deploy/#gce-gke) (see also section on Specific requirements for Google Kubernetes Engine (GCP GKE))
-* [Azure](https://kubernetes.github.io/ingress-nginx/deploy/#azure)
-* [Digital Ocean](https://kubernetes.github.io/ingress-nginx/deploy/#digital-ocean)
-* [Scale Away](https://kubernetes.github.io/ingress-nginx/deploy/#scaleway)
-* [Exoscale](https://kubernetes.github.io/ingress-nginx/deploy/#exoscale)
-* [Oracle Cloud Infrastructure](https://kubernetes.github.io/ingress-nginx/deploy/#oracle-cloud-infrastructure)
-* [Bare Metal Clusters](https://kubernetes.github.io/ingress-nginx/deploy/#bare-metal-clusters)
+##### Azure (AKS)
+**Using Ingress-Nginx**
+1. Apply `kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.1/deploy/static/provider/cloud/deploy.yaml`
+1. Verify a valid external address exists `kubectl get svc ingress-nginx-controller -n ingress-nginx`
 
+See additional configuration options in the [ingress-nginx documentation for AKS](https://docs.microsoft.com/en-us/azure/aks/ingress-internal-ip?tabs=azure-cli#create-an-ingress-controller).
 
-**Specific requirements for Google Kubernetes Engine (GCP GKE)**  
+##### Bare Metal Clusters
 
+##### Digital Ocean
+**Using Ingress-Nginx**
+1. Apply `kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.1/deploy/static/provider/do/deploy.yaml`
+1. Verify a valid external address exists `kubectl get svc ingress-nginx-controller -n ingress-nginx`
+
+See additional configuration options in the [ingress-nginx documentation for Digital Ocean](https://kubernetes.github.io/ingress-nginx/deploy/#digital-ocean).
+
+##### Docker Desktop
+**Using Ingress-Nginx**
+1. Apply `kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.1/deploy/static/provider/cloud/deploy.yaml`
+1. Verify a valid external address exists `kubectl get svc ingress-nginx-controller -n ingress-nginx`
+
+See additional configuration options in the [ingress-nginx documentation for Docker Desktop](https://kubernetes.github.io/ingress-nginx/deploy/#docker-desktop). **Note** By default, Docker Desktop services will provision with localhost as their external address. Triggers in delivery pipelines will not be able to reach this instance unless they originate from the same machine where Docker Desktop is being used.
+
+##### Exoscale
+**Using Ingress-Nginx**
+1. Apply `kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/exoscale/deploy.yaml`
+1. Verify a valid external address exists `kubectl get svc ingress-nginx-controller -n ingress-nginx`
+
+See additional configuration options in the [ingress-nginx documentation for Exoscale](https://github.com/exoscale/exoscale-cloud-controller-manager/blob/master/docs/service-loadbalancer.md).
+
+##### Google (GKE)
+**Adding Firewall Rules**
 GKE by default limits outbound requests from nodes. For the runtime to communicate with the control-plane in CSDP, add a firewall-specific rule.
 
 1. Find your cluster's network:   
@@ -73,6 +88,43 @@ GKE by default limits outbound requests from nodes. For the runtime to communica
     --source-ranges="[CLUSTER_IPV4_CIDR]" \
     --allow=tcp,udp,icmp,esp,ah,sctp
     ```
+
+**Using Ingress-Nginx**
+1. Create a `cluster-admin` role binding ```kubectl create clusterrolebinding cluster-admin-binding \
+  --clusterrole cluster-admin \
+  --user $(gcloud config get-value account)```
+1. Apply `kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.1/deploy/static/provider/cloud/deploy.yaml`
+1. Verify a valid external address exists `kubectl get svc ingress-nginx-controller -n ingress-nginx`
+
+We recommend reviewing the provider [specific documentation for GKE](https://kubernetes.github.io/ingress-nginx/deploy/#gce-gke).
+
+##### MicroK8s
+1. Install using Microk8s addon system `microk8s enable ingress`
+1. Verify a valid external address exists `kubectl get svc ingress-nginx-controller -n ingress-nginx`
+
+MicroK8s has not been tested with CSDP and may require additional configuration. Ingress addon [documentation can be found here](https://microk8s.io/docs/addon-ingress).
+
+##### MiniKube
+1. Install using MiniKube addon system `minikube addons enable ingress`
+1. Verify a valid external address exists `kubectl get svc ingress-nginx-controller -n ingress-nginx`
+
+MiniKube has not been tested with CSDP and may require additional configuration. Ingress addon [documentation can be found here](https://kubernetes.github.io/ingress-nginx/deploy/#minikube).
+
+##### Oracle Cloud Infrastructure
+**Using Ingress-Nginx**
+1. Apply `kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.1/deploy/static/provider/cloud/deploy.yaml`
+1. Verify a valid external address exists `kubectl get svc ingress-nginx-controller -n ingress-nginx`
+
+See additional configuration options in the [ingress-nginx documentation for Oracle Cloud](https://kubernetes.github.io/ingress-nginx/deploy/#oracle-cloud-infrastructure).
+
+
+##### Scale Away
+**Using Ingress-Nginx**
+1. Apply `kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.1/deploy/static/provider/scw/deploy.yaml`
+1. Verify a valid external address exists `kubectl get svc ingress-nginx-controller -n ingress-nginx`
+
+See additional configuration options in the [ingress-nginx documentation for Scaleway](https://kubernetes.github.io/ingress-nginx/deploy/#scaleway).
+
 
 #### Node requirements
 * Memory: 5000 MB
