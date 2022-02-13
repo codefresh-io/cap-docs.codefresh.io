@@ -61,7 +61,10 @@ You have a single point of reference, and complete visibility into the type of c
 QUESTIONS: If i define a value, is it carried over to Trigger Conditions?
 
 #### Argo Events
-As with Argo Workflows, CSDP supports Argo Events. There is no need to manually create and define sensor dependencies for Argo Events. The wizard guides you through event source and event type selection, and trigger configurations. 
+As with Argo Workflows, CSDP supports Argo Events. In CSDP, there is no need to manually create and define sensor dependencies for Argo Events. The wizard guides you through event source and event type selection, and trigger configurations.  
+
+For conceptual information on Argo Events, read the [official documentation](https://argoproj.github.io/argo-events/){:target="\_blank"}.
+
 
 In the delivery wizard, **Trigger Conditions** collates all the requirements to set up and configure Argo Events and their dependencies. Here, you select the event source, the event type, arguments and filters for the event type, all in one location. On commit, CSDP generates the manifests for Workflow Template, event source, event bus, and the sensor.
 

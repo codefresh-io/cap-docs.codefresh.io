@@ -39,6 +39,12 @@
     - title:  Git Source management
       localurl: /docs/runtime/git-sources/
 
+- title: Pipelines
+  icon: images/home-icons/runtimes.svg
+  url: ''
+  links:
+    - title: Creation
+      localurl: /docs/pipelines/create-pipeline/
 
 - title: Administration
   icon: images/home-icons/administration.svg
