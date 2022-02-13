@@ -44,7 +44,7 @@
   url: ''
   links:
     - title: Creation
-      localurl: /docs/pipelines/create-pipeline/
+      localurl: /docs/pipelines/create-pipeline
 
 - title: Administration
   icon: images/home-icons/administration.svg
