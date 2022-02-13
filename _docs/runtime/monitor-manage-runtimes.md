@@ -36,9 +36,9 @@ All you need to do is to configure the browser to trust the URL and receive cont
 {:start="2"}
 1. For each insecure runtime, select **Allow Insecure**, and when the browser prompts you to allow access, do as relevant:
   * Chrome: Click **Advanced** and then **Proceed to site**.
-  * Firefox: Click **Advanced > Add Exception > Confirm Security Exception**.
+  * Firefox: Click **Advanced** and then **Accept the risk and continue**.
   * Safari: Click **Show Certificate**, and then select **Always allow content from localhost**.
-  * Edge: Click **Details**, and then select **Go on to the webpage**.
+  * Edge: Click **Advanced**, and then select **Continue to localhost(unsafe)**.
 
 ### Upgrade runtimes
 Upgrade existing runtimes to install critical security updates, or the latest version of all components. An Update Available! notification in the Version column indicates that there are newer versions of the runtime, with a link to the change log.
