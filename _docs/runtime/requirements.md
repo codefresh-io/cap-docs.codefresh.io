@@ -31,9 +31,9 @@ Kubernetes cluster, server version 1.20 or higher, without Argo Project componen
   The ingress controller must have a valid SSL certificate from an authorized CA (Certificate Authority) for secure runtime installation.  
 
 
-#### Provider Specific Instructions
+#### Provider-specific configuration
 
-CSDP has been tested and supported in major providers. For your convenience, we have included provider-specific instructions for providers, both supported and untested.
+CSDP has been tested and is supported in major providers. For your convenience, we have included provider-specific configuration instructions, both for supported and untested providers.
 
 > The instructions are valid for Ingress-Nginx.
 
