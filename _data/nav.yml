@@ -45,7 +45,13 @@
       url: "/monitor-manage-runtimes"
     - title: Git Source management
       url: "/git-sources"
-    
+
+- title: Pipelines
+  url: "/pipelines"
+  pages:
+    - title: Creation
+      url: "/create-pipeline"
+
 
 - title: Administration
   url: "/administration"

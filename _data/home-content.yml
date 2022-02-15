@@ -40,12 +40,13 @@
       localurl: /docs/runtime/git-sources/
 
 - title: Pipelines
-  icon: images/home-icons/runtimes.svg
+  icon: images/home-icons/pipeline.svg
   url: ''
   links:
     - title: Creation
       localurl: /docs/pipelines/create-pipeline
-
+    
+    
 - title: Administration
   icon: images/home-icons/administration.svg
   url: ''
