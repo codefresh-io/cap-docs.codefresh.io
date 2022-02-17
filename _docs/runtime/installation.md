@@ -29,14 +29,18 @@ There are two parts to installing runtimes:
 Install CSDP runtime through the CLI wizard, or by running a silent install:
 * CLI wizard: Run `cf runtime install`, and follow the prompts to enter the required values
 * Silent install: Pass the mandatory flags in the install command:  
-  `cf runtime install <runtime-name> --repo <git-repo> --git-token <git-token> --silent`  
+  `cf runtime install <runtime-name> --repo <git-repo> --git-token <git-token> --silent`   
+   
+> Note:  
+>  Runtime installation starts by checking network connectivity and the K8s cluster server version.  
+  To skip these tests, pass the `--skip-cluster-checks`.
 
 #### Runtime prerequisites
 Before you install the CSDP runtime, verify that:
 * Your deployment conforms to our [system requirements]({{site.baseurl}}/docs/runtime/requirements)
 * You have Personal Access Tokens (PATs):
-  * Git runtime token: Authentcates to the Git installation repo that you will create or select during runtime installation.  
-  * Git access token: 
+  * Git runtime token: Authenticates to the Git installation repo that you will create or select during runtime installation.  
+  * Git access token: Required for Git-based actions in CSDP.
 
   To create a Git token, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
   > When you create the Git token, set the correct expiration date and scope: 
@@ -59,7 +63,9 @@ Before you install the CSDP runtime, verify that:
 **Ingress class**  
   * If you have more than one ingress class configured on your cluster:
     * CLI wizard: Select the ingress class for runtime installation from the list displayed. 
-    * Silent install: Explicitly specify the ingress class through the `--ingress-class` flag. Otherwise, runtime installation fails.
+    * Silent install:   
+      Explicitly specify the ingress class through the `--ingress-class` flag. Otherwise, runtime installation fails.  
+
  
 **Ingress host**  
   * The IP address or host name of the ingress controller component.  
@@ -68,6 +74,15 @@ Before you install the CSDP runtime, verify that:
  * If the ingress host does not have a valid SSL certificate, you can continue with the installation in insecure mode, which disables certificate validation.  
     * CLI wizard: Prompts you to confirm continuing with the installation in insecure mode.  
     * Silent install: To continue with the installation in insecure mode, add the `--insecure-ingress-host` flag.  
+
+**Ingress resources**  
+  If you have a different routing service (not NGINX), bypass installing ingress resources with the `--skip-ingress` flag.  
+  In this case, after completing the installation, manually configure the following:  
+  * Cluster's routing service with path to `'/app-proxy'` and `'/webhooks/push-git'`.  
+  * Create and register Git integrations using the commands:  
+    `cf integration git add default --runtime <RUNTIME_NAME> --api-url <API_URL>`   
+    `cf integration git register default --runtime <RUNTIME_NAME> --token <RUNTIME-AUTHENTICATION-TOKEN>`  
+
 
 **Insecure flag**  
    For _on-premises installations_, if the Ingress controller does not have a valid SSL certificate, to continue with the installation, add the `--insecure` flag to the installation command.  
