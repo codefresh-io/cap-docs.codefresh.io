@@ -21,19 +21,19 @@ There are two parts to installing runtimes:
 * If this is your first CSDP installation, in the Welcome page, select **+ Install Runtime**.
 * To install additional runtimes, in the CSDP UI, go to the [**Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"} page, and select **+ Add Runtimes**. 
 
-### Installing the CSDP CLI
-* CLI mode  
-  Install the CSDP CLI using the option that best suits you: `curl`, `brew`, or standard download. If you are not sure which OS to select for `curl`, simply select one, and we automatically identify and select the right OS for CLI installation.
+### Installing the CSDP CLI 
+Install the CSDP CLI using the option that best suits you: `curl`, `brew`, or standard download.  
+If you are not sure which OS to select for `curl`, simply select one, and we automatically identify and select the right OS for CLI installation.
 
 ### Installing the CSDP runtime
 Install CSDP runtime through the CLI wizard, or by running a silent install:
-* CLI wizard: Run `cf runtime install`, and follow the prompts to enter the required values
+* CLI wizard: Run `cf runtime install`, and follow the prompts to enter the required values.
 * Silent install: Pass the mandatory flags in the install command:  
   `cf runtime install <runtime-name> --repo <git-repo> --git-token <git-token> --silent`   
    
 > Note:  
 >  Runtime installation starts by checking network connectivity and the K8s cluster server version.  
-  To skip these tests, pass the `--skip-cluster-checks`.
+  To skip these tests, pass the `--skip-cluster-checks` flag.
 
 #### Runtime prerequisites
 Before you install the CSDP runtime, verify that:
@@ -43,7 +43,7 @@ Before you install the CSDP runtime, verify that:
   * Git access token: Required for Git-based actions in CSDP.
 
   To create a Git token, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
-  > When you create the Git token, set the correct expiration date and scope: 
+  > When you create the Git token for runtime installation, set the correct expiration date and scope: 
    Expiration: Default is `30 days`  
    Scope: `repo` and `admin-repo.hook` 
 
