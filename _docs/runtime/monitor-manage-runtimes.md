@@ -10,7 +10,7 @@ The **Runtimes** page displays all the runtimes deployed across your environment
 
 Monitor and manage runtimes:  
 * Identify Git sync errors through the Sync Status column
-* For insecure runtimes, configure browsers to allow access for insecure runtimes
+* For insecure runtimes, configure browsers to allow access
 * Drill down into specific runtimes for further analysis
 * Upgrade runtimes
 * Uninstall runtimes
@@ -44,7 +44,7 @@ All you need to do is to configure the browser to trust the URL and receive cont
   max-width="40%" 
 %} 
 {:start="3"}
-1. For _every_insecure runtime, select **Allow Insecure**, and when the browser prompts you to allow access, do as relevant:
+1. For _every_ insecure runtime, select **Allow Insecure**, and when the browser prompts you to allow access, do as relevant:
   * Chrome: Click **Advanced** and then **Proceed to site**.
   * Firefox: Click **Advanced** and then **Accept the risk and continue**.
   * Safari: Click **Show Certificate**, and then select **Always allow content from site**.
