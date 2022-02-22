@@ -6,11 +6,13 @@ toc: true
 ---
 
 
-Argo Workflows has a synchronization mechanism to limit parallel execution of specific workflows, or templates within workflows, as required.  
+Argo Workflows has a synchronization mechanism to limit parallel execution of specific workflows or templates within workflows, as required.  
 The mechanism enforces this with either semaphore or mutex synchronization configurations.  
 
-CSDP supports an additional level of concurrency synchronization with selectors for both workflows and templates. 
-Selectors enable access to dynamic values with k8s objects such as `annotations`, `labels`, or `parameters`, with templating, providing more flexible concurrency configurations for parallel executions of workflows or templates within workflows. And finally, selectors work with both semaphore and mutex synchronization configurations.  
+CSDP supports an additional level of concurrency synchronization, with selectors, for both workflows and templates. 
+Selectors enable access to standard k8s objects such as `annotations`, `labels`, or `parameters` supporting dynamic values and templating. flexible concurrency configurations for parallel executions of workflows or templates within workflows. And equally important, selectors work with both semaphore and mutex synchronization configurations.  
+
+The examples in this article are for semaphore synchronization configurations.  
 
 Semaphore synchronization is configured in the `ConfigMap`, which is referenced from workflows or templates within workflows.  
 
@@ -24,17 +26,13 @@ data:
  workflow: "1"
 ```
 
-The examples in this article are for semaphore synchronization configurations.
-
 ### Concurrency selector definitions
 A concurrency synchronization selector is defined through a `name`-`template` pair in the Workflow Template:  
 
 * The `name` is any meaningful/logical name that describes the selector. For example, Git repo or branch.
 * The `template` is the parameter mapping for the name, that is resolved to the selector value when the pipeline is triggered. For example, `{{ workflow.parameters.REPO_OWNER }}/{{ workflow.parameters.REPO_NAME }}` or `{{ workflow.parameters.GIT_BRANCH }}`.  
 
-Where do you add them?  
-
-To the `synchromziation` section in the Workflow Template, under `selectors`, as in the sample YAML below.
+You add selectors to the `synchromziation` section in the Workflow Template, under `selectors`, as in the sample YAML below.
 
 {% highlight yaml %}
 {% raw %}
@@ -77,12 +75,15 @@ spec:
 
 ### When and how does selector concurrency configuration work?
 
-Let's review different scenarios to illustrate when and how selector-based concurrency synchronization works.  
+Let's review different scenarios to illustrate when and how selector-based concurrency synchronization works:  
+* Default concurrency synchronization
+* Selector concurrency synchronization with identical values
+* Selector concurrency synchronization with value differentiation
 
 We have two workflows, `synchronization-wf-1` and `synchronization-wf-2`. 
 
 #### Default concurrency synchronization
-The have the same default values for the arguments, and share the same semaphore configuration, and key with weight 1.   
+Both workflows have the same default values for the arguments, and share the same semaphore configuration, and key with weight 1.   
 
 {% include image.html 
   lightbox="true" 
@@ -97,9 +98,9 @@ With the default concurrency configuration, only one workflow at a time can use 
 
 #### Selector concurrency synchronization with identical values 
 
-Here are the same workflows, `synchronization-wf-1` and `synchronization-wf-2`, this time configured with the _selector_ concurrency.  
+Here are the same workflows, `synchronization-wf-1` and `synchronization-wf-2`, this time configured with _selector_ concurrency.  
 Both workflows share the same semaphore key with weight of 1.  
-Both workflows also _use the same set of selectors_. The Git repo and the Git branch arguments have the same values in both.  
+Both workflows also _use the same set of selectors_. As you can see in the image below, the Git repo and the Git branch arguments have the same values in both.  
 
 {% include image.html 
   lightbox="true" 
@@ -110,7 +111,7 @@ Both workflows also _use the same set of selectors_. The Git repo and the Git br
        max-width="30%"
        %}
 
-The selectors have no impact in this case, as both workflows use the same set of selectors.
+In this case, the selectors have no impact as both workflows use the same set of selectors.
 If you look at the workflow status, you can see the key:
 
 ```yaml
@@ -128,7 +129,7 @@ synchronization:
 In the third scenario, we have the same workflows, `synchronization-wf-1` and `synchronization-wf-2`, also configured with the _selector_ concurrency.  
 They also share the same semaphore configuration and key with weight 1.  
 
-The fundamental difference is that in this scenario, they use _different_ selectors. In `synchronization-wf-1`, the Git branch is set to `main`, and in `synchronization-wf-2`, to `feature`. 
+The difference is that in this scenario, the workflows use _different_ selectors. In `synchronization-wf-1`, the Git branch is set to `main`, and in `synchronization-wf-2`, it is set to `feature`. 
 
 {% include image.html 
   lightbox="true" 
