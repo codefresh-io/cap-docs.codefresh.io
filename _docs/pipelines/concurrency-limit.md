@@ -9,10 +9,11 @@ toc: true
 Argo Workflows has a synchronization mechanism to limit parallel execution of specific workflows or templates within workflows, as required.  
 The mechanism enforces this with either semaphore or mutex synchronization configurations.  
 
-CSDP supports an additional level of concurrency synchronization, with selectors, for both workflows and templates. 
-Selectors enable access to standard k8s objects such as `annotations`, `labels`, or `parameters` supporting dynamic values and templating. flexible concurrency configurations for parallel executions of workflows or templates within workflows. And equally important, selectors work with both semaphore and mutex synchronization configurations.  
+CSDP supports an additional level of concurrency synchronization, with _selectors_, for both workflows and templates.  
 
-The examples in this article are for semaphore synchronization configurations.  
+Selectors enable access to all workflow properties such as `annotations`, `labels`, or `parameters` using Go template formats. Selector-based concurrency configurations support parallel executions of workflows or templates within workflows. And equally important, selectors work with both semaphore and mutex synchronization configurations.  
+
+This article has examples for semaphore synchronization configurations.  
 
 Semaphore synchronization is configured in the `ConfigMap`, which is referenced from workflows or templates within workflows.  
 
@@ -21,7 +22,7 @@ Here's an example of the `ConfigMap` with the concurrency definition:
 apiVersion: v1
 kind: ConfigMap
 metadata:
- name: my-config
+ name: semaphore-config
 data:
  workflow: "1"
 ```
@@ -30,16 +31,16 @@ data:
 A concurrency synchronization selector is defined through a `name`-`template` pair in the Workflow Template:  
 
 * The `name` is any meaningful/logical name that describes the selector. For example, Git repo or branch.
-* The `template` is the parameter mapping for the name, that is resolved to the selector value when the pipeline is triggered. For example, `{{ workflow.parameters.REPO_OWNER }}/{{ workflow.parameters.REPO_NAME }}` or `{{ workflow.parameters.GIT_BRANCH }}`.  
+* The `template` is the parameter mapping for the name, that is resolved to the selector value when the pipeline is run. For example, `workflow.parameters.REPO_OWNER/workflow.parameters.REPO_NAME` or `workflow.parameters.GIT_BRANCH`.  
 
-You add selectors to the `synchromziation` section in the Workflow Template, under `selectors`, as in the sample YAML below.
+Selectors are added to the `synchronization` section in the Workflow Template, under `selectors`, as in the sample YAML below.
 
 {% highlight yaml %}
 {% raw %}
 apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
- generateName: synchronization-wf-1
+ generateName: synchronization-wf-2
  labels:
    argo.sensor: github
    argo.sensor-event: push
@@ -56,14 +57,13 @@ spec:
  synchronization:
    semaphore:
      configMapKeyRef:
-       name: my-config
-       key: workflow
+        name: semaphore-config
+        key: workflow
      selectors:
-       - name: repository
-         template: "{{ workflow.parameters.REPO_OWNER }}/{{ workflow.parameters.REPO_NAME }}"
-       - name: branch
-         template: "{{ workflow.parameters.GIT_BRANCH }}"
- 
+      - name: repository
+        template: "{{ workflow.parameters.REPO_OWNER }}/{{ workflow.parameters.REPO_NAME }}"
+      - name: branch
+        template: "{{ workflow.parameters.GIT_BRANCH }}"
  templates:
    - name: whalesay
      container:
@@ -73,22 +73,23 @@ spec:
 {% endraw %}
 {% endhighlight %}
 
+
 ### When and how does selector concurrency configuration work?
 
 Let's review different scenarios to illustrate when and how selector-based concurrency synchronization works:  
-* Default concurrency synchronization
-* Selector concurrency synchronization with identical values
-* Selector concurrency synchronization with value differentiation
+* Default concurrency synchronization without selectors
+* Selector concurrency synchronization resolving to the _same `template`_ values
+* Selector concurrency synchronization resolving to _different `template`_ values 
 
 We have two workflows, `synchronization-wf-1` and `synchronization-wf-2`. 
 
 #### Default concurrency synchronization
-Both workflows have the same default values for the arguments, and share the same semaphore configuration, and key with weight 1.   
+Both workflows have the same default values for the arguments, and share the same semaphore configuration and key with weight 1.   
 
 {% include image.html 
   lightbox="true" 
-  file="/images/pipeline/concurrency/default-concurrency-sync.png" 
-  url="/images/pipeline/concurrency/default-concurrency-sync.png"
+  file="/images/pipeline/concurrency/concurrency-default-config.png" 
+  url="/images/pipeline/concurrency/concurrency-default-config.png"
        alt="Workflows with default concurrency configuration"
        caption="Workflows with default concurrency configuration"
        max-width="30%"
@@ -96,10 +97,10 @@ Both workflows have the same default values for the arguments, and share the sam
 
 With the default concurrency configuration, only one workflow at a time can use the key. Meaning that while `synchronization-wf-1` is `Running`, `synchronization-wf-2` is in `Pending` status.
 
-#### Selector concurrency synchronization with identical values 
+#### Selector concurrency synchronization resolving to same template values
 
 Here are the same workflows, `synchronization-wf-1` and `synchronization-wf-2`, this time configured with _selector_ concurrency.  
-Both workflows share the same semaphore key with weight of 1.  
+Both workflows share the same semaphore key with a weight of 1.  
 Both workflows also _use the same set of selectors_. As you can see in the image below, the Git repo and the Git branch arguments have the same values in both.  
 
 {% include image.html 
@@ -111,8 +112,8 @@ Both workflows also _use the same set of selectors_. As you can see in the image
        max-width="30%"
        %}
 
-In this case, the selectors have no impact as both workflows use the same set of selectors.
-If you look at the workflow status, you can see the key:
+In this case, the selectors have no impact as the `selector templates` in both workflows resolve to the same values, resulting in the same semaphore key.
+If you look at the status of both workflows, you can see that they have the same semaphore key.
 
 ```yaml
 synchronization:
@@ -120,16 +121,17 @@ synchronization:
    holding:
    - holders:
      - synchronization-wf-6lf8b
-     semaphore: argo/ConfigMap/my-config/workflow?repository=denis-codefresh/argo-workflows&branch=main
+     semaphore: argo/ConfigMap/semaphore-config/workflow?repository=denis-codefresh/argo-workflows&branch=main
 ```
 
 
-#### Selector concurrency synchronization with value differentiation
+#### Selector concurrency synchronization resolving to different template values
 
 In the third scenario, we have the same workflows, `synchronization-wf-1` and `synchronization-wf-2`, also configured with the _selector_ concurrency.  
 They also share the same semaphore configuration and key with weight 1.  
 
-The difference is that in this scenario, the workflows use _different_ selectors. In `synchronization-wf-1`, the Git branch is set to `main`, and in `synchronization-wf-2`, it is set to `feature`. 
+The difference is that in this scenario, the `selector templates` in both workflows resolve to different values, resulting in different semaphore keys for each workflow.  
+In `synchronization-wf-1`, the Git branch is set to `main`, and in `synchronization-wf-2`, it is set to `feature`. 
 
 {% include image.html 
   lightbox="true" 
@@ -140,4 +142,24 @@ The difference is that in this scenario, the workflows use _different_ selectors
        max-width="30%"
        %}
 
-Now, because the workflows use _different selectors_, both workflows run in parallel.
+Now, because the workflows use different semaphore keys, both workflows run in parallel.  
+If you look at the status of both workflows, you can see that they have different semaphore keys.  
+
+```yaml
+synchronization:
+ semaphore:
+   holding:
+   - holders:
+     - synchronization-wf-6lf8b
+     semaphore: argo/ConfigMap/semaphore-config/workflow?repository=denis-codefresh/argo-workflows&branch=main
+```
+
+```yaml
+synchronization:
+ semaphore:
+   holding:
+   - holders:
+     - synchronization-wf-8lf9b
+     semaphore: argo/ConfigMap/semaphore-config/workflow?repository=denis-codefresh/argo-workflows&branch=feature
+```
+
