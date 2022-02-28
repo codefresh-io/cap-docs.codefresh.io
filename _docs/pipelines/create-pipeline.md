@@ -1,140 +1,145 @@
 ---
-title: "Create pipelines"
+title: "Pipeline creation"
 description: ""
 group: pipelines
 toc: true
 ---
 
-Delivery Pipelines are where all the magic happen in CSDP. Delivery pipelines connect Argo Workflows and Argo Events with CSDP's unique functionality to implement and optimize CI/CD flows, such as checking out code, building and testing artifacts, run unit and acceptance tests, or any custom flow you define. 
+Delivery Pipelines are where all the magic happens in CSDP. Delivery Pipelines connect Argo Workflows and Argo Events with CSDP's unique functionality to implement and optimize CI/CD flows, such as checking out code, building and testing artifacts, running unit and acceptance tests, or any customized flows you need in your enterprise. 
 
-CSDP builds on and integrates with Argo Workflows and Argo Events, while greatly simplifying the process of pipeline creation, including trigger conditions, to generate workflows. 
+CSDP integrates with Argo Workflows and Argo Events, while greatly simplifying the process of creating pipelines and triggering them to submit workflows. 
 
 
-### Delivery pipeline concepts
-Let's start by reviewing main concepts of CSDP delivery pipelines.  
+### Delivery Pipeline concepts
+Let's start by reviewing the main concepts around CSDP Delivery Pipelines.  
+In CSDP, the Delivery Pipeline is a logical entity that connects an event-source, a sensor, and a workflow template. A CSDP Delivery Pipeline is not identical to an Argo CD pipeline. 
 
-To jump to the how-to steps, see [Create a delivery pipeline]({{site.baseurl}}/docs/pipelines/create-pipeline/#create-a-delivery-pipeline).
+#### Pipeline per trigger
+Every sensor-trigger pair is a unique pipeline in CSDP. The same sensor with multiple triggers creates a different pipeline for every trigger.
 
-#### Pipeline per event type
-The name of the delivery pipeline is created from the name of the sensor and the name of the trigger, which is the event type that triggers the pipeline.
-A sensor-trigger-type pair is a unique pipeline in CSDP. The same sensor can be associated with different trigger types.
+#### Git-Ops permission model
+Access to Git Sources and Got repositories are based on the user's write permissions defined in their Git provider accounts.
 
-Each delivery pipeline links through a Git Source to a Git repository that houses the resources of the delivery pipeline. All commits to this pipeline's resources are made to the repo. The Git Source also determines which CSDP runtime executes the pipeline.  
->Only the Git Sources to which you have write permissions are available for selection.
+#### Git Source for pipeline
+The Delivery Pipeline is connected to a specific CSDP runtime installation, and is also run on this runtime, through a Git Source. 
+When the pipeline is created and synced with the cluster, the sensor manifests are stored in the Git repository.
 
-#### Workflow Templates
-Fully integrated with Argo Workflows, CSDP implements Argo Workflows as a Kubernetes CRD (Custom Resource Definition).  
+#### Centralized location for Argo Event-entities
+CSDP uses Argo Events to listen to events from different sources and define the conditions that trigger the events. All entities for creating and managing an Argo Event - from the event-source, event, and sensor triggers - are available in a centralized location. An intuitive selection mechanism enables you to easily select and configure each entity. Predefined variables and automated mapping to event payload makes parameterization easy. There is no need to manually create the YAML manifests for the different entities, as CSDP automatically generates them after the entities are set up.   
 
-A delivery pipeline starts with the Workflow Template that defines the CI/CD flows implemented when the pipeline is triggered and workflows are generated.  
- 
-If you are looking for Workflow Template resources, both Argo and Codefresh have examples and libraries of Workflow Templates you can use.
+
+### Delivery Pipeline creation flow
+Here's a high-level overview of the Delivery Pipeline creation flow.  
+For step-by-step instructions, see [How to: Create a Delivery Pipeline]({{site.baseurl}}/docs/pipelines/create-pipeline/#create-a-delivery-pipeline).
+
+1. Define pipeline name and select Workflow Template to execute
+1. Define default values for Workflow Template arguments
+1. Configure trigger conditions for events
+1. Generate manifests
+1. Commit resource files and create pipeline
+
+#### Define pipeline name and select Workflow Template to execute
+The Delivery Pipeline creation flow starts with defining a name for the pipeline, selecting the Git Source with the runtime, and selecting the Workflow Template to execute when the pipeline is run.  
+
+Both Argo and Codefresh have examples and libraries of Workflow Templates you can use:
 * For conceptual information on Argo Workflows, read the [official documentation](https://argoproj.github.io/argo-workflows/){:target="\_blank"}.
 * For examples of Workflow Templates in Argo, see their [documentation by example](https://github.com/argoproj/argo-workflows/blob/master/examples/README.md){:target="\_blank"} page.
-* And of course, Codefresh offers a fully-certified and always expanding library of ready-to-use Workflow Templates in [Codefresh Hub for Argo](https://codefresh.io/argohub/){:target="\_blank"}.
+* For a fully-certified library of ready-to-use Workflow Templates by Codefresh, see [Codefresh Hub for Argo](https://codefresh.io/argohub/){:target="\_blank"}.
 
-In the pipeline wizard, we have our starter Workflow Template to use as a base, or you can copy and paste a predefined Workflow Template and then modify as needed. 
+In the Delivery Pipeline wizard, we have our starter Workflow Template to use as a base, or you can copy and paste any Workflow Template and then modify as needed. 
+
 > If your Workflow Template generates artifacts, you must [configure an artifact repository in CSDP]({{site.baseurl}}/docs/pipelines/configure-artifact-repository) to house the artifacts.
+ 
 
-#### Arguments
-A delivery pipeline has two sets of arguments, the globally-scoped arguments required as input parameters in the Workflow Template, and the arguments required by the sensor to trigger events.  
 
-For ease of use and visibility, the **Arguments** tab in the delivery pipeline creation wizard exposes these globally-scoped input parameters in the Workflow Template. You can set the default values here.
+#### Define default values for Workflow Template arguments
+Workflow Template arguments are the list of arguments described in the Workflow Template, and expected to be passed to the workflow when submitted. They are displayed in the **Arguments** tab. You can define the default values for any argument here.
+
 {% include 
    image.html 
    lightbox="true" 
    file="/images/pipeline/create/pipeline-wizard-arguments-tab.png" 
    url="/images/pipeline/create/pipeline-wizard-arguments-tab.png" 
-   alt="Arguments tab in delivery pipeline wizard" 
-   caption="Arguments tab in delivery pipeline wizard"
+   alt="Arguments tab in Delivery Pipeline wizard" 
+   caption="Arguments tab in Delivery Pipeline wizard"
    max-width="30%" 
    %} 
 
-The arguments required by the Sensor are displayed in the Trigger Conditions tab, described below.  
+#### Configure Trigger Conditions for events
+The **Trigger Conditions** tab in the Delivery Pipeline wizard collates the requirements to set up and configure entities for Argo Events. Here you select the event-source, the event of interest, the Git repositories to listen to for the event, and the sensor trigger for the event.  
 
-The starting assumption is that the both sets of arguments are identical, and remain so. But if there are changes once the pipeline is triggered, CSDP displays them in the Arguments tab through a tag next to the argument:  
+> To create a Delivery Pipeline, you must have _at least one_ trigger condition.
 
-`New`: Added to the Workflow Template, but not used by the sensor.  
-
-`Not consumed`: Removed from the Workflow Template, but still used by the sensor.  
-
-{% include 
-   image.html 
-   lightbox="true" 
-   file="/images/pipeline/create/pipeline-arguments-modified.png" 
-   url="/images/pipeline/create/pipeline-arguments-modified.png" 
-   alt="Arguments tab showing changes" 
-   caption="Arguments tab showing ch"
-   max-width="30%" 
-   %} 
-
-
-#### Trigger Conditions
-As with Argo Workflows, CSDP supports Argo Events. In CSDP, you do not need to manually create and define sensor dependencies for Argo Events. The wizard guides you through selecting an event source, event type, and defining the trigger for each event, all in the same location.  
-
-For conceptual information on Argo Events, read the [official documentation](https://argoproj.github.io/argo-events/){:target="\_blank"}.  
-
-In the delivery pipeline wizard, **Trigger Conditions** collates all the requirements to set up and configure Argo Events and their dependencies for pipelines.  
-Here, you select the event source, the type of event, the arguments to populate from the event payload, and filters to configure additional event dependencies. On commit, CSDP generates the manifests for the Workflow Template, the event source, and the sensor.
 
 {% include 
    image.html 
    lightbox="true" 
    file="/images/pipeline/create/pipeline-wizard-trigger-tab.png" 
    url="/images/pipeline/create/pipeline-wizard-trigger-tab.png" 
-   alt="Trigger Conditions tab in delivery pipeline wizard" 
-   caption="Trigger Conditions tab in delivery pipeline wizard"
+   alt="Trigger Conditions tab in Delivery Pipeline wizard" 
+   caption="Trigger Conditions tab in Delivery Pipeline wizard"
    max-width="30%" 
    %} 
 
-**Git repos for event triggers**  
-The code repositories for the event triggers. These code repos are different from the Git Source-linked repo where you commit pipeline resources, and which determines the runtime that executes the pipeline. Select one or more code repositories as needed.
+For conceptual information on Argo Events, read the [official documentation](https://argoproj.github.io/argo-events/){:target="\_blank"}.  
 
-**Event sources and Event Types**
-Currently we support GitHub as an Event Source, and an extensive list of GitHub event types you can select from.  
+The Delivery Pipeline wizard guides you through selecting the event-source, the event to listen to, and the conditions to trigger the event. 
+Let's review the main entities in Trigger Conditions. 
 
-**Arguments**  
-Every event type supports a set of arguments you can configure for that event. These arguments are identical to those referenced in the Workflow Template. As with Workflow Template-level arguments, you can add default values or create definitions using predefined variables.  
+**Git repositories**  
+For every sensor trigger condition, you can select single or multiple Git repositories to which to listen to for the event. 
+> Only those Git repos to which you have write-permissions are displayed. 
 
-When you use variable definitions, CSDP automatically maps the definition to the path in the manifest generated on commit. You don't need to remember or be aware of resource paths for event-type arguments as CSDP does it for you. Argo Workflows then extracts the value from the event payload at runtime. 
+**Event-sources and Events**  
+Currently, we support GitHub as an event-source, and an extensive list of GitHub events you can select from.  
 
+**Sensor trigger arguments**  
+The sensor trigger arguments are identical to the Workflow Template arguments. If Workflow Template arguments have default values, these values are displayed for the corresponding Sensor arguments as well. (ask)
 > If values are defined for an argument both in the Workflow Template and in Trigger Conditions, the value defined in Trigger Conditions takes precedence. 
 
+You can override the default values or define custom values for trigger condition arguments through _parameterization_.  
+Argo Events uses parameterization to pass data from the event payload to the workflow submitted by the sensor trigger. But where in Argo Workflows, you would need to manually define the JSON path to the data in the event payload, our Delivery Pipeline wizard automates path definitions through predefined variables.
+
+Every event has a specific payload and a specific list of predefined variables you can select from. Once you parameterize an argument with one or more predefined variables, CSDP replaces the variable with the actual JSON path in the event payload when the manifests are generated.  
+
+
 **Filters**  
-Filters create dependencies for event type triggers by enforcing validity constraints on what triggers an event. For example, add a filter to a Git push event that triggers that event only on push to a particular _branch_.  CSDP supports Argo Events Data filters.  
+Filters create conditions for event triggers by enforcing validity constraints on when to trigger the event. For example, add a filter to a Git push event that triggers that event only on push to a particular _branch_.  
 
-**Examples of common event types and filters**  
+**Examples of common events and use of filters**  
 
-Let's review some examples of common Git events that trigger pipelines, and when you would use filters to further control when these Git events trigger the pipeline.
+Here are some examples of common Git events that are triggers to run pipelines, and when you would use filters to further control when these Git events run the pipeline.
 
 * Git commits which are push events 
-* Git pull repuests (PRs), open PRs
+* Git pull requests (PRs), which are opened PRs
 
-The table below summarizes the use cases, event types and filters.
+The table below summarizes the use cases, events, and filters that control the events.
 
 {: .table .table-bordered .table-hover}
-|#|Trigger requirement                                               | Event type  |  Filter          |  
+|#|Trigger requirement                                               | Event   |  Filter          |  
 |--| --------------                                                | ---------------- | -----------|
-|1| On Git commit                                                |`Commit pushed`      | None |
-|2| On Git commit, _only_ when the commit is on a specific branch. This requires a filter to define the target branch.             | `Commit pushed`      | `Git branch`  = `<branch-name>`, for example, `main` |          
-|3| On an opened PR                                                                   | `PR opened`          | None |                             
-|4|On an opened PR, _only_ for a specific branch                                        | `PR opened`          | `PR target branch`  = `<branch-name>`, for example, `production` | 
-|5|On an opened PR, _only_ for a specific branch, and _only_ when the PR name includes a predefined string|  `PR opened`      | `PR target branch` = `<branch-name>`, for example, `production` and `PR labels` = `<PR-name>`, for example, `cf-hotifx-xxxx`| 
+|1| On Git commit                                                |`Commit pushed`      | Implicitly on `Commit pushed` |
+|2| On Git commit, _only_ when the commit is on a specific branch. This requires a filter to define the target branch.             | `Commit pushed`      | Implicitly on `Commit pushed`, and explicitly when `Git branch`  = `<branch-name>`, for example, `main` |          
+|3| On an opened PR                                                                   | `PR opened`          | Implicitly on `PR opened` |                             
+|4|On an opened PR, _only_ for a specific branch                                        | `PR opened`          | Implicitly on `PR opened`, and explicitly when `PR target branch`  = `<branch-name>`, for example, `production` | 
+|5|On an opened PR, _only_ for a specific branch, and _only_ when the PR name includes the entered value|  `PR opened`      | Implicitly on `PR opened`, and explicitly when `PR target branch` = `<branch-name>`, for example, `production` and when `PR labels` = `<PR-name>`, for example, `cf-hotifx-xxxx`| 
 
-Now let's review the use case in more detail.  
+Now let's review the use cases in more detail.  
 
-#1 The `Commit pushed` event on any of the Git repos defined triggers the pipeline.  
+#1 The `Commit pushed` event on any of the Git repos defined runs the pipeline.  
 
-#2 The `Commit pushed` event on any of the Git repos triggers the pipeline, _but only_ if the branch is `production`, and not if the branch is `staging` for example.  
+#2 The `Commit pushed` event on any of the Git repos runs the pipeline, _but only_ if the branch is `production`, and not if the branch is `staging` for example.  
 
-#3 The `PR opened` event triggers the pipeline when any PR is opened on any Git repo defined.  
+#3 The `PR opened` event runs the pipeline when any PR is opened on any Git repo defined.  
 
-#4 The `PR opened` event with the `PR Target Branch` filter triggers the pipeline _only_ when the target of a PR, that is, where the PR will be merged, matches the target branch name. You want to trigger the pipeline when the PR is opened on either `master` or `production`, but not when opened on `staging` or `qa`.
+#4 The `PR opened` event with the `PR Target Branch` filter runs the pipeline _only_ when the PR target branch matches the value entered. You want to run the pipeline when the PR is opened on either `master` or `production`, but not when opened on `staging` or `qa`.
 
-#5 The `PR opened` event with the `PR Target Branch` and `PR label` filters is a more complex scenario that triggers the pipeline when a PR is opened on the target branch, but only when the PR name starts includes a predefined value. Useful when collaborating on features, or when deploying a critical fix. Both the `PR Target Branch` and `PR label` must match for the pipeline to be triggered. The filters automatically excludes all PRs opened on the `production` branch but not matching the `PR label`. `hotfix-runtime`.
+#5 The `PR opened` event with the `PR Target Branch` and `PR label` filters is a more complex scenario that runs the pipeline when a PR is opened on the target branch, but only when the PR name starts with or includes the provided value. Useful when collaborating on features or when deploying a critical fix. Both the `PR Target Branch` and `PR label` must match for the pipeline to run. The filters automatically excludes all PRs opened on the `production` branch but not matching the `PR label`, `hotfix-runtime`.
 
 
-#### Manifests
-Manifests are automatically generated on committing changes after defining at least one Trigger Condition. 
+#### Generate manifests
+Manifests are automatically generated on committing changes after defining at least one Trigger Condition.   
+
 Manifests typically include:
 * Sensor
 * EventSource
@@ -145,13 +150,16 @@ Manifests typically include:
    lightbox="true" 
    file="/images/pipeline/create/pipeline-wizard-resources.png" 
    url="/images/pipeline/create/pipeline-wizard-resources.png" 
-   alt="Argo Event resources in delivery pipeline wizard" 
-   caption="Argo Event resources in delivery pipeline wizard"
+   alt="Argo resources in Delivery Pipeline wizard" 
+   caption="Argo resources in Delivery Pipeline wizard"
    max-width="30%" 
    %}
+#### Commit resource files and create pipeline
+Once CSDP generates the manifests, and you validate them, you commit all the changes. The commits are synced to the Git repository or repositories, and then synced to the cluster.
 
-### Create a delivery pipeline
-Follow our step-by-step instructions to guide you through the Delivery pipeline wizard.
+
+### How to: Create a Delivery Pipeline
+Follow the step-by-step instructions to guide you through Delivery Pipeline wizard and create a CSDP pipeline.
 
 1. In the CSDP UI, go to [Delivery Pipelines](https://g.codefresh.io/2.0/pipelines){:target="\_blank"}.
 1. Select **+ Add Delivery Pipeline**.
@@ -159,68 +167,73 @@ Follow our step-by-step instructions to guide you through the Delivery pipeline 
   {% include 
    image.html 
    lightbox="true" 
-   file="/images/getting-started/quick-start/quick-start-new-pipeline.png" 
-   url="/images/getting-started/quick-start/quick-start-new-pipeline.png" 
+   file="/images/pipeline/create/create-add-delivery-pipeline.png" 
+   url="/images/pipeline/create/create-add-delivery-pipeline.png" 
    alt="Add Delivery Pipeline panel in CSDP" 
    caption="Add Delivery Pipeline panel in CSDP"
    max-width="30%" 
    %}
+
 {:start="3"}
-1. Enter a name for the delivery pipeline.  
-  The name is created from the names of the sensor and the trigger event for the delivery pipeline.   
-  * **Sensor Name**: The name of the sensor resource, for example, `sensor-csdp-ci`.
-  * **Trigger Name**: The event configured in the sensor to trigger pipeline execution, for example, `push-csdp-ci`.
+1. Enter a name for the Delivery Pipeline.  
+  The name is created from the names of the sensor and the trigger (alphanumeric lowercase, and the - character).   
+  * **Sensor Name**: The name of the sensor resource. For example, the application name, `csdp` or `codefresh`.
+  * **Trigger Name**: The template that defines the context of the trigger and the actual resources the sensor must execute. For example, the flow that will be run,`ci`.
 1. Select the **Codefresh Starter Template**.  
-1. From the list of **Git Sources**, select the Git Source to which to commit the resources for this delivery pipeline.  
+1. From the list of **Git Sources**, select the Git Source to which to commit the resources for this pipeline.  
   > Only those Git Sources to which you have write permissions are displayed.   
-    If you have multiple runtimes installed, the Git Source you select also determines the runtime that executes the pipeline.
+    If you have multiple runtimes installed, the Git Source you select also determines the runtime on which the pipeline is executed.
 1. Select **Next**.  
   In the **Configuration** tab, **Workflow Templates** is selected. Our CI Starter Workflow Template is shown.   
-  Copy and paste any predefined Workflow Template you want to work with, or edit the starter template as needed.  
+  Copy and paste any Workflow Template you want to work with, or edit the starter template as needed.  
   > Tip:  
-  >  CSDP notifies you that you have uncommitted changes. The Commit button remains disabled until you define at least one Trigger Condition, as described in the next step.
+  >  CSDP notifies you that you have uncommitted changes. The Commit button remains disabled until you define at least one Trigger Condition.
   
   {% include 
    image.html 
    lightbox="true" 
    file="/images/pipeline/create/pipeline-wizard-workflow-tab.png" 
    url="/images/pipeline/create/pipeline-wizard-workflow-tab.png" 
-   alt="Workflow Template tab in create delivery pipeline wizard" 
-   caption="Workflow Template tab in create delivery pipeline wizard"
+   alt="Workflow Template tab in Delivery Pipeline wizard" 
+   caption="Workflow Template tab in Delivery Pipeline wizard"
    max-width="30%" 
    %}
 
 {:start="7"}
+1. Select **Arguments**.  
+  The Arguments defined in the Workflow Template and passed to the workflow when the pipeline is run, are displayed. 
+1. Enter default values for the arguments as needed.
 1. Select **Trigger Conditions**. 
   * From the **Add** dropdown, select **Git Events**.
   * In the **Git Repository URLs** field, select one or more repositories from the list to listen to for the selected event. 
      
-      {% include 
+     {% include 
       image.html 
       lightbox="true" 
       file="/images/pipeline/create/pipeline-wizard-trigger-git-repos.png" 
       url="/images/pipeline/create/pipeline-wizard-trigger-git-repos.png" 
-     alt="Select Git repos to monitor for events" 
-     caption="Select Git repos to monitor for events"
+     alt="Select Git repos to listen to for events" 
+     caption="Select Git repos to listen to for events"
      max-width="30%" 
      %}
 
-  * From the **Event** dropdown, select the event to trigger the pipeline. For example, **Commit pushed**.  
-    CSDP displays all the **Arguments** available for the selected event.    
-    Map each argument to a single or combination of predefined variables. In each field, type `$` and from the list of predefined variables, select the one you need.  
-    CSDP automatically maps to the correct path when you commit the changes. Argo Workflow then instantiates the values from the event payload.  
+  * From the **Event** dropdown, select the event for the sensor trigger. For example, **Commit pushed**.  
+    CSDP displays all the **Arguments** available for the sensor trigger, identical to the list of Workflow Template arguments. 
+  * Customize the value for an argument by selecting single or a combination of predefined variables.  
+    In each field, type `$` and from the list of predefined variables, select the one you need.  
+    CSDP automatically maps to the correct JSON path in the event payload when manifests are generated before commit. Argo Workflow then instantiates the values from the event payload.  
     
     {% include 
    image.html 
    lightbox="true" 
    file="/images/getting-started/quick-start/quick-start-ci-pipeline-arguments.png" 
    url="/images/getting-started/quick-start/quick-start-ci-pipeline-arguments.png" 
-   alt="Predefined variables for argument definitions" 
-   caption="Predefined variables for argument definitionss"
+   alt="Predefined variables for sensor arguments" 
+   caption="Predefined variables for arguments"
    max-width="30%" 
    %}
-{:start="8"}
-1. To create dependencies for the event type from the event payload:
+{:start="10"}
+1. To create filters for the event payload:
   * From **Event Filters**, select the filter, and select **+Add**.
   * Select the operational expression and define the value of the filter.    
   
@@ -229,28 +242,29 @@ Follow our step-by-step instructions to guide you through the Delivery pipeline 
    lightbox="true" 
    file="/images/pipeline/create/pipeline-wizard-event-filters.png" 
    url="/images/pipeline/create/pipeline-wizard-event-filters.png" 
-   alt="Event dependencies with filters" 
-   caption="Event dependencies with filters"
+   alt="Event filters" 
+   caption="Event filters"
    max-width="30%" 
    %}
-{:start="9"}
-1. To create customized filters with values that you define, and not populated from the event payload, select **Detach & Customize**.
 
-{:start="10"}
+{:start="11"}
+1. To transform a predefined filter to a standard data filter, select **Detach & Customize**.
+  The 
+
+{:start="12"}
 1. Select **Apply**, and then **Commit** on the top-right.
-  The Commit Changes panel shows the resource files created for the pipeline. These files are created in the Git Source you selected in the first step of the wizard.
+  The Commit Changes panel shows the resource files created for the pipeline. These files are committed to the repository linked to the Git Source you selected in the first step of the wizard.
     {% include 
    image.html 
    lightbox="true" 
    file="/images/pipeline/create/pipeline-wizard-resources.png" 
    url="/images/pipeline/create/pipeline-wizard-resources.png" 
-   alt="Pipeline resource files created on commit" 
-   caption="Pipeline resource files created on commit"
+   alt="Pipeline resource files generated on commit" 
+   caption="Pipeline resource files generated on commit"
    max-width="30%" 
    %}
-{:start="11"}
-1. Enter the commit message and then select **Commit**.
-1. In the **Delivery Pipelines** page to which you are redirected, verify that your pipeline is displayed. 
+{:start="13"}
+1. Enter a message (optional), and then select **Commit**.   
 
- CSDP commits the pipeline to the Git repository, and then syncs it to the cluster. Wait for a few seconds for the sync to complete, and verify that the pipeline is displayed in the [Delivery Pipelines](https://g.codefresh.io/2.0/pipelines){:target="\_blank"} page.
+CSDP commits the pipeline to the Git repository, and then syncs it to the cluster. Wait for a few seconds for the sync to complete, and verify that the pipeline is displayed in the [Delivery Pipelines](https://g.codefresh.io/2.0/pipelines){:target="\_blank"} page.
 
