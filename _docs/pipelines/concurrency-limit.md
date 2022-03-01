@@ -7,7 +7,7 @@ toc: true
 
 
 Argo Workflows has a synchronization mechanism to limit parallel execution of specific workflows or templates within workflows, as required.  
-The mechanism enforces this with either semaphore or mutex synchronization configurations.  
+The mechanism enforces this with either semaphore or mutex synchronization configurations. For detailed information, see [Synchronization](https://argoproj.github.io/argo-workflows/synchronization/).
 
 CSDP supports an additional level of concurrency synchronization, with _selectors_, for both workflows and templates.  
 
