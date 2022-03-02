@@ -38,7 +38,22 @@
       localurl: /docs/runtime/monitor-manage-runtimes/
     - title:  Git Source management
       localurl: /docs/runtime/git-sources/
-
+    
+- title: Pipelines
+  icon: images/home-icons/pipeline.svg
+  url: ''
+  links:
+    - title: Creation
+      localurl: /docs/pipelines/create-pipelines/
+    - title: Monitoring
+      localurl: /docs/pipelines/monitoring-pipelines/
+    - title: Sharing file systems
+      localurl: /docs/pipelines/sharing-file-system/
+    - title: Selectors for concurrency synchronization
+      localurl: /docs/pipelines/conccurency-limit/
+    - title: Create artifact repository
+      localurl: /docs/pipelines/configure-artifact-repository/
+    
 
 - title: Administration
   icon: images/home-icons/administration.svg
