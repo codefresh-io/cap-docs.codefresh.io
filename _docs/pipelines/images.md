@@ -9,7 +9,6 @@ Building Docker images is one of the most basic requirements for creating Delive
 Once you create an image, push the image to a registry, and report it to CSDP, image information is continually updated in the CSDP UI. 
 
 ### Bring image information to CSDP
-
 1. Build the Docker image.
 1. Push the image in any registry, or configure an artifact repository in CSDP to push images, as described in XREF.
 1. Report image information to CSDP
@@ -29,7 +28,7 @@ Push the image to any registry.
 Image views in CSDP are layered to show three levels of data: 
 * Repository and application deployment
 * Tags
-* Summary
+* Summary with metadata and binary information 
 
 #### Filters for image views
 As with any resource in CSDP, image views support filters that allow you focus on the data that's important to you.
@@ -56,8 +55,8 @@ The default view for image resources shows repository and deployment information
    lightbox="true" 
    file="/images/image/images-application-level.png" 
    url="/images/image/images-application-level.png" 
-   alt="Deployment info for Images in CSDP" 
-   caption="Deployment info for Images in CSDP"
+   alt="Repository & deployment info for Images in CSDP" 
+   caption="Repository & deployment info for Images in CSDP"
    max-width="30%" 
    %}
 
@@ -73,7 +72,6 @@ The default view for image resources shows repository and deployment information
                      
 ### Image tag view
 Drilldown on the repository shows tag information for the image.
-
 {% include 
    image.html 
    lightbox="true" 
