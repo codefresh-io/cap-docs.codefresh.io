@@ -28,12 +28,14 @@ data:
 ```
 
 ### Concurrency selector definitions
-A concurrency synchronization selector is defined through a `name`-`template` pair in the Workflow Template:  
+A concurrency synchronization selector is defined through a `name`-`template` pair in workflows or templates:  
 
 * The `name` is any meaningful/logical name that describes the selector. For example, Git repo or branch.
-* The `template` is the parameter mapping for the name, that is resolved to the selector value when the pipeline is run. For example, `workflow.parameters.REPO_OWNER/workflow.parameters.REPO_NAME` or `workflow.parameters.GIT_BRANCH`.  
+* The `template` is the parameter mapping for the name, that is resolved to the selector value when the pipeline is run.  
+  For example:  
+  {% highlight yaml %}{% raw %}{{workflow.parameters.REPO_OWNER/workflow.parameters.REPO_NAME}}{% endraw %}{% endhighlight %} or {% highlight yaml %}{% raw %}{{workflow.parameters.GIT_BRANCH}}{% endraw %}{% endhighlight %}
 
-Selectors are added to the `synchronization` section in the Workflow Template, under `selectors`, as in the sample YAML below.
+Selectors are added to the `synchronization` section, under `selectors`, as in the sample YAML below.
 
 {% highlight yaml %}
 {% raw %}
@@ -41,9 +43,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
  generateName: synchronization-wf-2
- labels:
-   argo.sensor: github
-   argo.sensor-event: push
 spec:
  entrypoint: whalesay
  arguments:
@@ -75,13 +74,16 @@ spec:
 
 
 ### When and how does selector concurrency configuration work?
-
-Let's review different scenarios to illustrate when and how selector-based concurrency synchronization works:  
+Let's review a viable use case for selector-based concurrency synchronization, and different scenarios to illustrate when and how it works:  
 * Default concurrency synchronization without selectors
 * Selector concurrency synchronization resolving to the _same `template`_ values
 * Selector concurrency synchronization resolving to _different `template`_ values 
 
-We have two workflows, `synchronization-wf-1` and `synchronization-wf-2`. 
+Use case  
+We have two workflows, `synchronization-wf-1` and `synchronization-wf-2`.  
+
+Both workflows commit to the _same Git repo_, but to _different branches in the repo_. The first workflow commits to the `main` branch, and the second workflow commits to a `feature` branch.  
+We want these workflows to execute in parallel, since the commits to `main` indicate approval for production, while commits to `feature` branches do not impact the `main` branch.
 
 #### Default concurrency synchronization
 Both workflows have the same default values for the arguments, and share the same semaphore configuration and key with weight 1.   
@@ -98,7 +100,6 @@ Both workflows have the same default values for the arguments, and share the sam
 With the default concurrency configuration, only one workflow at a time can use the key. Meaning that while `synchronization-wf-1` is `Running`, `synchronization-wf-2` is in `Pending` status.
 
 #### Selector concurrency synchronization resolving to same template values
-
 Here are the same workflows, `synchronization-wf-1` and `synchronization-wf-2`, this time configured with _selector_ concurrency.  
 Both workflows share the same semaphore key with a weight of 1.  
 Both workflows also _use the same set of selectors_. As you can see in the image below, the Git repo and the Git branch arguments have the same values in both.  
