@@ -10,7 +10,7 @@ Once you create an image, push the image to a registry, and report it to CSDP, i
 
 ### Bring image information to CSDP
 1. Build the Docker image.
-1. Push the image in any registry, or configure an artifact repository in CSDP to push images, as described in XREF.
+1. Push the image in any registry, or configure an artifact repository in CSDP to push images, as described in [Configure artifact repository]({{site.baseurl}}/docs/pipelines/configure-artifact-repository/).
 1. Report image information to CSDP
 
 #### Build and push a Docker image
