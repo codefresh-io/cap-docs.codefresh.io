@@ -14,13 +14,13 @@ Once you create an image, push the image to a registry, and report it to CSDP, i
 1. Report image information to CSDP
 
 #### Build and push a Docker image
-Create a Docker image using our [Create a Docker image using Kaniko](https://codefresh.io/argohub/workflow-template/kaniko) Workflow Template.
+Create a Docker image using our [Create a Docker image using Kaniko](https://codefresh.io/argohub/workflow-template/kaniko){:target="\_blank"} Workflow Template.
 Push the image to any registry.
 
 #### Report image information to CSDP
-[Codefresh Hub for Argo](https://codefresh.io/argohub/workflow-template/CSDP-metadata) offers a set of templates optimized to report and enrich Docker images. 
+[Codefresh Hub for Argo](https://codefresh.io/argohub/workflow-template/CSDP-metadata){:target="\_blank"} offers a set of templates optimized to report and enrich Docker images. 
 
-* Select the [report-image-info](https://github.com/codefresh-io/argo-hub/blob/main/workflows/codefresh-csdp/versions/0.0.6/docs/report-image-info.md) Workflow Template.
+* Select the [report-image-info](https://github.com/codefresh-io/argo-hub/blob/main/workflows/codefresh-csdp/versions/0.0.6/docs/report-image-info.md){:target="\_blank"} Workflow Template.
 
 
 ### Image views in CSDP 
