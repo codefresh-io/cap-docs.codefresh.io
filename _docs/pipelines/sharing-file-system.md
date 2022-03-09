@@ -37,3 +37,7 @@ The Container Set Template approach creates multiple steps that will eventually 
 The Container Set Template approach is best to run sequential steps that require the same file system, or run parallel steps that are not CPU or memory-intensive, and can live on the same pod, without having to scale.  
 
 For more information, see the official Argo Workflow documentation on [Container Set Templates](https://argoproj.github.io/argo-workflows/container-set-template/).
+
+### What to read next
+({{site.baseurl}}/docs/pipelines/concurrency-limit)
+({{site.baseurl}}/docs/pipelines/create-pipeline)
