@@ -6,7 +6,7 @@ toc: true
 ---
 
 
-Codefresh runtime installs the Codefresh Software Development Platform (CSDP), comprising Argo CD components and CSDP-specific components. The Argo CD components are derived from a fork of the Argo ecosystem, and do not correspond to the open-source versions available.
+Codefresh runtime installs the Codefresh Software Delivery Platform (CSDP), comprising Argo CD components and CSDP-specific components. The Argo CD components are derived from a fork of the Argo ecosystem, and do not correspond to the open-source versions available.
 
 There are two parts to installing runtimes:
 1. Installing the CSDP CLI
@@ -19,50 +19,90 @@ There are two parts to installing runtimes:
 
 ### Where do you install runtimes?
 * If this is your first CSDP installation, in the Welcome page, select **+ Install Runtime**.
-* To install additional runtimes, select **Account Settings**, and then from the sidebar, select **Configuration > Runtimes**. From the top-right, select **+ Add Runtime**.
+* To install additional runtimes, in the CSDP UI, go to the [**Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"} page, and select **+ Add Runtimes**. 
 
-### Installing the CSDP CLI
-* CLI mode  
-  Install the CSDP CLI using the option that best suits you: `curl`, `brew`, or standard download. If you are not sure which OS to select for `curl`, simply select one, and we automatically identify and select the right OS for CLI installation.
+### Installing the CSDP CLI 
+Install the CSDP CLI using the option that best suits you: `curl`, `brew`, or standard download.  
+If you are not sure which OS to select for `curl`, simply select one, and we automatically identify and select the right OS for CLI installation.
 
 ### Installing the CSDP runtime
+Install CSDP runtime through the CLI wizard, or by running a silent install:
+* CLI wizard: Run `cf runtime install`, and follow the prompts to enter the required values.
+* Silent install: Pass the mandatory flags in the install command:  
+  `cf runtime install <runtime-name> --repo <git-repo> --git-token <git-token> --silent`   
+   
+> Note:  
+>  Runtime installation starts by checking network connectivity and the K8s cluster server version.  
+  To skip these tests, pass the `--skip-cluster-checks` flag.
 
 #### Runtime prerequisites
 Before you install the CSDP runtime, verify that:
 * Your deployment conforms to our [system requirements]({{site.baseurl}}/docs/runtime/requirements)
-* You have a Personal Access Token (PAT) for authentication to the Git installation repo that you will create or select during runtime installation.   
+* You have Personal Access Tokens (PATs):
+  * Git runtime token: Authenticates to the Git installation repo that you will create or select during runtime installation.  
+  * Git access token: Required for Git-based actions in CSDP.
+
   To create a Git token, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
-  > When you create the Git token, set the correct expiration date and scope: 
+  > When you create the Git token for runtime installation, set the correct expiration date and scope: 
    Expiration: Default is `30 days`  
    Scope: `repo` and `admin-repo.hook` 
 
-#### Runtime installation
-To install a CSDP runtime, you can either pass the flags in the runtime install command in the UI, or run `cf runtime install`, and follow the prompts in the CLI wizard to enter the required values.
 
 #### Runtime installation flags
 
 **Runtime name**  
-   The runtime name must start with a lower-case character, and can include up to 62 lower-case characters and numbers.
+  The runtime name must start with a lower-case character, and can include up to 62 lower-case characters and numbers.  
 
-**Insecure flag**  
-   If the Ingress controller does not have a valid SSL certificate, to continue with the installation, add the `--insecure` flag to the installation command.  
+  Silent install: Mandatory parameter.
 
 **Kube context**  
-  Select the Kube context from the list of available contexts. The current context, which is the cluster currently the default for `kubectl`,
-   is selected by default.  
+  If you have more than one Kube context, the current context, which is the cluster currently the default for `kubectl`, is selected by default.  
+  * CLI wizard: Select the Kube context from the list displayed.
+  * Silent install: Explicitly specify the Kube context with the `--context` flag.
 
+**Ingress class**  
+  * If you have more than one ingress class configured on your cluster:
+    * CLI wizard: Select the ingress class for runtime installation from the list displayed. 
+    * Silent install:   
+      Explicitly specify the ingress class through the `--ingress-class` flag. Otherwise, runtime installation fails.  
+
+ 
+**Ingress host**  
+  * The IP address or host name of the ingress controller component.  
+    * CLI wizard: Automatically selects and displays the NGINX host, either from the cluster or the NGINX ingress controller associated with the **Ingress class**.  
+    * Silent install: Add the `--ingress-host` flag. If a value is not provided, takes the NGINX host from the NGINX ingress controller associated with the **Ingress class**. 
+ * If the ingress host does not have a valid SSL certificate, you can continue with the installation in insecure mode, which disables certificate validation.  
+    * CLI wizard: Prompts you to confirm continuing with the installation in insecure mode.  
+    * Silent install: To continue with the installation in insecure mode, add the `--insecure-ingress-host` flag.  
+
+**Ingress resources**  
+  If you have a different routing service (not NGINX), bypass installing ingress resources with the `--skip-ingress` flag.  
+  In this case, after completing the installation, manually configure the following:  
+  * Cluster's routing service with path to `'/app-proxy'` and `'/webhooks/push-git'`.  
+  * Create and register Git integrations using the commands:  
+    `cf integration git add default --runtime <RUNTIME_NAME> --api-url <API_URL>`   
+    `cf integration git register default --runtime <RUNTIME_NAME> --token <RUNTIME-AUTHENTICATION-TOKEN>`  
+
+
+**Insecure flag**  
+   For _on-premises installations_, if the Ingress controller does not have a valid SSL certificate, to continue with the installation, add the `--insecure` flag to the installation command.  
+   
 **Repository URLs**  
   The GitHub repository to house the installation definitions. If the repo doesn't exist, CSDP creates it during runtime installation.  
 
-**Git provider API token**  
+  Silent install: Mandatory. Add the `--repo` flag. 
+
+
+**Git runtime token**  
   The Git token authenticating access to the GitHub installation repository.  
 
-**Ingress host**  
-  The IP address or host name of the ingress controller component.  
-
+  Silent install: Mandatory. Add the `--git-token` flag.  
 
 **Codefresh demo resources**  
-  Optional. Install demo pipelines to use as a starting point to create your own pipelines. We recommend installing the demo resources as these are used in our quick start tutorials.
+  Optional. Install demo pipelines to use as a starting point to create your own pipelines. We recommend installing the demo resources as these are used in our quick start tutorials.  
+
+  Silent install: Optional. Add the `--demo-resources` flag. By default, set to `true`.
+
 
 #### Runtime components
 
