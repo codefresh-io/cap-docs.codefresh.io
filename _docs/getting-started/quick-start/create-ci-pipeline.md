@@ -23,9 +23,8 @@ Our CI pipeline interacts with third-party services such as GitHub and a Docker 
 ### Create a Personal Access Token (PAT)
 You must have a PAT to clone the repository. 
 
-1. Create your PAT (Personal Access Token) with `base64` encoding, and valid `expiration` date and `scope`.  
-  Base64 encoding: Use this [tool to encode token in base64](https://www.base64encode.net/){:target="\_blank"}  
-   
+
+1. Create your PAT (Personal Access Token) with a valid `expiration` date and `scope`.  
   Scopes: `repo` and `admin-repo.hook`  
   
   {% include 
@@ -40,54 +39,61 @@ You must have a PAT to clone the repository.
 {:start="2"}
 1. Define your PAT and namespace by replacing the values in these commands:
   ```
-   export GIT_TOKEN=[PAT token]
-   export NAMESPACE=[CSDP runtime namespace]
+ export GIT_TOKEN=[PAT token]
+ export NAMESPACE=[CSDP runtime namespace]
   ```
 1. Create a generic Kubernetes secret with your PAT token:
   ```
-  kubectl create secret generic github-token \
+kubectl create secret generic github-token \
   --from-literal=token=$GIT_TOKEN --dry-run=client \
   --save-config -o yaml | kubectl apply -f - -n $NAMESPACE
   ```
 
 ### Create Docker-registry secret
 To push the image to a Docker registry, we'll need the credentials on our cluster.
-> The Docker registry secret is different from the registry secret.
 
-1. Export the values for the Docker registry's `server`, `username`, `password`, and `email`:  
+> The Docker registry secret is different from the general registry secret.
+
+1. Export the values for the Docker registry's `server`, `username`, `password`, `email`, and `namespace`:  
   ```
-  export DOCKER_REGISTRY_SERVER=[Server]
-  export DOCKER_USER=[Username]
-  export DOCKER_PASSWORD=[Password]
-  export DOCKER_EMAIL=[Email]
+export DOCKER_REGISTRY_SERVER=[Server]
+export DOCKER_USER=[Username]
+export DOCKER_PASSWORD=[Password]
+export DOCKER_EMAIL=[Email]
+export NAMESPACE=[CSDP runtime namespace]
   ```
+
+{:start="2"}
 1. Create the secret:   
   ``` 
-  kubectl create secret docker-registry <my-secret> \
-  --from-literal=server=$DOCKER_REGISTRY_SERVER \
-  --from-literal=username=$DOCKER_USER \
-  --from-literal=password=$DOCKER_PASSWORD \
-  --from-literal=domain=$DOCKER_EMAIl \
-  --dry-run=client --save-config -o yaml | kubectl apply -f - -n $NAMESPACE
+kubectl create secret docker-registry <my-secret> \
+  --docker-server=$DOCKER_REGISTRY_SERVER \
+  --docker-username=$DOCKER_USER \
+  --docker-password=$DOCKER_PASSWORD \
+  --docker-email=$DOCKER_EMAIL -n $NAMESPACE
   ```
- > In the Workflow Template, the Docker registry name defaults to `docker-registry`
+
+ > In the Workflow Template, the Docker registry name defaults to `docker-config`.
 
 
-### Create registry-creds secret
+### Create general registry secret
+Create a general registry secret to send the image information to CSDP.
 
-
-1. Export the values for your registry's `username`, `password`, and `domain`:
+1. Export the values for your registry's `username`, `password`, `domain`, and `namespace`:  
   ```
-  export DOCKER_USER=[Username]
-  export DOCKER_PASSWORD=[Password]
-  export DOCKER_DOMAIN=[Domain]
+export USER=[Username]
+export PASSWORD=[Password]
+export DOMAIN=[Domain]
+export NAMESPACE=[CSDP runtime namespace]
   ```
+  
+{:start="2"}
 1. Create the secret:
   ```
-  kubectl create secret generic registry-creds \
-  --from-literal=username=$DOCKER_USER \
-  --from-literal=password=$DOCKER_PASSWORD \
-  --from-literal=domain=$DOCKER_DOMAIN \
+kubectl create secret generic registry-creds \
+  --from-literal=username=$USER \
+  --from-literal=password=$PASSWORD \
+  --from-literal=domain=$DOMAIN \
   --dry-run=client --save-config -o yaml | kubectl apply -f - -n $NAMESPACE
   ```
 
