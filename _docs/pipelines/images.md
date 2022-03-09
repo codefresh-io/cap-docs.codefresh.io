@@ -49,8 +49,8 @@ The default view for image resources shows repository and deployment information
 {% include 
    image.html 
    lightbox="true" 
-   file="/images/image/images-application-level.png" 
-   url="/images/image/images-application-level.png" 
+   file="/images/image/application-level.png" 
+   url="/images/image/application-level.png" 
    alt="Repository & deployment info for Images in CSDP" 
    caption="Repository & deployment info for Images in CSDP"
    max-width="30%" 
@@ -70,8 +70,8 @@ Drilldown on the repository shows tag information for the image.
 {% include 
    image.html 
    lightbox="true" 
-   file="/images/image/images-tag-view.png" 
-   url="/images/image/images-tag-view.png" 
+   file="/images/image/tag-view.png" 
+   url="/images/image/tag-view.png" 
    alt="Tag info for Images in CSDP" 
    caption="Tag info for Images in CSDP"
    max-width="30%" 
@@ -94,8 +94,8 @@ Selecting **more details** for an image tag.
 {% include 
    image.html 
    lightbox="true" 
-   file="/images/image/images-summary-view.png" 
-   url="/images/image/images-summary-view.png" 
+   file="/images/image/summary-view.png" 
+   url="/images/image/summary-view.png" 
    alt="Summary info for Images in CSDP" 
    caption="Summary info for Images in CSDP"
    max-width="30%" 
