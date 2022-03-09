@@ -21,11 +21,14 @@ Every sensor-trigger pair is a unique pipeline in CSDP. The same sensor with mul
 Access to Git Sources and Git repositories are based on the user's write permissions, as defined in their Git provider accounts.
 
 #### Git Source for pipeline
-The Delivery Pipeline is connected to a specific CSDP runtime installation, and is also run on this runtime, through a Git Source. 
+The Delivery Pipeline is connected to a specific CSDP runtime installation, and is also run on this runtime, through a Git Source.  
+
 When the pipeline is created and synced with the cluster, all manifests generated for the pipeline are stored in the Git repository. These include the sensor and event-source manifests, and the Workflow Template manifest, if selected from Argo Hub.
 
 #### Centralized location for Argo Event-entities
-CSDP uses Argo Events to listen to events from different sources and define the conditions that trigger the events. All entities for creating and managing an Argo Event - from the event-source and its events, the sensor and its triggers - are available in a centralized location. An intuitive selection mechanism enables you to easily select and configure each entity. Predefined variables and automated mapping to event payload makes parameterization easy. There is no need to manually create the YAML manifests for the different entities, as CSDP automatically generates them after the entities are set up.   
+CSDP uses Argo Events to listen to events from different sources and define the conditions that trigger the events. All entities for creating and managing an Argo Event - from the event-source and its events, the sensor and its triggers - are available in a centralized location in CSDP.  
+
+An intuitive selection mechanism enables you to easily select and configure each entity. Predefined variables and automated mapping to event payload makes parameterization easy. There is no need to manually create the YAML manifests for the different entities, as CSDP automatically generates them after the entities are set up.   
 
 
 ### Delivery Pipeline creation flow
@@ -252,7 +255,7 @@ Follow the step-by-step instructions to guide you through Delivery Pipeline wiza
 
 {:start="12"}
 1. To transform a predefined filter to a standard data filter, select **Detach & Customize**.
-  The 
+ 
 
 {:start="13"}
 1. Select **Apply**, and then **Commit** on the top-right.
@@ -271,6 +274,3 @@ Follow the step-by-step instructions to guide you through Delivery Pipeline wiza
 
 CSDP commits the pipeline to the Git repository, and then syncs it to the cluster. Wait a few seconds for the sync to complete, and verify that the pipeline is displayed in the [Delivery Pipelines](https://g.codefresh.io/2.0/pipelines){:target="\_blank"} page.
 
-### What to read next
-({{site.baseurl}}/docs/pipelines/sharing-file-system)
-({{site.baseurl}}/docs/pipelines/concurrency-limit)
