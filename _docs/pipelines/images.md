@@ -8,24 +8,20 @@ toc: true
 Building Docker images is one of the most basic requirements for creating Delivery Pipelines. 
 Once you create an image, push the image to a registry, and report it to CSDP, image information is continually updated in the CSDP UI. 
 
-### Bring image information to CSDP
-1. Build the Docker image.
-1. Push the image in any registry, or configure an artifact repository in CSDP to push images, as described in [Configure artifact repository]({{site.baseurl}}/docs/pipelines/configure-artifact-repository/).
-1. Report image information to CSDP
-
-#### Build and push a Docker image
-Create a Docker image using our [Create a Docker image using Kaniko](https://codefresh.io/argohub/workflow-template/kaniko){:target="\_blank"} Workflow Template.
-Push the image to any registry.
-
-#### Report image information to CSDP
-[Codefresh Hub for Argo](https://codefresh.io/argohub/workflow-template/CSDP-metadata){:target="\_blank"} offers a set of templates optimized to report and enrich Docker images. 
-
-* Select the [report-image-info](https://github.com/codefresh-io/argo-hub/blob/main/workflows/codefresh-csdp/versions/0.0.6/docs/report-image-info.md){:target="\_blank"} Workflow Template.
-
+### Pre-requisites to view images in CSDP
+We have examples in the Codefresh Hub for Argo for each of the following. 
+1. (Mandatory) Build the Docker image, and push the image to any registry.  
+  See [Create a Docker image using Kaniko](https://codefresh.io/argohub/workflow-template/kaniko){:target="\_blank"}.
+1. (Optional) Enrich image information with annotations and metadata.  
+  For Git and Jira image enrichment examples, see [CSDP-metadata image enrichment](https://codefresh.io/argohub/workflow-template/CSDP-metadata){:target="\_blank"}.
+1. (Mandatory) Report image information to CSDP.  
+  See the [report-image-info](https://github.com/codefresh-io/argo-hub/blob/main/workflows/codefresh-csdp/versions/0.0.6/docs/report-image-info.md){:target="\_blank"} example.
+  
 
 ### Image views in CSDP 
+* In the CSDP UI, go to [Images](https://g.codefresh.io/2.0/images){:target="\_blank"}.
 
-Image views in CSDP are layered to show three levels of data: 
+Image views are layered to show three levels of data: 
 * Repository and application deployment
 * Tags
 * Summary with metadata and binary information 
@@ -89,10 +85,8 @@ Drilldown on the repository shows tag information for the image.
 | **2**                | The comment describing the commit or change, with the name of the Git provider and the corresponding PR. To view details of the commit changes in the Git repository, select the commit text.|  
 | **3**                | The hash of the Docker image, generated as sha256. A change in the digest indicates that something has changed in the image.|
 | **4**                | The registry to which the image is pushed (stored), and from which it is distributed.|
-| **5**                | The OS and architecture in which the image was created. |       
-| **6**                | The date and time of the most recent update in the local time zone. |
-| **7**                | The size of the image.
-| **8**               | Additional information on the image. To view the Summary, select **more details**.
+| **5**                | The OS and architecture in which the image was created. The date and time of the most recent update is in the local time zone|       
+| **6**                | Additional information on the image. To view the Summary, select **more details**.|
 
 ###  Image summary view
 The Summary view shows metadata for the image. 
@@ -111,12 +105,8 @@ Selecting **more details** for an image tag.
 {: .table .table-bordered .table-hover}
 |  Legend          |  Description|  
 | --------------   | --------------           |  
-| **1**            | The bugs or fix requests opened on this image tag.    |                            
-| **2**            | The pull request or requests pending comment.|  
-| **3**            | The annotations created for the image if any.|
-| **4**            | The applications in which the tagged version of the image is deployed.|
-| **5**            | The Git details for this image tag, such as the Git hash, the Jira issue number, Git Pull Request, commit information, the name of the user who performed the commit. |       
-| **6**            | Select to view the log information for the build image step in the relevant workflow.|
-
-
-
+| **1**            | The bugs or fix requests opened and being worked on for this image tag. |                            
+| **2**            | The pull request or requests pending commit.|  
+| **3**            | The Git details for this image tag, such as the Git hash, the Jira issue number, Git Pull Request, commit information, the name of the user who performed the commit. |       
+| **4**            | The workflow for the image step. Select to go to the Workflow.| 
+| **5**             | The log information for the build image step in the relevant workflow. Select to view Logs panel. |
