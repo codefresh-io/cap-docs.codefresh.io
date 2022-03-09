@@ -1,5 +1,5 @@
 ---
-title: "Sharing file system"
+title: "Sharing file systems"
 description: ""
 group: pipelines
 toc: true

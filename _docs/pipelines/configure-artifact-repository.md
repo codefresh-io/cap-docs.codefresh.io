@@ -5,8 +5,7 @@ group: pipelines
 toc: true
 ---
 
-To run Argo Workflows that use artifacts, configure an artifact repository. Configure any Argo-supported, S3-compatible repository, such as AWS, GCS or Minio.    
-Artifact repos are also required to archive pipeline logs when automatic logging is enabled for pipelines.  
+To run Argo Workflows that share artifacts between steps in workflows, and view archived logs for completed workflows, configure an artifact repository. Configure any Argo-supported, S3-compatible repository, such as AWS, GCS or MinIO.    
 
 To configure an artifact repository, do the following:  
 
