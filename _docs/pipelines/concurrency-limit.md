@@ -79,11 +79,11 @@ Let's review a viable use case for selector-based concurrency synchronization, a
 * Selector concurrency synchronization resolving to the _same `template`_ values
 * Selector concurrency synchronization resolving to _different `template`_ values 
 
-Use case  
+**Use case**  
+  
 We have two workflows, `synchronization-wf-1` and `synchronization-wf-2`.  
 
-Both workflows commit to the _same Git repo_, but to _different branches in the repo_. The first workflow commits to the `main` branch, and the second workflow commits to a `feature` branch.  
-We want these workflows to execute in parallel, since the commits to `main` indicate approval for production, while commits to `feature` branches do not impact the `main` branch.
+Both workflows commit to the _same Git repo_, but to _different branches in the repo_. The first workflow commits to the `main` branch, and the second workflow commits to a `feature` branch.  When there are commits to the `main` and `feature` branches, we want the workflows to run in parallel.
 
 #### Default concurrency synchronization
 Both workflows have the same default values for the arguments, and share the same semaphore configuration and key with weight 1.   
