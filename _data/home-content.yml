@@ -17,13 +17,6 @@
   - title: Frequently asked questions
     localurl: /docs/getting-started/faq/
 
-- title: Images
-  icon: images/home-icons/started.svg
-  url: ''
-  links:
-  - title: Images
-    localurl: /docs/pipelines/images/
-
 - title: Clients
   icon: images/home-icons/client.svg
   url: ''

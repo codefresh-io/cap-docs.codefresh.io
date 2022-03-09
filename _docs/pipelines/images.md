@@ -1,5 +1,5 @@
 ---
-title: "Images"
+title: "Viewing Images in CSDP"
 description: ""
 group: pipelines
 toc: true
@@ -8,8 +8,9 @@ toc: true
 Building Docker images is one of the most basic requirements for creating Delivery Pipelines. 
 Once you create an image, push the image to a registry, and report it to CSDP, image information is continually updated in the CSDP UI. 
 
-### Pre-requisites to view images in CSDP
-We have examples in the Codefresh Hub for Argo for each of the following. 
+### Requirements for images in CSDP
+Complete the mandatory steps to see your images in CSDP. Each step has links to examples in the Codefresh Hub for Argo.  
+
 1. (Mandatory) Build the Docker image, and push the image to any registry.  
   See [Create a Docker image using Kaniko](https://codefresh.io/argohub/workflow-template/kaniko){:target="\_blank"}.
 1. (Optional) Enrich image information with annotations and metadata.  
