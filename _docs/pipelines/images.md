@@ -63,8 +63,7 @@ The default view for image resources shows repository and deployment information
 | **2**            | The applications in which the image is currently deployed. Select the application to go to the Applications dashboard.|  
 | **3**            | The details on the most recent commit associated with the image. Select the commit to view the changes in the Git repository.|
 | **4**            | Binary information on the image.|
-| **5**            | The tag associated with the image in the application. |       
-| **6**            | The registry to which the image is pushed, and from which it is distributed.|
+| **5**            | The registry to which the image is pushed, and from which it is distributed.|
                      
 ### Image tag view
 Drilldown on the repository shows tag information for the image.
