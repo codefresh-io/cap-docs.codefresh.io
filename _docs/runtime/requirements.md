@@ -21,21 +21,66 @@ Kubernetes cluster, server version 1.18 to 1.21 (inclusive), without Argo Projec
 
 
 #### Ingress controller
-* Ingress controller in cluster  
-  Configure your Kubernetes cluster with an Ingress controller component that is exposed from the cluster. Currently, we support the `NGINX` ingress controller.  
-  > Tip:   
-  >  Verify that the ingress controller has a valid external IP address.  
-  >  Run `kubectl get svc ingress-nginx-controller -n ingress-nginx`, and verify that the EXTERNAL-IP column shows a valid hostname. 
+Configure your Kubernetes cluster with an ingress controller component that is exposed from the cluster.  
+
+**Supported ingress controllers**  
+
+  {: .table .table-bordered .table-hover}
+|  Supported Ingress Controller                       | Reference|  
+| --------------                                      | --------------           |  
+| Ambassador                                        | See [Ambassador ingress controller documentation](https://www.getambassador.io/docs/edge-stack/latest/topics/running/ingress-controller/){:target="\_blank"} |       
+| NGINX Community  (`k8s.io/ingress-nginx`)          | See [Provider-specific configuration]({{site.baseurl}}docs/runtime/requirements/#provider-specific-configuration)|                             
+| NGINX Enterprise (`nginx.org/ingress-controller`)  | See [NGINX Ingress Controller documentation](https://docs.nginx.com/nginx-ingress-controller/) |          
+| Istio                                             | See [Istio Kubernetes ingress documentation](https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress/){:target="\_blank"} |       
+| Traefik                                           | See [Traefik Kubernetes ingress documentation](https://doc.traefik.io/traefik/providers/kubernetes-ingress/){:target="\_blank"} | 
+
+
+**Ingress controller requirements**
+
+* Valid external IP address  
+  Run `kubectl get svc ingress-nginx-controller -n ingress-nginx`, and verify that the EXTERNAL-IP column shows a valid hostname. 
 
 * Valid SSL certificate  
-  The ingress controller must have a valid SSL certificate from an authorized CA (Certificate Authority) for secure runtime installation.  
+  For secure runtime installation, the ingress controller must have a valid SSL certificate from an authorized CA (Certificate Authority).  
 
+* Report status  
+  The ingress controller must be configured to report its status. By default, NGINX Enterprise and Traefik do not include this configuration.  
 
-#### Provider-specific configuration
+  See [NGINX Enterprise configuration]({{site.baseurl}}docs/runtime/requirements/#NGINX-Enterprise-configuration) in this section. 
 
-CSDP has been tested and is supported in major providers. For your convenience, we have included provider-specific configuration instructions, both for supported and untested providers.
+#### NGINX Enterprise version configuration
+The Enterprise version of NGINX (`nginx.org/ingress-controller`), both with and without the Ingress Operator, must be configured to report the ingress status.
 
-> The instructions are valid for Ingress-Nginx.
+**Installation with NGINX Ingress**  
+
+* Pass the `- -report-ingress-status` to `deployment`:
+
+    ```yaml
+    spec:                                                                                                                                                                 
+      containers: 
+       - args:                                                                                                                                              
+       - -report-ingress-status
+    ```
+
+**Installation with NGINX Ingress Operator**  
+
+1. Add this to the `Nginxingresscontrollers` resource file:
+
+   ```yaml
+   ...
+   spec:
+     reportIngressStatus:
+       enable: true
+   ...
+  ```
+
+1. Make sure you have a certificate secret in the same namespace as the runtime. Copy an existing secret if you don't have one.  
+You will need to add this to the `ingress-master` when you have completed runtime installation.
+
+#### NGINX Community version provider-specific configuration
+CSDP has been tested and is supported in major providers. For your convenience, here are provider-specific configuration instructions, both for supported and untested providers.
+
+> The instructions are valid for `k8s.io/ingress-nginx`, the community version of NGINX.
 
 <details>
 <summary><b>AWS</b></summary>
@@ -261,7 +306,7 @@ This section lists the requirements for Git installation repositories.
 If you are using an existing repo, make sure it is empty.
 
 #### Git access tokens
-CSDP requires personal two access tokens, one for runtime installation, and the other for your Git actions in CSDP. 
+CSDP requires two access tokens, one for runtime installation, and the second, a personal token for each user to authenticate Git-based actions in CSDP. 
 
 ##### Git runtime token
 The Git runtime token is mandatory for runtime installation.
@@ -281,7 +326,7 @@ The token must have valid:
    %}  
 
 ##### Git user token for Git-based actions
-The Git user token is the user's personal token, used to authenticate every Git-based action of the user in CSDP. You can supply this token during runtime installation, or add it at any time from the CSDP UI.   
+The Git user token is the user's personal token and is unique to every user. It is used to authenticate every Git-based action of the user in CSDP. You can add the Git user token at any time from the CSDP UI.   
 
   The token must have valid:
   * Expiration date: Default is `30 days`  
