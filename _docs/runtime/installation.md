@@ -101,7 +101,7 @@ Before you start installing the CSDP runtime, verify that:
   Silent install: Optional. Add the `--demo-resources` flag. By default, set to `true`.
 
 #### Post-installation configuration
-Optional. Required only for NGINX Enterprise installed with NGINX Ingress Operator.  
+Optional. Required only for NGINX Enterprise installations, both with and without NGINX Ingress Operator.  
 You need to patch the certificate secret in `spec.tls` of the `ingress-master` resource. 
 
 Configure the `ingress-master` with the certificate secret. The secret must be in the same namespace as the runtime.
