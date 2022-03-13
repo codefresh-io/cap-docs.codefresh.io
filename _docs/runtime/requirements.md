@@ -29,8 +29,8 @@ Configure your Kubernetes cluster with an ingress controller component that is e
 |  Supported Ingress Controller                       | Reference|  
 | --------------                                      | --------------           |  
 | Ambassador                                        | See [Ambassador ingress controller documentation](https://www.getambassador.io/docs/edge-stack/latest/topics/running/ingress-controller/){:target="\_blank"} |       
+| NGINX Enterprise (`nginx.org/ingress-controller`)  | See [NGINX Ingress Controller documentation](https://docs.nginx.com/nginx-ingress-controller/) |      
 | NGINX Community  (`k8s.io/ingress-nginx`)          | See [Provider-specific configuration]({{site.baseurl}}docs/runtime/requirements/#provider-specific-configuration)|                             
-| NGINX Enterprise (`nginx.org/ingress-controller`)  | See [NGINX Ingress Controller documentation](https://docs.nginx.com/nginx-ingress-controller/) |          
 | Istio                                             | See [Istio Kubernetes ingress documentation](https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress/){:target="\_blank"} |       
 | Traefik                                           | See [Traefik Kubernetes ingress documentation](https://doc.traefik.io/traefik/providers/kubernetes-ingress/){:target="\_blank"} | 
 
@@ -44,16 +44,17 @@ Configure your Kubernetes cluster with an ingress controller component that is e
   For secure runtime installation, the ingress controller must have a valid SSL certificate from an authorized CA (Certificate Authority).  
 
 * Report status  
-  The ingress controller must be configured to report its status. By default, NGINX Enterprise and Traefik do not include this configuration.  
+  The ingress controller must be configured to report its status. Otherwise, Argo's health check reports the health status as "progressing" resulting in a timeout error.  
+    
+  By default, NGINX Enterprise and Traefik ingress are not configured to report status. For details on configuration settings, see:  
+    [NGINX Enterprise ingress configuration]({{site.baseurl}}docs/runtime/requirements/#NGINX-Enterprise-configuration)  
+    [Traefik ingress configuration]({{site.baseurl}}docs/runtime/requirements/#traefik-ingress-configuration)  
 
-  See [NGINX Enterprise configuration]({{site.baseurl}}docs/runtime/requirements/#NGINX-Enterprise-configuration) in this section. 
-
-#### NGINX Enterprise version configuration
-The Enterprise version of NGINX (`nginx.org/ingress-controller`), both with and without the Ingress Operator, must be configured to report the ingress status.
+#### NGINX Enterprise version ingress configuration
+The Enterprise version of NGINX (`nginx.org/ingress-controller`), both with and without the Ingress Operator, must be configured to report the status of the ingress controller.
 
 **Installation with NGINX Ingress**  
-
-* Pass the `- -report-ingress-status` to `deployment`:
+* Pass the `- -report-ingress-status` to `deployment`.
 
     ```yaml
     spec:                                                                                                                                                                 
@@ -77,7 +78,7 @@ The Enterprise version of NGINX (`nginx.org/ingress-controller`), both with and 
 1. Make sure you have a certificate secret in the same namespace as the runtime. Copy an existing secret if you don't have one.  
 You will need to add this to the `ingress-master` when you have completed runtime installation.
 
-#### NGINX Community version provider-specific configuration
+#### NGINX Community version provider-specific ingress configuration
 CSDP has been tested and is supported in major providers. For your convenience, here are provider-specific configuration instructions, both for supported and untested providers.
 
 > The instructions are valid for `k8s.io/ingress-nginx`, the community version of NGINX.
@@ -281,6 +282,21 @@ For additional configuration options, see <a target="_blank" href="https://kuber
 
 </details>  
 <br>
+
+#### Traefik ingress configuration
+To enable the the Traefik ingress controller to report the status, add `publishedService` to `providers.kubernetesIngress.ingressEndpoint`.  
+  
+The value must be in the format `"<namespace>/<service-name>"`, where:  
+   `<service-name>` is the Traefik service from which to copy the status
+
+   ```yaml
+   ...
+   providers:
+    kubernetesIngress:
+      ingressEndpoint:
+        publishedService: "<namespace>/<traefik-service>" # Example, "codefresh/traefik-default" ...
+   ...
+  ```
 
 #### Node requirements
 * Memory: 5000 MB
