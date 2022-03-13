@@ -29,7 +29,7 @@ Configure your Kubernetes cluster with an ingress controller component that is e
 |  Supported Ingress Controller                       | Reference|  
 | --------------                                      | --------------           |  
 | Ambassador                                        | See [Ambassador ingress controller documentation](https://www.getambassador.io/docs/edge-stack/latest/topics/running/ingress-controller/){:target="\_blank"} |       
-| NGINX Enterprise (`nginx.org/ingress-controller`)  | See [NGINX Ingress Controller documentation](https://docs.nginx.com/nginx-ingress-controller/) |      
+| NGINX Enterprise (`nginx.org/ingress-controller`)  | See NGINX Ingress Controller documentation in this article. |      
 | NGINX Community  (`k8s.io/ingress-nginx`)          | See [Provider-specific configuration]({{site.baseurl}}docs/runtime/requirements/#provider-specific-configuration)|                             
 | Istio                                             | See [Istio Kubernetes ingress documentation](https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress/){:target="\_blank"} |       
 | Traefik                                           | See [Traefik Kubernetes ingress documentation](https://doc.traefik.io/traefik/providers/kubernetes-ingress/){:target="\_blank"} | 
@@ -46,9 +46,9 @@ Configure your Kubernetes cluster with an ingress controller component that is e
 * Report status  
   The ingress controller must be configured to report its status. Otherwise, Argo's health check reports the health status as "progressing" resulting in a timeout error.  
     
-  By default, NGINX Enterprise and Traefik ingress are not configured to report status. For details on configuration settings, see:  
-    [NGINX Enterprise ingress configuration]({{site.baseurl}}docs/runtime/requirements/#NGINX-Enterprise-configuration)  
-    [Traefik ingress configuration]({{site.baseurl}}docs/runtime/requirements/#traefik-ingress-configuration)  
+  By default, NGINX Enterprise and Traefik ingress are not configured to report status. For details on configuration settings, see the following sections in this article:  
+    NGINX Enterprise ingress configuration  
+    Traefik ingress configuration 
 
 #### NGINX Enterprise version ingress configuration
 The Enterprise version of NGINX (`nginx.org/ingress-controller`), both with and without the Ingress Operator, must be configured to report the status of the ingress controller.
