@@ -51,8 +51,8 @@ Both Argo and Codefresh have examples and libraries of Workflow Templates you ca
 
 In the Delivery Pipeline wizard, we have our starter Workflow Template to use as a base, or the option to select an existing one, or copy and paste any Workflow Template, and then modify as needed. 
 >Important:  
->  If you select a predefined Workflow Template, either the starter or one from the Codefresh Hub for Argo, your Workflow Template is converted to a standalone, independent pipeline workflow template, which you can also rename to make the distinction clear. 
- > To avoid conflicts, the pipeline workflow template is not synced to the original Workflow Template. Any changes to the original Workflow Template are also not reflected in the pipeline workflow template.  
+>  If you select the starter Workflow Template or one of the example templates from the Codefresh Hub for Argo, it is converted to a standalone, independent pipeline workflow template.  
+ > To avoid conflicts, the pipeline workflow template is not synced to the original Workflow Template. Any changes to the original starter or example Workflow Template are also not updated in the pipeline workflow template.  
    
 
 
