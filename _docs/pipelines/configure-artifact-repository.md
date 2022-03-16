@@ -33,9 +33,9 @@ The settings apply to all workflows by default, unless overridden by a specific 
     default-v1: |
       archiveLogs: true # enable pipeline logging
       s3:
-        bucket: csdp-east 
-        endpoint: s3.amazonaws.com
-        region: us-east-1
+        bucket: <s3-storage-bucket-name> # for example, `csdp-east` 
+        endpoint: <endpoint> # for example, `s3.amazonaws.com`
+        region: <region> # for example, `us-east-1`
         useSDKCreds: true
   ```
 
