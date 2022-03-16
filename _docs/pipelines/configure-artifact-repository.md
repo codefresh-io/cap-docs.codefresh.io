@@ -21,7 +21,7 @@ The settings apply to all workflows by default, unless overridden by a specific 
 
 1. Go to your CSDP runtime installation repository:  
    `<runtime_installation_repo>/apps/workflows/overlays/<runtime-name>/`  
-1. Create a new file entitled `artifact-repo.yaml`, and update `bucket`, `endpoint`, and `region`:  
+1. Create a new file entitled `artifact-repo.yaml`, and update `bucket`, `endpoint`, and `region` as needed:  
   ```yaml
   apiVersion: v1
   kind: ConfigMap
@@ -30,12 +30,12 @@ The settings apply to all workflows by default, unless overridden by a specific 
       workflows.argoproj.io/default-artifact-repository: default-v1
     name: artifact-repositories
   data:
-    default-v1: |
-      archiveLogs: true # enable pipeline logging
+    default-v1: <code>&#124;</code>
+      archiveLogs: true  # enable pipeline logging
       s3:
-        bucket: <s3-storage-bucket-name> # for example, `csdp-east` 
-        endpoint: <endpoint> # for example, `s3.amazonaws.com`
-        region: <region> # for example, `us-east-1`
+        bucket: csdp-east  # change as needed
+        endpoint: s3.amazonaws.com # change as needed
+        region: us-east-1 # change as needed
         useSDKCreds: true
   ```
 
