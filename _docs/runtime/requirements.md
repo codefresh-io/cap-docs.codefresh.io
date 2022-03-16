@@ -15,7 +15,7 @@ The requirements listed are the **_minimum_** requirements for CSDP (Codefresh S
 This section lists cluster requirements.
 
 #### Cluster version
-Kubernetes cluster, server version 1.18 to 1.21 (inclusive), without Argo Project components.
+Kubernetes cluster, server version 1.18 and higher, without Argo Project components.
 > Tip:  
 >  To check the server version, run `kubectl version --short`.
 
