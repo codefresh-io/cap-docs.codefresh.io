@@ -29,8 +29,9 @@ Configure your Kubernetes cluster with an ingress controller component that is e
 |  Supported Ingress Controller                       | Reference|  
 | --------------                                      | --------------           |  
 | Ambassador                                        | See [Ambassador ingress controller documentation](https://www.getambassador.io/docs/edge-stack/latest/topics/running/ingress-controller/){:target="\_blank"} |       
-| NGINX Enterprise (`nginx.org/ingress-controller`)  | See NGINX Ingress Controller documentation in this article. |      
-| NGINX Community  (`k8s.io/ingress-nginx`)          | See [Provider-specific configuration]({{site.baseurl}}docs/runtime/requirements/#provider-specific-configuration)|                             
+| NGINX Enterprise (`nginx.org/ingress-controller`)  | See [NGINX Ingress Controller documentation](https://docs.nginx.com/nginx-ingress-controller/). And 
+ [NGINX Enterprise version configuration](#nginx-enterprise-version-ingress-configuration) in this article. |      
+| NGINX Community  (`k8s.io/ingress-nginx`)          | See [Provider-specific configuration](#nginx-community-version-provider-specific-ingress-configuration) in this article.|                             
 | Istio                                             | See [Istio Kubernetes ingress documentation](https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress/){:target="\_blank"} |       
 | Traefik                                           | See [Traefik Kubernetes ingress documentation](https://doc.traefik.io/traefik/providers/kubernetes-ingress/){:target="\_blank"} | 
 
@@ -38,7 +39,7 @@ Configure your Kubernetes cluster with an ingress controller component that is e
 **Ingress controller requirements**
 
 * Valid external IP address  
-  Run `kubectl get svc ingress-nginx-controller -n ingress-nginx`, and verify that the EXTERNAL-IP column shows a valid hostname. 
+  Run `kubectl kubectl get svc -A`to get a list of services and verify that the EXTERNAL-IP column for your ingress controller shows a valid hostname. 
 
 * Valid SSL certificate  
   For secure runtime installation, the ingress controller must have a valid SSL certificate from an authorized CA (Certificate Authority).  
