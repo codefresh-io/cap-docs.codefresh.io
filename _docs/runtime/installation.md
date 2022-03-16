@@ -40,7 +40,7 @@ Before you start installing the CSDP runtime, verify that:
 * Your deployment conforms to our [system requirements]({{site.baseurl}}/docs/runtime/requirements).
  
 * You have a Git runtime token: Authenticates to the Git installation repo that you will create or select during runtime installation.  
-  To create a Git token, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
+  To create a Git token, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token){:target="\_blank"}.
   > When you create the Git token for runtime installation, set the correct expiration date and scope: 
    Expiration: Default is `30 days`  
    Scope: `repo` and `admin-repo.hook` 
