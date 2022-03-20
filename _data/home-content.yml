@@ -62,6 +62,8 @@
     localurl: /docs/administration/add-users
   - title: User settings
     localurl: /docs/administration/user-settings
+  - title: Git tokens 
+    localurl: /docs/administration/git-tokens   
   - title: Single Sign-On
     localurl: /docs/administration/single-sign-on
   - title: Access Control
