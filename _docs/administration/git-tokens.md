@@ -7,17 +7,14 @@ toc: true
 
 
 
-Git tokens are an integral part of authentication in CSDP.  
-We use two types of Git tokens:
-* Runtime token, a token per runtime
-* Personal token, a user access token, unique to each user
+CSDP requires two types of Git tokens, a Git runtime token per runtime, and a Git personal access token, for each runtime, unique to every user. If you have access to multiple runtimes as a user in CSDP, you require a personal access token for each runtime. 
 
-You can update expired, revoked, or invalid tokens. 
+Users can update expired, revoked, or invalid Git runtime and personal user tokens. 
 
 ### Git runtime tokens
-The Git runtime token is a dedicated token required to provision CSDP runtimes. The token is specific to a runtime and not per user. 
+The Git runtime token is a dedicated token required to provision CSDP runtimes. The Git runtime token is specific to a runtime, and is mandatory for runtime installation. 
 
-An expired, revoked, or invalid Git runtime token is flagged by a notification in the CSDP UI. You can then generate a new token from your Git provider, and update it in CSDP. 
+An expired, revoked, or invalid Git runtime token, is flagged by a notification in the CSDP UI. You can then generate a new Git runtime token from your Git provider, and update it in CSDP. 
 
 #### Git runtime token permissions
 Git runtime tokens need both repo and admim repo access to create webhooks for Git events.
@@ -47,7 +44,7 @@ Update Git runtime tokens as needed.
 1. If there are no validation errors, select **Add**.
 
 ### Git personal tokens
-The Git personal token is a user-specific personal access token. Unique to each user, it is required to authenticate Git-based actions in CSDP.  
+The Git personal token is a user-specific personal access token per provisioned runtime. Unique to each user, it is required to authenticate Git-based actions per runtime in CSDP.  
 
 #### Git personal token permissions
 Git personal tokens need repo access for commits and other actions.
@@ -63,7 +60,7 @@ Git personal tokens need repo access for commits and other actions.
    %}
 
 #### How to update a Git personal token
-Update Git personal access tokens when needed.
+Update Git personal access tokens for each runtime when needed.
 
 **Before you begin**  
 * Generate a new personal access token with the correct permissions  
