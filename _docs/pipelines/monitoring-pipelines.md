@@ -15,7 +15,7 @@ There are several options to monitor pipeline and workflow activity:
 * Workflow logs: Real-time logs for ongoing workflows, and archived logs for completed workflows.
 
 
-### How to: Monitor sensor and event source notifications in Activity Log
+### How to monitor sensor and event source notifications in Activity Log
 The Activity Log is a quick way to monitor sensor and event-source logs. A pull-down panel in the CSDP toolbar, the Activity Log shows ongoing, success, and error notifications, by date, starting with today's date. Syntax errors that prevent the sensor from triggering the pipeline are displayed here.
 
 1. In the CSDP UI, on the top-right of the toolbar, select ![](/images/pipeline/monitoring/pipeline-activity-log-toolbar.png?display=inline-block) **Activity Log**.
@@ -37,7 +37,7 @@ The Activity Log is a quick way to monitor sensor and event-source logs. A pull-
 The aggregated view is a global view of all the pipelines with active workflows in your cluster. 
 
 
-#### How to: Switch to aggregated pipeline view
+#### How to switch to aggregated pipeline view
 1. In the CSDP UI, go to the [Home](https://g.codefresh.io/2.0/){:target="\_blank"} page.
 1. To customize the view, select filters.
 1. To view day-to-day data for a metric, select a mini-chart. 
@@ -70,7 +70,7 @@ Pipeline metrics (KPIs), are displayed in line charts and in list format.
 | **Committers**        | The number of users whose commits on the repository or repositories triggered the pipelines. The user count is aggregated per user, so if the same user made ten commits, all commits are counted only once.|       
 
 
-#### Understanding aggregated pipeline view
+#### Exploring the aggregated pipeline view
 
 Here is an example of the aggregated pipeline view. 
 
@@ -103,12 +103,12 @@ When you select an individual pipeline, you can monitor steps within workflows.
 Both step and workflow analytics share the same set of filters that allow you to reduce the data displayed and customize the view.
 
 
-#### How to: Switch to pipeline list view
+#### How to switch to pipeline list view
 
 1. In the CSDP UI, go to the [Delivery Pipelines](https://g.codefresh.io/2.0/pipelines){:target="\_blank"} page.
 1. To find specific pipelines, in the search field, enter a part of the pipeline name. For example, to find all CI-based pipelines, enter `ci`.
 
-#### Understanding pipeline list view
+#### Exploring pipeline list view
 
 Here is an example of the list view of individual pipelines. 
 
@@ -251,7 +251,7 @@ Logs are available for ongoing and completed workflows.
 1. From the **Select Step (Pod)** dropdown, do one of the following:
   * To view live logs for an ongoing workflow,  select **All**.
   * To view archived logs for a completed workflow, select the step and from the **Select Container** dropdown, select the container.
-1. If needed, copy/cut/paste log details, using the commands below for your OS.
+1. If needed, copy/cut/paste log details. Refer to the table below for commands compatible with your OS.
 
 
 {: .table .table-bordered .table-hover}
