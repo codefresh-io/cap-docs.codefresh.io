@@ -1,5 +1,5 @@
 ---
-title: "Management"
+title: "Runtime management"
 description: ""
 group: runtime
 toc: true
