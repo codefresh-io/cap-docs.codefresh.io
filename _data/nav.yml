@@ -46,6 +46,7 @@
     - title: Git Source management
       url: "/git-sources"
 
+
 - title: Pipelines
   url: "/pipelines"
   pages:
@@ -59,6 +60,8 @@
       url: "/sharing-file-system"
     - title: Viewing images
       url: "/images"
+    - title: Webhook Relay
+      url: "/webhook-relay"
 
 
 - title: Administration

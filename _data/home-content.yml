@@ -37,6 +37,7 @@
       localurl: /docs/runtime/monitor-manage-runtimes/
     - title:  Git Source management
       localurl: /docs/runtime/git-sources/
+    
 
 - title: Pipelines
   icon: images/home-icons/pipeline.svg
@@ -51,7 +52,9 @@
     - title: Sharing file systems
       localurl: /docs/pipelines/sharing-file-system/  
     - title: Viewing images
-      localurl: /docs/pipelines/images/    
+      localurl: /docs/pipelines/images/  
+    - title: Webhook Relay
+      localurl: /docs/pipelines/webhook-relay/  
     
 
 - title: Administration
