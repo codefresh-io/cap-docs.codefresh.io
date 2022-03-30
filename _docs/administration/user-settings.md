@@ -1,5 +1,5 @@
 ---
-title: "Managing Git tokens"
+title: "Managing Git personal access tokens"
 description: ""
 group: administration
 toc: true
