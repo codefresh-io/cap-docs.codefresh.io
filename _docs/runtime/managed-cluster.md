@@ -1,15 +1,18 @@
 ---
-title: "Managed clusters in runtimes"
+title: "Add and manage external clusters"
 description: ""
 group: runtime
 toc: true
 ---
 
-Manage external clusters in CSDP by registering them to provisioned runtimes. Instead of having a runtime per cluster, use the spoke-and-hub method to manage multiple clusters through a single runtime.
+Manage external clusters in CSDP by registering them to provisioned runtimes. Instead of having a runtime per cluster, manage multiple clusters through a single runtime with the spoke-and-hub method.  
 
-When you add an external cluster to a provisioned runtime, the cluster is registered as a managed cluster. A managed cluster is treated as any other managed K8s resource, meaning that you can monitor its health and sync status, add and remove components from the cluster, deploy applications on the cluster and view information in our Applications dashboard, and remove the cluster from the runtime's managed list.  
+When you add an external cluster to a provisioned runtime, the cluster is registered as a managed cluster. A managed cluster is treated as any other managed K8s resource, meaning that you can monitor its health and sync status, deploy applications on the cluster and view information in the Applications dashboard, and remove the cluster from the runtime's managed list.  
 
-Add managed clusters in CSDP through the CLI, or with Kustomize or Helm.  
+Add managed clusters in CSDP:
+* Through the CLI
+* Kustomize
+* Helm
 
 Doing so via CSDP ensures that CSDP applies the required RBAC resources (`ServiceAccount`, `ClusterRole` and `ClusterRoleBinding`) to the target cluster, creates a `Job` that updates the selected runtime with the information, registers the cluster in Argo CD as a managed cluster, and updates the platform with the new cluster information.
 
@@ -19,22 +22,22 @@ Optionally, to first generate the YAML manifests, and then manually apply them, 
 
 **Before you begin**  
 
-* Make sure your Git user token is valid and has the correct permissions
+* Make sure your Git personal access token is valid and has the correct permissions
 
 **How to**  
 
-1. In the CSDP UI, go to the [**Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes) {:target="\_blank"} page.
+1. In the CSDP UI, go to the [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"} page.
 1. From either the **Topology** or **List** views, select the runtime to which to add the cluster. 
-1. Topology View: Select the + icon.
+1. Topology View: Select ![](/images/icons/icon-add-cluster.png?display=inline-block).  
   List View: Select the **Managed Clusters** tab, and then select **+ Add Cluster**.  
 1. In the Add Managed Cluster panel:
-  * Enter the context for the cluster, which is the kubecontext for that cluster. 
+  * **Cluster Name**: Enter the context(kubecontext) for the cluster. 
   * Define the parameters and then run the command:  
-    `cf cluster add <runtime-name> --context [context_name] <managed-cluster-name> <--dry-run>`
+    `cf cluster add <runtime-name> --context [context_name] <managed-cluster-name> --dry-run`  
     where:  
-    * `<runtime-name>` is the runtime to which to register the cluster. The name of the selected runtime is automatically added.  
-    * `<kube-context>` is the kube context with the credentials to communicate with the managed cluster. If not supplied, the CLI displays the list of available clusters as defined in `kubeconfig`.
-    * `<--dry-run>` is optional, and required if you want to generate a list of YAML manifests that you can redirect and apply manually with `kubectl`.
+      `<runtime-name>` is the runtime to which to register the cluster. The name of the selected runtime is automatically added.  
+      `<kube-context>` is the kube context with the credentials to communicate with the managed cluster. If not supplied, the CLI displays the list of available clusters as defined in `kubeconfig`.  
+      `--dry-run` is optional, and required if you want to generate a list of YAML manifests that you can redirect and apply manually with `kubectl`.
   
    {% include 
 	image.html 
@@ -227,40 +230,33 @@ server: <server>
 
 
 ### Work with managed clusters 
-Use the Topology or List runtime views to work with managed clusters.
-* Monitor cluster 
-  View connection status for the cluster, and health and sync errors. Health and sync errors are flagged by the error notification in the toolbar, and visually flagged in the List and Topology views.  
+Use the Topology or List runtime views to work with managed clusters. For information on runtime views, see [Runtime views]({{site.baseurl}}/docs/runtime/runtime-views).
+* Monitor cluster  
+  View connection status for the managed cluster, and health and sync errors. Health and sync errors are flagged by the error notification in the toolbar, and visually flagged in the List and Topology views.  
 
+* Install/uninstall cluster components   
+  Install components on one or more managed clusters, and monitor deployed application status and data in the Applications dashboard. 
+  Uninstalling a component from one or more managed clusters do not affect the runtime, but removes the data from those components Applications dashboard.   
 
-* Install/uninstall cluster components  
-  Install any runtime component such as Argo Rollouts on one or more managed clusters. 
-  Removing a component from one or more managed clusters do not affect the runtime.   
-
-* Automatic upgrade
-  As the components are managed as part of the runtime, updates to the runtime automatically updates the components on all the managed clusters that include it.  
-
-* Deploy applications  
-  Deploy applications to one or more managed clusters, and monitor them in the Applications dashboard. 
+* Automatic upgrade  
+  As the components are managed as part of the runtime, updates to the runtime automatically updates the components on all the managed clusters that include it. 
 
 * Remove cluster   
-  Remove a cluster registered with a runtime. What happens?
+  Remove a cluster registered with a runtime from the runtime's list of managed clusters.  
+  >Removing a managed cluster from a runtime also removes all the applications deployed to the cluster, and removes their data from the Applications dashboard.
 
+**How to**  
 
-**How to**
-
-1. In the CSDP UI, go to the [**Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes) {:target="\_blank"} page.
-1. Select either the **Topology View** or the **List View** tabs.
-1. Do one of the following:
-  * From the List View, select the runtime, and then select the **Managed Clusters** tab.
-  * From the Topology View, select the cluster node from the runtime it is registered with. 
-
+{:start="1"}
+1. In the CSDP UI, go to the [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"} page.
+2. Select either the **Topology View** or the **List View** tabs.
+3. Do one of the following:
+  * In the Topology View, select the cluster node from the runtime it is registered to. 
+  * In the List View, select the runtime, and then select the **Managed Clusters** tab.
 {:start="4"}
-1. To remove the cluster from the list managed by the runtime, select the three dots next to the cluster name, and then select **Uninstall**.
-{:start="5"}
-1. To uninstall a cluster component from the list, select the three dots next to the component, and then select **Uninstall**. 
- 
-  
+4. To uninstall a cluster component from the list, select the three dots next to the component, and then select **Uninstall**. 
+5. To remove the cluster from the list managed by the runtime, select the three dots next to the cluster name, and then select **Uninstall**.
 
 ### What to read next
-[Manage runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/)
+[Manage runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/)  
 [Manage Git Sources]({{site.baseurl}}/docs/runtime/git-sources/)

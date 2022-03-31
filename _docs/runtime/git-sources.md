@@ -1,5 +1,5 @@
 ---
-title: "Git Source management"
+title: "Add and manage Git Sources"
 description: ""
 group: runtime
 toc: true
