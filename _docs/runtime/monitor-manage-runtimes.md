@@ -6,13 +6,13 @@ toc: true
 ---
 
 
-The **Runtimes** page displays all the runtimes deployed across your environment.
-We display information for provisioned runtimes through Topology and List views. Work in the view mode of your choice to monitor and manage runtimes. 
+The **Runtimes** page displays the runtimes deployed across your environment, which you can view in List or Topology view formats.
+Work in the view mode of your choice to monitor and manage runtimes. 
 
 ### Runtime views
 View provisioned runtimes in Topology or List view formats.  
-* Topology view: The default view, displays the hierarchical structure of runtimes and their clusters, with health and sync status of the associated clusters. 
-* List view: Displays the list of runtimes and their clusters and Git Sources.  
+* Topology view: The default view, displays a hierarchical structure of runtimes and their clusters, with health and sync status of the associated clusters. 
+* List view: Displays the list of runtimes and their clusters, and Git Sources.  
 
 To manage and monitor runtimes, see:  
 * [Runtime management](#runtime-management)
@@ -37,10 +37,10 @@ And a description of the information in the Topology view.
 {: .table .table-bordered .table-hover}
 | Topology View Item      | Description   |
 | ------------------------| ---------------- |
-|**Runtimes**             | The name of the runtime prefixed with ![](/images/icons/codefresh-runtime.png?display=inline-block), and the cluster on which the runtime is provisioned. The cluster name is identical to that of the in-cluster. |
-|**Cluster**              | The local and managed clusters if any, for the runtime. {::nomarkdown}<ul><li> <img src="/images/icons/local-cluster.png"  display=inline-block> indicates the local or in-cluster. The name of the local cluster is identical to that of the runtime cluster.</li><li> <img src="/images/icons/managed-cluster.png"  display=inline-block> indicates a managed cluster.</li> </ul> To view cluster components, select the cluster. </br> To add and work with managed clusters, see [Managed clusters]({{site.baseurl}}/docs/runtime/managed-cluster.md). {:/}| 
-|**Health/Sync status**   |The health and sync status of the runtime or cluster. {::nomarkdown}<ul><li><img src="/images/icons/error.png"  display=inline-block> indicates health or sync errors in the runtime, or a managed cluster if one was added to the runtime.</br> The runtime or cluster node is bordered in red and the name is colored red.</li> <li><img src="/images/icons/cf-sync-status.png"  display=inline-block> indicates that the runtime is being synced to the cluster on which it is provisioned.</li></ul> {:/} |
-|**Search and View options** | {::nomarkdown}<ul><li>Find a runtime or its clusters by typing part of the runtime/cluster name, and then navigate to the entries found. </li> <li>Topology view management options in this order: Resize to window, zoom in, zoom out, full screen.</li></ul> {:/}|
+|**Runtime**             | ![](/images/icons/codefresh-runtime.png?display=inline-block) indicates the cluster on which the runtime is provisioned. The cluster name is identical to that of the in-cluster. |
+|**Cluster**              | The local, and managed clusters if any, for the runtime. {::nomarkdown}<ul><li> <img src="/images/icons/local-cluster.png"  display=inline-block> indicates the local or in-cluster. The name of the local cluster is identical to that of the runtime cluster.</li><li> <img src="/images/icons/managed-cluster.png"  display=inline-block> indicates a managed cluster.</li> <li> <img src="/images/icons/add-cluster.png"  display=inline-block> select to add a new managed cluster.</li></ul> To view cluster components, select the cluster. </br> To add and work with managed clusters, see [Managed clusters]({{site.baseurl}}/docs/runtime/managed-cluster.md). {:/}| 
+|**Health/Sync status** |The health and sync status of the runtime or cluster. {::nomarkdown}<ul><li><img src="/images/icons/error.png"  display=inline-block> indicates health or sync errors in the runtime, or a managed cluster if one was added to the runtime.</br> The runtime or cluster node is bordered in red and the name is colored red.</li> <li><img src="/images/icons/cf-sync-status.png"  display=inline-block> indicates that the runtime is being synced to the cluster on which it is provisioned.</li></ul> {:/} |
+|**Search and View options** | {::nomarkdown}<ul><li>Find a runtime or its clusters by typing part of the runtime/cluster name, and then navigate to the entries found. </li> <li>Topology view options in this order: Resize to window, zoom in, zoom out, full screen.</li></ul> {:/}|
 
 
 
