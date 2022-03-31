@@ -40,7 +40,7 @@ And a description of the information in the Topology view.
 |**Runtime**             | ![](/images/icons/codefresh-runtime.png?display=inline-block) indicates the cluster on which the runtime is provisioned. The cluster name is identical to that of the in-cluster. |
 |**Cluster**              | The local, and managed clusters if any, for the runtime. {::nomarkdown}<ul><li> <img src="/images/icons/local-cluster.png"  display=inline-block> indicates the local or in-cluster. The name of the local cluster is identical to that of the runtime cluster.</li><li> <img src="/images/icons/managed-cluster.png"  display=inline-block> indicates a managed cluster.</li> <li> <img src="/images/icons/add-cluster.png"  display=inline-block> select to add a new managed cluster.</li></ul> To view cluster components, select the cluster. </br> To add and work with managed clusters, see [Managed clusters]({{site.baseurl}}/docs/runtime/managed-cluster.md). {:/}| 
 |**Health/Sync status** |The health and sync status of the runtime or cluster. {::nomarkdown}<ul><li><img src="/images/icons/error.png"  display=inline-block> indicates health or sync errors in the runtime, or a managed cluster if one was added to the runtime.</br> The runtime or cluster node is bordered in red and the name is colored red.</li> <li><img src="/images/icons/cf-sync-status.png"  display=inline-block> indicates that the runtime is being synced to the cluster on which it is provisioned.</li></ul> {:/} |
-|**Search and View options** | {::nomarkdown}<ul><li>Find a runtime or its clusters by typing part of the runtime/cluster name, and then navigate to the entries found. </li> <li>Topology view options in this order: Resize to window, zoom in, zoom out, full screen.</li></ul> {:/}|
+|**Search and View options** | {::nomarkdown}<ul><li>Find a runtime or its clusters by typing part of the runtime/cluster name, and then navigate to the entries found. </li> <li>Topology view options: Resize to window, zoom in, zoom out, full screen view.</li></ul> {:/}|
 
 
 
@@ -48,12 +48,13 @@ And a description of the information in the Topology view.
 The List view is a grid-view of the provisioned runtimes.  
 
 Here is an example of the List view for runtimes.
-	image.html 
-	lightbox="true" 
-	file="/images/runtime/runtime-list-view.png" 
-	url="/images/runtime/rruntime-list-view.png" 
-	alt="Runtime List View" 
-	caption="Runtime List View"
+{% include 
+   image.html 
+   lightbox="true" 
+   file="/images/runtime/runtime-list-view.png" 
+	url="/images/runtime/runtime-list-view.png" 
+  alt="Runtime List View" 
+  caption="Runtime List View"
   max-width="30%" 
 %}
 
@@ -63,8 +64,8 @@ And a description of key information in the List view.
 | List View Item|  Description   |
 | --------------          | ---------------- |
 |**Status**| The health and sync status of the runtime or cluster.  {::nomarkdown}<br><ul><li> <img src="/images/icons/error.png"  display=inline-block> indicates health or sync errors in the runtime, or a managed cluster if one was added to the runtime.</br> The runtime name is colored red.</li> <li><img src="/images/icons/cf-sync-status.png"  display=inline-block> indicates that the runtime is being synced to the cluster on which it is provisioned.</li></ul> {:/} |
-|**Managed Cluster**| The number of managed clusters if any, for the runtime. To view list of managed clusters, select the runtime.  To work with managed clusters, see ???. | 
-|**Version**|Indicates there are later versions of the runtime. To see all the commits to the runtime, mouse over **Update Available!**, and select **View Complete Change Log**.|
+|**Managed Cluster**| The number of managed clusters if any, for the runtime. To view list of managed clusters, select the runtime, and then the **Managed Clusters** tab.  To work with managed clusters, see [Runtime Management](#runtime-management) in this article.| 
+|**Version**|**Update Available!** indicates there are later versions of the runtime. To see all the commits to the runtime, mouse over **Update Available!**, and select **View Complete Change Log**.|
 
 
 
@@ -97,9 +98,9 @@ Pass the mandatory flags in the upgrade command:
 
 **How to upgrade with the CLI wizard**   
 
-1. In the CSDP UI, make sure you are in the [**Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes) page.
+1. In the CSDP UI, make sure you are in the [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"} page.
 1. Switch to either the **Topology View** or to the **List View**.
-1. **Topology views**: Select the runtime node, and from the panel, select the three dots and then select **Update Runtime**.
+1. **Topology view**: Select the runtime cluster, and from the panel, select the three dots and then select **Upgrade Runtime**.
   {% include 
 	image.html 
 	lightbox="true" 
@@ -110,7 +111,7 @@ Pass the mandatory flags in the upgrade command:
   max-width="30%" 
 %} 
 
-  **List views**:  
+  **List view**:  
   * Select the runtime name. 
   * To see all the commits to the runtime, in the Version column, mouse over **Update Available!**, and select **View Complete Change Log**.
   * On the top-right, select **Upgrade**. 
@@ -134,7 +135,7 @@ Pass the mandatory flags in the upgrade command:
 	file="/images/runtime/install-upgrades.png" 
 	url="/images/runtime/install-upgrades.png" 
 	alt="Upgrade runtime" 
-	caption="Upgrade runtime"
+	caption="Upgrade runtime panel"
   max-width="30%" 
 %}  
 
@@ -244,7 +245,7 @@ All you need to do is to configure the browser to trust the URL and receive cont
   * Safari: Click **Show Certificate**, and then select **Always allow content from site**.
   * Edge: Click **Advanced**, and then select **Continue to site(unsafe)**.
 
-### How to view runtime notifications in Activity Log
+#### How to view runtime notifications in Activity Log
 The Activity Log is a quick way to monitor notifications for runtime events such as upgrades. A pull-down panel in the CSDP toolbar, the Activity Log shows ongoing, success, and error notifications, sorted by date, starting with today's date. 
 
 1. In the CSDP UI, on the top-right of the toolbar, select ![](/images/pipeline/monitoring/pipeline-activity-log-toolbar.png?display=inline-block) **Activity Log**.
@@ -262,8 +263,8 @@ The Activity Log is a quick way to monitor notifications for runtime events such
 {:start="3"}
 1. To see more information on an error, select the **+** sign.
 
-### Troubleshoot health and sync errors 
-The runtime name in red, prefixed by ![](/images/runtime/icon-ExclamationCircle.png?display=inline-block) indicates either health or sync errors. 
+#### Troubleshoot health and sync errors 
+The ![](/images/icons/error.png?display=inline-block) icon with the runtime in red indicates either health or sync errors. 
 
 **Health errors**  
 Health errors are generated by Argo CD and by CSDP for runtime components. 
