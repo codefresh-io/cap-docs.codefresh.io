@@ -8,11 +8,11 @@ toc: true
 Administrators can create, register and authorize CSDP as a OAuth2 App in GitHub. Users can then authorize access to GitHub instead of generating a personal access token from their Git providers.
 
 To set up OAuth2 authorization for GitHub, as an admin you must create:
-* GitHub OAuth2 Application
+* GitHub OAuth2 Application for CSDP 
 * Secret in runtime cluster with OAuth2 Application credentials
 * Config-map that references the secret
 
-> An OAuth2 Application must be created for every runtime in your deployment.
+> Reuse the same GitHub OAuth2 CSDP application across runtimes by applying the secret and config-map to _every runtime_. 
 
 
 
@@ -28,7 +28,7 @@ Create and register an OAuth App under your organization to authorize Codefresh.
 1. Make sure **Enable Device Flow** is _not_ selected. 
 1. After successful registration, note down the application ID, client ID and the client secret generated. You will need them to create the GitHub OAuth2 secret.
 
-### Step 2: Create a secret in runtime cluster 
+### Step 2: Create a K8s secret resource in runtime cluster 
 Create a K8s secret in the runtime cluster as in the example below, with the application ID (`appId`), client ID (`clientId`) and the client secret (`clientSecret`) from the GitHub OAuth2 Application you created.  
 1. Create the secret manifest.
 
@@ -50,7 +50,7 @@ data:
 2. Apply the secret to the runtime cluster:  
    `kubectl apply -f <filename>`   
    where:   
-   `<filename>` is the `metadata.name`, `github-oauth2` in the example.
+   `<filename>` is the user-defined name in `metadata.name`, `github-oauth2` in the example.
 
 
 ### Step 3: Create a ConfigMap resource 
