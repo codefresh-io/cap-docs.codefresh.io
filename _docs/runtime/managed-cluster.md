@@ -9,12 +9,12 @@ Manage external clusters in CSDP by registering them to provisioned runtimes. In
 
 When you add an external cluster to a provisioned runtime, the cluster is registered as a managed cluster. A managed cluster is treated as any other managed K8s resource, meaning that you can monitor its health and sync status, deploy applications on the cluster and view information in the Applications dashboard, and remove the cluster from the runtime's managed list.  
 
-Add managed clusters in CSDP:
-* Through the CLI
+Add managed clusters through:
+* CSDP CLI
 * Kustomize
 * Helm
 
-Doing so via CSDP ensures that CSDP applies the required RBAC resources (`ServiceAccount`, `ClusterRole` and `ClusterRoleBinding`) to the target cluster, creates a `Job` that updates the selected runtime with the information, registers the cluster in Argo CD as a managed cluster, and updates the platform with the new cluster information.
+Adding a managed cluster via CSDP ensures that CSDP applies the required RBAC resources (`ServiceAccount`, `ClusterRole` and `ClusterRoleBinding`) to the target cluster, creates a `Job` that updates the selected runtime with the information, registers the cluster in Argo CD as a managed cluster, and updates the platform with the new cluster information.
 
 ### How to add a managed cluster with CSDP CLI
 Add the external cluster to a provisioned runtime through the CSDP CLI.  
