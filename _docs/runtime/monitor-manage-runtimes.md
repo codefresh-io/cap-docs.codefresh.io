@@ -67,8 +67,6 @@ And a description of key information in the List view.
 |**Managed Cluster**| The number of managed clusters if any, for the runtime. To view list of managed clusters, select the runtime, and then the **Managed Clusters** tab.  To work with managed clusters, see [Runtime Management](#runtime-management) in this article.| 
 |**Version**|**Update Available!** indicates there are later versions of the runtime. To see all the commits to the runtime, mouse over **Update Available!**, and select **View Complete Change Log**.|
 
-
-
  
 ### Runtime management
 Work in either the Topology or the List views to manage runtimes:
@@ -167,7 +165,7 @@ Pass the mandatory flags in the uninstall command:
 
 1. In the CSDP UI, make sure you are in the [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"} page.
 1. Switch to either the **Topology View** or to the **List View**.
-1. **Topology views**: Select the runtime node, and from the panel, select the three dots and then select **Uninstall Runtime**.
+1. **Topology view**: Select the runtime node, and from the panel, select the three dots and then select **Uninstall Runtime**.
   {% include 
 	image.html 
 	lightbox="true" 
@@ -178,7 +176,7 @@ Pass the mandatory flags in the uninstall command:
   max-width="30%" 
 %} 
 
-   **List views**: On the top-right, select the three dots and then select **Uninstall**.
+   **List view**: On the top-right, select the three dots and then select **Uninstall**.
 
   {% include 
 	image.html 
