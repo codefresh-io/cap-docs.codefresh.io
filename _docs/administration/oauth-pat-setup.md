@@ -1,5 +1,5 @@
 ---
-title: "Set up CSDP as OAuth2 app"
+title: "Set up OAuth2 app"
 description: ""
 group: administration
 toc: true
@@ -12,7 +12,7 @@ To set up OAuth2 authorization for GitHub, as an admin you must create:
 * Secret in runtime cluster with OAuth2 Application credentials
 * Config-map that references the secret
 
-> Reuse the same GitHub OAuth2 CSDP application across runtimes by applying the secret and config-map to _every runtime_. 
+> Reuse the same GitHub OAuth2 application across runtimes by applying the secret and config-map to _every runtime_. 
 
 
 
