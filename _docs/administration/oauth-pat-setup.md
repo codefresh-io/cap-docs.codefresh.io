@@ -12,7 +12,7 @@ To set up OAuth2 authorization for GitHub, as an admin you must create:
 * Secret in runtime cluster with OAuth2 Application credentials
 * Config-map that references the secret
 
-> Reuse the same GitHub OAuth2 application across runtimes by applying the secret and config-map to _every runtime_. 
+> Reuse the same GitHub OAuth2 application across runtimes by applying the `secret` and `config-map` to _every runtime_. 
 
 
 
@@ -30,7 +30,7 @@ Create and register an OAuth App under your organization to authorize Codefresh.
 
 ### Step 2: Create a K8s secret resource in runtime cluster 
 Create a K8s secret in the runtime cluster as in the example below, with the application ID (`appId`), client ID (`clientId`) and the client secret (`clientSecret`) from the GitHub OAuth2 Application you created.  
-1. Create the secret manifest.
+* Create the secret manifest.
 
 ```yaml
 apiVersion: v1
@@ -47,7 +47,7 @@ data:
   clientSecret: # client secret of your OAuth app from GitHub
   url: https://github.com
 ```
-2. Apply the secret to the runtime cluster:  
+* Apply the secret to the runtime cluster:  
    `kubectl apply -f <filename>`   
    where:   
    `<filename>` is the user-defined name in `metadata.name`, `github-oauth2` in the example.

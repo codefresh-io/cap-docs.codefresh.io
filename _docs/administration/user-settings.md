@@ -7,8 +7,9 @@ toc: true
 
 As a user, you can generate or update Git personal tokens required for authentication when these have expired or are invalid. The Git personal token is a user-specific personal access token per provisioned runtime, and required to authenticate Git-based actions per runtime in CSDP. 
 
-If OAuth2 authorization has been set up by your admin, you can authorize GitHub access using OAuth2.  
-You can always generate a personal access token from GitHub and then add the same.
+You can update Git personal access tokens in one of the following ways:
+* Authorize GitHub access using OAuth2: This is an option if OAuth2 authorization has been set up by your admin.  
+* Generate token from Git provider: You can always generate a personal access token from GitHub and then add the same.
  
 > You can use the same token for multiple runtimes, if you need access to more than one runtime. 
 You must however authorize GitHub access or add the personal access token for each runtime.
