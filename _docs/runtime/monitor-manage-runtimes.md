@@ -11,12 +11,40 @@ Work in the view mode of your choice to monitor and manage runtimes.
 
 ### Runtime views
 View provisioned runtimes in Topology or List view formats.  
-* Topology view: The default view, displays a hierarchical structure of runtimes and their clusters, with health and sync status of the associated clusters. 
-* List view: Displays the list of runtimes and their clusters, and Git Sources.  
+* List view: The default view, displays the list of runtimes, the clusters managed by them, and Git Sources.  
+* Topology view: Displays a hierarchical view of runtimes and the clusters managed by them, with health and sync status of each cluster. 
 
 To manage and monitor runtimes, see:  
 * [Runtime management](#runtime-management)
 * [Runtime monitoring](#runtime-monitoring)
+
+#### List view
+The List view is a grid-view of the provisioned runtimes.  
+
+Here is an example of the List view for runtimes.
+{% include 
+   image.html 
+   lightbox="true" 
+   file="/images/runtime/runtime-list-view.png" 
+	url="/images/runtime/runtime-list-view.png" 
+  alt="Runtime List View" 
+  caption="Runtime List View"
+  max-width="30%" 
+%}
+
+Here's a description of information in the List View. 
+
+
+{: .table .table-bordered .table-hover}
+| List View Item|  Description   |
+| --------------          | ---------------- |
+|**Name**| The name of the provisioned CSDP runtime.  |
+|**Cluster/Namespace**| The K8s API server endpoint, as well as the namespace with the cluster. |
+|**Managed Cluster**| The number of managed clusters if any, for the runtime. To view list of managed clusters, select the runtime, and then the **Managed Clusters** tab.  To work with managed clusters, see [Runtime Management](#runtime-management) in this article.| 
+|**Version**| The version of the runtime currently installed. **Update Available!** indicates there are later versions of the runtime. To see all the commits to the runtime, mouse over **Update Available!**, and select **View Complete Change Log**.
+|**Last Updated**| The most recent update information from the runtime to the CSDP platform. Updates are sent to the platform typically every few minutes. Longer update intervals may indicate networking issues.|
+|**Sync Status**| The health and sync status of the runtime or cluster.  {::nomarkdown}<br><ul><li> <img src="../../../images/icons/error.png"  display=inline-block> indicates health or sync errors in the runtime, or a managed cluster if one was added to the runtime.</br> The runtime name is colored red.</li> <li><img src="../../../images/icons/cf-sync-status.png"  display=inline-block> indicates that the runtime is being synced to the cluster on which it is provisioned.</li></ul> {:/} |
+
 
 
 #### Topology view
@@ -37,35 +65,10 @@ And a description of the information in the Topology view.
 {: .table .table-bordered .table-hover}
 | Topology View Item      | Description   |
 | ------------------------| ---------------- |
-|**Runtime**             |![](../../../images/icons/codefresh-runtime.png?display=inline-block) indicates the cluster on which the runtime is provisioned. The cluster name is identical to that of the in-cluster. |
-|**Cluster**              | The local, and managed clusters if any, for the runtime. {::nomarkdown}<ul><li><img src="../../../images/icons/local-cluster.png" display=inline-block/> indicates the local or in-cluster. The name of the local cluster is identical to that of the runtime cluster.</li><li><img src="../../../images/icons/managed-cluster.png" display=inline-block/> indicates a managed cluster.</li> <li> <img src="../../../images/icons/add-cluster.png" display=inline-block/> select to add a new managed cluster.</li></ul> {:/} To view cluster components, select the cluster. To add and work with managed clusters, see [Add and manage external clusters]({{site.baseurl}}/docs/runtime/managed-cluster). | 
+|**Runtime**             | ![](../../../images/icons/codefresh-runtime.png?display=inline-block) the provisioned CSDP runtime. Below is the name of the K8s API server endpoint with the cluster.  |
+|**Cluster**              | The local, and managed clusters if any, for the runtime. {::nomarkdown}<ul><li><img src="../../../images/icons/local-cluster.png" display=inline-block/> indicates the local cluster, always displayed as `in-cluster`. The in-cluster server URL is always set to `https://kubernetes.default.svc/`.</li><li><img src="../../../images/icons/managed-cluster.png" display=inline-block/> indicates a managed cluster.</li> <li> <img src="../../../images/icons/add-cluster.png" display=inline-block/> select to add a new managed cluster.</li></ul> {:/} To view cluster components, select the cluster. To add and work with managed clusters, see [Add and manage external clusters]({{site.baseurl}}/docs/runtime/managed-cluster). | 
 |**Health/Sync status** |The health and sync status of the runtime or cluster. {::nomarkdown}<ul><li><img src="../../../images/icons/error.png" display="inline-block"> indicates health or sync errors in the runtime, or a managed cluster if one was added to the runtime.</br> The runtime or cluster node is bordered in red and the name is colored red.</li> <li><img src="../../../images/icons/cf-sync-status.png" display=inline-block/> indicates that the runtime is being synced to the cluster on which it is provisioned.</li></ul> {:/} |
 |**Search and View options** | {::nomarkdown}<ul><li>Find a runtime or its clusters by typing part of the runtime/cluster name, and then navigate to the entries found. </li> <li>Topology view options: Resize to window, zoom in, zoom out, full screen view.</li></ul> {:/}|
-
-
-
-#### List view
-The List view is a grid-view of the provisioned runtimes.  
-
-Here is an example of the List view for runtimes.
-{% include 
-   image.html 
-   lightbox="true" 
-   file="/images/runtime/runtime-list-view.png" 
-	url="/images/runtime/runtime-list-view.png" 
-  alt="Runtime List View" 
-  caption="Runtime List View"
-  max-width="30%" 
-%}
-
-And a description of key information in the List view. 
-
-{: .table .table-bordered .table-hover}
-| List View Item|  Description   |
-| --------------          | ---------------- |
-|**Status**| The health and sync status of the runtime or cluster.  {::nomarkdown}<br><ul><li> <img src="../../../images/icons/error.png"  display=inline-block> indicates health or sync errors in the runtime, or a managed cluster if one was added to the runtime.</br> The runtime name is colored red.</li> <li><img src="../../../images/icons/cf-sync-status.png"  display=inline-block> indicates that the runtime is being synced to the cluster on which it is provisioned.</li></ul> {:/} |
-|**Managed Cluster**| The number of managed clusters if any, for the runtime. To view list of managed clusters, select the runtime, and then the **Managed Clusters** tab.  To work with managed clusters, see [Runtime Management](#runtime-management) in this article.| 
-|**Version**|**Update Available!** indicates there are later versions of the runtime. To see all the commits to the runtime, mouse over **Update Available!**, and select **View Complete Change Log**.|
 
  
 ### Runtime management
