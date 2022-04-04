@@ -66,9 +66,9 @@
   pages:
     - title: Manage users
       url: "/add-users"
-    - title: Set up CSDP as OAuth2 app
+    - title: Set up OAuth2 app
       url: "/oauth-pat-setup"  
-    - title: Manage Git personal access tokens
+    - title: Git personal access tokens for users
       url: "/user-settings"
     - title: Git tokens
       url: "/git-tokens"

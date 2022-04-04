@@ -60,7 +60,7 @@
   links:
   - title: Manage users
     localurl: /docs/administration/add-users/
-  - title: Set up CSDP as OAuth2 app 
+  - title: Set up OAuth2 app 
     localurl: /docs/administration/oauth-pat-setup/  
   - title: Manage Git personal access tokens
     localurl: /docs/administration/user-settings/
