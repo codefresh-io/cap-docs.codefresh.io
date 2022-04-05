@@ -32,17 +32,20 @@ Create and register an OAuth App under your organization to authorize Codefresh.
 1. Select **Generate a new client secret**, and copy the generated secret. 
 1. Note down the following:
   * Application ID from the URL
-  * Client ID and the client secret
+  * Client ID and the client secret  
+
   You will need them to create the K8s secret for GitHub OAuth2 application.
 
 ### Step 2: Create a K8s secret resource in runtime cluster 
 Create a K8s secret in the runtime cluster as in the example below, with the application ID (`appId`), client ID (`clientId`) and the client secret (`clientSecret`) from the GitHub OAuth2 Application you created.  
 
-> All fields in the secret _must be_ encoded in `base64`. Use `echo -n VALUE | base64`.    
+> All fields in the secret _must be_ encoded in `base64`.  
+  Use `echo -n VALUE | base64`.  
 
-> Make sure you have the application ID from the application's URL, the client ID and the client secret.
 
-* Create the secret manifest.
+ Make sure you have the application ID from the application's URL, the client ID and the client secret.
+
+Create the secret manifest.
 
 ```yaml
 apiVersion: v1
