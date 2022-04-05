@@ -9,7 +9,7 @@ As a user, you can generate or update Git personal tokens required for authentic
 
 You can update Git personal access tokens in one of the following ways:
 * Authorize GitHub access using OAuth2: This is an option if OAuth2 authorization has been set up by your admin.  
-* Generate token from Git provider: You can always generate a personal access token from GitHub and then add the same.
+* Generate a new token from your Git provider: You can always generate a personal access token from GitHub and then add the same.
  
 > You can use the same token for multiple runtimes, if you need access to more than one runtime. 
 You must however authorize GitHub access or add the personal access token for each runtime.
