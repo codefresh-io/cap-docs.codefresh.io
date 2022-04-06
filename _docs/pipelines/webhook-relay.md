@@ -61,7 +61,7 @@ The Client component that receives the requests from the Server it is subscribed
   The Client subscribes to a specific channel on the Server to receive the webhook payloads. The name of the channel should be identical to the name of the CSDP runtime installed in the same cluster as the Client.
   Every payload sent to the `/webhooks/${channel}/*` endpoint is published immediately to all Clients listening to the same channel on the `/subscribe/${channel}/` endpoint.   
 
-  Argo Events creates the webhook in your Git provider, using the [`webhook` configuration](https://github.com/argoproj/argo-events/blob/master/api/event-source.md#webhookcontext){:target="\_blank"}, with the `endpoint` and `url` attributes:  
+  Argo Events creates the webhook in your Git provider, using the [webhook configuration](https://github.com/argoproj/argo-events/blob/master/api/event-source.md#webhookcontext){:target="\_blank"}, with the `endpoint` and `url` attributes:  
 
   `url` must be configured in the format: `https://${public-cluster-ingress-host}`  
   `endpoint` must be configured in the format: `/webhooks/${channel}/*`   
@@ -79,7 +79,7 @@ The Client component that receives the requests from the Server it is subscribed
 
 #### Running multiple instances of Webhook Relay Server
  If you need to run multiple instances of the Server, you need a way to share events across those instances. A Client may be connected to instance A, so if a relevant event is sent to instance B, instance A needs to know about it too.  
- For that reason, the Server has a built-in support for Redis as a message bus. To enable it, pass the `REDIS_URL` environment variable to the server. That will tell the server to use Redis when receiving payloads, and to publish them to all the instances of the Server.
+ For that reason, the Server has a built-in support for Redis as a message bus. To enable it, pass the `REDIS_URL` environment variable to the Server. That will tell the Server to use Redis when receiving payloads, and to publish them to all the instances of the Server.
 ​
 
 ### Deploy the Webhook Relay
@@ -190,13 +190,13 @@ spec:
 ### FAQs
 
 **What is the TTL for channels?**  
-Channels are always active. Once a client is connected, the server sends any payloads it gets at `/webhooks/${channel}/*` to those clients.
+Channels are always active. Once a Client is connected, the Server sends any payloads it gets at `/webhooks/${channel}/*` to those clients.
 
 **Are payloads stored anywhere?**  
-Webhook payloads are _never_ stored on the server or in any database; the server is simply a pass-through.
+Webhook payloads are _never_ stored on the Server or in any database; the Server is simply a pass-through.
 
 **What are the best practices for production use?**  
 
 * Use IP whitelists for your runtime clusters to access `/subscribe/${channel}/` endpoint, and for your git provider to access `/webhooks/${channel}/*` endpoint.
-* It is recommended to run multiple replicas of the server together with Redis using the `REDIS_URL` environment variable.
+* It is recommended to run multiple replicas of the Server together with Redis using the `REDIS_URL` environment variable.
 * `Server-sent events` connections are long-running HTTP (keep-alive) connections. We recommend that your reverse-proxy server is configured correctly to avoid situations where a long-running connection is cut off by the reverse-proxy. For example, [Nginx](http://nginx.org/en/docs/http/ngx_http_upstream_module.html#keepalive).
