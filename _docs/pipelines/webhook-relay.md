@@ -24,67 +24,70 @@ Here's a description of the components.
 
 
 **Webhook Relay Server**  
-The server component that receives all the webhooks from external systems, again, GitHub in our case. The Webhook Relay Server forwards the webhook event requests to the Webhook Relay Client which is subscribed to receive the requests. For high-availability, Redis is required.  
+The Server component that receives all the webhooks from external systems, GitHub in our case. The Server forwards the webhook event requests to the Webhook Relay Client which is subscribed to receive the requests. For high-availability, Redis is required.  
 
 **Webhook Relay Client**  
-The client component that receives the requests from the Webhook Relay Server it is subscribed to. A Webhook Relay Client must be installed on every Codefresh runtime in your deployment.  
+The Client component that receives the requests from the Server it is subscribed to. The Client must be installed on every private cluster with a CSDP runtime.  
 
 
 ### Prerequisites
+  
+* Public cluster with ingress controller  
+  The public cluster is a cluster with an ingress controller whose ingress host is accessible from the internet. 
+* One or more private clusters, also with ingress controllers  
+  The private cluster is a cluster with an ingress controller whose ingress host is accessible internally within the cluster. It also has the CSDP runtime installed. 
+* CSDP runtime in the private cluster, or on all private clusters if there is more than one
 
-* Two clusters, one public, and one private. The public cluster must be accessible from the internet.  
-* CSDP runtime
-* Two ingress controllers:
-  * External ingress controller in the public cluster
-  * Internal ingress controller in the private cluster with the runtime and the Webhook Relay Client. The internal ingress controller is used for internal communication within the cluster.
-
+  
 
 ### Configuration
-
-* Webhook URL  
-  Argo Events creates the webhook in your Git provider. 
-  In the `EventSource`, the `webhook` is created from the `url` and the `endpoint` attributes:   
-    `endpoint` is the channel on the Server that the Client listens to.  
-    `url` is the base URL, identical to the value defined for the `TARGET_BASE_URL` environment variable.  
-
-  The webhook URL has the following format:  
-    `${TARGET_BASE_URL}/webhooks/${channel}/*`  
-
-  Each payload sent to the `/webhooks/${channel}/*` endpoint is published immediately to all clients listening to the same channel on the `/subscribe/${channel}/` endpoint.  
 
 * Client environment variables  
 
   The `TARGET_BASE_URL` and the `SOURCE_URL` environment variables are mandatory. 
   * `TARGET_BASE_URL`  
-    The base URL of the endpoint that defines the Event Source.  
-    The Client forwards the payload to the URL defined by `TARGET_BASE_URL`, retaining the full URL path.  
-    For example:  
-    `${TARGET_BASE_URL}/webhooks/${channel}/push-github/github-push-heads` 
+    The base URL to which the Client forwards the webhook payloads while keeping the original URL path, in the format:   
+      `https://${private-cluster-ingress-host}`  
 
-  * `SOURCE_URL`: The specific channel on the Server that the client subscribes to, identical to the runtime name, in the format:  
-    `${TARGET_BASE_URL}/subscribe/${channel}/`  
+    For example, if the `endpoint` attribute in the `EventSource` manifest is set to `/webhooks/${channel}/push-github/`, then the Client would forward all the payloads to this URL:    
+    `${TARGET_BASE_URL}/webhooks/${channel}/push-github/` 
 
-* (Optional) IP allowlist for runtime clusters  
-  Because the channels are _not authenticated_, we highly recommend creating an allowlist with the _IP ranges of your runtime clusters_.  
-  The runtime cluster allowlist is required to access the `/subscribe/${channel}/` endpoint.   
+  * `SOURCE_URL`  
+    The URL to which the Client should subscribe.
+    The URL should include the channel on the Server in the following format:  
+      `https://${public-cluster-ingress-host}/subscribe/${channel}/`
+  
+* Webhook URL in the `EventSource` manifest  
+  The Client subscribes to a specific channel on the Server to receive the webhook payloads. The name of the channel should be identical to the name of the CSDP runtime installed in the same cluster as the Client.
+  Every payload sent to the `/webhooks/${channel}/*` endpoint is published immediately to all Clients listening to the same channel on the `/subscribe/${channel}/` endpoint.   
 
-  > Tip: If you choose, you can also create an allowlist for the Git provider to access the `/webhooks/${channel}/*` endpoint.  
+  Argo Events creates the webhook in your Git provider, using the [`webhook` configuration](https://github.com/argoproj/argo-events/blob/master/api/event-source.md#webhookcontext){:target="\_blank"}, with the `endpoint` and `url` attributes:  
 
+  `url` must be configured in the format: `https://${public-cluster-ingress-host}`  
+  `endpoint` must be configured in the format: `/webhooks/${channel}/*`   
+
+* (Optional) IP whitelist for runtime clusters  
+  As the channels are _not authenticated_, we highly recommend creating a whitelist with the _IP ranges of your runtime clusters_.  
+  The whitelist ensures that only your private clusters can access the `/subscribe/${channel}/` endpoint, while blocking access to other parties.   
+
+  > Tip: If you choose, you can create a whitelist also for the Git provider to access the `/webhooks/${channel}/*` endpoint.  
 
 ### How Webhook Relay works
 1. The Server receives the webhook from the Git provider.
 1. The Client subscribed to the Server listens for messages via `Server-sent events`, and passes the webhook to the internal ingress controller.  
 > [`Server-sent events`](https://html.spec.whatwg.org/multipage/server-sent-events.html){:target="\_blank"} connections are long-running HTTP (keep-alive) connections.
 
-#### High-availability (HA)
- To run multiple instances of the Webhook Relay Server, you must share events across those instances. All Server instances are then aware of the relevant events their Clients are subscribed to, even when the Client is connected only to a specific Server instance. The Server has built-in support for Redis as a message bus.  
- > To enable high-availability, pass `REDIS_URL` as an environment variable.
+#### Running multiple instances of Webhook Relay Server
+ If you need to run multiple instances of the Server, you need a way to share events across those instances. A Client may be connected to instance A, so if a relevant event is sent to instance B, instance A needs to know about it too.  
+ For that reason, the Server has a built-in support for Redis as a message bus. To enable it, pass the `REDIS_URL` environment variable to the server. That will tell the server to use Redis when receiving payloads, and to publish them to all the instances of the Server.
+​
 
-
-### Deploy the Webhook Relay in CSDP 
-To deploy the Webhook Relay in CSDP, apply the Server and Client manifests:
+### Deploy the Webhook Relay
+To deploy the Webhook Relay, apply the Server and Client manifests.
+> To view the latest image versions of the Server and the Client, [click here](https://github.com/codefresh-io/webhook-relay/releases){:target="\_blank"}.
 
 #### Server manifest
+Apply the Server manifest to the public cluster.  
 
 > To see all environment variables you can configure for the Server, [click here](https://github.com/codefresh-io/webhook-relay/blob/main/apps/webhook-relay-server/README.md){:target="\_blank"}.
 
@@ -151,6 +154,8 @@ spec:
 ```
 #### Client manifest
 
+Apply the Client manifest to each of your private clusters with the CSDP runtimes.
+
 > To see all environment variables you can configure for the Client, [click here](https://github.com/codefresh-io/webhook-relay/blob/main/apps/webhook-relay-client/README.md){:target="\_blank"}.
 
 
@@ -192,6 +197,6 @@ Webhook payloads are _never_ stored on the server or in any database; the server
 
 **What are the best practices for production use?**  
 
-* Use IP allowlists for your runtime clusters to access `/subscribe/${channel}/` endpoint (internal), and for your git provider to access `/webhooks/${channel}/*` endpoint (external).
+* Use IP whitelists for your runtime clusters to access `/subscribe/${channel}/` endpoint, and for your git provider to access `/webhooks/${channel}/*` endpoint.
 * It is recommended to run multiple replicas of the server together with Redis using the `REDIS_URL` environment variable.
-* `Server-sent events` connections are long-running HTTP (keep-alive) connections. We recommend to configure your reverse-proxy server to avoid situations where a long-running connection is cut off by the reverse-proxy. For example, [Nginx](http://nginx.org/en/docs/http/ngx_http_upstream_module.html#keepalive).
+* `Server-sent events` connections are long-running HTTP (keep-alive) connections. We recommend that your reverse-proxy server is configured correctly to avoid situations where a long-running connection is cut off by the reverse-proxy. For example, [Nginx](http://nginx.org/en/docs/http/ngx_http_upstream_module.html#keepalive).
