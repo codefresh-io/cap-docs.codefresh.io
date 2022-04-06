@@ -24,7 +24,7 @@ Here's a description of the components.
 
 
 **Webhook Relay Server**  
-The server component that receives all the webhooks from external systems, again, GitHub in our case. The Webhook Relay Serve forwards the webhook event requests to the Webhook Relay Client which is subscribed to receive the requests. For high-availability, Redis is required.  
+The server component that receives all the webhooks from external systems, again, GitHub in our case. The Webhook Relay Server forwards the webhook event requests to the Webhook Relay Client which is subscribed to receive the requests. For high-availability, Redis is required.  
 
 **Webhook Relay Client**  
 The client component that receives the requests from the Webhook Relay Server it is subscribed to. A Webhook Relay Client must be installed on every Codefresh runtime in your deployment.  
@@ -64,11 +64,11 @@ The client component that receives the requests from the Webhook Relay Server it
   * `SOURCE_URL`: The specific channel on the Server that the client subscribes to, identical to the runtime name, in the format:  
     `${TARGET_BASE_URL}/subscribe/${channel}/`  
 
-* (Optional) IP whitelist for runtime clusters  
-  Because the channels are _not authenticated_, we highly recommend creating a whitelist with the _IP ranges of your runtime clusters_.  
-  The runtime cluster whitelist is required to access the `/subscribe/${channel}/` endpoint.   
+* (Optional) IP allowlist for runtime clusters  
+  Because the channels are _not authenticated_, we highly recommend creating an allowlist with the _IP ranges of your runtime clusters_.  
+  The runtime cluster allowlist is required to access the `/subscribe/${channel}/` endpoint.   
 
-  > Tip: If you choose, you can also create a whitelist for the Git provider to access the `/webhooks/${channel}/*` endpoint.  
+  > Tip: If you choose, you can also create an allowlist for the Git provider to access the `/webhooks/${channel}/*` endpoint.  
 
 
 ### How Webhook Relay works
@@ -192,6 +192,6 @@ Webhook payloads are _never_ stored on the server or in any database; the server
 
 **What are the best practices for production use?**  
 
-* Use IP whitelists for your runtime clusters to access `/subscribe/${channel}/` endpoint (internal), and for your git provider to access `/webhooks/${channel}/*` endpoint (external).
+* Use IP allowlists for your runtime clusters to access `/subscribe/${channel}/` endpoint (internal), and for your git provider to access `/webhooks/${channel}/*` endpoint (external).
 * It is recommended to run multiple replicas of the server together with Redis using the `REDIS_URL` environment variable.
-* `Server-sent events` connections are long-running HTTP (keep-alive) connections. We recommend that your reverse-proxy server is configured to avoid situations where a long-running connection is cut off by the reverse-proxy. For example, [Nginx](http://nginx.org/en/docs/http/ngx_http_upstream_module.html#keepalive).
+* `Server-sent events` connections are long-running HTTP (keep-alive) connections. We recommend to configure your reverse-proxy server to avoid situations where a long-running connection is cut off by the reverse-proxy. For example, [Nginx](http://nginx.org/en/docs/http/ngx_http_upstream_module.html#keepalive).
