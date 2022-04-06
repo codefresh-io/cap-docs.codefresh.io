@@ -35,7 +35,7 @@ The Client component that receives the requests from the Server it is subscribed
 * Public cluster with ingress controller  
   The public cluster is a cluster with an ingress controller whose ingress host is accessible from the internet. 
 * One or more private clusters, also with ingress controllers  
-  The private cluster is a cluster with an ingress controller whose ingress host is accessible internally within the cluster. It also has the CSDP runtime installed. 
+  The private cluster is a cluster with an ingress controller whose ingress host is accessible internally within the cluster, with the CSDP runtime installed. 
 * CSDP runtime in the private cluster, or on all private clusters if there is more than one
 
   
