@@ -120,14 +120,15 @@ spec:
     spec:
       containers:
         - name: webhook-relay-server
-          image: quay.io/codefresh/webhook-relay-server:stable
+          # To view the latest image versions, visit here: https://github.com/codefresh-io/webhook-relay/releases
+          image: quay.io/codefresh/webhook-relay-server:${version-tag}
           ports:
             - containerPort: 3000
-          # env:
-          #   - name: REDIS_URL
-          #     # You can specify your connection as a redis:// URL or rediss:// URL when using TLS encryption.
-          #     # Username and password can also be passed via URL redis://username:authpassword@127.0.0.1:6380/4.
-          #     value: redis://redis.my-service.com
+#          #env:
+#            - name: REDIS_URL
+#              # You can specify your connection as a redis:// URL or rediss:// URL when using TLS encryption.
+#              # Username and password can also be passed via URL redis://username:authpassword@127.0.0.1:6380/4.
+#              value: redis://redis.my-service.com
           readinessProbe:
             httpGet:
               path: /ready
@@ -150,6 +151,7 @@ spec:
             # Setting a very low timeout value (e.g. 1 second) can cause false-positive
             # checks and service interruption.
             timeoutSeconds: 5
+
 
 ```
 #### Client manifest
@@ -176,15 +178,15 @@ spec:
     spec:
       containers:
         - name: webhook-relay-client
-          image: quay.io/codefresh/webhook-relay-client:stable
+          # To view the latest image versions, visit here: https://github.com/codefresh-io/webhook-relay/releases
+          image: quay.io/codefresh/webhook-relay-client:${version-tag}
           env:
             - name: SOURCE_URL
               # Channel name should equal the runtime name
-              value: https://url-of-the-webhook-relay-server/subscribe/:channel
+              value: https://${public-cluster-ingress-host}/subscribe/${channel}
             - name: TARGET_BASE_URL
-              # All payloads will be sent to TARGET_BASE_URL/webhooks/:channel/*
-              value: https://base-url-of-your-runtime-cluster
-
+              # All payloads will be sent to TARGET_BASE_URL/webhooks/${channel}/*
+              value: https://${private-cluster-ingress-host}
 ```
 
 ### FAQs
