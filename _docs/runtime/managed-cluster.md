@@ -5,7 +5,7 @@ group: runtime
 toc: true
 ---
 
-Manage external clusters in CSDP by registering them to provisioned runtimes. Instead of having a runtime per cluster, manage multiple clusters through a single runtime with the spoke-and-hub method.  
+Manage external clusters in CSDP by registering them to provisioned runtimes. Instead of having a single cluster for a runtime, manage multiple clusters through a single runtim.  
 
 When you add an external cluster to a provisioned runtime, the cluster is registered as a managed cluster. A managed cluster is treated as any other managed K8s resource, meaning that you can monitor its health and sync status, deploy applications on the cluster and view information in the Applications dashboard, and remove the cluster from the runtime's managed list.  
 
@@ -53,7 +53,6 @@ Optionally, to first generate the YAML manifests, and then manually apply them, 
 1. If you used `dry-run`, apply the generated manifests to the same target cluster on which you ran the command.  
   Define the `server` value as the cluster's API server endpoint.  
   Here is an example of the YAML manifest generated with the `--dry-run` flag. Note that there are placeholders instead of actual values for several attributes.
-
 
 ```yaml
 apiVersion: v1
@@ -230,8 +229,9 @@ server: <server>
 
 
 ### Work with managed clusters 
-Use the Topology or List runtime views to work with managed clusters. For information on runtime views, see [Runtime views]({{site.baseurl}}/docs/runtime/runtime-views).
-**Monitor cluster**    
+Use the Topology or List runtime views to work with managed clusters. For information on runtime views, see [Runtime views]({{site.baseurl}}/docs/runtime/runtime-views).  
+
+**Monitor cluster**     
   View connection status for the managed cluster, and health and sync errors. Health and sync errors are flagged by the error notification in the toolbar, and visually flagged in the List and Topology views.  
   
 **Install/uninstall cluster components** 

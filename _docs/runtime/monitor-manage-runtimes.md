@@ -10,7 +10,7 @@ The **Runtimes** page displays the runtimes deployed across your environment, wh
 Work in the view mode of your choice to monitor and manage runtimes. 
 
 ### Runtime views
-View provisioned runtimes in Topology or List view formats.  
+View provisioned runtimes in List or Topology view formats.  
 * List view: The default view, displays the list of runtimes, the clusters managed by them, and Git Sources.  
 * Topology view: Displays a hierarchical view of runtimes and the clusters managed by them, with health and sync status of each cluster. 
 
@@ -32,7 +32,7 @@ Here is an example of the List view for runtimes.
   max-width="30%" 
 %}
 
-Here's a description of information in the List View. 
+Here is a description of the information in the List View. 
 
 
 {: .table .table-bordered .table-hover}
@@ -48,7 +48,7 @@ Here's a description of information in the List View.
 
 
 #### Topology view
-The visualization of the runtime hierarchy in the Topology view makes it easy to identify key information such as versions, health and sync status.  
+The runtime hierarchy visualization in the Topology view makes it easy to identify key information such as versions, health and sync status, for both the runtime and the clusters managed by it.  
 Here is an example of the Topology view for runtimes. 
   {% include 
 	image.html 
@@ -60,7 +60,7 @@ Here is an example of the Topology view for runtimes.
   max-width="30%" 
 %}
 
-And a description of the information in the Topology view. 
+Here is a description of the information in the Topology view. 
 
 {: .table .table-bordered .table-hover}
 | Topology View Item      | Description   |
@@ -72,17 +72,18 @@ And a description of the information in the Topology view.
 
  
 ### Runtime management
-Work in either the Topology or the List views to manage runtimes:
+Work in either the List or Topology views to manage runtimes:
 * Add managed clusters to runtimes (see [Managed Clusters]({{site.baseurl}}/docs/runtime/managed-cluster/))
 * Manage Git Sources associated with runtimes (see [Manage Git Sources]({{site.baseurl}}/docs/runtime/git-sources/))
 * Upgrade runtimes
 * Uninstall runtimes
 
 #### Upgrade runtimes
-Upgrade existing runtimes to install critical security updates or the latest version of all components. Upgrade through the CLI wizard or by running a silent upgrade.  
+Upgrade existing runtimes to install critical security updates or to install the latest version of all components. Upgrade by running a silent upgrade or through the CLI wizard.  
 
 > When there are security updates, the UI displays the alert, _At least one runtime requires a security update_. The Version column displays an _Update Required!_ notification.  
-  >   If you have managed clusters for the runtime, upgrading the runtime automatically updates runtime components within the managed cluster as well.
+
+>   If you have managed clusters for the runtime, upgrading the runtime automatically updates runtime components within the managed cluster as well.
 
 **Before you begin**  
 For both types of upgrades, make sure you have:  
@@ -92,27 +93,17 @@ For both types of upgrades, make sure you have:
 
 **Silent upgrade**  
 
-Pass the mandatory flags in the upgrade command:  
+* Pass the mandatory flags in the upgrade command:  
+
   `cf runtime upgrade <runtime-name> --git-token <git-token> --silent`   
   where:  
   `<git-token>` is a valid runtime token with the `repo` and `admin-repo.hook` scopes.   
 
-**How to upgrade with the CLI wizard**   
+**CLI wizard-based upgrade**   
 
 1. In the CSDP UI, make sure you are in the [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"} page.
-1. Switch to either the **Topology View** or to the **List View**.
-1. **Topology view**: Select the runtime cluster, and from the panel, select the three dots and then select **Upgrade Runtime**.
-  {% include 
-	image.html 
-	lightbox="true" 
-	file="/images/runtime/runtiime-topology-upgrade.png" 
-	url="/images/runtime/runtiime-topology-upgrade.png" 
-	alt="Topology View: Upgrade runtime option" 
-	caption="Topology View: Upgrade runtime option"
-  max-width="30%" 
-%} 
-
-  **List view**:  
+1. Switch to either the **List View** or to the **Topology View**.  
+1. **List view**:  
   * Select the runtime name. 
   * To see all the commits to the runtime, in the Version column, mouse over **Update Available!**, and select **View Complete Change Log**.
   * On the top-right, select **Upgrade**. 
@@ -126,6 +117,18 @@ Pass the mandatory flags in the upgrade command:
 		caption="List View: Upgrade runtime option"
 		max-width="30%" 
 		%} 
+
+  **Topology view**:  
+  Select the runtime cluster, and from the panel, select the three dots and then select **Upgrade Runtime**.
+  {% include 
+	image.html 
+	lightbox="true" 
+	file="/images/runtime/runtiime-topology-upgrade.png" 
+	url="/images/runtime/runtiime-topology-upgrade.png" 
+	alt="Topology View: Upgrade runtime option" 
+	caption="Topology View: Upgrade runtime option"
+  max-width="30%" 
+%}
 
 {:start="4"}
 1. If you have already installed the Codefresh CLI, in the Install Upgrades panel, copy the upgrade command.
@@ -147,7 +150,7 @@ Pass the mandatory flags in the upgrade command:
 
 
 #### Uninstall runtimes
-Uninstall CSDP runtimes that are not in use.  Uninstall a runtime through the CLI wizard, or by running a silent uninstall.  
+Uninstall CSDP runtimes that are not in use.  Uninstall a runtime by running a silent uninstall, or through the CLI wizard.  
 > Uninstalling a runtime removes the Git Sources and managed clusters associated with the runtime.
 
 **Before you begin**  
@@ -167,19 +170,8 @@ Pass the mandatory flags in the uninstall command:
 **How to uninstall with the CLI wizard**  
 
 1. In the CSDP UI, make sure you are in the [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"} page.
-1. Switch to either the **Topology View** or to the **List View**.
-1. **Topology view**: Select the runtime node, and from the panel, select the three dots and then select **Uninstall Runtime**.
-  {% include 
-	image.html 
-	lightbox="true" 
-	file="/images/runtime/runtime-topology-uninstall.png" 
-	url="/images/runtime/runtime-topology-uninstall.png" 
-	alt="Topology View: Uninstall runtime option" 
-	caption="Topology View: Uninstall runtime option"
-  max-width="30%" 
-%} 
-
-   **List view**: On the top-right, select the three dots and then select **Uninstall**.
+1. Switch to either the **List View** or to the **Topology View**.
+1. **List view**: On the top-right, select the three dots and then select **Uninstall**.
 
   {% include 
 	image.html 
@@ -188,6 +180,17 @@ Pass the mandatory flags in the uninstall command:
 	url="/images/runtime/uninstall-location.png" 
 	alt="List View: Uninstall runtime option" 
 	caption="List View: Uninstall runtime option"
+  max-width="30%" 
+%} 
+
+**Topology view**: Select the runtime node, and from the panel, select the three dots and then select **Uninstall Runtime**.
+  {% include 
+	image.html 
+	lightbox="true" 
+	file="/images/runtime/runtime-topology-uninstall.png" 
+	url="/images/runtime/runtime-topology-uninstall.png" 
+	alt="Topology View: Uninstall runtime option" 
+	caption="Topology View: Uninstall runtime option"
   max-width="30%" 
 %} 
 
