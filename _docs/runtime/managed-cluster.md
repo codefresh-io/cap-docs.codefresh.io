@@ -5,14 +5,13 @@ group: runtime
 toc: true
 ---
 
-Manage external clusters in CSDP by registering them to provisioned runtimes. Instead of having a single cluster for a runtime, manage multiple clusters through a single runtim.  
+Manage external clusters in CSDP by registering them to provisioned runtimes. Instead of having a single cluster for a runtime, manage multiple clusters through a single runtime.  
 
 When you add an external cluster to a provisioned runtime, the cluster is registered as a managed cluster. A managed cluster is treated as any other managed K8s resource, meaning that you can monitor its health and sync status, deploy applications on the cluster and view information in the Applications dashboard, and remove the cluster from the runtime's managed list.  
 
 Add managed clusters through:
 * CSDP CLI
 * Kustomize
-* Helm
 
 Adding a managed cluster via CSDP ensures that CSDP applies the required RBAC resources (`ServiceAccount`, `ClusterRole` and `ClusterRoleBinding`) to the target cluster, creates a `Job` that updates the selected runtime with the information, registers the cluster in Argo CD as a managed cluster, and updates the platform with the new cluster information.
 
@@ -31,12 +30,12 @@ Optionally, to first generate the YAML manifests, and then manually apply them, 
 1. Topology View: Select ![](/images/icons/add-cluster.png?display=inline-block).  
   List View: Select the **Managed Clusters** tab, and then select **+ Add Cluster**.  
 1. In the Add Managed Cluster panel:
-  * **Cluster Name**: Enter the context(kubecontext) for the cluster. 
+  * **Cluster Name**: Enter the context name for your cluster (as it appears in your kubeconfig file). 
   * Define the parameters and then run the command:  
-    `cf cluster add <runtime-name> --context [context_name] <managed-cluster-name> --dry-run`  
+    `cf cluster add <runtime-name> --context <context_name> [--dry-run]`  
     where:  
       `<runtime-name>` is the runtime to which to register the cluster. The name of the selected runtime is automatically added.  
-      `<kube-context>` is the kube context with the credentials to communicate with the managed cluster. If not supplied, the CLI displays the list of available clusters as defined in `kubeconfig`.  
+      `<context_name>` is the kube context with the credentials to communicate with the managed cluster. If not supplied, the CLI displays the list of available clusters as defined in `kubeconfig`.  
       `--dry-run` is optional, and required if you want to generate a list of YAML manifests that you can redirect and apply manually with `kubectl`.
   
    {% include 
@@ -51,8 +50,7 @@ Optionally, to first generate the YAML manifests, and then manually apply them, 
 
 {:start="5"}
 1. If you used `dry-run`, apply the generated manifests to the same target cluster on which you ran the command.  
-  Define the `server` value as the cluster's API server endpoint.  
-  Here is an example of the YAML manifest generated with the `--dry-run` flag. Note that there are placeholders instead of actual values for several attributes.
+  Here is an example of the YAML manifest generated with the `--dry-run` flag. Note that there are placeholders in the example, which are replaced with the actual values with `--dry-run`.
 
 ```yaml
 apiVersion: v1
@@ -200,31 +198,6 @@ secretGenerator:
 
 resources:
   - https://github.com/codefresh-io/cli-v2/manifests/add-cluster/kustomize?ref=v<runtimeVersion>
-```
-
-### Adding a managed cluster with Helm
-Create a `values.yaml` file with the information shown in the example below, and run `helm` commands on it.  
-
-```yaml
-# serviceAccountName is the name of the ServiceAccount Argo-CD will use to access the cluster
-serviceAccountName: argocd-manager
-
-# ingressUrl is the url used to access the CSDP runtime
-# example https://some.domain.name
-ingressUrl: <ingressUrl>
-
-# csdpToken is the user's Personal Access Token
-csdpToken: <csdpToken>
-
-# contextName is the name of the kube context (in the local kubeconfig file) that connects to the target cluster
-contextName: <contextName>
-
-# server is the k8s cluster API endpoint url
-# can be obtained by
-#   CONTEXT_NAME=<TARGET_CONTEXT_NAME>
-#   CLUSTER_NAME=$(kubectl config view --raw --flatten -o jsonpath='{.contexts[?(@.name == "'"${CONTEXT_NAME}"'")].context.cluster}')
-#   kubectl config view --raw --flatten -o jsonpath='{.clusters[?(@.name == "'"${CLUSTER_NAME}"'")].cluster.server}'
-server: <server>
 ```
 
 
