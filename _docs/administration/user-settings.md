@@ -42,14 +42,7 @@ To authorize with OAuth2, you have to supply your credentials, and when authoriz
    *  Enter your credentials, and select **Sign In**.
    *  Enter your credentials, and select **Sign In**. 
    * Complete the verification, if you have two-factor authentication for example.
-      {% include 
-   image.html 
-   lightbox="true" 
-   file="/images/administration/user-settings/oauth-user-authentication.png" 
-   url="/images/administration/user-settings/oauth-user-authentication.png" 
-   alt="Authorizing access with OAuth2" 
-   caption="Authorizing access with OAuth2"
-   max-width="30%" 
+
     {% include 
       image.html 
       lightbox="true" 
@@ -59,6 +52,7 @@ To authorize with OAuth2, you have to supply your credentials, and when authoriz
       caption="Authorizing access with OAuth2"
       max-width="30%" 
    %}
+   
   * Complete the verification, if you have two-factor authentication for example.
   The token is generated, and you are automatically directed to the Git Personal Access Tokens page. 
    The token is generated, and you are automatically directed to the Git Personal Access Tokens page. 
