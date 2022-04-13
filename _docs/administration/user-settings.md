@@ -16,6 +16,7 @@ You must however authorize GitHub access or add the personal access token for ea
 ### Git personal token permissions
 For OAuth2, the permissions and expiry date are pre-configured by the administrator.  
 For Git personal access tokens, make sure you select `repo` scope for commits and other actions when you generate the token.
+
 {% include 
    image.html 
    lightbox="true" 
@@ -24,7 +25,7 @@ For Git personal access tokens, make sure you select `repo` scope for commits an
    alt="Permissions for Git personal token" 
    caption="Permissions for Git personal token"
    max-width="30%" 
-   %}
+%}
 
 ### How to update a Git personal token
 Update your Git personal access token for each runtime when needed.  
@@ -61,14 +62,13 @@ To authorize with OAuth2, you have to supply your credentials, and when authoriz
 1. For Git personal access tokens: Paste the generated token in the **Token** field, and select **+Add Token**. 
 
     {% include 
-   {% include 
-   image.html 
-   lightbox="true" 
-   file="/images/administration/user-settings/user-settings-pat.png" 
-   url="/images/administration/user-settings/user-settings-pat.png" 
-   alt="Adding a Git personal access token" 
-   caption="Adding a Git personal access token"
-   max-width="30%" 
+      image.html 
+      lightbox="true" 
+      file="/images/administration/user-settings/user-settings-pat.png" 
+      url="/images/administration/user-settings/user-settings-pat.png" 
+      alt="Adding a Git personal access token" 
+      caption="Adding a Git personal access token"
+      max-width="30%" 
    %}
 
 The Token column for the runtime is updated with the encrypted token, and the Add Token button changes to Delete Token.  
