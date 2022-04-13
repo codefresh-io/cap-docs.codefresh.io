@@ -56,7 +56,6 @@ To authorize with OAuth2, you have to supply your credentials, and when authoriz
    
   * Complete the verification, if you have two-factor authentication for example.
   The token is generated, and you are automatically directed to the Git Personal Access Tokens page. 
-   The token is generated, and you are automatically directed to the Git Personal Access Tokens page. 
 
 {:start="4"}
 1. For Git personal access tokens: Paste the generated token in the **Token** field, and select **+Add Token**. 
