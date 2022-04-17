@@ -63,8 +63,8 @@ Every payload sent to the `/webhooks/${channel}/*` endpoint is published immedia
     The base URL to which the Client forwards the webhook payloads while keeping the original URL path, in the format:   
       `https://${internal-cluster-ingress-host}`  
 
-    For example, if the `endpoint` attribute in the `EventSource` manifest is set to `/webhooks/${runtime-1}/push-github/`, then the Client would forward all the payloads to this URL:    
-    `${TARGET_BASE_URL}/webhooks/${runtime-1}/push-github/` 
+    For example, if the `endpoint` attribute in the `EventSource` manifest is set to `/webhooks/runtime-1/push-github/`, then the Client would forward all the payloads to this URL:    
+    `${TARGET_BASE_URL}/webhooks/runtime-1/push-github/` 
 
   * `SOURCE_URL`  
     The URL to which the Client should subscribe.
@@ -169,6 +169,40 @@ spec:
             # checks and service interruption.
             timeoutSeconds: 5
 
+```
+
+#### Client manifest
+
+Apply the Client manifest to each of your private clusters with the CSDP runtimes.
+
+> To see all environment variables you can configure for the Client, [click here](https://github.com/codefresh-io/webhook-relay/blob/main/apps/webhook-relay-client/README.md){:target="\_blank"}.
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webhook-relay-client
+spec:
+  selector:
+    matchLabels:
+      app: webhook-relay-client
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: webhook-relay-client
+    spec:
+      containers:
+        - name: webhook-relay-client
+          # To view the latest image versions, visit here: https://github.com/codefresh-io/webhook-relay/releases
+          image: quay.io/codefresh/webhook-relay-client:${version-tag}
+          env:
+            - name: SOURCE_URL
+              # Channel name should equal the runtime name
+              value: https://${public-cluster-ingress-host}/subscribe/${channel}
+            - name: TARGET_BASE_URL
+              # All payloads will be sent to TARGET_BASE_URL/webhooks/${channel}/*
+              value: https://${private-cluster-ingress-host}
 ```
 
 ### FAQs
