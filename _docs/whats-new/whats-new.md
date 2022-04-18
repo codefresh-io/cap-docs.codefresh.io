@@ -48,15 +48,6 @@ For details, see [Topology view for runtimes]({{site.baseurl}}/docs/runtime/moni
 #### Applications dashboard enhancements
 View, monitor, and analyze deployments across your enterprise in the Applications dashboard. As a one-stop shop for deployments, the Applications dashboard delivers on the challenge of keeping track of your deployments, whatever the frequency, and whatever the scale.  
 
- {% include 
-	image.html 
-	lightbox="true" 
-	file="/images/whats-new/rel-notes-app-main-view.png" 
-	url="/images/whats-new/rel-notes-app-main-view.png" 
-	alt="Workflow Templates" 
-	caption="Workflow Templates"
-  max-width="30%" 
-  %}
 
 Here are the main enhancements in the release:
 * Filters:  
@@ -68,8 +59,8 @@ Here are the main enhancements in the release:
 	lightbox="true" 
 	file="/images/whats-new/wrkflow-template-main.png" 
 	url="/images/whats-new/wrkflow-template-main.png" 
-	alt="Applications Dashboard" 
-	caption="Applications Dashboard"
+	alt="Applications Dashboard: Filter by status" 
+	caption="Applications Dashboard: Filter by status"
   max-width="30%" 
   %}
 
