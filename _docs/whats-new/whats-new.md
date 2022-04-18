@@ -49,7 +49,7 @@ For details, see [Topology view for runtimes]({{site.baseurl}}/docs/runtime/moni
 View, monitor, and analyze deployments across your enterprise in the Applications dashboard. As a one-stop shop for deployments, the Applications dashboard delivers on the challenge of keeping track of your deployments, whatever the frequency, and whatever the scale.  
 
 
-Here are the main enhancements in the release:
+Here are the main enhancements:
 * Filters:  
   The health status snapshot in the Applications dashboard also works as a quick filter. Select a status to quickly filter applications by that status.    
   Filter criteria that match child applications automatically expands the parent application to show the child applications.
@@ -57,8 +57,8 @@ Here are the main enhancements in the release:
    {% include 
 	image.html 
 	lightbox="true" 
-	file="/images/whats-new/wrkflow-template-main.png" 
-	url="/images/whats-new/wrkflow-template-main.png" 
+	file="/images/whats-new/app-dashboard-status-filter.png" 
+	url="/images/whats-new/app-dashboard-status-filter.png" 
 	alt="Applications Dashboard: Filter by status" 
 	caption="Applications Dashboard: Filter by status"
   max-width="30%" 
