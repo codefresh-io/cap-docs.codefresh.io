@@ -9,15 +9,14 @@ toc: true
 
 
 We launched the Codefresh Software Delivery Platform (CSDP) in February this year. Built on Argo, the world’s most popular and fastest-growing open source software delivery, CSDP unlocks the full enterprise potential of Argo Workflows, Argo CD, Argo Events, and Argo Rollouts, providing a control-plane for managing them at scale.
-Since the launch, we have continued to work on and grow CSDP.
-
+Since the launch, we have continued to work on and grow CSDP. 
 ### Features and enhancements 
 
 #### Kubernetes cluster server version
 We now support the latest Kubernetes server versions, 1.22 and 1.23. 
 
 #### Ingress controllers
-We are continually working on supporting additional Ingress controllers, and this release includes support for four more of them:
+We are continually working on supporting additional Ingress controllers, and this release adds support for:
 * Ambassador
 * NGINX Enterprise
 * Istio
@@ -28,7 +27,7 @@ For details, see [Ingress controller requirements]({{site.baseurl}}/docs/runtime
 
 
 #### External cluster support
-Argo CD can manage external clusters without Argo CD installed on them. CSDP offers the same functionality to add, view, and manage remote clusters.  
+Argo CD can manage external clusters without Argo CD installed on them. CSDP offers the same functionality,  to add, view, and manage remote clusters.  
 CSDP admins can add an external cluster to a CSDP runtime, and register it automatically as a managed cluster. From that point on, you have complete visibility into health and sync status, and options to manage them.  
 
 With managed clusters in CSDP, you get:
@@ -80,20 +79,11 @@ Here are the main enhancements:
 * Git committers  
   Selecting a PR annotation shows all Git committers for that PR.  
 
-  {% include 
-	image.html 
-	lightbox="true" 
-	file="/images/whats-new/wrkflow-template-main.png" 
-	url="/images/whats-new/wrkflow-template-main.png" 
-	alt="Workflow Templates" 
-	caption="Workflow Templates"
-  max-width="30%" 
-  %}
 
 * Current state of cluster resources  
   Hierarchical representation of the resources in the cluster where the application is deployed in the Current State.
 
-    {% include 
+  {% include 
 	image.html 
 	lightbox="true" 
 	file="/images/whats-new/rel-notes-app-current-state.png" 
@@ -174,7 +164,7 @@ Toggle between Form and YAML views as you define additional settings for the app
 
 
 #### Delivery Pipeline flows 
-Our Delivery Pipeline flows have several usability and functionality enhancements.
+Our Delivery Pipeline flow has usability and functionality enhancements.
 * Git repo selection  
   A dropdown list allows you to select one or more Git repos in the Trigger Conditions tab. Start typing, and use autocomplete to view and select from the available Git repos.
 
@@ -186,6 +176,15 @@ Users who work on an older revision because of merge conflicts in the previous r
 #### New status for active workflows without events
 Identify workflows that are active but do not have any execution data with the new status filter in the Workflows dashboard. Filtering by Status ‘Unknown’ shows workflows without events for the last hour.
 
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/whats-new/rel-notes-workflow-unknown-status.png" 
+	url="/images/whats-new/rel-notes-workflow-unknown-status.png" 
+	alt="Unknown status filter for workflows" 
+	caption="Unknown status filter for workflows"
+  max-width="30%" 
+%}
 
 #### Docker config.json to report image info
 You can now authenticate to a Docker registry using the docker./config. json. Note that  config.json is not currently supported for GCR, ECR, and ACR.
