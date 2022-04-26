@@ -138,7 +138,7 @@ get team synchronization via the Codefresh CLI. You need to create a service acc
   * `JSON Keyfile`: The contents of the JSON file
   * `Admin email`: The user `admin.google.com`
 
-Now you can [synchronize teams using the CSDP CLI]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#syncing-of-teams-after-initial-sso-setup).
+Now you can [synchronize teams using the Codefresh CLI]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#syncing-of-teams-after-initial-sso-setup).
 
 #### What to read next
 See the [overview page]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#testing-your-identity-provider) on how to test the integration, activate SSO for collaborators and create sync jobs.

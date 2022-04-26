@@ -20,7 +20,7 @@ A. The current release of Codefresh supports hybrid deployment environments. Sta
 
 A. Codefresh creates a conformed fork of the Argo Project. You get an enterprise-supported version of the Argo Project comprising Argo Workflows, Argo Events, Argo CD, and Argo Rollouts. You can take advantage of the Argo Project offering, with the extended functionality that Codefresh brings to it.
 
-**Q. I already have a Kubernetes cluster with Argo CD. Can I install CSDP on the same cluster?**  
+**Q. I already have a Kubernetes cluster with Argo CD. Can I install Codefresh on the same cluster?**  
 
 A. Codefresh must be installed on a clean Kubernetes cluster without any Argo Project components. Because we create a conformed fork of the Argo Project in Codefresh, installing it on a cluster with Argo components creates a conflict that will cause the installation to fail.
 

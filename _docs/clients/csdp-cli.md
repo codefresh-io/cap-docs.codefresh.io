@@ -5,7 +5,7 @@ group: clients
 toc: true
 ---
 
-You need the Codefresh CLI to install Codefresh runtimes. For the initial download, you also need to generate the API key and create the API authentication context, all from the CSDP UI.  
+You need the Codefresh CLI to install Codefresh runtimes. For the initial download, you also need to generate the API key and create the API authentication context, all from the UI.  
 
 Subsequent downloads for upgrade purposes require you to only run the download command, using existing API credentials. 
 

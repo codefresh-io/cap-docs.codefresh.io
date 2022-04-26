@@ -56,7 +56,7 @@ In the Delivery Pipeline wizard, we have our starter Workflow Template to use as
    
 
 
-> To share artifacts between steps in workflows, and to view archived logs for completed workflows, you must [configure an artifact repository in CSDP]({{site.baseurl}}/docs/pipelines/configure-artifact-repository).
+> To share artifacts between steps in workflows, and to view archived logs for completed workflows, you must [configure an artifact repository in Codefresh]({{site.baseurl}}/docs/pipelines/configure-artifact-repository).
  
 
 

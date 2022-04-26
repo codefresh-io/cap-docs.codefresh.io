@@ -121,7 +121,7 @@ Now that you have defined the secrets, create the CI delivery pipeline in Codefr
   > Do not select the marketplace Git Source as you cannot commit to it.   
     If you have multiple runtimes installed, the Git Source you select also determines the runtime that executes the pipeline.
 1. Select **Next**.  
-  In the **Configuration** tab, **Workflow Templates** is selected. This is our CI Starter Workflow Template, that builds a Docker image using Kaniko, reports image metadata to CSDP, and tests the image.
+  In the **Configuration** tab, **Workflow Templates** is selected. This is our CI Starter Workflow Template, that builds a Docker image using Kaniko, reports image metadata to Codefresh, and tests the image.
 1. Select **Trigger Conditions**. 
 1. From the **Add** dropdown, select **Git Events**.
 1. In the **Git Repository URLs** field, select one or more GitHub repositories to listen to for the selected event. 
