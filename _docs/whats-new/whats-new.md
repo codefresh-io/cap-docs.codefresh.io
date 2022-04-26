@@ -7,13 +7,18 @@ redirect_from:
 toc: true
 ---
 
-## 2021
+## May 2022
+Workflow template section
+Add discard changes button [CR-10170]
+adding wf template + updating icons for pipeline/ wf template [CR-8560] sasha
+Show unsaved changes modal [CR-10169]
+Pipeline screen 
+Fix workflows ratio in the pipeline screen [CR-8448]
+Pipeline flow 
+Add ingress host to ingress [CR-10671]
+Add ingress	 class name to ingress [CR-11009]
+Resource validation 
+Adjust validation to support rename resource flow [CR-10523] eti
 
-### November 2021
+Add service account validation to sensor [CR-10467]eti
 
-- Documentation site has been created and initiated. We invite all beta testers to provide their feedback through our dedicated [slack channel](https://codefresh.slack.com/archives/C02M5QBMXLN/p1637345778020900){:target="\_blank"} 
-- A quick explanation of CAP entity model was added to our documentation - [documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/#monorepo-support-modified-files)
-
-### October 2021
-
-- Codefresh Argo Platform beta program is finally launched. [Request Early Access](https://codefresh.io/codefresh-argo-platform/#sign-up){:target="\_blank"}
