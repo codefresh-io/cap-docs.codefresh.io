@@ -12,12 +12,12 @@ Codefresh maintains a [conformed](https://github.com/argoproj/argo-conformance-p
 * [Argo Workflows](https://github.com/argoproj/argo-workflows): Workflow engine for Kubernetes.
 * [Argo Events](https://github.com/argoproj/argo-events): Event-driven workflow automation framework.
 
-For details, see [CSDP architecture]({{site.baseurl}}/docs/getting-started/architecture/).
+For details, see [Codefresh architecture]({{site.baseurl}}/docs/getting-started/architecture/).
 
 ### Hybrid behind firewall model
 Codefresh performs an installation, called a Runtime, on the user's K8s cluster. The Runtime contains all required components for the Codefresh experience.  
 
-For details, see [CSDP architecture]({{site.baseurl}}/docs/getting-started/architecture/).
+For details, see [Codefresh architecture]({{site.baseurl}}/docs/getting-started/architecture/).
 
 ### GitOps native approach
 Codefresh is built entirely on the heavily-adopted concept of GitOps. Read the detailed explanation on our [GitOps approach]({{site.baseurl}}/docs/getting-started/gitops/). <br>

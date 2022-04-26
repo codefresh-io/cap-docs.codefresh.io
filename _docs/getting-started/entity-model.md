@@ -55,7 +55,7 @@ Workflows with pipelines display links to the pipelines. Users can terminate or 
 ### Runtime
 A runtime represents an installation of Codefresh on the customer's K8s cluster, and contains all the components required to perform all tasks on the cluster.
 
-Review [CSDP architecture]({{site.baseurl}}/docs/getting-started/architecture/), and [runtime installation ]({{site.baseurl}}/docs/runtime/installation/).
+Review [Codefresh architecture]({{site.baseurl}}/docs/getting-started/architecture/), and [runtime installation ]({{site.baseurl}}/docs/runtime/installation/).
 
 ### Git Source
 A Git Source is a link to a Git repository that stores GitOps-controlled entities. You can create as many as Git Sources as you require.

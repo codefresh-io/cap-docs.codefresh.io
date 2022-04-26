@@ -105,4 +105,4 @@ We are working to enhance our access control model by adding another layer to pr
 * A more granular permission model for dynamic resources that are non-GitOps controlled, but created from a GitOps-controlled entity, for example, workflows
 
 ### What to read next
-[CSDP architecture](({{site.baseurl}}/docs/getting-started/architecture/))
+[Codefresh architecture](({{site.baseurl}}/docs/getting-started/architecture/))

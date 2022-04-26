@@ -25,7 +25,7 @@ Codefresh brings you the power of the Argo project for your Kubernetes deploymen
 * Argo Events for event-driven workflow automation framework
 
 Codefresh creates a conformed fork of the Argo project, providing an enterprise-supported version of the same, enhanced with unique functionality.
-For details, see [CSDP architecture]({{site.baseurl}}/docs/getting-started/architecture).
+For details, see [Codefresh architecture]({{site.baseurl}}/docs/getting-started/architecture).
 
  
 ### Codefresh and GitOps
