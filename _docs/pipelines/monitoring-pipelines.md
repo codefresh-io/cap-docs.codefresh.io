@@ -5,18 +5,18 @@ group: pipelines
 toc: true
 ---
 
-Once a pipeline runs and a workflow is submitted, CSDP continuously collects and displays real-time info and analytics on the pipeline and its workflows.  
+Once a pipeline is created, runs, and submits a workflow, CSDP continuously collects and displays real-time info and analytics on the pipeline and its workflows.  
 
 There are several options to monitor pipeline and workflow activity:
 
 * Activity Log notifications: Monitor sensor and event-source logs. 
-* Aggregated and granular data visualizations: See data for all pipelines (global aggregated view), or for a single pipeline, its workflows and steps (granular view). Analyze and compare resource consumption, and identify trends through KPI metrics.
-* Interactive workflow-step visualizations: Filter workflow step-views by node type, results, and more, in YAML and tree formats.
+* Aggregated and granular data visualizations: See data for all pipelines in the global aggregated view, or for a single pipeline, its workflows and steps, for a detailed granular view. Analyze and compare resource consumption, and identify trends through KPI metrics.
+* Interactive workflow-step visualizations: Filter workflow steps by node type, results, and more, in YAML and tree formats.
 * Workflow logs: Real-time logs for ongoing workflows, and archived logs for completed workflows.
 
 
-### How to monitor sensor and event source notifications in Activity Log
-The Activity Log is a quick way to monitor sensor and event-source logs. A pull-down panel in the CSDP toolbar, the Activity Log shows ongoing, success, and error notifications, by date, starting with today's date. Syntax errors that prevent the sensor from triggering the pipeline are displayed here.
+### How to monitor sensor and event source notifications for pipelines in Activity Log
+The Activity Log is a quick way to monitor logs for sensors and event-sources in pipelines. A pull-down panel in the CSDP toolbar, the Activity Log shows ongoing, success, and error notifications, by date, starting with today's date. Syntax errors that prevent the sensor from triggering the pipeline are displayed here.
 
 1. In the CSDP UI, on the top-right of the toolbar, select ![](/images/pipeline/monitoring/pipeline-activity-log-toolbar.png?display=inline-block) **Activity Log**.
 1. To see pipeline activity, select **Event Source** and **Sensor** filters.
@@ -33,44 +33,17 @@ The Activity Log is a quick way to monitor sensor and event-source logs. A pull-
 {:start="3"}
 1. To see more information on an error, select the **+** sign.
 
-### Working with aggregated (global) pipeline views
-The aggregated view is a global view of all the pipelines with active workflows in your cluster. 
+### Working with aggregated global pipeline views
+The aggregated view is a global view of all the Delivery Pipelines with active workflows in your cluster, displayed in the Home page. This dashboard is your window to real-time and historical analytics for Delivery Pipelines, along with deployment information.  
+Delivery Pipelines are displayed in the lower-half of the dashboard.
 
-
-#### How to switch to aggregated pipeline view
 1. In the CSDP UI, go to the [Home](https://g.codefresh.io/2.0/){:target="\_blank"} page.
-1. To customize the view, select filters.
-1. To view day-to-day data for a metric, select a mini-chart. 
+1. Set the **Time** frame for which to show pipeline data, as the **Last 7 days** (the default), **Last 30 days**, or **Last 90 days**.
+1. Scroll down to Delivery Pipelines:
+  1. To customize the view, select **Filters**.
+  2. To switch to the individual pipeline view, select **View**.
+  3. To get day-to-day data for a metric, select the line-chart. 
 
-
-#### Filters for aggregated views
-Filters allow you to narrow the scope of aggregated data, and customize the view with just the information you want to see. Unless otherwise indicated, all filters support multi-selection.
-
-{: .table .table-bordered .table-hover}
-|  Filter          |  Description|  
-| --------------   | --------------|  
-| **Status**           | {::nomarkdown}<ul><li><b>Succeeded</b>: Pipelines with workflows completed successfully.</li> <li><b>Failed</b>: Pipelines with workflows that failed. </li><li><b>Error</b>: Pipelines with workflows that resulted in errors.</li> {:/}|                            
-| **Repo**             |The Git repository or repositories with the events that triggered or ran the pipelines. |          
-| **Event Type**       | The Git or Calendar event or events by which to view pipelines.  If you select Git push, only those pipelines configured to be run on Git push are displayed. |    
-| **Initiator**       | The user who made the commit that triggered the event and ran the pipeline.|       
-| **Time**             |The time frame for which to show pipeline data, and can be **Last 7 days** (the default), **Last 30 days**, or **Last 90 days**|
-
-#### Metrics in aggregated views
-
-Pipeline metrics (KPIs), are displayed in line charts and in list format. 
-* Line charts visualize the detailed day-to-day values for the metric in the selected time range.
-* List formats display the average values for the metric, and also shows the fluctuations in the values compared to a reference time range. The reference time range is the period of time that corresponds to and precedes the selected time range. 
-
-{: .table .table-bordered .table-hover}
-|  Metric               |  Description|  
-| --------------        | --------------|  
-| **Success Rate**      | The average number of successful executions, in percentage. |                            
-| **Average Duration**  | The average length of time to complete execution, in mm:ss. |          
-| **Executions**        | The average number of times the pipeline was triggered, in percentage. |    
-| **Committers**        | The number of users whose commits on the repository or repositories triggered the pipelines. The user count is aggregated per user, so if the same user made ten commits, all commits are counted only once.|       
-
-
-#### Exploring the aggregated pipeline view
 
 Here is an example of the aggregated pipeline view. 
 
@@ -85,14 +58,40 @@ Here is an example of the aggregated pipeline view.
 
 The table describes the information in the aggregated pipeline view.
 
-
 {: .table .table-bordered .table-hover}
 | Legend            | Description |  
 | --------------    | ------------|  
-| **1**             | The Home page where aggregated views for Delivery Pipelines are displayed.|                             
-|**2**              | The filters by which to customize the aggregated view. For information on the filters, see [Filters quick reference]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#filters-for-aggregated-views), earlier in this article. All filters, except the **Time** filter support multi-selection.|          
-|**3**              | Micro line graph views of KPIs for Delivery Pipelines. Selecting a micro line chart displays the detailed day-to-day values for the metrics. For information on each metric, see [Metrics quick reference] earlier in this article. |       
-|**4**             | Pipelines by activity and duration. List views of up to ten of the most active, and ten of the longest running, pipelines. {::nomarkdown}<ul><li>Pipelines without numbers prefixing the names indicate new pipelines.</li><li>Pipeline names prefixed with a green or red number (encircled in the image above) indicate existing pipelines. </br> The number indicates the change in position of the pipeline compared to the reference period. </li><li>To drill down into a specific pipeline, select the pipeline.</li></ul> {:/}|    
+| **1**             | The Home page with Delivery Pipelines analytics.|                             
+|**2**              | The filters by which to customize the aggregated view. For information on the filters, see [Filters quick reference](#filters-for-aggregated-views) in this article. All filters support multiple values.|          
+|**3**              |  Line chart views of KPIs for Delivery Pipelines. Selecting a line chart displays the detailed day-to-day values for the metrics. For information on each metric, see [Metrics quick reference](#metrics-in-aggregated-views) in this article. |       
+|**4**             | Pipelines by activity and duration. List views of up to ten of the most active, and ten of the longest running, pipelines. {::nomarkdown}<ul><li>Pipelines without numbers prefixing the names indicate new pipelines within the selected time frame.</li><li>Pipeline names prefixed with a green or red number (encircled in the image above) indicate existing pipelines. </br> The number indicates the change in position of the pipeline compared to the reference period. </li><li>To drill down into a specific pipeline, select the pipeline.</li></ul> {:/}|    
+
+
+
+#### Filters for aggregated views
+Filters narrow the scope of aggregated data, allowing you to visualize just the information you want to see. Unless otherwise indicated, all filters support multi-selection.
+
+{: .table .table-bordered .table-hover}
+|  Filter          |  Description|  
+| --------------   | --------------|  
+| **Status**           | {::nomarkdown}<ul><li><b>Succeeded</b>: Pipelines with workflows completed successfully.</li> <li><b>Failed</b>: Pipelines with workflows that failed. </li><li><b>Error</b>: Pipelines with workflows that resulted in errors.</li> {:/}|                            
+| **Repository**             |The Git repository or repositories with the events that triggered or ran the pipelines. |          
+| **Event Type**       | The Git or Calendar event or events by which to view pipelines.  If you select Git push, only those pipelines configured to be run on Git push are displayed. |    
+| **Initiator**       | The user who made the commit that triggered the event and ran the pipeline.|       
+
+#### Metrics in aggregated views
+
+Pipeline metrics (KPIs), are displayed as line charts and in list formats. 
+* Line charts visualize the detailed day-to-day values for the metric in the selected time range.
+* List formats display the average values for the metrics, and shows the fluctuations in the values compared to a reference time range. The reference time range is the period of time that corresponds to and precedes the selected time range. 
+
+{: .table .table-bordered .table-hover}
+|  Metric               |  Description|  
+| --------------        | --------------|  
+| **Success Rate**      | The average number of successful executions, in percentage. |                            
+| **Average Duration**  | The average length of time to complete execution, in mm:ss. |          
+| **Executions**        | The average number of times the pipeline was triggered, in percentage. |    
+| **Committers**        | The number of users whose commits on the repository or repositories triggered the pipelines. The user count is aggregated per user, so if the same user made ten commits, the ten commits are counted as a single commit.|       
 
 
 ### Working with individual (granular) pipeline views
