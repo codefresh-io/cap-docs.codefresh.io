@@ -49,7 +49,8 @@ For details, see [Topology view for runtimes]({{site.baseurl}}/docs/runtime/moni
 The Applications dashboard is the place to View, monitor, and analyze deployments across your enterprise.  
 
 Here are the main enhancements:
-* Filters:  
+* **Filters**  
+
   The health status snapshot in the Applications dashboard works also as a quick filter. Selecting a status filters applications by that status.    
   Filter criteria that match child applications automatically expands the parent application to show the child applications.
 
@@ -63,7 +64,8 @@ Here are the main enhancements:
   max-width="30%" 
   %}
 
-* Rollouts: 
+* **Rollouts**  
+
   Intuitive visualization with the option to open the Images view in a new browser window.  
 
    {% include 
@@ -182,12 +184,12 @@ The Delivery Pipeline flow has several usability and functionality enhancements 
 
 * **Event payload, manifests, metadata for workflow steps**  
 
-  Once a workflow is submitted for a Delivery Pipeline, the Workflows tab visualizes the connections between the steps in the workflow.  A significant functionality enhancement is the capability to display pull-out panels for each step in the workflow. Selecting a step displays the data compatible to the step type, which can be the event payload itself, manifests, or metadata.  
-
+  Once a workflow is submitted for a Delivery Pipeline, the Workflows tab visualizes the connections between the steps in the workflow.  A significant functionality enhancement is the capability to display data for each step in the workflow. 
+  Selecting a step displays a pull-out panel with the data compatible to the step type, which can be the event payload itself, manifests, or metadata.  
   Easily copy paths from event payloads, attributes, download logs, without moving from the interface. 
 
-  Each panel identifies the step type (Sensor, DAG, Event), the most recent update, and the information on that step.  
-  This example shows the event payload for the workflow.  
+  Each panel identifies the step type, the most recent update, and the information on that step.  
+  This example shows the panel with the event payload for the workflow.  
   
 {% include 
 	image.html 
@@ -199,7 +201,7 @@ The Delivery Pipeline flow has several usability and functionality enhancements 
   max-width="30%" 
 %}
 
-  Another example from the same workflow shows the sensor manifest.  
+  Another example shows panel with the sensor manifest.  
 
 {% include 
 	image.html 
@@ -211,7 +213,8 @@ The Delivery Pipeline flow has several usability and functionality enhancements 
   max-width="30%" 
 %}
 
-* Rename trigger resource
+* **Rename trigger resource** 
+
   Similar to Workflow Templates, you can now rename the trigger name of a Delivery Pipeline after creating it. The trigger name must be unique across all the sensors associated with that pipeline. Note that the Rename option is enabled only when there are no pending commits. The sensor name cannot be changed. 
 
 {% include 
@@ -224,12 +227,13 @@ The Delivery Pipeline flow has several usability and functionality enhancements 
   max-width="30%" 
 %}
 
-* Git repo selection  
+* **Git repo selection**  
+
   A dropdown list allows you to select one or more Git repos in the Trigger Conditions tab. Start typing, and use autocomplete to view and select from the available Git repos.
 
 {% include 
    image.html 
-lightbox="true" 
+   lightbox="true" 
 	file="/images/whats-new/rel-notes-git-repo-select.png" 
 	url="/images/whats-new/rel-notes-git-repo-select.png" 
 	alt="Git repo selection for Delivery Pipelines" 
@@ -238,17 +242,16 @@ lightbox="true"
 %}
 
 
-
-* Errors/warning in manifests synced with the line number
+* **Errors/warning in manifests synced with the line number in manifest**
   Clicking the line number next to an error or a warning changes focus to the line in the manifest file with the error or warning.
 
 
 #### Workflow dashboard enhancements
 
-* Link from workflows to their pipelines
+* **Link from workflows to their pipelines**
   Workflow names in the dashboard are clickable links. Clicking a workflow name takes you directly to the pipeline associated with that workflow.  tab for that pipeline.
 
-New status for active workflows without events
+* **New status for active workflows without events**
 Identify workflows that are active but do not have any execution data with the new status filter in the Workflows dashboard. Filtering by Status ‘Unknown’ shows workflows without events for the last hour.
 
 {% include 
