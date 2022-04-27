@@ -8,8 +8,9 @@ toc: true
 ---
 
 
-We launched the Codefresh Software Delivery Platform (CSDP) in February this year. Built on Argo, the world’s most popular and fastest-growing open source software delivery, CSDP unlocks the full enterprise potential of Argo Workflows, Argo CD, Argo Events, and Argo Rollouts, providing a control-plane for managing them at scale.
-Since the launch, we have continued to work on and grow CSDP. 
+We launched the Codefresh platform in February this year. Built on Argo, the world’s most popular and fastest-growing open source software delivery, Codefresh unlocks the full enterprise potential of Argo Workflows, Argo CD, Argo Events, and Argo Rollouts, providing a control-plane for managing them at scale.
+Since the launch, we have continued to work on and grow Codefresh. Have a look at 
+
 ### Features and enhancements 
 
 #### Kubernetes cluster server version
@@ -27,30 +28,29 @@ For details, see [Ingress controller requirements]({{site.baseurl}}/docs/runtime
 
 
 #### External cluster support
-Argo CD can manage external clusters without Argo CD installed on them. CSDP offers the same functionality,  to add, view, and manage remote clusters.  
-CSDP admins can add an external cluster to a CSDP runtime, and register it automatically as a managed cluster. From that point on, you have complete visibility into health and sync status, and options to manage them.  
+Argo CD can manage external clusters without Argo CD installed on them. Now you have the same functionality in Codefresh, and can add, view, and manage remote clusters.  
+Admins can add an external cluster to a Codefresh runtime, and register it automatically as a managed cluster. From that point on, you have complete visibility into health and sync status, and options to manage them.  
 
-With managed clusters in CSDP, you get:
+With managed clusters in Codefresh, you get:
 * Streamlined management: All cluster- and cluster-component level operations are managed through the runtime, in a centralized location. You can install new and uninstall existing components, and remove the cluster from the runtime's managed list.
 * Seamless upgrades: Upgrades to runtimes or to runtime components in the local cluster automatically upgrades those in managed clusters as well.
-* Integration with CSDP dashboards: Applications dashboards reflect deployment information for applications in all managed clusters.
+* Integration with dashboards: Applications dashboards reflect deployment information for applications in all managed clusters.
 
 For details, see [Managed clusters]({{site.baseurl}}/docs/runtime/managed-cluster).
 
 #### Topology views for runtimes
-This release introduces the Topology view for runtimes. Get a visual representation of the runtimes in your deployments, managed clusters, and cluster components. 
+Get a visual representation of the runtimes in your deployments, managed clusters, and cluster components with the Topology view for runtimes. 
 Quickly identify key information such as health and sync status, and version.
 Add new clusters to or remove existing clusters from runtime management.  
 
 For details, see [Topology view for runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/#topology-view).
 
 #### Applications dashboard enhancements
-View, monitor, and analyze deployments across your enterprise in the Applications dashboard. As a one-stop shop for deployments, the Applications dashboard delivers on the challenge of keeping track of your deployments, whatever the frequency, and whatever the scale.  
-
+The Applications dashboard is the place to View, monitor, and analyze deployments across your enterprise.  
 
 Here are the main enhancements:
 * Filters:  
-  The health status snapshot in the Applications dashboard also works as a quick filter. Select a status to quickly filter applications by that status.    
+  The health status snapshot in the Applications dashboard works also as a quick filter. Selecting a status filters applications by that status.    
   Filter criteria that match child applications automatically expands the parent application to show the child applications.
 
    {% include 
@@ -94,7 +94,7 @@ Here are the main enhancements:
   %}
 
 #### Workflow Templates
-CSDP provides full-fledged management for Workflow Template resources, from optimizing existing Workflow Templates, to creating new ones, and testing Workflow Templates before commit. 
+Codefresh provides full-fledged management for the Workflow Template resource, from optimizing existing Workflow Templates, to creating new ones, and testing Workflow Templates before commit. 
  
  {% include 
 	image.html 
@@ -107,7 +107,7 @@ CSDP provides full-fledged management for Workflow Template resources, from opti
   %}
 
 * **Create Workflow Templates**  
-  Create Workflow Templates in three steps. Start by selecting one from the Codefresh Hub for Argo, or start with a blank template form. Customize. And then submit.  
+  Create Workflow Templates in three steps. Start by selecting one from the Codefresh Hub for Argo, or start with a blank template form. Customize it. And then submit.  
 
   {% include 
 	image.html 
@@ -121,7 +121,7 @@ CSDP provides full-fledged management for Workflow Template resources, from opti
 
 * **Workflow Template Manifests, Workflows and Pipelines**  
   Select a Workflow Template, and work with the options in the Manifest tab to update and optimize it. Any change to the Git State manifest is immediately displayed with the before and after change versions.  
-  See the Workflows and Delivery Pipelines associated with the selected Workflow Template.  
+  The Workflows and Delivery Pipelines tabs associated with the selected Workflow Template are displayed in the relevant tabs, giving you all the information in one location.  
  
   {% include 
 	image.html 
@@ -134,10 +134,10 @@ CSDP provides full-fledged management for Workflow Template resources, from opti
   %}
 
 * **Workflow Templates sandbox**  
-  Test your changes to any Workflow Template  without having to first commit the changes.  
+  Test your changes to any Workflow Template without having to first commit the changes.  
   Simply run the Workflow Template. Scroll through previous iterations if any, view arguments and values, and change, add, or delete them. 
   
-  {% include 
+{% include 
 	image.html 
 	lightbox="true" 
 	file="/images/whats-new/rel-notes-wrkflow-temp-run-args-view.png" 
@@ -147,9 +147,23 @@ CSDP provides full-fledged management for Workflow Template resources, from opti
   max-width="30%" 
   %}
 
+* **Renaming the Workflow Template**  
+  After creating a Workflow Template you can rename it by selecting a Workflow Template and clicking the **Rename** option.  
+  The new name must be unique to the cluster. 
+
+  {% include 
+	image.html 
+	lightbox="true" 
+	file="/images/whats-new/rel-notes-rename-workflow-template.png" 
+	url="/images/whats-new/rel-notes-rename-workflow-template.png" 
+	alt="Rename Workflow Template" 
+	caption="Rename Workflow Template"
+  max-width="30%" 
+  %}
+  
 
 #### Application creation wizard
-Create applications from the Applications dashboard. Define the application name and the runtime to use. CSDP automatically creates the YAML resource with the same name as the application.  
+Create applications from the Applications dashboard. Define the application name and the runtime to use. The platform automatically creates the YAML resource with the same name as the application.  
 Toggle between Form and YAML views as you define additional settings for the application. 
 
 {% include 
@@ -164,16 +178,77 @@ Toggle between Form and YAML views as you define additional settings for the app
 
 
 #### Delivery Pipeline flows 
-Our Delivery Pipeline flow has usability and functionality enhancements.
+The Delivery Pipeline flow has several usability and functionality enhancements that .
+
+* **Event payload, manifests, metadata for workflow steps**  
+
+  Once a workflow is submitted for a Delivery Pipeline, the Workflows tab visualizes the connections between the steps in the workflow.  A significant functionality enhancement is the capability to display pull-out panels for each step in the workflow. Selecting a step displays the data compatible to the step type, which can be the event payload itself, manifests, or metadata.  
+
+  Easily copy paths from event payloads, attributes, download logs, without moving from the interface. 
+
+  Each panel identifies the step type (Sensor, DAG, Event), the most recent update, and the information on that step.  
+  This example shows the event payload for the workflow.  
+  
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/whats-new/rel-notes-event-payload.png" 
+	url="/images/whats-new/rel-notes-event-payload.png" 
+	alt="Panel with Event Payload in Workflows tab" 
+	caption="Panel with Event Payload in Workflows tab"
+  max-width="30%" 
+%}
+
+  Another example from the same workflow shows the sensor manifest.  
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/whats-new/rel-notes-event-srce-manifest.png" 
+	url="/images/whats-new/rel-notes-event-srce-manifest.png" 
+	alt="Panel with Sensor manifest in Workflows tab" 
+	caption="Panel with Sensor manifest in Workflows tab"
+  max-width="30%" 
+%}
+
+* Rename trigger resource
+  Similar to Workflow Templates, you can now rename the trigger name of a Delivery Pipeline after creating it. The trigger name must be unique across all the sensors associated with that pipeline. Note that the Rename option is enabled only when there are no pending commits. The sensor name cannot be changed. 
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/whats-new/rel-notes-rename-pipeline-trigger.png" 
+	url="/images/whats-new/rel-notes-rename-pipeline-trigger.png" 
+	alt="Rename trigger option for Delivery Pipeline" 
+	caption="Rename trigger option for Delivery Pipelines"
+  max-width="30%" 
+%}
+
 * Git repo selection  
   A dropdown list allows you to select one or more Git repos in the Trigger Conditions tab. Start typing, and use autocomplete to view and select from the available Git repos.
 
-* Commits
-Commits are blocked for users without write permissions.
-Users who work on an older revision because of merge conflicts in the previous revision, now have the option of committing their changes. 
+{% include 
+   image.html 
+lightbox="true" 
+	file="/images/whats-new/rel-notes-git-repo-select.png" 
+	url="/images/whats-new/rel-notes-git-repo-select.png" 
+	alt="Git repo selection for Delivery Pipelines" 
+	caption="Git repo selection for Delivery Pipelines"
+  max-width="30%" 
+%}
 
 
-#### New status for active workflows without events
+
+* Errors/warning in manifests synced with the line number
+  Clicking the line number next to an error or a warning changes focus to the line in the manifest file with the error or warning.
+
+
+#### Workflow dashboard enhancements
+
+* Link from workflows to their pipelines
+  Workflow names in the dashboard are clickable links. Clicking a workflow name takes you directly to the pipeline associated with that workflow.  tab for that pipeline.
+
+New status for active workflows without events
 Identify workflows that are active but do not have any execution data with the new status filter in the Workflows dashboard. Filtering by Status ‘Unknown’ shows workflows without events for the last hour.
 
 {% include 
@@ -195,8 +270,8 @@ CSDP supports Red Hat OpenShift 4.8. For detailed information, read their [blog]
 
 ### Bug fixes
 * Inaccurate results when filtering by Application type.
-* Fixed issue when new agent upgrade was overriding some configuration in previous release.
-* JIRA annotations are not displayed in Docker.io images.
+* Agent upgrade overrides some configuration in previous release.
+* JIRA annotations not displayed in Docker.io images.
 * Cluster shows information for ArgoCD cluster instead of for the target cluster.
 * Avatars show up intermittently.
 * Uninstallation issues with newer K8s versions.
