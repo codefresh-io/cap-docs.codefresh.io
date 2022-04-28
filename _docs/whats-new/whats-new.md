@@ -9,7 +9,7 @@ toc: true
 
 
 We launched the Codefresh platform in February this year. Built on Argo, the world’s most popular and fastest-growing open source software delivery, Codefresh unlocks the full enterprise potential of Argo Workflows, Argo CD, Argo Events, and Argo Rollouts, providing a control-plane for managing them at scale.
-Since the launch, we have continued to work on and grow Codefresh. Have a look at 
+Since the launch, we have continued to work on and grow Codefresh. 
 
 ### Features and enhancements 
 
@@ -29,7 +29,7 @@ For details, see [Ingress controller requirements]({{site.baseurl}}/docs/runtime
 
 #### External cluster support
 Argo CD can manage external clusters without Argo CD installed on them. Now you have the same functionality in Codefresh, and can add, view, and manage remote clusters.  
-Admins can add an external cluster to a Codefresh runtime, and register it automatically as a managed cluster. From that point on, you have complete visibility into health and sync status, and options to manage them.  
+Admins can add an external cluster to a Codefresh runtime, and register it automatically as a managed cluster. From that point on, you have complete visibility into health and sync status, and options to manage them, including installing Argo Rollouts.  
 
 With managed clusters in Codefresh, you get:
 * Streamlined management: All cluster- and cluster-component level operations are managed through the runtime, in a centralized location. You can install new and uninstall existing components, and remove the cluster from the runtime's managed list.
@@ -45,12 +45,55 @@ Add new clusters to or remove existing clusters from runtime management.
 
 For details, see [Topology view for runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/#topology-view).
 
+#### Analytics dashboard
+In addition to the Delivery Pipelines, the Analytics dashboard includes Runtimes, Managed Clusters, Deployments, and Applications, providing you a complete picture with the key facts and insights.  
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/whats-new/rel-notes-analytics-main-view.png" 
+	url="/images/whats-new/rel-notes-analytics-main-view.png" 
+	alt="Analytics dashboard" 
+	caption="Analytics dashboard"
+   max-width="30%" 
+  %}
+
+When you look at Deployments, the tooltip for the number of deployments shows the comparison in percentage for the preceding time range.
+
+{% include 
+   image.html 
+	lightbox="true" 
+	file="/images/whats-new/rel-notes-analytics-deployments.png" 
+	url="/images/whats-new/rel-notes-analytics-deployments.png" 
+	alt="Analytics dashboard: Comparative metrics for deployments" 
+	caption="Analytics dashboard: Comparative metrics for deployments"
+   max-width="30%" 
+  %}
+
+
+* **Usability enhancements**  
+
+  * Global filters are now located right at the top of the dashboard.  
+  * Resource-specific filters are available for that resource. 
+  * A convenient View button takes you to the dedicated resource view for additional analysis.
+
+  {% include 
+	image.html 
+	lightbox="true" 
+	file="/images/whats-new/rel-notes-analytics.png" 
+	url="/images/whats-new/rel-notes-analytics.png" 
+	alt="Analytics dashboard: Usability enhancements" 
+	caption="Analytics dashboard: Usability enhancements"
+   max-width="30%" 
+  %}
+
+
+
+
 #### Applications dashboard enhancements
-The Applications dashboard is the place to View, monitor, and analyze deployments across your enterprise.  
-
-Here are the main enhancements:
+The Applications dashboard displays the individual deployments across your enterprise.  Here are the main enhancements:
 * **Filters**  
-
+  
   The health status snapshot in the Applications dashboard works also as a quick filter. Selecting a status filters applications by that status.    
   Filter criteria that match child applications automatically expands the parent application to show the child applications.
 
@@ -78,11 +121,11 @@ Here are the main enhancements:
   max-width="30%" 
   %}
 
-* Git committers  
-  Selecting a PR annotation shows all Git committers for that PR.  
+* **Git committers**  
+  Selecting an avatar shows all commits made.  
 
 
-* Current state of cluster resources  
+* **Current state of cluster resources**  
   Hierarchical representation of the resources in the cluster where the application is deployed in the Current State.
 
   {% include 
@@ -180,15 +223,16 @@ Toggle between Form and YAML views as you define additional settings for the app
 
 
 #### Delivery Pipeline flows 
-The Delivery Pipeline flow has several usability and functionality enhancements that .
+The Delivery Pipeline flow has several usability and functionality enhancements.
 
 * **Event payload, manifests, metadata for workflow steps**  
 
-  Once a workflow is submitted for a Delivery Pipeline, the Workflows tab visualizes the connections between the steps in the workflow.  A significant functionality enhancement is the capability to display data for each step in the workflow. 
+  Once a workflow is submitted for a Delivery Pipeline, the Workflows tab visualizes the connections between the steps in the workflow.  
+  A significant functionality enhancement is the capability to display data for each step in the workflow. 
   Selecting a step displays a pull-out panel with the data compatible to the step type, which can be the event payload itself, manifests, or metadata.  
-  Easily copy paths from event payloads, attributes, download logs, without moving from the interface. 
+  Easily copy paths for attributes from event payloads, view logs, and download artifacts. 
 
-  Each panel identifies the step type, the most recent update, and the information on that step.  
+  Each panel identifies the step type, the most recent update, and displays the data for that step.  
   This example shows the panel with the event payload for the workflow.  
   
 {% include 
@@ -201,7 +245,7 @@ The Delivery Pipeline flow has several usability and functionality enhancements 
   max-width="30%" 
 %}
 
-  Another example shows panel with the sensor manifest.  
+  Another example shows the panel with the sensor manifest.  
 
 {% include 
 	image.html 
@@ -215,7 +259,7 @@ The Delivery Pipeline flow has several usability and functionality enhancements 
 
 * **Rename trigger resource** 
 
-  Similar to Workflow Templates, you can now rename the trigger name of a Delivery Pipeline after creating it. The trigger name must be unique across all the sensors associated with that pipeline. Note that the Rename option is enabled only when there are no pending commits. The sensor name cannot be changed. 
+  Similar to Workflow Templates, you can now rename the trigger name of a Delivery Pipeline.. The trigger name must be unique across all the sensors associated with that pipeline. Note that the Rename option is enabled only when there are no pending commits. The sensor name cannot be changed. 
 
 {% include 
 	image.html 
@@ -248,10 +292,12 @@ The Delivery Pipeline flow has several usability and functionality enhancements 
 
 #### Workflow dashboard enhancements
 
-* **Link from workflows to their pipelines**
+* **Link from workflows to their pipelines**  
+
   Workflow names in the dashboard are clickable links. Clicking a workflow name takes you directly to the pipeline associated with that workflow.  tab for that pipeline.
 
-* **New status for active workflows without events**
+* **New status for active workflows without events**  
+
 Identify workflows that are active but do not have any execution data with the new status filter in the Workflows dashboard. Filtering by Status ‘Unknown’ shows workflows without events for the last hour.
 
 {% include 
