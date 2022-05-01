@@ -32,7 +32,19 @@ Argo CD can manage clusters without Argo CD installed on them. Now you have the 
 Admins can add an external cluster to a Codefresh runtime, and register it automatically as a managed cluster. From that point on, you have complete visibility into health and sync status, and options to manage them, including installing Argo Rollouts.  
 
 With managed clusters in Codefresh, you get:
-* Streamlined management: All cluster- and cluster-component level operations are managed through the runtime, in a centralized location. You can install new and uninstall existing components, and remove the cluster from the runtime's managed list.
+* Streamlined management: All cluster- and cluster-component level operations are managed through the runtime, in a centralized location. You can install new components, including Argo Rollouts, uninstall existing components, and remove the cluster from the runtime's managed list.
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/whats-new/rel-notes-argo-rollouts.png" 
+	url="/images/whats-new/rel-notes-argo-rollouts.png" 
+	alt="Runtime topology view" 
+	caption="Runtime topology view"
+   max-width="70%" 
+  %}
+
+
 * Seamless upgrades: Upgrades to runtimes or to runtime components in the local cluster automatically upgrades those in managed clusters as well.
 * Integration with dashboards: Applications dashboards reflect deployment information for applications in all managed clusters. When Argo Rollouts are installed, application rollouts are also reported to the dashboard. 
 
@@ -138,7 +150,7 @@ Codefresh provides full-fledged management for the Workflow Template resource, f
   %}
 
 **Create, test, and optimize Workflow Templates**  
-  Create Workflow Templates in three steps. Start by selecting one from the Codefresh Hub for Argo, or start with a blank template form. Customize the Workflow Template. And then either run the template to test it or commit to submit it.  
+  Create Workflow Templates in three steps. Start by selecting one from the Codefresh Hub for Argo, or start with a blank template form. Customize the Workflow Template, and either run the template to test it or commit to submit it.  
 
   {% include 
 	image.html 
@@ -150,7 +162,7 @@ Codefresh provides full-fledged management for the Workflow Template resource, f
   max-width="70%" 
   %}
 
-  For both new and existing Workflow Templates, the **Run** option enables you to test new templates, and changes to existing ones without having to first commit the changes. If the Workflow Template has previous iterations, you can view the arguments and values used in those iterations. 
+  For both new and existing Workflow Templates, the **Run** option enables you to test a new template, or changes to an existing template, without needing to first commit the changes. If the Workflow Template has previous iterations, you can view the arguments and values used in those iterations. 
 
     {% include 
 	image.html 
@@ -192,7 +204,7 @@ Codefresh provides full-fledged management for the Workflow Template resource, f
 
 #### Application creation wizard
 
-Create applications from within the Codefresh UI. The application creation-flow is fully GitOps compliant - the application manifest is generated, committed to Git, and synced to your cluster. 
+Create fully GitOps-compliant applications from within the Codefresh UI. the application manifest is generated, committed to Git, and synced to your cluster. 
 When creating the application, you can use the UI forms, or edit the manifest directly.
 
 
@@ -211,14 +223,14 @@ When creating the application, you can use the UI forms, or edit the manifest di
 #### Delivery Pipeline flows 
 The Delivery Pipeline flow features several usability and functionality enhancements.
 
-**Event payload, manifests, metadata for workflow steps**  
+**Seamless integration of Argo Event information with Argo Workflows**  
 
   Once a workflow is submitted for a Delivery Pipeline, the Workflows tab visualizes the connections between the steps in the workflow.  
-  A significant functionality enhancement is the capability to view Argo Event information for the workflow. 
-  Selecting a step displays a pull-out panel with the event information compatible to the step type, which can be the Git event payload itself, sensor and event- source manifests, or metadata.  
-  Easily copy paths for attributes from event payloads, view logs, and download artifacts.  
+  With Argo Event information for the workflow also incorporated into the visualization, you have a unified view of Argo Events and Argo Workflows in one and the same location, the events that triggered the workflow combined with the workflow itself.   
 
-  This example shows the event payload for the workflow.  
+  The Event Source manifest, the event payload, and the Sensor manifest are displayed as pull-out panels, allowing you to easily copy paths for attributes from event payloads, view logs, and download artifacts.  
+
+  This example shows the event payload from Argo Events for the workflow.  
   
 {% include 
 	image.html 
@@ -230,7 +242,7 @@ The Delivery Pipeline flow features several usability and functionality enhancem
   max-width="70%" 
 %}
 
-  Another example shows the sensor manifest.  
+  This example shows the sensor manifest from Argo Events for the workflow.  
 
 {% include 
 	image.html 
@@ -295,8 +307,8 @@ Identify workflows that are active but do not have any execution data with the n
   max-width="70%" 
 %}
 
-#### Docker config.json to report image info
-You can now authenticate to a Docker registry using the docker./config. json. Note that  config.json is not currently supported for GCR, ECR, and ACR.
+#### Image reporting with Docker config.json 
+You can now also authenticate to a Docker registry using `docker./config.json` to report image information. Note that config.json is not currently supported for GCR, ECR, and ACR. For more information, see [report image info](https://github.com/codefresh-io/argo-hub/blob/main/workflows/codefresh-csdp/versions/0.0.6/docs/report-image-info.md){:target="\_blank"}.
 
 
 #### OpenShift 4.8 support 
@@ -311,15 +323,15 @@ CSDP supports Red Hat OpenShift 4.8. For detailed information, read their [blog]
 * Broken Commit link in Application Preview.
 * Filter by favorites does not show ApplicationSets.
 * Releases not ordered correctly.
-* Missing Application/AppllicationSet tags. 
+* Missing tags for Application/AppllicationSet. 
 * Loop created on changing date in the Applications dashboard. 
-* Order of rollouts in Deployment chart not aligned with order of rollouts.
+* Rollouts in Deployment chart not aligned with order of rollouts.
 * Missing current release label.
 * Missing commit message
 * JIRA annotations not displayed for Images in Docker.io.
 * Avatars show up intermittently.
 * Incorrect Committers in Applications dashboard.
-* Applications dashboard performance issues.
+* Performance issues.
 
 **Images**  
 
@@ -328,10 +340,9 @@ CSDP supports Red Hat OpenShift 4.8. For detailed information, read their [blog]
 
 **Pipelines**  
 
-* Removed empty event-sources
-* Missing created/updated/deleted status for resources
-* Delete hook on finish to the event-source
-* Fixed event mapping 
+* Empty event-sources.
+* Missing created/updated/deleted status for resources.
+* Event mapping issues.
 * Creating a new pipeline with an existing Template shows empty Template tab.
 
 **Upgrade**  
