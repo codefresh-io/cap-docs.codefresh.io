@@ -46,7 +46,7 @@ Add new clusters to or remove existing clusters from runtime management.
 For details, see [Topology view for runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/#topology-view).
 
 #### Analytics dashboard
-In addition to the Delivery Pipelines, the Analytics dashboard shows Runtimes, Managed Clusters, Deployments, and Applications, to give you the complete CI/CD picture with key facts and insights.  
+In addition to Delivery Pipelines, the Analytics dashboard shows Runtimes, Managed Clusters, Deployments, and Applications, to give you the complete CI/CD picture with key facts and insights.  
 
 **Usability enhancements**  
   * Global filters are now located at the top of the dashboard.  
@@ -57,8 +57,8 @@ In addition to the Delivery Pipelines, the Analytics dashboard shows Runtimes, M
 {% include 
 	image.html 
 	lightbox="true" 
-	file="/images/whats-new/rel-notes-analytics-main-view.png" 
-	url="/images/whats-new/rel-notes-analytics-main-view.png" 
+	file="/images/whats-new/rel-notes-analytics-dashboard.png" 
+	url="/images/whats-new/rel-notes-analytics-dashboard.png" 
 	alt="Analytics dashboard" 
 	caption="Analytics dashboard"
    max-width="30%" 
@@ -72,7 +72,7 @@ The Applications dashboard displays the individual deployments across your enter
 
 **Application inventory and status filters**  
   
-  The health status snapshot in the Applications dashboard works also as a quick filter. Selecting a status filters applications by that status.    
+  The health status snapshot in the Applications dashboard also works as a quick filter. Selecting a status, filters applications by that status.    
   Filter criteria that match child applications automatically expands the parent application to show the child applications.
 
    {% include 
@@ -100,7 +100,7 @@ The Applications dashboard displays the individual deployments across your enter
   %}
 
 **Git committers**  
-  Selecting an avatar shows all commits made.  
+  Selecting an avatar shows all commits made by that committer.  
 
 
 **Current state of cluster resources**  
@@ -129,8 +129,8 @@ Codefresh provides full-fledged management for the Workflow Template resource, f
   max-width="30%" 
   %}
 
-**Create, optimize, and test Workflow Templates**  
-  Create Workflow Templates in three steps. Start by selecting one from the Codefresh Hub for Argo, or start with a blank template form. Customi ze it. And then submit.  
+**Create, test, and optimize Workflow Templates**  
+  Create Workflow Templates in three steps. Start by selecting one from the Codefresh Hub for Argo, or start with a blank template form. Customize the Workflow Template. And then either run to test the template or submit it.  
 
   {% include 
 	image.html 
@@ -142,10 +142,11 @@ Codefresh provides full-fledged management for the Workflow Template resource, f
   max-width="30%" 
   %}
 
-  You can then select a Workflow Template, and work with the options in the Manifest tab to update and optimize it. Any change to the Git State manifest is immediately displayed with the before and after change versions.  
-  The Workflows and Delivery Pipelines tabs associated with the selected Workflow Template are displayed in the respective tabs, giving you all the information in the same location.  
- 
-  {% include 
+  Codefresh automatically validates the Workflow Template alerting you to conflicts and errors.   
+  Once there are no validation errors, test the Workflow Template using the **Run** option. Run before commit enables you to debug  valuable time and time and to test the Workflow Template without having to first commit the changes.  
+  When you run the Workflow Template, scroll through previous iterations if any, view and change arguments and values. 
+
+    {% include 
 	image.html 
 	lightbox="true" 
 	file="/images/whats-new/rel-notes-wrkflow-temp-manifest-run.png" 
@@ -154,11 +155,8 @@ Codefresh provides full-fledged management for the Workflow Template resource, f
 	caption="Workflow Template: Manifest, Workflow and Pipeline tabs"
   max-width="30%" 
   %}
-  
-  Use the **Run** option to test changes to a Workflow Template without having to first commit the changes.  
-  Simply run the Workflow Template. Scroll through previous iterations if any, view arguments and values, and change, add, or delete them. 
-  
-{% include 
+
+  {% include 
 	image.html 
 	lightbox="true" 
 	file="/images/whats-new/rel-notes-wrkflow-temp-run-args-view.png" 
@@ -168,8 +166,12 @@ Codefresh provides full-fledged management for the Workflow Template resource, f
   max-width="30%" 
   %}
 
+  You can then select a Workflow Template, and work with the options in the Manifest tab to update and optimize it. Any change to the Git State manifest is immediately displayed with the before and after change versions.  
+  The Workflows and Delivery Pipelines tabs associated with the selected Workflow Template are displayed in the respective tabs, giving you all the information in the same location.  
+
+
 **Rename Workflow Template**  
-  After creating a Workflow Template, you can rename it by selecting a Workflow Template and clicking the **Rename** option.  
+  After creating a Workflow Template, you can rename it by selecting the template and clicking **Rename**.  
   The new name must be unique within the cluster. 
 
   {% include 
@@ -206,9 +208,8 @@ The Delivery Pipeline flow features several usability and functionality enhancem
   Once a workflow is submitted for a Delivery Pipeline, the Workflows tab visualizes the connections between the steps in the workflow.  
   A significant functionality enhancement is the capability to display data for each step in the workflow. 
   Selecting a step displays a pull-out panel with the data compatible to the step type, which can be the event payload itself, manifests, or metadata.  
-  Easily copy paths for attributes from event payloads, view logs, and download artifacts. 
+  Easily copy paths for attributes from event payloads, view logs, and download artifacts.  
 
-  Each panel identifies the step type, the most recent update, and displays the data for that step.  
   This example shows the panel with the event payload for the workflow.  
   
 {% include 
@@ -235,7 +236,7 @@ The Delivery Pipeline flow features several usability and functionality enhancem
 
 **Rename trigger resource** 
 
-  Similar to Workflow Templates, you can now rename the trigger name of a Delivery Pipeline.. The trigger name must be unique across all the sensors associated with that pipeline. The sensor name cannot be changed. 
+  Similar to Workflow Templates, you can now change the trigger name of a Delivery Pipeline. The trigger name must be unique across all the sensors associated with that pipeline. The sensor name cannot be changed. 
 
 {% include 
 	image.html 
@@ -266,11 +267,11 @@ The Delivery Pipeline flow features several usability and functionality enhancem
   Clicking the line number next to an error or a warning changes focus to the line in the manifest file with the error or warning.
 
 
-#### Workflow dashboard enhancements
+#### Workflows dashboard enhancements
 
 **Link from workflows to their pipelines**  
 
-  Workflow names in the dashboard are clickable links. Clicking a workflow name takes you directly to the pipeline associated with that workflow.  tab for that pipeline.
+  Workflow names in the dashboard are clickable links. Clicking a workflow name takes you directly to the pipeline associated with that workflow.
 
 **New status for active workflows without events**  
 
@@ -294,12 +295,43 @@ You can now authenticate to a Docker registry using the docker./config. json. No
 CSDP supports Red Hat OpenShift 4.8. For detailed information, read their [blog](https://cloud.redhat.com/blog/red-hat-openshift-4.8-is-now-generally-available#:~:text=OpenShift%204.8%20improves%20the%20bare,is%20now%20shipping%20with%20OpenShift){:target="\_blank"}.
 
 ### Bug fixes
+
+Applications dashboard
 * Inaccurate results when filtering by Application type.
-* Agent upgrade overrides some configuration in previous release.
-* JIRA annotations not displayed in Docker.io images.
-* Cluster shows information for ArgoCD cluster instead of for the target cluster.
+* Cluster shows the address of the ArgoCD cluster instead of the target cluster.
+* (added) Broken Commit link in Application Preview
+* (added) Filter by favorites does not ApplicationSets
+* (added) Releases not ordered correctly
+* (added) Missing Application/AppllicationSet tags 
+* (added) Loop created on changing date in the Applications dashboard. (CR-8763)
+* (added) Sort by type does not work  (CR-9131)
+* (added) Order of rollouts in Deployment chart not aligned with order of rollouts
+* (added) Missing current release label 
+* (added) Missing commit message
+* JIRA annotations not displayed for Images in Docker.io.
 * Avatars show up intermittently.
-* Uninstallation issues with newer K8s versions.
-* Creating a new pipeline with an existing Template shows empty Template tab.
 * Incorrect Committers in Applications dashboard.
 * Applications dashboard performance issues.
+
+
+Fix upsert previous release (CR-9069)
+
+Images
+* (added) Duplicates of application in Images repositories with different tags
+* Currently deployed image mark are unkmarked 
+
+Pipelines
+* (added) Removed empty event-sources
+* (added) trim params and filters values
+ (added) restrict empty trigger conditions
+* (added) Missing : created/updated/deleted status for resources
+* (added) Delete hook on finish to the event-source
+* (added) Fixed event mapping 
+* Creating a new pipeline with an existing Template shows empty Template tab.
+
+
+Uninstall
+* Database artifacts remain after uninstalling with `--force` flag.
+* Agent upgrade overrides some configuration in previous release.
+* Uninstallation issues with newer K8s versions.
+
