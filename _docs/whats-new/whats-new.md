@@ -142,9 +142,7 @@ Codefresh provides full-fledged management for the Workflow Template resource, f
   max-width="30%" 
   %}
 
-  Codefresh automatically validates the Workflow Template alerting you to conflicts and errors.   
-  Once there are no validation errors, test the Workflow Template using the **Run** option. Run before commit enables you to debug  valuable time and time and to test the Workflow Template without having to first commit the changes.  
-  When you run the Workflow Template, scroll through previous iterations if any, view and change arguments and values. 
+  For both new and existing Workflow Templates, the **Run** option enables you to test new templates, and changes to existing ones without having to first commit the changes. If the Workflow Template has previous iterations, you can scroll through them, view and change arguments and values. 
 
     {% include 
 	image.html 
@@ -165,8 +163,7 @@ Codefresh provides full-fledged management for the Workflow Template resource, f
 	caption="Run Workflow Template: Arguments list"
   max-width="30%" 
   %}
-
-  You can then select a Workflow Template, and work with the options in the Manifest tab to update and optimize it. Any change to the Git State manifest is immediately displayed with the before and after change versions.  
+ 
   The Workflows and Delivery Pipelines tabs associated with the selected Workflow Template are displayed in the respective tabs, giving you all the information in the same location.  
 
 
