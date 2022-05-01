@@ -203,7 +203,7 @@ Codefresh provides full-fledged management for the Workflow Template resource, f
 
 #### Application creation wizard
 
-Create fully GitOps-compliant applications from within the Codefresh UI. the application manifest is generated, committed to Git, and synced to your cluster. 
+Create applications that are fully GitOps-compliant from within the Codefresh UI. the application manifest is generated, committed to Git, and synced to your cluster. 
 When creating the application, you can use the UI forms, or edit the manifest directly.
 
 
