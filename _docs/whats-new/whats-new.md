@@ -32,18 +32,17 @@ Argo CD can manage clusters without Argo CD installed on them. Now you have the 
 Admins can add an external cluster to a Codefresh runtime, and register it automatically as a managed cluster. From that point on, you have complete visibility into health and sync status, and options to manage them, including installing Argo Rollouts.  
 
 With managed clusters in Codefresh, you get:
-* Streamlined management: All cluster- and cluster-component level operations are managed through the runtime, in a centralized location. You can install new components, including Argo Rollouts, uninstall existing components, and remove the cluster from the runtime's managed list.
+* Streamlined management: All cluster- and cluster-component level operations are managed through the runtime, in a centralized location. You can install new components, uninstall existing components, and remove the cluster from the runtime's managed list. A single click installs Argo Rollouts on the managed cluster.
 
 {% include 
 	image.html 
 	lightbox="true" 
 	file="/images/whats-new/rel-notes-argo-rollouts.png" 
 	url="/images/whats-new/rel-notes-argo-rollouts.png" 
-	alt="Runtime topology view" 
-	caption="Runtime topology view"
+	alt="Install Argo Rollouts for managed cluster in topology view" 
+	caption="Install Argo Rollouts for managed cluster in topology view"
    max-width="70%" 
   %}
-
 
 * Seamless upgrades: Upgrades to runtimes or to runtime components in the local cluster automatically upgrades those in managed clusters as well.
 * Integration with dashboards: Applications dashboards reflect deployment information for applications in all managed clusters. When Argo Rollouts are installed, application rollouts are also reported to the dashboard. 
