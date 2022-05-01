@@ -158,7 +158,7 @@ Codefresh provides full-fledged management for the Workflow Template resource, f
 	url="/images/whats-new/wrkflow-template-add.png" 
 	alt="Add Workflow Template panel" 
 	caption="Add Workflow Template panel"
-  max-width="70%" 
+  max-width="50%" 
   %}
 
   For both new and existing Workflow Templates, the **Run** option enables you to test a new template, or changes to an existing template, without needing to first commit the changes. If the Workflow Template has previous iterations, you can view the arguments and values used in those iterations. 
