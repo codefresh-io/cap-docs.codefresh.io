@@ -1,5 +1,5 @@
 ---
-title: "What's new in CSDP?"
+title: "What's new in Codefresh?"
 description: ""
 group: whats-new
 redirect_from:
@@ -13,7 +13,7 @@ Since the launch, we have continued to work on and grow Codefresh.
 
 ### Features and enhancements 
 
-#### Kubernetes cluster server version
+#### Kubernetes version runtime support
 We now support the latest Kubernetes server versions, 1.22 and 1.23. 
 
 #### Ingress controllers
@@ -27,14 +27,14 @@ All ingress controllers must be configured to report their status.
 For details, see [Ingress controller requirements]({{site.baseurl}}/docs/runtime/requirements/#ingress-controller).
 
 
-#### External cluster support
-Argo CD can manage external clusters without Argo CD installed on them. Now you have the same functionality in Codefresh, and can add, view, and manage remote clusters.  
+#### Argo CD managed cluster support
+Argo CD can manage clusters without Argo CD installed on them. Now you have the same functionality in Codefresh, and can add, view, and manage remote clusters.  
 Admins can add an external cluster to a Codefresh runtime, and register it automatically as a managed cluster. From that point on, you have complete visibility into health and sync status, and options to manage them, including installing Argo Rollouts.  
 
 With managed clusters in Codefresh, you get:
 * Streamlined management: All cluster- and cluster-component level operations are managed through the runtime, in a centralized location. You can install new and uninstall existing components, and remove the cluster from the runtime's managed list.
 * Seamless upgrades: Upgrades to runtimes or to runtime components in the local cluster automatically upgrades those in managed clusters as well.
-* Integration with dashboards: Applications dashboards reflect deployment information for applications in all managed clusters.
+* Integration with dashboards: Applications dashboards reflect deployment information for applications in all managed clusters. Argo CD Rollouts are installed, application rollouts are also reported to the dashboard. 
 
 For details, see [Managed clusters]({{site.baseurl}}/docs/runtime/managed-cluster).
 
@@ -46,7 +46,13 @@ Add new clusters to or remove existing clusters from runtime management.
 For details, see [Topology view for runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/#topology-view).
 
 #### Analytics dashboard
-In addition to the Delivery Pipelines, the Analytics dashboard includes Runtimes, Managed Clusters, Deployments, and Applications, providing you a complete picture with the key facts and insights.  
+In addition to the Delivery Pipelines, the Analytics dashboard shows Runtimes, Managed Clusters, Deployments, and Applications, to give you the complete CI/CD picture with key facts and insights.  
+
+**Usability enhancements**  
+  * Global filters are now located at the top of the dashboard.  
+  * Resource-specific filters are available for that resource. 
+  * A convenient View button takes you to the dedicated resource view for additional analysis.
+
 
 {% include 
 	image.html 
@@ -58,41 +64,13 @@ In addition to the Delivery Pipelines, the Analytics dashboard includes Runtimes
    max-width="30%" 
   %}
 
-When you look at Deployments, the tooltip for the number of deployments shows the comparison in percentage for the preceding time range.
-
-{% include 
-   image.html 
-	lightbox="true" 
-	file="/images/whats-new/rel-notes-analytics-deployments.png" 
-	url="/images/whats-new/rel-notes-analytics-deployments.png" 
-	alt="Analytics dashboard: Comparative metrics for deployments" 
-	caption="Analytics dashboard: Comparative metrics for deployments"
-   max-width="30%" 
-  %}
-
-
-* **Usability enhancements**  
-
-  * Global filters are now located right at the top of the dashboard.  
-  * Resource-specific filters are available for that resource. 
-  * A convenient View button takes you to the dedicated resource view for additional analysis.
-
-  {% include 
-	image.html 
-	lightbox="true" 
-	file="/images/whats-new/rel-notes-analytics.png" 
-	url="/images/whats-new/rel-notes-analytics.png" 
-	alt="Analytics dashboard: Usability enhancements" 
-	caption="Analytics dashboard: Usability enhancements"
-   max-width="30%" 
-  %}
-
 
 
 
 #### Applications dashboard enhancements
-The Applications dashboard displays the individual deployments across your enterprise.  Here are the main enhancements:
-* **Filters**  
+The Applications dashboard displays the individual deployments across your enterprise.  Here are the main enhancements:  
+
+**Application inventory and status filters**  
   
   The health status snapshot in the Applications dashboard works also as a quick filter. Selecting a status filters applications by that status.    
   Filter criteria that match child applications automatically expands the parent application to show the child applications.
@@ -107,7 +85,7 @@ The Applications dashboard displays the individual deployments across your enter
   max-width="30%" 
   %}
 
-* **Rollouts**  
+**Rollouts**  
 
   Intuitive visualization with the option to open the Images view in a new browser window.  
 
@@ -121,11 +99,11 @@ The Applications dashboard displays the individual deployments across your enter
   max-width="30%" 
   %}
 
-* **Git committers**  
+**Git committers**  
   Selecting an avatar shows all commits made.  
 
 
-* **Current state of cluster resources**  
+**Current state of cluster resources**  
   Hierarchical representation of the resources in the cluster where the application is deployed in the Current State.
 
   {% include 
@@ -151,8 +129,8 @@ Codefresh provides full-fledged management for the Workflow Template resource, f
   max-width="30%" 
   %}
 
-* **Create Workflow Templates**  
-  Create Workflow Templates in three steps. Start by selecting one from the Codefresh Hub for Argo, or start with a blank template form. Customize it. And then submit.  
+**Create, optimize, and test Workflow Templates**  
+  Create Workflow Templates in three steps. Start by selecting one from the Codefresh Hub for Argo, or start with a blank template form. Customi ze it. And then submit.  
 
   {% include 
 	image.html 
@@ -164,9 +142,8 @@ Codefresh provides full-fledged management for the Workflow Template resource, f
   max-width="30%" 
   %}
 
-* **Workflow Template Manifests, Workflows and Pipelines**  
-  Select a Workflow Template, and work with the options in the Manifest tab to update and optimize it. Any change to the Git State manifest is immediately displayed with the before and after change versions.  
-  The Workflows and Delivery Pipelines tabs associated with the selected Workflow Template are displayed in the relevant tabs, giving you all the information in one location.  
+  You can then select a Workflow Template, and work with the options in the Manifest tab to update and optimize it. Any change to the Git State manifest is immediately displayed with the before and after change versions.  
+  The Workflows and Delivery Pipelines tabs associated with the selected Workflow Template are displayed in the respective tabs, giving you all the information in the same location.  
  
   {% include 
 	image.html 
@@ -177,9 +154,8 @@ Codefresh provides full-fledged management for the Workflow Template resource, f
 	caption="Workflow Template: Manifest, Workflow and Pipeline tabs"
   max-width="30%" 
   %}
-
-* **Workflow Templates sandbox**  
-  Test your changes to any Workflow Template without having to first commit the changes.  
+  
+  Use the **Run** option to test changes to a Workflow Template without having to first commit the changes.  
   Simply run the Workflow Template. Scroll through previous iterations if any, view arguments and values, and change, add, or delete them. 
   
 {% include 
@@ -192,9 +168,9 @@ Codefresh provides full-fledged management for the Workflow Template resource, f
   max-width="30%" 
   %}
 
-* **Renaming the Workflow Template**  
-  After creating a Workflow Template you can rename it by selecting a Workflow Template and clicking the **Rename** option.  
-  The new name must be unique to the cluster. 
+**Rename Workflow Template**  
+  After creating a Workflow Template, you can rename it by selecting a Workflow Template and clicking the **Rename** option.  
+  The new name must be unique within the cluster. 
 
   {% include 
 	image.html 
@@ -223,9 +199,9 @@ Toggle between Form and YAML views as you define additional settings for the app
 
 
 #### Delivery Pipeline flows 
-The Delivery Pipeline flow has several usability and functionality enhancements.
+The Delivery Pipeline flow features several usability and functionality enhancements.
 
-* **Event payload, manifests, metadata for workflow steps**  
+**Event payload, manifests, metadata for workflow steps**  
 
   Once a workflow is submitted for a Delivery Pipeline, the Workflows tab visualizes the connections between the steps in the workflow.  
   A significant functionality enhancement is the capability to display data for each step in the workflow. 
@@ -257,9 +233,9 @@ The Delivery Pipeline flow has several usability and functionality enhancements.
   max-width="30%" 
 %}
 
-* **Rename trigger resource** 
+**Rename trigger resource** 
 
-  Similar to Workflow Templates, you can now rename the trigger name of a Delivery Pipeline.. The trigger name must be unique across all the sensors associated with that pipeline. Note that the Rename option is enabled only when there are no pending commits. The sensor name cannot be changed. 
+  Similar to Workflow Templates, you can now rename the trigger name of a Delivery Pipeline.. The trigger name must be unique across all the sensors associated with that pipeline. The sensor name cannot be changed. 
 
 {% include 
 	image.html 
@@ -271,7 +247,7 @@ The Delivery Pipeline flow has several usability and functionality enhancements.
   max-width="30%" 
 %}
 
-* **Git repo selection**  
+**Git repo selection for commits**  
 
   A dropdown list allows you to select one or more Git repos in the Trigger Conditions tab. Start typing, and use autocomplete to view and select from the available Git repos.
 
@@ -286,17 +262,17 @@ The Delivery Pipeline flow has several usability and functionality enhancements.
 %}
 
 
-* **Errors/warning in manifests synced with the line number in manifest**
+**Errors/warning in manifests synced with the line number in manifest**
   Clicking the line number next to an error or a warning changes focus to the line in the manifest file with the error or warning.
 
 
 #### Workflow dashboard enhancements
 
-* **Link from workflows to their pipelines**  
+**Link from workflows to their pipelines**  
 
   Workflow names in the dashboard are clickable links. Clicking a workflow name takes you directly to the pipeline associated with that workflow.  tab for that pipeline.
 
-* **New status for active workflows without events**  
+**New status for active workflows without events**  
 
 Identify workflows that are active but do not have any execution data with the new status filter in the Workflows dashboard. Filtering by Status ‘Unknown’ shows workflows without events for the last hour.
 
