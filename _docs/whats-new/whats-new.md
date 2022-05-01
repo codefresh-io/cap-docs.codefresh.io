@@ -180,7 +180,7 @@ Codefresh provides full-fledged management for the Workflow Template resource, f
 	url="/images/whats-new/rel-notes-wrkflow-temp-run-args-view.png" 
 	alt="Run Workflow Template: Arguments list" 
 	caption="Run Workflow Template: Arguments list"
-  max-width="70%" 
+  max-width="50%" 
   %}
  
   The Workflows and Delivery Pipelines tabs associated with the selected Workflow Template are displayed in the respective tabs, giving you all the information in the same location.  
@@ -282,7 +282,8 @@ The Delivery Pipeline flow features several usability and functionality enhancem
 %}
 
 
-**Errors/warning in manifests synced with the line number in manifest**
+**Errors/warning in manifests synced with the line number in manifest**  
+
   Clicking the line number next to an error or a warning changes focus to the line in the manifest file with the error or warning.
 
 
@@ -307,7 +308,8 @@ Identify workflows that are active but do not have any execution data with the n
 %}
 
 #### Image reporting with Docker config.json 
-You can now also authenticate to a Docker registry using `docker./config.json` to report image information. Note that config.json is not currently supported for GCR, ECR, and ACR. For more information, see [report image info](https://github.com/codefresh-io/argo-hub/blob/main/workflows/codefresh-csdp/versions/0.0.6/docs/report-image-info.md){:target="\_blank"}.
+You can now also authenticate to a Docker registry using `docker./config.json` to report image information. Note that config.json is not currently supported for GCR, ECR, and ACR.  
+For more information on the required fields, see [Report image info](https://github.com/codefresh-io/argo-hub/blob/main/workflows/codefresh-csdp/versions/0.0.6/docs/report-image-info.md){:target="\_blank"}.
 
 
 #### OpenShift 4.8 support 
