@@ -99,8 +99,8 @@ The Applications dashboard displays the individual deployments across your enter
 	lightbox="true" 
 	file="/images/whats-new/app-dashboard-status-filter.png" 
 	url="/images/whats-new/app-dashboard-status-filter.png" 
-	alt="Applications Dashboard: Filter by status" 
-	caption="Applications Dashboard: Filter by status"
+	alt="Applications dashboard: Filter by status" 
+	caption="Applications dashboard: Filter by status"
   max-width="70%" 
   %}
 
