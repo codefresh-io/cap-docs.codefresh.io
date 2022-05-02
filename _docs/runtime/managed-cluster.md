@@ -212,6 +212,10 @@ Use the Topology or List runtime views to work with managed clusters. For inform
   Install components on one or more managed clusters, and monitor deployed application status and data in the Applications dashboard. 
   Uninstalling a component from one or more managed clusters do not affect the runtime, but removes the data from those components Applications dashboard.  
 
+**Install Argo Rollouts**  
+
+  Install Argo Rollouts directly from Codefresh. If your managed cluster does not have Argo Rollouts, an **Install Argo Rollouts** button is displayed on selecting the managed cluster.  
+
 **Automatic upgrade**   
   As the components are managed as part of the runtime, updates to the runtime automatically updates the components on all the managed clusters that include it.  
 
@@ -225,6 +229,7 @@ Use the Topology or List runtime views to work with managed clusters. For inform
 1. Do one of the following:
     * In the Topology View, select the cluster node from the runtime it is registered to. 
     * In the List View, select the runtime, and then select the **Managed Clusters** tab.
+1. To install Argo Rollouts (Topology View only), select **Install Argo Rollouts**. 
 1. To uninstall a cluster component from the list, select the three dots next to the component, and then select **Uninstall**.
 1. To remove the cluster from the list managed by the runtime, select the three dots next to the cluster name, and then select **Uninstall**.
 
