@@ -28,7 +28,7 @@ For details, see [Ingress controller requirements]({{site.baseurl}}/docs/runtime
 
 
 #### Argo CD managed cluster support
-Argo CD can manage clusters without Argo CD installed on them. Now you have the same functionality in Codefresh, and can add, view, and manage remote clusters.  
+Argo CD can manage clusters without Argo CD installed on them. Now you have the same functionality in Codefresh, to add, view, and manage remote clusters.  
 Admins can add an external cluster to a Codefresh runtime, and register it automatically as a managed cluster. From that point on, you have complete visibility into health and sync status, and options to manage them, including installing Argo Rollouts.  
 
 With managed clusters in Codefresh, you get:
@@ -168,8 +168,8 @@ Codefresh provides full-fledged management for the Workflow Template resource, f
 	lightbox="true" 
 	file="/images/whats-new/rel-notes-wrkflow-temp-manifest-run.png" 
 	url="/images/whats-new/rel-notes-wrkflow-temp-manifest-run.png" 
-	alt="Workflow Template: Manifest, Workflow and Pipeline tabs" 
-	caption="Workflow Template: Manifest, Workflow and Pipeline tabs"
+	alt="Run option for Workflow Templates" 
+	caption="Run option for Workflow Templates"
   max-width="70%" 
   %}
 
@@ -180,7 +180,7 @@ Codefresh provides full-fledged management for the Workflow Template resource, f
 	url="/images/whats-new/rel-notes-wrkflow-temp-run-args-view.png" 
 	alt="Run Workflow Template: Arguments list" 
 	caption="Run Workflow Template: Arguments list"
-  max-width="50%" 
+  max-width="40%" 
   %}
  
   The Workflows and Delivery Pipelines tabs associated with the selected Workflow Template are displayed in the respective tabs, giving you all the information in the same location.  
@@ -203,7 +203,7 @@ Codefresh provides full-fledged management for the Workflow Template resource, f
 
 #### Application creation wizard
 
-Create applications that are fully GitOps-compliant from within the Codefresh UI. the application manifest is generated, committed to Git, and synced to your cluster. 
+Create applications that are fully GitOps-compliant from the Codefresh UI. The application manifest is generated, committed to Git, and synced to your cluster. 
 When creating the application, you can use the UI forms, or edit the manifest directly.
 
 
@@ -304,11 +304,11 @@ Identify workflows that are active but do not have any execution data with the n
 	url="/images/whats-new/rel-notes-workflow-unknown-status.png" 
 	alt="Unknown status filter for workflows" 
 	caption="Unknown status filter for workflows"
-  max-width="70%" 
+  max-width="50%" 
 %}
 
 #### Image reporting with Docker config.json 
-You can now also authenticate to a Docker registry using `docker./config.json` to report image information. Note that config.json is not currently supported for GCR, ECR, and ACR.  
+You can now also authenticate to a Docker registry using `docker./config.json` to report image information. Note that `config.json` is not currently supported for GCR, ECR, and ACR.  
 For more information on the required fields, see [Report image info](https://github.com/codefresh-io/argo-hub/blob/main/workflows/codefresh-csdp/versions/0.0.6/docs/report-image-info.md){:target="\_blank"}.
 
 
@@ -320,13 +320,13 @@ CSDP supports Red Hat OpenShift 4.8. For detailed information, read their [blog]
 **Applications dashboard**  
 
 * Inaccurate results when filtering by Application type.
-* Cluster shows the address of the ArgoCD cluster instead of the target cluster.
+* Cluster shows the address of the Argo CD cluster instead of the target cluster.
 * Broken Commit link in Application Preview.
 * Filter by favorites does not show ApplicationSets.
 * Releases not ordered correctly.
 * Missing tags for Application/AppllicationSet. 
 * Loop created on changing date in the Applications dashboard. 
-* Rollouts in Deployment chart not aligned with order of rollouts.
+* Rollouts in Deployment chart not aligned with the actual order of rollouts.
 * Missing current release label.
 * Missing commit message
 * JIRA annotations not displayed for Images in Docker.io.
