@@ -27,7 +27,8 @@ Optionally, to first generate the YAML manifests, and then manually apply them, 
 
 1. In the Codefresh UI, go to the [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"} page.
 1. From either the **Topology** or **List** views, select the runtime to which to add the cluster. 
-1. Topology View: Select ![](/images/icons/add-cluster.png?display=inline-block).  
+1. Topology View: Select {% include inline_image.html
+file="/images/icons/add-cluster.png" %}![](/images/icons/add-cluster.png?display=inline-block).  
   List View: Select the **Managed Clusters** tab, and then select **+ Add Cluster**.  
 1. In the Add Managed Cluster panel:
   * **Cluster Name**: Enter the context name for your cluster (as it appears in your kubeconfig file). 
