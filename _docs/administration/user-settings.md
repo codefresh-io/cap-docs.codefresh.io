@@ -34,7 +34,6 @@ Update your Git personal access token for each runtime when needed.
 {:start="3"}
 1. Paste the generated token in the **Token** field, and select **+Add Token**. 
 
-    {% include 
    {% include 
    image.html 
    lightbox="true" 
