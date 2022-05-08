@@ -90,8 +90,8 @@ Filters are divided into frequently used and advanced filters.
 
 **'Favorite' applications**
 Mark applications as favorites to view them with a click.
-* Select the  {:nomarkdown}<img src="../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/} to the left of the application name to mark it as a favorite. 
-* To view only favorites, on the filters bar, select {:nomarkdown}<img src="../../../images/icons/icon-fav-starred.png?display=inline-block">{:/}.
+* Select the  {::nomarkdown}<img src="../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/} to the left of the application name to mark it as a favorite. 
+* To view only favorites, on the filters bar, select {::nomarkdown}<img src="../../../images/icons/icon-fav-starred.png?display=inline-block">{:/}.
 
 
 
@@ -158,7 +158,8 @@ max-width="30%"
 
 Filter to view the subset deployments of interest to you, by Date range, PRs, issues, committers and more.  
 
-**Deployment chart**
+**Deployment chart**  
+
 View day-to-day deployment information for the selected time period. The deployment chart is useful to get information on historical deployments, as deployment cards are shown for up to ten of the most recent deployments.  
 
 * To jump to a specific deployment, click the dot on the chart that represents the deployment. 
@@ -174,7 +175,8 @@ caption="Applications Dashboard: Deployment chart"
 max-width="30%"
 %}
 
-**Deployment card**
+**Deployment card**  
+
 Each deployment card displays the complete history of that specific deployments by Git hash, Kubernetes services, and Argo:
 
 {% include
