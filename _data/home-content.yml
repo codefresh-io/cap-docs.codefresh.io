@@ -53,6 +53,13 @@
     - title: Viewing images
       localurl: /docs/pipelines/images/    
     
+- title: Applications
+  icon: images/home-icons/deployment.svg
+  url: ''
+  links:
+    - title: Applications Dashboard
+      localurl: /docs/deployment/applications-dashboard/
+
 
 - title: Administration
   icon: images/home-icons/administration.svg
