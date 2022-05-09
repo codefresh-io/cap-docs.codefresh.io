@@ -9,17 +9,45 @@ toc: true
 
 Create applications that are fully GitOps compliant in the Codefresh UI, from generating the application configuration manifest, committing it to Git, and then syncing and deploying to the cluster. 
 
-Creating an application in Codefresh includes application definitions and application configuration settings. The create application wizard guides you through the process. 
+Creating an application in Codefresh includes defining:
+* Application definitions
+* General configuration settings
+* Advanced configuration settings
 
-For how-to information, see [How to: Create an application](#how-to-create-an-Argo-CD-application)
+The create application wizard guides you through the process. For how-to information, see [How to: Create an application](#how-to-create-an-argo-cd-application).
+
+After creating an application, and it is synced to the clsuter, it is displayed in the Applications dashboard.
+
+
 
 
 
 ### Application definitions
 Application definitions include the name, runtime, and the name of the YAML manifest. By default, the YAML manifest has the same name as that of the application. 
 
+{% include 
+   image.html 
+   lightbox="true" 
+   file="/images/applications/add-app-definitions.png" 
+   url="/images/applications/add-app-definitions.png" 
+   alt="Application definitions" 
+   caption="Application definitions"
+   max-width="30%" 
+   %} 
+
+
 ### General configuration settings
-General settings define the source, destination, and sync policies for the application.  
+General configuration settings define the source, destination, and sync policies for the application. 
+
+% include 
+   image.html 
+   lightbox="true" 
+   file="/images/applications/add-app-general-settings.png" 
+   url="/images/applications/add-app-general-settings.png" 
+   alt="General configuration settings" 
+   caption="General configuration settings"
+   max-width="30%" 
+   %} 
 
 #### Source 
 The Git repository to be tracked for changes to the application's source code.  
@@ -52,6 +80,16 @@ All Prune propagation policies can be used with:
 ### Advanced configuration settings
 Advanced settings define the tool used to create the application, and related settings.
 
+{% include 
+   image.html 
+   lightbox="true" 
+   file="/images/applications/add-app-general-settings.png" 
+   url="/images/applications/add-app-general-settings.png" 
+   alt="Advanced configuration settings" 
+   caption="Advanced configuration settings"
+   max-width="30%" 
+   %} 
+
 
 #### Type of Application
 The tool used to create the application's manifests.  Codefresh supports defining application manifests as a directory, or with Helm or Kustomize. If you are using other tools to define application manifests, use the Plugin type. For information on tools, see the Argo CD's documentation on [Tools](https://argo-cd.readthedocs.io/en/stable/user-guide/application_sources/){:target="_blank"}.
@@ -77,13 +115,13 @@ The tool used to create the application's manifests.  Codefresh supports definin
 
 ### How to: create an Argo CD application
 Create a new application from the Applications dashboard with the Add Application wizard. 
-Work either in the YAML or Form mode, and toggle between the modes as you need.
+Edit the manifest directly in YAML mode, or define the settings in the Form mode. Toggle between the modes as convenient. You can also edit the YAML manifest directly at all stages, after defining configuration settings, and before the final commit.
 
 **Before you begin**  
 
 Review:    
 [General configuration](#general-configuration-settings)  
-[Advanced configuration](#application-configuration-settings)  
+[Advanced configuration](#advanced-configuration-settings)  
 
 
 **How to**  
@@ -108,7 +146,7 @@ Review:
 
 {:start="4"}
 1. Select **Next** to go to the Configuration tab.  
-  By default you are in Form mode. You can toggle between the Form and YAML modes as you define the application's configuration settings.
+  By default you are in Form mode. You can toggle between the Form and YAML modes as you define the application's configuration settings. You can edit the YAML manifest.
 1. Define the **General** settings for the application. 
 
 {% include 
@@ -136,7 +174,8 @@ Review:
 
 {:start="7"}   
 1. To commit all your changes, select **Commit**.  
-  The Commit form is displayed with the application's definition on the left, and the manifest configuration you defined on the right.
+  The Commit form is displayed with the application's definition on the left, and the manifest with the configuration settings you defined on the right.
+1. If required, click within and edit the YAML manifest.
 1. Enter the path to the **Git Source** to which to commit the application configuration manifest.
 
 {% include 
@@ -153,4 +192,8 @@ Review:
 1. Add a commit message and then select **Commit** on the bottom-right of the panel.
 
 
-Your application is first committed to Git and then synced to the cluster. 
+Your application is first committed to Git, and then synced to the cluster which may take a few moments.  
+Track the application in the [Applications](https://g.codefresh.io/2.0/applications-dashboard?sort=desc-lastUpdated){:target="_blank"} dashboard.
+
+### What to read next
+[Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/)
