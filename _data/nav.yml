@@ -62,11 +62,12 @@
     - title: Viewing images
       url: "/images"
 
-- title: Applications
+- title: Deployment
   url: "/deployment"
   pages:
-    - title: Applications Dashboard
-      url: "/applications-dashboard"
+    - title: Create an application
+      url: "/create-applicationm"
+
 
 - title: Administration
   url: "/administration"
@@ -106,7 +107,7 @@
 - title: What's New?
   url: "/whats-new"
   pages:
-    - title: What's new in Codefresh?
+    - title: What's new in CSDP
       url: "/whats-new"
 
 - title: Troubleshooting

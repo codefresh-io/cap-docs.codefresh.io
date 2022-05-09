@@ -38,10 +38,6 @@ The application state snapshot shows at a glance both the total number of applic
 
 > The state snapshot works also as a quick filter. Selecting a state filters the application view by that state.
 
-
-
-
-
 ####  Filters and favorites
 Similar to other dashboards, the Applications dashboard also offers a set of filters designed to bring you the information you need as quickly as possible.  
 You can also mark applications as favorites to focus on the applications of interest.
@@ -61,7 +57,7 @@ Filters are divided into frequently used and advanced filters.
 
   
   * Labels  
-    The K8s labels defined for the applications. 
+    The K8s labels defined for the applications. The list displays labels of _all_ the applications, even if you have applied filters.
 
     To see the available labels, select **Add**, and then select the required label and one or more values.  
     To filter by the labels, select **Add** and then **Apply**.  
@@ -185,8 +181,9 @@ max-width="30%"
 * The **Pull Request (PRs)** used for the commit.
 * The Jira **Issues** the PR aims to resolve or has resolved, with the current status.
 * The **Committer** who made the changes.
-* The Kubernetes **Services** updated during the deployment, according to the Argo rollout strategy, and the current rollout status.  
-  The example above shows the rollouts according to the canary rollout strategy. The blue line shows the progress of rollout, with the gradual transfer of traffic to the live version.
+* The Kubernetes **Services** updated during the deployment, according to the Argo rollout strategy, and the current rollout status. 
+  The example above shows the rollouts according to the canary rollout strategy. The blue line shows the progress of rollout with the current step versus the total number of steps.  
+  Expanding the live version deployment shows the number of replicas currently deployed, as green circles.
 * The Argo **Applications** updated during this deployment.
 
 
