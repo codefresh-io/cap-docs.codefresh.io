@@ -7,7 +7,7 @@ toc: true
 
 View, monitor, and analyze deployments across your enterprise in the Applications dashboard. As a one-stop shop for Argo Rollouts and Argo CD in Codefresh, the Applications dashboard delivers on the challenge of keeping track of deployments, whatever the frequency and scale. A wide range of filters, enriched CI and CD information, provide full traceability and visibility to continuous deployments. 
 
-Here's are the insights from the Applications dashboard:   
+Here's are some insights you can derive from the Applications dashboard:   
 * Visibility into deployments from all the clusters associated with the provisioned runtimes, in-cluster and managed
 * Timeline on current and historical deployments 
 * Enriched CI information for deployments, including links to container images, Git hashes correlated with feature requests, Jira issues
@@ -26,7 +26,7 @@ Here is an example of the main page in the Applications dashboard.
 image.html
 lightbox="true"
 file="/images/applications/app-dashboard-main-view.png"
-url="/images/applications/aapp-dashboard-main-view.png"
+url="/images/applications/app-dashboard-main-view.png"
 alt="Applications Dashboard"
 caption="pplications Dashboard"
 max-width="30%"
@@ -52,7 +52,23 @@ Filters are divided into frequently used and advanced filters.
 * Frequently-used filters: Available at the top of the dashboard. These filters support multi-selection, and results are based on an OR relationship within the same filter with multiple options, and an AND relationship between filters.
 * Advanced filters: Available on selecting **More Filters**. These filters include application type, health, and labels. 
 
- {% include
+  * Application type  
+    Applications and ApplicationSet
+    
+  * Health filters  
+    The built-in Argo CD set of health filters.  
+    For detailed information, see the official documentation on [Health sets](https://argo-cd.readthedocs.io/en/stable/operator-manual/health/){:target="\_blank"}. 
+
+  
+  * Labels  
+    The K8s labels defined for the applications. 
+
+    To see the available labels, select **Add**, and then select the required label and one or more values.  
+    To filter by the labels, select **Add** and then **Apply**.  
+
+    For detailed information, see the official documentation on [Labels and selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/){:target="\_blank"}.
+
+    {% include
 image.html
 lightbox="true"
 file="/images/applications/app-dashboard-adv-filters.png"
@@ -62,27 +78,10 @@ caption="Advanced filters in Applications Dashboard"
 max-width="30%"
 %}
 
-  * Application type  
-    Applications and ApplicationSet
-    
-  * Health filters  
-    The built-in Argo CD set of health filters.  
-    For detailed information, see the official documentation on [Health sets](https://argo-cd.readthedocs.io/en/stable/operator-manual/health/). 
-
-  
-  * Labels  
-    The K8s labels defined for the applications. 
-
-    To see the available labels, select **Add**, and then select the required label and one or more values. 
-    > To filter by the labels, select **Add** and then **Apply**.  
-
-    For detailed information, see the official documentation on [Labels and selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/){:target="\_blank"}.
-
 
 **'Favorite' applications**  
 
-Mark applications as favorites to view them with a click.  
-
+Mark applications as favorites, and view them with a click.  
 * Select the {::nomarkdown}<img src="../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/} to the left of the application name to mark it as a favorite. 
 * To view only favorites, on the filters bar, select {::nomarkdown}<img src="../../../images/icons/icon-fav-starred.png?display=inline-block">{:/}.
 
@@ -103,7 +102,7 @@ caption="Standalone applications in Applications Dashboard"
 max-width="30%"
 %}
 
-* Application set 
+* Application set  
   Based on the Argo CD's ApplicationSet CRD, where several applications are always deployed as a set. For detailed information, see the official documentation on [Generating Applications with ApplicationSet](https://argo-cd.readthedocs.io/en/stable/user-guide/application-set/){:target="\_blank"}.
 
   {% include
@@ -116,7 +115,7 @@ caption="Application Set in Applications Dashboard"
 max-width="30%"
 %}
   
-* App-of-apps
+* App-of-apps  
   In this deployment model, the parent application deploys a set of child applications.  For detailed information, see the official documentation on [App of Apps](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#app-of-apps){:target="\_blank"}. 
 
 {% include
@@ -133,7 +132,7 @@ max-width="30%"
 ### Application timeline 
 The Timeline tab displays the history of deployments for the selected application, sorted by the most recent update (default), and enriched with image, Pull Request (PR), Jira issues, and commit information, for each deployment. 
 
-Each application displays up to ten of the most recent deployments through deployment cards.
+Each application displays up to ten of the most recent deployments through deployment cards. 
 
 {% include
 image.html
@@ -149,7 +148,7 @@ max-width="30%"
 
 **Filters**  
 
-Filter to view the subset deployments of interest to you, by Date range, PRs, issues, committers and more.  
+View the subset of deployments of interest to you. Filter by Date range, PRs, issues, committers, and more.  
 
 **Deployment chart**  
 
@@ -182,7 +181,7 @@ caption="Applications Dashboard: Deployment card in Timeline tab"
 max-width="30%"
 %}
 
-* The **CI Builds** which are the image(s) created or updated during deployment. Click to see the **Images** view in a browser window.
+* The **CI Builds** showing the image(s) created or updated during deployment. Click to see the **Images** view in a browser window.
 * The **Pull Request (PRs)** used for the commit.
 * The Jira **Issues** the PR aims to resolve or has resolved, with the current status.
 * The **Committer** who made the changes.
@@ -192,7 +191,9 @@ max-width="30%"
 
 
 ### Application services
-The Services tab for an application shows the K8s services for each deployment of the application. Each service shows the number of replicas, the endpoint IP, the labels that reference the application, and the health status.
+The Services tab for an application shows the K8s services for each deployment of the application. 
+Each service shows the number of replicas, the endpoint IP, the labels that reference the application, and the health status.  
+
 For more information, see the official documentation on [Services](https://kubernetes.io/docs/concepts/services-networking/service/){:target="\_blank"}.
 
 {% include
