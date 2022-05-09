@@ -6,7 +6,7 @@ toc: true
 ---
 
 
-A Git Source is the equivalent of an Argo CD application that tracks a Git repository and syncs the desired state of the repo to the destination K8s cluster. In addition to application resources, the Git Source can store resources for Codefresh runtimes, and CI/CD entities such as delivery pipelines, Workflow Templates, workflows, and applications. The Git Source syncs resources for Argo Workflows and Argo Events defined by the CI/CD entities to the cluster.  
+A Git Source is the equivalent of an Argo CD application that tracks a Git repository and syncs the desired state of the repo to the destination K8s cluster. In addition to application resources, the Git Source can store resources for Codefresh runtimes, and CI/CD entities such as delivery pipelines, Workflow Templates, workflows, and applications.  
   
 Provisioning a runtime automatically creates a Git Source that stores resources for the runtime and for the demo CI pipelines that are optionally installed with the runtime. Every Git Source is associated with a Codefresh runtime. A runtime can have one or more Git Sources. You can add Git Sources at any time, to the same or to different runtimes.  
 
