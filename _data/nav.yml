@@ -62,6 +62,12 @@
     - title: Viewing images
       url: "/images"
 
+- title: Deployment
+  url: "/deployment"
+  pages:
+    - title: Create an application
+      url: "/create-applicationm"
+    
 
 - title: Administration
   url: "/administration"
