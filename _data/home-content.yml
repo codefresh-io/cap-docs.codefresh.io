@@ -2,7 +2,7 @@
   icon: images/home-icons/started.svg
   url: ''
   links:
-  - title: Introducing CSDP
+  - title: Introducing Codefresh
     localurl: /docs/getting-started/csdp-introduction/
   - title: Quick start
     localurl: /docs/getting-started/quick-start/
@@ -21,7 +21,7 @@
   icon: images/home-icons/client.svg
   url: ''
   links:
-    - title: CSDP CLI
+    - title: Codefresh CLI
       localurl: /docs/clients/csdp-cli/
 
 
@@ -35,7 +35,9 @@
       localurl: /docs/runtime/installation
     - title: Management
       localurl: /docs/runtime/monitor-manage-runtimes/
-    - title:  Git Source management
+    - title: Add and manage external clusters
+      localurl: /docs/runtime/managed-cluster/
+    - title:  Add and manage Git Sources
       localurl: /docs/runtime/git-sources/
 
 - title: Pipelines
@@ -66,17 +68,17 @@
   url: ''
   links:
   - title: Manage users
-    localurl: /docs/administration/add-users
-  - title: User settings
-    localurl: /docs/administration/user-settings
+    localurl: /docs/administration/add-users/
   - title: Single Sign-On
-    localurl: /docs/administration/single-sign-on
+    localurl: /docs/administration/single-sign-on/
+  - title: Manage Git personal access tokens
+    localurl: /docs/administration/user-settings/
   - title: Access Control
-    localurl: /docs/administration/access-control
+    localurl: /docs/administration/access-control/
   - title: Audit
-    localurl: /docs/administration/audit
+    localurl: /docs/administration/audit/
   - title: Codefresh platform IPs
-    localurl: /docs/administration/platform-ip-addresses
+    localurl: /docs/administration/platform-ip-addresses/
 
 
 - title: Troubleshooting
