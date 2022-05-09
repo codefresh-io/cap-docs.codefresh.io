@@ -14,12 +14,10 @@ Creating an application in Codefresh includes defining:
 * General configuration settings
 * Advanced configuration settings
 
-The create application wizard guides you through the process. For how-to information, see [How to: Create an application](#how-to-create-an-argo-cd-application).
+The create application wizard guides you through the process of creating an application. For how-to information, see [How to: Create an application](#how-to-create-an-argo-cd-application).
+For example Argo CD applications, see this [repo](https://github.com/oleksandr-codefresh/argocd-example-apps){:target="_blank"}.
 
-After creating an application, and it is synced to the clsuter, it is displayed in the Applications dashboard.
-
-
-
+After creating an application and it is synced to the cluster, it is displayed in the Applications dashboard where you can track its health and deployments.
 
 
 ### Application definitions
@@ -110,7 +108,9 @@ The tool used to create the application's manifests.  Codefresh supports definin
   
 * **Plugin**: Use for any other tool. 
   * **Name**: The name of the Plugin used to create the application.
-  * **External Variables**: The variables to use in the application. 
+  * **External Variables**: The variables to use in the application.  
+
+For example applications, go to the [Argo CD example applications repo](https://github.com/oleksandr-codefresh/argocd-example-apps){:target="_blank"}.
   
 
 ### How to: create an Argo CD application
