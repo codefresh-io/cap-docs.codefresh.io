@@ -5,12 +5,12 @@ group: runtime
 toc: true
 ---
 
-In case of cluster failure, you can recover the runtime installed in the cluster from the repository with the resources.
+In case of cluster failure, you can recover the runtime installed in the cluster from the runtime installation repository containing the resources.
 Runtime recovery is possible for partial or complete cluster failures. You can reinstall the runtime in the same or a different cluster.
 
 The installation process:
 * Applies `argo-cd` from the installation manifests in your repo to your cluster
-* Associates `argo-cd` with the existing repo (what does this mean? is this the repo URL?).
+* Associates `argo-cd` with the existing installation repo
 * Applies the runtime and `argo-cd` secrets to the cluster
 * Updates the runtime config map (`<runtime-name>.yaml` in the `bootstrap` directory) with the new cluster configuration  
 
@@ -19,32 +19,32 @@ All other fields such as `cluster`, `ingressClassName`, `ingressController` and 
 ### Before you begin
 
 * During reinstallation, in the same or a different cluster, you will need to provide the following information: 
-  > The first three values must be the same as the runtime you are trying to recover. 
+  > The first three values must be the identical to the runtime you are trying to recover. 
   * Runtime name
   * Repository URL
   * Codefresh context
   * Kube context: Only if you are installing on the same cluster
 
 * Make sure you have a registered Git integration.  
-  To create one, use `cf integration git add default --runtime <runtime-name> --provider github --api-url https://api.github.com` 
+  To create a Git integration, use `cf integration git add default --runtime <runtime-name> --provider github --api-url https://api.github.com` 
 
 
 ### How to recover a runtime
-Reinstall the runtime from an existing repository to recover it, in the same or a different cluster.  
+Reinstall the runtime from the existing installation repository to recover it, in the same or a different cluster.  
 
 
 1. Run:  
-  `cf runtime install --from-repo`.
+  `cf runtime install --from-repo`
 1. Provide the relevant values when prompted.
-1. If you are performing runtime recovery in a different cluster, you may need to reconfigure the ingress resources for `app-proxy`, `workflows` and `default-git-source`.  
+1. If you are performing runtime recovery in a different cluster, verify the ingress resource configuration for `app-proxy`, `workflows` and `default-git-source`.  
   If the health status remains as `Progressing`, do the following:
   
-    * In the runtime installation repo, verify that the `ingress.yaml` files for the `app-proxy` and `workflows` are configured with the correct `host` and `ingressClassName`:  
+    * In the runtime installation repo, check if the `ingress.yaml` files for the `app-proxy` and `workflows` are configured with the correct `host` and `ingressClassName`:  
 
       `apps/app-proxy/overlays/<runtime-name>/ingress.yaml`  
       `apps/workflows/overlays/<runtime-name>/ingress.yaml`  
 
-    * Go to the Git Source repository, and verify the `host` and `ingressClassName` for `cdp-default-git-source.ingress.yaml`: 
+    * In the Git Source repository, in `cdp-default-git-source.ingress.yaml`, check if the `host` and `ingressClassName` are correctly configured: 
 
        `resources_<runtime-name>/cdp-default-git-source.ingress.yaml`  
     
@@ -90,4 +90,7 @@ status:
   loadBalancer: {}
 ```
 
-
+### What to read next
+[Manage runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/)  
+[Manage Git Sources]({{site.baseurl}}/docs/runtime/git-sources/)  
+[Managed clusters]({{site.baseurl}}/docs/runtime/managed-cluster/)
