@@ -26,12 +26,11 @@ Restoring the runtime:
   * Codefresh context
   * Kube context: Required if you are restoring to the same cluster
 
-* Make sure you have a registered Git integration.  
+* Make sure you have a registered Git integration  
 
 
 ### How to restore a runtime
 Reinstall the runtime from the existing installation repository to restore it to the same or a different cluster.  
-
 
 1. Run:  
   `cf runtime install --from-repo`
