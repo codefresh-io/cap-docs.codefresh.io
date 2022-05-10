@@ -1,20 +1,22 @@
 ---
-title: "Recover runtimes"
+title: "Runtime recovery"
 description: ""
 group: runtime
 toc: true
 ---
 
-In case of cluster failure, you can recover the runtime installed in the cluster from the runtime installation repository containing the resources.
-Runtime recovery is possible for partial or complete cluster failures. You can reinstall the runtime in the same or a different cluster.
+In case of cluster failure, you can restore the runtime from the runtime installation repository in the failed cluster containing the resources.
+Runtime recovery is possible for partial or complete cluster failures. You can restore the runtime in the same or a different cluster.
 
 The installation process:
 * Applies `argo-cd` from the installation manifests in your repo to your cluster
 * Associates `argo-cd` with the existing installation repo
 * Applies the runtime and `argo-cd` secrets to the cluster
-* Updates the runtime config map (`<runtime-name>.yaml` in the `bootstrap` directory) with the new cluster configuration  
-
-All other fields such as `cluster`, `ingressClassName`, `ingressController` and `ingressHost` remain unchanged.  
+* Updates the runtime config map (`<runtime-name>.yaml` in the `bootstrap` directory) with the new cluster configuration for these fields:
+  `cluster`  
+  `ingressClassName`
+  `ingressController`  
+  `ingressHost` 
 
 ### Before you begin
 
@@ -26,7 +28,6 @@ All other fields such as `cluster`, `ingressClassName`, `ingressController` and 
   * Kube context: Only if you are installing on the same cluster
 
 * Make sure you have a registered Git integration.  
-  To create a Git integration, use `cf integration git add default --runtime <runtime-name> --provider github --api-url https://api.github.com` 
 
 
 ### How to recover a runtime
@@ -56,6 +57,10 @@ Reinstall the runtime from the existing installation repository to recover it, i
 
 1. Verify that you have a registered Git integration:  
   `cf integration git list --runtime <runtime-name>`  
+
+1. If needed, create a new Git integration:  
+  `cf integration git add default --runtime <runtime-name> --provider github --api-url https://api.github.com` 
+
     
 
 ### Ingress example
