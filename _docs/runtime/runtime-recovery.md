@@ -1,27 +1,26 @@
 ---
-title: "Runtime recovery"
+title: "Restore runtimes"
 description: ""
 group: runtime
 toc: true
 ---
 
-In case of cluster failure, you can restore the runtime from the runtime installation repository in the failed cluster containing the resources.
-Runtime recovery is possible for partial or complete cluster failures. You can restore the runtime in the same or a different cluster.
+In case of cluster failure, restore the runtime using the resources from the existing runtime installation repository. Restore the runtime to either the failed or a different cluster, in case of partial or complete cluster failures. 
 
 The installation process:
 * Applies `argo-cd` from the installation manifests in your repo to your cluster
 * Associates `argo-cd` with the existing installation repo
 * Applies the runtime and `argo-cd` secrets to the cluster
-* Updates the runtime config map (`<runtime-name>.yaml` in the `bootstrap` directory) with the new cluster configuration for these fields:
+* Updates the runtime config map (`<runtime-name>.yaml` in the `bootstrap` directory) with the new cluster configuration for these fields:  
   `cluster`  
-  `ingressClassName`
+  `ingressClassName`  
   `ingressController`  
   `ingressHost` 
 
 ### Before you begin
 
-* During reinstallation, in the same or a different cluster, you will need to provide the following information: 
-  > The first three values must be the identical to the runtime you are trying to recover. 
+* During reinstallation in the same or a different cluster, you will need to provide the following information: 
+  > The first three values must be the identical to the runtime to restore. 
   * Runtime name
   * Repository URL
   * Codefresh context
@@ -30,8 +29,8 @@ The installation process:
 * Make sure you have a registered Git integration.  
 
 
-### How to recover a runtime
-Reinstall the runtime from the existing installation repository to recover it, in the same or a different cluster.  
+### How to restore a runtime
+Reinstall the runtime from the existing installation repository to restore it to the same or a different cluster.  
 
 
 1. Run:  
@@ -49,8 +48,9 @@ Reinstall the runtime from the existing installation repository to recover it, i
 
        `resources_<runtime-name>/cdp-default-git-source.ingress.yaml`  
     
-  See the [example](#ingress-example) below. 
-
+    See the [example](#ingress-example) below. 
+    
+{:start="4"}
 1. If you have managed clusters registered to the runtime you are recovering, reconnect them.  
   Run the command and follow the instructions in the wizard:  
   `cf cluster add`
