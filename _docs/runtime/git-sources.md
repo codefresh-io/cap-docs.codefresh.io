@@ -10,7 +10,7 @@ A Git Source is the equivalent of an Argo CD application that tracks a Git repos
   
 Provisioning a runtime automatically creates a Git Source that stores resources for the runtime and for the demo CI pipelines that are optionally installed with the runtime. Every Git Source is associated with a Codefresh runtime. A runtime can have one or more Git Sources. You can add Git Sources at any time, to the same or to different runtimes.  
 
-Once you create a Git Source for a runtime, you can select to store resources for a CI/CD entity associated with that runtime. For example, when creating pipelines or applications, you can select the Git Source in which to store manifest definitions.
+Once you create a Git Source for a runtime, you can store resources for CI/CD entities associated with that runtime. For example, when creating pipelines or applications, you can select the Git Source to which to store manifest definitions.
 
 
 ### View Git Sources and definitions
