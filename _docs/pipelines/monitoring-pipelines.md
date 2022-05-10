@@ -5,13 +5,14 @@ group: pipelines
 toc: true
 ---
 
-Once a pipeline is created, runs, and submits a workflow, CSDP continuously collects and displays real-time info and analytics on the pipeline and its workflows.  
+Once a pipeline is created, and submits a workflow, Codefresh continuously collects and displays real-time info and analytics on the pipeline and its workflows.  
 
-There are several options to monitor pipeline and workflow activity:
+There are several ways to monitor pipeline and workflow activity:
 
 * Activity Log notifications: Monitor sensor and event-source logs. 
 * Aggregated and granular data visualizations: See data for all pipelines in the global aggregated view, or for a single pipeline, its workflows and steps, for a detailed granular view. Analyze and compare resource consumption, and identify trends through KPI metrics.
 * Interactive workflow-step visualizations: Filter workflow steps by node type, results, and more, in YAML and tree formats.
+* Argo Events in workflows: 
 * Workflow logs: Real-time logs for ongoing workflows, and archived logs for completed workflows.
 
 
