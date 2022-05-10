@@ -91,4 +91,5 @@ Edit an existing Git Source by changing the source and destination definitions.
 
 ### What to read next
 [Manage runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/)
+[Recover runtimes]({{site.baseurl}}/docs/runtime/runtime-recovery/)
 
