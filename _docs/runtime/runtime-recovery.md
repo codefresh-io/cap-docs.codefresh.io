@@ -5,9 +5,9 @@ group: runtime
 toc: true
 ---
 
-In case of cluster failure, restore the runtime using the resources from the existing runtime installation repository. For partial or complete cluster failures, you can restore the runtime to either the failed cluster or to a different cluster. 
+In case of cluster failure, restore the runtime from the existing runtime installation repository. For partial or complete cluster failures, you can restore the runtime to either the failed cluster or to a different cluster. Restoring the runtime reinstalls the runtime leveraging the resources in the existing runtime repo.
 
-The installation process:
+Restoring the runtime:
 * Applies `argo-cd` from the installation manifests in your repo to your cluster
 * Associates `argo-cd` with the existing installation repo
 * Applies the runtime and `argo-cd` secrets to the cluster
