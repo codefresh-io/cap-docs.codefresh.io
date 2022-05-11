@@ -33,7 +33,7 @@ An intuitive selection mechanism enables you to easily select and configure each
 
 ### Delivery Pipeline creation flow
 Here's a high-level overview of the Delivery Pipeline creation flow.  
-For step-by-step instructions, see [How to create a Delivery Pipeline]({{site.baseurl}}/docs/pipelines/create-pipeline/##how-to-create-a-delivery-pipeline).
+For step-by-step instructions, see [How to: create a Delivery Pipeline]({{site.baseurl}}/docs/pipelines/create-pipeline/#how-to-create-a-delivery-pipeline).
 
 1. Define pipeline name and select Workflow Template to execute
 1. Define default values for pipeline workflow template arguments
@@ -167,7 +167,7 @@ Manifests typically include:
 Once Codefresh generates the manifests, and you validate them, you commit all the changes. The commits are synced to the Git source defined for the pipeline, and then synced to the cluster.
 
 
-### How to create a Delivery Pipeline
+### How to: Create a Delivery Pipeline
 Follow the step-by-step instructions to guide you through Delivery Pipeline wizard and create a Codefresh pipeline.
 
 1. In the Codefresh UI, go to [Delivery Pipelines](https://g.codefresh.io/2.0/pipelines){:target="\_blank"}.
