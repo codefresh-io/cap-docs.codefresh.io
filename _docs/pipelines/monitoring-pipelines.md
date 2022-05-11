@@ -1,23 +1,24 @@
 ---
-title: "Pipeline monitoring"
+title: "Monitoring and optimizing pipelines"
 description: ""
 group: pipelines
 toc: true
 ---
 
-Once a pipeline is created, and submits a workflow, Codefresh continuously collects and displays real-time info and analytics on the pipeline and its workflows.  
+Once a pipeline is created, and a workflow is submitted, Codefresh continuously collects and displays real-time analytics on the pipeline and its workflows.  
+
 
 There are several ways to monitor pipeline and workflow activity:
 
 * Activity Log notifications: Monitor sensor and event-source logs. 
-* Aggregated and granular data visualizations: See data for all pipelines in the global aggregated view, or for a single pipeline, its workflows and steps, for a detailed granular view. Analyze and compare resource consumption, and identify trends through KPI metrics.
+* Aggregated and granular visualizations: See data for all pipelines in the global aggregated view, or for a single pipeline, its workflows and steps in a detailed granular view. Analyze and compare resource consumption, and identify trends through KPI metrics.
 * Interactive workflow-step visualizations: Filter workflow steps by node type, results, and more, in YAML and tree formats.
-* Argo Events in workflows: 
+* Argo Events in workflows: View sensor, event source, and payload information for Argo Events within the workfo
 * Workflow logs: Real-time logs for ongoing workflows, and archived logs for completed workflows.
 
 
-### How to monitor sensor and event source notifications for pipelines in Activity Log
-The Activity Log is a quick way to monitor logs for sensors and event-sources in pipelines. A pull-down panel in the CSDP toolbar, the Activity Log shows ongoing, success, and error notifications, by date, starting with today's date. Syntax errors that prevent the sensor from triggering the pipeline are displayed here.
+### Monitor sensor and event source notifications for pipelines in Activity Log
+The Activity Log is a quick way to monitor logs for sensors and event-sources in pipelines. A pull-down panel in the Codefresh toolbar, the Activity Log shows ongoing, success, and error notifications, by date, starting with today's date. Syntax errors that prevent the sensor from triggering the pipeline are displayed here.
 
 1. In the CSDP UI, on the top-right of the toolbar, select ![](/images/pipeline/monitoring/pipeline-activity-log-toolbar.png?display=inline-block) **Activity Log**.
 1. To see pipeline activity, select **Event Source** and **Sensor** filters.
@@ -95,7 +96,7 @@ Pipeline metrics (KPIs), are displayed as line charts and in list formats.
 | **Committers**        | The number of users whose commits on the repository or repositories triggered the pipelines. The user count is aggregated per user, so if the same user made ten commits, the ten commits are counted as a single commit.|       
 
 
-### Working with individual (granular) pipeline views
+### Working with individual pipelines
 
 Individual pipeline view shows all pipelines in your cluster, including those that are not run and without workflows.  
 
@@ -139,8 +140,8 @@ The table describes the information for each pipeline in the list view.
 | **Sync Status**| The sync status with Git.|  
 
 
-### Monitoring step analytics for workflows in pipeline 
-Step analytics show the aggregated average KPIs for each step in a workflow, across all active workflows for the selected pipeline.  
+### Monitoring step analytics for workflows in a pipeline 
+Step analytics show the aggregated average for KPIs in each step of a workflow, across all active workflows for the selected pipeline.  
 
 Analyze performance through the KPI metrics and identify how the metric is trending, compared to the reference period.
 
@@ -165,7 +166,7 @@ Here's an example of step information for a pipeline in the Dashboard tab.
 The upper half shows KPIs for all workflows submitted for the pipeline.  
 To customize the view, select filters. All the filters are identical to those available for the aggregated view. In this view, you can also filter by **Branch** which is the Git branch or branches with the events that triggered the pipeline.   
 
-The Step Analytics list view in the lower half shows the KPI breakdown per step and additional information on the step. 
+The Step Analytics list view in the lower half shows the KPI breakdown per step, and additional information on the step. 
 > Each metric shows also the difference in percentage compared to the reference period corresponding to the Time range selected.  
 
 {: .table .table-bordered .table-hover}
@@ -181,13 +182,24 @@ The Step Analytics list view in the lower half shows the KPI breakdown per step 
 | **Errors**| The number of times that the execution of this step resulted in errors.|  
 
 ### Monitoring workflows in pipelines
-Monitor workflows within the context of the selected pipeline, including steps and logs. See all the workflows submitted for that pipeline in the Workflows tab, sorted from the most recent to the oldest.   
+Monitor workflows within the context of the selected pipeline. including steps and logs. See all the workflows submitted for that pipeline in the Workflows tab, sorted from the most recent to the oldest.   
 
-**How to: Monitor workflows for a pipeline**  
-1. Select a pipeline from either the **Home** page or the **Delivery Pipelines** page.
-1. Select the [**Workflows**](https://g.codefresh.io/2.0/pipelines/edit/codefresh-v2-production/codefresh-v2-production/argo-platform-push%2Fservice-yaml/workflows) tab. 
+#### Select the workflow to monitor**  
+1. From either the **Home** page or the **Delivery Pipelines** pages, select a pipeline.
+1. Select the [Workflows](https://g.codefresh.io/2.0/pipelines/edit/codefresh-v2-production/codefresh-v2-production/argo-platform-push%2Fservice-yaml/workflows) tab. 
+1. Select the workflow, and then select **View workflow details** on the right.
 
-**Workflow list view**
+   {% include image.html 
+  lightbox="true" 
+  file="/images/workflows/workflow-drill-down.png" 
+  url="/images/workflows/workflow-drill-down.png"
+  alt="View Workflow Details"
+  caption="View Workflow Details"
+  max-width="30%"
+  %}
+  
+
+**Workflow list for pipeline**
 Here's an example of the list of workflows for a pipeline, in the Workflow tab.
 
    {% include image.html 
@@ -203,7 +215,7 @@ The table describes the information in the list view.
 
 | Legend        |  Description|  
 | --------------| -------------|  
-| **1**         | The filters to customize the workflow view for the pipeline. All the filters are identical to those available for the [aggregated view]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#filters-for-aggregated-views). In this view, in addition to the predefined time ranges, you can select a custom time range.  |                             
+| **1**         | The filters available to customize the workflow view for the pipeline. All the filters are identical to those available for the [aggregated view]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#filters-for-aggregated-views). In this view, in addition to the predefined time ranges, you can select a custom time range.  |                             
 | **2**         | The bar chart with the duration and status of all workflows submitted for the pipeline, starting with the most recent. The color of the bar indicates if the workflow it represents is in progress (blue), completed successfully (green), or failed with error (red). Mouse over the bar to see a pop-up of workflow-specific information (see image below entitled, Pop-up with workflow metadata).  |          
 | **3**  | Workflow-specific information, similar to what you see in the bar chart pop-ups. You can see the git hash, the name of the user who made the commit, the pipeline that submitted the workflow, the start time and duration.|       
 | **4**| Selecting **View Workflow Details** shows options to monitor and manage workflows, including viewing workflow logs.| 
@@ -218,40 +230,137 @@ The table describes the information in the list view.
   max-width="30%"
   %}
 
-#### How to: View logs for workflows
+#### Analyze steps in workflows
+View the connection between steps in the workflow, the status of each step, and additional information for the step.   
 
-Logs are available for ongoing and completed workflows. 
-* For ongoing workflows, you can also see live logs for all steps in the workflow as they are being executed.  
-* For archived workflows, you can view logs for any step in the workflow.  
+* Visualize the entire flow of the pipeline, with the Argo Event information incorporated into the workflow. In the same location, you can see the events that  triggered the workflow, followed by the workflow itself. 
+
+* Select a step to see additional information on that step in a convenient pull-out panel. Easily copy paths for attributes from event payloads, view logs for pods, and download artifacts.
+
+* Select the filters to view subsets of steps in the workflow.
+
+**How to**
+1. Select the [workflow](#select-the-workflow-to-monitor). 
+  The Workflows displays the steps in the selected workflow. Every step has as status indication.
+  Event-type steps have labels within the step to differentiate them from workflow steps.
+  
+   {% include image.html 
+  lightbox="true" 
+  file="/images/workflows/workflow-steps.png" 
+  url="/images/workflows/workflow-steps.png"
+  alt="Workflow steps"
+  caption="Workflow steps"
+  max-width="30%"
+  %}
+
+  {% include image.html 
+  lightbox="true" 
+  file="/images/workflows/argo-events-in-wrkflow.png" 
+  url="/images/workflows/argo-events-in-wrkflow.png"
+  alt="Argo Event steps in workflow"
+  caption="Argo Event steps in workflow"
+  max-width="30%"
+  %}
+
+{:start="2"}
+1. To display a subset of steps in the workflow, set filters.
+
+ {% include image.html 
+  lightbox="true" 
+  file="/images/workflows/filters-workflow-steps.png" 
+  url="/images/workflows/filters-workflow-steps.png"
+  alt="Filters for workflow steps"
+  caption="Filters for workflow steps"
+  max-width="30%"
+  %}
+
+{:start="2"}
+1. To view additional information for a step, select the step.
+
+  The header displays the name of the step, followed by step-type, the date of the most recent update, and its duration.  
+  The tabs displayed differ according to the step type:  
+
+  * Almost all workflow step types show the Summary, Manifest, Containers, Inputs, Outputs. 
+  * Pod step-types also display the Logs tab.
+  * Event-step types show Manifest, Summary and Payload.
+    > For Cron and Unknown event types, only the Event Sources are shown. 
+  
+  Example: event-source manifest.
+
+  {% include image.html 
+  lightbox="true" 
+  file="/images/workflows/event-source.png" 
+  url="/images/workflows/event-source.png"
+  alt="Event source manifest in workflow"
+  caption="Event source manifest in workflow"
+  max-width="30%"
+  %}
+
+  Example: event-payload.
+
+ {% include image.html 
+  lightbox="true" 
+  file="/images/workflows/event-payload.png" 
+  url="/images/workflows/event-payload.png"
+  alt="Event payload in workflow"
+  caption="Event source in workflow"
+  max-width="30%"
+  %}
+
+ Example: pod step type
+
+ {% include image.html 
+  lightbox="true" 
+  file="/images/workflows/workflow-pod-step.png" 
+  url="/images/workflows/workflow-pod-step.png"
+  alt="Pod step type in workflow"
+  caption="Pod step type in workflow"
+  max-width="30%"
+  %}
+
+#### View logs for workflows
+
+View logs for ongoing or completed workflows. As with logs in any standard terminal, you can copy/cut/paste log info. The commands differ based on the OS.
+
+* For ongoing workflows, you can also see live logs for steps in the workflow as they are being executed.  
+* For completed workflows, you can view logs for any step in the workflow.  
 
 > To view logs for completed workflows, you must configure an artifact repository in CSDP to archive them. 
-> As with logs in any standard terminal, you can copy/cut/paste log info. The commands differ based on the OS.
-
 
 **Before you begin**  
 [Configure an artifact repository]({{site.baseurl}}/docs/pipelines/configure-artifact-repository/)  
 
 **How to**  
+1. Select the [workflow](#select-the-workflow-to-monitor). 
+1. Filter by **Node Type** of **Pods**, and then select a step to view its logs.
 
-1. From either the **Home** page or the **Delivery Pipelines** pages, select a pipeline.
-1. Select the [Workflows](https://g.codefresh.io/2.0/pipelines/edit/codefresh-v2-production/codefresh-v2-production/argo-platform-push%2Fservice-yaml/workflows) tab. 
-1. Select the workflow with the logs to view, and then select **View workflow details** on the right.
-  
-  {% include image.html 
+ {% include image.html 
   lightbox="true" 
-  file="/images/pipeline/monitoring/monitor-workflows-tab-popup.png" 
-  url="/images/pipeline/monitoring/monitor-workflows-tab-popup.png"
-  alt="Pop-up with workflow metadata"
-  caption="Pop-up with workflow metadata"
+  file="/images/workflows/view-logs-pull-out.png" 
+  url="/images/workflows/view-logs-pull-out.png"
+  alt="Event payload in workflow"
+  caption="Event source in workflow"
   max-width="30%"
   %}
 
-{:start="4"}
+
+OR
+
 1. In the Workflows tab, select **Logs**.
 1. From the **Select Step (Pod)** dropdown, do one of the following:
-  * To view live logs for an ongoing workflow,  select **All**.
-  * To view archived logs for a completed workflow, select the step and from the **Select Container** dropdown, select the container.
-1. If needed, copy/cut/paste log details. Refer to the table below for commands compatible with your OS.
+  * To view live logs for an ongoing workflow, select **All**.
+  * To view archived logs for a completed workflow, select the step and from the **Select Container** dropdown, select the container. 
+
+  {% include image.html 
+  lightbox="true" 
+  file="/images/workflows/view-logs-logs-tab.png" 
+  url="/images/workflows/view-logs-logs-tab.png"
+  alt="Event payload in workflow"
+  caption="Event source in workflow"
+  max-width="30%"
+  %}
+
+1. If needed, copy/cut/paste log details. Refer to the table below for help on commands compatible with your OS.
 
 
 {: .table .table-bordered .table-hover}
@@ -260,3 +369,53 @@ Logs are available for ongoing and completed workflows.
 | **Apple**          | `Command`+`X`                      | `Command`+`C`                      | `Command`+`V`                    |                            
 | **Windows/ GNOME/KDE**| `Control`+`X` or `Shift`+`Delete`| `Control`+`C` or `Control`+`Insert`| `Control`+`V` or `Shift`+`Insert`|   
 | **GNOME/KDE terminal emulators**|N/A|`Control`+`Shift`+`C` or `Control`+`Insert`| `Control`+`Shift`+`V` or `Control`+`Shift`+`Insert`; (to paste selected text `Shift`+`Insert` or middle mouse button) |         
+
+#### Retry a workflow
+Retry a workflow to restart the same workflow. You may want to retry a workflow that has failed, or to retry any step such as end-to-end testing steps that are flaky.
+
+> To create a new instance of the workflow, Resubmit the workflow.
+
+1. Select the [workflow](#select-the-workflow-to-monitor). 
+1. In the **Workflows** tab, select **Retry**.
+
+{% include image.html 
+  lightbox="true" 
+  file="/images/workflows/retry-workflow.png" 
+  url="/images/workflows/retry-workflow.png"
+  alt="Retry workflow"
+  caption="Retry workflow"
+  max-width="50%"
+  %
+
+#### Resubmit a workflow
+Resubmit a workflow to create a new workflow and submit it. You may want to resubmit a workflow .
+
+> To restart the same workflow, Retry the workflow.
+
+1. Select the [workflow](#select-the-workflow-to-monitor). 
+1. In the **Workflows** tab, select **Resubmit**.
+
+{% include image.html 
+  lightbox="true" 
+  file="/images/workflows/resubmit-workflow.png" 
+  url="/images/workflows/resubmit-workflow.png"
+  alt="Resubmit workflow"
+  caption="Resubmit workflow"
+  max-width="50%"
+  %
+
+
+#### Delete a workflow
+Delete unused legacy workflows. Deleting a workflow removes it from the pipeline's workflow list and from the Workflows dashboard.
+
+1. Select the [workflow](#select-the-workflow-to-monitor). 
+1. In the **Workflows** tab, select **Delete**.
+
+  {% include image.html 
+  lightbox="true" 
+  file="/images/workflows/delete-workflow.png" 
+  url="/images/workflows/delete-workflow.png"
+  alt="Delete workflow"
+  caption="Delete workflow"
+  max-width="50%"
+  %}
