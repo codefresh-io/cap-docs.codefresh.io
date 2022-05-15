@@ -8,13 +8,10 @@ toc: true
 
 Codefresh administrators can create, register and authorize Codefresh as an OAuth2 App in GitHub. Codefresh users can then authorize access to GitHub instead of generating a personal access token from their Git providers to perform Git-based actions.
 
-To set up OAuth2 authorization for GitHub, you must create a:
-* GitHub OAuth2 Application for CSDP 
-* K8s `secret` in the runtime cluster with OAuth2 Application credentials
+To set up OAuth2 authorization for GitHub in Codefresh, you must:
+* Create a GitHub OAuth2 Application for Codefresh 
+* Create a K8s `secret` in the runtime cluster with OAuth2 Application credentials
 * Configure OAuth2 settings in Codefresh to create a K8s `ConfigMap` that references the secret
-
-
-
 
 ### Step 1: Create GitHub OAuth2 Application
 Create and register an OAuth App under your organization to authorize Codefresh.  
@@ -40,7 +37,7 @@ Create and register an OAuth App under your organization to authorize Codefresh.
 Create a K8s secret in the runtime cluster, using the example below as a guideline. You need to define the application ID (`appId`), client ID (`clientId`) and the client secret (`clientSecret`) from the GitHub OAuth2 Application you created, and the GitHub URL (`url`).  
 
 > All fields in the secret _must be_ encoded in `base64`.  
-  To encode, use this command:  `echo -n VALUE | base64`.  
+  To encode, use this command: `echo -n VALUE | base64`.  
 
 
 **Before you begin**
@@ -82,20 +79,22 @@ Configure the settings for the OAuth2 GitHub application in Codefresh to complet
   > The values for all the settings in the config-map are the `keys` in the secret file. 
 
 1. In the Codefresh UI, go to Authentication (TBD).
-2. Select **GitHub Authentication**.
+1. Select **GitHub Authentication**.
   The list shows existing GitHub authentications, if any. 
+
   SCREENSHOT
 
 {:start="3"}
-3. Select **+ Add**.
+1. Select **+ Add**.
   The settings page is opened in the **Form** mode.
+  
   SCREENSHOT
 
 {:start="4"}
-4. From the **Runtime** list, select the runtime to which to apply the current configuration. The runtime must be identical to the runtime to which you saved the K8s secret.
+1. From the **Runtime** list, select the runtime to which to apply the current configuration. The runtime must be identical to the runtime to which you saved the K8s secret.
    > If you have managed clusters registered to the selected runtime, the configuration is available to all the clusters. 
 
-5. Configure the settings for the **GitHub OAuth2 Application**, either in **Form** mode, or switch to **YAML** and then define the settings:
+1. Configure the settings for the **GitHub OAuth2 Application**, either in **Form** or in **YAML** modes:
   * **Secret Name**: The name of the K8s secret file you created in the runtime cluster.
   * **Secret Namespace**: The namespace in the runtime cluster where you created the K8s secret.
   * **Application ID**: The `key` representing the OAuth application ID in the K8s secret. For example, `appId`.
@@ -107,6 +106,7 @@ Configure the settings for the OAuth2 GitHub application in Codefresh to complet
 
   SCRESSNHOT
 
+{:start="5"}
 1. Select **Commit**.
   The Commit Changes panel shows a summary of the settings and the final version of the YAML manifest in read-only mode. 
   
@@ -120,5 +120,3 @@ Configure the settings for the OAuth2 GitHub application in Codefresh to complet
 
 You have completed the setup for authorizing Codefresh as an OAuth App in GitHub. 
 
-### What to read next
-[Manage Git personal access tokens]({{site.baseurl}}/docs/administration/user-settings/)
