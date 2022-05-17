@@ -204,16 +204,14 @@ max-width="30%"
 %}
 
 ### Application current state
-The Current State tab for an application shows the live state of all the application's resources (Kubernetes objects) in the cluster, in List and Tree views.
+The Current State tab for an application shows the live state of all the application's resources (Kubernetes objects) in the cluster in List and Tree views.
 * List View: A hierarchical representation of application's resources, sorted by the Last Update.
-* Tree view: A multi-level representation of the application and its resources. Useful for complex application deployments with large numbers of resources. Visualize and navigate resources progressivwly. 
-The first level of resources are always displayed. Additional nested levels are collapsed by default with a visual indication that       After the first level in a navigable and lo
-However complext the structure of the application and however many levels of nested objects, in the tree view you can follow and navigate from the logical beginning ot the logical end.
-Starting with the deployment repurse or object, yon can continue to expand and see s and connections between each object type 
+* Tree view: A multi-level representation of the application and its resources, for progressive navigation and visualization. Useful for complex deployments with multiple clusters and large numbers of resources. 
+  The first level of resources are always displayed. Additional nested levels are collapsed by default with a visual + indicator and the number of resources.
 
-For general information, see the official documentation on [Working with Kubernetes objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/){:target="\_blank"}.
+For general information K8s resources, see the official documentation on [Working with Kubernetes objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/){:target="\_blank"}.
 
-
+Here are 
 
 
               
@@ -222,7 +220,7 @@ For general information, see the official documentation on [Working with Kuberne
 
 
 #### Current State List view 
-Here is an example of the Current State in List view mode.
+Here is an example of the Current State in List view.
 
 {% include
 image.html
@@ -237,36 +235,28 @@ max-width="30%"
 This a description of the information that 
 
 #### Current State Tree view
-Here is a
+Here is an example of the Current State in Tree view. The table below describes the information and 
 
 
 {: .table .table-bordered .table-hover}
 | Tree View Item          | Description   |
 | ------------------------| ---------------- |
 |**Application**             | The root of the tree view, and can be either synced (../../../images/icons/healthy.png?display=inline-block) or out-of-sync (../../../images/icons/error.png?display=inline-block).  |
-|**Application resource**    | The leaf or leaves that represent the resources deployed for the application. Every resource leaf dsiplays the following information:{::nomarkdown}</br><ul><li>Name and icon identifying the resource.</li><li>Kind: The type of Kubernetes resource. </li><li>The health status, and can be either synced (../../../images/icons/healthy.png?display=inline-block) or out-of-sync (../../../images/icons/error.png?display=inline-block).</li><li>Based on the type of resource, the number of replicas, containers, or revisons.</li><li>Additional actions for the resource such as view resource details, sync, and delete resources.</li> <li>Expand/collapse nested levels of more resource.</li></ul>{:/}|
+|**Application resource**    | The tree leaf or leaves that represent the resources deployed for the application. Every resource leaf displays the following information:{::nomarkdown}</br><ul><li>Name and icon identifying the resource.</li><li>Kind: The type of Kubernetes resource. </li><li>The health status, and can be either synced (../../../images/icons/healthy.png?display=inline-block) or out-of-sync (../../../images/icons/error.png?display=inline-block).</li><li>Based on the type of resource, the number of replicas, containers, or revisions.</li><li> Additional actions for the resource such as view resource details, sync, and delete resources.</li> <li>Expand/collapse nested levels of more resource. See [</li></ul>{:/}|
+|**Resource Inventory**     | The resource breakdown for the application by kind, the total number, and the number of out-of-sync resources, if any. 
+Selecting a resource or selecting the out-of-sync number for a resource, filters the Tree view by that resource/state. Useful to track a resource with recent changes, or  identify out-of-sync resources. 
+Resource Inventory filters when selected are automatically reflected in the default filter list.  
 
-
-
- 
-
-             
-
-##### Resource Inventory
-The Resource Inventory displays the resource breakdown for your application by kind, with the total number  and the total number of running or erred and sync state. 
-You can:
-Select a resource to filter the Tree view by that resource. For example, quickly identify identify out-of-sync resources, and display only those resources. 
-> Resource inventory filters when selected are automatically reflected in the default filter list, and vice-versa?.
 
 ###### Resource details
-Select the resource, or from Additional Actions (the three dots), select **Info** to details panel for the resource.  
+Select the resource, or from the three dots, select **Info** to view additional details on the resource.  
 SCREENSHOT
 You can: 
-* View desired and live state versions of the resource manifest/spec (Summary)
+* View desired and live versions of the resource manifest/spec (Summary)
 * View/download logs (Logs)
 * Hide Managed Fields in the manifest. In the Summary tab, select to hide managed-field information. Managed-fields show information on which field manager manages the field. This information is displayed as part of the resource manifest after Kubernetes introduced `Server Side Apply`. For more information, see [Field Management](https://kubernetes.io/docs/reference/using-api/server-side-apply/#field-management){:target="\_blank"}.
 SCREENSHOT
-* Share resource details: Copy the URL to share the resource details with others in your organization for collaborative review and analysis. Pasting the URL opens to the same resource detail view.
+* Share resource details: Copy the URL and send to others in your organization to share the resource details for collaborative review and analysis. Pasting the URL in a browser opens to the same resource detail view.
   SCREENSHOT
 
 ##### Resource sync
