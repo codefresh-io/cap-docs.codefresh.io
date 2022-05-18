@@ -139,12 +139,38 @@ For more information, see [Creating records by using the Amazon Route 53 console
 
 
 **Cluster routing service**
-If you bypassed installing ingress resources with the `--skip-ingress` flag, configure the VirtualService or Ingress or Service routing services with the path to  `app-proxy` and `webhook` to these values: `/app-proxy` and `/webhooks/test-runtime3/push-github`, respectively.  
-* For `VirtualService` resources, configure the `http.uri.prefix`.   
-* For `Ingress` resources, configure the `http.path`.
+If you bypassed installing ingress resources with the `--skip-ingress` flag, configure the Ingress, or the VirtualService for Istio, to route traffic to the `app-proxy` and `webhook` services.  `cap-app-proxy` and `push-github-eventsource-svc`, respectively, in the examples.  
+
+Ingress resource example for `app-proxy`:
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  creationTimestamp: null
+  name: codefresh-cap-app-proxy
+  namespace: codefresh
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: my.support.cf-cd.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: cap-app-proxy # replace with app proxy service name
+            port:
+              number: 3017
+        path: /app-proxy/
+        pathType: Prefix
+status:
+  loadBalancer: {}
+```
 
 
-`VirtualService` examples for `app-proxy` and `webhook`: 
+
+`VirtualService` examples for `app-proxy` and `webhook`:  
+
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -159,7 +185,7 @@ spec:
   http:
     - match:
       - uri:
-          prefix: /app-proxy # do not change 
+          prefix: /app-proxy 
       route:
       - destination:
           host: cap-app-proxy # replace with app proxy service name
@@ -171,7 +197,7 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  namespace: test-runtime3
+  namespace: test-runtime3 #runtime name
   name: csdp-default-git-source
 spec:
   hosts:
@@ -181,34 +207,14 @@ spec:
   http:
     - match:
       - uri:
-          prefix: /webhooks/test-runtime3/push-github # replace <test-runtime3> with runtime name
+          prefix: /webhooks/test-runtime3/push-github 
       route:
       - destination:
-          host: push-github-eventsource-svc
+          host: push-github-eventsource-svc # replace with webhook service name
           port:
             number: 80
 ```
-Ingress resource example for 'webhook`.
-```yaml
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: minimal-ingress
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
-spec:
-  ingressClassName: nginx-example
-  rules:
-  - http:
-      paths:
-      - path: /testpath
-        pathType: Prefix
-        backend:
-          service:
-            name: test
-            port:
-              number: 80
-```
+
   
 **Git integration registration**  
 If you bypassed installing ingress resources with the `--skip-ingress` flag, or if AWS ALB is your ingress controller, create and register Git integrations using these commands:  
