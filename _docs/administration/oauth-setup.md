@@ -1,5 +1,5 @@
 ---
-title: "Set up OAuth integration"
+title: "Set up OAuth2 integration"
 description: ""
 group: administration
 toc: true
@@ -73,10 +73,10 @@ data:
 
 ### Step 3: Configure OAuth2 settings in Codefresh 
 
-Configure the settings for the OAuth2 GitHub application in Codefresh to complete the integration. Configuring the settings will create a K8s config map that references the OAuth secret credentials. When configuring the settings, you can work in Form mode, or directly edit the YAML manifest. 
+Configure the settings for the OAuth2 GitHub application in Codefresh to complete the integration. Configuring the settings creates a K8s ConfigMap that references the OAuth secret credentials. When configuring the settings, you can work in Form mode, or directly edit the YAML manifest. 
 
 >Important:  
-  > The values for all the settings in the config-map are the `keys` in the secret file. 
+  > The values for all the settings in the ConfigMap are the `keys` in the secret file. 
 
 1. In the Codefresh UI, go to Authentication (TBD).
 1. Select **GitHub Authentication**.
@@ -102,9 +102,9 @@ Configure the settings for the OAuth2 GitHub application in Codefresh to complet
   * **Client Secret**: The `key` representing the client secret in the K8s secret. For example, `clientSecret`.
   * **URL**: The `key` representing the provider URL in the K8s secret. For example, `url`.
 
-  Here are examples of the OAuth2 settings in Form mode and the corresponding YAML file that Codefresh automatically populates.
+  Here are examples of the OAuth2 settings in Form mode, and the corresponding YAML file that Codefresh automatically populates.
 
-  SCRESSNHOT
+  SCREENSHOT
 
 {:start="5"}
 1. Select **Commit**.
@@ -118,5 +118,5 @@ Configure the settings for the OAuth2 GitHub application in Codefresh to complet
 1. Optional. Enter a commit message.
 1. Select **Commit** at the bottom-right.
 
-You have completed the setup for authorizing Codefresh as an OAuth App in GitHub. 
+You have completed the set up to authorize Codefresh as an OAuth App in GitHub. 
 
