@@ -6,7 +6,7 @@ toc: true
 ---
 
 
-Codefresh administrators can create, register and authorize Codefresh as an OAuth2 App in GitHub. Codefresh users can then authorize access to GitHub instead of generating a personal access token from their Git providers to perform Git-based actions.
+Codefresh administrators can create, register, and authorize Codefresh as an OAuth2 App in GitHub. Codefresh users can then authorize access to GitHub instead of generating a personal access token from their Git providers to perform Git-based actions.
 
 To set up OAuth2 authorization for GitHub in Codefresh, you must:
 * Create a GitHub OAuth2 Application for Codefresh 
