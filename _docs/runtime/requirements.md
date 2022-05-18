@@ -29,7 +29,7 @@ Configure your Kubernetes cluster with an ingress controller component that is e
 |  Supported Ingress Controller                       | Reference|  
 | --------------                                      | --------------           |  
 | Ambassador                                        | [Ambassador ingress controller documentation](https://www.getambassador.io/docs/edge-stack/latest/topics/running/ingress-controller/){:target="\_blank"} |  
-| ALB (AWS Application Load Balancer)               | [AWS ALB ingress controller documentation](https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html){:target="\_blank"} |      
+| ALB (AWS Application Load Balancer)               | [AWS ALB ingress controller documentation](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/){:target="\_blank"} |      
 | NGINX Enterprise (`nginx.org/ingress-controller`)  | [NGINX Ingress Controller documentation](https://docs.nginx.com/nginx-ingress-controller/){:target="\_blank"} |      
 | NGINX Community  (`k8s.io/ingress-nginx`)          | [Provider-specific configuration](#nginx-community-version-provider-specific-ingress-configuration) in this article|                             
 | Istio                                             | [Istio Kubernetes ingress documentation](https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress/){:target="\_blank"} |       
@@ -44,15 +44,8 @@ Configure your Kubernetes cluster with an ingress controller component that is e
 * Valid SSL certificate  
   For secure runtime installation, the ingress controller must have a valid SSL certificate from an authorized CA (Certificate Authority).  
 
-* Report status  
-  The ingress controller must be configured to report its status. Otherwise, Argo's health check reports the health status as "progressing" resulting in a timeout error during installation.  
-    
-  By default, NGINX Enterprise and Traefik ingress are not configured to report status. For details on configuration settings, see the following sections in this article:  
-    [NGINX Enterprise ingress configuration](#nginx-enterprise-version-ingress-configuration)  
-    [Traefik ingress configuration](#traefik-ingress-configuration) 
-
-#### AWS ALB ingress configuration
-In the ingress resource file, verify that `spec.controller` is configured as `ingress.k8s.aws/alb`. 
+* AWS ALB  
+  In the ingress resource file, verify that `spec.controller` is configured as `ingress.k8s.aws/alb`. 
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -62,6 +55,14 @@ metadata:
 spec:
   controller: ingress.k8s.aws/alb
 ```
+
+* Report status  
+  The ingress controller must be configured to report its status. Otherwise, Argo's health check reports the health status as "progressing" resulting in a timeout error during installation.  
+    
+  By default, NGINX Enterprise and Traefik ingress are not configured to report status. For details on configuration settings, see the following sections in this article:  
+    [NGINX Enterprise ingress configuration](#nginx-enterprise-version-ingress-configuration)  
+    [Traefik ingress configuration](#traefik-ingress-configuration) 
+
 
 #### NGINX Enterprise version ingress configuration
 The Enterprise version of NGINX (`nginx.org/ingress-controller`), both with and without the Ingress Operator, must be configured to report the status of the ingress controller.

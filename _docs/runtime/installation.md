@@ -68,7 +68,7 @@ Before you start installing the Codefresh runtime, verify that:
   * The IP address or host name of the ingress controller component.  
     * CLI wizard: Automatically selects and displays the host, either from the cluster or the ingress controller associated with the **Ingress class**.  
     * Silent install: Add the `--ingress-host` flag. If a value is not provided, takes the host from the ingress controller associated with the **Ingress class**. 
-  > Important: For AWS ALB, the ingress host is created post-installation. When prompted, add the domain name you will create in `Route 53` as the ingress host. 
+  > Important: For AWS ALB, the ingress host is created post-installation. However, when prompted, add the domain name you will create in `Route 53` as the ingress host. For example, 
 
  * If the ingress host does not have a valid SSL certificate, you can continue with the installation in insecure mode, which disables certificate validation.  
     * CLI wizard: Prompts you to confirm continuing with the installation in insecure mode.  
@@ -98,7 +98,7 @@ Before you start installing the Codefresh runtime, verify that:
   Silent install: Optional. Add the `--demo-resources` flag. By default, set to `true`.
 
 #### Post-installation configuration
-After installing a runtime, you may have to configure additional settings based on the ingress controller installed:
+After installing a runtime, you may have to configure additional settings:
 * NGINX Enterprise installations (with and without NGINX Ingress Operator)
 * AWS ALB installations
 * If you used the `--skip-ingress` flag to bypass installing ingress resources  
@@ -120,12 +120,12 @@ Configure the `ingress-master` with the certificate secret. The secret must be i
 
 **AWS ALB post-install configuration**  
 
-If AWS ALB is your ingress controller, you must do the following:
+For AWS ALB installations, you must do the following:
 * Create an `Alias` record in Amazon Route 53
-* Manually configure cluster routing and register Git integrations  
+* Manually register Git integrations - see Git integration registration.
   
 
-Create an `Alias` record in Amazon Route 53 and map your zone apex (example.com) DNS name to your Amazon CloudFront distribution.
+Create an `Alias` record in Amazon Route 53, and map your zone apex (example.com) DNS name to your Amazon CloudFront distribution.
 For more information, see [Creating records by using the Amazon Route 53 console](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-creating.html){:target="\_blank"}.
 
 {% include image.html 
@@ -138,11 +138,80 @@ For more information, see [Creating records by using the Amazon Route 53 console
 %}
 
 
-**Cluster routing and Git integration registration**  
+**Cluster routing service**
+If you bypassed installing ingress resources with the `--skip-ingress` flag, configure the VirtualService or Ingress or Service routing services with the path to  `app-proxy` and `webhook` to these values: `/app-proxy` and `/webhooks/test-runtime3/push-github`, respectively.  
+* For `VirtualService` resources, configure the `http.uri.prefix`.   
+* For `Ingress` resources, configure the `http.path`.
 
-If you bypassed installing ingress resources with the `--skip-ingress` flag, or if AWS ALB is your ingress controller, after completing the installation, manually configure the following:  
-  * Cluster's routing service with path to `'/app-proxy'` and `'/webhooks/<RUNTIME-NAME>/push-github'`.  
-  * Create and register Git integrations using the commands:  
+
+`VirtualService` examples for `app-proxy` and `webhook`: 
+```yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  namespace: test-runtime3 # runtime name
+  name: cap-app-proxy # replace with app proxy service name
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - my-gateway
+  http:
+    - match:
+      - uri:
+          prefix: /app-proxy # do not change 
+      route:
+      - destination:
+          host: cap-app-proxy # replace with app proxy service name
+          port:
+            number: 3017
+```
+
+```yaml  
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  namespace: test-runtime3
+  name: csdp-default-git-source
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - my-gateway
+  http:
+    - match:
+      - uri:
+          prefix: /webhooks/test-runtime3/push-github # replace <test-runtime3> with runtime name
+      route:
+      - destination:
+          host: push-github-eventsource-svc
+          port:
+            number: 80
+```
+Ingress resource example for 'webhook`.
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: minimal-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx-example
+  rules:
+  - http:
+      paths:
+      - path: /testpath
+        pathType: Prefix
+        backend:
+          service:
+            name: test
+            port:
+              number: 80
+```
+  
+**Git integration registration**  
+If you bypassed installing ingress resources with the `--skip-ingress` flag, or if AWS ALB is your ingress controller, create and register Git integrations using these commands:  
     `cf integration git add default --runtime <RUNTIME-NAME> --api-url <API-URL>`   
     `cf integration git register default --runtime <RUNTIME-NAME> --token <RUNTIME-AUTHENTICATION-TOKEN>`  
 
