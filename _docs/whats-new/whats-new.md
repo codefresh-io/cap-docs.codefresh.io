@@ -11,6 +11,20 @@ toc: true
 We launched the Codefresh platform in February this year. Built on Argo, the world’s most popular and fastest-growing open source software delivery, Codefresh unlocks the full enterprise potential of Argo Workflows, Argo CD, Argo Events, and Argo Rollouts, providing a control-plane for managing them at scale.
 Since the launch, we have continued to work on and grow Codefresh. 
 
+### May 2022
+Current State
+Rollouts
+Activity Log
+Validation error grouping
+Nested appsets
+Runtime disaster recovery
+Git Source enhancements
+Label for runtime namespace
+ALB ingress support
+Workflow URL field in enrich images template. When configured, it is displayed as part of the image details.
+Different address for webhook service; different from runtime address. CR-11535
+
+
 ### Features and enhancements 
 
 #### Kubernetes version runtime support
@@ -354,3 +368,6 @@ CSDP supports Red Hat OpenShift 4.8. For detailed information, read their [blog]
 
 * Artifacts in database after uninstalling with `--force` flag.
 * Uninstallation issues with newer K8s versions.
+
+
+</details>
