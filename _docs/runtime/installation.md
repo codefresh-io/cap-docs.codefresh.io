@@ -122,7 +122,7 @@ Configure the `ingress-master` with the certificate secret. The secret must be i
 
 For AWS ALB installations, you must do the following:
 * Create an `Alias` record in Amazon Route 53
-* Manually register Git integrations - see Git integration registration.
+* Manually register Git integrations - see _Git integration registration_.
   
 
 Create an `Alias` record in Amazon Route 53, and map your zone apex (example.com) DNS name to your Amazon CloudFront distribution.
@@ -139,7 +139,7 @@ For more information, see [Creating records by using the Amazon Route 53 console
 
 
 **Cluster routing service**
-If you bypassed installing ingress resources with the `--skip-ingress` flag, configure the Ingress, or the VirtualService for Istio, to route traffic to the `app-proxy` and `webhook` services.  `cap-app-proxy` and `push-github-eventsource-svc`, respectively, in the examples.  
+If you bypassed installing ingress resources with the `--skip-ingress` flag, configure the Ingress, or the VirtualService for Istio if used, to route traffic to the `app-proxy` and `webhook` services.  In the examples below, `cap-app-proxy` and `push-github-eventsource-svc`, respectively, in the examples.  
 
 Ingress resource example for `app-proxy`:
 
