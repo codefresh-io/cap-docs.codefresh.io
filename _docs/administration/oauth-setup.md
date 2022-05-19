@@ -6,7 +6,7 @@ toc: true
 ---
 
 
-Codefresh administrators can create, register, and authorize Codefresh as an OAuth2 App in GitHub. Codefresh users can then authorize access to GitHub instead of generating a personal access token from their Git providers to perform Git-based actions.
+Codefresh account administrators can create an OAuth2 Application in GitHub, and set up authentication within Codefresh. Users in Codefresh can then authorize access to GitHub using the OAuth2 Application instead of generating a personal access token to perform Git-based actions.  
 
 To set up OAuth2 authorization for GitHub in Codefresh, you must:
 * Create a GitHub OAuth2 Application for Codefresh 
@@ -88,14 +88,19 @@ To complete the integration, configure the settings for the OAuth2 GitHub applic
 
 {:start="3"}
 1. Select **+ Add**.
-  The settings page is opened in **Form** mode.
-  
-  SCREENSHOT
-
-{:start="4"}
 1. From the **Runtime** list, select the runtime to which to apply the current configuration. The runtime must be identical to the runtime to which you saved the K8s secret.
    > If you have managed clusters registered to the selected runtime, the configuration is available to all the clusters. 
+ 
+  
 
+
+{:start="5"}
+1. Select **Next**.  
+  The settings page is opened in **Form** mode.
+    
+    SCREENSHOT
+
+{:start="6"}
 1. Configure the settings for the **GitHub OAuth2 Application**, either in **Form** or in **YAML** modes:
   * **Secret Name**: The name of the K8s secret file you created in the runtime cluster.
   * **Secret Namespace**: The namespace in the runtime cluster where you created the K8s secret.
@@ -108,13 +113,13 @@ To complete the integration, configure the settings for the OAuth2 GitHub applic
 
   SCREENSHOT
 
-{:start="5"}
+{:start="7"}
 1. Select **Commit**.
   The Commit Changes panel shows a summary of the settings and the final version of the YAML manifest in read-only mode. 
   
   SCREENSHOT
 
-{:start="6"}  
+{:start="8"}  
 1. From the **Select Git Source** list, select the Git Source in which to store the manifest for the `ConfigMap` you are creating.
   The list displays all the Git Sources created for the selected runtime. 
 1. Optional. Enter a commit message.
