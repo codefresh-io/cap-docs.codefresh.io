@@ -74,7 +74,7 @@
       url: "/git-tokens"
     - title: Manage Git personal access tokens
       url: "/user-settings"
-    _ title: Set up OAuth2 integration
+    - title: Set up OAuth2 integration
       url: "/oauth-setup"
     - title: Single Sign-On
       url: "/single-sign-on"

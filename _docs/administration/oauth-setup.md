@@ -31,22 +31,24 @@ Create and register an OAuth App under your organization to authorize Codefresh.
   * Application ID from the URL
   * Client ID and the client secret  
 
-  You will need them to create the K8s secret for GitHub OAuth2 application.
+  You'll need them to create the K8s secret for the GitHub OAuth2 application.
 
 ### Step 2: Create a K8s secret resource in the runtime cluster 
-Create a K8s secret in the runtime cluster, using the example below as a guideline. You need to define the application ID (`appId`), client ID (`clientId`) and the client secret (`clientSecret`) from the GitHub OAuth2 Application you created, and the GitHub URL (`url`).  
+Create a K8s secret in the runtime cluster, using the example below as a guideline. You must define the application ID (`appId`), client ID (`clientId`) and the client secret (`clientSecret`) from the GitHub OAuth2 Application you created, and the GitHub URL (`url`).  
 
 > All fields in the secret _must be_ encoded in `base64`.  
   To encode, use this command: `echo -n VALUE | base64`.  
 
 
-**Before you begin**
+**Before you begin**  
+
 Make sure you have the following handy:
 * Application ID from the application's URL
 * Client ID 
 * Client secret
 * GitHub URL
 
+**How to**  
 
 1. Create the manifest for the K8s secret resource.
 
@@ -73,7 +75,7 @@ data:
 
 ### Step 3: Configure OAuth2 settings in Codefresh 
 
-Configure the settings for the OAuth2 GitHub application in Codefresh to complete the integration. Configuring the settings creates a K8s ConfigMap that references the OAuth secret credentials. When configuring the settings, you can work in Form mode, or directly edit the YAML manifest. 
+To complete the integration, configure the settings for the OAuth2 GitHub application in Codefresh. Configuring the settings creates a K8s ConfigMap that references the OAuth secret credentials. When configuring the settings, you can work in Form mode, or directly in the YAML manifest. 
 
 >Important:  
   > The values for all the settings in the ConfigMap are the `keys` in the secret file. 
@@ -86,7 +88,7 @@ Configure the settings for the OAuth2 GitHub application in Codefresh to complet
 
 {:start="3"}
 1. Select **+ Add**.
-  The settings page is opened in the **Form** mode.
+  The settings page is opened in **Form** mode.
   
   SCREENSHOT
 
@@ -116,7 +118,7 @@ Configure the settings for the OAuth2 GitHub application in Codefresh to complet
 1. From the **Select Git Source** list, select the Git Source in which to store the manifest for the `ConfigMap` you are creating.
   The list displays all the Git Sources created for the selected runtime. 
 1. Optional. Enter a commit message.
-1. Select **Commit** at the bottom-right.
+1. At the bottom-right, select **Commit**.
 
-You have completed the set up to authorize Codefresh as an OAuth App in GitHub. 
+You have completed the setup to authorize Codefresh as an OAuth App in GitHub. 
 
