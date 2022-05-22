@@ -7,6 +7,8 @@ toc: true
 
 View, monitor, and analyze deployments across your enterprise in the Applications dashboard. As a one-stop shop for Argo Rollouts and Argo CD in Codefresh, the Applications dashboard delivers on the challenge of keeping track of deployments, whatever the frequency and scale. A wide range of filters, enriched CI and CD information, provide full traceability and visibility to continuous deployments. 
 
+
+
 Here are some insights you can derive from the Applications dashboard:   
 * Visibility into deployments from all the clusters associated with the provisioned runtimes, in-cluster and managed
 * Timeline on current and historical deployments 
@@ -28,7 +30,7 @@ lightbox="true"
 file="/images/applications/app-dashboard-main-view.png"
 url="/images/applications/app-dashboard-main-view.png"
 alt="Applications Dashboard"
-caption="pplications Dashboard"
+caption="Applications Dashboard"
 max-width="30%"
 %}  
 
