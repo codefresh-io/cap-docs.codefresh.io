@@ -31,7 +31,7 @@ file="/images/applications/app-dashboard-main-view.png"
 url="/images/applications/app-dashboard-main-view.png"
 alt="Applications Dashboard"
 caption="Applications Dashboard"
-max-width="30%"
+max-width="60%"
 %}  
 
 #### Application inventory and state 
@@ -73,7 +73,7 @@ file="/images/applications/app-dashboard-adv-filters.png"
 url="/images/applications/app-dashboard-adv-filters.png"
 alt="Advanced filters in Applications Dashboard"
 caption="Advanced filters in Applications Dashboard"
-max-width="30%"
+max-width="60%"
 %}
 
 
@@ -97,7 +97,7 @@ file="/images/applications/apps-standalone.png"
 url="/images/applications/apps-standalone.png"
 alt="Standalone applications in Applications Dashboard"
 caption="Standalone applications in Applications Dashboard"
-max-width="30%"
+max-width="60%"
 %}
 
 * Application set  
@@ -110,7 +110,7 @@ file="/images/applications/app-appset-model.png"
 url="/images/applications/app-appset-model.png"
 alt="Application Set in Applications Dashboard"
 caption="Application Set in Applications Dashboard"
-max-width="30%"
+max-width="60%"
 %}
   
 * App-of-apps  
@@ -123,7 +123,7 @@ file="/images/applications/app-appofapps-model.png"
 url="/images/applications/app-appofapps-model.png"
 alt="App of Apps in Applications Dashboard"
 caption="App of Apps in Applications Dashboard"
-max-width="30%"
+max-width="60%"
 %}
 
 
@@ -139,7 +139,7 @@ file="/images/applications/dashboard-timeline-main.png"
 url="/images/applications/dashboard-timeline-main.png"
 alt="Applications Dashboard: Timeline tab"
 caption="Applications Dashboard: Timeline tab"
-max-width="30%"
+max-width="60%"
 %}
 
 
@@ -162,7 +162,7 @@ file="/images/applications/apps-historical-deployment.png"
 url="/images/applications/apps-historical-deployment.png"
 alt="Applications Dashboard: Deployment chart"
 caption="Applications Dashboard: Deployment chart"
-max-width="30%"
+max-width="60%"
 %}
 
 **Deployment card**  
@@ -176,7 +176,7 @@ file="/images/applications/app-dashboard-time-expanded-card.png"
 url="/images/applications/app-dashboard-time-expanded-card.png"
 alt="Applications Dashboard: Deployment card in Timeline tab"
 caption="Applications Dashboard: Deployment card in Timeline tab"
-max-width="30%"
+max-width="60%"
 %}
 
 * The **CI Builds** showing the image(s) created or updated during deployment. Click to see the **Images** view in a browser window.
@@ -202,7 +202,7 @@ file="/images/applications/apps-dashboard-services.png"
 url="/images/applications/apps-dashboard-services.png"
 alt="Applications Dashboard: Services tab"
 caption="Applications Dashboard: Services tab"
-max-width="30%"
+max-width="60%"
 %}
 
 ### Application current state
@@ -216,12 +216,12 @@ file="/images/applications/apps-current-state.png"
 url="/images/applications/apps-current-state.png"
 alt="Applications Dashboard: Current State tab"
 caption="Applications Dashboard: Current State tab"
-max-width="30%"
+max-width="60%"
 %}
 
 You can filter by:
 * **Kind**: The type of Kubernetes resource. 
 * **Health**: The status of the resource.
 
-For more information, see the official documentation on [Working with Kubernetes objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/){:target="\_blank"}.
+For more information, see [Working with Kubernetes objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/){:target="\_blank"}.
 
