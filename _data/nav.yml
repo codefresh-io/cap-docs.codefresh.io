@@ -47,6 +47,8 @@
       url: "/managed-cluster" 
     - title: Add and manage Git Sources
       url: "/git-sources"
+    - title: Restore runtimes
+      url: "/runtime-recovery"
 
 - title: Pipelines
   url: "/pipelines"
@@ -68,7 +70,6 @@
     - title: Create an application
       url: "/create-applicationm"
 
-
 - title: Administration
   url: "/administration"
   pages:
@@ -77,7 +78,7 @@
     - title: Git tokens
       url: "/git-tokens"
     - title: Manage Git personal access tokens
-      url: /docs/administration/user-settings/
+      url: "/user-settings"
     - title: Single Sign-On
       url: "/single-sign-on"
       sub-pages:
