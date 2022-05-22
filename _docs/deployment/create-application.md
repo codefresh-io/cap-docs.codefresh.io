@@ -44,7 +44,7 @@ General configuration settings define the source, destination, and sync policies
    url="/images/applications/add-app-general-settings.png" 
    alt="General configuration settings" 
    caption="General configuration settings"
-   max-width="60%" 
+   max-width="70%" 
    %} 
 
 #### Source 
@@ -86,7 +86,7 @@ Advanced settings define the tool used to create the application, and related se
    url="/images/applications/add-app-advanced-settings.png" 
    alt="Advanced configuration settings" 
    caption="Advanced configuration settings"
-   max-width="60%" 
+   max-width="70%" 
    %} 
 
 
@@ -157,7 +157,7 @@ Review:
    url="/images/applications/add-app-general-settings.png" 
    alt="Add Application: General settings" 
    caption="Add Application: General settings"
-   max-width="60%" 
+   max-width="70%" 
    %} 
 
 {:start="6"}
@@ -170,7 +170,7 @@ Review:
    url="/images/applications/add-app-general-settings.png" 
    alt="Add Application: Advanced settings" 
    caption="Add Application: Advanced settings"
-   max-width="60%" 
+   max-width="70%" 
    %} 
 
 {:start="7"}   
@@ -185,7 +185,7 @@ Review:
    url="/images/applications/add-app-final-commit.png" 
    alt="Add Application: Commit to Git" 
    caption="Add Application: Commit to Git"
-   max-width="60%" 
+   max-width="70%" 
    %} 
 
 {:start="9"} 
