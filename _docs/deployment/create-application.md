@@ -30,38 +30,38 @@ Application definitions include the name, runtime, and the name of the YAML mani
    url="/images/applications/add-app-definitions.png" 
    alt="Application definitions" 
    caption="Application definitions"
-   max-width="30%" 
+   max-width="50%" 
    %} 
 
 
 ### General configuration settings
 General configuration settings define the source, destination, and sync policies for the application. 
 
-% include 
+{% include 
    image.html 
    lightbox="true" 
    file="/images/applications/add-app-general-settings.png" 
    url="/images/applications/add-app-general-settings.png" 
    alt="General configuration settings" 
    caption="General configuration settings"
-   max-width="30%" 
+   max-width="60%" 
    %} 
 
 #### Source 
 The Git repository to be tracked for changes to the application's source code.  
-{::nomarkdown}<ul> <li><b>ArgoCD Project</b>: The project group to which the application belongs. A project is useful to enforce restrictions on permitted sources and targets for applications, and roles. If not defined, the application is automatically assigned to the <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">default</span> project, which is created automatically by Argo CD and has no restrictions. </br>For more information, see Argo CD's documentation on <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/projects/#projects" target="\_blank">Projects</a>.</li> <li><b>Repository URL</b>: The Git repo or the Helm package repo with the application source code, to be tracked for changes. If the Argo CD project is not the <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">default</span> project, make sure that the repo has the correct access roles for your application.<ul><li><b>Revision and Path</b>: Applies to Git repositories. </li><li><b>Chart</b>: Applies to Helm repositories. The name of the Helm package with all the resource definitions for the application, and the version. </li></ul>For detailed information, see the official documentation on <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/" target="\_blank">Tracking and Deployment Strategies</a>.</li></ul> {:/}   
+{::nomarkdown}<ul> <li><b>ArgoCD Project</b>: The project group to which the application belongs. A project is useful to enforce restrictions on permitted sources and targets for applications, and roles. If not defined, the application is automatically assigned to the <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">default</span> project, which is created automatically by Argo CD and has no restrictions. </br>For more information, see Argo CD's documentation on <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/projects/#projects" target="\_blank">Projects</a>.</li> <li><b>Repository URL</b>: The Git repo or the Helm package repo with the application source code, to be tracked for changes. If the Argo CD project is not the <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">default</span> project, make sure that the repo has the correct access roles for your application.<ul><li><b>Revision and Path</b>: Applies to Git repositories. </li><li><b>Chart</b>: Applies to Helm repositories. The name of the Helm package with all the resource definitions for the application, and the version. </li></ul>For more information, see <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/" target="\_blank">Tracking and Deployment Strategies</a>.</li></ul> {:/}   
 
 #### Destination
 The cluster and namespace to which to deploy the application.  
-{::nomarkdown}<ul><li><b>Cluster</b>: The cluster to which to deploy the application, defined as a <b>URL</b> or as the user-defined display <b>NAME</b>.</li> <li><b>Namespace</b>: The namespace in the cluster to which to deploy the application.</li> </ul> {:/}
+{::nomarkdown}<ul><li><b>Cluster</b>: The cluster to which to deploy the application, defined as a <b>URL</b>, or as the user-defined display <b>NAME</b>.</li> <li><b>Namespace</b>: The namespace in the cluster to which to deploy the application.</li> </ul> {:/}
  
 #### Sync Settings
 {::nomarkdown}<b>Sync Policy</b>: The synchronization policy to apply when there are differences between the desired state in Git and the actual state in the cluster.</br><ul><li><b>Manual</b>: Manually sync the changes from the Argo CD UI. </li><li><b>Automatic</b>: Automatically sync changes, with the following options if selected:<ul><li><b>Prune resources</b>:When selected, removes legacy resources that do not exist currently in Git. </li><li><b>Self heal</b>: When selected, always enforces a sync to the desired state in Git, if and when there is a change to the actual state in the cluster. See <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing" target="_blank">Automatic self-healing</a>.</li></li></ul> {:/}
   
-{::nomarkdown}<b>Sync Options</b>: Common to both manual and automatic sync policies.</br><ul><li><b>Skip schema validation</b>: When selected, bypasses validating the YAML schema.</li><li><b>Auto-create namespace</b>: When selected, automatically create the namespace if the specified namespace does not exist in the cluster.</li><li><b>Prune last</b>: When selected, removes those resources that do not exist in the currently deployed version during the final wave of the sync operation. See <a hef="https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last" target="_blank">Prune last</a>.</li><li><b>Apply out of sync only</b>: When selected, sync only those resources in the application that have been changed and are <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">OutOfSync</span>, instead of syncing every resource regardless of their state. This option is useful to reduce load and save time when you have thousands of resources in an application. See <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#selective-sync" target="_blank">Selective Sync</a>.</li></ul> {:/}
+{::nomarkdown}<b>Sync Options</b>: Common to both manual and automatic sync policies.</br><ul><li><b>Skip schema validation</b>: When selected, bypasses validating the YAML schema.</li><li><b>Auto-create namespace</b>: When selected, automatically create the namespace if the specified namespace does not exist in the cluster.</li><li><b>Prune last</b>: When selected, removes those resources that do not exist in the currently deployed version during the final wave of the sync operation. See <a hef="https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last" target="_blank">Prune last</a>.</li><li><b>Apply out of sync only</b>: When selected, syncs only those resources in the application that have been changed and are <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">OutOfSync</span>, instead of syncing every resource regardless of their state. This option is useful to reduce load and save time when you have thousands of resources in an application. See <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#selective-sync" target="_blank">Selective Sync</a>.</li></ul> {:/}
   
 {::nomarkdown}<b>Prune propagation policy</b>:</br>Defines how resources are pruned, applying Kubernetes cascading deletion prune policies. 
-For detailed information, see <a href="https://kubernetes.io/docs/concepts/architecture/garbage-collection/#cascading-deletion" target="_blank">Kubernetes - Cascading deletion</a>.</br><ul><li><b>Foreground</b>: The default prune propagation policy used by Argo CD. With this policy, Kubernetes changes the state of the owner resource to `deletion in progress`, until the controller deletes the dependent resources and finally the owner resource itself. </li><li><b>Background</b>: When selected, Kubernetes deletes the owner resource immediately, and then deletes the dependent resources in the background.</li><li><b>Orphan</b>: When selected, Kubernetes deletes the dependent resources that remain orphaned after the owner resource is deleted.</li></ul> </br>{:/}
+For more information, see <a href="https://kubernetes.io/docs/concepts/architecture/garbage-collection/#cascading-deletion" target="_blank">Kubernetes - Cascading deletion</a>.</br><ul><li><b>Foreground</b>: The default prune propagation policy used by Argo CD. With this policy, Kubernetes changes the state of the owner resource to `deletion in progress`, until the controller deletes the dependent resources and finally the owner resource itself. </li><li><b>Background</b>: When selected, Kubernetes deletes the owner resource immediately, and then deletes the dependent resources in the background.</li><li><b>Orphan</b>: When selected, Kubernetes deletes the dependent resources that remain orphaned after the owner resource is deleted.</li></ul> </br>{:/}
 All Prune propagation policies can be used with:  
   
 
@@ -74,7 +74,8 @@ All Prune propagation policies can be used with:
 * Maximum duration permitted for each retry (**Max Duration**)  
 * Factor by which to multiply the Duration in the event of a failed retry (**Factor**). A factor of 2 for example, attempts the second retry in 2 X 2 seconds, where 2 seconds is the Duration.
   
-  
+    
+
 ### Advanced configuration settings
 Advanced settings define the tool used to create the application, and related settings.
 
@@ -85,7 +86,7 @@ Advanced settings define the tool used to create the application, and related se
    url="/images/applications/add-app-advanced-settings.png" 
    alt="Advanced configuration settings" 
    caption="Advanced configuration settings"
-   max-width="30%" 
+   max-width="60%" 
    %} 
 
 
@@ -141,7 +142,7 @@ Review:
    url="/images/applications/add-app-definitions.png" 
    alt="Add Application panel" 
    caption="Add Application panel"
-   max-width="30%" 
+   max-width="50%" 
    %} 
 
 {:start="4"}
@@ -156,7 +157,7 @@ Review:
    url="/images/applications/add-app-general-settings.png" 
    alt="Add Application: General settings" 
    caption="Add Application: General settings"
-   max-width="30%" 
+   max-width="60%" 
    %} 
 
 {:start="6"}
@@ -169,7 +170,7 @@ Review:
    url="/images/applications/add-app-general-settings.png" 
    alt="Add Application: Advanced settings" 
    caption="Add Application: Advanced settings"
-   max-width="30%" 
+   max-width="60%" 
    %} 
 
 {:start="7"}   
@@ -184,7 +185,7 @@ Review:
    url="/images/applications/add-app-final-commit.png" 
    alt="Add Application: Commit to Git" 
    caption="Add Application: Commit to Git"
-   max-width="30%" 
+   max-width="60%" 
    %} 
 
 {:start="9"} 
