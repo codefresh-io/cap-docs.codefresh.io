@@ -205,7 +205,7 @@ spec:
   http:
     - match:
       - uri:
-          prefix: /webhooks/test-runtime3/push-github # replace with `test-runtime3` with your runtime name
+          prefix: /webhooks/test-runtime3/push-github # replace `test-runtime3` with your runtime name
       route:
       - destination:
           host: push-github-eventsource-svc 
