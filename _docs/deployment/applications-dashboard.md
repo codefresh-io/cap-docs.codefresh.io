@@ -20,7 +20,7 @@ Here are some insights you can derive from the Applications dashboard:
 
 ### Applications main view
 
-The main view shows all deployed applications, sorted by the most recent deployments, by default.   
+The main view shows all deployed applications, sorted by the most recent deployments (default).   
 
 Here is an example of the main page in the Applications dashboard. 
 
@@ -55,7 +55,7 @@ Filters are divided into frequently used and advanced filters.
     
   * Health filters  
     The built-in Argo CD set of health filters.  
-    For detailed information, see the official documentation on [Health sets](https://argo-cd.readthedocs.io/en/stable/operator-manual/health/){:target="\_blank"}. 
+    For more information, see [Health sets](https://argo-cd.readthedocs.io/en/stable/operator-manual/health/){:target="\_blank"}. 
 
   
   * Labels  
@@ -64,7 +64,7 @@ Filters are divided into frequently used and advanced filters.
     To see the available labels, select **Add**, and then select the required label and one or more values.  
     To filter by the labels, select **Add** and then **Apply**.  
 
-    For detailed information, see the official documentation on [Labels and selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/){:target="\_blank"}.
+    For more information, see [Labels and selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/){:target="\_blank"}.
 
     {% include
 image.html
@@ -88,7 +88,7 @@ Mark applications as favorites, and view them with a click.
 #### Deployment type
 Applications are displayed according to their deployment type which can be one of the following:
 * Applications  
-  Standalone applications. For detailed information, see the official documentation on [Applications](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications){:target="\_blank"}.  
+  Standalone applications. For more information, see [Applications](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications){:target="\_blank"}.  
 
   {% include
 image.html
@@ -101,7 +101,7 @@ max-width="70%"
 %}
 
 * Application set  
-  Based on the Argo CD's ApplicationSet CRD, where several applications are always deployed as a set. For detailed information, see the official documentation on [Generating Applications with ApplicationSet](https://argo-cd.readthedocs.io/en/stable/user-guide/application-set/){:target="\_blank"}.
+  Based on the Argo CD's ApplicationSet CRD, where several applications are always deployed as a set. For more information, see [Generating Applications with ApplicationSet](https://argo-cd.readthedocs.io/en/stable/user-guide/application-set/){:target="\_blank"}.
 
   {% include
 image.html
@@ -114,7 +114,7 @@ max-width="70%"
 %}
   
 * App-of-apps  
-  In this deployment model, the parent application deploys a set of child applications.  For detailed information, see the official documentation on [App of Apps](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#app-of-apps){:target="\_blank"}. 
+  In this deployment model, the parent application deploys a set of child applications.  For more information, see [App of Apps](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#app-of-apps){:target="\_blank"}. 
 
 {% include
 image.html
@@ -135,8 +135,8 @@ Each application displays up to ten of the most recent deployments through deplo
 {% include
 image.html
 lightbox="true"
-file="/images/applications/dashboard-timeline-main.png"
-url="/images/applications/dashboard-timeline-main.png"
+file="/images/applications/apps-dashboard-timeline-collapsed.png"
+url="/images/applications/apps-dashboard-timeline-collapsed.png"
 alt="Applications Dashboard: Timeline tab"
 caption="Applications Dashboard: Timeline tab"
 max-width="70%"
@@ -167,7 +167,7 @@ max-width="70%"
 
 **Deployment card**  
 
-Each deployment card displays the complete history of that deployment, by Git hash, Kubernetes services, and Argo applications:
+Each deployment card displays the complete history of that deployment, by Git hash, Kubernetes services, Argo rollouts and applications:
 
 {% include
 image.html
@@ -185,7 +185,7 @@ max-width="70%"
 * The **Committer** who made the changes.
 * The Kubernetes **Services** updated during the deployment, according to the Argo rollout strategy, and the current rollout status. 
   The example above shows the rollouts according to the canary rollout strategy. The blue line shows the progress of rollout with the current step versus the total number of steps.  
-  Expanding the live version deployment shows the number of replicas currently deployed, as green circles.
+  Expanding the live version deployment shows the number of replicas currently deployed in the stable version (green).
 * The Argo **Applications** updated during this deployment.
 
 
@@ -193,7 +193,7 @@ max-width="70%"
 The Services tab for an application shows the K8s services for each deployment of the application. 
 Each service shows the number of replicas, the endpoint IP, the labels that reference the application, and the health status.  
 
-For more information, see the official documentation on [Services](https://kubernetes.io/docs/concepts/services-networking/service/){:target="\_blank"}.
+For more information, see [Services](https://kubernetes.io/docs/concepts/services-networking/service/){:target="\_blank"}.
 
 {% include
 image.html
