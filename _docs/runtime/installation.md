@@ -139,7 +139,7 @@ For more information, see [Creating records by using the Amazon Route 53 console
 
 
 **Cluster routing service**
-If you bypassed installing ingress resources with the `--skip-ingress` flag, configure the Ingress, or the VirtualService for Istio if used, to route traffic to the `app-proxy` and `webhook` services.  In the examples below, `cap-app-proxy` and `push-github-eventsource-svc`, respectively, in the examples.  
+If you bypassed installing ingress resources with the `--skip-ingress` flag, configure the `host` for the Ingress, or the VirtualService for Istio if used, to route traffic to the `app-proxy` and `webhook` services, as in the examples below.  
 
 Ingress resource example for `app-proxy`:
 
@@ -147,24 +147,21 @@ Ingress resource example for `app-proxy`:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  creationTimestamp: null
   name: codefresh-cap-app-proxy
   namespace: codefresh
 spec:
-  ingressClassName: nginx
+  ingressClassName: alb
   rules:
-  - host: my.support.cf-cd.com
+  - host: my.support.cf-cd.com # replace with host name
     http:
       paths:
       - backend:
           service:
-            name: cap-app-proxy # replace with app proxy service name
+            name: cap-app-proxy 
             port:
               number: 3017
         path: /app-proxy/
         pathType: Prefix
-status:
-  loadBalancer: {}
 ```
 
 
@@ -175,11 +172,11 @@ status:
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  namespace: test-runtime3 # runtime name
-  name: cap-app-proxy # replace with app proxy service name
+  namespace: test-runtime3 # replace with runtime name
+  name: cap-app-proxy 
 spec:
   hosts:
-    - "*"
+    - my.support.cf-cd.com # replace with host name
   gateways:
     - my-gateway
   http:
@@ -188,7 +185,7 @@ spec:
           prefix: /app-proxy 
       route:
       - destination:
-          host: cap-app-proxy # replace with app proxy service name
+          host: cap-app-proxy 
           port:
             number: 3017
 ```
@@ -197,20 +194,20 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  namespace: test-runtime3 #runtime name
+  namespace: test-runtime3 # replace with runtime name
   name: csdp-default-git-source
 spec:
   hosts:
-    - "*"
+    - my.support.cf-cd.com # replace with host name
   gateways:
     - my-gateway
   http:
     - match:
       - uri:
-          prefix: /webhooks/test-runtime3/push-github 
+          prefix: /webhooks/test-runtime3/push-github # replace with `test-runtime3` with runtime name
       route:
       - destination:
-          host: push-github-eventsource-svc # replace with webhook service name
+          host: push-github-eventsource-svc 
           port:
             number: 80
 ```
