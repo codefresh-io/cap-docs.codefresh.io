@@ -58,7 +58,7 @@ The cluster and namespace to which to deploy the application.
 #### Sync Settings
 {::nomarkdown}<b>Sync Policy</b>: The synchronization policy to apply when there are differences between the desired state in Git and the actual state in the cluster.</br><ul><li><b>Manual</b>: Manually sync the changes from the Argo CD UI. </li><li><b>Automatic</b>: Automatically sync changes, with the following options if selected:<ul><li><b>Prune resources</b>:When selected, removes legacy resources that do not exist currently in Git. </li><li><b>Self heal</b>: When selected, always enforces a sync to the desired state in Git, if and when there is a change to the actual state in the cluster. See <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing" target="_blank">Automatic self-healing</a>.</li></li></ul> {:/}
   
-{::nomarkdown}<b>Sync Options</b>: Common to both manual and automatic sync policies.</br><ul><li><b>Skip schema validation</b>:</li><li><b>Auto-create namespace</b>: When selected, automatically create the namespace if the specified namespace does not exist in the cluster.</li><li><b>Prune last</b>: When selected, removes those resources that do not exist in the currently deployed version during the final wave of the sync operation. See <a hef="https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last" target="_blank">Prune last</a>.</li><li><b>Apply out of sync only</b>: When selected, sync only those resources in the application that have been changed and are <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">OutOfSync</span>, instead of syncing every resource regardless of their state. This option is useful to reduce load and save time when you have thousands of resources in an application. See <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#selective-sync" target="_blank">Selective Sync</a>.</li></ul> {:/}
+{::nomarkdown}<b>Sync Options</b>: Common to both manual and automatic sync policies.</br><ul><li><b>Skip schema validation</b>: When selected, bypasses validating the YAML schema.</li><li><b>Auto-create namespace</b>: When selected, automatically create the namespace if the specified namespace does not exist in the cluster.</li><li><b>Prune last</b>: When selected, removes those resources that do not exist in the currently deployed version during the final wave of the sync operation. See <a hef="https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last" target="_blank">Prune last</a>.</li><li><b>Apply out of sync only</b>: When selected, sync only those resources in the application that have been changed and are <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">OutOfSync</span>, instead of syncing every resource regardless of their state. This option is useful to reduce load and save time when you have thousands of resources in an application. See <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#selective-sync" target="_blank">Selective Sync</a>.</li></ul> {:/}
   
 {::nomarkdown}<b>Prune propagation policy</b>:</br>Defines how resources are pruned, applying Kubernetes cascading deletion prune policies. 
 For detailed information, see <a href="https://kubernetes.io/docs/concepts/architecture/garbage-collection/#cascading-deletion" target="_blank">Kubernetes - Cascading deletion</a>.</br><ul><li><b>Foreground</b>: The default prune propagation policy used by Argo CD. With this policy, Kubernetes changes the state of the owner resource to `deletion in progress`, until the controller deletes the dependent resources and finally the owner resource itself. </li><li><b>Background</b>: When selected, Kubernetes deletes the owner resource immediately, and then deletes the dependent resources in the background.</li><li><b>Orphan</b>: When selected, Kubernetes deletes the dependent resources that remain orphaned after the owner resource is deleted.</li></ul> </br>{:/}
@@ -81,8 +81,8 @@ Advanced settings define the tool used to create the application, and related se
 {% include 
    image.html 
    lightbox="true" 
-   file="/images/applications/add-app-general-settings.png" 
-   url="/images/applications/add-app-general-settings.png" 
+   file="/images/applications/add-app-advanced-settings.png" 
+   url="/images/applications/add-app-advanced-settings.png" 
    alt="Advanced configuration settings" 
    caption="Advanced configuration settings"
    max-width="30%" 
@@ -90,17 +90,17 @@ Advanced settings define the tool used to create the application, and related se
 
 
 #### Type of Application
-The tool used to create the application's manifests.  Codefresh supports defining application manifests as a directory, or with Helm or Kustomize. If you are using other tools to define application manifests, use the Plugin type. For information on tools, see the Argo CD's documentation on [Tools](https://argo-cd.readthedocs.io/en/stable/user-guide/application_sources/){:target="_blank"}.
+The tool used to create the application's manifests.  Codefresh supports defining application manifests as a directory, Helm charts, or Kustomize. If you are using other tools to define application manifests, use the Plugin type. For more information, see the Argo CD's documentation on [Tools](https://argo-cd.readthedocs.io/en/stable/user-guide/application_sources/){:target="_blank"}.
 
 
 * **Directory**: A `directory` application, which is the default application type in Argo CD.  
   * **Directory recurse**: Optional. Select to include subdirectories.
-  * **Top-level arguments**: Optional. Select to include subdirectories.
-  * **External variables**: Optional. Select to include subdirectories.
+  * **Top-level arguments**: Optional. Select and define parameters.
+  * **External variables**: Optional. Select and define external variables.
 
 * **Helm**: Create the application as a Helm chart.  
    * **Values files**: One or more `values.yaml` files to store the parameters. 
-   * **Values**: Optional. Define overrides for the values in the `values.yaml` files. Argo CD overrides the values defined for the specified parameters.
+   * **Values**: Optional. When defined, new values not in `values.yaml` files are added, and existing values are overridden. 
    
 * **Kustomize**: Create a Kustomize application, with the following settings:  
   * **Version**: The version of Kustomize used to create the application.  
@@ -110,7 +110,7 @@ The tool used to create the application's manifests.  Codefresh supports definin
   * **Name**: The name of the Plugin used to create the application.
   * **External Variables**: The variables to use in the application.  
 
-For example applications, go to the [Argo CD example applications repo](https://github.com/oleksandr-codefresh/argocd-example-apps){:target="_blank"}.
+For example applications, go to the [Argo CD example applications repo](https://github.com/argoproj/argocd-example-apps){:target="_blank"}.
   
 
 ### How to: create an Argo CD application
@@ -174,8 +174,7 @@ Review:
 
 {:start="7"}   
 1. To commit all your changes, select **Commit**.  
-  The Commit form is displayed with the application's definition on the left, and the manifest with the configuration settings you defined on the right.
-1. If required, click within and edit the YAML manifest.
+  The Commit form is displayed with the application's definition on the left, and the read-only version of the manifest with the configuration settings you defined on the right.
 1. Enter the path to the **Git Source** to which to commit the application configuration manifest.
 
 {% include 
