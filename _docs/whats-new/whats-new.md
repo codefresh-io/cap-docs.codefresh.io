@@ -11,19 +11,55 @@ toc: true
 We launched the Codefresh platform in February this year. Built on Argo, the world’s most popular and fastest-growing open source software delivery, Codefresh unlocks the full enterprise potential of Argo Workflows, Argo CD, Argo Events, and Argo Rollouts, providing a control-plane for managing them at scale.
 Since the launch, we have continued to work on and grow Codefresh. 
 
-### May 2022
+## May 2022
 Current State
 Rollouts
-Activity Log
-Validation error grouping
-Nested appsets
-Runtime disaster recovery
-Git Source enhancements
-Label for runtime namespace
-ALB ingress support
-Workflow URL field in enrich images template. When configured, it is displayed as part of the image details.
+
+### Features & enhancements
+
+#### Restore runtimes
+Runtimes are integral to all CI/CD actions and operations in Codefresh. In this release, we have added the capability to restore runtimes during cluster failures, either partial or complete.   
+All you need is the existing Git repo where you installed the runtime containing the runtime resources. The restore process reinstalls the runtime, leveraging the resources in the existing runtime repo. You can choose to restore the runtime to the failed cluster or to a different cluster.  
+For details, see [Restore runtimes](https://codefresh.io/csdp-docs/docs/runtime/runtime-recovery/).
+
+
+
+
+#### Labels for runtime namespace
+When installing runtimes, the `--namespace-label` flag lets you add labels to the runtime namespace. The labels identify and grant access to the installation network, required with service mesh ingress controllers such as Istio.  
+For both CLI-based and silent installations, add the flag followed by one or more labels in `key=value` format. Note that these labels must be identical to those defined in the 'namespace' resource spec.
+
+For details, see [Runtime installation flags](https://codefresh.io/csdp-docs/docs/runtime/installation/#runtime-installation-flags).
+
+### AWS ALB ingress controller
+AWS Application Load Balancer (ALB) is now part of our supported list of ingress controllers. 
+See Ingress controller requirements in [Requirements]([https://codefresh.io/csdp-docs/docs/runtime/requirements/#ingress-controller(requirements), and [Post-installation configuration](https://codefresh.io/csdp-docs/docs/runtime/installation/#post-installation-configuration).
+
+#### Git Sources include/exclude functionality
+A common scenario when using Git repsositorues to Using GitOps prinicples to create and manage resources, it is common enough to include or exclude specific files or directories from the traget repostioy to the when synced to the cluster.  When creating or editing Git Sources in Codefresh, you can now include and exclude folders and files in the target Git repo, using Glob patterns for the same. 
+
+For details, see [Create a Git Source](https://codefresh.io/csdp-docs/docs/runtime/git-sources/#create-a-git-source).
+
+#### External Workflow URL in Images
+The `enrich-image-info` workflow template in [Codefresh Hub for Argo](https://github.com/codefresh-io/argo-hub/blob/main/workflows/codefresh-csdp/versions/0.0.6/docs/report-image-info.md), includes the input parameter `WORKFLOW_URL`. This input parameter defines the external URL of the workflow that created the image. When defined as as input parameter, it reported to Codefresh, and displayed in the Build info section (Summary tab). Clicking the link take you to the workflow URL.
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/whats-new/rel-notes-may22-workflow-url.png" 
+	url="/images/whats-new/rel-notes-may22-workflow-url.png" 
+	alt="External workflow URL in image info" 
+	caption="External workflow URL in image info"
+   max-width="70%" 
+  %}
+
+For detailsh, see [Image summary view](https://codefresh.io/csdp-docs/docs/pipelines/images/#image-summary-view).
+
+#### 
 Different address for webhook service; different from runtime address. CR-11535
 
+
+## March-April 2022
 
 ### Features and enhancements 
 
