@@ -90,13 +90,13 @@ Drilldown on the repository shows tag information for the image.
 
 ###  Image summary view
 The Summary view shows metadata for the image. 
-Selecting **more details** for an image tag.
+Select **more details** for an image tag to go to the Image summary.
 
 {% include 
    image.html 
    lightbox="true" 
-   file="/images/image/summary-view.png" 
-   url="/images/image/summary-view.png" 
+   file="/images/image/image-summary-tab.png" 
+   url="/images/image/image-summary-tab.png" 
    alt="Summary info for Images in Codefresh" 
    caption="Summary info for Images in Codefresh"
    max-width="30%" 
@@ -105,8 +105,10 @@ Selecting **more details** for an image tag.
 {: .table .table-bordered .table-hover}
 |  Legend          |  Description|  
 | --------------   | --------------           |  
-| **1**            | The bugs or fix requests opened and being worked on for this image tag. |                            
-| **2**            | The pull request or requests pending commit.|  
-| **3**            | The Git details for this image tag, such as the Git hash, the Jira issue number, Git Pull Request, commit information, the name of the user who performed the commit. |       
-| **4**            | The workflow for the image step. Select to go to the Workflow.| 
-| **5**             | The log information for the build image step in the relevant workflow. Select to view Logs panel. |
+| **1**            | The image that is currently deployed and the number of applications it is deployed in.|   
+| **2**            | The metadata for the image, including the link to the version of the image currently deployed.|  
+| **3**            | The Jira issues if any fixed in this version.|  
+| **4**            | The Git repo information for this image tag, including PR (Pull Request) and commit information. |  
+| **5**            | The application or the list of applications in which this image is deployed, with cluster and namespace information for each.| 
+| **6**            | The size of the image and the link to the workflow that generated the image step. The external workflow URL is reported only when `WORKFLOW_URL` is used as input. See [report-image-info](https://github.com/codefresh-io/argo-hub/blob/main/workflows/codefresh-csdp/versions/0.0.6/docs/report-image-info.md).|
+| **5**             | The link to the log for the build image step in the relevant workflow. Similar to the external workflow URL, the external log URL is also reported when `LOGS_URL` is used as input. |
