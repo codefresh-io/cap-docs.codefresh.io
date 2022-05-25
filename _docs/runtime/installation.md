@@ -83,9 +83,7 @@ Before you start installing the Codefresh runtime, verify that:
   Optional. Enforce separation between internal (app-proxy) and external (webhook) communication by adding an internal ingress host for the app-proxy service in the internal network.  
   For both CLI wizard and Silent install:  
   * For new runtime installations, add the `--internal-ingress-host` flag pointing to the ingress host for `app-proxy`.
-  * For existing installations, do the following:  
-    * In `<runtime-name>/apps/app-proxy/overlays/codefresh/ingress.yaml`, _change_ the `host` field to point to the internal ingress host.    
-    * In `<runtime-name>/bootstrap/codefresh.yaml`, _add_ `internalIngressHost`.  
+  * For existing installations, commit changes to the installation repository by modifying the `app-proxy ingress` and `<runtime-name>.yaml` 
     See _Internal ingress host configuration (optional for existing runtimes only)_ in [Post-installation configuration](#post-installation-configuration) in this article.
 
 
@@ -231,9 +229,9 @@ spec:
 ```
 **Internal ingress host configuration (optional for existing runtimes only)**  
 
-If you have a Codefresh runtime installed, and want to use an ingress internal host for app-proxy communication, and an external ingress host to handle webhook logic, change the specs for the `Ingress` and `Runtime` resources, as in these examples. 
+If you have a Codefresh runtime installed, to use an internal ingress host for app-proxy communication, and an external ingress host to handle webhooks, change the specs for the `Ingress` and `Runtime` resources in the runtime installation repository. Use the examples as guidelines. 
 
-`<runtime-name>/apps/app-proxy/overlays/codefresh/ingress.yaml`: change `host` 
+`<runtime-install-repo>/apps/app-proxy/overlays/codefresh/ingress.yaml`: change `host` 
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -256,7 +254,7 @@ spec:
         pathType: Prefix
 ``` 
 
-`<runtime-name>/bootstrap/codefresh.yaml`: add `internalIngressHost`
+`../<runtime-install-repo>/bootstrap/<runtime-name>.yaml`: add `internalIngressHost`
 
 ```yaml
 apiVersion: v1
