@@ -231,14 +231,14 @@ spec:
 
 If you have a Codefresh runtime installed, to use an internal ingress host for app-proxy communication, and an external ingress host to handle webhooks, change the specs for the `Ingress` and `Runtime` resources in the runtime installation repository. Use the examples as guidelines. 
 
-`<runtime-install-repo>/apps/app-proxy/overlays/codefresh/ingress.yaml`: change `host` 
+`<runtime-install-repo>/apps/app-proxy/overlays/<runtime-name>/ingress.yaml`: change `host` 
 
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: codefresh-cap-app-proxy
-  namespace: codefresh
+  namespace: codefresh #replace with your runtime name
 spec:
   ingressClassName: nginx
   rules:
@@ -265,8 +265,8 @@ data:
     kind: Runtime
     metadata:
       creationTimestamp: null
-      name: codefresh
-      namespace: codefresh
+      name: codefresh #replace with your runtime name
+      namespace: codefresh #replace with your runtime name
     spec:
       bootstrapSpecifier: github.com/codefresh-io/cli-v2/manifests/argo-cd
       cluster: https://7DD8390300DCEFDAF87DC5C587EC388C.gr7.us-east-1.eks.amazonaws.com
