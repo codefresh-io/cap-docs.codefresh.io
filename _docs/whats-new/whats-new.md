@@ -17,12 +17,14 @@ Rollouts
 
 ### Features & enhancements
 
-#### Restore runtimes
-Runtimes are integral to all CI/CD actions and operations in Codefresh. In this release, we have added the capability to restore runtimes during cluster failures, either partial or complete.   
-All you need is the existing Git repo where you installed the runtime containing the runtime resources. The restore process reinstalls the runtime, leveraging the resources in the existing runtime repo. You can choose to restore the runtime to the failed cluster or to a different cluster.  
+#### Runtime disaster recovery
+Runtimes are integral to all CI/CD actions and operations in Codefresh. In this release, we have added the capability to restore runtimes in case of cluster failures, either partial or complete.   
+All you need is the existing Git repo where you installed the runtime containing the runtime resources. The restore process reinstalls the runtime, leveraging the resources in the existing repo. You can choose to restore the runtime to the failed cluster or to a different cluster.  
 For details, see [Restore runtimes](https://codefresh.io/csdp-docs/docs/runtime/runtime-recovery/).
 
-
+#### AWS ALB ingress controller
+AWS Application Load Balancer (ALB) is now part of our supported list of ingress controllers. 
+See Ingress controller requirements in [Requirements]([https://codefresh.io/csdp-docs/docs/runtime/requirements/#ingress-controller(requirements), and [Post-installation configuration](https://codefresh.io/csdp-docs/docs/runtime/installation/#post-installation-configuration).
 
 
 #### Labels for runtime namespace
@@ -31,12 +33,19 @@ For both CLI-based and silent installations, add the flag followed by one or mor
 
 For details, see [Runtime installation flags](https://codefresh.io/csdp-docs/docs/runtime/installation/#runtime-installation-flags).
 
-### AWS ALB ingress controller
-AWS Application Load Balancer (ALB) is now part of our supported list of ingress controllers. 
-See Ingress controller requirements in [Requirements]([https://codefresh.io/csdp-docs/docs/runtime/requirements/#ingress-controller(requirements), and [Post-installation configuration](https://codefresh.io/csdp-docs/docs/runtime/installation/#post-installation-configuration).
+#### Internal and external ingress hosts 
+Codefresh runtimes support defining two ingress hosts, an internal and an external ingress host, for private and public networks. Previously, runtimes supported a single ingress host for both the app-proxy and webhook ingress resources. Internal and external ingress separation allows you to expose the Codefresh app-proxy service only inside of your private network, while keeping the webhook unchanged.  
+* New runtime installations: The `--internal-ingress-host` flag lets you can define an ingress host for communication with the app-proxy. For details, see [Runtime installation flags](https://codefresh.io/csdp-docs/docs/runtime/installation/#runtime-installation-flags).
+* Existing runtimes: To add an internal ingress host, you need to commit changes to the installation repository by modifying `app-proxy ingress` and `<runtime-name>.yaml`.   
+For details, see _Internal ingress host configuration (optional)_ in [Post-installation configuration](#post-installation-configuration).
 
-#### Git Sources include/exclude functionality
-A common scenario when using Git repositories for resource storage is to include or exclude specific files or directories from the target repository to the destination repo or cluster. This functionality is now available in Codefresh. When creating or editing Git Sources in Codefresh, you can now include or exclude folders and files in the target Git repo, using Glob patterns for the same. 
+For further customizations, add annotations for internal and external ingress hosts through the `--internal-ingress-annotation` and `--external-ingress-annotation` flags. 
+
+#### oktapreview domain support
+You can set up Okta SSO to log into your Okta preview environment. 
+
+#### Git Source enhancements
+A common scenario when using Git repositories for CI/CD is to include or exclude specific files or directories in the target repository from the destination repo or cluster. When creating or editing Git Sources in Codefresh, you can now include or exclude folders and files in the target Git repo, using Glob patterns for the same. 
 
 {% include 
 	image.html 
@@ -45,13 +54,27 @@ A common scenario when using Git repositories for resource storage is to include
 	url="/images/whats-new/rel-notes-may22-git-source-exclude-include.png" 
 	alt="Include/exclude options in Git Source" 
 	caption="Include/exclude options in Git Source"
-   max-width="70%" 
+   max-width="50%" 
   %}
 
-For details, see [Create a Git Source](https://codefresh.io/csdp-docs/docs/runtime/git-sources/#create-a-git-source).
+After creating a Git Source you can delete it if needed. Selecting additional actions for a Git Source, displays the Git Source details with the Delete option. 
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/whats-new/rel-notes-may22-git-source-delete.png" 
+	url="/images/whats-new/rel-notes-may22-git-source-delete.png" 
+	alt="Delete Git Source" 
+	caption="Delete Git Source"
+   max-width="90%" 
+  %}
+
+For details, see [Add and manage Git Sources](https://codefresh.io/csdp-docs/docs/runtime/git-sources/).
 
 ####  Custom workflow URL in Images
-The `enrich-image-info` workflow template in [Codefresh Hub for Argo](https://github.com/codefresh-io/argo-hub/blob/main/workflows/codefresh-csdp/versions/0.0.6/docs/report-image-info.md), allows `WORKFLOW_URL` as an input parameter. The parameter defines the external URL of the workflow that created the image. When defined, the URL is reported to Codefresh with the icon of the provider, and displayed in the Build info section (Summary tab). Clicking the link takes you to the workflow URL.
+The `report-image-info` workflow template in [Codefresh Hub for Argo](https://github.com/codefresh-io/argo-hub/blob/main/workflows/codefresh-csdp/versions/0.0.6/docs/report-image-info.md), allows `WORKFLOW_URL` as an input parameter to define an external URL of the workflow that created the image. When defined, the URL is reported to Codefresh with the icon of the provider, and displayed in the Build info section (Summary tab). Clicking the link takes you to the workflow URL.
+
+User must specify WORKFLOW_URL for report-image-info plugin to override workflow URL for image. 
 
 {% include 
 	image.html 
@@ -65,14 +88,13 @@ The `enrich-image-info` workflow template in [Codefresh Hub for Argo](https://gi
 
 For details, see [Image summary view](https://codefresh.io/csdp-docs/docs/pipelines/images/#image-summary-view).
 
-#### Internal and external ingress hosts 
-Codefresh runtimes support defining two ingress hosts, an internal and an external ingress host, for private and public networks. Previously, runtimes supported a single ingress host for both the app-proxy and webhook ingress resources. Internal and external ingress separation allows you to expose the Codefresh app-proxy service only inside of your private network, while keeping the webhook unchanged.  
-* New runtime installations: The `--internal-ingress-host` flag lets you can define an ingress host for communication with the app-proxy. For details, see [Runtime installation flags](https://codefresh.io/csdp-docs/docs/runtime/installation/#runtime-installation-flags).
-* Existing runtimes: To add an internal ingress host, you need to commit changes to the installation repository by modifying `app-proxy ingress` and `<runtime-name>.yaml`.   
-For details, see _Internal ingress host configuration (optional)_ in [Post-installation configuration](#post-installation-configuration).
 
 
 
+### Bug fixes
+* Applications deleted from Argo UI not removed from the Applications dashboard.
+* Back button in Application timeline does not work.
+* AppSet application created in Argo CD not rendered correctly in Codefresh. 
 
 ## March-April 2022
 
