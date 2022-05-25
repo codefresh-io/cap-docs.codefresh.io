@@ -36,12 +36,22 @@ AWS Application Load Balancer (ALB) is now part of our supported list of ingress
 See Ingress controller requirements in [Requirements]([https://codefresh.io/csdp-docs/docs/runtime/requirements/#ingress-controller(requirements), and [Post-installation configuration](https://codefresh.io/csdp-docs/docs/runtime/installation/#post-installation-configuration).
 
 #### Git Sources include/exclude functionality
-A common scenario when using Git repsositorues to Using GitOps prinicples to create and manage resources, it is common enough to include or exclude specific files or directories from the traget repostioy to the when synced to the cluster.  When creating or editing Git Sources in Codefresh, you can now include and exclude folders and files in the target Git repo, using Glob patterns for the same. 
+A common scenario when using Git repositories for resource storage is to include or exclude specific files or directories from the target repository to the destination repo or cluster. This functionality is now available in Codefresh. When creating or editing Git Sources in Codefresh, you can now include or exclude folders and files in the target Git repo, using Glob patterns for the same. 
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/whats-new/rel-notes-may22-git-source-exclude-include.png" 
+	url="/images/whats-new/rel-notes-may22-git-source-exclude-include.png" 
+	alt="Include/exclude options in Git Source" 
+	caption="Include/exclude options in Git Source"
+   max-width="70%" 
+  %}
 
 For details, see [Create a Git Source](https://codefresh.io/csdp-docs/docs/runtime/git-sources/#create-a-git-source).
 
-#### External Workflow URL in Images
-The `enrich-image-info` workflow template in [Codefresh Hub for Argo](https://github.com/codefresh-io/argo-hub/blob/main/workflows/codefresh-csdp/versions/0.0.6/docs/report-image-info.md), includes the input parameter `WORKFLOW_URL`. This input parameter defines the external URL of the workflow that created the image. When defined as as input parameter, it reported to Codefresh, and displayed in the Build info section (Summary tab). Clicking the link take you to the workflow URL.
+####  Custom workflow URL in Images
+The `enrich-image-info` workflow template in [Codefresh Hub for Argo](https://github.com/codefresh-io/argo-hub/blob/main/workflows/codefresh-csdp/versions/0.0.6/docs/report-image-info.md), allows `WORKFLOW_URL` as an input parameter. The parameter defines the external URL of the workflow that created the image. When defined, the URL is reported to Codefresh with the icon of the provider, and displayed in the Build info section (Summary tab). Clicking the link takes you to the workflow URL.
 
 {% include 
 	image.html 
@@ -53,10 +63,15 @@ The `enrich-image-info` workflow template in [Codefresh Hub for Argo](https://gi
    max-width="70%" 
   %}
 
-For detailsh, see [Image summary view](https://codefresh.io/csdp-docs/docs/pipelines/images/#image-summary-view).
+For details, see [Image summary view](https://codefresh.io/csdp-docs/docs/pipelines/images/#image-summary-view).
 
-#### 
-Different address for webhook service; different from runtime address. CR-11535
+#### Internal and external ingress hosts 
+Codefresh runtimes support defining two ingress hosts, an internal and an external ingress host, for private and public networks. Previously, runtimes supported a single ingress host for both the app-proxy and webhook ingress resources. Internal and external ingress separation allows you to expose the Codefresh app-proxy service only inside of your private network, while keeping the webhook unchanged.  
+* New runtime installations: The `--internal-ingress-host` flag lets you can define an ingress host for communication with the app-proxy. For details, see [Runtime installation flags](https://codefresh.io/csdp-docs/docs/runtime/installation/#runtime-installation-flags).
+* Existing runtimes: To add an internal ingress host, you need to commit changes to the installation repository by modifying `app-proxy ingress` and `<runtime-name>.yaml`.   
+For details, see _Internal ingress host configuration (optional)_ in [Post-installation configuration](#post-installation-configuration).
+
+
 
 
 ## March-April 2022
