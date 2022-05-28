@@ -163,17 +163,17 @@ caption="Applications Dashboard: Deployment chart"
 max-width="30%"
 %}
 
-**Deployment card**  
+**Deployment entries**  
 
-Each deployment card displays the complete history of that deployment, by Git hash, Kubernetes services, and Argo applications:
+Each deployment entry displays the complete history of that deployment, by Git hash, Kubernetes services, and Argo applications:
 
 {% include
 image.html
 lightbox="true"
 file="/images/applications/app-dashboard-time-expanded-card.png"
 url="/images/applications/app-dashboard-time-expanded-card.png"
-alt="Applications Dashboard: Deployment card in Timeline tab"
-caption="Applications Dashboard: Deployment card in Timeline tab"
+alt="Applications Dashboard: Deployment entry in Timeline tab"
+caption="Applications Dashboard: Deployment entry in Timeline tab"
 max-width="30%"
 %}
 
@@ -203,21 +203,119 @@ caption="Applications Dashboard: Services tab"
 max-width="30%"
 %}
 
-### Application current state
-The Current State tab for an application shows the live state of all the application's resources (Kubernetes objects) in the cluster in List and Tree views.
-* List View: A hierarchical representation of application's resources, sorted by the Last Update.
-* Tree view: A multi-level representation of the application and its resources, for progressive navigation and visualization. Useful for complex deployments with multiple clusters and large numbers of resources. 
-  The first level of resources are always displayed. Additional nested levels are collapsed by default with a visual + indicator and the number of resources.
+### Application Current State
+The Current State tab for an application shows the live state of the application and the application's resources (Kubernetes objects) in the cluster in Tree and List view formats. 
+* Tree view (default): A hierarchical, interactive visualization of the application and its resources. Useful for complex deployments with multiple clusters and large numbers of resources. 
 
-For general information K8s resources, see the official documentation on [Working with Kubernetes objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/){:target="\_blank"}.
+* List View: A representation of application's resources, sorted by the Last Update.
 
-Here are 
+> Filters are shared between both views, and when applied are retained when switching between views. 
+
+Current State insights and actions:
+*  Health status: Reflects Argo CD's built-in health checks and status for the Application resource and Kubernetes objects. For more information, see [Argo CD Resource Health](https://argo-cd.readthedocs.io/en/stable/operator-manual/health/){:target="\_blank"}.
+*  Sync state: Desired state in Git versus live state in cluster.
+* Resource details: High-level information on mouse-over, and detailed manifest and log information on selecting the resource.
+
+The icon for a resource node identifies the type of Kubernetes resource it represents. For general information on K8s resources, see [Working with Kubernetes objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/){:target="\_blank"}.
+
+#### Current State Tree view
+Here is an example of an application's Current State in Tree view. The root node, the application itself, is expanded to display all its resources. 
+The Tree view is designed to impart key information at a glance.
 
 
-              
-#### Current State shared info
-???
+{% include
+image.html
+lightbox="true"
+file="/images/applications/current-state-tree-app-in-progress.png"
+url="/images/applications/current-state-tree-app-in-progress.png"
+alt="Current State: Tree view"
+caption="Current State: Tree view"
+max-width="50%"
+%}
 
+##### Health status  
+Identified by the border around the node and the resource-type icon. The health statuses tracked are [Argo CD's set of health checks](https://argo-cd.readthedocs.io/en/stable/operator-manual/health/).
+
+> The Unknown health status is assigned to resources that do not have a health status and are not tracked in Argo CD. `ConfigMaps` for example.
+
+{: .table .table-bordered .table-hover}
+| Health status  | Display in Tree view  | 
+| -------------- | ----------| ----------|  
+| **Healthy**                     | {::nomarkdown}<img src="../../../images/icons/current-state-healthy.png" display=inline-block">{:/} |                        
+| **Degraded**                    | {::nomarkdown}<img src="../../../images/icons/current-state-degraded.png" display=inline-block/>{:/} |
+| **Suspended**                   | {::nomarkdown}<img src="../../../images/icons/current-state-suspended.png" display=inline-block">{:/} |  
+| **Missing**                   | {::nomarkdown}<img src="../../../images/icons/current-state-missing.png" display=inline-block">{:/} |  
+| **Progressing**                 | {::nomarkdown}<img src="../../../images/icons/current-state-progressing.png" display=inline-block">{:/} | 
+| **Unknown**                     | {::nomarkdown}<img src="../../../images/icons/current-state-unknown.png" display=inline-block">{:/} |  
+
+
+
+##### Sync state
+Identified by the icon to the left of the resource name. For information on sync options 
+
+{: .table .table-bordered .table-hover}
+| Sync state     | Display in Tree view  |  
+| -------------- | ----------        |  
+| **Synced**                  | {::nomarkdown}<img src="../../../images/icons/current-state-synced.png" display=inline-block">{:/} |                            
+| **Syncing**                 | {::nomarkdown}<img src="../../../images/icons/current-state-syncing.png" display=inline-block/>{:/} |  
+| **Out-of-Sync**             | {::nomarkdown}<img src="../../../images/icons/current-state-out-of-sync.png" display=inline-block">{:/} |  
+| **Unknown**                 | {::nomarkdown}<img src="../../../images/icons/current-state-health-progressing.png" display=inline-block">{:/} |  
+
+
+##### Resource inventory
+At the bottom left is the Resource inventory, summarizing the aggregated count for each resource type in the application. Syncing and Out-of-Sync resources are bucketed separately for visibility and quick access. 
+
+**Click-filters**  
+In the resource inventory, selecting a Syncing or Out-of-Sync resource type, filters the Current State by that resource type and sync state.
+These filters are automatically reflected in the default filter list for both Tree and List views. 
+Here's an example of an application with out-of-sync resources, and the result on selecting an out-of-sync resource type.
+
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/current-state-tree-resource-list.png"
+url="/images/applications/current-state-tree-resource-list.png"
+alt="Current State Tree view: Resource inventory"
+caption="Current State Tree view: Resource inventory"
+max-width="50%"
+%}
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/current-state-tree-resource-list-filtered.png"
+url="/images/applications/current-state-tree-resource-list-filtered.png"
+alt="Current State Tree view: Resource inventory filtered by out-of-sync service"
+caption="Current State Tree view: Resource inventory filtered by out-of-sync service"
+max-width="50%"
+%}
+
+##### Resource info
+Mouse over to see a tooltip for the resource. For detailed information, select the resource; see [Detailed resource information](#detailed-resource-information) in this article.
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/current-state-resource-summary.png"
+url="/images/applications/current-state-resource-summary.png"
+alt="Current State Tree view: Resource tooltip"
+caption="Current State Tree view: Resource tooltip"
+max-width="50%"
+%}
+
+##### Search resources
+Quickly find a resource by typing the resource name in the search field, and pressing Enter to navigate to the next result. Search results have a different border for identification.
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/current-state-tree-search.png"
+url="/images/applications/current-state-tree-search.png"
+alt="Current State Tree view: Search resources"
+caption="Current State: Search resources"
+max-width="50%"
+%}
 
 #### Current State List view 
 Here is an example of the Current State in List view.
@@ -227,43 +325,51 @@ image.html
 lightbox="true"
 file="/images/applications/apps-current-state.png"
 url="/images/applications/apps-current-state.png"
-alt="Applications Dashboard: Current State tab"
-caption="Applications Dashboard: Current State tab"
-max-width="30%"
+alt="Applications Dashboard: List view of Current State"
+caption="Applications Dashboard: List view of Current State"
+max-width="50%"
 %}
 
-This a description of the information that 
 
-#### Current State Tree view
-Here is an example of the Current State in Tree view. The table below describes the information and 
-
-
-{: .table .table-bordered .table-hover}
-| Tree View Item          | Description   |
-| ------------------------| ---------------- |
-|**Application**             | The root of the tree view, and can be either synced (../../../images/icons/healthy.png?display=inline-block) or out-of-sync (../../../images/icons/error.png?display=inline-block).  |
-|**Application resource**    | The tree leaf or leaves that represent the resources deployed for the application. Every resource leaf displays the following information:{::nomarkdown}</br><ul><li>Name and icon identifying the resource.</li><li>Kind: The type of Kubernetes resource. </li><li>The health status, and can be either synced (../../../images/icons/healthy.png?display=inline-block) or out-of-sync (../../../images/icons/error.png?display=inline-block).</li><li>Based on the type of resource, the number of replicas, containers, or revisions.</li><li> Additional actions for the resource such as view resource details, sync, and delete resources.</li> <li>Expand/collapse nested levels of more resource. See [</li></ul>{:/}|
-|**Resource Inventory**     | The resource breakdown for the application by kind, the total number, and the number of out-of-sync resources, if any. 
-Selecting a resource or selecting the out-of-sync number for a resource, filters the Tree view by that resource/state. Useful to track a resource with recent changes, or  identify out-of-sync resources. 
-Resource Inventory filters when selected are automatically reflected in the default filter list.  
+#### Detailed resource information
+Selecting a resource, in either Tree or List view, shows resource manifests and logs, based on the resource type you selected. Endpoints for example show only manifests, while pods show both manifests and logs.  
 
 
-###### Resource details
-Select the resource, or from the three dots, select **Info** to view additional details on the resource.  
-SCREENSHOT
-You can: 
-* View desired and live versions of the resource manifest/spec (Summary)
-* View/download logs (Logs)
-* Hide Managed Fields in the manifest. In the Summary tab, select to hide managed-field information. Managed-fields show information on which field manager manages the field. This information is displayed as part of the resource manifest after Kubernetes introduced `Server Side Apply`. For more information, see [Field Management](https://kubernetes.io/docs/reference/using-api/server-side-apply/#field-management){:target="\_blank"}.
-SCREENSHOT
-* Share resource details: Copy the URL and send to others in your organization to share the resource details for collaborative review and analysis. Pasting the URL in a browser opens to the same resource detail view.
-  SCREENSHOT
+**Summary**
+ 
+{% include
+image.html
+lightbox="true"
+file="/images/applications/current-state-resource-summary.png"
+url="/images/applications/current-state-resource-summary.png"
+alt="Current State Tree view: Resource tooltip"
+caption="Current State Tree view: Resource tooltip"
+max-width="50%"
+%}
 
-##### Resource sync
-From Additional Actions (the three dots), select **Sync** .  
+* Desired and Live states: 
+  * Managed resources, meaning those that are stored in Git repositories and use Git as the single source of truth, show both the Desired state and the Live state.    
+    If there are discrepancies between them, the Diff view is displayed, highlighting the differences in both versions for comparison.
+  * Resources that are not stored in Git but live in the cluster, show only the Live state.
+  * 
+* Share resource details: Copy the URL and send to others in your organization to share the resource details for collaborative review and analysis. Pasting the URL in a browser opens to the same resource view.
+* Hide Managed Fields: When selected, hides managed-field information from the manifest. Managed-fields show information on which field manager manages the field, after Kubernetes introduced `Server Side Apply`. For more information, see [Field Management](https://kubernetes.io/docs/reference/using-api/server-side-apply/#field-management){:target="\_blank"}.
 
-##### Resource delete
 
+**Logs**  
 
+{% include
+image.html
+lightbox="true"
+file="/images/applications/current-state-logs.png"
+url="/images/applications/current-state-logs.png"
+alt="Current State: Logs for resource"
+caption="Current State: Logs for resource"
+max-width="50%"
+%}
+
+* Search: Free-text search for any string in the log, using the next and previous buttons to navigate between the results, or Enter for sequential navigation.
+* Wrap: Enable/disable line wrapping 
+* Download: Download the complete log into a text file for offline viewing and analysis.
 
 

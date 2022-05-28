@@ -41,6 +41,8 @@
       localurl: /docs/runtime/git-sources/
     - title:  Restore runtimes
       localurl: /docs/runtime/runtime-recovery/
+    - title:  App dashboard
+      localurl: /docs/deployment/app-dashboard/
 
 
 - title: Pipelines
