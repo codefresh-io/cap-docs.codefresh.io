@@ -49,10 +49,12 @@
 - title: Pipelines
   url: "/pipelines"
   pages:
-    - title: Creation
+    - title: Create pipelines
       url: "/create-pipelines"
-    - title: Monitoring
+    - title: Manage pipelines
       url: "/monitoring-pipelines"
+    - title: Manage workflows
+      url: "/workflows"
     - title: Sharing file systems
       url: "/sharing-file-system"
     - title: Selectors for concurrency synchronization

@@ -43,10 +43,12 @@
   icon: images/home-icons/pipeline.svg
   url: ''
   links:
-    - title: Creation
+    - title: Create pipelines
       localurl: /docs/pipelines/create-pipelines/
-    - title: Monitoring
+    - title: Manage pipelines
       localurl: /docs/pipelines/monitoring-pipelines/
+    - title: Manage workflows
+      localurl: /docs/pipelines/workflows/
     - title: Sharing file systems
       localurl: /docs/pipelines/sharing-file-system/
     - title: Selectors for concurrency synchronization
