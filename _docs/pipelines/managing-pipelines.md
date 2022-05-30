@@ -156,46 +156,7 @@ The table describes the information for each pipeline in the list view.
 | **Sync Status**| The sync status with the desired state in Git.|  
 
 
-### Monitoring step analytics for workflows in a pipeline 
-Step analytics show the aggregated average for KPIs in each step of a workflow, across all active workflows for the selected pipeline.  
 
-Analyze performance through the KPI metrics to identify how the metrics are trending, compared to the reference period.
-
-**How to: View step analytics for workflows**  
-1. Select a pipeline from either the **Home** page or the **Delivery Pipelines** page.
-1. Select the [Dashboard](https://g.codefresh.io/2.0/pipelines/edit/codefresh-v2-production/codefresh-v2-production/argo-platform-push%2Fservice-yaml/dashboard){:target="\_blank"} tab. 
-
-**Step Analytics information**  
-
-Here's an example of step information for a pipeline in the Dashboard tab.
-
-   {% include image.html 
-  lightbox="true" 
-  file="/images/pipeline/monitoring/pipeline-list-view.png" 
-  url="/images/pipeline/monitoring/pipeline-list-view.png"
-  alt="Step-level analytics for workflows in a Delivery Pipeline"
-  caption="Step-level analytics for workflows in a Delivery Pipeline"
-  max-width="30%"
-  %}
-
-
-The upper half shows KPIs for all workflows submitted for the pipeline.  
-To customize the view, select filters. All the filters are identical to those available for the aggregated view. In this view, you can also filter by **Branch** which is the Git branch or branches with the events that triggered the pipeline.   
-
-The Step Analytics list view in the lower half shows the KPI breakdown per step, and additional information on the step. 
-> Each metric shows also the difference in percentage compared to the reference period corresponding to the Time range selected.  
-
-{: .table .table-bordered .table-hover}
-| Step Analytics        |  Description|  
-| --------------| --------------           |  
-| **Step**      | The name of the step in the workflow. |                             
-| **Type**      | The node type created by the template. For details, see [Template types in Core Concepts](https://argoproj.github.io/argo-workflows/workflow-concepts/#template-types){:target="\_blank"}.|          
-| **Template**  | The template executed by the step.  |       
-| **Workflow Template**| The Workflow Template referenced by the step. Different steps can reference the same or different Workflow Templates.| 
-| **Avg. Duration**| The average length of time for all active workflows to complete execution of this step, in mm:ss. |   
-| **Executions**| The number of times the step was executed. |  
-| **CPU** and **Memory**| The average CPU and memory consumed by the step, across all the active workflows.|  
-| **Errors**| The number of times that the execution of this step resulted in errors.|  
 
 
 
@@ -233,4 +194,4 @@ The Git state is the state-of-truth and is the only editable state. The desired 
   > If there are Errors, Commit is disabled until you resolve the errors.
 
 ### What to read next
-[Workflows in pipelines](({{site.baseurl}}/docs/pipelines/workflows/)
+[Workflows in pipelines]({{site.baseurl}}/docs/pipelines/workflows/)
