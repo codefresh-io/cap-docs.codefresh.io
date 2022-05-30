@@ -46,7 +46,7 @@
     - title: Create pipelines
       localurl: /docs/pipelines/create-pipelines/
     - title: Manage pipelines
-      localurl: /docs/pipelines/monitoring-pipelines/
+      localurl: /docs/pipelines/managing-pipelines/
     - title: Manage workflows
       localurl: /docs/pipelines/workflows/
     - title: Sharing file systems

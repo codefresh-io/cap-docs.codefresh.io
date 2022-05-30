@@ -11,8 +11,8 @@ Argo defines the Workflow as the most important resource in Argo, defining the w
 
 In Codefresh, after submitting a workflow, you can:
 
-Track workflow performance and metadata
-Track active workflows in the Workflows dashboard, or track workflows in the context of the pipelines that initiated them. 
+* Track workflow performance and metadata  
+  Track active workflows in the Workflows dashboard, or track workflows in the context of the pipelines that initiated them. 
 
   {% include image.html 
     lightbox="true" 
@@ -23,17 +23,17 @@ Track active workflows in the Workflows dashboard, or track workflows in the con
   max-width="60%"
   %} 
 
-Track and troubleshoot workflow executions
-* Analyze and troubleshoot workflow steps: Analyze each step in the workflow, including the Argo Events that triggered the pipeline.
-* View workflow logs: Real-time logs for ongoing workflows, and archived logs for completed workflows.
-* Manage workflows: Based on the current status of the workflow, suspend, stop, terminate ongoing workflows, and retry, resubmit, or delete completed workflows.
+* Manage workflow executions
+  * Analyze and troubleshoot workflow steps: Analyze each step in the workflow, including steps related to Argo Events that triggered the pipeline.
+  * View workflow logs: Real-time logs for ongoing workflows, and archived logs for completed workflows.
+  * Manage workflows: Based on the current status of the workflow, suspend, stop, terminate ongoing workflows, and retry, resubmit, or delete completed workflows.
 
->This article focuses on workflow management. For detailed information on managing Delivery Pipelines, see [Managing Delivery Pipelines]({{site.baseurl}}/docs/pipelines/managing-pipelines/).
+>This article focuses on workflow management. For information on managing Delivery Pipelines, see [Managing Delivery Pipelines]({{site.baseurl}}/docs/pipelines/managing-pipelines/).
 
 
-### Workflow performance views in dashboards
+### Workflow performance in dashboards
 
-Workflows are 
+
 
 * Workflows dashboard: The Workflows dashboard displays a list of all the _active_ workflows across all Delivery Pipelines. To view a subset of workflows, defining filters, including pipelines to focus on specific workflows. From the Workflows dashboard, you can drill down directly into any workflow.
 
@@ -129,7 +129,8 @@ Every step has a status indication of either active ({::nomarkdown}
 <img src="../../../images/icons/error.png">{:/}).
 
 **Step types and filters**  
-Steps in a workflow are identified as Kubernetes resources (Pods, Containers), Argo template types (DAG, Step, StepGroup), or Argo Event resources (Event Sources, Sensors). 
+Steps in a workflow are identified as Kubernetes resources (Pods, Containers), Argo template types and template invocators (DAG, Step, StepGroup), or Argo Event resources (Event Sources, Sensors). 
+https://argoproj.github.io/argo-workflows/workflow-concepts/#template-types
 Event-type steps have labels within the step to differentiate them from workflow steps.
 
 {% include image.html 

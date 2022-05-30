@@ -52,7 +52,7 @@
     - title: Create pipelines
       url: "/create-pipelines"
     - title: Manage pipelines
-      url: "/monitoring-pipelines"
+      url: "/managing-pipelines"
     - title: Manage workflows
       url: "/workflows"
     - title: Sharing file systems
