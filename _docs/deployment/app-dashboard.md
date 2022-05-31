@@ -219,8 +219,9 @@ Current State insights and actions:
 The icon for a resource node identifies the type of Kubernetes resource it represents. For general information on K8s resources, see [Working with Kubernetes objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/){:target="\_blank"}.
 
 #### Current State Tree view
-Here is an example of an application's Current State in Tree view. The root node, the application itself, is expanded to display all its resources. 
-The Tree view is designed to impart key information at a glance.
+Below is an example of an application's Current State in Tree view, with the root node, the application itself, expanded to display all resources.  
+
+The Tree view is designed to impart key information at a glance. Review the sections that follow for pointers to get to what you need in the Tree view.
 
 
 {% include
@@ -234,7 +235,7 @@ max-width="50%"
 %}
 
 ##### Health status  
-Identified by the border around the node and the resource-type icon. The health statuses tracked are [Argo CD's set of health checks](https://argo-cd.readthedocs.io/en/stable/operator-manual/health/).
+The health status of a node is identified by the border around both the node and the resource-type icon. The health statuses tracked are [Argo CD's set of health checks](https://argo-cd.readthedocs.io/en/stable/operator-manual/health/).
 
 > The Unknown health status is assigned to resources that do not have a health status and are not tracked in Argo CD. `ConfigMaps` for example.
 
@@ -251,7 +252,7 @@ Identified by the border around the node and the resource-type icon. The health 
 
 
 ##### Sync state
-Identified by the icon to the left of the resource name. For information on sync options 
+The sync state is identified by the icon to the left of the resource name and the color of the resource name. For information on sync options you can configure for applications, see [Sync settings]({{site.baseurl}}docs/deployment/create-application/#sync-settings).
 
 {: .table .table-bordered .table-hover}
 | Sync state     | Display in Tree view  |  
@@ -259,7 +260,7 @@ Identified by the icon to the left of the resource name. For information on sync
 | **Synced**                  | {::nomarkdown}<img src="../../../images/icons/current-state-synced.png" display=inline-block">{:/} |                            
 | **Syncing**                 | {::nomarkdown}<img src="../../../images/icons/current-state-syncing.png" display=inline-block/>{:/} |  
 | **Out-of-Sync**             | {::nomarkdown}<img src="../../../images/icons/current-state-out-of-sync.png" display=inline-block">{:/} |  
-| **Unknown**                 | {::nomarkdown}<img src="../../../images/icons/current-state-health-progressing.png" display=inline-block">{:/} |  
+| **Unknown**                 | {::nomarkdown}<img src="../../../images/icons/current-state-sync-unknown.png" display=inline-block">{:/} |  
 
 
 ##### Resource inventory
@@ -284,15 +285,15 @@ max-width="50%"
 {% include
 image.html
 lightbox="true"
-file="/images/applications/current-state-tree-resource-list-filtered.png"
-url="/images/applications/current-state-tree-resource-list-filtered.png"
+file="/images/applications/current-state-tree-resource-filtered.png"
+url="/images/applications/current-state-tree-resource-filtered.png"
 alt="Current State Tree view: Resource inventory filtered by out-of-sync service"
 caption="Current State Tree view: Resource inventory filtered by out-of-sync service"
 max-width="50%"
 %}
 
 ##### Resource info
-Mouse over to see a tooltip for the resource. For detailed information, select the resource; see [Detailed resource information](#detailed-resource-information) in this article.
+Mouse over a node to see a tooltip for that resource. For detailed information, select the resource; see [Detailed resource information](#detailed-resource-information) in this article.
 
 {% include
 image.html
@@ -305,7 +306,7 @@ max-width="50%"
 %}
 
 ##### Search resources
-Quickly find a resource by typing the resource name in the search field, and pressing Enter to navigate to the next result. Search results have a different border for identification.
+Quickly find a resource by typing the resource name in the search field. Search results have a different border for identification. Press Enter to navigate to the next result. 
 
 {% include
 image.html
@@ -348,10 +349,9 @@ max-width="50%"
 %}
 
 * Desired and Live states: 
-  * Managed resources, meaning those that are stored in Git repositories and use Git as the single source of truth, show both the Desired state and the Live state.    
+  * Managed resources stored in Git repositories and using Git as the single source of truth, show both the Desired state and the Live state.    
     If there are discrepancies between them, the Diff view is displayed, highlighting the differences in both versions for comparison.
   * Resources that are not stored in Git but live in the cluster, show only the Live state.
-  * 
 * Share resource details: Copy the URL and send to others in your organization to share the resource details for collaborative review and analysis. Pasting the URL in a browser opens to the same resource view.
 * Hide Managed Fields: When selected, hides managed-field information from the manifest. Managed-fields show information on which field manager manages the field, after Kubernetes introduced `Server Side Apply`. For more information, see [Field Management](https://kubernetes.io/docs/reference/using-api/server-side-apply/#field-management){:target="\_blank"}.
 
