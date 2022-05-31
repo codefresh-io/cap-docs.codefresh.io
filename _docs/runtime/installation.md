@@ -84,12 +84,12 @@ Before you start installing the Codefresh runtime, verify that:
   For both CLI wizard and Silent install:  
   * For new runtime installations, add the `--internal-ingress-host` flag pointing to the ingress host for `app-proxy`.
   * For existing installations, commit changes to the installation repository by modifying the `app-proxy ingress` and `<runtime-name>.yaml` 
-    See _Internal ingress host configuration (optional for existing runtimes only)_ in [Post-installation configuration](#post-installation-configuration) in this article.
+    See _Internal ingress host configuration (optional for existing runtimes only)_ in [Post-installation configuration](#post-installation-configuration).
 
 
 **Ingress resources**  
   If you have a different routing service (not NGINX), bypass installing ingress resources with the `--skip-ingress` flag.  
-  In this case, after completing the installation, manually configure the cluster's routing service, and create and register Git integrations. See _Cluster routing service_ in[Post-installation configuration](#post-installation-configuration) in this article. 
+  In this case, after completing the installation, manually configure the cluster's routing service, and create and register Git integrations. See _Cluster routing service_ in [Post-installation configuration](#post-installation-configuration). 
  
 **Insecure flag**  
    For _on-premises installations_, if the Ingress controller does not have a valid SSL certificate, to continue with the installation, add the `--insecure` flag to the installation command.  
