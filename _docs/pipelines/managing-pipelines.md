@@ -10,7 +10,7 @@ View global pipeline analytics through the Home page dashboard Monitor, analyze,
  
 The Delivery Pipelines page is a list view of all pipelines that you have created, including those without workflows. Frill down into a pipeline to see its workflows, and view workflow details to troubleshoot and manage individual workflows.
 
-There are several ways to monitor and manage pipelines and its workflows:
+There are several ways to monitor and manage pipeliness:
 
 * Monitor sensor and event-source errors in the Activity Log
 * Analyze global analytics for pipelines with active workflows
@@ -114,7 +114,7 @@ Pipeline metrics (KPIs), are displayed as line charts and in list formats.
 
 ### Managing individual pipelines
 
-Individual pipeline view shows all pipelines in your cluster, including those that are not active, without workflows.  
+Individual pipeline view shows all pipelines in your cluster, including those that are not active, meaning pipelines for which workflows have not been submiited.  
 
 When you select an individual pipeline, you can monitor steps within workflows.  
 Both step and workflow analytics share the same set of filters that allow you to reduce the data displayed and customize the view.
