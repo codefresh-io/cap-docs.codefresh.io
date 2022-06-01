@@ -73,7 +73,7 @@ For details, see [Add and manage Git Sources]({{site.baseurl}}/docs/runtime/git-
 
 * With Istio ingress, app proxy communication with Argo CD fails with `Unexpected token u in JSON error`.
 * Adding a managed cluster always commits manifests to the main branch and not to the defined default branch.
-* Add managed cluster command fails when  ingress host includes `/` suffix.
+* Add managed cluster command fails when ingress host includes `/` suffix.
 * Application groups not supported in Current State for older runtime versions.
 * Retrieving a list of Git Sources for a runtime via CLI, causes the CLI to crash.
 * Uninstalling a runtime does not remove runtime-related secrets from the cluster.
