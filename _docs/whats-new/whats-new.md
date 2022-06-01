@@ -12,32 +12,29 @@ We launched the Codefresh platform in February this year. Built on Argo, the wor
 Since the launch, we have continued to work on and grow Codefresh. 
 
 ## May 2022
-Current State
-Rollouts
 
 ### Features & enhancements
 
 #### Runtime disaster recovery
-Runtimes are integral to all CI/CD actions and operations in Codefresh. In this release, we have added the capability to restore runtimes in case of cluster failures, either partial or complete.   
+Runtimes are integral to all CI/CD actions and operations in Codefresh. In this release, we added the capability to restore runtimes in case of cluster failures, either partial or complete.    
 All you need is the existing Git repo where you installed the runtime containing the runtime resources. The restore process reinstalls the runtime, leveraging the resources in the existing repo. You can choose to restore the runtime to the failed cluster or to a different cluster.  
-For details, see [Restore runtimes](https://codefresh.io/csdp-docs/docs/runtime/runtime-recovery/).
+For details, see [Restore runtimes]({{site.baseurl}}/docs/runtime/runtime-recovery/).
 
 #### AWS ALB ingress controller
-AWS Application Load Balancer (ALB) is now part of our supported list of ingress controllers. 
-See Ingress controller requirements in [Requirements]([https://codefresh.io/csdp-docs/docs/runtime/requirements/#ingress-controller(requirements), and [Post-installation configuration](https://codefresh.io/csdp-docs/docs/runtime/installation/#post-installation-configuration).
+AWS Application Load Balancer (ALB) is now part of our list of supported ingress controllers. 
+For details, see Ingress controller requirements in [Requirements]({{site.baseurl}}/docs/runtime/requirements/#ingress-controller), and [Post-installation configuration]({{site.baseurl}}/docs/runtime/installation/#post-installation-configuration).
 
 
 #### Labels for runtime namespace
 When installing runtimes, the `--namespace-label` flag lets you add labels to the runtime namespace. The labels identify and grant access to the installation network, required with service mesh ingress controllers such as Istio.  
-For both CLI-based and silent installations, add the flag followed by one or more labels in `key=value` format. Note that these labels must be identical to those defined in the 'namespace' resource spec.
-
-For details, see [Runtime installation flags](https://codefresh.io/csdp-docs/docs/runtime/installation/#runtime-installation-flags).
+For both CLI-based and silent installations, add the flag followed by one or more labels in `key=value` format. Note that these labels must be identical to those defined in the 'namespace' resource spec.  
+For details, see [Runtime installation flags]({{site.baseurl}}/docs/runtime/installation/#runtime-installation-flags).
 
 #### Internal and external ingress hosts 
-Codefresh runtimes support defining two ingress hosts, an internal and an external ingress host, for private and public networks. Previously, runtimes supported a single ingress host for both the app-proxy and webhook ingress resources. Internal and external ingress separation allows you to expose the Codefresh app-proxy service only inside of your private network, while keeping the webhook unchanged.  
-* New runtime installations: The `--internal-ingress-host` flag lets you can define an ingress host for communication with the app-proxy. For details, see [Runtime installation flags](https://codefresh.io/csdp-docs/docs/runtime/installation/#runtime-installation-flags).
+Codefresh runtimes support defining two ingress hosts, an internal and an external ingress host, for private and public networks. Previously, runtimes supported a single ingress host for both the app-proxy and webhook ingress resources. Internal and external ingress separation allows you to expose the Codefresh app-proxy service only within your private network, while keeping the webhook ingress unchanged.  
+* New runtime installations: The `--internal-ingress-host` flag lets you can define an ingress host for communication with the app-proxy. For details, see [Runtime installation flags]({{site.baseurl}}/docs/runtime/installation/#runtime-installation-flags).
 * Existing runtimes: To add an internal ingress host, you need to commit changes to the installation repository by modifying `app-proxy ingress` and `<runtime-name>.yaml`.   
-For details, see _Internal ingress host configuration (optional)_ in [Post-installation configuration](#post-installation-configuration).
+For details, see _Internal ingress host configuration (optional)_ in [Post-installation configuration]({{site.baseurl}}/docs/runtime/installation#post-installation-configuration).  
 
 For further customizations, add annotations for internal and external ingress hosts through the `--internal-ingress-annotation` and `--external-ingress-annotation` flags. 
 
@@ -57,7 +54,7 @@ A common scenario when using Git repositories for CI/CD is to include or exclude
    max-width="50%" 
   %}
 
-After creating a Git Source you can delete it if needed. Selecting additional actions for a Git Source, displays the Git Source details with the Delete option. 
+You can also delete Git Sources if needed. Selecting additional actions for a Git Source, displays the Git Source details with the Delete option. 
 
 {% include 
 	image.html 
@@ -69,36 +66,44 @@ After creating a Git Source you can delete it if needed. Selecting additional ac
    max-width="90%" 
   %}
 
-For details, see [Add and manage Git Sources](https://codefresh.io/csdp-docs/docs/runtime/git-sources/).
-
-####  Custom workflow URL in Images
-The `report-image-info` workflow template in [Codefresh Hub for Argo](https://github.com/codefresh-io/argo-hub/blob/main/workflows/codefresh-csdp/versions/0.0.6/docs/report-image-info.md), allows `WORKFLOW_URL` as an input parameter to define an external URL of the workflow that created the image. When defined, the URL is reported to Codefresh with the icon of the provider, and displayed in the Build info section (Summary tab). Clicking the link takes you to the workflow URL.
-
-User must specify WORKFLOW_URL for report-image-info plugin to override workflow URL for image. 
-
-{% include 
-	image.html 
-	lightbox="true" 
-	file="/images/whats-new/rel-notes-may22-workflow-url.png" 
-	url="/images/whats-new/rel-notes-may22-workflow-url.png" 
-	alt="External workflow URL in image info" 
-	caption="External workflow URL in image info"
-   max-width="70%" 
-  %}
-
-For details, see [Image summary view](https://codefresh.io/csdp-docs/docs/pipelines/images/#image-summary-view).
-
-
-
+For details, see [Add and manage Git Sources]({{site.baseurl}}/docs/runtime/git-sources/).
 
 ### Bug fixes
-* Applications deleted from Argo UI not removed from the Applications dashboard.
-* Back button in Application timeline does not work.
-* AppSet application created in Argo CD not rendered correctly in Codefresh. 
+**Runtimes** 
+
+* With Istio ingress, app proxy communication with Argo CD fails with `Unexpected token u in JSON error`.
+* Adding a managed cluster always commits manifests to the main branch and not to the defined default branch.
+* Add managed cluster command fails when  ingress host includes `/` suffix.
+* Application groups not supported in Current State for older runtime versions.
+* Retrieving a list of Git Sources for a runtime via CLI, causes the CLI to crash.
+* Uninstalling a runtime does not remove runtime-related secrets from the cluster.
+
+**Applications**   
+
+* Applications deleted from the Argo UI not removed from the Applications dashboard in Codefresh.
+* Back button in  Applications > Timeline tab does not work.
+* Hierarchy for AppSet application created in Argo CD not rendered correctly in Codefresh.
+* Most Active Applications list in the Home dashboard is incorrectly sorted.
+* Link to CI build on Service in Applications Dashboard is hard-coded to Workflows.
+* Add Application wizard creates invalid manifest.
+* Removing a resource from an application does not remove it from the application’s Current State list. 
+* Deleting an application deletes it from the cluster and the Git repo, but not from the database.
+* Creating an application without path results in an error.
+* On page reload, deployment chart in Application > Timeline tab does not reflect set filters.
+* Resources with changed file names are not reported in Argo CD.
+* Unknown state for application sets with targets on external clusters.
+
+**Others** 
+* Clicking the Settings icon shows a console error.
+* Workflow Templates reported without Git manifests and desired state. 
+* Get list of workflows for a pipeline via CLI returns 400 bad request.
+* GitHub user without a public email address causes autopilot to crash in app-proxy.
+* Within a staging app, regular deployment transition is empty and shows only replicas count.
+
 
 ## March-April 2022
 
-### Features and enhancements 
+### Features & enhancements 
 
 #### Kubernetes version runtime support
 We now support the latest Kubernetes server versions, 1.22 and 1.23. 
