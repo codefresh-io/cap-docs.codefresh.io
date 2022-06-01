@@ -240,7 +240,7 @@ You can also remove a cluster through the CLI.
   `cf cluster remove <runtime-name> --server-url <server-url>`  
   where:  
   `<runtime-name>` is the name of the runtime that the managed cluster is registered to.  
-   `<server-url> is the URL of the server on which the managed cluster is installed. 
+  `<server-url>` is the URL of the server on which the managed cluster is installed. 
 
 
 ### What to read next
