@@ -57,7 +57,15 @@
       localurl: /docs/pipelines/sharing-file-system/  
     - title: Viewing images
       localurl: /docs/pipelines/images/    
-    
+
+- title: Deployment
+  icon: images/home-icons/deployment.svg
+  url: ''
+  links:
+    - title: Applications dashboard
+      localurl: /docs/deployment/applications-dashboard/
+    - title: Create an application
+      localurl: /docs/deployment/create-application/
 
 - title: Administration
   icon: images/home-icons/administration.svg
