@@ -67,6 +67,14 @@
     - title: Create an application
       localurl: /docs/deployment/create-application/
 
+- title: Integrations
+  icon: images/home-icons/integrations.png
+  url: ''
+  links:
+    - title: JIRA tracking
+      localurl: /docs/integrations/jira/
+  
+
 - title: Administration
   icon: images/home-icons/administration.svg
   url: ''
