@@ -72,6 +72,13 @@
     - title: Create an application
       url: "/create-application"
 
+- title: Reports & Insights
+  url: "/reporting"
+  pages:
+    - title: DORA metrics
+      url: "/dora-metrics"
+
+
 - title: Administration
   url: "/administration"
   pages:
