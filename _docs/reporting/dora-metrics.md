@@ -11,14 +11,17 @@ abstract or too generic. In an effort to quantify the benefits of adopting DevOp
 define specific goals for improving the software lifecycle in companies that are
 interested in adopting DevOps.
 
-These metrics [are defined as](https://cloud.google.com/blog/products/devops-sre/using-the-four-keys-to-measure-your-devops-performance):
+DORA measures these metrics ([read more](https://cloud.google.com/blog/products/devops-sre/using-the-four-keys-to-measure-your-devops-performance))
+
 
 * Deployment Frequency — How often an organization successfully releases to production
 * Lead Time for Changes — The amount of time it takes a commit to get into production
 * Change Failure Rate — The percentage of deployments causing a failure in production
 * Time to Restore Service — How long it takes an organization to recover from a failure in production
 
-Monitoring these metrics can help you identify delivery issues in your organization as they can detect bottlenecks among teams and show you where you need to optimize your workflows (either on a technical or organizational level).
+## DORA metrics in Codefresh
+
+Monitoring these metrics can help you identify delivery issues in your organization by detecting bottlenecks among teams, and identifying to optimize your workflows, at technical or organizational levels.
 
 Codefresh offers support for DORA metrics out of the box. You can visit your metric dashboard by selecting *DORA metrics* from the left sidebar
 
@@ -34,19 +37,18 @@ max-width="100%"
 
 ## Filters
 
-At the top of the window you have options for filtering all metrics with multi-select controls. These include:
+Use filters to define the exact subset of applications you are interested in:
 
 
-* Runtimes: limit metrics to Applications only from selected runtimes 
-* Clusters: limit metrics to Applications deployed to selected cluster
-* Applications: show selected applications 
-* Labels: show only Applications that have the matching labels (key/value) 
-* Time: limit metrics to a specific time period
+* Runtimes: Limit metrics to Applications only from selected runtimes 
+* Clusters: Limit metrics to Applications deployed to selected cluster
+* Applications: Show selected applications 
+* Labels: Show only Applications that have the matching labels (key/value) 
+* Time: Limit metrics to a specific time period
 
-All filtering components support auto-complete and are multi-select. This means that you can define exactly the subset of applications that you are interested in.
+All filtering components support auto-complete and are multi-select. 
 
-
-## Quick overview
+## Quick metrics
 
 The middle part of the screen shows a quick glance over key metrics for the selected subset of applications.
 
@@ -59,7 +61,6 @@ The results shown are :
 
 ## Graphs
 
-The main are of the screen has graphs for each metric.
 
 First you can select granularity of each graph by choosing the following options:
 

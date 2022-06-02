@@ -11,10 +11,6 @@ We launched the Codefresh platform in February this year. Built on Argo, the wor
 Since the launch, we have continued to work on and grow Codefresh. 
 
 
-## June 2022
-
-- Dashboard for DORA metrics - [documentation]({{site.baseurl}}/docs/reporting/dora-metrics)
-
 ## May 2022
 
 ### Features & enhancements
