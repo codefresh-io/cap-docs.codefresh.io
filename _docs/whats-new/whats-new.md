@@ -10,6 +10,11 @@ toc: true
 We launched the Codefresh platform in February this year. Built on Argo, the world’s most popular and fastest-growing open source software delivery, Codefresh unlocks the full enterprise potential of Argo Workflows, Argo CD, Argo Events, and Argo Rollouts, providing a control-plane for managing them at scale.
 Since the launch, we have continued to work on and grow Codefresh. 
 
+
+## June 2022
+
+- Dashboard for DORA metrics - [documentation]({{site.baseurl}}/docs/reporting/dora-metrics)
+
 ## May 2022
 
 ### Features & enhancements
