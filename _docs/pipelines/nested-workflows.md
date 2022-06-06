@@ -48,7 +48,7 @@ spec:
 
 **Create a PR Workflow**  
 
-The example references the `create-pr`template, `argo-hub.github.0.0.4` and higher, in the Codefresh Hub for Argo.
+The example references the `create-pr` template, `argo-hub.github.0.0.4` and higher, in the Codefresh Hub for Argo.
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
