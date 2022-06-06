@@ -7,16 +7,15 @@ toc: true
 
 What is a shared configuration in Codefresh?
 
-An account with multiple hosted runtimes or hybrid runtimes can create and store runtime configuration settings in a Git repository, and then share the configuration with any runtime that you choose. This means that you 
+A Codefresh account with a hosted or hybrid runtime can create and store runtime configuration settings in a Git repository, and then share the configuration with subsequent runtimes that are installed. For the first hosted or hybrid runtime that you install, Codefresh creates the shared config repo. You can then select the runtimes that use this shared configuration. 
 
-Codefresh creates the shared config repo for the first hosted and the first hybrid runtime that you install. Other runtimes use the same shared configuration repo for all subsequent runtimes that are installed. 
+* Hosted runtimes
+  As part of the set up for the hosted runtime, you must select the Git Organization for which to create the repos. Codefresh, creates the repo for the shared runtime configuration.  
 
-Hosted runtimes
-As part of the set up for the hosted runtime, you must select the Git Organization for twhich the repors are to be created. Codefresh creates the repos.
-Hybrid runtimes
-Whn you install the first runtime on the cluster or for that account, you can define the shared configuration repo through the --shared-config-repo flag. If not defined, and the shated configuraiton repo for that runtime account does not exist, it is set to the shared-config root folder in the runtime installation repo.
+* Hybrid runtimes 
+  When you install the first runtime on the cluster or for that account, you can define the shared configuration repo through the `--shared-config-repo` flag. If the flag is omitted, and the runtime account does not have a shared configuration repo, it is set to the shared-config root folder in the runtime installation repo.
 
-Shared configuration directory strucure
+### Shared configuration directory structure
 Here is a sample shared configuraiton repo
 
 
@@ -39,16 +38,16 @@ Here is a sample shared configuraiton repo
         └── in-cluster.yaml    ─┘ #      manage `include` field to decide which directories to sync to cluster
 ```
 
-The  base path of the repository includes two directories: `resources` and `runtimes`.
+The base path of the repository includes two directories: `resources` and `runtimes`:
 
-`resources` directory initially includes `all` tag directory, and then includes a sub-directory for each tag created.
+* `resources` directory initially includes `all` tag directory, and then includes a sub-directory for each tag created.
 
-`runtimes` directory includes a separate sub-directory for each runtime installed in the cluster. Each such runtime-directory will include in-cluster.yaml
+* `runtimes` directory includes a separate sub-directory for each runtime installed in the cluster. Every runtime-directory includes `in-cluster.yaml`.
 
-Tags for 
-When the user adds a new resource, an integration secret, for example, Codefresh sends the new “tag” name, a list of destination runtimes+clusters (no cluster defaults to in-cluster) and the required files' relative paths and string data. 
+#### Tags for 
+When you add a new resource, such as an integration secret for example, Codefresh sends the new “tag” name, a list of destination runtimes+clusters (no cluster defaults to in-cluster) and the required files' relative paths and string data. 
 
-Application manifest for Shared Configuration repo
+#### Application manifest for Shared Configuration repo
 
 Every runtime has a Git-Source Application that targets the shared configuration repo in `runtimes/<runtime-name>`. And different Applications for every cluster managed by/registered to this runtime, entitled `isc-<cluster>`. These applications selectively syncs specific sub-directories in `resources` to the target cluster.
 
