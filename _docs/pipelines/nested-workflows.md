@@ -19,8 +19,9 @@ Codefresh has two ready-to-use Workflow Templates to:
 
 Use the examples below to create the Workflow Templates that run the nested workflows.
 
-**Submit Workflow**
-The example references the `submit-workflow` template, `argo-hub.argo-workflows.0.0.3` and above, in the Codefresh Hub for Argo.
+**Submit Workflow**  
+
+The example references the `submit-workflow` template, `argo-hub.argo-workflows.0.0.3` and higher, in the Codefresh Hub for Argo.
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -45,8 +46,9 @@ spec:
                   value: 'echo'
 ```
 
-**Create a PR Workflow**
-The example references the `create-pr`template, `argo-hub.github.0.0.4` and above, in the Codefresh Hub for Argo.
+**Create a PR Workflow**  
+
+The example references the `create-pr`template, `argo-hub.github.0.0.4` and higher, in the Codefresh Hub for Argo.
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
