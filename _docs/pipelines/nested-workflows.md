@@ -15,31 +15,68 @@ Codefresh has two ready-to-use Workflow Templates to:
  
  
 
-### Select the Codefresh Workflow Template
+### Create the Workflow Template
 
-  Select the template you need either from Workflow Templates, where you can run it before submit, or from the Delivery Pipelines.  
- 
+Use the examples below to create the Workflow Templates that run the nested workflows.
 
-   {% include 
-   image.html 
-   lightbox="true" 
-   file="/images/workflows/nested-submit-termnate-template.png" 
-   url="/images/workflows/nested-submit-termnate-template.png" 
-   alt="Codefresh Workflow Template with nested submit" 
-   caption="Codefresh Workflow Template with nested submit"
-   max-width="50%" 
-   %}
+**Submit Workflow**
+The example references the `submit-workflow` template, `argo-hub.argo-workflows.0.0.3` and above, in the Codefresh Hub for Argo.
 
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: argo-workflows-submit-workflow-
+spec:
+  entrypoint: main
+  templates:
+    - name: main
+      dag:
+        tasks:
+          - name: submit
+            templateRef:
+              name: argo-hub.argo-workflows.0.0.3
+              template: submit-workflow
+            arguments:
+              parameters:
+                - name: TEMPLATE_NAME
+                  value: 'argo-hub.argo-workflows-utils.0.0.1'
+                - name: ENTRYPOINT
+                  value: 'echo'
+```
 
-    {% include 
-   image.html 
-   lightbox="true" 
-   file="/images/workflows/nested-pr-template.png" 
-   url="/images/workflows/nested-pr-template.png" 
-   alt="Codefresh Workflow Template with nested PR" 
-   caption="Codefresh Workflow Template with nested PR"
-   max-width="50%" 
-   %}
+**Create a PR Workflow**
+The example references the `create-pr`template, `argo-hub.github.0.0.4` and above, in the Codefresh Hub for Argo.
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: create-pr
+spec:
+  entrypoint: main
+  templates:
+  - name: main
+    dag:
+      tasks:
+      - name: create-pr
+        templateRef:
+          name: argo-hub.github.0.0.4
+          template: create-pr
+        arguments:
+          artifacts:
+            - name:
+          parameters:
+            - name: BRANCH
+              value: 'feature/my-branch'
+            - name: MESSAGE
+              value: 'My new PR'
+            - name: PR_TEMPLATE
+              value: 'https://raw.githubusercontent.com/codefresh-contrib/express-microservice2/develop/.github/pull_request_template.md'
+            - name: GITHUB_TOKEN_SECRET
+              value: 'github-token'
+```
+
 
 
 
