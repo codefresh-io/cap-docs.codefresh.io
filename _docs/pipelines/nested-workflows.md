@@ -5,55 +5,60 @@ group: pipelines
 toc: true
 ---
 
-Execute nested workflows from within Codefresh pipelines. Executed from within a parent workflow, the nested workflow runs a new workflow that is linked to but independent of the parent. Submit new workflows, terminate a referenced workflow, or create a Git PR (Pull Request) and reference workflow. Codefresh has created two specialized Workflow Templates that execute nested workflows in the Codefresh Hub for Argo.
+Define single or multiple nested workflows within a workflow. A nested workflow is a step within the parent workflow that either submits a new workflow or creates a PR (Pull Request) that runs a different workflow when merged. Nested workflows run independently of the parent workflow that submitted them. If you submitted a new workflow as a nested workflow, you have traceability in both directions, from the parent to child, and from the child to the parent. In case of nested PRs, the workflow triggered by the PR indicates this.  
 
-**Benefits**
-* The parent workflow continues execution regardless of the status of the child workflow.
-* Complete traceability from the parent to the child, and from the child to the parent workflows
+Codefresh has two ready-to-use Workflow Templates to:
+* Submit a workflow
+* Create a PR to run the workflow that tracks the PR
+ 
  
 **Get up and running with nested workflows**  
 
-1. Get Workflow Templates for Delivery Pipeline  
+1. Select the Codefresh templates. 
+  Select it from Workflow Templates, where you can run it before submit.  
 
-    Download the Workflow Template you need from Codefresh Hub for Argo, and select it for the Delivery Pipeline:  
-  
-    [Submit or Terminate workflows](https://codefresh.io/argohub/workflow-template/argo-workflows)  
+  Select it as part of the Delivery Pipeline.  
+ 
 
-    [Create PR Codefresh](https://codefresh.io/argohub/workflow-template/github)  
-    
+   {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/workflows/nested-submit-termnate-template.png" 
+   url="/images/workflows/nested-submit-termnate-template.png" 
+   alt="Codefresh Workflow Template with nested submit" 
+   caption="Codefresh Workflow Template with nested submit"
+   max-width="50%" 
+   %}
+
+
     {% include 
    image.html 
    lightbox="true" 
    file="/images/workflows/nested-pr-template.png" 
    url="/images/workflows/nested-pr-template.png" 
-   alt="Create PR Codefresh Workflow Template" 
-   caption="Create PR Codefresh Workflow Template"
-   max-width="30%" 
+   alt="Codefresh Workflow Template with nested PR" 
+   caption="Codefresh Workflow Template with nested PR"
+   max-width="50%" 
    %}
 
-{:start="2"}
-1. Customize the Workflow Template 
 
-  Customize the Workflow Template according to the ReadMe files:  
 
-    [Submit new workflow](https://github.com/codefresh-io/argo-hub/blob/main/workflows/argo-workflows/versions/0.0.3/docs/submit-workflow.md)  
+1.  Trace/navigate to parent/child workflows  
 
-    [Terminate workflow](https://github.com/codefresh-io/argo-hub/blob/main/workflows/argo-workflows/versions/0.0.3/docs/terminate-workflow.md)  
+    Once the parent workflow is submitted, a look at the Summary tab of the step in the parent or child workflow illustrates the nested relationship. 
+    * Submit workflow template: In the parent workflow, the nested-workflow step has a link to the child workflow. In the child workflow, the step has a link to the parent template.
+    * Create PR template: The child workflow indicates that it was triggered by the PR request. 
+  
+    > To navigate to the Workflows tab with step visualizations, select **View workflow details**.  
 
-    [Create PR Template](https://github.com/codefresh-io/argo-hub/blob/main/workflows/github/versions/0.0.4/docs/create-pr-codefresh.md)
-
-1.  Identify parent/child steps in workflows  
-
-    Once the pipeline is triggered and the parent workflow is submitted, the Summary tab of the workflow step identifies that step as a nested workflow. It also links to the parent or child workflows, and for PR-based nested workflows indicates the same. 
-    > To navigate to the Workflows tab with the step visualization, select **View workflow details**. 
      
-     **Example: Parent workflow with link to child workflow**
+     **Example: Submit template - parent workflow with link to child workflow**
     SCREENSHOT
 
-     **Example: Child workflow with link to parent**
+     **Example: Submit template - child workflow with link to parent**
      SCREENSHOT
 
-     **Example: Child workflow triggered by PR**
+     **Example: Create PR template: - child workflow triggered by PR**
       SCREENSHOT
 
 
