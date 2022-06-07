@@ -72,6 +72,12 @@
     - title: Create an application
       url: "/create-application"
 
+- title: Integrations
+  url: "/integrations"
+  pages:
+    - title: GitHub actions
+      url: "/github-actions"
+
 - title: Administration
   url: "/administration"
   pages:

@@ -56,9 +56,7 @@
     - title: Sharing file systems
       localurl: /docs/pipelines/sharing-file-system/  
     - title: Viewing images
-      localurl: /docs/pipelines/images/ 
-    - title: Nested workflows
-      localurl: /docs/pipelines/nested-workflows/   
+      localurl: /docs/pipelines/images/    
 
 - title: Deployment
   icon: images/home-icons/deployment.svg
@@ -68,6 +66,14 @@
       localurl: /docs/deployment/applications-dashboard/
     - title: Create an application
       localurl: /docs/deployment/create-application/
+
+- title: Integrations
+  icon: images/home-icons/integrations.png
+  url: ''
+  links:
+    - title: GitHub actions
+      localurl: /docs/integrations/github-actions/
+  
 
 - title: Administration
   icon: images/home-icons/administration.svg
