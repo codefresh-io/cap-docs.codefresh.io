@@ -14,9 +14,16 @@ Codefresh has native support for interacting with Quay registries, from where yo
 1. Optional. For Codefresh integration,[Create a robot account](https://docs.quay.io/glossary/robot-accounts.html) 
 
 ## Configure Quay integration in Codefresh
+Once you have created a Redhat or Quay, configure the Quay integration settings in Codefresh.  
 
+**Before you begin**  
+Make sure you have the:  
+* Quay domain username
+* Quay domain-encrypted password or that of the robot account
+
+**How to**  
 1. In the Codefresh UI, go to [Integrations](https://g.codefresh.io/2.0/account-settings/integrations){:target="\_blank"}. 
-1. On the **Quay Docker Registry** card, click **Add**.
+1. Select **Quay Docker Registry**, and then click **Add**.
 1. Click **Add** on the top-right. 
 1. Configure the Quay integration settings:
   * Enter an **Integration name**. You can have multiple Quay instances connected.
@@ -33,6 +40,9 @@ Codefresh has native support for interacting with Quay registries, from where yo
   caption="Quay Docker Registry integration settings in Codefresh"
   max-width="50%"
   %}
+{:start="5"}
+1. To confirm, click **Commit**.
+  It may take a few moments for the new integration to be synced to the cluster before it appears in the list.
 
 ## What to read next  
 
