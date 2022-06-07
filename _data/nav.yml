@@ -72,6 +72,12 @@
     - title: Create an application
       url: "/create-application"
 
+- title: Integrations
+  url: "/integrations"
+  pages:
+    - title: DockerHub Registry
+      url: "/dockerhub"
+
 - title: Administration
   url: "/administration"
   pages:
