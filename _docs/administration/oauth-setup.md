@@ -1,11 +1,37 @@
 ---
-title: "Set up OAuth2 integration"
+title: "Set up OAuth2 authentication"
 description: ""
 group: administration
 toc: true
 ---
 
 
+If you have set up integrations with one or more Git providers for CI enrichment, or for CI/CD integration, you must authenticate Codefresh to these providers. Authentication is required for Codefresh to access the public and private repositories of your Git providers.
+
+Codefresh supports OAuth2 or Personal Access Tokens (PATs) for authentication:. 
+
+* OAuth2 with Codefresh or custom provider
+  OAuth2 is the preferred authentication mechanism, currently supported for GitHub. For hosted runtimes, Codefresh offers a pre-defined OAuth provider account for use, or you can create one or more custom provider accounts. Custom provider authentication requires you to create an OAuth2 application in GitHub, create K8s secret, and then configure the OAuth settings in Codefresh. 
+  While you can create multiple custom provider accounts, only one account can be active for authentication. 
+
+* Token-based authentication using PAT
+  With token-based authentication, users must enter their personal access tokens when prompted to authorize access.
+
+
+
+## Authentication accounts
+Navigate to the Authentication page to see your authentication accounts. Initially, onlh the predefined Codefresh acc
+
+
+You only need to name your integration and Codefresh will automatically set it up once you accept the permissions required. If you have problems with OAuth2 or the provider does not support it, you need to manually create credentials by yourself in your git account and then enter them into Codefresh.
+
+
+As one the authentication mechanisms supported by Codefresh, 
+
+
+
+
+## Create a custom provider account 
 Codefresh account administrators can create an OAuth2 Application in GitHub, and set up authentication within Codefresh. Users in Codefresh can then authorize access to GitHub using the OAuth2 Application instead of generating a personal access token to perform Git-based actions.  
 
 To set up OAuth2 authorization for GitHub in Codefresh, you must:
@@ -81,13 +107,12 @@ To complete the integration, configure the settings for the OAuth2 GitHub applic
   > The values for all the settings in the ConfigMap are the `keys` in the secret file. 
 
 1. In the Codefresh UI, go to Authentication (TBD).
-1. Select **GitHub Authentication**.
-  The list shows existing GitHub authentications, if any. 
+  The list always shows the default, predefined Codefresh provider account, and other custom provider accounts created, organized by Runtime, Type (Codefresh or Custom) and Status. 
 
   SCREENSHOT
 
 {:start="3"}
-1. Select **+ Add**.
+1. Select **+ Use custom provider**.
 1. From the **Runtime** list, select the runtime to which to apply the current configuration. The runtime must be identical to the runtime to which you saved the K8s secret.
    > If you have managed clusters registered to the selected runtime, the configuration is available to all the clusters. 
  
