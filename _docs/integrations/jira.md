@@ -5,44 +5,58 @@ group: integrations
 toc: true
 ---
 
-One of the major highlights of Codefresh is the ability to correlate automatically
-software features and where/when they are deployed. It is rather easy to know the software version of a component, but in most cases people are not really interested in numerical versions, but instead which features are contained in a release.
+One of the major highlights of the Codefresh platform is the ability to automatically correlate 
+software features with their deployment (where and when). While it easy to know the software version of a component, what is likely more interesting and important is to know which features are contained in a release.
 
-Codefresh has native integration for Atlassian Jira. This way Codefresh
-monitors a feature all the way from the ticket creation phase, up to the moment it is implemented and deployed to an environment.
+Codefresh has native integration for Atlassian Jira. This allows Codefresh to monitor a feature all the way from the ticket creation phase, up to the moment it is implemented and deployed to an environment.
 
-## Required JIRA information
+### Prerequisites
 
-First you need to obtain your JIRA instance credentials. Follow the [Attlassian documentation](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/) on how to get them.
+1. Get your JIRA instance credentials by following the [Attlassian documentation](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/).
+1. Note down the following as you will need to complete the integration with Codefresh:
 
-You should note down:
+  * JIRA URL
+  * JIRA username/email to be used for the integration
+  * JIRA password/token created for this user
 
-* Your JIRA URL
-* The JIRA username/email that will be used for the integration
-* The JIRA password/token that was created for this user
 
-Once you have these values, you can enter them on the Codefresh side.
+### Configure JIRA integration in Codefresh
+Once you have set up a JIRA instance, configure the JIRA integration settings in Codefresh.  
 
-## Codefresh configuration
+**Before you begin**  
+Make sure you have the:
+* JIRA URL
+* JIRA username/email to be used for the integration
+* JIRA password/token created for this user
 
-Navigate to the integration page by going to [https://g.codefresh.io/2.0/account-settings/integrations](https://g.codefresh.io/2.0/account-settings/integrations). 
+**How to**  
 
-Choose *Atlassian JIRA* from the cards and click on the *Configure*.
-On the next screen click the *+Add* button on the top right. 
+1. In the Codefresh UI, go to [Integrations](https://g.codefresh.io/2.0/account-settings/integrations){:target="\_blank"}. 
+1. Select **Atlassian JIRA**, and then click **Configure**.
+1. Click **Add** on the top-right. 
+1. Configure the JIRA integration settings:
+  * Enter an **Integration name**. You can have multiple JIRA instances connected.
+  * Use this integration for **All runtimes**, or specific **Selected runtimes**.
+  * **JIRA Host**: The URL of your JIRA instance.
+  * **API Token**: The JIRA password/token you noted down when you created the JIRA instance.
+  * **API Email**: The email for the API token.
 
-1. Enter a name for your integration (you can have multiple JIRA instances connected)
-2. Choose the scope of the integration in the *enable for* section
-3. Choose whether you want to use this integration on all Codefresh runtimes or a specific runtime.
+  {% include 
+	image.html 
+	lightbox="true" 
+	file="/images/integrations/jira/jira-int-settings.png" 
+	url="/images/integrations/jira/jira-int-settings.png" 
+	alt="JIRA integration in Codefresh" 
+	caption="JIRA integration in Codefresh"
+  max-width="50%" 
+%}
+{:start="5"}
+1. To confirm, click **Commit**.
+  It may take a few moments for the changes to be synced to the cluster before it appears in the list.
 
-Enter the JIRA details from the previous step
 
-* JIRA host - URL of your JIRA instance
-* API Token - password/token
-* API email - user email for the token
-
-## What to read next
-
-* [Adding Git sources]({{site.baseurl}}/docs/runtime/git-sources/)
+### What to read next
+[Adding Git sources]({{site.baseurl}}/docs/runtime/git-sources/)
 
 
 
