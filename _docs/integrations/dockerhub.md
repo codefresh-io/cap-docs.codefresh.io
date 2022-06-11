@@ -27,6 +27,17 @@ Once you have completed the prerequisites, configure the Docker Hub integration 
   * **Password**: 
     If you enabled two-factor authentication, enter the personal access token for your Docker Hub account for Codefresh to be able to push images. Personal access tokens are more secure and can be revoked when needed. Codefresh can then push your images.  
     If two-factor authentication is not enabled, enter the password of your Docker Hub account (not recommended).
+
+    {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/getting-started/quick-start/quick-start-download-cli.png" 
+   url="/images/getting-started/quick-start/quick-start-download-cli.png" 
+   alt="Download CLI to install runtime" 
+   caption="Download CLI to install runtime"
+   max-width="30%" 
+   %}
+   
 {:start="5"}
 1. To confirm, click **Commit**.
   It may take a few moments for the new integration to be synced to the cluster before it appears in the list.
