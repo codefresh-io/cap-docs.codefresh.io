@@ -1,5 +1,5 @@
 ---
-title: "Dockerhub Registry"
+title: "Docker Hub Registry"
 description: "Push, Pull and Deploy images from Dockerhub"
 group: integrations
 toc: true
@@ -7,32 +7,32 @@ toc: true
 
 Codefresh has native support for interacting with Dockerhub registries.
 
-## Required Dockerhub information
+### Prerequisites
+Before you configure settings in Codefresh to integrate Dockerhub registry, do the following:
 
-[Create an account at Dockerhub](https://hub.docker.com/signup) and then enable 2FA and [create a token](https://docs.docker.com/docker-hub/access-tokens/) for Codefresh integration.
+* [Create an account or sign in to your account at Docker Hub](https://hub.docker.com/signup){:target="\_blank"}
+* [Enable 2FA (Two-Factor Authentication)](https://docs.docker.com/docker-hub/2fa/){:target="\_blank"}
+* [Create a personal account token](https://docs.docker.com/docker-hub/access-tokens/){:target="\_blank"}
 
-## Codefresh configuration
-
-Navigate to the integration page by going to [https://g.codefresh.io/2.0/account-settings/integrations](https://g.codefresh.io/2.0/account-settings/integrations). 
-
-Choose *Dockerhub* from the cards and click on the *Add*.
-On the next screen click the *+Add* button on the top right. 
-
-1. Enter a name for your integration (you can have multiple Dockerhub instances connected)
-3. Choose whether you want to use this integration on all Codefresh runtimes or a specific runtime.
-
-Then fill in
-
-* Username - Docker Hub username.
-* Password - Docker Hub [personal account token](https://docs.docker.com/docker-hub/access-tokens/) or Dockerhub account password (not recommended).
-
-If you have enabled [two-factor-authentication in Dockerhub](https://docs.docker.com/docker-hub/2fa/), then in the password field above you must put a Docker personal access token (instead of your Dockerhub master password). Otherwise Codefresh will not be able to push your image.
-
-If you don't have 2FA enabled in Dockerhub, then you can also use your Dockerhub account password. But in all cases we suggest you create a personal access token for Codefresh (personal access tokens are more secure as you can revoke them on demand and see when they were last used).
+## Configure Docker Hub integration in Codefresh
+Once you have completed the prerequisites, configure the Docker Hub integration settings in Codefresh.  
+ 
+1. In the Codefresh UI, go to [Integrations](https://g.codefresh.io/2.0/account-settings/integrations){:target="\_blank"}. 
+1. Select **Docker Hub Docker Registry**, and then click **Add**.
+1. Click **Add** on the top-right. 
+1. Configure the Docker Hub integration settings: 
+  * Enter an **Integration name**. You can have multiple Docker Hub instances connected.
+  * Use this integration for **All runtimes**, or specific **Selected runtimes**.
+  * **Username**: The Docker Hub username.
+  * **Password**: 
+    If you enabled two-factor authentication, enter the personal access token for your Docker Hub account for Codefresh to be able to push images. Personal access tokens are more secure and can be revoked when needed. Codefresh can then push your images.  
+    If two-factor authentication is not enabled, enter the password of your Docker Hub account (not recommended).
+{:start="5"}
+1. To confirm, click **Commit**.
+  It may take a few moments for the new integration to be synced to the cluster before it appears in the list.
 
 ## What to read next
-
-* [Adding Git sources]({{site.baseurl}}/docs/runtime/git-sources/)
+[Adding Git sources]({{site.baseurl}}/docs/runtime/git-sources/)
 
 
 
