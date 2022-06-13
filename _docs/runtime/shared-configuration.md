@@ -6,10 +6,12 @@ toc: true
 ---
 
 
-A Codefresh account with a hosted or a hybrid runtime can create a Git repository in which to store configuration settings for the runtime. This repository can then be shared with subsequent runtimes that are installed. For the first hosted or hybrid runtime that you install, Codefresh creates the shared config repo. You can then selectivley select the shared repository for For every runtime install, you can select the runtimes that use this shared configuration. 
+A Codefresh account with a hosted or a hybrid runtime can create a Git repository in which to store configuration settings for the runtime. You can then optionally share the c repository can then be shared with subsequent runtimes that are installed in the same account, avoiding the need to create and maintain configurations for each runtime.
+
+For the first hosted or hybrid runtime that you install, Codefresh creates the shared config repo. You can then select the repository for other runtimes that   select the runtimes that use this shared configuration. 
 
 * Hosted runtimes
-  As part of the set up for the hosted runtime, you must select the Git Organization for which to create the runtime installation repo. Codefresh creates the repo for the shared runtime configuration.  
+  As part of the set up for the hosted runtime, you must select the Git Organization for which to create the runtime installation repo. Codefresh then creates the repo for the shared runtime configuration.  
 
 * Hybrid runtimes 
   When you install the first runtime on the cluster or for that account, you can define the shared configuration repo through the `--shared-config-repo` flag. If the flag is omitted, and the runtime account does not have a shared configuration repo, it is set to the `shared-config` root folder in the runtime installation repo.
@@ -18,7 +20,7 @@ A Codefresh account with a hosted or a hybrid runtime can create a Git repositor
 
 
 ### Shared configuration repo directory structure
-Here is an example of the shared configuration repository structure. 
+Here is an example of the structure of the repository with the shared runtime configuration. 
 
 ```bash
 .
@@ -45,14 +47,17 @@ Here is an example of the shared configuration repository structure.
 
 #### `resources` directory 
 
-The resources directory holds the resources shared by all clusters managed by the runtime, in-cluster specific respuirces, runtime-specific resources.
+The `resources` directory holds the resources shared by all clusters managed by the runtime.
 
-  * `all-runtimes-all-clusters`: As the name implies, every manifest in this directory is applied to all the clusters managed by this runtime. 
-  * `control-plane`: Optional, for hosted runtimes only. When defined, every manifest in this directory is applied to each hosted runtime’s `in-cluster`.
-  * `runtimes/<runtime_name>`: Optional. Sub-directory specific to each runtime, `runtime1` in the above example. Every manifest in a runtime-specific sub-directory is applied to all clusters managed by that runtime.
+  * `all-runtimes-all-clusters`: As the name implies, every resource manifest in this directory is applied to all the runtimes in the account and all the clusters managed by those runtimes. 
+  * `control-plane`: Optional, valid for hosted runtimes only. When defined, every resource manifest in this directory is applied to each hosted runtime’s `in-cluster`.
+  * `runtimes/<runtime_name>`: Optional. Runtime-specific sub-directory. Every resource manifest in a runtime-specific sub-directory is applied to only that runtime. `manifest4.yaml` in the above example is applied only to `runtime1`. 
 
 #### `runtimes` directory 
-A sub-directory specific to each runtime installed in the cluster, including its `in-cluster.yaml` In the above example, there are two sub-directories for `runtime1` and `runtime2`, each with its own `in-cluster.yaml`.
+A sub-directory specific to each runtime installed in the cluster, including its `in-cluster.yaml`. 
+
+### Application manifest for shared runtime configuration 
+Every runtime has a Git-Source Application that targets the shared configuration repo in `runtimes/<runtime-name>`. The Git Source application in turn creates a separate `isc-<cluster>` application for every cluster managed by the runtime. These application manifests selectively sync specific sub-directories of the `resources` directory to the target cluster, as defined in `directory.include`.
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -82,19 +87,18 @@ spec:
       - allowEmpty=true
 ```
 
-#### Adding resources
-When creating a new resource such as a new integration for example, you must define the runtimes and clusters to which to apply that resource. The app-proxy saves the resource in the correct location, and updates the relevant Argo CD Applications to include it.
-
-#### Application manifest for Shared Configuration repo
-
-Every runtime has a Git-Source Application that targets the shared configuration repo in `runtimes/<runtime-name>`. The Git Source application in turn creates a separate `isc-<cluster>` application for every cluster managed by the runtime. These applications selectively sync specific sub-directories of the resources directory to the target cluster.
+### Adding resources
+When creating a new resource such as a new integration for example, you must define the runtimes and clusters to which to apply that resource. The app-proxy saves the resource in the correct location and updates the relevant Argo CD Applications to include it.
 
 ### Upgrading older runtimes
-
-For older runtime versions without the shared configuration repository, you must upgrade the runtimes. There are two options:
-* Upgrade the runtime, and let the app-proxy create the shared configuration repo automatically. 
+Older runtime versions that do not have the shared configuration repository must be upgraded to the current version.  
+You have two options to define the shared configuration repository during upgrade:
+* Upgrade the runtime, and let the app-proxy create the shared configuration repo automatically 
 * Manually define the shared configuration repository, by adding the `--shared-config-repo` flag in the runtime upgrade command. 
 
-If the runtime being upgraded has managed clusters, once the shared configuration repo is created for the account, either automatically or manually on upgrade, all clusters are migrated to the same repo when app-proxy is initialized. An argoproj application manifest is committed to the  repo for each cluster managed by the runtime. 
+>If the shared runtime configuration repo is not created, it is created in the installation repo's `shared-config` root folder. 
+
+If the runtime being upgraded has managed clusters, once the shared configuration repo is created for the account either automatically or manually on upgrade, all clusters are migrated to the same repo when app-proxy is initialized. An Argoproj application manifest is committed to the repo for each cluster managed by the runtime. 
+
 
 
