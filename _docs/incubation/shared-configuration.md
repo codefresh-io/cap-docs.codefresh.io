@@ -12,7 +12,7 @@ A Codefresh account with a hosted or a hybrid runtime can store configuration se
   As part of the set up for a hosted runtime, you must select the Git Organization for which to create the runtime installation repo. Codefresh then creates the repo for the shared runtime configuration.  
 
 * Hybrid runtimes 
-  When you install the first runtime in the cluster for an account, you can define the shared configuration repo through the `--shared-config-repo` flag. If the flag is omitted, and the runtime account does not have a shared configuration repo, it is created in the runtime installation repo, in `shared-config` root.
+  When you install the first hybrid runtime for an account, you can define the shared configuration repo through the `--shared-config-repo` flag. If the flag is omitted, and the runtime account does not have a shared configuration repo, it is created in the runtime installation repo, in `shared-config` root.
 
 > Currently, Codefresh supports a single shared runtime configuration repo per account.
 
@@ -89,7 +89,7 @@ spec:
 ### Git Source application per runtime
 In addition to the application manifests for the runtimes in the shared runtime configuration repository, every runtime has a Git-Source Application that references `runtimes/<runtime-name>` in the shared configuration repo.  
 
-This Git Source application creates an `isc-<cluster>` application manifest for every cluster managed by the runtime. The `include` field in the `isc-<cluster>` application manifest determines which subdirectories in the `resources` directory are synced to the target cluster.
+This Git Source application creates an application manifest with the `<cluster-name>` for every cluster managed by the runtime. The `include` field in the `<cluster-name>` application manifest determines which subdirectories in the `resources` directory are synced to the target cluster.
 
 
 ### Adding resources
