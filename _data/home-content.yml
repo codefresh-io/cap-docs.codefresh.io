@@ -93,3 +93,10 @@
   links:
     - title: Runtimes
       localurl: /docs/troubleshooting/runtime-issues
+
+- title: Reference
+  icon: images/home-icons/guides.png
+  url: ''
+  links:
+    - title: Secrets
+      localurl: /docs/reference/secrets      

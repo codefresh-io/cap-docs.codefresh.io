@@ -122,6 +122,12 @@
     - title: Runtimes
       url: "/runtime-issues"
 
+- title: Reference
+  url: "/reference"
+  pages:
+    - title: Secrets
+      url: "/secrets"      
+
 
 - title: Terms and Privacy Policy
   url: "/terms-and-privacy-policy"
