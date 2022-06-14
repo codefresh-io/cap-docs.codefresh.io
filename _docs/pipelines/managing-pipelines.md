@@ -5,12 +5,11 @@ group: pipelines
 toc: true
 ---
 
-Once a pipeline is created, and a workflow submitted when it is triggered, Codefresh continuously collects and displays real-time analytics on the pipeline and its workflows.  
-View global pipeline analytics through the Home page dashboard Monitor, analyze, and compare resource consumption for all pipelines or for a single pipeline
- 
-The Delivery Pipelines page is a list view of all pipelines that you have created, including those without workflows. Frill down into a pipeline to see its workflows, and view workflow details to troubleshoot and manage individual workflows.
+Once a pipeline is created and triggered, Codefresh continuously collects and displays real-time analytics on the pipeline, and the workflows submitted.  
+Monitor, analyze, and compare resource consumption for all pipelines or for a single pipeline. The Home page dashboard displays global analytics for pipelines with active or completed workflows. 
+In contrast, the Delivery Pipelines page shows a list view of all pipelines that you have created, including those without workflows. Here you can drill down into a pipeline to see its workflows, and view workflow details to troubleshoot and manage individual workflows.
 
-There are several ways to monitor and manage pipeliness:
+There are several ways to monitor and manage pipelines:
 
 * Monitor sensor and event-source errors in the Activity Log
 * Analyze global analytics for pipelines with active workflows
@@ -29,6 +28,8 @@ The example below shows the list view for pipelines.
   caption="List view with individual Delivery Pipelines"
   max-width="30%"
   %}
+
+>This article focuses on pipeline management. For information on managing workflows, see [Managing workflows]({{site.baseurl}}/docs/pipelines/workflows/).
 
 
 ### Monitor sensor and event source notifications for pipelines in Activity Log
@@ -50,7 +51,7 @@ Monitor logs for sensors and event-sources in pipelines in the Activity Log. A p
 1. To see more information on an error, select the **+** sign.
 
 ### Aggregated global analytics for pipelines
-The Home page displays the aggregated, global view of all the Delivery Pipelines with active workflows in your cluster.  The global view provides insights into trends, and resource consumption across all the _active_ pipelines. ipelines by activity and by duration, and compare metrics Pipelines are Analytics are derived by comparing the selected time range to the corresponding reference period. If your time range is the last seven days, the reference period is the seven days that precede the time range. 
+The Home page displays the aggregated, global view of all the Delivery Pipelines with active workflows in your cluster.  The global view provides insights into trends, and resource consumption across all the _active_ pipelines. Analytics are derived by comparing the selected time range to the corresponding reference period. If your time range is the last seven days, the reference period is the seven days that precede the time range. 
 
 
 #### View aggregated pipeline analytics (global view)
@@ -146,7 +147,7 @@ The table describes the information for each pipeline in the list view.
 | Legend        |  Description|  
 | --------------| --------------           |  
 | **Name**      | The name of the pipeline. Select the name to drill down into workflow steps and workflows.|                             
-| **Recent Activity**| Bar chart of up to ten of the most recent workflows submitted for the pipeline. {::nomarkdown}<ul><li>Each bar represents a workflow, and is color-coded to indicate the workflow's status. Green is for completed, red for failed, and blue for ongoing workflows. </li><li> Mouse over a bar to see a pop-up with the metadata for the workflow. </li> <li>Selecting View Workflow Details takes you to the Workflow tab where you have several options to manage the workflow  and view logs. For more information, see [Managing workflows]({{site.baseurl}}/docs/pipelines/workflows).</li></ul> {:/}|          
+| **Recent Activity**| Bar chart of up to ten of the most recent workflows submitted for the pipeline. {::nomarkdown}<ul><li>Each bar represents a workflow, and is color-coded to indicate the workflow's status. Green is for completed, red for failed, and blue for ongoing workflows. </li><li> Mouse over a bar to see a pop-up with the metadata for the workflow. </li> <li>Selecting View Workflow Details takes you to the Workflow tab where you have several options to manage the workflow and view logs. For more information, see <a href="https://codefresh.io/csdp-docs/docs/pipelines/workflows">Managing workflows</a>.</li></ul> {:/}|          
 | **Last Run**| The time of the most recent run of the pipeline, that is a workflow. The time is also color-coded to indicate the status of the workflow.  |       
 | **Success Rate**| The number of workflows that completed successfully in the last seven days, and the comparison to the reference period in percentage. | 
 | **Avg. Duration**| The average length of time for the pipeline's workflows to complete execution, in mm:ss. |   
@@ -154,9 +155,6 @@ The table describes the information for each pipeline in the list view.
 | **Runtime**| The runtime in which the pipeline is run.  |  
 | **Last Modified**| The date and time that the pipeline was recently updated. The updates include changes in configuration and manifests.|  
 | **Sync Status**| The sync status with the desired state in Git.|  
-
-
-
 
 
 
@@ -194,4 +192,4 @@ The Git state is the state-of-truth and is the only editable state. The desired 
   > If there are Errors, Commit is disabled until you resolve the errors.
 
 ### What to read next
-[Workflows in pipelines]({{site.baseurl}}/docs/pipelines/workflows/)
+[Managing workflows]({{site.baseurl}}/docs/pipelines/workflows/)
