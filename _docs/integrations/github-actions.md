@@ -1,26 +1,25 @@
 ---
-title: "GitHub actions"
-description: "Connect your GitHub actions pipelines to Codefresh"
+title: "GitHub Actions"
+description: "Connect your GitHub Actions pipelines to Codefresh"
 group: integrations
 toc: true
 ---
 
-Codefresh GitOps can be used with any popular Continuous Integration (CI) solution
-and is not restricted only to Codefresh CI.
+Codefresh GitOps can be used with any popular Continuous Integration (CI) solution, not just with Codefresh CI.
 
-You can connect any external solution to Codefresh and have it take care of common CI tasks such as building/testing/scanning source code while Codefresh GitOps is still responsible for the Deployment part.
+You can connect any external solution to Codefresh, and have it take care of common CI tasks such as building/testing/scanning source code, while Codefresh GitOps is still responsible for the deployment.
 
-## The Codefresh GitHub action
+### The Codefresh GitHub Action
 
-To accommodate the integration between GitHub actions and Codefresh we have created a dedicated action that can be found at [https://github.com/marketplace/actions/csdp-report-image](https://github.com/marketplace/actions/csdp-report-image).
+To accommodate the integration between GitHub Actions and Codefresh, we have created a dedicated action that you can find at [https://github.com/marketplace/actions/csdp-report-image](https://github.com/marketplace/actions/csdp-report-image).
 
-You can use the action in the following manner:
+Use the action in the following manner:
 
-1. Create a Github actions pipeline like you normally do
+1. Create a GitHub Actions pipeline like you normally do
 1. Use any existing CI actions for compiling code, running unit tests, security scanning etc
-1. Place the last action in the pipeline the "report image" action provided by Codefresh
-1. As soon as the pipeline completes Github actions will send all required information to Codefresh regarding the image that was built and its metadata (essentially the same
-data that Codefresh CI would send automatically)
+1. Place the last action in the pipeline as the "report image" action provided by Codefresh
+1. When the pipeline completes execution, GitHub Actions sends all required information to Codefresh regarding the image that was built and its metadata (essentially the same
+data that Codefresh CI would send automatically).
 1. The image will now be available in the [image dashboard]({{site.baseurl}}/docs/pipelines/images/)
  in Codefresh and is ready to be used with any [GitOps deployment]({{site.baseurl}}/docs/deployment/applications-dashboard/).
 
@@ -47,25 +46,24 @@ The action expects the following arguments:
 | `CF_JIRA_FAIL_ON_NOT_FOUND `         | Fail if Jira ticket is not found  | Optional  |
 
 Most of the arguments have default values that will match the most common scenarios.
-The most important arguments that you need to fill manually in your Github action workflow are
+The most important arguments that you need to fill manually in your GitHub Action workflow are:
 
 * `CF_API_KEY`
 * `CF_IMAGE`
 * `CF_ENRICHERS`
 
-## Codefresh API Key
+### Codefresh API Key
 
-To obtain a Codefresh API KEY for usage in Github actions
-navigate to the integration page by going to [https://g.codefresh.io/2.0/account-settings/integrations](https://g.codefresh.io/2.0/account-settings/integrations). 
+1. In the Codefresh UI, go to [Integrations](https://g.codefresh.io/2.0/account-settings/integrations){:target="\_blank"}.
+1. Select **GitHub Actions**, and then click **Configure**.
+1. In the row with the **CF_API_KEY**, click **Generate** (first row).  
+  A token is generated. Make sure to note down the token as it will only appear once.
+1. Enter this token in GitHub Actions [as a secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) with the name `CF_API_KEY`.  
+  Now you can reference it in all GitHub pipelines as you would any other secret.
 
-Choose *GitHub action* from the cards and click on the *Generate* button in the first row.
-A token will be generated for you. Be sure to note it down as it will only appear once.
+### GitHub Actions pipeline example
 
-Then enter this token in Github actions [as a secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) with name `CF_API_KEY`. Now you can reference it in all Github pipelines like any other secret.
-
-## GitHub actions pipeline example
-
-Here is an example pipeline that use GitHub actions for building a container image and the special Codefresh action to pass the resulting image to Codefresh.
+Here is an example pipeline that uses GitHub Actions to build a container image, and the special Codefresh action to pass the resulting image to Codefresh.
 
 
 {% highlight yaml %}
@@ -118,9 +116,8 @@ jobs:
 {% endhighlight yaml %}
 
 
-## What to read next
-
-* [Adding Git sources]({{site.baseurl}}/docs/runtime/git-sources/)
+## What to read next  
+[Adding Git sources]({{site.baseurl}}/docs/runtime/git-sources/)
 
 
 
