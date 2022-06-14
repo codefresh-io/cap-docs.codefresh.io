@@ -17,7 +17,7 @@ Codefresh supports OAuth2 or Personal Access Tokens (PATs) for authentication:
   > A runtime can have only one active account for authentication. 
 
 * Token-based authentication using PAT  
-  With token-based authentication, users must enter their personal access tokens when prompted to authorize access.
+  With token-based authentication, users must enter their personal access tokens when prompted to authorize access. Token-based authentication for users is described in [Managing Git personal access tokens]({{site.baseurl}}/docs/administration/user-settings/).
 
 
 ### Authentication provider accounts
