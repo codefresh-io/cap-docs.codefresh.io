@@ -12,24 +12,31 @@ Codefresh supports OAuth2 or Personal Access Tokens (PATs) for authentication:
 
 * OAuth2 with Codefresh or custom provider  
 
-  OAuth2 is the preferred authentication mechanism, supported currently for GitHub. For hosted runtimes, Codefresh offers a pre-defined OAuth provider account, or you can create a custom provider account. OAuth authentication through a custom provider account requires you to create an OAuth2 application in GitHub, create a K8s secret, and then configure the OAuth settings in Codefresh.  
+  OAuth2 is the preferred authentication mechanism, currently supported for GitHub. Codefresh offers a pre-defined OAuth provider account, or you can create a custom provider account. OAuth authentication through a custom provider account requires you to create an OAuth2 application in GitHub, create a K8s secret, and then configure the OAuth settings in Codefresh.  
 
   > A runtime can have only one active account for authentication. 
 
-* Token-based authentication using PAT
+* Token-based authentication using PAT  
   With token-based authentication, users must enter their personal access tokens when prompted to authorize access.
 
 
-### Authentication accounts
-All the authentication accounts created for a provider are displayed in the [Authentication](https://g.codefresh.io/2.0/account-settings/authentication?providerName=github){:target="\_blank"}.  
-The accounts are organized by Runtimes. Initially, you see only the default Codefresh provider account. The Type column identifies the provider account type as either Codefresh or Custom. 
+### Authentication provider accounts
+The authentication accounts created for a provider are displayed in the [Authentication](https://g.codefresh.io/2.0/account-settings/authentication?providerName=github){:target="\_blank"}.  
+
+{% include 
+   image.html 
+   lightbox="true" 
+   file="/images/authentication/authentication-list.png" 
+   url="/images/authentication/authentication-list.png" 
+   alt="Git provider authentication accounts" 
+   caption="Git provider authentication accounts"
+   max-width="0%" 
+   %}
+The authentication accounts are organized by Runtimes. Every runtime can have a single authentication account.   
+The Type column identifies the provider account type as either Codefresh or Custom. You can change the provider type to Codefresh or Custom or select manual token entry as the authentication.  
 
 
-Though you can set up multiple accounts for a provider, a runtime can have a single active account at a time. You can switch between accounts by changing the account the 
-Yo
-
-
-### Create a custom provider account 
+### Create a custom OAuth2 provider account 
 Codefresh account administrators can create an OAuth2 Application in GitHub, and set up authentication within Codefresh. Users in Codefresh can then authorize access to GitHub using the OAuth2 Application instead of generating a personal access token to perform Git-based actions.  
 
 To set up OAuth2 authorization for GitHub in Codefresh, you must:
@@ -55,7 +62,7 @@ Create and register an OAuth App under your organization to authorize Codefresh.
   * Application ID from the URL
   * Client ID and the client secret  
 
-  You'll need them to create the K8s secret for the GitHub OAuth2 application.
+You need them to create the K8s secret for the GitHub OAuth2 application.
 
 #### Step 2: Create a K8s secret resource in the runtime cluster 
 Create a K8s secret in the runtime cluster, using the example below as a guideline. You must define the application ID (`appId`), client ID (`clientId`) and the client secret (`clientSecret`) from the GitHub OAuth2 Application you created, and the GitHub URL (`url`).  
@@ -99,19 +106,27 @@ data:
 
 #### Step 3: Configure OAuth2 settings in Codefresh 
 
-To complete the integration, configure the settings for the OAuth2 GitHub application in Codefresh. Configuring the settings creates a K8s ConfigMap that references the OAuth secret credentials. When configuring the settings, you can work in Form mode, or directly in the YAML manifest. 
+To complete custom provider authentication, configure the settings for the OAuth2 GitHub application in Codefresh. Configuring the settings creates a K8s ConfigMap that references the OAuth secret credentials. When configuring the settings, you can work in Form mode, or directly in the YAML manifest. 
 
 >Important:  
   > The values for all the settings in the ConfigMap are the `keys` in the secret file. 
 
-1. In the Codefresh UI, go to [Authentication](https://g.codefresh.io/2.0/account-settings/authentication?providerName=github){:target="\_blank"}.
-  The list always shows the default predefined Codefresh provider account, and other custom provider accounts created, organized by Runtime, Type (Codefresh or Custom) and Status. 
+1. In the Codefresh UI, go to [Authentication](https://g.codefresh.io/2.0/account-settings/authentication?providerName=github){:target="\_blank"} page.
+  The list always shows the default predefined Codefresh provider account and custom provider accounts created, organized by Runtime, Type (Codefresh or Custom) and Status. 
 1. From the list, select the runtime to which to apply the current configuration. The runtime must be identical to the runtime to which you saved the K8s secret.
 1. Click **Edit** and then select **Use custom provider**.
    > If you have managed clusters registered to the selected runtime, the authentication account is available to all the clusters.  
   The settings page is opened in **Form** mode.
     
-    SCREENSHOT
+{% include 
+   image.html 
+   lightbox="true" 
+   file="/images/authentication/oauth-custom-settings.png" 
+   url="/images/authentication/oauth-custom-settings.png" 
+   alt="OAuth settings for custom provider in Codefresh" 
+   caption="OAuth settings for custom provider in Codefresh"
+   max-width="50%" 
+   %}
 
 {:start="4"}
 1. Configure the settings for the **GitHub OAuth2 Application**, either in **Form** or in **YAML** modes:
@@ -122,15 +137,19 @@ To complete the integration, configure the settings for the OAuth2 GitHub applic
   * **Client Secret**: The `key` representing the client secret in the K8s secret. For example, `clientSecret`.
   * **URL**: The `key` representing the provider URL in the K8s secret. For example, `url`.
 
-  Here are examples of the OAuth2 settings in Form mode, and the corresponding YAML file that is automatically populated by Codefresh.
-
-  SCREENSHOT
-
 {:start="5"}
 1. Click **Commit**.
   The Commit Changes panel shows a summary of the settings and the final version of the YAML manifest in read-only mode. 
   
-  SCREENSHOT
+{% include 
+   image.html 
+   lightbox="true" 
+   file="/images/authentication/oauth-custom-commit-settings.png" 
+   url="/images/authentication/oauth-custom-commit-settings.png" 
+   alt="OAuth settings for custom provider in Codefresh" 
+   caption="OAuth settings for custom provider in Codefresh"
+   max-width="50%" 
+   %}
 
 {:start="6"}  
 1. From the **Select Git Source** list, select the Git Source in which to store the manifest for the `ConfigMap` you are creating.
@@ -140,9 +159,9 @@ To complete the integration, configure the settings for the OAuth2 GitHub applic
 
 You have completed the setup to authorize Codefresh as an OAuth App in GitHub. 
 
-### Define active authentication account for runtime
-Select an account to define it as the active authentication account for that runtime. At any time, you can select a different authentication account for the runtime - this can be a  custom authentication account if you have more than one such account, or the Codefresh account, or manual token authentication.
+### Select authentication account for runtime
+For a Git provider and a runtime account, switch between the Codefresh or Custom provider account if one exists, or enforce token-based authentication.
 
 1. In the Codefresh UI, go to [Authentication](https://g.codefresh.io/2.0/account-settings/authentication?providerName=github){:target="\_blank"}.
 1. Select the runtime, and click ![](/images/administration/users/icon-Edit.png?display=inline-block) **Edit**. 
-1. 
+1. Select the authentication provider or **None - manual token entry**.
