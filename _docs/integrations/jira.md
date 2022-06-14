@@ -13,7 +13,7 @@ Codefresh has native integration for Atlassian Jira. This allows Codefresh to mo
 ### Prerequisites
 
 1. Get your JIRA instance credentials by following the [Attlassian documentation](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/).
-1. Note down the following as you will need to complete the integration with Codefresh:
+1. Note down the following as you will need to complete the integration with Codefresh:  
 
   * JIRA URL
   * JIRA username/email to be used for the integration
