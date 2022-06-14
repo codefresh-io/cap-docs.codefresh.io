@@ -4,13 +4,13 @@ description: ""
 group: administration
 toc: true
 ---
-As a user, you can generate or update Git personal tokens required for authentication when these have expired or are invalid. The Git personal token is a user-specific personal access token per provisioned runtime, and is required to authenticate Git-based actions per runtime in CSDP.  
+As a user, you can generate or update Git personal tokens required for authentication when these have expired or are invalid. The Git personal token is a user-specific personal access token per provisioned runtime, and is required to authenticate Git-based actions per runtime in Codefresh.  
 
-If OAuth2 authorization has been set up by your admin, you can authorize GitHub access using OAuth2.  
-Alternatively, you can always generate a personal access token from GitHub and then add the same.
+If your admin has set up authentication with OAuth2, you can authorize access to GitHub using OAuth2.  
+Alternatively, you can always generate a personal access token from GitHub and then add the same to Codefresh to authorize access.
  
-> You can use the same token for multiple runtimes, if you need access to more than one runtime. 
-You must however authorize GitHub access or add the personal access token for each runtime.  
+> If you need access to more than one runtime, you can use the same token for multiple runtimes. 
+You must however authorize GitHub access or add the personal access token individually for each runtime.  
 
 
 ### Git personal token permissions
@@ -24,15 +24,15 @@ For Git personal access tokens, make sure you select `repo` scope for commits an
    url="/images/getting-started/github-pat.png" 
    alt="Permissions for Git personal token" 
    caption="Permissions for Git personal token"
-   max-width="30%" 
+   max-width="50%" 
 %}
 
 ### How to update a Git personal token
 Update your Git personal access token for each runtime when needed.  
-To authorize with OAuth2, you have to supply your credentials, and when authorized are automatically directed to the Git Personal Tokens page.  
+To authorize with OAuth2, you have to supply your credentials. When authorized, you are automatically directed to the Git Personal Tokens page.  
 
 **Before you begin**  
-* For a Git personal access tokens, generate a valid personal access token from your Git provider  
+* To use a Git PAT, generate a valid personal access token from your Git provider  
 
 **How to**  
 1. In the CSDP UI, go to [User Settings](https://g.codefresh.io/2.0/user-settings){:target="\_blank"}.
