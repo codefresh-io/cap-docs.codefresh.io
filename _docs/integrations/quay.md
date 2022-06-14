@@ -7,13 +7,12 @@ toc: true
 
 Codefresh has native support for interacting with Quay registries, from where you can push, pull, and deploy images.
 
-## Prerequisites
+### Prerequisites
 
+1. [Create a Redhat/Quay account at Quay](https://quay.io/).
+1. Optional. For Codefresh integration, [create a robot account](https://docs.quay.io/glossary/robot-accounts.html).
 
-1. [Create a Redhat/Quay account at Quay](https://quay.io/)
-1. Optional. For Codefresh integration,[Create a robot account](https://docs.quay.io/glossary/robot-accounts.html) 
-
-## Configure Quay integration in Codefresh
+### Configure Quay integration in Codefresh
 Once you have created a Redhat or Quay, configure the Quay integration settings in Codefresh.  
 
 **Before you begin**  
@@ -44,6 +43,5 @@ Make sure you have the:
 1. To confirm, click **Commit**.
   It may take a few moments for the new integration to be synced to the cluster before it appears in the list.
 
-## What to read next  
-
+### What to read next  
 [Adding Git sources]({{site.baseurl}}/docs/runtime/git-sources/)
