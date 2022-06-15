@@ -30,14 +30,14 @@ The authentication accounts created for a provider are displayed in the [Authent
    url="/images/authentication/authentication-list.png" 
    alt="Git provider authentication accounts" 
    caption="Git provider authentication accounts"
-   max-width="0%" 
+   max-width="60%" 
    %}
 The authentication accounts are organized by Runtimes. Every runtime can have a single authentication account.   
 The Type column identifies the provider account type as either Codefresh or Custom. You can change the provider type to Codefresh or Custom or select manual token entry as the authentication.  
 
 
 ### Create a custom OAuth2 provider account 
-Codefresh account administrators can create an OAuth2 Application in GitHub, and set up authentication within Codefresh. Users in Codefresh can then authorize access to GitHub using the OAuth2 Application instead of generating a personal access token to perform Git-based actions.  
+Codefresh account administrators can create an OAuth2 Application in GitHub, and set up authentication within Codefresh. Users in Codefresh can then authorize access to GitHub using OAuth2, instead of generating a personal access token to perform Git-based actions.  
 
 To set up OAuth2 authorization for GitHub in Codefresh, you must:
 * Create a GitHub OAuth2 Application for Codefresh 
