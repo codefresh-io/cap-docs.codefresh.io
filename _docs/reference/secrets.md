@@ -19,7 +19,7 @@ Any kind of secret can be encrypted with the public key (also via the `kubeseal`
 
 For GitOps applications, encryption for secrets is critical, as it means that you can commit any kind of secret in Git as long as it is encrypted.
 
-Here is the complete order of events in sealed-secret mechanism:
+Here's the event flow for Sealed Secrets:
 
 1. A secret is encrypted by an operator and/or developer with the `kubeseal` executable.
 1. The resulting file is a custom Kubernetes resource called SealedSecret.
