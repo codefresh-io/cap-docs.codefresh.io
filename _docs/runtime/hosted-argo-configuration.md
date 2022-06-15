@@ -6,10 +6,10 @@ toc: true
 ---
 
 
-If you have signed-in for our Hosted GitOps offering, complete the three-step setup, and you are all set to launch your CD.
+If you have signed-in for our Hosted GitOps offering, complete the three-step setup, and you are all set to dive into the CD.
 
 ### Set up hosted runtime in Codefresh 
-In the Codefresh UI, go to te 
+In the Codefresh UI, go to Home 
 
 #### 1. Install hosted runtime
 Start the installation. Codefresh completes the installation without any further intervention on your part. 
