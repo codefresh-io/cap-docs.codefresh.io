@@ -110,6 +110,7 @@
     - title: Codefresh platform IPs
       url: "/platform-ip-addresses"
 
+- 
 - title: What's New?
   url: "/whats-new"
   pages:
@@ -122,6 +123,11 @@
     - title: Runtimes
       url: "/runtime-issues"
 
+- title: Incubation
+  url: "/incubation"
+  pages:
+    - title: Hosted runtimes
+      url: "/hosted-runtimes"
 
 - title: Terms and Privacy Policy
   url: "/terms-and-privacy-policy"
