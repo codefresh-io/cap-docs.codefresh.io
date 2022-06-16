@@ -86,6 +86,12 @@
   - title: Codefresh platform IPs
     localurl: /docs/administration/platform-ip-addresses/
 
+- title: Incubation
+  icon: images/home-icons/plugins.svg
+  url: ''
+  links:
+  - title: Hosted GitOps
+    localurl: /docs/incubation/intro-hosted-runtime/
 
 - title: Troubleshooting
   icon: images/home-icons/troubleshooting.svg
