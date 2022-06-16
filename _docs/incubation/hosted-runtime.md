@@ -1,37 +1,86 @@
 ---
-title: "Inatall and configure Hosted GitOps"
+title: "Get started with Hosted GitOps"
 description: ""
 group: runtime
 toc: true
 ---
 
 
-If you are signed-in to our Hosted GitOps, complete the simple setup, and you are all set to   CD.
+If you are signed-in to our Hosted GitOps and have , you only need to complete the simple setup t, and you are all set to leverage our extensive CD Ops capabilities.
 Read about Codefresh Hosted GitOps. 
 
 ### Where to start with Hosted GitOps
 * In the Codefresh UI, go to Codefresh [Home](https://g.codefresh.io/2.0/?time=LAST_7_DAYS){:target="\_blank"}.
-  Codefresh guides you through completing the setup, as described below.
+  Codefresh guides you through the three-step setup, as described below.
 
-  SCREENSHOT
+{% include
+image.html
+lightbox="true"
+file="/images/runtime/hosted-initial-view.png"
+url="/images/runtime/hosted-initial-view.png"
+alt="Provision hosted runtime"
+caption="Provision hosted runtime"
+max-width="70%"
+%}
 
 #### 1. Install hosted runtime
 Start installing your hosted runtime with a single-click. Codefresh completes the installation without any further intervention on your part. 
-The hosted runtime is installed on the Codefresh cluster, and is completely managed by Codefresh. Codefresh performs upg
-
-    SCREENSHOT
+The hosted runtime is installed on the Codefresh cluster, and completely managed by Codefresh with automatic version and security upgrades.
 
 1. Click **Install**.
-1. When complete, to view the hosted runtime, click **View Runtime**.
-  You are taken to the Runtimes page with the list of runtimes.  
-  For hosted runtimes, the Cluster/Namespace column displays Codefresh, and the Module column displays CD Ops.
-      SCREENSHOT
+
+{% include
+image.html
+lightbox="true"
+file="/images/runtime/hosted-installing.png"
+url="/images/runtime/hosted-installing.png"
+alt="Installing hosted runtime"
+caption="Installing hosted runtime"
+max-width="70%"
+%}
+
+{:start="2"}
+1. When complete, to view the components for the hosted runtime, click **View Runtime**.
+  You are taken to the Runtime Components tab.  
+
+{% include
+image.html
+lightbox="true"
+file="/images/runtime/hosted-initial-view.png"
+url="/images/runtime/hosted-initial-view.png"
+alt="Runtime components for hosted runtime"
+caption="Runtime components for hosted runtime"
+max-width="70%"
+%}
+
+> The Git Sources and the Managed Clusters are empty as they will be set up in the next steps.  
+
+If you navigate to **Runtimes > List View**, the Cluster/Namespace column displays Codefresh, and the Module column displays CD Ops indicating a hosted runtime.
+
+{% include
+image.html
+lightbox="true"
+file="/images/runtime/hosted-runtimes-list-view.png"
+url="/images/runtime/hosted-runtimes-list-view.png"
+alt="Hosted runtimes in List view"
+caption="Hosted runtimes in List view"
+max-width="70%"
+%}
 
 
 
 #### 2. Connect Git provider
-Connect the managed runtime to a Git provider. First authorize access to your Git provider through an OAuth token, and then select the Git organization or account in which to create the required Git repos.  
-SCREENSHOT
+Connect your hosted runtime to a Git provider. Codefresh creates the required runtime Git repos for you.  First authorize access to your Git provider through an OAuth token, and then select the Git organization or account in which to create the required Git repos.  
+
+{% include
+image.html
+lightbox="true"
+file="/images/runtime/hosted-connect-git.png"
+url="/images/runtime/hosted-connect-git.png"
+alt="Connect to Git provider"
+caption="Connect to Git provider"
+max-width="70%"
+%}
 
 
 Once you authorize access, Codefresh creates two Git repositories, one to store the runtime's configuration settings, and the other to store runtime's application settings:
@@ -48,19 +97,74 @@ Once you authorize access, Codefresh creates two Git repositories, one to store 
 
 1. Click **Connect**.
 1. Click **Authorize Access**, and enter your OAuth token.
-  If you don't have an OAuth token, see the instructions on how to generate one in [How to update a Git token]({{site.baseurl}}/docs/administration/user-settings/#how-to-update-a-git-personal-token).  
+  If you don't have an OAuth token, see the instructions on how to generate one in [How to update a Git token]({{site.baseurl}}/docs/administration/user-settings/#how-to-update-a-git-personal-token). 
+
+{% include
+image.html
+lightbox="true"
+file="/images/runtime/hosted-authorize-access.png"
+url="/images/runtime/hosted-authorize-access.png"
+alt="Authorize access to Git"
+caption="Authorize access to Git"
+max-width="70%"
+%}
+
+{:start="3"}
 1. Select the **Git Organization for which to create the repos**.
 1. Click **Create**.
-  Codefresh creates the two Git repositories in the path shown.
-  SCREENSHOT
+  Codefresh creates the two Git repositories in the paths shown.
+
+ {% include
+image.html
+lightbox="true"
+file="/images/runtime/hosted-authorize-access.png"
+url="/images/runtime/hosted-authorize-access.png"
+alt="Git configuration repos for Git Organization"
+caption="Git configuration repos for Git Organization"
+max-width="70%"
+%}
+
+{:start="5"}
 1. Verify that both repositories have been created in your Git account.
   Shared runtime configuration repo
-       SCREENSHOT
+  
+  {% include
+image.html
+lightbox="true"
+file="/images/runtime/hosted-git-shared-repo.png"
+url="/images/runtime/hosted-git-shared-repo.png"
+alt="Shared configuration repo in Git"
+caption="Shared configuration repo in Git"
+max-width="70%"
+%}
+
   Runtime Git Source repo
-   SCREENSHOT
+
+{% include
+image.html
+lightbox="true"
+file="/images/runtime/hosted-git-shared-repo.png"
+url="/images/runtime/hosted-git-shared-repo.png"
+alt="Shared configuration repo in Git"
+caption="Shared configuration repo in Git"
+max-width="70%"
+%}
 
 {:start="6"}  
-1. Optional. To see your tokens, click **View Integrations**. ???
+1. Optional. To see your tokens, click **View Tokens**. 
+
+If you return to the Runtimes page and select the Git Source tab, you will now see the Git Source that Codefresh created.  
+The Sync State is Unknown as it is still not synced to a cluster. 
+
+{% include
+image.html
+lightbox="true"
+file="/images/runtime/hosted-git-source-in-ui.png"
+url="/images/runtime/hosted-git-source-in-ui.png"
+alt="Git Source tab for hosted runtime in UI"
+caption="Git Source tab for hosted runtime in UI"
+max-width="70%"
+%}
 
 
 #### 3. Connect a Kubernetes cluster
