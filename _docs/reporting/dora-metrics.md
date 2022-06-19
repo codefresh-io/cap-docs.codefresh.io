@@ -16,7 +16,7 @@ DORA measures these metrics:
 * Change Failure Rate: The percentage of deployments causing a failure in production
 * Time to Restore Service: The length of time for an organization to recover from a failure in production
 
-[More on DORA](https://cloud.google.com/blog/products/devops-sre/using-the-four-keys-to-measure-your-devops-performance)). 
+[Read more on DORA](https://cloud.google.com/blog/products/devops-sre/using-the-four-keys-to-measure-your-devops-performance). 
 
 ### DORA metrics in Codefresh
 
@@ -38,14 +38,14 @@ max-width="100%"
 ### Filters
 
 Use filters to define the exact subset of applications you are interested in. All filters support auto-complete and multi-select. 
-Multi-selection within the same filter has an OR relationship between them. Filter types share an AND relationship. 
+More than one option within the same filter type has an OR relationship. More than one filter type when defined share an AND relationship. 
 
 * Runtimes: Show metrics for applications from selected runtimes 
 * Clusters: Show metrics for applications deployed to selected clusters
 * Applications: Show metrics for selected applications 
 * Time: Show metrics from application for a specific time period
 
-> When no filters are selected, DORA metrics, including totals, are shown for the last 90 days. 
+> When no filters are defined, all metrics are shown for the last 90 days. 
 
 ### Metric totals
 
