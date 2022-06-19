@@ -1,12 +1,12 @@
 ---
 title: "JIRA tracking"
-description: "Know which features are deployed on which environment"
+description: "Enrich your images with information from JIRA "
 group: integrations
 toc: true
 ---
 
 One of the major highlights of the Codefresh platform is the ability to automatically correlate 
-software features with their deployment (where and when). While it easy to know the software version of a component, what is likely more interesting and important is to know which features are contained in a release.
+software features with their deployment (where and when). While the software version of a component is easily identifiable, what is likely more interesting and important is to know which features are contained in a release.
 
 Codefresh has native integration for Atlassian Jira. This allows Codefresh to monitor a feature all the way from the ticket creation phase, up to the moment it is implemented and deployed to an environment.
 
@@ -22,14 +22,6 @@ Codefresh has native integration for Atlassian Jira. This allows Codefresh to mo
 
 ### Configure JIRA integration in Codefresh
 Once you have set up a JIRA instance, configure the JIRA integration settings in Codefresh.  
-
-**Before you begin**  
-Make sure you have the:
-* JIRA URL
-* JIRA username/email to be used for the integration
-* JIRA password/token created for this user
-
-**How to**  
 
 1. In the Codefresh UI, go to [Integrations](https://g.codefresh.io/2.0/account-settings/integrations){:target="\_blank"}. 
 1. Select **Atlassian JIRA**, and then click **Configure**.
