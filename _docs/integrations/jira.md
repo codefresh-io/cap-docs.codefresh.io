@@ -29,7 +29,7 @@ Once you have set up a JIRA instance, configure the JIRA integration settings in
 1. Configure the JIRA integration settings:
   * Enter an **Integration name**. You can have multiple JIRA instances connected.
   * Use this integration for **All runtimes**, or specific **Selected runtimes**.
-  * **JIRA Host**: The URL of your JIRA instance.
+  * **JIRA Host**: The URL of your JIRA instance. For example, `https://<company>.atlassian.net`
   * **API Token**: The JIRA password/token you noted down when you created the JIRA instance.
   * **API Email**: The email for the API token.
 
