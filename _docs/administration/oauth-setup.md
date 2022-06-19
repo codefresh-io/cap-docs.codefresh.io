@@ -5,14 +5,17 @@ group: administration
 toc: true
 ---
 
+Easily Connect Codefresh to your Git provider using the OAuth2. 
+Codefresh integrates with Git to sync repositories to your clusters, implementing Git-based operations when creating resources such as Delivery Pipelines, and to enrich Images with valuable information.
 
-If you have set up integrations with one or more Git providers for CI enrichment or for CI/CD integration, you must authenticate Codefresh to these providers. Authentication is required for Codefresh to access the public and private repositories of your Git providers.
 
 Codefresh supports OAuth2 or Personal Access Tokens (PATs) for authentication:
 
-* OAuth2 with Codefresh or custom provider  
+* OAuth2 with Codefresh OAuth Application or custom OAuth2 Application
 
-  OAuth2 is the preferred authentication mechanism, currently supported for GitHub. Codefresh offers a pre-defined OAuth provider account, or you can create a custom provider account. OAuth authentication through a custom provider account requires you to create an OAuth2 application in GitHub, create a K8s secret, and then configure the OAuth settings in Codefresh.  
+  OAuth2 is the preferred authentication mechanism, currently supported for GitHub. You have the option to use the default pre-defined Codefresh OAuth Application, or your own Oauth2 Application in your Git account. 
+  To use your own Oauth2 GitHub Application, create a secret on your K8s cluster and configure it in Authentication > Settings.
+  
 
   > A runtime can have only one active account for authentication. 
 
@@ -160,7 +163,7 @@ To complete custom provider authentication, configure the settings for the OAuth
 You have completed the setup to authorize Codefresh as an OAuth App in GitHub. 
 
 ### Select authentication account for runtime
-For a Git provider and a runtime account, switch between the Codefresh or Custom provider account if one exists, or enforce token-based authentication.
+For a Git provider and a runtime account, switch between the Codefresh, Custom provider account if one exists, or enforce token-based authentication.
 
 1. In the Codefresh UI, go to [Authentication](https://g.codefresh.io/2.0/account-settings/authentication?providerName=github){:target="\_blank"}.
 1. Select the runtime, and click ![](/images/administration/users/icon-Edit.png?display=inline-block) **Edit**. 
