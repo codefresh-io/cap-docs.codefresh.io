@@ -72,7 +72,7 @@
     - title: Create an application
       url: "/create-application"
 
-- title: Integrations
+- title: Image enrichment
   url: "/integrations"
   pages:
     - title: JIRA tracking
