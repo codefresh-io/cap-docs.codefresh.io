@@ -9,9 +9,10 @@ Codefresh GitOps can be used with any popular Continuous Integration (CI) soluti
 
 You can connect any external solution to Codefresh, and have it take care of common CI tasks such as building/testing/scanning source code, while Codefresh GitOps is still responsible for the deployment.
 
-### The Codefresh GitHub Action
+### Codefresh Marketplace GitHub Action 
 
-To accommodate the integration between GitHub Actions and Codefresh, we have created a dedicated action that you can find at [https://github.com/marketplace/actions/csdp-report-image](https://github.com/marketplace/actions/csdp-report-image).
+To accommodate the integration between GitHub Actions and Codefresh, we have created a dedicated action in the [Codefresh marketplace](https://github.com/marketplace/actions/csdp-report-image).
+You can 
 
 Use the action in the following manner:
 
@@ -29,13 +30,13 @@ The action expects the following arguments:
  {: .table .table-bordered .table-hover}
 | Argument  | Description     | Required/Optional/Default |
 | ---------- |  -------- | ------------------------- |
-| `CF_API_KEY`         | API key for interacting with Codefresh  | Required  |
-| `CF_IMAGE`         | Name of image that was built  | Required  |
-| `CF_HOST`         | Codefresh installation. Defaults to your company URL  | Default  |
-| `CF_VERBOSE`         | Enable verbose output. Default is `false`  | Default  |
-| `CF_ENRICHERS`         | Array with `git` or `jira` or both. Default is empty  | Default  |
-| `CF_CONTAINER_REGISTRY_INTEGRATION`         | which registry integration to use  | Optional  |
-| `CF_WORKFLOW_URL`         | Which Codefresh workflow to link this image to   | Optional  |
+| `CF_API_KEY`         | The API key for interacting with Codefresh.  | Required  |
+| `CF_IMAGE`         | The name of the image that was built.  | Required  |
+| `CF_HOST`         | The Codefresh installation. Defaults to your company URL.  | Default  |
+| `CF_VERBOSE`         | Enable verbose output. Default is `false`.  | Default  |
+| `CF_ENRICHERS`         | Array with `git` or `jira` or both. Default is empty.  | Default  |
+| `CF_CONTAINER_REGISTRY_INTEGRATION`         | The registry integration to use.  | Optional  |
+| `CF_WORKFLOW_URL`         | The GitHub Actions workflow to link this image to.  | Optional  |
 | `CF_LOGS_URL`         | Which logs view to link this image to   | Optional  |
 | `CF_GIT_SHA`         | Which Git SHA was used to build this image  | Optional  |
 | `CF_GIT_REPO`         | Which repo contains the source code  | Optional  |
@@ -52,7 +53,8 @@ The most important arguments that you need to fill manually in your GitHub Actio
 * `CF_IMAGE`
 * `CF_ENRICHERS`
 
-### Codefresh API Key
+### Configure a GitHub Action in Codefresh
+
 
 1. In the Codefresh UI, go to [Integrations](https://g.codefresh.io/2.0/account-settings/integrations){:target="\_blank"}.
 1. Select **GitHub Actions**, and then click **Configure**.
@@ -60,6 +62,18 @@ The most important arguments that you need to fill manually in your GitHub Actio
   A token is generated. Make sure to note down the token as it will only appear once.
 1. Enter this token in GitHub Actions [as a secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) with the name `CF_API_KEY`.  
   Now you can reference it in all GitHub pipelines as you would any other secret.
+1. From the **CF_RUNTIME_URL** list, select the runtime to which to attach this GitHub Action.  
+  The 
+1. Configure the 
+
+{% include image.html 
+lightbox="true" 
+file="/images/integrations/github-actions/github-action-int-settings.png" 
+url="/images/integrations/github-actions/github-action-int-settings.png"
+alt="GitHub Action integration for image enrichment"
+caption="GitHub Action integration for image enrichment"
+max-width="50%"
+%}
 
 ### GitHub Actions pipeline example
 
