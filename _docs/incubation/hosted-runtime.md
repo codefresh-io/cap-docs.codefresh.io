@@ -190,28 +190,36 @@ max-width="70%"
 1. In the Add Managed Cluster panel, do the following:
   * **Cluster Context**: Enter the context name for your cluster, as it appears in your kubeconfig file. 
   * Define the parameters and then run the command:  
-    `cf cluster add <runtime-name> --context <context_name> [--dry-run]`  
+    `cf cluster add <runtime-name> --context <context_name>`  
     where:  
       `<runtime-name>` is the runtime to which to register the cluster. The name of the selected runtime is automatically added.  
       `<context_name>` is the kube context with the credentials to communicate with the managed cluster. If not supplied, the CLI displays the list of available clusters as defined in `kubeconfig`.  
-      `--dry-run` is optional, and required if you want to generate a list of YAML manifests that you can redirect and apply manually with `kubectl`.
   
    {% include 
 	image.html 
 	lightbox="true" 
-	file="/images/runtime/managed-cluster-add-panel.png" 
-	url="/images/runtime/managed-cluster-add-panel.png" 
+	file="/images/runtime/hosted-add-cluster.png" 
+	url="/images/runtime/hosted-add-cluster.png" 
 	alt="Add Managed Cluster panel" 
 	caption="Add Managed Cluster panel"
   max-width="50%" 
+  %}
 
 {:start="3"}
-1. Return to the **Runtimes > List View**, select the hosted runtime you installed, and then select the **Managed Clusters** tab.  
+1. Return to the **Runtimes** page, and then select **Topology View**.  
   You can see the new K8s cluster you connected. 
 
+   {% include 
+	image.html 
+	lightbox="true" 
+	file="/images/runtime/hosted-new-cluster-topology.png" 
+	url="/images/runtime/hosted-new-cluster-topology.png" 
+	alt="New K8s cluster in hosted runtime" 
+	caption="New K8s cluster in hosted runtime"
+  max-width="50%" 
+  %}
 
-
-You have completed setting up your hosted runtime, and are ready to deploy applications, connect third-party CI tools for image enrichment.
+You have completed setting up your hosted runtime. You are ready to deploy applications, connect third-party CI tools for image enrichment.
 
 #### (Optional) Create application
 Optional. Create an application in Codefresh, deploy it to the cluster, and track deployment and performance in the Applications dashboard.  
@@ -220,7 +228,9 @@ Optional. Create an application in Codefresh, deploy it to the cluster, and trac
 [Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/)
 
 #### (Optional) Connect CI 
-Optional. Integrate third-party tools you use for CI with Codefresh to enrich image information in deployments.
+Optional. Integrate Codefresh with the third-party tools you use for CI to enrich image information in deployments.  
+
+[Image enrichment]({{site.baseurl}}/docs/integration/image-enrichment-overview/) 
 
 
 
