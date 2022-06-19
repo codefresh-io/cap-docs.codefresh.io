@@ -11,7 +11,7 @@ Codefresh has native support for interacting with Dockerhub registries.
 Before you configure settings in Codefresh to integrate Dockerhub registry, do the following:
 
 * [Create an account or sign in to your account at Docker Hub](https://hub.docker.com/signup){:target="\_blank"}
-* [Enable 2FA (Two-Factor Authentication)](https://docs.docker.com/docker-hub/2fa/){:target="\_blank"}
+* (Optional)[Enable 2FA (Two-Factor Authentication)](https://docs.docker.com/docker-hub/2fa/){:target="\_blank"}
 * [Create a personal account token](https://docs.docker.com/docker-hub/access-tokens/){:target="\_blank"}
 
 ## Configure Docker Hub integration in Codefresh
@@ -31,11 +31,11 @@ Once you have completed the prerequisites, configure the Docker Hub integration 
     {% include 
    image.html 
    lightbox="true" 
-   file="/images/getting-started/quick-start/quick-start-download-cli.png" 
-   url="/images/getting-started/quick-start/quick-start-download-cli.png" 
-   alt="Download CLI to install runtime" 
-   caption="Download CLI to install runtime"
-   max-width="30%" 
+   file="/images/integrations/docker-registries/docker-hub.png" 
+   url="/images/integrations/docker-registries/docker-hub.png" 
+   alt="Docker Hub integration for image enrichment" 
+   caption="Docker Hub integration for image enrichment"
+   max-width="50%" 
    %}
    
 {:start="5"}
