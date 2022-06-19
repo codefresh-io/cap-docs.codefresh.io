@@ -98,6 +98,6 @@
   icon: images/home-icons/plugins.svg
   url: ''
   links:
-  - title: Hosted runtimes
+  - title: Set up a hosted runtime
     localurl: /docs/incubation/hosted-runtimes
   
