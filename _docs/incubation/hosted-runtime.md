@@ -109,7 +109,7 @@ file="/images/runtime/hosted-authorize-access.png"
 url="/images/runtime/hosted-authorize-access.png"
 alt="Authorize access to Git"
 caption="Authorize access to Git"
-max-width="70%"
+max-width="50%"
 %}
 
 {:start="3"}
@@ -124,7 +124,7 @@ file="/images/runtime/hosted-select-git-repo.png"
 url="/images/runtime/hosted-select-git-repo.png"
 alt="Git configuration repos for Git Organization"
 caption="Git configuration repos for Git Organization"
-max-width="70%"
+max-width="50%"
 %}
 
 {:start="5"}
