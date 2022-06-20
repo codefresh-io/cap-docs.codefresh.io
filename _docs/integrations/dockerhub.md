@@ -6,7 +6,7 @@ toc: true
 ---
 
 Codefresh has native support for interacting with Docker Hub registries.  
-Adding a Docker Hub integration allows you to reference the integration in your GitHub Actions pipeline, instead of adding explicit credentials. See [Image enrichment overview]({{site.baseurl}}/docs/integrations/image-enrichment-overview/).
+Adding a Docker Hub integration allows you to reference the integration in your pipeline (Codefresh or external), instead of adding explicit credentials. See [Image enrichment overview]({{site.baseurl}}/docs/integrations/image-enrichment-overview/).
 
 ### Prerequisites
 Before you configure settings in Codefresh to integrate Docker Hub registry, do the following:
