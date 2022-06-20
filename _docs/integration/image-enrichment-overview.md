@@ -44,9 +44,7 @@ For example, if you have JIRA integration in Codefresh, in the GitHub Action-bas
 ```
 `CF_JIRA_INTEGRATION` defines the integration account, `codefresh-jira`.  
 
-Codefresh uses the integration name to identify and retrieve information for `wip CR-11027` and display it as part of the deployment information.   
-  
-Codefresh uses the integration name or names to retrieve the necessary information,  As you can see, there is no need to enter the credentials for each integration account in the enrichment. 
+Codefresh uses the integration name to identify and retrieve information for `wip CR-11027` and display it as part of the deployment information. There is no need to enter the credentials for the JIRA integration account in the enrichment. 
 
 **View enriched information**  
 
@@ -101,13 +99,13 @@ jobs:
           CF_VERBOSE: "1"
           CF_API_KEY: ${{ secrets.ETI_TOKEN }}
           CF_CONTAINER_REGISTRY_INTEGRATION: "quay"
-          "CF_GITHUB_TOKEN": ${{ secrets.G_TOKEN }}
-          "CF_GIT_PROVIDER": "github"
-          "CF_GIT_REPO": "codefresh-io/example-github-action-use-csdp-report-image"
-          "CF_GIT_BRANCH": "feature"
-          "CF_JIRA_INTEGRATION": "jira"
-          "CF_JIRA_MESSAGE": "wip CR-11027"
-          "CF_JIRA_PROJECT_PREFIX": "CR"
+          CF_GITHUB_TOKEN: ${{ secrets.G_TOKEN }}
+          CF_GIT_PROVIDER: "github"
+          CF_GIT_REPO: "codefresh-io/example-github-action-use-csdp-report-image"
+          CF_GIT_BRANCH: "feature"
+          CF_JIRA_INTEGRATION: "jira"
+          CF_JIRA_MESSAGE: "wip CR-11027"
+          CF_JIRA_PROJECT_PREFIX: "CR"
         uses: codefresh-io/csdp-report-image@0.0.45
 ```
 ### What to read next
