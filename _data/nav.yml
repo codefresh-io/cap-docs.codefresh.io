@@ -127,7 +127,7 @@
   url: "/incubation"
   pages:
     - title: Set up a hosted runtime
-      url: "/hosted-runtimes"
+      url: "/hosted-runtime"
 
 - title: Terms and Privacy Policy
   url: "/terms-and-privacy-policy"

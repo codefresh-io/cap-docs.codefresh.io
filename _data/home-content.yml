@@ -69,6 +69,7 @@
     - title: Create an application
       localurl: /docs/deployment/create-application/
 
+
 - title: Administration
   icon: images/home-icons/administration.svg
   url: ''
@@ -99,5 +100,5 @@
   url: ''
   links:
   - title: Set up a hosted runtime
-    localurl: /docs/incubation/hosted-runtimes/
+    localurl: /docs/incubation/hosted-runtime/
   
