@@ -58,11 +58,10 @@ You can view:
 * PRs included in this deployment
 * Jira issues, status and details for each deployment
 
-
-
-
-### Example of GitHub Action pipeline 
-This is an example of pipeline managed by a GitHub Action. 
+### Example of GitHub Action pipeline with image enrichment 
+This is an example of a pipeline managed by a GitHub Action that includes the Codefresh step for reporting the image.  
+As you can see, `CF_CONTAINER_REGISTRY_INTEGRATION` references Quay by the integration name, `quay` in this example. `CF_JIRA_INTEGRATION` also references the required JIRA account by the integration name, `jira` in the example. Both references do not require explicit credentials.  
+In contrast, for Git information, `CF_GITHUB_TOKEN` must be defined.
 
 ```yaml
 name: Docker Image CI
