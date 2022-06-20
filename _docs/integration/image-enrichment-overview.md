@@ -8,9 +8,9 @@ toc: true
 
 
 
-Image enrichment is a crucial part of the CI/CD process, adding to the quality of deployments. Image enrichment exposes metadata, feature requests, pull requests, and logs as part of the application's deployment, providing a holistic view of the deployment, making it easier to track actions and identify root cause of failures. 
+Image enrichment is a crucial part of the CI/CD process, adding to the quality of deployments. Image enrichment exposes metadata such as feature requests, pull requests, and logs as part of the application's deployment, providing a holistic view of the deployment, and making it easier to track actions and identify root cause of failures. 
 
-With Codefresh you can enjoy the full benefits of GitOps, with and without CI. Integrating Codefresh with the CI tool or platform you are using for your automated workflows, brings in the information for image enrichment. The integration is simple and easy to configure, and the mechanism relies on the integration name to 
+With Codefresh you can enjoy the full benefits of GitOps, with and without continuous integration (CI). Integrating Codefresh with the CI tool or platform you use brings the enrichment information for the image. The integration mechanism is simple and easy to configure. The key benefit is that the mechanism relies on the integration name to retrieve the information.  
 
 Existing pipelines in Codefresh are not affected by the new integrations, avoiding the need to migrate or convert pipelines.
 
@@ -21,7 +21,7 @@ Integrate Codefresh with your CI platform/tool account with a unique name per in
 
 **Add/configure the integration**  
 
-Add/configure the integration account for the third-party platform/tool. You can set up multiple integration accounts for the CI platform or tool.  
+Add/configure the integration account for the third-party platform/tool. You can set up multiple integration accounts for the same CI platform or tool.  
 
 Codefresh supports the following CI platforms/tools:
 
@@ -35,7 +35,7 @@ We are working on supporting integrations for more CI platforms/tools. Stay tune
 **Define the enrichment step in your pipeline**  
 
 In the enrichment step, specify the names of one or more integration accounts, as needed. 
-For example, if you have JIRA integration in Codefresh, and  GitHub Action-based pipeline, the enrichment step in your pipeline would linclude the following:
+For example, if you have JIRA integration in Codefresh, in the GitHub Action-based pipeline, the enrichment step in your pipeline would include the following:
 
 ```yaml
 "CF_JIRA_INTEGRATION": "codefresh-jira"
@@ -55,12 +55,11 @@ Codefresh uses the integration name or names to retrieve the necessary informati
 
 You can view:
 
-Commit information as well as committer
-Links to build and deployment pipelines
-PRs included in this deployment
-Jira issues, status and details for each deployment
+* Commit information as well as committer
+* Links to build and deployment pipelines
+* PRs included in this deployment
+* Jira issues, status and details for each deployment
 
-Send deployment information back to issues include in this deployment
 
 
 
@@ -109,5 +108,9 @@ jobs:
           "CF_JIRA_INTEGRATION": "jira"
           "CF_JIRA_MESSAGE": "wip CR-11027"
           "CF_JIRA_PROJECT_PREFIX": "CR"
-        uses: codefresh-io/csdp-report-image@0.0.40
+        uses: codefresh-io/csdp-report-image@0.0.45
 ```
+### What to read next
+[Images]({{site.baseurl}}/docs/pipelines/images/)  
+[Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/) 
+
