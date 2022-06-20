@@ -5,10 +5,11 @@ group: integrations
 toc: true
 ---
 
-Codefresh has native support for interacting with Dockerhub registries.
+Codefresh has native support for interacting with Docker Hub registries.  
+Integration with Docker Hub is used for image enrichment. See [Image enrichment overview]({{site.baseurl}}/docs/integrations/image-enrichment-overview/).
 
 ### Prerequisites
-Before you configure settings in Codefresh to integrate Dockerhub registry, do the following:
+Before you configure settings in Codefresh to integrate Docker Hub registry, do the following:
 
 * [Create an account or sign in to your account at Docker Hub](https://hub.docker.com/signup){:target="\_blank"}
 * (Optional)[Enable 2FA (Two-Factor Authentication)](https://docs.docker.com/docker-hub/2fa/){:target="\_blank"}
@@ -44,13 +45,3 @@ Once you have completed the prerequisites, configure the Docker Hub integration 
 
 ## What to read next
 [Adding Git sources]({{site.baseurl}}/docs/runtime/git-sources/)
-
-
-
-
-
-
-
-
-
-
