@@ -49,8 +49,8 @@ max-width="70%"
 {% include
 image.html
 lightbox="true"
-file="/images/runtime/hosted-initial-view.png"
-url="/images/runtime/hosted-initial-view.png"
+file="/images/runtime/hosted-runtime-components.png"
+url="/images/runtime/hosted-runtime-components.png"
 alt="Runtime components for hosted runtime"
 caption="Runtime components for hosted runtime"
 max-width="70%"
@@ -120,8 +120,8 @@ max-width="70%"
  {% include
 image.html
 lightbox="true"
-file="/images/runtime/hosted-authorize-access.png"
-url="/images/runtime/hosted-authorize-access.png"
+file="/images/runtime/hosted-select-git-repo.png"
+url="/images/runtime/hosted-select-git-repo.png"
 alt="Git configuration repos for Git Organization"
 caption="Git configuration repos for Git Organization"
 max-width="70%"
