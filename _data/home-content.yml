@@ -69,6 +69,13 @@
     - title: Create an application
       localurl: /docs/deployment/create-application/
 
+- title: Image enrichment
+  icon: images/home-icons/plugins.svg
+  url: ''
+  links:
+    - title: Image enrichment overview
+      localurl: /docs/integration/image-enrichment-overview/
+
 - title: Administration
   icon: images/home-icons/administration.svg
   url: ''
