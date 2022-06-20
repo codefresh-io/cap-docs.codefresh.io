@@ -5,7 +5,8 @@ group: integrations
 toc: true
 ---
 
-Codefresh has native support for interacting with Quay registries, from where you can push, pull, and deploy images.
+Codefresh has native support for interacting with Quay registries, from where you can push, pull, and deploy images.  
+Adding a Quay integration allows you to reference the integration in your pipelines (Codefresh or external), instead of adding explicit credentials. See [Image enrichment overview]({{site.baseurl}}/docs/integrations/image-enrichment-overview/).
 
 ### Prerequisites
 
@@ -44,4 +45,7 @@ Make sure you have the:
   It may take a few moments for the new integration to be synced to the cluster before it appears in the list.
 
 ### What to read next  
-[Adding Git sources]({{site.baseurl}}/docs/runtime/git-sources/)
+[Shared runtime configuration]({{site.baseurl}}/docs/runtime/shared-configuration/)  
+[Images]({{site.baseurl}}/docs/pipelines/images/)  
+[Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/)    
+[Adding Git sources]({{site.baseurl}}/docs/runtime/git-sources/)  
