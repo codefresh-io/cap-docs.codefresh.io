@@ -75,7 +75,7 @@
 - title: Image enrichment
   url: "/integrations"
   pages:
-    - title: DockerHub Registry
+    - title: Docker Hub Registry
       url: "/dockerhub"
 
 - title: Administration

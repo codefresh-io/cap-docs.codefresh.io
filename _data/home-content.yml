@@ -68,10 +68,10 @@
       localurl: /docs/deployment/create-application/
 
 - title: Image enrichment
-  icon: images/home-icons/integrations.png
+  icon: images/home-icons/integrations.svg
   url: ''
   links:
-    - title: Dockerhub Registry
+    - title: Docker Hub Registry
       localurl: /docs/integrations/dockerhub/
   
 
