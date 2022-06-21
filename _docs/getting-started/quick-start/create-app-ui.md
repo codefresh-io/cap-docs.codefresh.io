@@ -90,6 +90,20 @@ For detailed information, see [Create an application]({{site.baseurl}}/docs/depl
    max-width="70%" 
    %} 
 
+{:start="10"}
+1. Select the application, and then click the **Current State** tab to see all the resources created for the application.
+
+  {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/getting-started/quick-start/cdops-app-current-state.png" 
+   url="/images/getting-started/quick-start/cdops-app-current-state.png" 
+   alt="Current State for codefresh-guestbook application" 
+   caption="Current State for codefresh-guestbook application"
+   max-width="70%" 
+   %} 
+
+
 The final step is to make a change in the application manifest to enforce a rollout. 
 
 ### What to do next
