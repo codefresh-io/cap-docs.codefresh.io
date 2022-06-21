@@ -13,12 +13,12 @@ Before you can create an application in Codefresh, you need to create the resour
 1. Analysis template resource defining the validation requirements before deployment
 
 
-### Create path in Git for application resources
+### Create folder in Git for application resources
 Create a folder in the Git repo in which to save all the resources. 
 
 * In your Git repo, create a folder to store the resources needed to deploy the application.  
 
-  For example, `<runtime-installation-directory>/quick-start/`
+  For example, `/quick-start/`
 
 ### Create rollout.yaml
 
