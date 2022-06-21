@@ -63,12 +63,17 @@
       url: "/sharing-file-system"
     - title: Viewing images
       url: "/images"
+    - title: Nested workflows
+      url: "/nested-workflows"
+    
 
 - title: Deployment
   url: "/deployment"
   pages:
     - title: Applications dashboard
       url: "/applications-dashboard"
+    - title: Create an application
+      url: "/create-application"
 
 
 - title: Administration

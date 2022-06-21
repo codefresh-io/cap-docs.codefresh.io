@@ -18,7 +18,8 @@ Here are some insights you can derive from the Applications dashboard:
 
 ### Applications main view
 
-The main view shows all deployed applications, sorted by the most recent deployments, by default.   
+The main view shows all deployed applications, sorted by the most recent deployments (default).   
+
 
 Here is an example of the main page in the Applications dashboard. 
 
@@ -28,8 +29,8 @@ lightbox="true"
 file="/images/applications/app-dashboard-main-view.png"
 url="/images/applications/app-dashboard-main-view.png"
 alt="Applications Dashboard"
-caption="pplications Dashboard"
-max-width="30%"
+caption="Applications Dashboard"
+max-width="70%"
 %}  
 
 #### Application inventory and state 
@@ -62,6 +63,7 @@ Filters are divided into frequently used and advanced filters.
     To see the available labels, select **Add**, and then select the required label and one or more values.  
     To filter by the labels, select **Add** and then **Apply**.  
 
+
     For detailed information, see the official documentation on [Labels and selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/){:target="\_blank"}.
 
     {% include
@@ -71,7 +73,8 @@ file="/images/applications/app-dashboard-adv-filters.png"
 url="/images/applications/app-dashboard-adv-filters.png"
 alt="Advanced filters in Applications Dashboard"
 caption="Advanced filters in Applications Dashboard"
-max-width="30%"
+max-width="70%"
+
 %}
 
 
@@ -86,7 +89,7 @@ Mark applications as favorites, and view them with a click.
 #### Deployment type
 Applications are displayed according to their deployment type which can be one of the following:
 * Applications  
-  Standalone applications. For detailed information, see the official documentation on [Applications](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications){:target="\_blank"}.  
+  Standalone applications. For detailed information, see the official documentation on [Applications](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications){:target="\_blank"}.
 
   {% include
 image.html
@@ -100,6 +103,11 @@ max-width="30%"
 
 * Application set  
   Based on the Argo CD's ApplicationSet CRD, where several applications are always deployed as a set. For detailed information, see the official documentation on [Generating Applications with ApplicationSet](https://argo-cd.readthedocs.io/en/stable/user-guide/application-set/){:target="\_blank"}.
+max-width="70%"
+%}
+
+* Application set  
+  Based on the Argo CD's ApplicationSet CRD, where several applications are always deployed as a set. For more information, see [Generating Applications with ApplicationSet](https://argo-cd.readthedocs.io/en/stable/user-guide/application-set/){:target="\_blank"}.
 
   {% include
 image.html
@@ -108,11 +116,12 @@ file="/images/applications/app-appset-model.png"
 url="/images/applications/app-appset-model.png"
 alt="Application Set in Applications Dashboard"
 caption="Application Set in Applications Dashboard"
-max-width="30%"
+max-width="70%"
 %}
   
 * App-of-apps  
-  In this deployment model, the parent application deploys a set of child applications.  For detailed information, see the official documentation on [App of Apps](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#app-of-apps){:target="\_blank"}. 
+  In this deployment model, the parent application deploys a set of child applications.  For more information, see [App of Apps](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#app-of-apps){:target="\_blank"}. 
+
 
 {% include
 image.html
@@ -121,7 +130,7 @@ file="/images/applications/app-appofapps-model.png"
 url="/images/applications/app-appofapps-model.png"
 alt="App of Apps in Applications Dashboard"
 caption="App of Apps in Applications Dashboard"
-max-width="30%"
+max-width="70%"
 %}
 
 
@@ -133,11 +142,11 @@ Each application displays up to ten of the most recent deployments through deplo
 {% include
 image.html
 lightbox="true"
-file="/images/applications/dashboard-timeline-main.png"
-url="/images/applications/dashboard-timeline-main.png"
+file="/images/applications/apps-dashboard-timeline-collapsed.png"
+url="/images/applications/apps-dashboard-timeline-collapsed.png"
 alt="Applications Dashboard: Timeline tab"
 caption="Applications Dashboard: Timeline tab"
-max-width="30%"
+max-width="70%"
 %}
 
 
@@ -160,7 +169,7 @@ file="/images/applications/apps-historical-deployment.png"
 url="/images/applications/apps-historical-deployment.png"
 alt="Applications Dashboard: Deployment chart"
 caption="Applications Dashboard: Deployment chart"
-max-width="30%"
+max-width="70%"
 %}
 
 **Deployment entries**  
@@ -174,7 +183,7 @@ file="/images/applications/app-dashboard-time-expanded-card.png"
 url="/images/applications/app-dashboard-time-expanded-card.png"
 alt="Applications Dashboard: Deployment entry in Timeline tab"
 caption="Applications Dashboard: Deployment entry in Timeline tab"
-max-width="30%"
+max-width="70%"
 %}
 
 * The **CI Builds** showing the image(s) created or updated during deployment. Click to see the **Images** view in a browser window.
@@ -371,5 +380,16 @@ max-width="50%"
 * Search: Free-text search for any string in the log, using the next and previous buttons to navigate between the results, or Enter for sequential navigation.
 * Wrap: Enable/disable line wrapping 
 * Download: Download the complete log into a text file for offline viewing and analysis.
+
+alt="Applications Dashboard: Current State tab"
+caption="Applications Dashboard: Current State tab"
+max-width="70%"
+%}
+
+You can filter by:
+* **Kind**: The type of Kubernetes resource. 
+* **Health**: The status of the resource.
+
+For more information, see [Working with Kubernetes objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/){:target="\_blank"}.
 
 
