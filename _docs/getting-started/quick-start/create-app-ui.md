@@ -6,10 +6,11 @@ sub-group: quick-start
 toc: true
 ---
 
-Now that you have created all the resource specifications for the application, you can create the application in Codefresh.
+Now that you have created all the resources for the application, you can create the application in Codefresh.
 For the quick start, you will create the `codefresh-guestbook` application.
 
 For detailed information, see [Create an application]({{site.baseurl}}/docs/deployment/create-application) 
+
 **Before you begin**  
 
 [Create the application resources]({{site.baseurl}}/docs/getting-started/quick-start/create-app-specs)  
@@ -75,8 +76,8 @@ For detailed information, see [Create an application]({{site.baseurl}}/docs/depl
    %} 
 
 {:start="9"} 
-1. Add a commit message and then select **Commit** at the bottom-right of the panel.
-1. View the application in the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard?sort=desc-lastUpdated){:target="\_blank"}.  
+1. Add a commit message and then select **Commit** at the bottom-right of the panel.  
+  You are directed to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard?sort=desc-lastUpdated){:target="\_blank"}.  
   You may have to wait for a few seconds until the application is synced to the cluster.
 
   {% include 
