@@ -1,5 +1,5 @@
 ---
-title: "Create application resources"
+title: "Create resources for codefresh-guestbook"
 description: ""
 group: getting-started
 sub-group: quick-start
