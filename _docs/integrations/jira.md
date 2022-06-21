@@ -46,7 +46,7 @@ Once you have set up a JIRA instance, configure the JIRA integration settings in
 %}
 {:start="5"}
 1. To confirm, click **Commit**.
-  It may take a few moments for the changes to be synced to the cluster before it appears in the list.
+  It may take a few moments for the changes to be synced to the cluster before the integration account appears in the list.
 
 
 ### What to read next
