@@ -1,5 +1,5 @@
 ---
-title: "Create application specifications"
+title: "Create application resources"
 description: ""
 group: getting-started
 sub-group: quick-start
@@ -8,16 +8,13 @@ toc: true
 
 Before you can create an application in Codefresh, you need to create the resource specifications used by the application:
 
-1. Rollout specification
-1. Service specification
-1. Analysis template specification
-
-
-Let's start by creating the rollout specification for our application. 
+1. Rollout specification defining the deployment strategy 
+1. Service specification that exposes the application to external traffic
+1. Analysis template specification defining the validation requirements before deployment
 
 
 ### Create path in Git for application resources
-All the resource specifications must be saved in a Git repo. 
+Create a folder in the Git repo in which to save all the resource specifications. 
 
 * In your Git repo, create a folder to store the resources needed to deploy the application.
   For example, `<runtime-installation-directory>/quick-start/`
@@ -25,10 +22,10 @@ All the resource specifications must be saved in a Git repo.
 ### Create a Rollout specification
 
 Create a rollout specification for the application you want to deploy.  
-To leverage Argo Rollout's deployment capabilities, we are using the Rollout resource instead of the native Kubernetes Deployment object.
-Read about the fields you can define in [Argo Rollout specification](https://argoproj.github.io/argo-rollouts/features/specification/){:target="\_blank"}. 
+To leverage Argo Rollout's deployment capabilities, we are using the Argo's Rollout resource instead of the native Kubernetes Deployment object.
+For detailed information on the fields you can define, see [Argo Rollout specification](https://argoproj.github.io/argo-rollouts/features/specification/){:target="\_blank"}. 
 
-Our rollout specification uses an analysis template that works with Prometheus a third-party metric provider. You need to first add secrets to the cluster to store the credentials required. 
+ You need to first add secrets to the cluster to store the credentials required. 
 
 * In the Git repository create the `rollout.yaml` file as in the example below.
 
@@ -73,7 +70,7 @@ spec:
 ####  Fields in `rollout.yaml`
 
 {: .table .table-bordered .table-hover}
-|  Field                             | Notes        |  
+|  Rollout Field                             | Notes        |  
 | --------------                     | -------------|  
 | `replicas`                         | When deployed, the Rollout creates four replicas of the `codefresh-guestbook` application.|  
 | `revisionHistoryLimit`             | The number of replica sets to retain.  |      
@@ -85,8 +82,10 @@ spec:
 
 
 ### Create a service specification
-* Create a `Service` specification for the application you want to deploy, using the example below.  
-  Create it in the same folder in which you saved the `rollouts.yaml` specification. 
+As the next resource, you will create a service specification to expose your application to external traffic. 
+
+* Create a `service.yaml` specification for the application you want to deploy, using the example below.  
+  > Create it in the same folder in which you saved the `rollouts.yaml` specification. 
 
 ```yaml
 apiVersion: v1
@@ -113,11 +112,9 @@ spec:
 ### Create an AnalysisTemplate for rollout validation
 Create an `AnalysisTemplate` specification to validate that your changes conforms to the requirements before deployment. This is the final specification you need before you can create the application.
 
-For the quick start, you'll create the `background-analysis` analysis template, that interfaces with Prometheus, as the third-party metric provider to validate metrics. 
-> Argo Rollouts supports several third-party metric providers, such as Prometheus, Datadog, Wavefront, and more. Go to the [Analysis section in Argo Rollouts](https://argoproj.github.io/argo-rollouts/){:target="\_blank"}. 
+For the quick start, you'll create the `background-analysis` analysis template that interfaces with Prometheus, as the third-party metric provider to validate metrics. 
+> You can use any third-party metric provider supported by Argo Rollouts, such as Prometheus, Datadog, Wavefront, and more. Read the official documentation on [Analysis section in Argo Rollouts](https://argoproj.github.io/argo-rollouts/){:target="\_blank"}. 
 
-
-The template queries a Prometheus server a total of four times (`count: 4`) at 5 second intervals (`interval: 5s`). The metric value in the response must be higher than 100 (`successCondition: result[0] >= 100`). If the metric value is less than 100 more than once (`failureLimit: 1`), the analysis is considered Failed, and the Rollout aborted. Traffic is routed back to the stable version of the application.
 
 * In the Git repository create the `AnalysisTemplate.yaml` file, as in the example below.
 
@@ -144,7 +141,7 @@ spec:
 ####  Fields in `backround-analysis.yaml`
 
 {: .table .table-bordered .table-hover}
-|  Service field            |  Notes |  
+|  Analyis Template field            |  Notes |  
 | --------------            | --------------           |  
 | `count`                   | The total number of measurements taken, `4` in our example.| 
 | `interval`                | The interval between measurement samplings, `5s` in our example.| 
@@ -153,3 +150,6 @@ spec:
 | `query`                   | The query submitted to the Prometheus server.|
 
 You are now ready to create the application in Codefresh. 
+
+### What to do next
+[Create the codefresh-guestbook application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-ui)
