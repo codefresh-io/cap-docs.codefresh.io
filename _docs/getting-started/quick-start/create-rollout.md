@@ -1,12 +1,12 @@
 ---
-title: "Update image for codefresh-guestbook"
+title: "Update image tag for codefresh-guestbook"
 description: ""
 group: getting-started
 sub-group: quick-start
 toc: true
 ---
 
-You will now make a change in the application manifest, and update the image tag. Argo CD detects that the live state in the cluster is out of sync with the desired state in Git, and initiates the new rollout according to the analysis template you defined (`background-analysis` in the quick start).
+You will now make a change in the application manifest, and update the image tag. Because we selected auto-sync in the application settings, Argo CD detects that the live state in the cluster is out of sync with the desired state in Git, and initiates the new rollout. The rollout runs the analysis template you defined (`background-analysis` in the quick start).
 
 ### Update image tag in rollout.yaml
 Update the image tag in the `codefresh-guestbook` application.
@@ -52,7 +52,7 @@ When the image tag is updated, the auto-sync initiates the rollout.
    %} 
 
 {:start="3"}
-1. To visualize the analysis steps, click the application name.
+1. To visualize the rollout analysis, click the rollout name.
 
     {% include 
    image.html 
@@ -65,7 +65,8 @@ When the image tag is updated, the auto-sync initiates the rollout.
    %} 
 
 {:start="4"}
-1. To metric details, expand Background Analysis. 
+1. To view metric validation details, expand **Background Analysis** in the panel. 
 
 You have completed application deployment in Codefresh. 
+
   

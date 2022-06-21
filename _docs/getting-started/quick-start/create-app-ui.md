@@ -9,17 +9,18 @@ toc: true
 Now that you have created all the resource specifications for the application, you can create the application in Codefresh.
 For the quick start, you will create the `codefresh-guestbook` application.
 
+For detailed information, see [Create an application]({{site.baseurl}}/docs/deployment/create-application) 
 **Before you begin**  
 
-[Create the application resources]({{site.baseurl}}/docs/getting-started/quick-start/cd/create-app-specs)  
+[Create the application resources]({{site.baseurl}}/docs/getting-started/quick-start/create-app-specs)  
 
 **How to**  
 
 
-1. In the Codefresh UI, go to [Applications](https://g.codefresh.io/2.0/applications-dashboard?sort=desc-lastUpdated){:target="\_blank"}.
+1. In the Codefresh UI, go to the [Applications](https://g.codefresh.io/2.0/applications-dashboard?sort=desc-lastUpdated){:target="\_blank"} dashboard.
 1. Select **Add Application** on the top-right.
 1. In the Add Application panel, add definitions for the application:
-  * **Application name**: For the quick start, `codefresh.guestbook` for the quick start.
+  * **Application name**: `codefresh.guestbook` for the quick start.
   * **Runtime**: The runtime to associate with the application, `argocd` for the quick start.  
   * **YAML filename**: The name of the application's configuration manifest, assigned on commit to Git. By default, the manifest is assigned the application name.
 
@@ -37,14 +38,14 @@ For the quick start, you will create the `codefresh-guestbook` application.
 
 {:start="4"}
 1. Select **Next** to go to the Configuration tab.  
-  By default you are in Form mode. You can toggle between the Form and YAML modes as you define the application's configuration settings, and edit the YAML manifest.
+  By default you are in Form mode. You can toggle between the Form and YAML modes as you define the application's configuration settings.
 1. Define the **General** settings for the application: 
   * **Repository URL**: The URL to the repo in Git where you created the YAML resource files for the application.
   * **Revision**: The branch in Git with the resource files.
   * **Path**: The folder in Git with the resource files.
   * **Namespace**: Optional. For the quick start, we'll create a namespace for the application, `quick-start`. 
   * **Sync Policy**: Change to **Automatic**, and select **Prune resources** to automatically remove unused resources.
-  * **Sync Options**: If you added a namespace, select **Auto-create namespace** to ensure that the namespace is created if it doesn't exist. 
+  * **Sync Options**: If you defined a namespace, select **Auto-create namespace** to ensure that the namespace is created if it doesn't exist. 
  
 {% include 
    image.html 

@@ -6,28 +6,30 @@ sub-group: quick-start
 toc: true
 ---
 
-Before you can create an application in Codefresh, you need to create the resource specifications used by the application:
+Before you can create an application in Codefresh, you need to create the resources used by the application:
 
-1. Rollout specification defining the deployment strategy 
-1. Service specification that exposes the application to external traffic
-1. Analysis template specification defining the validation requirements before deployment
+1. Rollout resource defining the deployment strategy 
+1. Service resource to expose the application to external traffic
+1. Analysis template resource defining the validation requirements before deployment
 
 
 ### Create path in Git for application resources
-Create a folder in the Git repo in which to save all the resource specifications. 
+Create a folder in the Git repo in which to save all the resources. 
 
-* In your Git repo, create a folder to store the resources needed to deploy the application.
+* In your Git repo, create a folder to store the resources needed to deploy the application.  
+
   For example, `<runtime-installation-directory>/quick-start/`
 
-### Create a Rollout specification
+### Create rollout.yaml
 
-Create a rollout specification for the application you want to deploy.  
+Create a rollout resource for the application you want to deploy.  
+  
+
 To leverage Argo Rollout's deployment capabilities, we are using the Argo's Rollout resource instead of the native Kubernetes Deployment object.
 For detailed information on the fields you can define, see [Argo Rollout specification](https://argoproj.github.io/argo-rollouts/features/specification/){:target="\_blank"}. 
 
- You need to first add secrets to the cluster to store the credentials required. 
 
-* In the Git repository create the `rollout.yaml` file as in the example below.
+* In the Git repository create the `rollout.yaml` file, as in the example below.
 
 
 ```yaml
@@ -72,20 +74,20 @@ spec:
 {: .table .table-bordered .table-hover}
 |  Rollout Field                             | Notes        |  
 | --------------                     | -------------|  
-| `replicas`                         | When deployed, the Rollout creates four replicas of the `codefresh-guestbook` application.|  
+| `replicas`                         | When deployed, the rollout creates four replicas of the `codefresh-guestbook` application.|  
 | `revisionHistoryLimit`             | The number of replica sets to retain.  |      
 | `matchLabels`                      | The pods to select for this rollout. In our example, all pods with the label `codefresh-guestbook` are selected.|      
 | `image`                            | The container image for the application with the version tag, `gcr.io/heptio-images/ks-guestbook-demo:0.1` in our example.|                             
 | `name`                             | The name of the application, `codefresh-guestbook` in our example. |       
 | `canary`                           | The deployment strategy, `canary` meaning that the traffic is gradually routed to the new application. Starting with `setWeight` of`25%` followed by a `pause` of 20 seconds, and the remaining `75%` after verification.|  
-| `templateName`                      | The analysis template used to validate the application metrics. In our example, uses the template `background-analysis` with Prometheus to monitor and validate metric thresholds.|  
+| `templateName`                      | The analysis template used to validate the application metrics. Our example has the `background-analysis` template, and interfaces with Prometheus to monitor and validate metric thresholds.|  
 
 
-### Create a service specification
-As the next resource, you will create a service specification to expose your application to external traffic. 
+### Create a service resource
+Create a service resource to expose your application to external traffic. 
 
-* Create a `service.yaml` specification for the application you want to deploy, using the example below.  
-  > Create it in the same folder in which you saved the `rollouts.yaml` specification. 
+* Create a `service.yaml` resource for the application you want to deploy, as in the example below.  
+  > Create it in the same folder in which you saved `rollout.yaml`. 
 
 ```yaml
 apiVersion: v1
@@ -110,10 +112,11 @@ spec:
 | `selector.app`            | The pods to select, and MUST be identical to that defined in `rollouts.yaml`, `codefresh.guestbook` in our example.| 
 
 ### Create an AnalysisTemplate for rollout validation
-Create an `AnalysisTemplate` specification to validate that your changes conforms to the requirements before deployment. This is the final specification you need before you can create the application.
+Create an `AnalysisTemplate` resource to validate that your changes conform to the requirements before deployment. This is the final resource you need before you can create the application.
 
-For the quick start, you'll create the `background-analysis` analysis template that interfaces with Prometheus, as the third-party metric provider to validate metrics. 
-> You can use any third-party metric provider supported by Argo Rollouts, such as Prometheus, Datadog, Wavefront, and more. Read the official documentation on [Analysis section in Argo Rollouts](https://argoproj.github.io/argo-rollouts/){:target="\_blank"}. 
+For the quick start, you'll create the `background-analysis` analysis template. The template interfaces with Prometheus, as the third-party metric provider to validate metrics.  
+
+You can use any third-party metric provider supported by Argo Rollouts, such as Prometheus, Datadog, Wavefront, and more. Read the official documentation on [Analysis section in Argo Rollouts](https://argoproj.github.io/argo-rollouts/){:target="\_blank"}. 
 
 
 * In the Git repository create the `AnalysisTemplate.yaml` file, as in the example below.
@@ -138,7 +141,7 @@ spec:
             sum(argocd_app_reconcile_sum)
 ```
 
-####  Fields in `backround-analysis.yaml`
+####  Fields in `background-analysis.yaml`
 
 {: .table .table-bordered .table-hover}
 |  Analyis Template field            |  Notes |  
