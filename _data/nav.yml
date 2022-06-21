@@ -49,6 +49,8 @@
       url: "/git-sources"
     - title: Restore runtimes
       url: "/runtime-recovery"
+    - title: Shared runtime configuration
+      url: "/shared-configuration"
 
 - title: Pipelines
   url: "/pipelines"

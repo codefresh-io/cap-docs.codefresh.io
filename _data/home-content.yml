@@ -41,6 +41,8 @@
       localurl: /docs/runtime/git-sources/
     - title:  Restore runtimes
       localurl: /docs/runtime/runtime-recovery/
+    - title: Shared runtime configuration
+      localurl: /docs/runtime/shared-configuration/
 
 
 - title: Pipelines
@@ -97,6 +99,5 @@
   icon: images/home-icons/plugins.svg
   url: ''
   links:
-  - title: Shared runtime configuration
-    localurl: /docs/incubation/shared-configuration
+  
     
