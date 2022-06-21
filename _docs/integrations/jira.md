@@ -6,13 +6,15 @@ toc: true
 ---
 
 One of the major highlights of the Codefresh platform is the ability to automatically correlate 
-software features with their deployment (where and when). While the software version of a component is easily identifiable, what is likely more interesting and important is to know which features are contained in a release.
+software features with their deployment (where and when). While the software version of a component is easily identifiable, what is likely more interesting and important is to know the features included in a release.
 
-Codefresh has native integration for Atlassian Jira. This allows Codefresh to monitor a feature all the way from the ticket creation phase, up to the moment it is implemented and deployed to an environment.
+Codefresh has native integration for Atlassian JIRA. This allows Codefresh to monitor a feature all the way from the ticket creation phase, up to the moment it is implemented and deployed to an environment.  
+
+If are using other CI tools, adding a JIRA integration allows you to reference the integration by name in your GitHub Actions pipeline for example, and allow Codefresh to retrieve and display this enriched information as part of the deployment. See [Image enrichment overview]({{site.baseurl}}/docs/integrations/image-enrichment-overview/).
 
 ### Prerequisites
 
-1. Get your JIRA instance credentials by following the [Attlassian documentation](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/).
+1. Get your JIRA instance credentials by following the [Atlassian documentation](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/).
 1. Note down the following as you will need to complete the integration with Codefresh:  
 
   * JIRA URL
@@ -48,7 +50,12 @@ Once you have set up a JIRA instance, configure the JIRA integration settings in
 
 
 ### What to read next
-[Adding Git sources]({{site.baseurl}}/docs/runtime/git-sources/)
+[Shared runtime configuration]({{site.baseurl}}/docs/runtime/shared-configuration/)  
+[Images]({{site.baseurl}}/docs/pipelines/images/)  
+[Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/)    
+[Adding Git sources]({{site.baseurl}}/docs/runtime/git-sources/)  
+
+
 
 
 
