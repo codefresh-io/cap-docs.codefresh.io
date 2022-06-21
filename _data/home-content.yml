@@ -41,8 +41,7 @@
       localurl: /docs/runtime/git-sources/
     - title:  Restore runtimes
       localurl: /docs/runtime/runtime-recovery/
-    - title:  App dashboard
-      localurl: /docs/deployment/app-dashboard/
+    
 
 
 - title: Pipelines
@@ -60,6 +59,13 @@
     - title: Viewing images
       localurl: /docs/pipelines/images/    
     
+- title: Deployment
+  icon: images/home-icons/deployment.svg
+  url: ''
+  links:
+  - title:  Applications dashboard
+      localurl: /docs/deployment/applications-dashboard/
+
 
 - title: Administration
   icon: images/home-icons/administration.svg
