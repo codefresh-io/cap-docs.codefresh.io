@@ -75,7 +75,7 @@
 - title: Image enrichment
   url: "/integrations"
   pages:
-    - title: GitHub actions
+    - title: GitHub Actions
       url: "/github-actions"
 
 - title: Administration
