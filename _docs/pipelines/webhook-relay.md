@@ -70,6 +70,7 @@ Every payload sent to the `/webhooks/${channel}/*` endpoint is published immedia
     The URL to which the Client should subscribe.
     The URL should include the channel (runtime name) on the Server in the following format:  
       `https://${external-cluster-ingress-host}/subscribe/${channel}/`
+
   
 * Webhook URL in the `EventSource` manifest  
 
@@ -79,6 +80,10 @@ Every payload sent to the `/webhooks/${channel}/*` endpoint is published immedia
   `endpoint` must be configured in the format: `/webhooks/${channel}/*`, for example, `/webhooks/runtime-1/push-github/)`  
     > Note: If you used the [Create Delivery Pipeline wizard]({{site.baseurl}}/docs/pipelines/create-pipeline), the `endpoint` is automatically configured in the correct format. 
 
+* (Optional) `AUTH_TOKEN` for authentication  
+  For increased security, define `AUTH_TOKEN` as an environment variable for client-server communication.  
+  The `AUTH_TOKEN` is a symmetrical secret token whose value must be defined on both client and server. When defined, it is sent in all subscribe requests from the client, and verified by the server.
+  
 * (Optional) IP whitelist for runtime clusters  
   As the channels are _not authenticated_, we highly recommend creating a whitelist with the _IP ranges of your runtime clusters_.  
   The whitelist ensures that only your internal clusters can access the `/subscribe/${channel}/` endpoint, while blocking access to other parties.   
@@ -215,6 +220,8 @@ Webhook payloads are _never_ stored on the Server or in any database; the Server
 
 **What are the best practices for production use?**  
 
+* For increased security, define `AUTH_TOKEN` as an environment variable for client-server communication.  
+  The `AUTH_TOKEN` is a symmetrical secret token whose value must be defined on both client and server. When defined, it is sent in all subscribe requests from the client, and verified by the server.
 * Use IP whitelists for your runtime clusters to access `/subscribe/${channel}/` endpoint, and for your git provider to access `/webhooks/${channel}/*` endpoint.
 * It is recommended to run multiple replicas of the Server together with Redis using the `REDIS_URL` environment variable.
 * `Server-sent events` connections are long-running HTTP (keep-alive) connections. We recommend that your reverse-proxy server is configured correctly to avoid situations where a long-running connection is cut off by the reverse-proxy. For example, [Nginx](http://nginx.org/en/docs/http/ngx_http_upstream_module.html#keepalive).
