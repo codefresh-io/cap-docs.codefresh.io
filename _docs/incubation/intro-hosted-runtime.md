@@ -21,7 +21,15 @@ Achieve your CD Ops goals with Hosted GitOps: easy set up and zero maintenance o
 Setting up your hosted environment takes a few clicks. All you need is a Codefresh account, a Git account, and a Kubernetes cluster to which to deploy your applications.
 Codefresh guides you through the simple three-step process of provisioning your hosted runtime.  
 
-SCREENSHOT   
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/incubation/intro-hosted-hosted-initial-view.png" 
+	url="/images/incubation/intro-hosted-hosted-initial-view.png" 
+	alt="Hosted runtime setup" 
+	caption="Hosted runtime setup"
+    max-width="50%" 
+%}   
 
 From version updates to security updates, Codefresh handles the administration and maintenance of hosted runtimes. 
 
@@ -36,8 +44,16 @@ From application analytics, to application creation, rollout and deployment, you
   * Daily deployments, failed deployments with rollbacks, and most active applications in the Home analytics dashboard
   * Deep dive into deployment in the Applications dashboard
 
-SCREENSHOT 1 of DORA
-SCREENSHOT 2 of Home
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/incubation/intro-dora-metrics.png" 
+	url="/images/incubation/intro-dora-metrics.png" 
+	alt="DORA metrics" 
+	caption="DORA metrics"
+    max-width="50%" 
+%}
+
 
 * Application creation  
 
