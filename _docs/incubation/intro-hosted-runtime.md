@@ -51,8 +51,6 @@ SCREENSHOT 2 of Home
 
   Historical deployments, current deployments, current state of application resources in interactive tree view with search functionality.  
 
-
-
 **CI connects for image enrichment**  
 
 Connect your CI integration tools to Codefresh to enrich deployment information.
@@ -61,4 +59,34 @@ Connect your CI integration tools to Codefresh to enrich deployment information.
 * Jira ticket information for correlation with deployed features  
 * Container registry integration with DockerHub and Quay to fetch image information 
 
-SCREENSHOT OF ONE INTEGRATION
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/incubation/github-action-int-settings.png" 
+	url="/images/incubation/github-action-int-settings.png" 
+	alt="Image enrichment with GitHub Actions integration" 
+	caption="Image enrichment with GitHub Actions integration"
+    max-width="30%" 
+%}
+
+### Hosted vs. hybrid comparison
+
+{: .table .table-bordered .table-hover}
+| Feature                 |Functionality  |  Hosted                | Hybrid | 
+| --------------          | --------------|--------------- | --------------- |
+| Runtime                 | Installation       | Managed by Codefresh   | Managed by customer       | 
+|                         | Number per account | Only one runtime        | Multiple runtimes  | 
+|                         | Management         | Only uninstall          | All options available: Upgrade, installation, uninstall   | 
+| Clusters                 |In-cluster          | Managed by Codefresh    | Managed by customer       | 
+|                          |Managed             | Managed by customer       | Mamaged by customer         | 
+| CI Ops                  | Delivery Pipelines |Not supported            | Supported  | 
+|                         |Workflows           | Not supported           | Supported  | 
+|                         |Workflow Templates  | Not supported           | Supported  | 
+| CD  Ops                 |Applications        | Fully  supported        |  Fully supported | 
+|                         | Image enrichment    | Supported              | Supported  | 
+|                         | Rollouts            | Supported              |  Supported  | 
+|Integrations             |                     | Supported              | Supported  | 
+|Dashboards               |(Main) Analytics      | Available with analytics for hosted runtime and deployments| Available with analytics for runtimes, deployments, Delivery Pipelines | 
+|                         |DORA metrics         | Available |Available        | 
+|                         |Applications         | Available |Available        | 
+
