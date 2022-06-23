@@ -5,31 +5,28 @@ group: pipelines
 toc: true
 ---
 
-Once a pipeline is created and triggered, Codefresh continuously collects and displays real-time analytics on the pipeline, and the workflows submitted.  
-Monitor, analyze, and compare resource consumption for all pipelines or for a single pipeline. The Home page dashboard displays global analytics for pipelines with active or completed workflows. 
-In contrast, the Delivery Pipelines page shows a list view of all pipelines that you have created, including those without workflows. Here you can drill down into a pipeline to see its workflows, and view workflow details to troubleshoot and manage individual workflows.
+Once a Delivery Pipeline is [created and triggered]({{site.baseurl}}/docs/pipelines/create-pipeline/),Codefresh continuously collects and displays real-time analytics on the pipeline and the workflows submitted.  
+>This article focuses on pipeline management. For information on managing workflows in pipelines, see [Managing workflows]({{site.baseurl}}/docs/pipelines/workflows/).
 
-There are several ways to monitor and manage pipelines:
 
-* Monitor sensor and event-source errors in the Activity Log
-* Analyze global analytics for pipelines with active workflows
-* Update pipeline configuration, such as the Workflow Template, Trigger conditions and arguments 
-* Update event source and sensor manifests
-* Troubleshoot workflows through workflow-step visualizations, alongside manifest, summary, and log details 
-* Retry, resubmit, or terminate workflows
-For details on workflows in pipelines, see 
+Manage Delivery Pipelines in Codefresh by monitoring pipeline performance and analytics, and by optimizing pipeline configurations and manifests. 
 
-The example below shows the list view for pipelines.
-{% include image.html 
-  lightbox="true" 
-  file="/images/pipeline/monitoring/pipeline-list-view.png" 
-  url="/images/pipeline/monitoring/pipeline-list-view.png"
-  alt="List view with individual Delivery Pipelines"
-  caption="List view with individual Delivery Pipelines"
-  max-width="30%"
-  %}
 
->This article focuses on pipeline management. For information on managing workflows, see [Managing workflows]({{site.baseurl}}/docs/pipelines/workflows/).
+**Monitoring pipeline performance and analytics**  
+Monitor pipelines performance at the global and individual levels. Both levels provide metrics for KPIs for insights into trends and performance.
+
+* At the global level (Home dashboard), Codefresh aggregates performance analytics for all pipelines with active workflows.
+* At the individual level (Delivery Pipelines list), Codefresh aggregates performance based on the pipeline's workflows, including step analytics across all the workflows in the pipeline. Step analytics allow you to analyze the resources consumed by a pipeline.
+* Monitoring sensor and event-source errors for  
+
+
+**Optimizing pipeline configuration**
+Use insights and trends from performance and KPI metrics to optimize the pipeline's Workflow Template, trigger conditions, and arguments. 
+
+
+
+
+
 
 
 ### Monitor sensor and event source notifications for pipelines in Activity Log
@@ -50,11 +47,10 @@ Monitor logs for sensors and event-sources in pipelines in the Activity Log. A p
 {:start="3"}
 1. To see more information on an error, select the **+** sign.
 
-### Aggregated global analytics for pipelines
-The Home page displays the aggregated, global view of all the Delivery Pipelines with active workflows in your cluster.  The global view provides insights into trends, and resource consumption across all the _active_ pipelines. Analytics are derived by comparing the selected time range to the corresponding reference period. If your time range is the last seven days, the reference period is the seven days that precede the time range. 
+### Monitor global pipeline performance 
+Monitor performance of all active pipelines in the Home dashboard. Active pipelines are those that have at least one active or complete workflow.  
+The KPI metrics provides insights into trends for pipelines. Analytics are derived by comparing the selected time range to the corresponding reference period. If your time range is the last seven days, the reference period is the seven days that precede the time range. 
 
-
-#### View aggregated pipeline analytics (global view)
 
 1. In the Codefresh UI, go to the [Home](https://g.codefresh.io/2.0/){:target="\_blank"} page.
 1. Set the **Time** frame for which to show pipeline data, as the **Last 7 days** (the default), **Last 30 days**, or **Last 90 days**.
@@ -63,8 +59,7 @@ The Home page displays the aggregated, global view of all the Delivery Pipelines
   2. To switch to individual pipeline view, select **View**.
   3. To get day-to-day data for a metric, select the line-chart. 
 
-#### Explore aggregated pipeline analytics (global view)
-Here is an example of the aggregated pipeline view in the Home page. 
+Here is an example of the global pipeline view in the Home page. 
 
   {% include image.html 
   lightbox="true" 
@@ -75,20 +70,11 @@ Here is an example of the aggregated pipeline view in the Home page.
   max-width="30%"
   %}
 
-The table describes the information for pipelines in the Home page.
-
-{: .table .table-bordered .table-hover}
-| Legend            | Description |  
-| --------------    | ------------|  
-| **1**             | The Home page with global Delivery Pipelines analytics.|                             
-|**2**              | The filters by which to customize the aggregated view. For information on the filters, see [Filters quick reference](#filters-for-aggregated-views) in this article. All filters support multiple values.|          
-|**3**              |  Line chart views of KPIs for Delivery Pipelines. Selecting a line chart displays the detailed day-to-day values for the metrics. For information on each metric, see [Metrics quick reference](#metrics-in-aggregated-views) in this article. |       
-|**4**             | Pipelines by activity and duration. List views of up to ten of the most active, and ten of the longest running, pipelines. {::nomarkdown}<ul><li>Pipelines without numbers prefixing the names indicate new pipelines within the selected time frame.</li><li>Pipelines prefixed with numbers (encircled in the image above) indicate existing pipelines. </br> The number indicates the change in position of the pipeline compared to the reference period. </li><li>To drill down into a specific pipeline, select the pipeline.</li></ul> {:/}|    
 
 
 
-#### Filters for aggregated pipeline analytics
-Filters narrow the scope of aggregated data, allowing you to visualize just the information you want to see. Unless otherwise indicated, all filters support multi-selection.
+#### Filters for global pipeline view
+Filters narrow the scope of aggregated data, allowing you to focus on the information you want to see. Unless otherwise indicated, all filters support multi-selection.
 
 {: .table .table-bordered .table-hover}
 |  Filter          |  Description|  
@@ -98,11 +84,15 @@ Filters narrow the scope of aggregated data, allowing you to visualize just the 
 | **Event Type**       | The Git or Calendar event or events by which to view pipelines.  If you select Git push, only those pipelines configured to be run on Git push are displayed. |    
 | **Initiator**       | The user who made the commit that triggered the event and caused the pipeline to run.|       
 
-#### Metrics in aggregated pipeline analytics
+#### Metrics in global pipeline view
 
 Pipeline metrics (KPIs), are displayed as line charts and in list formats. 
-* Line charts visualize the detailed day-to-day values for the metric in the selected time range.
-* List formats display the average values for the metrics, and shows the fluctuations in the values compared to the reference time range. The reference time range is the period of time that corresponds to and precedes the selected time range. 
+* Line charts
+  Quick views of KPIs for the selected time frame. To see detailed day-to-day values, select a line chart.
+* List formats
+  Display the average values for the same KPIs, sorted by activity and duration. The different perspectives illustrate both the fluctuations in the KPIs compared to the reference time range, and trending pipelines. The reference time range is the period of time that corresponds to and precedes the selected time range. 
+
+  {::nomarkdown}<ul><li>Pipelines without numbers prefixing the names indicate new pipelines within the selected time frame.</li><li>Pipelines prefixed with numbers (encircled in the image above) indicate existing pipelines. </br> The number indicates the change in position of the pipeline compared to the reference period. </li><li>To drill down into a specific pipeline, select the pipeline.</li></ul>
 
 {: .table .table-bordered .table-hover}
 |  Metric               |  Description|  
@@ -110,23 +100,17 @@ Pipeline metrics (KPIs), are displayed as line charts and in list formats.
 | **Success Rate**      | The average number of successful executions, in percentage. |                            
 | **Average Duration**  | The average length of time to complete execution, in mm:ss. |          
 | **Executions**        | The average number of times the pipeline was triggered, in percentage. |    
-| **Committers**        | The number of users whose commits on the repository or repositories triggered the pipelines. The user count is aggregated per user, so if the same user made ten commits, the ten commits are counted as a single commit.|       
+| **Committers**        | The number of users whose commits on the repository or repositories triggered the pipelines. User count is aggregated per user, so multiple commits from the same user are counted as a single commit.|       
 
 
-### Managing individual pipelines
+### Monitor individual pipeline performance
 
-Individual pipeline view shows all pipelines in your cluster, including those that are not active, meaning pipelines for which workflows have not been submiited.  
+Monitor and compare KPIs for all pipelines in your cluster, including those that are not active, meaning pipelines for which workflows have not been submitted.  
 
-When you select an individual pipeline, you can monitor steps within workflows.  
-Both step and workflow analytics share the same set of filters that allow you to reduce the data displayed and customize the view.
-
-
-#### View individual pipeline analytics (list view)
-
+View pipeline activity for the last seven days, the status and the sync state. Compare KPIs for all the pipelines in the cluster, and identify inactive pipelines.
+ 
 1. In the Codefresh UI, go to the [Delivery Pipelines](https://g.codefresh.io/2.0/pipelines){:target="\_blank"} page.
 1. To find specific pipelines, in the search field, enter a part of the pipeline name. For example, to find all CI-based pipelines, enter `ci`.
-
-#### Explore pipeline list view
 
 Here is an example of the list view of individual pipelines. 
 
@@ -146,49 +130,41 @@ The table describes the information for each pipeline in the list view.
 {: .table .table-bordered .table-hover}
 | Legend        |  Description|  
 | --------------| --------------           |  
-| **Name**      | The name of the pipeline. Select the name to drill down into workflow steps and workflows.|                             
-| **Recent Activity**| Bar chart of up to ten of the most recent workflows submitted for the pipeline. {::nomarkdown}<ul><li>Each bar represents a workflow, and is color-coded to indicate the workflow's status. Green is for completed, red for failed, and blue for ongoing workflows. </li><li> Mouse over a bar to see a pop-up with the metadata for the workflow. </li> <li>Selecting View Workflow Details takes you to the Workflow tab where you have several options to manage the workflow and view logs. For more information, see <a href="https://codefresh.io/csdp-docs/docs/pipelines/workflows">Managing workflows</a>.</li></ul> {:/}|          
-| **Last Run**| The time of the most recent run of the pipeline, that is a workflow. The time is also color-coded to indicate the status of the workflow.  |       
+| **Name**      | The name of the pipeline. Select the name to drill down into step analytics, workflows, and configuration.|                             
+| **Recent Activity**| Bar chart of up to ten of the most recent workflows submitted for the pipeline. {::nomarkdown}<ul><li>Each bar represents a workflow that is color-coded to indicate the workflow's status: Green for completed, red for failed, and blue for ongoing workflows. </li><li> Mouse over a bar to see a pop-up with the metadata for the workflow. </li> <li>Selecting View Workflow Details takes you to the Workflow tab where you have several options to manage the workflow and view logs. For more information, see <a href="https://codefresh.io/csdp-docs/docs/pipelines/workflows">Managing workflows</a>.</li></ul> {:/}|          
+| **Last Run**| The time of the most recent run of the pipeline, when a workflow was submitted. The time is also color-coded to indicate the status of the workflow. Empty Last Run columns identify pipelines that have not been triggered to submit workflows.|       
 | **Success Rate**| The number of workflows that completed successfully in the last seven days, and the comparison to the reference period in percentage. | 
 | **Avg. Duration**| The average length of time for the pipeline's workflows to complete execution, in mm:ss. |   
 | **Weekly Runs**| The number of times the pipeline was run and its workflows submitted in the last seven days, and the difference in percentage compared to the reference period. |  
 | **Runtime**| The runtime in which the pipeline is run.  |  
 | **Last Modified**| The date and time that the pipeline was recently updated. The updates include changes in configuration and manifests.|  
-| **Sync Status**| The sync status with the desired state in Git.|  
+| **Sync Status**| The sync status of the live state in the cluster with the desired state in Git.|  
 
 
 
-### Update pipeline configuration
-Update the Workflow Template, Trigger Conditions and arguments configured for the pipeline. 
+### Update pipeline configuration settings or manifests
+Update the pipeline's Workflow Template, arguments, sensor and event source manifests to optimize or fix performance issues. 
+You can update the settings in the Configuration tab or in the Manifests tab, working in the mode that you are comfortable with. 
+* The Configuration tab shows a modular view of the settings in form mode, and makes for easier editing.  
+* The Manifests tab shows the YAMLs generated on commit. Here you can see the Git, desired, and live states of each manifest in parallel.  
+   The Git state is the state-of-truth and is the only editable state. The desired state is the state after the changes are committed, before they are synced to the cluster. The live state is the actual state currently in the cluster. 
 
-> You can also update the manifest directly in the Manifests tab.
+For information on the settings, review [Delivery Pipeline creation flow]({{site.baseurl}}/docs/pipelines/create-pipeline/#delivery-pipeline-creation-flow)
 
 1. From either the **Home** or the **Delivery Pipelines** pages, select a pipeline.
 1. Select the **Configuration** tab. 
-1. To modify the Workflow Template, select **Workflow Templates**.
-  The Workflow Template structure is entry point , followed by the list of Workflow Templates referenced with links.
+  * Select the component, and modify settings as needed. 
+  * For the Workflow Template, use the **Diff View** to see changes. 
 
-1. Modify settings as needed, using the **Diff View** to see the changes. 
-  Codefresh validates the settings in real-time alerting you to errors and warnings.
-  > If there are Errors, Commit is disabled until you resolve the errors.
-
-
-
-### Update pipeline manifests
-Update the YAML manifests of the Workflow Template, event source and sensor configured for the pipeline. 
-The YAML view shows the Git, desired, and live states of the manifests in parallel. Codefresh shows you three states to 
-The Git state is the state-of-truth and is the only editable state. The desired state is the state after the changes are committed, before they are synced to the cluster. The live state is the actual state currently in the cluster. 
-
-
-1. From either the **Home** or the **Delivery Pipelines** pages, select a pipeline.
-1. Select the **Manifests** tab. 
-1. To review the changes by manifest, select the 
-1. From the drop-down list, select any YAML manifest.
-1. Compare the Git, desired, and actual versions if needed.
-1. To update, switch to the **Git State** and Select **Edit**. 
+{:start="3"}
+1. Select the **Manifests** tab.
+  * Check if there are Errors or Warnings for the manifest.
+  * To review the changes by manifest, from the drop-down list, select any YAML manifest.
+  * Compare the Git, desired, and actual versions if needed.
+  * To update, switch to the **Git State** and Select **Edit**. 
+  * To view commit history, select **Sync History**.  
+    Codefresh validates the settings in real-time alerting you to errors and warnings.
   
-1. Modify settings as needed, using the **Diff View** to see the changes. 
-  Codefresh validates the settings in real-time alerting you to errors and warnings.
   > If there are Errors, Commit is disabled until you resolve the errors.
 
 ### What to read next

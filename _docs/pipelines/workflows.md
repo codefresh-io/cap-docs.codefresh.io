@@ -127,7 +127,7 @@ Here's an example of step information for all workflows in the Dashboard tab.
 
 ### Managing workflows
 
-Both the Workflows and the Delivery Pipeline dashboards allow you to drill down into a specific workflow to view, analyze, and troubleshoot execution.  When you drill down from a Delivery Pipeline, you can see the workflow in the context of its pipeline, including the pipeline's configuration settings, and sensor and event-source manifests. The integrated view of both the workflow steps, workflow logs, and the pipeline configuration in the same location makes it easy to make changes when troubleshooting.  
+Both the Workflow and the Delivery Pipeline dashboards allow you to drill down into a specific workflow to view, analyze, and troubleshoot execution.  When you drill down from a Delivery Pipeline, you can see the workflow in the context of its pipeline, including the pipeline's configuration settings, and sensor and event-source manifests. The integrated view of both the workflow steps, workflow logs, and the pipeline configuration in the same location makes it easy to make changes when troubleshooting.  
 
   {% include image.html 
     lightbox="true" 
