@@ -5,7 +5,7 @@ group: administration
 toc: true
 ---
 
-Easily Connect Codefresh to your Git provider using the OAuth2. 
+Easily Connect Codefresh to your Git provider using OAuth2. 
 Codefresh integrates with Git to sync repositories to your clusters, implementing Git-based operations when creating resources such as Delivery Pipelines, and to enrich Images with valuable information.
 
 
