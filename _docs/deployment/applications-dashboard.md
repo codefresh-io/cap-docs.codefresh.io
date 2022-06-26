@@ -381,15 +381,6 @@ max-width="50%"
 * Wrap: Enable/disable line wrapping 
 * Download: Download the complete log into a text file for offline viewing and analysis.
 
-alt="Applications Dashboard: Current State tab"
-caption="Applications Dashboard: Current State tab"
-max-width="70%"
-%}
 
-You can filter by:
-* **Kind**: The type of Kubernetes resource. 
-* **Health**: The status of the resource.
-
-For more information, see [Working with Kubernetes objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/){:target="\_blank"}.
 
 
