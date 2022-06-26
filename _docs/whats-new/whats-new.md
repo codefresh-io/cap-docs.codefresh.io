@@ -16,7 +16,7 @@ Since the launch, we have continued to work on and grow Codefresh.
 
 #### Shared configuration for runtimes
 Define configuration for a runtime once, and reuse the configuration for multiple runtimes in the same account. Reduce the time needed for setup and maintenance. 
-Runtime installation includes defining a Git repository for runtime configuration settings. You can then reference this Git repository, selectively from specific runtimes, or from all runtimes, to share configuration settings.  
+Runtime installation includes defining a Git repository to store runtime configuration settings. You can then reference this Git repository, selectively from specific runtimes, or from all runtimes, to share configuration settings.  
 
 For details, see [Shared runtime configuration]({{site.baseurl}}/docs/runtime/shared-configuration/).
 
@@ -108,11 +108,27 @@ In addition to installing Argo Rollouts in your cluster, visualize Argo Rollout 
 **Rollout progress**
 Ongoing rollouts show the progress of the rollout in the real time. Completed rollouts show the switch to the new version according to the deployment strategy. 
 
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/whats-new/rel-notes-june22-rollout-in-progress.png" 
+	url="/images/whats-new/rel-notes-june22-rollout-in-progress.png" 
+	caption="Application Rollout: Progress visualization"
+   max-width="60%" 
+  %}
 
+**Rollout steps**  
 
+As the rollout occurs, visualize step-by-step progress. See detailed metric analysis and the manifest of the analysis template.  
 
-**Rollout steps**
-As the rollout occurs, visualize step-by-step progress. See detailed metric analysis and the manifest of the analysis template.
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/whats-new/rel-notes-june22-rollout-analysis.png" 
+	url="/images/whats-new/rel-notes-june22-rollout-analysis.png" 
+	caption="Application Rollout: Steps visualization"
+   max-width="60%" 
+  %}
 
 For details, see [Rollout progress and step visualization]({{site.baseurl}}/docs/deployment/applications-dashboard/#rollout-progress-visualization/).
 
