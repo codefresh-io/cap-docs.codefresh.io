@@ -14,7 +14,7 @@ Codefresh supports OAuth2 or Personal Access Tokens (PATs) for authentication:
 * OAuth2 with Codefresh OAuth Application or custom OAuth2 Application
 
   OAuth2 is the preferred authentication mechanism, currently supported for GitHub. You have the option to use the default pre-defined Codefresh OAuth Application, or your own Oauth2 Application in your Git account. 
-  To use your own Oauth2 GitHub Application, create a secret on your K8s cluster and configure it in Authentication > Settings.
+  To use your own Oauth2 GitHub Application, create a secret on your K8s cluster and configure it in Authentication > Settings. See [Create a custom OAuth2 provider account](#create-a-custom-oauth2-provider-account) in this article.
   
 
   > A runtime can have only one active account for authentication. 
