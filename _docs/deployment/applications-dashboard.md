@@ -163,7 +163,7 @@ caption="Applications Dashboard: Deployment chart"
 max-width="30%"
 %}
 
-#### Deployments details
+#### Deployment details
 
 Each deployment entry displays the complete history of that deployment, complete with enriched image information, Kubernetes service updates, and Argo application updates:
 
@@ -216,8 +216,8 @@ caption="Application deployment completed"
 max-width="50%"
 %}
 
-#### Analysis run visualization
-Clicking the rollout name displays the visualization of the analysis run.  
+#### Rollout steps visualization
+Clicking the rollout name displays the visualization of the steps in the rollout.  
 
 Argo defines an analysis run as an instantiation of an AnalysisTemplate. The result of an analysis run determines if the rollout is completed, paused, or aborted. For detailed information, see the [Analysis section in Argo Rollouts](https://argoproj.github.io/argo-rollouts/features/analysis/){:target="\_blank"}.  
 
