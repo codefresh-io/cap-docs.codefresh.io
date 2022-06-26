@@ -10,6 +10,132 @@ toc: true
 We launched the Codefresh platform in February this year. Built on Argo, the world’s most popular and fastest-growing open source software delivery, Codefresh unlocks the full enterprise potential of Argo Workflows, Argo CD, Argo Events, and Argo Rollouts, providing a control-plane for managing them at scale.
 Since the launch, we have continued to work on and grow Codefresh. 
 
+## June 2022
+
+### Features & enhancements
+
+#### Shared configuration for runtimes
+Define configuration for a runtime once, and reuse the configuration for multiple runtimes in the same account. Reduce the time needed for setup and maintenance. 
+Runtime installation includes defining a Git repository for runtime configuration settings. You can then reference this Git repository, selectively from specific runtimes, or from all runtimes, to share configuration settings.  
+
+For details, see [Shared runtime configuration]({{site.baseurl}}/docs/runtime/shared-configuration/).
+
+#### Runtime logs
+
+#### OAuth2 authentication
+OAuth (Open Authorization) 2.0 has become an industry standard for online authorization. Easily connect Codefresh to your Git provider using OAuth2. Codefresh integrates with Git to sync repositories to your clusters, implement Git-based operations when creating resources such as Delivery Pipelines, and to enrich Images with valuable information.  
+
+Codefresh provides a default, predefined OAuth2 application for every runtime. As an account administrator in Codefresh, you can also create an OAuth2 Application in GitHub and set up authentication within Codefresh. Users in Codefresh can then authorize access to GitHub with OAuth2, instead of a personal access token.  
+
+For details, see [Set up OAuth2 authentication]({{site.baseurl}}/docs/administration/oauth-setup/).
+
+#### Image enrichment
+Image enrichment is a crucial part of the CI/CD process as it adds to the quality of deployments. Image enrichment exposes metadata such as feature requests, pull requests, and logs as part of the application’s deployment, providing a holistic view of the deployed application.
+
+Codefresh introduces a [new template](https://github.com/codefresh-io/csdp-report-image/blob/main/README.md), that combines image enrichment and image reporting definitions.
+Instead of separate steps to create, enrich, and report image information into Codefresh, you can create, and then enrich and report image information in the same step. The template utilizes Kubernetes secrets and the new integration mechanism.  
+
+The custom step can be incorporated in: 
+* Codefresh-supplied Workflow templates 
+* Codefresh-native pipelines 
+* Third-party pipelines
+
+For details, see [Image enrichment overview]({{site.baseurl}}/docs/integrations/image-enrichment-overview/).
+
+#### Integrations
+This release launches the Codefresh integration offering, starting with: 
+* GitHUb Actions for CI/CD workflow automation
+* JIRA for issue tracking
+* Docker Hub and Quay registries for image storage
+
+We are continually expanding the range of integrations, so stay tuned for release announcements.  
+
+Codefresh encrypts the credentials for every integration account you create, and stores them securely as Kubernetes Sealed Secrets, making the integration flow completely GitOps-compatible. Pipelines reference the integration by integration name, instead of integration credentials. Codefresh retrieves enrichment information using the encrypted Kubernetes secrets.  
+
+Every integration is authorized through OAuth2, either through the predefined Codefresh OAuth2 application or through a customer OAuth2 Application.  
+
+For details, see [GitHub Actions]({{site.baseurl}}/docs/integrations/github-actions/), [JIRA]({{site.baseurl}}/docs/integrations/jira/), [Docker Hub]({{site.baseurl}}/docs/integrations/docker-hub/), and [Quay Registry]({{site.baseurl}}/docs/integrations/quay/).
+
+
+#### Tree view of application resources
+The Tree view of the Current State complements the List view of the same in the Applications dashboard. Similar to the List view, the Tree view also displays all the resources deployed for an application.  
+
+So what is unique about the Tree view?  
+First, the Tree view simplifies visualization of and tracking resources for any deployment, think complex deployments with hundreds of resources.  Second, it is designed to impart key information for each resource at a glance. Every resource shows its health status (color-coded border), sync state (icon prefixed to name), and metadata on mouse-over. 
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/whats-new/rel-notes-june22-tree-view.png" 
+	url="/images/whats-new/rel-notes-june22-tree-view.png" 
+	alt="Application Current State: Tree view" 
+	caption="Application Current State: Tree view"
+   max-width="60%" 
+  %}
+
+
+**Progressive discovery**  
+
+By the very nature of its design, the Tree View allows progressive discovery. View all resources at once, or start with a parent resource, and expand it to view siblings and children, and understand how they are connected.  
+
+**Resource filters**  
+
+The filters in the List view are available also in the Tree view. These global filters help narrow the scope of the resources displayed, by kind, health status, and sync state. The filters you set are retained when navigating between List and Tree views.   
+
+**Resource search and find**  
+
+The Search option lets you search by any part of the resource name to locate resources. Similar to the filters, search results are also retained when navigating between Tree and List views.   
+For quick search, use the Find option to locate and navigate to required resources.  
+
+**Resource inventory**  
+
+At the bottom-left, the resource inventory summarizes your deployment in numbers per resource kind. Syncing and Out-of-Sync resources for each kind are bucketed separately for visibility, and quick access as these states also work as filters to display only those resources.  
+
+**Resource manifest and logs**  
+
+In addition to the metadata on mouse-over for a resource, clicking a resource shows its manifests and logs based on the resource type. View and compare the Desired and Live states for managed resources in Git repositories.  
+Yet another usability enhancement is the ability to share resource details by copying the URL and sending it to others in your organization for collaborative review.  
+
+Logs are displayed in both views if the resource has logs, without pagination and :  
+* For online viewing, you have free-text search and dynamic line-wrap functionalities. 
+* For offline viewing and analysis, you can download the complete log into a text file.   
+
+For details, see [Current State Tree view]({{site.baseurl}}/docs/deployment/applications-dashboard/#current-state-tree-view/).
+
+#### Application rollout visualization 
+In addition to installing Argo Rollouts in your cluster, visualize Argo Rollout history and progress directly in the Applications (deployment) dashboard. Visualize rollouts from multiple clusters and runtimes in a single centralized location through the Deployment tab.
+
+**Rollout progress**
+Ongoing rollouts show the progress of the rollout in the real time. Completed rollouts show the switch to the new version according to the deployment strategy. 
+
+
+
+
+**Rollout steps**
+As the rollout occurs, visualize step-by-step progress. See detailed metric analysis and the manifest of the analysis template.
+
+For details, see [Rollout progress and step visualization]({{site.baseurl}}/docs/deployment/applications-dashboard/#rollout-progress-visualization/).
+
+
+
+### DORA metrics
+DORA metrics has become the defacto standard to quantify performance of DevOps teams. Codefresh supports DORA metrics out-of-the-box.
+
+Filter by runtime, applications to focus on what you need. And, while in metric views, select the granularity 
+
+For details, see ???
+
+#### Nested workflows
+In pipelines, add steps that create new workflows with nested workflows functionality. A nested workflow is a step within the parent workflow that either submits a new workflow or creates a PR (Pull Request) that runs a different workflow based on the PR result.
+
+Nested workflows run independently of the parent workflow that submitted them. A nested submit workflow has traceability in both directions, from the parent to child, and from the child to the parent. A workflow triggered by a nested PR identifies the PR that triggered it.
+
+The Codefresh Hub for Argo has two ready-to-use Workflow Templates that:
+* Submits a workflow
+* Creates a PR to run the workflow that tracks the PR
+
+For details, see [Nested workflows]({{site.baseurl}}/docs/pipelines/nested-workflows/).
+
 ## May 2022
 
 ### Features & enhancements
