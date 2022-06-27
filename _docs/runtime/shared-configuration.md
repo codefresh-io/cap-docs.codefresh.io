@@ -1,5 +1,5 @@
 ---
-title: "Shared configuration for runtimes"
+title: "Shared runtime configuration"
 description: ""
 group: runtime
 toc: true
@@ -93,7 +93,7 @@ This Git Source application creates an application manifest with the `<cluster-n
 
 
 ### Adding resources
-When creating a new resource such as a new integration for example, you must define the runtimes and clusters to which to apply that resource. The app-proxy saves the resource in the correct location and updates the relevant Argo CD Applications to include it.
+When creating a new resource such as a new integration for example, you must define the runtimes and clusters to which to apply that resource. The app-proxy saves the resource in the correct location and updates the relevant Argo CD Applications to include it. 
 
 ### Upgrading hybrid runtimes
 Older hybrid runtimes that do not have the shared configuration repository must be upgraded to the latest version.  
