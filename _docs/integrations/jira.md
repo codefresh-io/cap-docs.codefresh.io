@@ -48,6 +48,12 @@ Once you have set up a JIRA instance, configure the JIRA integration settings in
 1. To confirm, click **Commit**.
   It may take a few moments for the changes to be synced to the cluster before the integration account appears in the list.
 
+### Integration resource in shared runtime configuration
+The integration resource is created in the shared runtime configuration Git repository, under `resources`.
+The exact location depends on whether the integration is shared with _all_ or _specific_ runtimes:  
+* All runtimes: Created in `resources/all-runtimes-all-clusters/`
+* Selected runtimes: Created in `resources/runtimes/<runtime-name>/`
+
 
 ### What to read next
 [Shared runtime configuration]({{site.baseurl}}/docs/runtime/shared-configuration/)  
