@@ -10,7 +10,8 @@ software features with their deployment (where and when). While the software ver
 
 Codefresh has native integration for Atlassian JIRA. This allows Codefresh to monitor a feature all the way from the ticket creation phase, up to the moment it is implemented and deployed to an environment.  
 
-If are using other CI tools, adding a JIRA integration allows you to reference the integration by name in your GitHub Actions pipeline for example, and allow Codefresh to retrieve and display this enriched information as part of the deployment. See [Image enrichment overview]({{site.baseurl}}/docs/integrations/image-enrichment-overview/).
+Adding a JIRA integration allows you to reference the integration in your pipelines (Codefresh or external), by the name of the integration account, instead of adding explicit credentials. See [Image enrichment overview]({{site.baseurl}}/docs/integrations/image-enrichment-overview/).
+
 
 ### Prerequisites
 
