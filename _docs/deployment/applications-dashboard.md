@@ -140,8 +140,6 @@ caption="Applications Dashboard: Timeline tab"
 max-width="30%"
 %}
 
-
-
 #### Filters
 
 View the subset of deployments of interest to you. Filter by Date range, PRs, issues, committers, and more.  
@@ -245,7 +243,6 @@ alt="Application rollout: Analysis run results"
 caption="Applications rollout: Analysis run results"
 max-width="30%"
 %}
-
 
 
 ### Application services
