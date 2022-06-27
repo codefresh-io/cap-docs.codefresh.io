@@ -6,8 +6,8 @@ toc: true
 ---
 
 
-If you are signed-in to our Hosted GitOps, complete the simple setup for your hosted runtime, and you are all ready to leverage our extensive CD Ops capabilities.
-Read about [Codefresh Hosted GitOps](). 
+If you have a license for Hosted GitOps, complete the simple setup for your hosted runtime, and you are all ready to leverage our extensive CD Ops capabilities.
+Read about [Codefresh Hosted GitOps]({{site.baseurl}}/docs/incubation/intro-hosted-runtime/). 
 
 ### Where to start with Hosted GitOps
 If you have not installed a hosted runtime, Codefresh presents you with the setup options in the Home dashboard.   
@@ -87,11 +87,13 @@ max-width="70%"
 
 
 Once you authorize access, Codefresh creates two Git repositories, one to store the runtime's configuration settings, and the other to store runtime's application settings:
-* Shared runtime configuration repo
+* Shared runtime configuration repo  
+
   The shared runtime configuration repo is a centralized Git repository that stores configuration settings for the hosted runtime. Additional runtimes created for the account can point to this repo to retrieve and use the configuration.  
   Read about [Shared runtime configuration]({{site.baseurl}}/docs/runtime/shared-runtime/).
 
-* Git Source application repo
+* Git Source application repo  
+
   Codefresh creates a Git Source application repo for every hosted runtime.  
   Read about [Git sources]({{site.baseurl}}/docs/runtime/git-sources/).
 
