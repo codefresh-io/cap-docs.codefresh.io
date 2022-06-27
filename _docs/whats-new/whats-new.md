@@ -59,33 +59,6 @@ Codefresh provides a default, predefined OAuth2 application for every runtime. A
 
 For details, see [Set up OAuth2 authentication]({{site.baseurl}}/docs/administration/oauth-setup/).
 
-#### Image enrichment
-Image enrichment is a crucial part of the CI/CD process as it adds to the quality of deployments. Image enrichment exposes metadata such as feature requests, pull requests, and logs as part of the application’s deployment, providing a holistic view of the deployed application.
-
-Codefresh introduces a [new template](https://github.com/codefresh-io/csdp-report-image/blob/main/README.md), that combines image enrichment and image reporting definitions in a single step.  
-Instead of separate steps to enrich, and then report image information into Codefresh, after image creation, you can both enrich the image and report image information in the same step. The template utilizes Kubernetes secrets and the new integration mechanism with CI platforms, tools and Docker registries.  
-
-The custom step can be incorporated in: 
-* Codefresh-supplied Workflow templates 
-* Codefresh-native pipelines 
-* Third-party pipelines
-
-For details, see [Image enrichment overview]({{site.baseurl}}/docs/integrations/image-enrichment-overview/).
-
-#### Integrations
-This release launches the Codefresh integration offering, starting with: 
-* GitHUb Actions for CI/CD workflow automation
-* JIRA for issue tracking
-* Docker Hub and Quay registries for image storage
-
-Stay tuned for release announcements of additional integrations, as we expand the range of integrations.  
-
-Codefresh encrypts the credentials for every integration account you create, and stores them securely as Kubernetes Sealed Secrets, making the integration flow completely GitOps-compatible. Pipelines reference the integration by integration name, instead of integration credentials. Codefresh retrieves enrichment information using the encrypted Kubernetes secrets.  
-
-Every integration is authorized through OAuth2, either through the predefined Codefresh OAuth2 application or through a customer OAuth2 Application.  
-
-For details, see [GitHub Actions]({{site.baseurl}}/docs/integrations/github-actions/), [JIRA]({{site.baseurl}}/docs/integrations/jira/), [Docker Hub]({{site.baseurl}}/docs/integrations/docker-hub/), and [Quay Registry]({{site.baseurl}}/docs/integrations/quay/).
-
 
 #### Application resources in Tree view 
 The Tree view of the Current State complements the List view of the same in the Applications dashboard. Similar to the List view, the Tree view also displays all the resources deployed for an application.  
@@ -161,12 +134,6 @@ As the rollout occurs, visualize step-by-step progress. See detailed metric anal
   %}
 
 For details, see [Rollout progress and step visualization]({{site.baseurl}}/docs/deployment/applications-dashboard/#rollout-progress-visualization/).
-
-#### Edit/delete applications
-TBD
-
-#### DORA metrics
-TBD?
 
 #### Nested workflows
 Add nested workflow functionality to Codefresh pipelines. A nested workflow is a step within the parent workflow that either submits a new workflow or creates a PR (Pull Request) that runs a different workflow based on the PR result.
