@@ -20,6 +20,7 @@ Here are some insights you can derive from the Applications dashboard:
 
 The main view shows all deployed applications, sorted by the most recent deployments, by default.   
 
+
 Here is an example of the main page in the Applications dashboard. 
 
   {% include
@@ -86,6 +87,7 @@ Mark applications as favorites, and view them with a click.
 #### Deployment type
 Applications are displayed according to their deployment type which can be one of the following:
 * Applications  
+
   Standalone applications. For detailed information, see the official documentation on [Applications](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications){:target="\_blank"}.  
 
   {% include
@@ -113,6 +115,7 @@ max-width="30%"
   
 * App-of-apps  
   In this deployment model, the parent application deploys a set of child applications.  For detailed information, see the official documentation on [App of Apps](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#app-of-apps){:target="\_blank"}. 
+
 
 {% include
 image.html
@@ -163,7 +166,10 @@ max-width="30%"
 
 #### Deployment details
 
-Each deployment entry displays the complete history of that deployment, complete with enriched image information, Kubernetes service updates, and Argo application updates:
+**Deployment entries**  
+
+Each deployment entry displays the complete history of that deployment, by Git hash, Kubernetes services, and Argo applications:
+
 
 {% include
 image.html
@@ -172,7 +178,7 @@ file="/images/applications/app-dashboard-time-expanded-card.png"
 url="/images/applications/app-dashboard-time-expanded-card.png"
 alt="Applications Dashboard: Deployment entry in Timeline tab"
 caption="Applications Dashboard: Deployment entry in Timeline tab"
-max-width="30%"
+max-width="70%"
 %}
 
 * The **CI Builds** shows the image(s) created or updated during deployment. Click to see the **Images** view in a new browser window.
@@ -376,6 +382,7 @@ caption="Current State: Search resources"
 max-width="50%"
 %}
 
+
 #### Current State List view 
 Here is an example of the Current State in List view.
 
@@ -388,7 +395,6 @@ alt="Applications Dashboard: List view of Current State"
 caption="Applications Dashboard: List view of Current State"
 max-width="50%"
 %}
-
 
 #### Detailed resource information
 Selecting a resource, in either Tree or List view, shows resource manifests and logs, based on the resource type you selected. Endpoints for example show only manifests, while pods show both manifests and logs.  
