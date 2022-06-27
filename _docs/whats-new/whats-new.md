@@ -33,8 +33,8 @@ Download logs for offline viewing and analysis, or view logs per component onlin
 	lightbox="true" 
 	file="/images/whats-new/rel-notes-june22-runtime-logs-all.png" 
 	url="/images/whats-new/rel-notes-june22-runtime-logs-all.png" 
-	alt="Application Current State: Tree view" 
-	caption="Application Current State: Tree view"
+	alt="Download all logs for a runtime" 
+	caption="Download all logs for a runtime""
    max-width="60%" 
   %}
   
@@ -45,8 +45,8 @@ Download logs for offline viewing and analysis, or view logs per component onlin
 	lightbox="true" 
 	file="/images/whats-new/rel-notes-june22-runtime-log-screen.png" 
 	url="/images/whats-new/rel-notes-june22-runtime-log-screen.png" 
-	alt="Application Current State: Tree view" 
-	caption="Application Current State: Tree view"
+	alt="View logs online for runtime component" 
+	caption="View logs online for runtime component"
    max-width="60%" 
   %}
 
@@ -178,6 +178,8 @@ The Codefresh Hub for Argo has two ready-to-use Workflow Templates that:
 * Creates a PR to run the workflow that tracks the PR
 
 For details, see [Nested workflows]({{site.baseurl}}/docs/pipelines/nested-workflows/).
+
+
 
 ## May 2022
 
