@@ -15,25 +15,34 @@ Since the launch, we have continued to work on and grow Codefresh.
 ### Features & enhancements
 
 #### Shared configuration for runtimes
-Define configuration for a runtime once, and reuse the configuration for multiple runtimes in the same account. Reduce the time needed for setup and maintenance. 
-Runtime installation includes defining a Git repository to store runtime configuration settings. You can then reference this Git repository, selectively from specific runtimes, or from all runtimes, to share configuration settings.  
+Define configuration settings for a runtime once, and reuse the configuration settings for multiple runtimes in the same account. Reduce time needed for runtime setup and maintenance. After defining the Git repository in which to store runtime configuration settings, you can reference this Git repository, selectively from specific runtimes, or from all runtimes, to share the configuration settings.  
+* For hosted runtimes, the shared configuration repository is automatically created on installing the first hosted runtime.
+* For hybrid runtimes, you can define the shared configuration repo for the first runtime in the account through the `--shared-config-repo` flag. Otherwise, it is automatically created by Codefresh.   
+  Older versions of hybrid runtimes without the shared configuration repository must be upgraded to the latest version.  
 
 For details, see [Shared runtime configuration]({{site.baseurl}}/docs/runtime/shared-configuration/).
 
-#### Runtime logs
+#### Logs for runtime components and Git Sources
+View and download logs for runtime components and Git Sources, for events recorded from the time of application launch for all resources in the application.   
+
+Download logs for offline viewing and analysis, or view logs per component online: 
+* Download all logs: Available for every runtime, as a single `.tar.gz` file, containing different log files for each runtime component.
+* View logs: Available for every runtime component and every Git Source. Displays up to 1000 lines of the most recent log information. Similar to the log viewers in Codefresh, you have free-text search functionality, and can navigate between search results. You can also turn line wrapping on or off as needed.  
+
+For more details, see ???
 
 #### OAuth2 authentication
-OAuth (Open Authorization) 2.0 has become an industry standard for online authorization. Easily connect Codefresh to your Git provider using OAuth2. Codefresh integrates with Git to sync repositories to your clusters, implement Git-based operations when creating resources such as Delivery Pipelines, and to enrich Images with valuable information.  
+OAuth (Open Authorization) 2.0 has become an industry standard for online authorization. Codefresh supports OAuth2 connections to your Git provider using OAuth2. Codefresh integrates with Git to sync repositories to your clusters, implement Git-based actions when creating resources such as Delivery Pipelines, and to enrich Images with valuable information.  
 
-Codefresh provides a default, predefined OAuth2 application for every runtime. As an account administrator in Codefresh, you can also create an OAuth2 Application in GitHub and set up authentication within Codefresh. Users in Codefresh can then authorize access to GitHub with OAuth2, instead of a personal access token.  
+Codefresh provides a default, predefined OAuth2 application for every runtime. As an account administrator in Codefresh, you can optionally create an OAuth2 Application in GitHub and set up authentication within Codefresh. Users in Codefresh can then authorize access to GitHub with OAuth2, instead of with a personal access token.  
 
 For details, see [Set up OAuth2 authentication]({{site.baseurl}}/docs/administration/oauth-setup/).
 
 #### Image enrichment
 Image enrichment is a crucial part of the CI/CD process as it adds to the quality of deployments. Image enrichment exposes metadata such as feature requests, pull requests, and logs as part of the application’s deployment, providing a holistic view of the deployed application.
 
-Codefresh introduces a [new template](https://github.com/codefresh-io/csdp-report-image/blob/main/README.md), that combines image enrichment and image reporting definitions.
-Instead of separate steps to create, enrich, and report image information into Codefresh, you can create, and then enrich and report image information in the same step. The template utilizes Kubernetes secrets and the new integration mechanism.  
+Codefresh introduces a [new template](https://github.com/codefresh-io/csdp-report-image/blob/main/README.md), that combines image enrichment and image reporting definitions in a single step.  
+Instead of separate steps to enrich, and then report image information into Codefresh, after image creation, you can both enrich the image and report image information in the same step. The template utilizes Kubernetes secrets and the new integration mechanism with CI platforms, tools and Docker registries.  
 
 The custom step can be incorporated in: 
 * Codefresh-supplied Workflow templates 
@@ -48,7 +57,7 @@ This release launches the Codefresh integration offering, starting with:
 * JIRA for issue tracking
 * Docker Hub and Quay registries for image storage
 
-We are continually expanding the range of integrations, so stay tuned for release announcements.  
+Stay tuned for release announcements of additional integrations, as we expand the range of integrations.  
 
 Codefresh encrypts the credentials for every integration account you create, and stores them securely as Kubernetes Sealed Secrets, making the integration flow completely GitOps-compatible. Pipelines reference the integration by integration name, instead of integration credentials. Codefresh retrieves enrichment information using the encrypted Kubernetes secrets.  
 
@@ -60,7 +69,7 @@ For details, see [GitHub Actions]({{site.baseurl}}/docs/integrations/github-acti
 #### Tree view of application resources
 The Tree view of the Current State complements the List view of the same in the Applications dashboard. Similar to the List view, the Tree view also displays all the resources deployed for an application.  
 
-So what is unique about the Tree view?  
+What is unique about the Tree view?  
 First, the Tree view simplifies visualization of and tracking resources for any deployment, think complex deployments with hundreds of resources.  Second, it is designed to impart key information for each resource at a glance. Every resource shows its health status (color-coded border), sync state (icon prefixed to name), and metadata on mouse-over. 
 
 {% include 
@@ -142,7 +151,7 @@ Filter by runtime, applications to focus on what you need. And, while in metric 
 For details, see ???
 
 #### Nested workflows
-In pipelines, add steps that create new workflows with nested workflows functionality. A nested workflow is a step within the parent workflow that either submits a new workflow or creates a PR (Pull Request) that runs a different workflow based on the PR result.
+Add nested workflow functionality to Codefresh pipelines. A nested workflow is a step within the parent workflow that either submits a new workflow or creates a PR (Pull Request) that runs a different workflow based on the PR result.
 
 Nested workflows run independently of the parent workflow that submitted them. A nested submit workflow has traceability in both directions, from the parent to child, and from the child to the parent. A workflow triggered by a nested PR identifies the PR that triggered it.
 
