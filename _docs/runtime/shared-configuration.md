@@ -8,10 +8,10 @@ toc: true
 
 A Codefresh account with a hosted or a hybrid runtime can store configuration settings for the runtime in a Git repository. This repository can be shared with other runtimes in the same account, avoiding the need to create and maintain configurations for each runtime.
 
-* Hosted runtimes
-  As part of the set up for a hosted runtime, you must select the Git Organization for which to create the runtime installation repo. Codefresh then creates the repo for the shared runtime configuration.  
+* Hosted runtimes  
+  As part of the setup for a hosted runtime, you must select the Git Organization for which to create the runtime installation repo. Codefresh then creates the repo for the shared runtime configuration.  
 
-* Hybrid runtimes 
+* Hybrid runtimes  
   When you install the first hybrid runtime for an account, you can define the shared configuration repo through the `--shared-config-repo` flag. If the flag is omitted, and the runtime account does not have a shared configuration repo, it is created in the runtime installation repo, in `shared-config` root.
 
 > Currently, Codefresh supports a single shared runtime configuration repo per account.
@@ -98,8 +98,8 @@ When creating a new resource such as a new integration for example, you must def
 ### Upgrading hybrid runtimes
 Older hybrid runtimes that do not have the shared configuration repository must be upgraded to the latest version.  
 You have two options to define the shared configuration repository during upgrade:
-* Upgrade the runtime, and let the app-proxy create the shared runtime configuration repo automatically 
-* Manually define the shared runtime configuration repository, by adding the `--shared-config-repo` flag in the runtime upgrade command
+* Upgrade the runtime, and let the app-proxy create the shared runtime configuration repo automatically.
+* Manually define the shared runtime configuration repository, by adding the `--shared-config-repo` flag in the runtime upgrade command.
 
 >If the shared runtime configuration repo is not created for an account, Codefresh creates it in the installation repo, in `shared-config` root. 
 
