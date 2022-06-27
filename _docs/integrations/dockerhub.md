@@ -6,7 +6,7 @@ toc: true
 ---
 
 Codefresh has native support for interacting with Docker Hub registries.  
-Adding a Docker Hub integration allows you to reference the integration in your pipeline (Codefresh or external), instead of adding explicit credentials. See [Image enrichment overview]({{site.baseurl}}/docs/integrations/image-enrichment-overview/).
+Adding a Docker Hub integration allows you to reference the integration in your pipeline (Codefresh or external) by the name of the integration account, instead of adding explicit credentials. See [Image enrichment overview]({{site.baseurl}}/docs/integrations/image-enrichment-overview/).
 
 ### Prerequisites
 Before you configure settings in Codefresh to integrate Docker Hub registry, do the following:
@@ -15,7 +15,7 @@ Before you configure settings in Codefresh to integrate Docker Hub registry, do 
 * (Optional)[Enable 2FA (Two-Factor Authentication)](https://docs.docker.com/docker-hub/2fa/){:target="\_blank"}
 * [Create a personal account token](https://docs.docker.com/docker-hub/access-tokens/){:target="\_blank"}
 
-## Configure Docker Hub integration in Codefresh
+### Configure Docker Hub integration in Codefresh
 Once you have completed the prerequisites, configure the Docker Hub integration settings in Codefresh.  
  
 1. In the Codefresh UI, go to [Integrations](https://g.codefresh.io/2.0/account-settings/integrations){:target="\_blank"}. 
@@ -43,7 +43,13 @@ Once you have completed the prerequisites, configure the Docker Hub integration 
 1. To confirm, click **Commit**.
   It may take a few moments for the new integration to be synced to the cluster before it appears in the list.
 
-## What to read next
+### Integration resource in shared runtime configuration
+The integration resource is created in the shared runtime configuration Git repository, within `resources`. The exact location depends on whether the integration is shared with all or specific runtimes:  
+
+* All runtimes: Created in `resources/all-runtimes-all-clusters/`
+* Selected runtimes: Created in `resources/runtimes/<runtime-name>/`
+
+### What to read next
 [Shared runtime configuration]({{site.baseurl}}/docs/runtime/shared-configuration/)  
 [Images]({{site.baseurl}}/docs/pipelines/images/)  
 [Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/)    
