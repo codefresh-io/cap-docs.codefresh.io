@@ -9,11 +9,11 @@ toc: true
 Now that you have created all the resources for the application, you can create the application in Codefresh.
 For the quick start, you will create the `codefresh-guestbook` application.
 
-For detailed information, see [Create an application]({{site.baseurl}}/docs/deployment/create-application) 
+For detailed information, see [Create an application]({{site.baseurl}}/docs/deployment/create-application).
 
 **Before you begin**  
 
-[Create the application resources]({{site.baseurl}}/docs/getting-started/quick-start/create-app-specs)  
+[Create resources for codefresh-guestbook application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-specs)  
 
 **How to**  
 
@@ -107,4 +107,4 @@ For detailed information, see [Create an application]({{site.baseurl}}/docs/depl
 The final step is to make a change in the application manifest to enforce a rollout. 
 
 ### What to do next
-[Update image tag for codefresh-guestbook]({{site.baseurl}}/docs/getting-started/quick-start/create-rollout)
+[Update image tag for codefresh-guestbook application]({{site.baseurl}}/docs/getting-started/quick-start/create-rollout)
