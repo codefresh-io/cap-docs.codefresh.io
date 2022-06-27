@@ -34,7 +34,7 @@ Download logs for offline viewing and analysis, or view logs per component onlin
 	file="/images/whats-new/rel-notes-june22-runtime-logs-all.png" 
 	url="/images/whats-new/rel-notes-june22-runtime-logs-all.png" 
 	alt="Download all logs for a runtime" 
-	caption="Download all logs for a runtime""
+	caption="Download all logs for a runtime"
    max-width="60%" 
   %}
   
