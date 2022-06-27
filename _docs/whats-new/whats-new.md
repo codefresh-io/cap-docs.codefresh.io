@@ -25,11 +25,32 @@ For details, see [Shared runtime configuration]({{site.baseurl}}/docs/runtime/sh
 #### Logs for runtime components and Git Sources
 View and download logs for runtime components and Git Sources, for events recorded from the time of application launch for all resources in the application.   
 
-Download logs for offline viewing and analysis, or view logs per component online: 
-* Download all logs: Available for every runtime, as a single `.tar.gz` file, containing different log files for each runtime component.
+Download logs for offline viewing and analysis, or view logs per component online:  
+
+* Download all logs: Available for every runtime, as a single `.tar.gz` file, containing different log files for each runtime component.  
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/whats-new/rel-notes-june22-runtime-logs-all.png" 
+	url="/images/whats-new/rel-notes-june22-runtime-logs-all.png" 
+	alt="Application Current State: Tree view" 
+	caption="Application Current State: Tree view"
+   max-width="60%" 
+  %}
+  
 * View logs: Available for every runtime component and every Git Source. Displays up to 1000 lines of the most recent log information. Similar to the log viewers in Codefresh, you have free-text search functionality, and can navigate between search results. You can also turn line wrapping on or off as needed.  
 
-For more details, see ???
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/whats-new/rel-notes-june22-runtime-log-screen.png" 
+	url="/images/whats-new/rel-notes-june22-runtime-log-screen.png" 
+	alt="Application Current State: Tree view" 
+	caption="Application Current State: Tree view"
+   max-width="60%" 
+  %}
+
+
 
 #### OAuth2 authentication
 OAuth (Open Authorization) 2.0 has become an industry standard for online authorization. Codefresh supports OAuth2 connections to your Git provider using OAuth2. Codefresh integrates with Git to sync repositories to your clusters, implement Git-based actions when creating resources such as Delivery Pipelines, and to enrich Images with valuable information.  
@@ -66,7 +87,7 @@ Every integration is authorized through OAuth2, either through the predefined Co
 For details, see [GitHub Actions]({{site.baseurl}}/docs/integrations/github-actions/), [JIRA]({{site.baseurl}}/docs/integrations/jira/), [Docker Hub]({{site.baseurl}}/docs/integrations/docker-hub/), and [Quay Registry]({{site.baseurl}}/docs/integrations/quay/).
 
 
-#### Tree view of application resources
+#### Application resources in Tree view 
 The Tree view of the Current State complements the List view of the same in the Applications dashboard. Similar to the List view, the Tree view also displays all the resources deployed for an application.  
 
 What is unique about the Tree view?  
@@ -141,14 +162,11 @@ As the rollout occurs, visualize step-by-step progress. See detailed metric anal
 
 For details, see [Rollout progress and step visualization]({{site.baseurl}}/docs/deployment/applications-dashboard/#rollout-progress-visualization/).
 
+#### Edit/delete applications
+TBD
 
-
-### DORA metrics
-DORA metrics has become the defacto standard to quantify performance of DevOps teams. Codefresh supports DORA metrics out-of-the-box.
-
-Filter by runtime, applications to focus on what you need. And, while in metric views, select the granularity 
-
-For details, see ???
+#### DORA metrics
+TBD?
 
 #### Nested workflows
 Add nested workflow functionality to Codefresh pipelines. A nested workflow is a step within the parent workflow that either submits a new workflow or creates a PR (Pull Request) that runs a different workflow based on the PR result.
