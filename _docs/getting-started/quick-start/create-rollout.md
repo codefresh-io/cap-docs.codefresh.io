@@ -9,8 +9,7 @@ toc: true
 You will now make a change in the application manifest, and update the image tag. Because we selected auto-sync in the application settings, Argo CD detects that the live state in the cluster is out of sync with the desired state in Git, and initiates the new rollout. The rollout runs the analysis template you defined (`background-analysis` in the quick start).
 
 ### Update image tag in rollout.yaml
-Update the image tag in the `codefresh-guestbook` application.
-
+Update the image tag in the `codefresh-guestbook` application.  
 
 1. Go to the Git repo with `rollout.yaml`.
 1. Update the image tag from `0.1` to `0.2` as in the example below.
