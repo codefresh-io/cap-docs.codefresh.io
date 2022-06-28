@@ -167,4 +167,4 @@ For a Git provider and a runtime account, switch between the Codefresh, Custom p
 
 1. In the Codefresh UI, go to [Authentication](https://g.codefresh.io/2.0/account-settings/authentication?providerName=github){:target="\_blank"}.
 1. Select the runtime, and click ![](/images/administration/users/icon-Edit.png?display=inline-block) **Edit**. 
-1. Select the authentication provider or **None - manual token entry**.
+1. Select the OAuth authentication provider account.
