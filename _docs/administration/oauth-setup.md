@@ -114,7 +114,7 @@ To complete custom provider authentication, configure the settings for the OAuth
 >Important:  
   > The values for all the settings in the ConfigMap are the `keys` in the secret file. 
 
-1. In the Codefresh UI, go to [Authentication](https://g.codefresh.io/2.0/account-settings/authentication?providerName=github){:target="\_blank"} page.
+1. In the Codefresh UI, go to [Authentication](https://g.codefresh.io/2.0/account-settings/authentication?providerName=github){:target="\_blank"}.
   The list always shows the default predefined Codefresh provider account and custom provider accounts created, organized by Runtime, Type (Codefresh or Custom) and Status. 
 1. From the list, select the runtime to which to apply the current configuration. The runtime must be identical to the runtime to which you saved the K8s secret.
 1. Click **Edit** and then select **Use custom provider**.

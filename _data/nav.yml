@@ -72,7 +72,7 @@
       url: "/add-users"
     - title: Git tokens
       url: "/git-tokens"
-    - title: Manage Git personal access tokens
+    - title: Git personal access tokens for users
       url: "/user-settings"
     - title: Set up OAuth2 authentication
       url: "/oauth-setup"
