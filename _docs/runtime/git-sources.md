@@ -91,7 +91,7 @@ Edit an existing Git Source by changing the source and destination definitions.
 
 ### View/download logs for a Git Source
 View online logs for any Git Source associated with a runtime, and if needed, download the log file for offline viewing and analysis.
-Up to 1000 lines are recorded in the log. In online views, the logs are continuously updated in real-time. Downloaded logs include up to 1000 lines of the most recent events at the time of download.
+Online logs show up to 1000 of the most recent events (lines), updated in real time. Downloaded logs include all the events from the application launch to the date and time of download. 
 
 1. In the Codefresh UI, go to [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes**){:target="\_blank"}.
 1. From the **List View** (the default), select the runtime with the Git Source, and then select the **Git Sources** tab.  
