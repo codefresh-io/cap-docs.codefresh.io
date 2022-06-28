@@ -2,7 +2,7 @@
   icon: images/home-icons/started.svg
   url: ''
   links:
-  - title: Introducing CSDP
+  - title: Introducing Codefresh
     localurl: /docs/getting-started/csdp-introduction/
   - title: Quick start
     localurl: /docs/getting-started/quick-start/
@@ -21,7 +21,7 @@
   icon: images/home-icons/client.svg
   url: ''
   links:
-    - title: CSDP CLI
+    - title: Codefresh CLI
       localurl: /docs/clients/csdp-cli/
 
 
@@ -35,8 +35,14 @@
       localurl: /docs/runtime/installation
     - title: Management
       localurl: /docs/runtime/monitor-manage-runtimes/
-    - title:  Git Source management
+    - title: Add and manage external clusters
+      localurl: /docs/runtime/managed-cluster/
+    - title:  Add and manage Git Sources
       localurl: /docs/runtime/git-sources/
+    - title:  Restore runtimes
+      localurl: /docs/runtime/runtime-recovery/
+    
+
 
 - title: Pipelines
   icon: images/home-icons/pipeline.svg
@@ -51,8 +57,18 @@
     - title: Sharing file systems
       localurl: /docs/pipelines/sharing-file-system/  
     - title: Viewing images
-      localurl: /docs/pipelines/images/    
-    
+      localurl: /docs/pipelines/images/ 
+    - title: Nested workflows
+      localurl: /docs/pipelines/nested-workflows/   
+
+- title: Deployment
+  icon: images/home-icons/deployment.svg
+  url: ''
+  links:
+    - title: Applications dashboard
+      localurl: /docs/deployment/applications-dashboard/
+    - title: Create an application
+
 
 - title: Administration
   icon: images/home-icons/administration.svg
@@ -66,6 +82,8 @@
     localurl: /docs/administration/user-settings/
   - title: Single Sign-On
     localurl: /docs/administration/single-sign-on/
+  - title: Manage Git personal access tokens
+    localurl: /docs/administration/user-settings/
   - title: Access Control
     localurl: /docs/administration/access-control/
   - title: Audit

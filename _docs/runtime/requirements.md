@@ -6,7 +6,7 @@ toc: true
 ---
 
 
-The requirements listed are the **_minimum_** requirements for CSDP (Codefresh Software Delivery Platform) runtimes.  
+The requirements listed are the **_minimum_** requirements for the Codefresh platform runtimes.  
 
 > In the documentation, Kubernetes and K8s are used interchangeably. 
 
@@ -28,11 +28,12 @@ Configure your Kubernetes cluster with an ingress controller component that is e
   {: .table .table-bordered .table-hover}
 |  Supported Ingress Controller                       | Reference|  
 | --------------                                      | --------------           |  
-| Ambassador                                        | See [Ambassador ingress controller documentation](https://www.getambassador.io/docs/edge-stack/latest/topics/running/ingress-controller/){:target="\_blank"}. |       
-| NGINX Enterprise (`nginx.org/ingress-controller`)  | See [NGINX Ingress Controller documentation](https://docs.nginx.com/nginx-ingress-controller/){:target="\_blank"}. |      
-| NGINX Community  (`k8s.io/ingress-nginx`)          | See [Provider-specific configuration](#nginx-community-version-provider-specific-ingress-configuration) in this article.|                             
-| Istio                                             | See [Istio Kubernetes ingress documentation](https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress/){:target="\_blank"}. |       
-| Traefik                                           | See [Traefik Kubernetes ingress documentation](https://doc.traefik.io/traefik/providers/kubernetes-ingress/){:target="\_blank"}. | 
+| Ambassador                                        | [Ambassador ingress controller documentation](https://www.getambassador.io/docs/edge-stack/latest/topics/running/ingress-controller/){:target="\_blank"} |  
+| ALB (AWS Application Load Balancer)               | [AWS ALB ingress controller documentation](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/){:target="\_blank"} |      
+| NGINX Enterprise (`nginx.org/ingress-controller`)  | [NGINX Ingress Controller documentation](https://docs.nginx.com/nginx-ingress-controller/){:target="\_blank"} |      
+| NGINX Community  (`k8s.io/ingress-nginx`)          | [Provider-specific configuration](#nginx-community-version-provider-specific-ingress-configuration) in this article|                             
+| Istio                                             | [Istio Kubernetes ingress documentation](https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress/){:target="\_blank"} |       
+| Traefik                                           |[Traefik Kubernetes ingress documentation](https://doc.traefik.io/traefik/providers/kubernetes-ingress/){:target="\_blank"}| 
 
 
 **Ingress controller requirements**
@@ -43,12 +44,25 @@ Configure your Kubernetes cluster with an ingress controller component that is e
 * Valid SSL certificate  
   For secure runtime installation, the ingress controller must have a valid SSL certificate from an authorized CA (Certificate Authority).  
 
+* AWS ALB  
+  In the ingress resource file, verify that `spec.controller` is configured as `ingress.k8s.aws/alb`. 
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  name: alb
+spec:
+  controller: ingress.k8s.aws/alb
+```
+
 * Report status  
   The ingress controller must be configured to report its status. Otherwise, Argo's health check reports the health status as "progressing" resulting in a timeout error during installation.  
     
   By default, NGINX Enterprise and Traefik ingress are not configured to report status. For details on configuration settings, see the following sections in this article:  
     [NGINX Enterprise ingress configuration](#nginx-enterprise-version-ingress-configuration)  
     [Traefik ingress configuration](#traefik-ingress-configuration) 
+
 
 #### NGINX Enterprise version ingress configuration
 The Enterprise version of NGINX (`nginx.org/ingress-controller`), both with and without the Ingress Operator, must be configured to report the status of the ingress controller.
@@ -79,7 +93,7 @@ The Enterprise version of NGINX (`nginx.org/ingress-controller`), both with and 
 You will need to add this to the `ingress-master` when you have completed runtime installation.
 
 #### NGINX Community version provider-specific ingress configuration
-CSDP has been tested and is supported in major providers. For your convenience, here are provider-specific configuration instructions, both for supported and untested providers.
+Codefresh has been tested and is supported in major providers. For your convenience, here are provider-specific configuration instructions, both for supported and untested providers.
 
 > The instructions are valid for `k8s.io/ingress-nginx`, the community version of NGINX.
 
@@ -172,7 +186,7 @@ For additional configuration options, see <a target="_blank" href="https://githu
 <br>
 <b>Add firewall rules</b>
 <br>
-GKE by default limits outbound requests from nodes. For the runtime to communicate with the control-plane in CSDP, add a firewall-specific rule.
+GKE by default limits outbound requests from nodes. For the runtime to communicate with the control-plane in Codefresh, add a firewall-specific rule.
 
 <ol>
 <li>Find your cluster's network:<br>
@@ -233,7 +247,7 @@ We recommend reviewing the <a target="_blank" href="https://kubernetes.github.io
     <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">kubectl get svc ingress-nginx-controller -n ingress-nginx</span>
 </li>
 </ol>
-MicroK8s has not been tested with CSDP, and may require additional configuration. For details, see <a target="_blank" href="https://microk8s.io/docs/addon-ingress">Ingress addon documentation</a>.
+MicroK8s has not been tested with Codefresh, and may require additional configuration. For details, see <a target="_blank" href="https://microk8s.io/docs/addon-ingress">Ingress addon documentation</a>.
 
 </details>
 
@@ -248,7 +262,7 @@ MicroK8s has not been tested with CSDP, and may require additional configuration
     <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">kubectl get svc ingress-nginx-controller -n ingress-nginx</span>
 </li>
 </ol>
-MiniKube has not been tested with CSDP, and may require additional configuration. For details, see <a target="_blank" href="https://kubernetes.github.io/ingress-nginx/deploy/#minikube">Ingress addon documentation</a>.
+MiniKube has not been tested with Codefresh, and may require additional configuration. For details, see <a target="_blank" href="https://kubernetes.github.io/ingress-nginx/deploy/#minikube">Ingress addon documentation</a>.
 
 </details>
 
@@ -322,7 +336,7 @@ This section lists the requirements for Git installation repositories.
 If you are using an existing repo, make sure it is empty.
 
 #### Git access tokens
-CSDP requires two access tokens, one for runtime installation, and the second, a personal token for each user to authenticate Git-based actions in CSDP. 
+Codefresh requires two access tokens, one for runtime installation, and the second, a personal token for each user to authenticate Git-based actions in Codefresh. 
 
 ##### Git runtime token
 The Git runtime token is mandatory for runtime installation.
@@ -342,7 +356,7 @@ The token must have valid:
    %}  
 
 ##### Git user token for Git-based actions
-The Git user token is the user's personal token and is unique to every user. It is used to authenticate every Git-based action of the user in CSDP. You can add the Git user token at any time from the CSDP UI.   
+The Git user token is the user's personal token and is unique to every user. It is used to authenticate every Git-based action of the user in Codefresh. You can add the Git user token at any time from the UI.   
 
   The token must have valid:
   * Expiration date: Default is `30 days`  

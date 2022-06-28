@@ -1,7 +1,7 @@
 - title: Getting started
   url: "/getting-started"
   pages:
-  - title: Introducing CSDP
+  - title: Introducing Codefresh
     url: "/csdp-introduction"
   - title: Quick start
     url: "/quick-start"
@@ -14,6 +14,12 @@
         url: "/hello-world"
       - title: Create a basic CI delivery pipeline
         url: "/create-ci-pipeline"
+      - title: Create resources for the codefresh-guestbook application
+        url: "/create-app-specs"
+      - title: Create the codefresh-guestbook application
+        url: "/create-app-ui"
+      - title: Update the image tag for the codefresh-guestbook application
+        url: "/create-rollout"
 
         
   - title: Main concepts
@@ -43,8 +49,12 @@
       url: "/installation"
     - title: Management
       url: "/monitor-manage-runtimes"
-    - title: Git Source management
+    - title: Add and manage external clusters
+      url: "/managed-cluster" 
+    - title: Add and manage Git Sources
       url: "/git-sources"
+    - title: Restore runtimes
+      url: "/runtime-recovery"
 
 - title: Pipelines
   url: "/pipelines"
@@ -59,6 +69,17 @@
       url: "/sharing-file-system"
     - title: Viewing images
       url: "/images"
+    - title: Nested workflows
+      url: "/nested-workflows"
+    
+
+- title: Deployment
+  url: "/deployment"
+  pages:
+    - title: Applications dashboard
+      url: "/applications-dashboard"
+    - title: Create an application
+      url: "/create-application"
 
 
 - title: Administration
@@ -72,6 +93,8 @@
       url: "/user-settings"
     - title: Git tokens
       url: "/git-tokens"
+    - title: Manage Git personal access tokens
+      url: "/user-settings"
     - title: Single Sign-On
       url: "/single-sign-on"
       sub-pages:
@@ -95,9 +118,14 @@
       url: "/access-control"
     - title: Audit
       url: "/audit"
-    - title: CSDP platform IPs
+    - title: Codefresh platform IPs
       url: "/platform-ip-addresses"
 
+- title: What's New?
+  url: "/whats-new"
+  pages:
+    - title: What's new in Codefresh?
+      url: "/whats-new"
 
 - title: Troubleshooting
   url: "/troubleshooting"

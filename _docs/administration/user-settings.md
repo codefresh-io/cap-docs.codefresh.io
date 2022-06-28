@@ -17,6 +17,9 @@ You must however authorize GitHub access or add the personal access token indivi
 For OAuth2, the permissions and expiry date are pre-configured by the administrator.  
 For Git personal access tokens, make sure you select `repo` scope for commits and other actions when you generate the token.
 
+> You can use the same token for multiple runtimes, if you need access to more than one runtime. 
+You must however authorize GitHub access or add the personal access token for each runtime.  
+
 {% include 
    image.html 
    lightbox="true" 
@@ -66,10 +69,24 @@ To authorize with OAuth2, you have to supply your credentials. When authorized, 
       url="/images/administration/user-settings/user-settings-pat.png" 
       alt="Adding a Git personal access token" 
       caption="Adding a Git personal access token"
-      max-width="30%" 
+      max-width="30%"  
    %}
+
+### How to update a Git personal token
+Update your Git personal access token for each runtime when needed.  
+
+**Before you begin**  
+* For a Git personal access token, generate a valid personal access token from your Git provider  
+
+**How to**  
+
+1. In the Codefresh UI, go to [User Settings](https://g.codefresh.io/2.0/user-settings){:target="\_blank"}.
+1. Select **+Add Token**.
+1. Paste the generated token in the **Token** field, and select **+Add Token**. 
 
 The Token column for the runtime is updated with the encrypted token, and the Add Token button changes to Delete Token.  
 
 #### Related info  
-[Git tokens in CSDP]({{site.baseurl}}/docs/administration/git-tokens/)
+
+[Git tokens in Codefresh]({{site.baseurl}}/docs/administration/git-tokens/)
+
