@@ -6,15 +6,13 @@ toc: true
 ---
 
 
-      
-
-
-
-Codefresh has enhanced solution offering with Hosted GitOps, the SaaS version of Codefresh.  
+Codefresh has enhanced our solution offering with Hosted GitOps, the SaaS version of Codefresh.  
 
 Achieve your CD Ops goals with Hosted GitOps: easy set up and zero maintenance overhead, combined with advanced functionality for progressive delivery and deployments.
 
 ### What do you get with Hosted GitOps?
+
+Hosted GitOps gives you a hosted and managed version of Argo CD. 
 
 **Hosted runtimes**  
 
@@ -35,14 +33,14 @@ From version updates to security updates, Codefresh handles the administration a
 
 **Advanced CD Ops**  
 
-From application analytics, to application creation, rollout and deployment, you get the best of both worlds: Argo CD and Argo Rollouts with our advanced CD functionality.
+From application analytics, to application creation, rollout, and deployment, you get the best of both worlds: Argo CD and Argo Rollouts coupled with advanced CD functionality from Codefresh.
 
 * Application analytics  
 
   Highlights and comprehensive analytics through a series of dashboards: DORA metrics, Home, and Applications.
   * DevOps performance through DORA metrics
-  * Daily deployments, failed deployments with rollbacks, and most active applications in the Home analytics dashboard
-  * Deep dive into deployment in the Applications dashboard
+  * Deployment analytics at your fingertips in Home analytics dashboard: Daily deployments, failed deployments with rollbacks, and most active applications
+  * Deep-dive into every deployment in the Applications dashboard: Centralized cross-runtime and cross-cluster view
 
 {% include 
 	image.html 
@@ -57,11 +55,11 @@ From application analytics, to application creation, rollout and deployment, you
 
 * Application creation  
 
-  Create applications in a single location. Define application settings through the intuitive Form mode, or direclty in YAML. Commit all changes to Git.
+  Create GitOps-compatible applications in a single location. Define application settings through the intuitive Form mode, or directly in YAML. Commit all changes to Git.
 
 * Application rollout  
 
-  Track progress as the rollout occurs, visualize every step in the rollout as they occur, from the Applications dashboard. 
+  Track progress of the rollout, visualize every step in the rollout as it occurs, from the Applications dashboard. 
 
 * Application deployment  
 
@@ -85,10 +83,11 @@ Connect your CI integration tools to Codefresh to enrich deployment information.
     max-width="30%" 
 %}
 
-### Hosted vs. hybrid comparison
+### Hosted vs. hybrid environments
+The table below highlights the main differences between hosted and hybrid environments.
 
 {: .table .table-bordered .table-hover}
-| Feature                 |Functionality  |  Hosted                | Hybrid | 
+| Functionality           |Feature        |  Hosted                | Hybrid | 
 | --------------          | --------------|--------------- | --------------- |
 | Runtime                 | Installation       | Managed by Codefresh   | Managed by customer       | 
 |                         | Number per account | Only one runtime        | Multiple runtimes  | 
@@ -106,3 +105,6 @@ Connect your CI integration tools to Codefresh to enrich deployment information.
 |                         |DORA metrics         | Available |Available        | 
 |                         |Applications         | Available |Available        | 
 
+### What to read next
+[Hybrid runtime installation]({{site.baseurl}}/docs/runtime/installation/)  
+[Set up hosted runtime]({{site.baseurl}}/docs/incubation/hosted-runtime/)
