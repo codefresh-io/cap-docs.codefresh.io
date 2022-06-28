@@ -45,6 +45,7 @@
       localurl: /docs/runtime/shared-configuration/
 
 
+
 - title: Pipelines
   icon: images/home-icons/pipeline.svg
   url: ''
@@ -58,7 +59,9 @@
     - title: Sharing file systems
       localurl: /docs/pipelines/sharing-file-system/  
     - title: Viewing images
-      localurl: /docs/pipelines/images/    
+      localurl: /docs/pipelines/images/ 
+    - title: Nested workflows
+      localurl: /docs/pipelines/nested-workflows/   
 
 - title: Deployment
   icon: images/home-icons/deployment.svg
@@ -67,7 +70,7 @@
     - title: Applications dashboard
       localurl: /docs/deployment/applications-dashboard/
     - title: Create an application
-      localurl: /docs/deployment/create-application/
+
 
 - title: Administration
   icon: images/home-icons/administration.svg
@@ -77,7 +80,9 @@
     localurl: /docs/administration/add-users/
   - title: Single Sign-On
     localurl: /docs/administration/single-sign-on/
-  - title: Manage Git personal access tokens
+  - title: Set up OAuth2 authentication
+    localurl: /docs/administration/oauth-setup/  
+  - title: Git personal access tokens for users
     localurl: /docs/administration/user-settings/
   - title: Access Control
     localurl: /docs/administration/access-control/

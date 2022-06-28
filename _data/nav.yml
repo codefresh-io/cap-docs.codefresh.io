@@ -14,6 +14,12 @@
         url: "/hello-world"
       - title: Create a basic CI delivery pipeline
         url: "/create-ci-pipeline"
+      - title: Create resources for the codefresh-guestbook application
+        url: "/create-app-specs"
+      - title: Create the codefresh-guestbook application
+        url: "/create-app-ui"
+      - title: Update the image tag for the codefresh-guestbook application
+        url: "/create-rollout"
 
         
   - title: Main concepts
@@ -65,14 +71,18 @@
       url: "/sharing-file-system"
     - title: Viewing images
       url: "/images"
+    - title: Nested workflows
+      url: "/nested-workflows"
+    
 
 - title: Deployment
   url: "/deployment"
   pages:
-    - title: Application dashboard
+    - title: Applications dashboard
       url: "/applications-dashboard"
     - title: Create an application
       url: "/create-application"
+
 
 - title: Administration
   url: "/administration"
@@ -81,8 +91,10 @@
       url: "/add-users"
     - title: Git tokens
       url: "/git-tokens"
-    - title: Manage Git personal access tokens
+    - title: Git personal access tokens for users
       url: "/user-settings"
+    - title: Set up OAuth2 authentication
+      url: "/oauth-setup"
     - title: Single Sign-On
       url: "/single-sign-on"
       sub-pages:
