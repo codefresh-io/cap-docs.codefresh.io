@@ -72,21 +72,7 @@ To authorize with OAuth2, you have to supply your credentials. When authorized, 
       max-width="30%"  
    %}
 
-### How to update a Git personal token
-Update your Git personal access token for each runtime when needed.  
 
-**Before you begin**  
-* For a Git personal access token, generate a valid personal access token from your Git provider  
-
-**How to**  
-
-1. In the Codefresh UI, go to [User Settings](https://g.codefresh.io/2.0/user-settings){:target="\_blank"}.
-1. Select **+Add Token**.
-1. Paste the generated token in the **Token** field, and select **+Add Token**. 
-
-The Token column for the runtime is updated with the encrypted token, and the Add Token button changes to Delete Token.  
-
-#### Related info  
-
+### Related info  
 [Git tokens in Codefresh]({{site.baseurl}}/docs/administration/git-tokens/)
 
