@@ -14,7 +14,9 @@ Download the log file for a runtime. The runtime log is downloaded as a `.tar.gz
 
 1. In the Codefresh UI, go to [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}. 
 1. If needed, switch to **List View**, and then select the runtime for which to download logs.
-1.  From the list of **Additional Actions**, select **Download All Logs**. 
+1.  From the list of **Additional Actions**, select **Download All Logs**.  
+  The log file is downloaded to the Downloads folder or the folder designated for downloads, with the filename, `<runtime-name>.tar.gz`. For example, `codefreshv2-production2.tar.gz`.
+
 
   {% include 
 	image.html 
@@ -26,7 +28,7 @@ Download the log file for a runtime. The runtime log is downloaded as a `.tar.gz
     max-width="40%" 
 %}
 
-  The log file is downloaded to the Downloads folder or the folder designated for downloads, with the filename, `<runtime-name>.tar.gz`. For example, `codefreshv2-production2.tar.gz`.
+
 {:start="4"}
 1. To view the log files of the individual components, unzip the file.  
   Here is an example of the folder with the individual logs.
@@ -46,7 +48,8 @@ Download the log file for a runtime. The runtime log is downloaded as a `.tar.gz
 
  
 ### View/download logs for runtime components
-View online logs for any runtime component, and if needed, download the log file for offline viewing and analysis.
+View online logs for any runtime component, and if needed, download the log file for offline viewing and analysis.  
+
 Online logs show up to 1000 of the most recent events (lines), updated in real time. Downloaded logs include all the events from the application launch to the date and time of download. 
 
 1. In the Codefresh UI, go to [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}. 
@@ -81,7 +84,7 @@ Online logs show up to 1000 of the most recent events (lines), updated in real t
 
 {:start="5"}
 1. To download the log, click **Download**.  
-  The file is downloaded with `.log` extension.
+  The file is downloaded as `<component-name>.log`.
 
 ### Related information
 [Manage Git Sources]({{site.baseurl}}/docs/runtime/git-sources/#viewdownload-logs-for-a-git-source) 
