@@ -5,8 +5,8 @@ group: runtime
 toc: true
 ---
 
-As with any component in Codefresh, logs are available for completed runtimes, both for the runtime and for individual runtime components. Download log files for offline viewing and analysis, or view logs for online analysis.  
-Log files include events from the date of the application launch, with the newest events listed first.
+Logs are available for completed runtimes, both for the runtime and for individual runtime components. Download log files for offline viewing and analysis, or view logs for online analysis.  
+Log files include events from the date of the application launch, with the newest events listed first. 
 
 
 ### Download logs for runtimes
