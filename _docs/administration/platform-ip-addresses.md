@@ -5,8 +5,8 @@ group: administration
 toc: true
 
 ---
-Access to Kubernetes clusters behind strict firewalls, not accessible from the public internet, is governed through authorized IP addresses. 
-Codefresh provides a list of IP addresses to be configured on clusters to allow deploy Codefresh to your cluster. 
+Access to Kubernetes clusters behind strict firewalls not accessible from the public internet, is governed through authorized IP addresses. 
+Codefresh provides a list of IP addresses to be configured on clusters to allow Codefresh access to your cluster. 
 
 You can register multiple external clusters to Codefresh runtimes, both hosted and hybrid. All runtimes require Codefresh platform IPs to be configured on the clusters for access.  
 In addition, managed clusters registered to hosted runtimes must configure a set of specific IP addresses to authorize access.
