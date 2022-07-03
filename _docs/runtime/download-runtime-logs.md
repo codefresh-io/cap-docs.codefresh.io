@@ -5,7 +5,8 @@ group: runtime
 toc: true
 ---
 
-Logs are available for completed runtimes, both for the runtime and for individual runtime components. Download log files for offline viewing and analysis, or view logs for online analysis.  
+Logs are available for completed runtimes, both for the runtime and for individual runtime components. Download runtime log files for offline viewing and analysis, or view online logs for a runtime component, and download if needed for offline analysis. Online logs support free-text search, search-result navigation, and line-warp for enhanced readability.  
+
 Log files include events from the date of the application launch, with the newest events listed first. 
 
 
@@ -70,7 +71,7 @@ Online logs show up to 1000 of the most recent events (lines), updated in real t
 {:start="4"}
 1. Do the following:
   * Search by free-text for any string, and click the next and previous buttons to navigate between the search results.
-  * To toggle between standard and line-wrapped views, click **Wrap**.
+  * To switch on line-wrap for readability, click **Wrap**.
 
   {% include 
 	image.html 
