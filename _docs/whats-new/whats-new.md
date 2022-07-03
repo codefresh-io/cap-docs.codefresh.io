@@ -51,7 +51,9 @@ Download logs for offline viewing and analysis, or view logs per component onlin
    max-width="60%" 
   %}
 
+
 For details, see [View/download runtime logs](({{site.baseurl}}docs/runtime/download-runtime-logs/).
+
 
 
 #### OAuth2 authentication
@@ -106,7 +108,9 @@ Logs are displayed if the resource has logs:
 * For online viewing, you have free-text search and line-wrap functionalities. 
 * For offline viewing and analysis, you can download the complete log into a text file.   
 
+
 For details, see [Current State Tree view]({{site.baseurl}}/docs/deployment/applications-dashboard/#current-state-tree-view).
+
 
 #### Application rollout visualization 
 In addition to installing Argo Rollouts in your cluster, visualize Argo Rollout history and progress directly in the Applications (deployment) dashboard. Visualize rollouts from multiple clusters and runtimes in a single centralized location through the Deployment tab.
@@ -145,7 +149,8 @@ As the rollout occurs, visualize step-by-step progress. Expanding Background Ana
    max-width="30%" 
   %}
 
-For details, see [Rollout progress and step visualization]({{site.baseurl}}/).
+For details, see [Rollout progress and step visualization]({{site.baseurl}}/docs/deployment/applications-dashboard/#rollout-progress-visualization/).
+
 
 #### Nested workflows
 Add nested workflow functionality to Codefresh pipelines. A nested workflow is a step within the parent workflow that either submits a new workflow, or creates a PR (Pull Request) that runs a different workflow based on the PR result.
