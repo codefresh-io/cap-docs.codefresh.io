@@ -74,7 +74,7 @@
   url: ''
   links:
     - title: Image enrichment with integrations
-      localurl: /docs/integration/image-enrichment-overview/
+      localurl: /docs/integrations/image-enrichment-overview/
 
 - title: Administration
   icon: images/home-icons/administration.svg

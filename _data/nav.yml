@@ -76,7 +76,7 @@
       url: "/create-application"
 
 - title: Image enrichment
-  url: "/integration"
+  url: "/integrations"
   pages:
     - title: Image enrichment with integrations
       url: "/image-enrichment-overview"
