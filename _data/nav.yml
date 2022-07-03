@@ -116,7 +116,7 @@
       url: "/access-control"
     - title: Audit
       url: "/audit"
-    - title: Codefresh platform IPs
+    - title: Codefresh IP addresses
       url: "/platform-ip-addresses"
 
 - title: What's New?
