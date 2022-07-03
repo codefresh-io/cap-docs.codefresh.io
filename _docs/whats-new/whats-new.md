@@ -132,7 +132,7 @@ As the rollout occurs, visualize step-by-step progress. Expanding Background Ana
 	file="/images/whats-new/rel-notes-june22-rollout-analysis.png" 
 	url="/images/whats-new/rel-notes-june22-rollout-analysis.png" 
 	caption="Application Rollout: Steps visualization"
-   max-width="60%" 
+   max-width="40%" 
   %}
 
   {% include 
@@ -141,7 +141,7 @@ As the rollout occurs, visualize step-by-step progress. Expanding Background Ana
 	file="/images/whats-new/rel-notes-june22-rollout-query-metrics.png" 
 	url="/images/whats-new/rel-notes-june22-rollout-query-metrics.png" 
 	caption="Application Rollout: Query metrics"
-   max-width="60%" 
+   max-width="40%" 
   %}
 
 For details, see [Rollout progress and step visualization]({{site.baseurl}}/docs/deployment/applications-dashboard/#rollout-progress-visualization/).
