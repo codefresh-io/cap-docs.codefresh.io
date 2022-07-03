@@ -51,7 +51,12 @@ Download logs for offline viewing and analysis, or view logs per component onlin
    max-width="60%" 
   %}
 
+<<<<<<< HEAD
 For details, see [View/download runtime logs]({{site.baseurl}}docs/runtime/download-runtime-logs/).
+=======
+
+For details, see [View/download runtime logs](({{site.baseurl}}docs/runtime/download-runtime-logs/).
+>>>>>>> 1da4aa5883610ef803cc6729a50a9414410cba6b
 
 
 
@@ -148,7 +153,12 @@ As the rollout occurs, visualize step-by-step progress. Expanding Background Ana
    max-width="30%" 
   %}
 
+<<<<<<< HEAD
 For details, see [Rollout progress and step visualization]({{site.baseurl}}/docs/deployment/applications-dashboard/#rollout-progress-visualization).
+=======
+For details, see [Rollout progress and step visualization]({{site.baseurl}}/docs/deployment/applications-dashboard/#rollout-progress-visualization/).
+
+>>>>>>> 1da4aa5883610ef803cc6729a50a9414410cba6b
 
 #### Nested workflows
 Add nested workflow functionality to Codefresh pipelines. A nested workflow is a step within the parent workflow that either submits a new workflow, or creates a PR (Pull Request) that runs a different workflow based on the PR result.
