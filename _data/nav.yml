@@ -78,7 +78,7 @@
 - title: Image enrichment
   url: "/integration"
   pages:
-    - title: Image enrichment overview
+    - title: Image enrichment with integrations
       url: "/image-enrichment-overview"
 
 - title: Administration
