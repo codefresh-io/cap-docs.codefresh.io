@@ -51,7 +51,7 @@ Download logs for offline viewing and analysis, or view logs per component onlin
    max-width="60%" 
   %}
 
-For details, see [View/download runtime logs](({{site.baseurl}}docs/runtime/download-runtime-logs/).
+For details, see [View/download runtime logs]({{site.baseurl}}docs/runtime/download-runtime-logs/).
 
 
 #### OAuth2 authentication
