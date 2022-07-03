@@ -1,24 +1,24 @@
 ---
-title: "Shared runtime configuration"
+title: "Shared runtime configuration repo"
 description: ""
 group: runtime
 toc: true
 ---
 
 
-A Codefresh account with a hosted or a hybrid runtime can store configuration settings for the runtime in a Git repository. This repository can be shared with other runtimes in the same account, avoiding the need to create and maintain configurations for each runtime.
+A Codefresh account with a hosted or a hybrid runtime can store configuration settings in a Git repository. This repository can be shared with other runtimes in the same account, avoiding the need to create and maintain configurations for each runtime.
 
 * Hosted runtimes  
-  As part of the setup for a hosted runtime, you must select the Git Organization for which to create the runtime installation repo. Codefresh then creates the repo for the shared runtime configuration.  
+  As part of the setup for a hosted runtime, you must select the Git Organization for which to create the runtime installation repo. Codefresh then creates the shared configuration repository.  
 
 * Hybrid runtimes  
   When you install the first hybrid runtime for an account, you can define the shared configuration repo through the `--shared-config-repo` flag. If the flag is omitted, and the runtime account does not have a shared configuration repo, it is created in the runtime installation repo, in `shared-config` root.
 
-> Currently, Codefresh supports a single shared runtime configuration repo per account.
+> Currently, Codefresh supports a single shared configuration repo per account.
 
 
 ### Shared runtime configuration repo structure
-Below is a representation of the structure of the shared runtime configuration repo. 
+Below is a representation of the structure of the shared configuration repo for runtimes. 
 See a [sample repo](https://github.dev/noam-codefresh/shared-gs){:target="\_blank"}.
 
 ```
@@ -53,7 +53,7 @@ The `resources` directory holds the resources shared by all clusters managed by 
   * `runtimes/<runtime_name>`: Optional. Runtime-specific subdirectory. Every resource manifest in a runtime-specific subdirectory is applied to only that runtime. `manifest4.yaml` in the above example is applied only to `runtime1`. 
 
 #### `runtimes` directory 
-A subdirectory specific to each runtime installed in the cluster, always with `in-cluster.yaml`, and optionally application manifests for other clusters. 
+Includes subdirectories specific to each runtime installed in the cluster, always with `in-cluster.yaml`, and optionally application manifests for other clusters. 
 
 **Example application manifest for in-cluster.yaml**
 
@@ -87,13 +87,13 @@ spec:
 
 
 ### Git Source application per runtime
-In addition to the application manifests for the runtimes in the shared runtime configuration repository, every runtime has a Git-Source Application that references `runtimes/<runtime-name>` in the shared configuration repo.  
+In addition to the application manifests for the runtimes in the shared configuration repository, every runtime has a Git-Source Application that references `runtimes/<runtime-name>` in the shared configuration repo.  
 
 This Git Source application creates an application manifest with the `<cluster-name>` for every cluster managed by the runtime. The `include` field in the `<cluster-name>` application manifest determines which subdirectories in the `resources` directory are synced to the target cluster.
 
 
 ### Adding resources
-When creating a new resource such as a new integration for example, you must define the runtimes and clusters to which to apply that resource. The app-proxy saves the resource in the correct location and updates the relevant Argo CD Applications to include it. 
+When creating a new resource, such as a new integration for example in the Codefresh UI, you can define the runtimes and clusters to which to apply that resource. The app-proxy saves the resource in the correct location and updates the relevant Argo CD Applications to include it. 
 
 ### Upgrading hybrid runtimes
 Older hybrid runtimes that do not have the shared configuration repository must be upgraded to the latest version.  
