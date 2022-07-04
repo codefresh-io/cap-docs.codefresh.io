@@ -10,14 +10,13 @@ software features with their deployment (where and when). While the software ver
 
 Codefresh has native integration for Atlassian Jira. This allows Codefresh to monitor a feature all the way from the ticket creation phase, up to when it is implemented and deployed to an environment.  
 
-Adding a Jira integration allows you to reference the integration in your pipelines (Codefresh or external), by the name of the integration account, instead of adding explicit credentials. See [Image enrichment overview]({{site.baseurl}}/docs/integrations/image-enrichment-overview/).
+Adding a Jira integration allows you to reference the integration in your pipelines (Codefresh or external), by the name of the integration account, instead of adding explicit credentials. See [Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/).
 
 
 ### Prerequisites
 
 1. Get your Jira instance credentials by following the [Atlassian documentation](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/).
 1. Note down the following as you will need them to complete the integration with Codefresh:  
-
   * Jira URL
   * Jira username/email to be used for the integration
   * Jira password/token created for this user
@@ -56,17 +55,17 @@ The exact location depends on whether the integration is shared with _all_ or _s
 * All runtimes: Created in `resources/all-runtimes-all-clusters/`
 * Selected runtimes: Created in `resources/runtimes/<runtime-name>/`
 
-### Use Jira integration in pipelines
+### Using Jira integration in pipelines
 
-For pipelines based on GitHub Actions, configure the Jira integration in Codefresh, and then connect your GitHub Action to Codefresh, as described in [GitHub Action integration]({{site.baseurl}}/docs/integrations/github-actions/).
+The usage is slightly different for an external CI versus Codefresh-native pipelines, but in both cases you can replace explicit Jira credentials with just the name of the Jira integration to use. Codefresh uses the Secret Key stored in the runtime cluster to securely access Jira and retrieve the information. 
 
-For Codefresh-native pipelines, do the following:
+* For pipelines based on GitHub Actions:  
+  Configure the Jira integration in Codefresh, and then connect your GitHub Action to Codefresh, as described in [GitHub Action integration]({{site.baseurl}}/docs/integrations/github-actions/).
 
-1. Add `docker run --env-file=cf_env quay.io/codefresh/codefresh-report-image:$VERSION` to your pipeline. 
-1. Add the required Jira fields: 
-  * `CF_JIRA_INTEGRATION` is the name of the Jira integration you added in Codefresh. For example, `jira`.
-  * `CF_JIRA_PROJECT_PREFIX` is the name of the project prefix, for example `CR`
-  * `CF_JIRA_MESSAGE` is the Jira issue that was fixed or implemented.
+* For Codefresh-native pipelines: 
+  If you are using the [Codefresh Jira image enrichment template](https://github.com/codefresh-io/argo-hub/blob/main/workflows/codefresh-csdp/versions/1.0.0/docs/image-enricher-jira-info.md) in your pipeline:  
+  Replace: `JIRA_HOST_URL`, `JIRA_API_TOKEN_SECRET`, `JIRA_API_TOKEN_SECRET_KEY` and `IRA_EMAIL_SECRET_KEY` with `CF_JIRA_INTEGRATION` and the name of the integration added in Codefresh as the value. For example, `jira`.
+
       
 
 ### What to read next
