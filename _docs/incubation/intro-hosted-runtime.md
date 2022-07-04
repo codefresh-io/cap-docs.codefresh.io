@@ -65,9 +65,9 @@ From application analytics, to application creation, rollout, and deployment, yo
 
   Historical deployments, current deployments, current state of application resources in interactive tree view with search functionality.  
 
-**CI connects for image enrichment**  
+**Connect third-party CI to Codefresh**  
 
-Connect your CI integration tools to Codefresh to enrich deployment information.
+Connect your CI integration tools to Codefresh, and enrich deployment information.
 
 * Git PRs (Pull Requests), Commits, and Committer information directly from the Code repository
 * Jira ticket information for correlation with deployed features  
@@ -89,22 +89,22 @@ The table below highlights the main differences between hosted and hybrid enviro
 {: .table .table-bordered .table-hover}
 | Functionality           |Feature        |  Hosted                | Hybrid | 
 | --------------          | --------------|--------------- | --------------- |
-| Runtime                 | Installation       | Managed by Codefresh   | Managed by customer       | 
-|                         | Number per account | Only one runtime        | Multiple runtimes  | 
-|                         | Management         | Only uninstall          | All options available: Upgrade, installation, uninstall   | 
-| Clusters                 |In-cluster          | Managed by Codefresh    | Managed by customer       | 
-|                          |Managed             | Managed by customer       | Mamaged by customer         | 
-| CI Ops                  | Delivery Pipelines |Not supported            | Supported  | 
-|                         |Workflows           | Not supported           | Supported  | 
-|                         |Workflow Templates  | Not supported           | Supported  | 
-| CD  Ops                 |Applications        | Fully  supported        |  Fully supported | 
-|                         | Image enrichment    | Supported              | Supported  | 
-|                         | Rollouts            | Supported              |  Supported  | 
-|Integrations             |                     | Supported              | Supported  | 
-|Dashboards               |(Main) Analytics      | Available with analytics for hosted runtime and deployments| Available with analytics for runtimes, deployments, Delivery Pipelines | 
-|                         |DORA metrics         | Available |Available        | 
-|                         |Applications         | Available |Available        | 
+| Runtime                 | Installation       | Provisioned by Codefresh   | Provisioned by customer       | 
+|                         | Number per account | Only one runtime           | Multiple runtimes            | 
+|                         | Upgrade            | Performed by Codefresh     | Performed by customer | 
+| Runtime cluster         |In-cluster          | Managed by Codefresh       | Managed by customer       | 
+| External cluster        |                    | Managed by customer        | Managed by customer         |
+| CI Ops                  | Delivery Pipelines |Not supported               | Supported  | 
+|                         |Workflows           | Not supported              | Supported  | 
+|                         |Workflow Templates  | Not supported              | Supported  | 
+| CD  Ops                 |Applications        | Supported                  | Supported | 
+|                         | Image enrichment   | Supported                  | Supported  | 
+|                         | Rollouts           | Supported                  |  Supported  | 
+|Integrations             |                    | Supported                  | Supported  | 
+|Dashboards               |(Main) Analytics    | Available for hosted runtime and deployments| Available for runtimes, deployments, Delivery Pipelines | 
+|                         |DORA metrics         | Available                 |Available        | 
+|                         |Applications         | Available                 |Available        | 
 
 ### What to read next
 [Hybrid runtime installation]({{site.baseurl}}/docs/runtime/installation/)  
-[Set up hosted runtime]({{site.baseurl}}/docs/incubation/hosted-runtime/)
+[Provision hosted runtime]({{site.baseurl}}/docs/incubation/hosted-runtime/)
