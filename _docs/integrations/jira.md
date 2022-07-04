@@ -10,8 +10,6 @@ software features with their deployment (where and when). While the software ver
 
 Codefresh has native integration for Atlassian Jira. This allows Codefresh to monitor a feature all the way from the ticket creation phase, up to when it is implemented and deployed to an environment.  
 
-Adding a Jira integration allows you to reference the integration in your pipelines (Codefresh or external), by the name of the integration account, instead of adding explicit credentials. See [Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/).
-
 
 ### Prerequisites
 
@@ -56,15 +54,10 @@ The exact location depends on whether the integration is shared with _all_ or _s
 * Selected runtimes: Created in `resources/runtimes/<runtime-name>/`
 
 ### Using Jira integration in pipelines
+For pipelines based on GitHub Actions:  
+  Configure the Jira integration in Codefresh, and then connect your GitHub Action to Codefresh, as described in [GitHub Action integration]({{site.baseurl}}/docs/integrations/github-actions/).  
+  Codefresh uses the Secret Key stored in the runtime cluster to securely access Jira and retrieve the information. 
 
-The usage is slightly different for an external CI versus Codefresh-native pipelines, but in both cases you can replace explicit Jira credentials with just the name of the Jira integration to use. Codefresh uses the Secret Key stored in the runtime cluster to securely access Jira and retrieve the information. 
-
-* For pipelines based on GitHub Actions:  
-  Configure the Jira integration in Codefresh, and then connect your GitHub Action to Codefresh, as described in [GitHub Action integration]({{site.baseurl}}/docs/integrations/github-actions/).
-
-* For Codefresh-native pipelines: 
-  If you are using the [Codefresh Jira image enrichment template](https://github.com/codefresh-io/argo-hub/blob/main/workflows/codefresh-csdp/versions/1.0.0/docs/image-enricher-jira-info.md) in your pipeline:  
-  Replace: `JIRA_HOST_URL`, `JIRA_API_TOKEN_SECRET`, `JIRA_API_TOKEN_SECRET_KEY` and `IRA_EMAIL_SECRET_KEY` with `CF_JIRA_INTEGRATION` and the name of the integration added in Codefresh as the value. For example, `jira`.
       
 
 ### What to read next
