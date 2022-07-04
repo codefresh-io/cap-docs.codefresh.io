@@ -17,7 +17,7 @@ Use the action in the following manner:
 
 1. Create a GitHub Actions pipeline like you normally do.
 1. Use any existing CI actions for compiling code, running unit tests, security scanning etc.
-1. Place the final action in the pipeline as the "report image" action provided by Codefresh with the required arguments and values.
+1. Place the final action in the pipeline as the "report image" action provided by Codefresh, copying the arguments and values from the GitHub Actions integration you set up in Codefresh.
 1. When the pipeline completes execution, Codefresh retrieves the information on the image that was built and its metadata (essentially the same
 data that Codefresh CI would send automatically).
 1. View the image in Codefresh in the [Images dashboard]({{site.baseurl}}/docs/pipelines/images/)
@@ -52,12 +52,11 @@ The table describes the arguments required for GitHub Action-Codefresh integrati
 1. In the Codefresh UI, go to [Integrations](https://g.codefresh.io/2.0/account-settings/integrations){:target="\_blank"}.
 1. Select **GitHub Actions**, and then click **Configure**.
 1. Define the arguments for the GitHub Action. [Review GitHub Action arguments](#codefresh-github-action-integration-arguments). 
-  * For the **CF_API_KEY**, click **Generate**. Note down the token is generated.
+  * For the **CF_API_KEY**, click **Generate**. Note down the token generated.
   * To create a container registry integration for DockerHub if you don't have one, click **Create Container Registry Integration**, and then configure the settings.
   * To create a Jira integration, click **Create Container Registry Integration**, and then configure the settings.
 1. Enter this token in GitHub Actions [as a secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) with the name `CF_API_KEY`.  
   Now you can reference it in all GitHub pipelines as you would any other secret.
-1. Leave the other parameters as is. As indicated, Codefresh retrieves the values from the CI tool using the integration name.
 
 {% include image.html 
 lightbox="true" 
