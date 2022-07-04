@@ -65,7 +65,6 @@ The usage is slightly different for an external CI versus Codefresh-native pipel
 * For Codefresh-native pipelines: 
   If you are using the [Codefresh Jira image enrichment template](https://github.com/codefresh-io/argo-hub/blob/main/workflows/codefresh-csdp/versions/1.0.0/docs/image-enricher-jira-info.md) in your pipeline:  
   Replace: `JIRA_HOST_URL`, `JIRA_API_TOKEN_SECRET`, `JIRA_API_TOKEN_SECRET_KEY` and `IRA_EMAIL_SECRET_KEY` with `CF_JIRA_INTEGRATION` and the name of the integration added in Codefresh as the value. For example, `jira`.
-
       
 
 ### What to read next
