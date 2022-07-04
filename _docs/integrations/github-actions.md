@@ -7,49 +7,43 @@ toc: true
 
 Codfresh GitOps can be used with any popular Continuous Integration (CI) solution, not just with Codefresh CI.
 
-You can connect any external solution to Codefresh, such as GitHub Actions for example, to take care of common CI tasks such as building/testing/scanning source code, while having Codefresh GitOps still responsible for the deployment. 
+You can connect any external solution to Codefresh, such as GitHub Actions for example, to take care of common CI tasks such as building/testing/scanning source code, with Codefresh Hosted GitOps still responsible for the deployment, including image enrichment and reporting.
 
 ### Codefresh Marketplace GitHub Action 
 
-To support the integration between GitHub Actions and Codefresh, we have created a dedicated action in the [Codefresh marketplace](https://github.com/marketplace/actions/csdp-report-image).  
+To support the integration between GitHub Actions and Codefresh, we have created a dedicated action in the [Codefresh marketplace](https://github.com/marketplace/actions/csdp-report-image). The action combines image enrichment and reporting through integrations with Jira, and container registries such as DockerHub and Quay.
 
 Use the action in the following manner:
 
 1. Create a GitHub Actions pipeline like you normally do.
 1. Use any existing CI actions for compiling code, running unit tests, security scanning etc.
-1. Place the final action in the pipeline as the "report image" action provided by Codefresh.
+1. Place the final action in the pipeline as the "report image" action provided by Codefresh with the required arguments and values.
 1. When the pipeline completes execution, Codefresh retrieves the information on the image that was built and its metadata (essentially the same
 data that Codefresh CI would send automatically).
 1. View the image in Codefresh in the [Images dashboard]({{site.baseurl}}/docs/pipelines/images/)
- in Codefresh, and is ready to be used with any [GitOps deployment]({{site.baseurl}}/docs/deployment/applications-dashboard/).
+ in Codefresh, and in any [GitOps deployment]({{site.baseurl}}/docs/deployment/applications-dashboard/) in which it is used.
 
  
 
 ### Codefresh-GitHub Action integration arguments
-The table describes the main arguments required for GitHub Action-Codefresh integration. 
+The table describes the arguments required for GitHub Action-Codefresh integration. 
 
 
  {: .table .table-bordered .table-hover}
 | Argument  | Description     | Required/Optional/Default |
 | ---------- |  -------- | ------------------------- |
-| `CF_HOST`         | The URL to the cluster with the Codefresh runtime to integrate with. Select from the list of runtimes if you have more than one runtime.  | Required  |
-| `CF_API_KEY`         | The API key to interact with Codefresh. Generate the key for the GitHub Action | Required  |
-| `CF_CONTAINER_REGISTRY_INTEGRATION`         | The registry integration to use.  | Optional  |
-| `CF_JIRA_INTEGRATION`               | The Jira integration to use for the image. Relevant only if Jira enrichment is required for the image. When defined, `CF_ENRICHERS` must include `jira`.  | Optional  |
-| `CF_IMAGE`         | The name of the image to report to Codefresh.  | Required  |
-| `CF_VERBOSE`         | Enable verbose output. Default is `false`.  | Default  |
-| `CF_ENRICHERS`         | The enricher type or types for which to retrieve information and add to the image. When enrichment information is required, can be either `git`, `jira`, or both. By default, empty. When an enricher type is defined, you must also define the required fields for the enrichment-type for Codefresh to retrieve information.  | Default  |
-| `CF_WORKFLOW_URL`         | The reported URL of the workflow that builds the image.  | Optional  |
-| `CF_WORKFLOW_NAME`         | The name assigned to the workflow that builds the image. When defined, the name is displayed in the Codefresh platform. Example, `CR` | Optional  |
-| `CF_GITHUB_TOKEN`         | ???  | Required  |
-| `CF_JIRA_PROJECT_PREFIX`         | Relevant only when `CF_ENRICHERS` includes `jira`. The Jira project prefix that identifies the ticket number for which to retrieve information.  | Optional  |
-| `CF_JIRA_MESSAGE`         | Relevant only when `CF_ENRICHERS` includes `jira`. The Jira message that should be added to the image  prefix that identifies the ticket number for which to retrieve information.  | Optional  |
+| `CF_HOST`                      | The URL to the cluster with the Codefresh runtime to integrate with. If you have more than one runtime, select the runtime. Codefresh provides the cluster URL.  | Required  |
+| `CF_API_KEY`                   | The API key to interact with Codefresh. Generate the key for the GitHub Action | Required  |
+| `CF_CONTAINER_REGISTRY_INTEGRATION` | The registry integration to use.  | Optional  |
+| `CF_JIRA_INTEGRATION`               | The Jira integration to use for the image. Relevant only if Jira enrichment is required for the image. You can create a new When defined, `CF_ENRICHERS` must include `jira`.  | Optional  |
+| `CF_IMAGE`                    | The name of the image to report to Codefresh.  | Required  |
+| `CF_ENRICHERS`                | The type or types of enrichment information to retrieve and add to the image. By default, empty. When enrichment information is required, can be either `git`, `jira`, or both.  When an enricher type is defined, you must also define the required fields for the enrichment-type for Codefresh to retrieve information.  | Default  |
+| `CF_WORKFLOW_URL`            | The reported URL of the workflow that builds the image.  | Optional  |
+| `CF_WORKFLOW_NAME`           | The name assigned to the workflow that builds the image. When defined, the name is displayed in the Codefresh platform. Example, `CR` | Optional  |
+| `CF_GITHUB_TOKEN`            | The token for Git integration.  | Required  |
+| `CF_JIRA_PROJECT_PREFIX`     | Relevant only when `CF_ENRICHERS` includes `jira`. The Jira project prefix that identifies the ticket number for which to retrieve information.  | Optional  |
+| `CF_JIRA_MESSAGE`            | Relevant only when `CF_ENRICHERS` includes `jira`. The Jira message that should be added to the image prefix.  | Optional  |
 
-| `CF_LOGS_URL`         | The logs view to link this image to.   | Optional  |
-| `CF_GIT_REPO`         | Relevant only when `CF_ENRICHERS` includes `git`. The repo containing the source code.  | Optional  |
-| `CF_GIT_BRANCH`         | Relevant only when `CF_ENRICHERS` includes `git`. The repo branch containing the source code.  | Optional  |
-| `CF_JIRA_MESSAGE`         | Relevant only when `CF_ENRICHERS` includes `jira`. The string that contains PREFIX-ISSUE_ID for Jira.| Optional  |
-| `CF_JIRA_FAIL_ON_NOT_FOUND `         | Fail if Jira ticket is not found  | Optional  |
 
 
 ### Configure a GitHub Action in Codefresh
@@ -60,7 +54,7 @@ The table describes the main arguments required for GitHub Action-Codefresh inte
 1. Define the arguments for the GitHub Action. [Review GitHub Action arguments](#codefresh-github-action-integration-arguments). 
   * For the **CF_API_KEY**, click **Generate**. Note down the token is generated.
   * To create a container registry integration for DockerHub if you don't have one, click **Create Container Registry Integration**, and then configure the settings.
-  * To create a Jira 
+  * To create a Jira integration, click **Create Container Registry Integration**, and then configure the settings.
 1. Enter this token in GitHub Actions [as a secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) with the name `CF_API_KEY`.  
   Now you can reference it in all GitHub pipelines as you would any other secret.
 1. Leave the other parameters as is. As indicated, Codefresh retrieves the values from the CI tool using the integration name.
@@ -107,27 +101,34 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build & push the Docker image
         env:
-          CF_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/csdp-report-image-github-action:example-reported-image
+          CF_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/report-image-github-action
         run: |
           docker build . --file Dockerfile --tag $CF_IMAGE && docker push $CF_IMAGE
+          echo "Image should be accessible to your local machine (after docker login) by:"
+          echo "docker pull $CF_IMAGE"
+          docker pull $CF_IMAGE
+          echo "On the next step, the report image would use the integration to pull information on the reported image, and using the specified enrichers."
       - name: report image by action
         with:
-          CF_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/csdp-report-image-github-action:example-reported-image
-          CF_ENRICHERS: "jira, git"
           # Specify cluster app-proxy
-          CF_HOST: "https://codefresh.example.com"
-          CF_API_KEY: ${{ secrets.CF_API_KEY }}
-          CF_CONTAINER_REGISTRY_INTEGRATION: "quay-1"
-          
-          CF_GITHUB_TOKEN: ${{ secrets.G_TOKEN }} # the GitHub token is required since there is no  integration account
-          CF_GIT_PROVIDER: "github"
-          CF_GIT_REPO: "codefresh-io/example-github-action-use-csdp-report-image"
-          CF_GIT_BRANCH: "feature"
+          CF_HOST: "${{ secrets.CF_RUNTIME_HOST }}"
+          CF_API_KEY: ${{ secrets.USER_TOKEN }}
+          # use image registry integration - the name of the integration used for pulling information on the image.
+          CF_CONTAINER_REGISTRY_INTEGRATION: "docker"
 
-          CF_JIRA_INTEGRATION: codefresh-jira  # the integration name is required, and avoids the need to define the credentials
-          CF_JIRA_MESSAGE: "implements PRO-13427"
-          CF_JIRA_PROJECT_PREFIX: "PRO"
-        uses: codefresh-io/csdp-report-image@0.0.45
+          # report image 
+          CF_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/codefresh-report-image-github-action:example-reported-image
+          # integration with
+          CF_ENRICHERS: "jira, git"
+          # use githug token
+          CF_GITHUB_TOKEN: ${{ secrets.CF_GITHUB_TOKEN }}    
+          # use jira integration - jira is the name of the integration created in codefresh argo platform.
+          CF_JIRA_INTEGRATION: "jira" 
+          CF_JIRA_MESSAGE: "A message with embedded issue ( i.e. CR-11027 ) that would be use query jira for the ticket "
+          # a specified prefix for finding the jira issue 
+          CF_JIRA_PROJECT_PREFIX: "CR"
+        uses: codefresh-io/codefresh-report-image@0.0.61
+        
 {% endraw %}'
 {% endhighlight yaml %}
 
