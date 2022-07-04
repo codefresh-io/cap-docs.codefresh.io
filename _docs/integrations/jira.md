@@ -8,7 +8,7 @@ toc: true
 One of the major highlights of the Codefresh platform is the ability to automatically correlate 
 software features with their deployment (where and when). While the software version of a component is easily identifiable, what is likely more interesting and important is to know the features included in a release.
 
-Codefresh has native integration for Atlassian JIRA. This allows Codefresh to monitor a feature all the way from the ticket creation phase, up to the moment it is implemented and deployed to an environment.  
+Codefresh has native integration for Atlassian Jira. This allows Codefresh to monitor a feature all the way from the ticket creation phase, up to when it is implemented and deployed to an environment.  
 
 Adding a JIRA integration allows you to reference the integration in your pipelines (Codefresh or external), by the name of the integration account, instead of adding explicit credentials. See [Image enrichment overview]({{site.baseurl}}/docs/integrations/image-enrichment-overview/).
 
@@ -16,7 +16,7 @@ Adding a JIRA integration allows you to reference the integration in your pipeli
 ### Prerequisites
 
 1. Get your JIRA instance credentials by following the [Atlassian documentation](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/).
-1. Note down the following as you will need to complete the integration with Codefresh:  
+1. Note down the following as you will need them to complete the integration with Codefresh:  
 
   * JIRA URL
   * JIRA username/email to be used for the integration
@@ -48,6 +48,7 @@ Once you have set up a JIRA instance, configure the JIRA integration settings in
 {:start="5"}
 1. To confirm, click **Commit**.
   It may take a few moments for the changes to be synced to the cluster before the integration account appears in the list.
+  
 
 ### Integration resource in shared runtime configuration
 The integration resource is created in the shared runtime configuration Git repository, under `resources`.
@@ -55,6 +56,18 @@ The exact location depends on whether the integration is shared with _all_ or _s
 * All runtimes: Created in `resources/all-runtimes-all-clusters/`
 * Selected runtimes: Created in `resources/runtimes/<runtime-name>/`
 
+### Use Jira integration in pipelines
+
+For pipelines based on GitHub Actions, configure the Jira integration in Codefresh, and then connect your GitHub Action to Codefresh, as described in [GitHub Action integration]({{site.baseurl}}/docs/integrations/github-actions/).
+
+For Codefresh-native pipelines, do the following:
+
+1. Add `docker run --env-file=cf_env quay.io/codefresh/codefresh-report-image:$VERSION` to your pipeline. 
+1. Add the required Jira fields: 
+  * `CF_JIRA_INTEGRATION` is the name of the Jira integration you added in Codefresh. For example, `jira`.
+  * `CF_JIRA_PROJECT_PREFIX` is the name of the project prefix, for example `CR`
+  * `CF_JIRA_MESSAGE` is the Jira issue that was fixed or implemented.
+      
 
 ### What to read next
 [Shared runtime configuration]({{site.baseurl}}/docs/runtime/shared-configuration/)  
