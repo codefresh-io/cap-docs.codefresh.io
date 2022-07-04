@@ -6,7 +6,6 @@ toc: true
 ---
 
 Codefresh has native support for interacting with Docker Hub registries.  
-Adding a Docker Hub integration allows you to reference the integration in your pipeline (Codefresh or external) by the name of the integration account, instead of adding explicit credentials. See [Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/).
 
 ### Prerequisites
 Before you configure settings in Codefresh to integrate Docker Hub registry, do the following:
@@ -51,17 +50,13 @@ The integration resource is created in the shared runtime configuration Git repo
 
 ### Using Docker Hub integration in pipelines
 
-The usage is slightly different for an external CI versus Codefresh-native pipelines. In both cases, you can replace explicit Docker Hub credentials with just the name of the Docker Hub integration to use. Codefresh uses the Secret Key stored in the runtime cluster to securely access the registry and retrieve the information. 
-
-* For pipelines based on GitHub Actions:  
+For pipelines based on GitHub Actions:  
   Configure the Docker Hub integration in Codefresh, and then connect your GitHub Action to Codefresh, as described in [GitHub Action integration]({{site.baseurl}}/docs/integrations/github-actions/).
 
-* For Codefresh-native pipelines:  
-
-  Replace Docker Hub credentials with the name of the integration added in Codefresh as the value. For example, `dockerhub`.
 
 ### What to read next
 [Shared runtime configuration]({{site.baseurl}}/docs/runtime/shared-configuration/)  
+[Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/)  
 [Images]({{site.baseurl}}/docs/pipelines/images/)  
 [Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/)    
 [Adding Git sources]({{site.baseurl}}/docs/runtime/git-sources/)  
