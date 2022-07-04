@@ -35,7 +35,7 @@ The table describes the arguments required for GitHub Action-Codefresh integrati
 | `CF_HOST`                      | The URL to the cluster with the Codefresh runtime to integrate with. If you have more than one runtime, select the runtime. Codefresh provides the cluster URL.  | Required  |
 | `CF_API_KEY`                   | The API key to interact with Codefresh. Generate the key for the GitHub Action | Required  |
 | `CF_CONTAINER_REGISTRY_INTEGRATION` | The registry integration to use.  | Optional  |
-| `CF_JIRA_INTEGRATION`               | The Jira integration to use for the image. Relevant only if Jira enrichment is required for the image. You can create a new When defined, `CF_ENRICHERS` must include `jira`.  | Optional  |
+| `CF_JIRA_INTEGRATION`               | The Jira integration  to use for the image. Relevant only if Jira enrichment is required for the image. You can create a new When defined, `CF_ENRICHERS` must include `jira`.  | Optional  |
 | `CF_IMAGE`                    | The name of the image to report to Codefresh.  | Required  |
 | `CF_ENRICHERS`                | The type or types of enrichment information to retrieve and add to the image. By default, empty. When enrichment information is required, can be either `git`, `jira`, or both.  When an enricher type is defined, you must also define the required fields for the enrichment-type for Codefresh to retrieve information.  | Default  |
 | `CF_WORKFLOW_URL`            | The reported URL of the workflow that builds the image.  | Optional  |
@@ -46,15 +46,15 @@ The table describes the arguments required for GitHub Action-Codefresh integrati
 
 
 
-### Configure a GitHub Action in Codefresh
+### Connect a GitHub Action in Codefresh
 
-
+Add a GitHub Action to Codefresh with the required arguments. 
 1. In the Codefresh UI, go to [Integrations](https://g.codefresh.io/2.0/account-settings/integrations){:target="\_blank"}.
 1. Select **GitHub Actions**, and then click **Configure**.
 1. Define the arguments for the GitHub Action. [Review GitHub Action arguments](#codefresh-github-action-integration-arguments). 
   * For the **CF_API_KEY**, click **Generate**. Note down the token generated.
-  * To create a container registry integration for DockerHub if you don't have one, click **Create Container Registry Integration**, and then configure the settings.
-  * To create a Jira integration, click **Create Container Registry Integration**, and then configure the settings.
+  * To create a container registry integration for DockerHub if you don't have one, click **Create Container Registry Integration**, and then configure the settings. See [Docker Hub integration]({{site.baseurl}}/docs/integrations/docker-hub/).
+  * To create a Jira integration, click **Create Atlassian Jira Integration**, and then configure the settings. See [Jira integration]({{site.baseurl}}/docs/integrations/jira/).
 1. Enter this token in GitHub Actions [as a secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) with the name `CF_API_KEY`.  
   Now you can reference it in all GitHub pipelines as you would any other secret.
 
@@ -66,6 +66,8 @@ alt="GitHub Action integration for image enrichment"
 caption="GitHub Action integration for image enrichment"
 max-width="50%"
 %}
+
+> Copy the arguments and their values to the GitHub Action pipeline resource. See the example below for guidelines.
 
 ### GitHub Actions pipeline example
 
@@ -131,7 +133,9 @@ jobs:
 {% endraw %}'
 {% endhighlight yaml %}
 
- 
-## What to read next  
+### GitHub Action logs
+When a GitHub Action is run, the 
+
+### What to read next  
 [Adding Git sources]({{site.baseurl}}/docs/runtime/git-sources/)
 
