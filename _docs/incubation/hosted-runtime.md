@@ -27,7 +27,7 @@ max-width="70%"
 %}
 
 #### 1. Provision hosted runtime
-Start hosted-runtime installation with a single-click. Codefresh completes the installation without any further intervention on your part. 
+Start installing the hosted runtime with a single-click. Codefresh completes the installation without any further intervention on your part. 
 The hosted runtime is provisioned on the Codefresh cluster, and completely managed by Codefresh with automatic version and security upgrades.
 
 1. Click **Install**.
@@ -234,9 +234,5 @@ Optional. Integrate Codefresh with the third-party tools you use for CI to enric
 
 [Image enrichment with integration]({{site.baseurl}}/docs/integration/image-enrichment-overview/) 
 
-
-
-
-
-
-
+### Configure IP addresses
+Remember to configure the required Codefresh IP addresses for access. See [Codefresh IP addresses]({{site.baseurl}}/docs/administration/platform-ip-addresses/).
