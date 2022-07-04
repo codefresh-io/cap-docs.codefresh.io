@@ -10,7 +10,7 @@ If you have a license for Hosted GitOps, complete the simple setup for your host
 Read about [Codefresh Hosted GitOps]({{site.baseurl}}/docs/incubation/intro-hosted-runtime/). 
 
 ### Where to start with Hosted GitOps
-If you have not installed a hosted runtime, Codefresh presents you with the setup options in the Home dashboard.   
+If you have not provisioned a hosted runtime, Codefresh presents you with the setup instructions in the Home dashboard.   
 
 
 * In the Codefresh UI, go to Codefresh [Home](https://g.codefresh.io/2.0/?time=LAST_7_DAYS){:target="\_blank"}.
@@ -26,9 +26,9 @@ caption="Provision hosted runtime"
 max-width="70%"
 %}
 
-#### 1. Install hosted runtime
-Start installing your hosted runtime with a single-click. Codefresh completes the installation without any further intervention on your part. 
-The hosted runtime is installed on the Codefresh cluster, and completely managed by Codefresh with automatic version and security upgrades.
+#### 1. Provision hosted runtime
+Start hosted-runtime installation with a single-click. Codefresh completes the installation without any further intervention on your part. 
+The hosted runtime is provisioned on the Codefresh cluster, and completely managed by Codefresh with automatic version and security upgrades.
 
 1. Click **Install**.
 
@@ -73,7 +73,7 @@ max-width="70%"
 
 
 #### 2. Connect Git provider
-Connect your hosted runtime to a Git provider. Codefresh creates the required runtime Git repos for you.  First authorize access to your Git provider through an OAuth token, and then select the Git organization or account in which to create the required Git repos.  
+Connect your hosted runtime to a Git provider for Codefresh to creates the required Git repos.  First authorize access to your Git provider through an OAuth token, and then select the Git organization or account in which to create the required Git repos.  
 
 {% include
 image.html
@@ -86,10 +86,10 @@ max-width="70%"
 %}
 
 
-Once you authorize access, Codefresh creates two Git repositories, one to store the runtime's configuration settings, and the other to store runtime's application settings:
+Once you authorize access, Codefresh creates two Git repositories, one to store the runtime configuration settings, and the other to store the runtime's application settings:
 * Shared runtime configuration repo  
 
-  The shared runtime configuration repo is a centralized Git repository that stores configuration settings for the hosted runtime. Additional runtimes created for the account can point to this repo to retrieve and use the configuration.  
+  The shared runtime configuration repo is a centralized Git repository that stores configuration settings for the hosted runtime. Additional runtimes provisioned for the account can point to this repo to retrieve and reuse the configuration.  
   Read about [Shared runtime configuration]({{site.baseurl}}/docs/runtime/shared-runtime/).
 
 * Git Source application repo  
@@ -189,13 +189,8 @@ max-width="70%"
 
 
 1. Click **Connect**.
-1. In the Add Managed Cluster panel, do the following:
-  * **Cluster Context**: Enter the context name for your cluster, as it appears in your kubeconfig file. 
-  * Define the parameters and then run the command:  
-    `cf cluster add <runtime-name> --context <context_name>`  
-    where:  
-      `<runtime-name>` is the runtime to which to register the cluster. The name of the selected runtime is automatically added.  
-      `<context_name>` is the kube context with the credentials to communicate with the managed cluster. If not supplied, the CLI displays the list of available clusters as defined in `kubeconfig`.  
+1. In the Add Managed Cluster panel, copy the command `cf cluster add`, and run it in the terminal.  
+1. When prompted to select the `kube-context`, select from the list of available clusters as defined in `kubeconfig`.  
   
    {% include 
 	image.html 
@@ -220,19 +215,24 @@ max-width="70%"
 	caption="New K8s cluster in hosted runtime"
   max-width="50%" 
   %}
+1. Make sure you have configured access to the IP addresses required. See [Codefresh IP addresses]({{site.baseurl}}/docs/administration/platform-ip-addresses/).  
 
-You have completed setting up your hosted runtime. You are ready to deploy applications, connect third-party CI tools for image enrichment.
+You have completed setting up your hosted runtime. You are ready to create applications, and connect third-party CI tools for image enrichment.
 
 #### (Optional) Create application
 Optional. Create an application in Codefresh, deploy it to the cluster, and track deployment and performance in the Applications dashboard.  
 
-[Create an application]({{site.baseurl}}/docs/deployment/create-application/)  
-[Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/)
+Follow our quick-start to create and deploy the `codefresh-guestbook` application. Follow the steps starting with [Create application resources]({{site.baseurl}}/docs/getting-started/quick-start/create-app-specs/)   
+OR  
+
+Create your own application. See [Create an application]({{site.baseurl}}/docs/deployment/create-application/)   
+
+View deployment in the [Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/).
 
 #### (Optional) Connect CI 
 Optional. Integrate Codefresh with the third-party tools you use for CI to enrich image information in deployments.  
 
-[Image enrichment]({{site.baseurl}}/docs/integration/image-enrichment-overview/) 
+[Image enrichment with integration]({{site.baseurl}}/docs/integration/image-enrichment-overview/) 
 
 
 
