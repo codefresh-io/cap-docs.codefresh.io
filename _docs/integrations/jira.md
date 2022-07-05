@@ -8,7 +8,7 @@ toc: true
 One of the major highlights of the Codefresh platform is the ability to automatically correlate 
 software features with their deployment (where and when). While the software version of a component is easily identifiable, what is likely more interesting and important is to know the features included in a release.
 
-Codefresh has native integration for Atlassian Jira. This allows Codefresh to monitor a feature all the way from the ticket creation phase, up to when it is implemented and deployed to an environment.  
+Codefresh has native integration for Atlassian Jira. This allows Codefresh to monitor a feature all the way from the ticket creation phase, up to when it is implemented and deployed to an environment. You can set up Jira integration in Codefresh, and reference the integration from external pipeline tools such as GitHub Actions [Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/) and [GitHub Action integration]({{site.baseurl}}/docs/integrations/github-actions/).
 
 
 ### Prerequisites
@@ -54,25 +54,14 @@ The exact location depends on whether the integration is shared with _all_ or _s
 * Selected runtimes: Created in `resources/runtimes/<runtime-name>/`
 
 ### Using Jira integration in pipelines
-For pipelines based on GitHub Actions:  
-  Configure the Jira integration in Codefresh, and then connect your GitHub Action to Codefresh, as described in [GitHub Action integration]({{site.baseurl}}/docs/integrations/github-actions/).  
-  Codefresh uses the Secret Key stored in the runtime cluster to securely access Jira and retrieve the information. 
-
-      
+For pipelines based on GitHub Actions, configure the Jira integration in Codefresh, and then connect your GitHub Action to Codefresh, referencing the Jira integration by name.  
+Codefresh uses the Secret Key stored in the runtime cluster to securely access Jira and retrieve the information. 
 
 ### What to read next
 [Shared runtime configuration]({{site.baseurl}}/docs/runtime/shared-configuration/)  
 [Images]({{site.baseurl}}/docs/pipelines/images/)  
 [Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/)    
 [Adding Git sources]({{site.baseurl}}/docs/runtime/git-sources/)  
-
-
-
-
-
-
-
-
 
 
 
