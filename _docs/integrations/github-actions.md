@@ -5,13 +5,13 @@ group: integrations
 toc: true
 ---
 
-Codfresh GitOps can be used with any popular Continuous Integration (CI) solution, not just with Codefresh CI.
+Codefresh Hosted GitOps can be used with any popular Continuous Integration (CI) solution, not just with Codefresh CI.
 
 You can connect any external solution to Codefresh, such as GitHub Actions for example, to take care of common CI tasks such as building/testing/scanning source code, with Codefresh Hosted GitOps still responsible for the deployment, including image enrichment and reporting.
 
 ### Codefresh Marketplace GitHub Action 
 
-To support the integration between GitHub Actions and Codefresh, we have created a dedicated action in the [Codefresh marketplace](https://github.com/marketplace/actions/csdp-report-image). The action combines image enrichment and reporting through integrations with Jira, and container registries such as DockerHub and Quay.
+To support the integration between GitHub Actions and Codefresh, we have created a dedicated action in the [Codefresh marketplace](https://github.com/marketplace/actions/csdp-report-image). The action combines image enrichment and reporting through integrations with Jira, and container registries such as DockerHub or Quay.
 
 Use the action in the following manner:
 
@@ -32,17 +32,17 @@ The table describes the arguments required for GitHub Action-Codefresh integrati
  {: .table .table-bordered .table-hover}
 | Argument  | Description     | Required/Optional/Default |
 | ---------- |  -------- | ------------------------- |
-| `CF_HOST`                      | The URL to the cluster with the Codefresh runtime to integrate with. If you have more than one runtime, select the runtime. Codefresh provides the cluster URL.  | Required  |
-| `CF_API_KEY`                   | The API key to interact with Codefresh. Generate the key for the GitHub Action | Required  |
-| `CF_CONTAINER_REGISTRY_INTEGRATION` | The registry integration to use.  | Optional  |
-| `CF_JIRA_INTEGRATION`               | The Jira integration  to use for the image. Relevant only if Jira enrichment is required for the image. You can create a new When defined, `CF_ENRICHERS` must include `jira`.  | Optional  |
+| `CF_HOST`                      | The URL to the cluster with the Codefresh runtime to integrate with. If you have more than one runtime, select the runtime from the list. Codefresh displays the URL of the selected runtime cluster.  | Required  |
+| `CF_API_KEY`                   | The API key to authenticate the runtime and interact with Codefresh. Generate the key for the GitHub Action | Required  |
+| `CF_CONTAINER_REGISTRY_INTEGRATION` | The name of the registry integration created in Codefresh to use with the GitHub Action.  | Optional  |
+| `CF_JIRA_INTEGRATION`               | The name of the Jira integration created in Codefresh to use for the GitHub Action. Relevant only if Jira enrichment is required for the image. If you don't have a Jira integration, create a new integration (see [Jira integration]({{site.baseurl}}/docs/integrations/jira/)). When defined, `CF_ENRICHERS` must include `jira`.  | Optional  |
 | `CF_IMAGE`                    | The name of the image to report to Codefresh.  | Required  |
 | `CF_ENRICHERS`                | The type or types of enrichment information to retrieve and add to the image. By default, empty. When enrichment information is required, can be either `git`, `jira`, or both.  When an enricher type is defined, you must also define the required fields for the enrichment-type for Codefresh to retrieve information.  | Default  |
 | `CF_WORKFLOW_URL`            | The reported URL of the workflow that builds the image.  | Optional  |
-| `CF_WORKFLOW_NAME`           | The name assigned to the workflow that builds the image. When defined, the name is displayed in the Codefresh platform. Example, `CR` | Optional  |
+| `CF_WORKFLOW_NAME`           | The name assigned to the workflow that builds the image. When defined, the name is displayed in the Codefresh platform. Example, `Staging step` | Optional  |
 | `CF_GITHUB_TOKEN`            | The token for Git integration.  | Required  |
 | `CF_JIRA_PROJECT_PREFIX`     | Relevant only when `CF_ENRICHERS` includes `jira`. The Jira project prefix that identifies the ticket number for which to retrieve information.  | Optional  |
-| `CF_JIRA_MESSAGE`            | Relevant only when `CF_ENRICHERS` includes `jira`. The Jira message that should be added to the image prefix.  | Optional  |
+| `CF_JIRA_MESSAGE`            | Relevant only when `CF_ENRICHERS` includes `jira`. The Jira message that to add to the image.  | Optional  |
 
 
 
@@ -67,15 +67,14 @@ caption="GitHub Action integration for image enrichment"
 max-width="50%"
 %}
 
-> Copy the arguments and their values to the GitHub Action pipeline resource. See the example below for guidelines.
+{:start="5"}
+1. Copy the arguments and their values to the GitHub Action pipeline. See the example below for guidelines.
 
 ### GitHub Actions pipeline example
 
-Here is an example pipeline that uses GitHub Actions to build a container image, and the Codefresh action to report the resulting image to Codefresh.  
+Here is an example pipeline that uses GitHub Actions to build a container image, and the Codefresh action to enrich and report the resulting image to Codefresh.  
 
-The example illustrates the differences when you have a Codefresh integration to a CI tool and when you have not:
-* GitHub enrichment: The `CF_GITHUB_TOKEN` is required as a credential as there is no integration account.
-* Jira enrichment: Because a Jira integration account is configured in Codefresh CI Connect, the step needs only `CF_JIRA_INTEGRATION`, instead of explicit credentials `CF_JIRA_API_TOKEN`, `CF_JIRA_HOST_URL`, and `CF_JIRA_EMAIL`. 
+Because a Jira integration account is configured in Codefresh, the step needs only the name for `CF_JIRA_INTEGRATION`, instead of explicit credentials `CF_JIRA_API_TOKEN`, `CF_JIRA_HOST_URL`, and `CF_JIRA_EMAIL`. 
 
 
 {% highlight yaml %}
