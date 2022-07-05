@@ -44,7 +44,7 @@ Optionally, to first generate the YAML manifests, and then manually apply them, 
 	url="/images/runtime/managed-cluster-add-panel.png" 
 	alt="Add Managed Cluster panel" 
 	caption="Add Managed Cluster panel"
-  max-width="30%" 
+  max-width="40%" 
 %}
 
 {:start="5"}
