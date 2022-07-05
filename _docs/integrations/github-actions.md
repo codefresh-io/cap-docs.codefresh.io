@@ -132,8 +132,8 @@ jobs:
 {% endraw %}'
 {% endhighlight yaml %}
 
-### GitHub Action logs
-When a GitHub Action is run, the 
+<!--### GitHub Action logs
+When a GitHub Action is run, the -->
 
 ### What to read next  
 [Adding Git sources]({{site.baseurl}}/docs/runtime/git-sources/)
