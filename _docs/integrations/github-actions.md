@@ -136,5 +136,7 @@ jobs:
 When a GitHub Action is run, the -->
 
 ### What to read next  
+[Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/)
 [Adding Git sources]({{site.baseurl}}/docs/runtime/git-sources/)
+
 
