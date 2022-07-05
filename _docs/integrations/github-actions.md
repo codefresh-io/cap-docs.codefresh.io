@@ -7,7 +7,9 @@ toc: true
 
 Codefresh Hosted GitOps can be used with any popular Continuous Integration (CI) solution, not just with Codefresh CI.
 
-You can connect any external solution to Codefresh, such as GitHub Actions for example, to take care of common CI tasks such as building/testing/scanning source code, with Codefresh Hosted GitOps still responsible for the deployment, including image enrichment and reporting.
+You can connect any external solution to Codefresh, such as GitHub Actions for example, to take care of common CI tasks such as building/testing/scanning source code, with Codefresh Hosted GitOps still responsible for the deployment, including image enrichment and reporting.  
+See [Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/).
+
 
 ### Codefresh Marketplace GitHub Action 
 
@@ -33,7 +35,7 @@ The table describes the arguments required for GitHub Action-Codefresh integrati
 | Argument  | Description     | Required/Optional/Default |
 | ---------- |  -------- | ------------------------- |
 | `CF_HOST`                      | The URL to the cluster with the Codefresh runtime to integrate with. If you have more than one runtime, select the runtime from the list. Codefresh displays the URL of the selected runtime cluster.  | Required  |
-| `CF_API_KEY`                   | The API key to authenticate the runtime and interact with Codefresh. Generate the key for the GitHub Action | Required  |
+| `CF_API_KEY`                   | The API key to authenticate the GitHub Actions user to Codefresh. Generate the key for the GitHub Action. | Required  |
 | `CF_CONTAINER_REGISTRY_INTEGRATION` | The name of the registry integration created in Codefresh to use with the GitHub Action.  | Optional  |
 | `CF_JIRA_INTEGRATION`               | The name of the Jira integration created in Codefresh to use for the GitHub Action. Relevant only if Jira enrichment is required for the image. If you don't have a Jira integration, create a new integration (see [Jira integration]({{site.baseurl}}/docs/integrations/jira/)). When defined, `CF_ENRICHERS` must include `jira`.  | Optional  |
 | `CF_IMAGE`                    | The name of the image to report to Codefresh.  | Required  |
@@ -42,7 +44,7 @@ The table describes the arguments required for GitHub Action-Codefresh integrati
 | `CF_WORKFLOW_NAME`           | The name assigned to the workflow that builds the image. When defined, the name is displayed in the Codefresh platform. Example, `Staging step` | Optional  |
 | `CF_GITHUB_TOKEN`            | The token for Git integration.  | Required  |
 | `CF_JIRA_PROJECT_PREFIX`     | Relevant only when `CF_ENRICHERS` includes `jira`. The Jira project prefix that identifies the ticket number for which to retrieve information.  | Optional  |
-| `CF_JIRA_MESSAGE`            | Relevant only when `CF_ENRICHERS` includes `jira`. The Jira message that to add to the image.  | Optional  |
+| `CF_JIRA_MESSAGE`            | Relevant only when `CF_ENRICHERS` includes `jira`. The Jira message to add to the image.  | Optional  |
 
 
 
@@ -132,11 +134,45 @@ jobs:
 {% endraw %}'
 {% endhighlight yaml %}
 
-<!--### GitHub Action logs
-When a GitHub Action is run, the -->
+### GitHub Action logs
+View and analyze logs for GitHub Action workflows through the Logs tab. When a GitHub Action is run, it is added to the Logs tab.  
+You can:  
+* Filter by status or by date range to view a subset of actions
+* Navigate to the build file in GitHub Actions, and view the Codefresh report image step
+
+{% include image.html 
+lightbox="true" 
+file="/images/integrations/github-actions/github-actions-logs.png" 
+url="/images/integrations/github-actions/github-actions-logs.png"
+alt="GitHub Action: Logs tab"
+caption="GitHub Action: Logs tab"
+max-width="50%"
+%}
+
+**Build YAML in GitHub Action**
+The Run column includes the link to the build files for the actions. 
+Here are examples of the build file for the GitHub Action (top) and of the Codefresh report image step in the action (below) 
+
+{% include image.html 
+lightbox="true" 
+file="/images/integrations/github-actions/action-build-yaml.png" 
+url="/images/integrations/github-actions/action-build-yaml.png"
+alt="Build file in GitHub Action"
+caption="Build file in GitHub Action"
+max-width="50%"
+%}
+
+{% include image.html 
+lightbox="true" 
+file="/images/integrations/github-actions/actiosn-cf-report-image-step.png" 
+url="/images/integrations/github-actions/actiosn-cf-report-image-step.png"
+alt="Codefresh report image step in GitHub Action build file"
+caption="Codefresh report image step in GitHub Action build file"
+max-width="50%"
+%}
+
 
 ### What to read next  
-[Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/)
 [Adding Git sources]({{site.baseurl}}/docs/runtime/git-sources/)
 
 
