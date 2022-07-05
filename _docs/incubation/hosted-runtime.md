@@ -215,7 +215,7 @@ max-width="70%"
 	caption="New K8s cluster in hosted runtime"
   max-width="50%" 
   %}
-1. Make sure you have configured access to the IP addresses required. See [Codefresh IP addresses]({{site.baseurl}}/docs/administration/platform-ip-addresses/).  
+1. Configure access to the IP addresses required. See [Codefresh IP addresses]({{site.baseurl}}/docs/administration/platform-ip-addresses/).  
 
 You have completed setting up your hosted runtime. You are ready to create applications, and connect third-party CI tools for image enrichment.
 
@@ -232,7 +232,6 @@ View deployment in the [Applications dashboard]({{site.baseurl}}/docs/deployment
 #### (Optional) Connect CI 
 Optional. Integrate Codefresh with the third-party tools you use for CI to enrich image information in deployments.  
 
-[Image enrichment with integration]({{site.baseurl}}/docs/integration/image-enrichment-overview/) 
+[Image enrichment with integrations]({{site.baseurl}}/docs/integration/image-enrichment-overview/) 
 
-### Configure IP addresses
-Remember to configure the required Codefresh IP addresses for access. See [Codefresh IP addresses]({{site.baseurl}}/docs/administration/platform-ip-addresses/).
+
