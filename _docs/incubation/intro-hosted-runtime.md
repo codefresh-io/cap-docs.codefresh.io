@@ -8,9 +8,9 @@ toc: true
 
 Codefresh has enhanced our solution offering with Hosted GitOps, the SaaS version of Codefresh.  
 
-What do you get with Hosted GitOps? You get a hosted and managed version of Argo CD. From application analytics, to application creation, rollout, and deployment, you get the best of both worlds: Argo CD with unique features and functionality from Codefresh to achieve your CD goals.  
-
-What it means is easy set up, zero maintenance overhead, and advanced functionality for progressive delivery and deployments. Read on for more details. 
+What do you get with Hosted GitOps?  
+You get a hosted and managed version of Argo CD. From application analytics, to application creation, rollout, and deployment, you get the best of both worlds: Argo CD with unique features and functionality from Codefresh to help achieve your CD goals.  
+What it also means is easy set up and zero maintenance overhead. Read on for more details. 
 
 ### Hosted runtimes
 
@@ -38,7 +38,7 @@ Get insights into important KPIs and deployments, across runtimes and clusters, 
 	image.html 
 	lightbox="true" 
 	file="/images/incubation/home-dashboard.png" 
-	url="/images/applications/app-dashboard.png" 
+	url="/images/incubation/app-dashboard.png" 
 	alt="Global deployment analytics" 
 	caption="Global deployment analytics"
     max-width="80%" 
@@ -47,7 +47,7 @@ Get insights into important KPIs and deployments, across runtimes and clusters, 
 
 ### Application analytics and analysis
 
-The Applications dashboard displays applications, across runtimes and clusters, from which you can select one for analysis. Individual application information is grouped by current and historical deployments, enriched with Argo, Jira, and Git details, including rollout visualizations for ongoing deployments (Timeline), and an interactive tree view of application resources (Current State)
+The Applications dashboard displays applications across runtimes and clusters, from which you can select and analyze individual applications. Individual application information is grouped by current and historical deployments, enriched with Argo, Jira, and Git details, including rollout visualizations for ongoing deployments (Timeline tab), and an interactive tree view of application resources (Current State tab).
 
 See [Applications dashboard]({{site.baseurl}}/docs/deployment/application-dashboard/).
 
@@ -138,9 +138,8 @@ The table below highlights the main differences between hosted and hybrid enviro
 |                         |Image enrichment    | Supported                  | Supported  | 
 |                         | Rollouts           | Supported                  |  Supported  | 
 |Integrations             |                    | Supported                  | Supported  | 
-|Dashboards               |Home Analytics       | Hosted runtime and deployments| Runtimes, deployments, Delivery Pipelines | 
-|                         |DORA metrics         | Supported                 |Available        | 
+|Dashboards               |Home Analytics       | Hosted runtime and deployments|Runtimes, deployments, Delivery Pipelines | 
+|                         |DORA metrics         | Supported                 |Supported        | 
 |                         |Applications         | Supported                 |Supported        | 
 
-### What to read next
-[Hybrid runtime installation]({{site.baseurl}}/docs/runtime/installation/)  
+
