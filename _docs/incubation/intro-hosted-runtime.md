@@ -8,16 +8,16 @@ toc: true
 
 Codefresh has enhanced our solution offering with Hosted GitOps, the SaaS version of Codefresh.  
 
-Achieve your CD Ops goals with Hosted GitOps: easy set up and zero maintenance overhead, combined with advanced functionality for progressive delivery and deployments.
+What do you get with Hosted GitOps? You get a hosted and managed version of Argo CD. From application analytics, to application creation, rollout, and deployment, you get the best of both worlds: Argo CD with unique features and functionality from Codefresh to achieve your CD goals.  
 
-### What do you get with Hosted GitOps?
+What it means is easy set up, zero maintenance overhead, and advanced functionality for progressive delivery and deployments. Read on for more details. 
 
-Hosted GitOps gives you a hosted and managed version of Argo CD. 
+### Hosted runtimes
 
-**Hosted runtimes**  
+Setting up your hosted environment takes just a few clicks. All you need is a Codefresh account, a Git account, and a Kubernetes cluster to which to deploy your applications.
+Codefresh guides you through the simple three-step process of provisioning your hosted runtime.  From that point, Codefresh handles administration and maintenance of the hosted runtime, including version and security updates.  
 
-Setting up your hosted environment takes a few clicks. All you need is a Codefresh account, a Git account, and a Kubernetes cluster to which to deploy your applications.
-Codefresh guides you through the simple three-step process of provisioning your hosted runtime.  
+See [Provision hosted runtime]({{site.baseurl}}/docs/incubation/hosted-runtime/).
 
 {% include 
 	image.html 
@@ -26,21 +26,48 @@ Codefresh guides you through the simple three-step process of provisioning your 
 	url="/images/incubation/intro-hosted-hosted-initial-view.png" 
 	alt="Hosted runtime setup" 
 	caption="Hosted runtime setup"
-    max-width="50%" 
+    max-width="80%" 
 %}   
 
-From version updates to security updates, Codefresh handles the administration and maintenance of hosted runtimes. 
+### Global deployment analytics  
+The Home dashboard presents enterprise-wide deployment highlights, making it a useful management tool.  
 
-**Advanced CD Ops**  
+Get insights into important KPIs and deployments, across runtimes and clusters, all in the same location. View status of runtimes and managed clusters, deployments, failed deployments with rollbacks, most active applications.  Use filters to narrow the scope to focus on anything specific.
 
-From application analytics, to application creation, rollout, and deployment, you get the best of both worlds: Argo CD and Argo Rollouts coupled with advanced CD functionality from Codefresh.
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/incubation/home-dashboard.png" 
+	url="/images/applications/app-dashboard.png" 
+	alt="Global deployment analytics" 
+	caption="Global deployment analytics"
+    max-width="80%" 
+%}
 
-* Application analytics  
 
-  Highlights and comprehensive analytics through a series of dashboards: DORA metrics, Home, and Applications.
-  * DevOps performance through DORA metrics
-  * Deployment analytics at your fingertips in Home analytics dashboard: Daily deployments, failed deployments with rollbacks, and most active applications
-  * Deep-dive into every deployment in the Applications dashboard: Centralized cross-runtime and cross-cluster view
+### Application analytics and analysis
+
+The Applications dashboard displays applications, across runtimes and clusters, from which you can select one for analysis. Individual application information is grouped by current and historical deployments, enriched with Argo, Jira, and Git details, including rollout visualizations for ongoing deployments (Timeline), and an interactive tree view of application resources (Current State)
+
+See [Applications dashboard]({{site.baseurl}}/docs/deployment/application-dashboard/).
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/applications/app-dashboard-main-view.png" 
+	url="/images/applications/app-dashboard-main-view.png" 
+	alt="Applications dashboard" 
+	caption="Applications dashboard"
+    max-width="80%" 
+%}
+
+### DORA metrics
+
+DORA metrics has become integral to enterprises wanting to quantify DevOps performance, and Codefresh has out-of-the-box support for it. 
+
+Apart from the metrics themselves, the DORA dashboard in Codefresh has several features such as the Totals bar with key metrics, filters that allow you to pinpoint just which applications or runtimes are contributing to problematic metrics, and the ability to set a different view granularity for each DORA metric.  
+
+See [DORA metrics]({{site.baseurl}}/docs/reference/dora/).
 
 {% include 
 	image.html 
@@ -49,29 +76,39 @@ From application analytics, to application creation, rollout, and deployment, yo
 	url="/images/incubation/intro-dora-metrics.png" 
 	alt="DORA metrics" 
 	caption="DORA metrics"
-    max-width="50%" 
+    max-width="60%" 
 %}
 
 
-* Application creation  
+### Application management 
+Manage the application lifecycle in the Codefresh UI, from creating, editing, and deleting them.  
 
-  Create GitOps-compatible applications in a single location. Define application settings through the intuitive Form mode, or directly in YAML. Commit all changes to Git.
+Define all application settings in a single location through the intuitive Form mode or directly in YAML, and commit all changes to Git.  
+For easy access, the configuration settings are available for editing in the Applications dashboard.
 
-* Application rollout  
+See [Applications]({{site.baseurl}}/docs/deployment/create-application/).
 
-  Track progress of the rollout, visualize every step in the rollout as it occurs, from the Applications dashboard. 
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/applications/add-app-general-settings.png" 
+	url="/images/applications/add-app-general-settings.png" 
+	alt="Application creation in Codefresh" 
+	caption="Application creation in Codefresh"
+    max-width="60%" 
+%}
 
-* Application deployment  
 
-  Historical deployments, current deployments, current state of application resources in interactive tree view with search functionality.  
 
-**Connect third-party CI to Codefresh**  
+### Third-party CI integrations
 
-Connect your CI integration tools to Codefresh, and enrich deployment information.
-
-* Git PRs (Pull Requests), Commits, and Committer information directly from the Code repository
+If you have your own tools for CI pipelines and workflows, Hosted GitOps gives you the option to connect them to Codefresh and enrich deployment information with our new report image template.  For example, you can add the report image step in your GitHub Actions pipeline and reference the different integrations for Codefresh to retrieve and enrich the image information.
+ 
+* Git PRs (Pull Requests), Commits, and Committer information directly from the code repositories
 * Jira ticket information for correlation with deployed features  
-* Container registry integration with DockerHub and Quay to fetch image information 
+* Docker Hub or Quay for image information 
+
+See [Image enrichment with integrations]({{site.baseurl}}/docs/integration/image-enrichment-overview/).
 
 {% include 
 	image.html 
@@ -80,7 +117,7 @@ Connect your CI integration tools to Codefresh, and enrich deployment informatio
 	url="/images/incubation/github-action-int-settings.png" 
 	alt="Image enrichment with GitHub Actions integration" 
 	caption="Image enrichment with GitHub Actions integration"
-    max-width="30%" 
+    max-width="60%" 
 %}
 
 ### Hosted vs. hybrid environments
@@ -90,21 +127,20 @@ The table below highlights the main differences between hosted and hybrid enviro
 | Functionality           |Feature        |  Hosted                | Hybrid | 
 | --------------          | --------------|--------------- | --------------- |
 | Runtime                 | Installation       | Provisioned by Codefresh   | Provisioned by customer       | 
+|                         | Runtime cluster   |Managed by Codefresh       | Managed by customer       | 
 |                         | Number per account | Only one runtime           | Multiple runtimes            | 
 |                         | Upgrade            | Performed by Codefresh     | Performed by customer | 
-| Runtime cluster         |In-cluster          | Managed by Codefresh       | Managed by customer       | 
-| External cluster        |                    | Managed by customer        | Managed by customer         |
+|                         | External cluster   | Managed by customer        | Managed by customer         |
 | CI Ops                  | Delivery Pipelines |Not supported               | Supported  | 
 |                         |Workflows           | Not supported              | Supported  | 
 |                         |Workflow Templates  | Not supported              | Supported  | 
 | CD  Ops                 |Applications        | Supported                  | Supported | 
-|                         | Image enrichment   | Supported                  | Supported  | 
+|                         |Image enrichment    | Supported                  | Supported  | 
 |                         | Rollouts           | Supported                  |  Supported  | 
 |Integrations             |                    | Supported                  | Supported  | 
-|Dashboards               |(Main) Analytics    | Available for hosted runtime and deployments| Available for runtimes, deployments, Delivery Pipelines | 
-|                         |DORA metrics         | Available                 |Available        | 
-|                         |Applications         | Available                 |Available        | 
+|Dashboards               |Home Analytics       | Hosted runtime and deployments| Runtimes, deployments, Delivery Pipelines | 
+|                         |DORA metrics         | Supported                 |Available        | 
+|                         |Applications         | Supported                 |Supported        | 
 
 ### What to read next
 [Hybrid runtime installation]({{site.baseurl}}/docs/runtime/installation/)  
-[Provision hosted runtime]({{site.baseurl}}/docs/incubation/hosted-runtime/)
