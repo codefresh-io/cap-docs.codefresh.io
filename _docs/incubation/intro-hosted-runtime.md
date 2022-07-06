@@ -38,7 +38,7 @@ Get insights into important KPIs and deployments, across runtimes and clusters, 
 	image.html 
 	lightbox="true" 
 	file="/images/incubation/home-dashboard.png" 
-	url="/images/incubation/app-dashboard.png" 
+	url="/images/incubation/home-dashboard.png" 
 	alt="Global deployment analytics" 
 	caption="Global deployment analytics"
     max-width="80%" 
