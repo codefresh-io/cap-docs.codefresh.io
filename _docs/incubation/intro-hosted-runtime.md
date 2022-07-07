@@ -9,15 +9,17 @@ toc: true
 Codefresh has enhanced our solution offering with Hosted GitOps, the SaaS version of Codefresh.  
 
 What do you get with Hosted GitOps?  
-You get a hosted and managed version of Argo CD. From application analytics, to application creation, rollout, and deployment, you get the best of both worlds: Argo CD with unique features and functionality from Codefresh to help achieve your CD goals.  
-What it also means is easy set up and zero maintenance overhead. Read on for more details. 
+In a nutshell, a hosted and managed version of Argo CD. From application analytics, to application creation, rollout, and deployment, you get the best of both worlds: Argo CD with unique features and functionality from Codefresh to help achieve your CD goals.  
+What it also means is easy set up and zero maintenance overhead.  
+
+Read on for more details. And check out our [blog](https://codefresh.io/blog/codefresh-upends-continuous-delivery-with-hosted-gitops-platform-featuring-dora-dashboards-and-first-class-integrations-for-ci/).
 
 ### Hosted runtimes
 
 Setting up your hosted environment takes just a few clicks. All you need is a Codefresh account, a Git account, and a Kubernetes cluster to which to deploy your applications.
 Codefresh guides you through the simple three-step process of provisioning your hosted runtime.  From that point, Codefresh handles administration and maintenance of the hosted runtime, including version and security updates.  
 
-See [Provision hosted runtime]({{site.baseurl}}/docs/incubation/hosted-runtime/).
+See [Set up a hosted runtime]({{site.baseurl}}/docs/incubation/hosted-runtime/).
 
 {% include 
 	image.html 
