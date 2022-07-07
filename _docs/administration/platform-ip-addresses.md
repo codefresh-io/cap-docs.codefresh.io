@@ -54,5 +54,7 @@ If you haven't configured your clusters with the required IPs, use the links bel
 
 [GKE (Google Kubernetes Engine)](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters){:target="\_blank"}  
 
-### Related information
+### What to read next
+[Hybrid runtime installation]({{site.baseurl}}/docs/runtime/installation/)  
+[Provision hosted runtime]({{site.baseurl}}/docs/incubation/hosted-runtime/)  
 [Codefresh architecture]({{site.baseurl}}/docs/runtime/managed-cluster/)
