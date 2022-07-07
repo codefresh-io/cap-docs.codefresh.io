@@ -70,13 +70,8 @@
     - title: Applications dashboard
       localurl: /docs/deployment/applications-dashboard/
     - title: Create an application
+      localurl: /docs/deployment/create-application/
 
-- title: Image enrichment
-  icon: images/home-icons/integrations.svg
-  url: ''
-  links:
-    - title: Image enrichment with integrations
-      localurl: /docs/integrations/image-enrichment-overview/
 
 - title: Image enrichment
   icon: images/home-icons/integrations.svg
