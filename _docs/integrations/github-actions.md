@@ -7,7 +7,7 @@ toc: true
 
 Codefresh Hosted GitOps can be used with any popular Continuous Integration (CI) solution, not just with Codefresh CI.
 
-You can connect any external solution to Codefresh, such as GitHub Actions for example, to take care of common CI tasks such as building/testing/scanning source code, with Codefresh Hosted GitOps still responsible for the deployment, including image enrichment and reporting.  
+You can connect any external CI solution to Codefresh, such as GitHub Actions for example, to take care of common CI tasks such as building/testing/scanning source code, with Codefresh Hosted GitOps still responsible for the deployment, including image enrichment and reporting.  
 See [Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/).
 
 
@@ -44,7 +44,7 @@ The table describes the arguments required for GitHub Action-Codefresh integrati
 | `CF_WORKFLOW_NAME`           | The name assigned to the workflow that builds the image. When defined, the name is displayed in the Codefresh platform. Example, `Staging step` | Optional  |
 | `CF_GITHUB_TOKEN`            | The token for Git integration.  | Required  |
 | `CF_JIRA_PROJECT_PREFIX`     | Relevant only when `CF_ENRICHERS` includes `jira`. The Jira project prefix that identifies the ticket number for which to retrieve information.  | Optional  |
-| `CF_JIRA_MESSAGE`            | Relevant only when `CF_ENRICHERS` includes `jira`. The Jira message to add to the image.  | Optional  |
+| `CF_JIRA_MESSAGE`            | Relevant only when `CF_ENRICHERS` includes `jira`. The Jira message for the `CF_JIRA_PROJECT_PREFIX` to add to the image.  | Optional  |
 
 
 
@@ -103,7 +103,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build & push the Docker image
         env:
-          CF_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/report-image-github-action
+          CF_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/build-by-github-action:0.0.1
         run: |
           docker build . --file Dockerfile --tag $CF_IMAGE && docker push $CF_IMAGE
           echo "Image should be accessible to your local machine (after docker login) by:"
@@ -119,7 +119,7 @@ jobs:
           CF_CONTAINER_REGISTRY_INTEGRATION: "docker"
 
           # report image 
-          CF_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/codefresh-report-image-github-action:example-reported-image
+          CF_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/build-by-github-action:0.0.1
           # integration with
           CF_ENRICHERS: "jira, git"
           # use githug token
@@ -129,7 +129,7 @@ jobs:
           CF_JIRA_MESSAGE: "A message with embedded issue ( i.e. CR-11027 ) that would be use query jira for the ticket "
           # a specified prefix for finding the jira issue 
           CF_JIRA_PROJECT_PREFIX: "CR"
-        uses: codefresh-io/codefresh-report-image@0.0.61
+        uses: codefresh-io/codefresh-report-image@0.0.62
         
 {% endraw %}'
 {% endhighlight yaml %}
@@ -149,9 +149,11 @@ caption="GitHub Action: Logs tab"
 max-width="50%"
 %}
 
-**Build YAML in GitHub Action**
-The Run column includes the link to the build files for the actions. 
-Here are examples of the build file for the GitHub Action (top) and of the Codefresh report image step in the action (below) 
+**Build YAML in GitHub Action**  
+
+The Run column includes the link to the build files for the actions.  
+
+Here are examples of the build file for the GitHub Action (top) and of the Codefresh report image step in the action (below).
 
 {% include image.html 
 lightbox="true" 
