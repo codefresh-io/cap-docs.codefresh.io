@@ -1,5 +1,5 @@
 ---
-title: "Image enrichment overview"
+title: "Image enrichment with integrations"
 description: ""
 group: integration
 toc: true
@@ -10,7 +10,7 @@ toc: true
 
 Image enrichment is a crucial part of the CI/CD process, adding to the quality of deployments. Image enrichment exposes metadata such as feature requests, pull requests, and logs as part of the application's deployment, for visibility into all aspects of the deployment, making it easier to track actions and identify root cause of failures.  
 
-Codefresh has a new [report image template](https://github.com/codefresh-io/csdp-report-image/) that combines image enrichment and reporting. The report image template is optimized to work with external CI platforms for creating pipelines and workflows such as GitHub Actions. Add integration accounts in Codefresh to CI tools such as Jira, DockerHub and Quay, and then connect your GitHub Action with Codefresh for image enrichment and reporting. 
+Codefresh has a new [report image template](https://github.com/codefresh-io/csdp-report-image/) that combines image enrichment and reporting. The report image template is optimized to work with external CI platforms for creating pipelines and workflows such as GitHub Actions. Add integration accounts in Codefresh to tools such as Jira, Docker Hub and Quay, and then connect your GitHub Action with Codefresh for image enrichment and reporting. 
 
 
 ### CI integrations for image enrichment
@@ -23,13 +23,13 @@ Add/configure the integration account for the third-party CI tool. You can set u
 
 When you add an integration, Codefresh creates a Sealed Secret with the integration credentials, and a ConfigMap that references the secret.  
 
-Codefresh supports the following CI tools:  
+Codefresh supports the following tools:  
 
 * [JIRA]({{site.baseurl}}/docs/integration/jira/)  
 * [DockerHub]({{site.baseurl}}/docs/integration/dockerhub/)
 * [Quay]({{site.baseurl}}/docs/integration/quay/)  
 
-We are working on supporting integrations for more CI tools. Stay tuned for the release announcements.  
+We are working on supporting integrations for more tools. Stay tuned for the release announcements.  
 For image enrichment with a tool that is as yet unsupported, you must define the explicit credentials. 
    
 #### 2. Connect GitHub Action to Codefresh
@@ -39,7 +39,7 @@ Connect a GitHub Action to Codefresh with an API token for the runtime cluster, 
 See [GitHub Actions]({{site.baseurl}}/docs/integration/github-actions/).
 
 
-#### 3. Add the enrichment step to your GitHub Actions pipeline**  
+#### 3. Add the enrichment step to your GitHub Actions pipeline 
 
 Finally, add the enrichment step to your GitHub Actions pipeline with the API token and integration information. Codefresh uses the integration name to get the corresponding Sealed Secret to securely access and retrieve the information for image enrichment.  
 
@@ -51,8 +51,10 @@ See [Example of GitHub Action pipeline with image enrichment](#example-of-github
 Once deployed, view enriched information in the dashboards:  
 
 
-* [Images](https://g.codefresh.io/2.0/images){:target="\_blank"}
-* [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard?sort=desc-lastUpdated){:target="\_blank"}
+* [Images](https://g.codefresh.io/2.0/images){:target="\_blank"}  
+
+* [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}  
+
 
 View:  
 
