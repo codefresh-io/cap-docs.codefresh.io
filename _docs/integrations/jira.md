@@ -6,9 +6,10 @@ toc: true
 ---
 
 One of the major highlights of the Codefresh platform is the ability to automatically correlate 
-software features with their deployment (where and when). While the software version of a component is easily identifiable, what is likely more interesting and important is to know the features included in a release.
+software features with their deployment (where and when). While the software version of a component is easily identifiable, what is likely more interesting and important is to know which features are included in a release.
 
-Codefresh has native integration for Atlassian Jira, allowing Codefresh to monitor a feature all the way from the ticket creation phase, up to when it is implemented and deployed to an environment. Adding a Jira integration in Codefresh allows you to reference the integration in external CI pipeline tools such as GitHub Actions by the name of the integration account, instead of explicit credentials. See [Image enrichment overview]({{site.baseurl}}/docs/integrations/image-enrichment-overview/) and [GitHub Action integration]({{site.baseurl}}/docs/integrations/github-actions/).
+Codefresh has native integration for Atlassian Jira, allowing Codefresh to monitor a feature all the way from the ticket creation phase, up to when it is implemented and deployed to an environment.  
+Adding a Jira integration in Codefresh allows you to reference the integration in external CI tools such as GitHub Actions by the name of the integration account, instead of explicit credentials. See [Image enrichment overview]({{site.baseurl}}/docs/integrations/image-enrichment-overview/) and [GitHub Action integration]({{site.baseurl}}/docs/integrations/github-actions/).
 
 
 ### Prerequisites
@@ -40,7 +41,7 @@ Once you have set up a Jira instance, configure the Jira integration settings in
 	url="/images/integrations/jira/jira-int-settings.png" 
 	alt="JIRA integration in Codefresh" 
 	caption="JIRA integration in Codefresh"
-  max-width="50%" 
+  max-width="60%" 
 %}
 {:start="5"}
 1. To confirm, click **Commit**.
