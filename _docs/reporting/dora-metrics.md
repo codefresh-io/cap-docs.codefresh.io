@@ -1,6 +1,6 @@
 ---
 title: "DORA metrics"
-description: "Get insights for your deployments"
+description: "Get insights into your deployments"
 group: reporting
 toc: true
 ---
