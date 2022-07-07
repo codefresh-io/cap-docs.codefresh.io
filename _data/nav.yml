@@ -85,6 +85,7 @@
     - title: Create an application
       url: "/create-application"
 
+
 - title: Image enrichment
   url: "/integrations"
   pages:
