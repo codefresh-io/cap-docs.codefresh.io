@@ -6,7 +6,7 @@ toc: true
 ---
 
 DevOps is a collaboration paradigm that is sometimes mistaken for being too abstract or too generic. In an effort to quantify the benefits of adopting DevOps,
-[Dora Research](https://www.devops-research.com/research.html#capabilities) (acquired by Google in 2018), has introduced four key metrics that
+[Dora Research](https://www.devops-research.com/research.html#capabilities){:target="\_blank"} (acquired by Google in 2018), has introduced four key metrics that
 define specific goals for improving the software lifecycle in companies interested in adopting DevOps.
 
 DORA measures these metrics:
@@ -16,7 +16,7 @@ DORA measures these metrics:
 * Change Failure Rate: The percentage of deployments causing a failure in production
 * Time to Restore Service: The length of time for an organization to recover from a failure in production
 
-[Read more on DORA](https://cloud.google.com/blog/products/devops-sre/using-the-four-keys-to-measure-your-devops-performance). 
+[Read more on DORA](https://cloud.google.com/blog/products/devops-sre/using-the-four-keys-to-measure-your-devops-performance){:target="\_blank"}. 
 
 ### DORA metrics in Codefresh
 
