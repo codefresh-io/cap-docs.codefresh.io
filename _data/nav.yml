@@ -91,6 +91,8 @@
   pages:
     - title: GitHub Actions
       url: "/github-actions"
+    - title: Quay Registry
+      url: "/quay"
 
 
 - title: Administration

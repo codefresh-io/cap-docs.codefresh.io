@@ -70,6 +70,16 @@
     - title: Applications dashboard
       localurl: /docs/deployment/applications-dashboard/
     - title: Create an application
+      localurl: /docs/deployment/create-application/
+
+
+- title: Image enrichment
+  icon: images/home-icons/integrations.svg
+  url: ''
+  links:
+    - title: Quay Registry
+      localurl: /docs/integrations/quay/
+  
 
 
 - title: Image enrichment
@@ -78,6 +88,8 @@
   links:
     - title: GitHub Actions
       localurl: /docs/integrations/github-actions/
+    - title: JIRA tracking
+      localurl: /docs/integrations/jira/
   
 
 - title: Administration
