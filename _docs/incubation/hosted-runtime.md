@@ -23,7 +23,7 @@ file="/images/runtime/hosted-initial-view.png"
 url="/images/runtime/hosted-initial-view.png"
 alt="Provision hosted runtime"
 caption="Provision hosted runtime"
-max-width="70%"
+max-width="80%"
 %}
 
 #### 1. Provision hosted runtime
@@ -39,7 +39,7 @@ file="/images/runtime/hosted-installing.png"
 url="/images/runtime/hosted-installing.png"
 alt="Step 1: Installing hosted runtime"
 caption="Step 1: Installing hosted runtime"
-max-width="70%"
+max-width="80%"
 %}
 
 {:start="2"}
@@ -82,7 +82,7 @@ file="/images/runtime/hosted-connect-git.png"
 url="/images/runtime/hosted-connect-git.png"
 alt="Step 2: Connect to Git provider"
 caption="Step 2: Connect to Git provider"
-max-width="70%"
+max-width="80%"
 %}
 
 
@@ -111,7 +111,7 @@ file="/images/runtime/hosted-authorize-access.png"
 url="/images/runtime/hosted-authorize-access.png"
 alt="Authorize access to Git"
 caption="Authorize access to Git"
-max-width="50%"
+max-width="40%"
 %}
 
 {:start="3"}
@@ -169,7 +169,7 @@ file="/images/runtime/hosted-git-source-in-ui.png"
 url="/images/runtime/hosted-git-source-in-ui.png"
 alt="Git Source tab for hosted runtime"
 caption="Git Source tab for hosted runtime"
-max-width="70%"
+max-width="80%"
 %}
 
 
@@ -202,7 +202,7 @@ max-width="70%"
   max-width="50%" 
   %}
 
-{:start="3"}
+{:start="4"}
 1. Return to the **Runtimes** page, and then select **Topology View**.  
   You can see the new K8s cluster you connected. 
 
@@ -213,8 +213,10 @@ max-width="70%"
 	url="/images/runtime/hosted-new-cluster-topology.png" 
 	alt="New K8s cluster in hosted runtime" 
 	caption="New K8s cluster in hosted runtime"
-  max-width="50%" 
+  max-width="80%" 
   %}
+
+{:start="5"} 
 1. Configure access to the IP addresses required. See [Codefresh IP addresses]({{site.baseurl}}/docs/administration/platform-ip-addresses/).  
 
 You have completed setting up your hosted runtime. You are ready to create applications, and connect third-party CI tools for image enrichment.
@@ -222,16 +224,19 @@ You have completed setting up your hosted runtime. You are ready to create appli
 #### (Optional) Create application
 Optional. Create an application in Codefresh, deploy it to the cluster, and track deployment and performance in the Applications dashboard.  
 
-Follow our quick-start to create and deploy the `codefresh-guestbook` application. Follow the steps starting with [Create application resources]({{site.baseurl}}/docs/getting-started/quick-start/create-app-specs/)   
-OR  
+1. Follow our quick-start to create and deploy the `codefresh-guestbook` application. Start with [Create application resources]({{site.baseurl}}/docs/getting-started/quick-start/create-app-specs/).  
 
-Create your own application. See [Create an application]({{site.baseurl}}/docs/deployment/create-application/)   
+  OR  
 
-View deployment in the [Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/).
+  Create your own application. See [Create an application]({{site.baseurl}}/docs/deployment/create-application/)   
+
+2. In the Codefresh UI, view your application in the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}.
 
 #### (Optional) Connect CI 
 Optional. Integrate Codefresh with the third-party tools you use for CI to enrich image information in deployments.  
 
 [Image enrichment with integrations]({{site.baseurl}}/docs/integration/image-enrichment-overview/) 
 
+### What to read next
+[Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/)
 
