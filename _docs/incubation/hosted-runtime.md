@@ -225,11 +225,10 @@ You have completed setting up your hosted runtime. You are ready to create appli
 Optional. Create an application in Codefresh, deploy it to the cluster, and track deployment and performance in the Applications dashboard.  
 
 1. Follow our quick-start to create and deploy the `codefresh-guestbook` application. Start with [Create application resources]({{site.baseurl}}/docs/getting-started/quick-start/create-app-specs/).  
-
-  OR  
-
+  OR    
   Create your own application. See [Create an application]({{site.baseurl}}/docs/deployment/create-application/)   
 
+{:start="2"}
 2. In the Codefresh UI, view your application in the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}.
 
 #### (Optional) Connect CI 
