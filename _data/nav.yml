@@ -93,6 +93,8 @@
       url: "/github-actions"
     - title: Quay Registry
       url: "/quay"
+    - title: Docker Hub Registry
+      url: "/dockerhub"
 
 
 - title: Administration

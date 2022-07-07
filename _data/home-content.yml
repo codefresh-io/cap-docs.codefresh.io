@@ -83,6 +83,9 @@
       localurl: /docs/integrations/jira/
     - title: Quay Registry
       localurl: /docs/integrations/quay/
+    - title: Docker Hub Registry
+      localurl: /docs/integrations/dockerhub/
+
   
 
 - title: Administration
