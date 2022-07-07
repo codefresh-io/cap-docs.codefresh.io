@@ -56,5 +56,5 @@ If you haven't configured your clusters with the required IPs, use the links bel
 
 ### What to read next
 [Hybrid runtime installation]({{site.baseurl}}/docs/runtime/installation/)  
-[Provision hosted runtime]({{site.baseurl}}/docs/incubation/hosted-runtime/)  
+[Set up a hosted runtime]({{site.baseurl}}/docs/incubation/hosted-runtime/)  
 [Codefresh architecture]({{site.baseurl}}/docs/runtime/managed-cluster/)
