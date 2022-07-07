@@ -73,7 +73,6 @@
       localurl: /docs/deployment/applications-dashboard/
     - title: Create an application
 
-
 - title: Image enrichment
   icon: images/home-icons/integrations.svg
   url: ''
@@ -97,9 +96,8 @@
     localurl: /docs/administration/access-control/
   - title: Audit
     localurl: /docs/administration/audit/
-  - title: Codefresh platform IPs
+  - title: Codefresh IP addresses
     localurl: /docs/administration/platform-ip-addresses/
-
 
 - title: Troubleshooting
   icon: images/home-icons/troubleshooting.svg
@@ -108,10 +106,11 @@
     - title: Runtimes
       localurl: /docs/troubleshooting/runtime-issues
 
-
 - title: Incubation
   icon: images/home-icons/plugins.svg
   url: ''
   links:
+  - title: Set up a hosted runtime
+    localurl: /docs/incubation/hosted-runtime/
   
-    
+
