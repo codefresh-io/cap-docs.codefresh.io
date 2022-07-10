@@ -1,7 +1,7 @@
 ---
 title: "Set up Hosted GitOps"
 description: ""
-group: runtime
+group: incubation
 toc: true
 ---
 
