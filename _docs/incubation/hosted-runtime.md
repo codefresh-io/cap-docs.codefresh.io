@@ -6,6 +6,7 @@ toc: true
 ---
 
 
+
 If you have Codefresh's Hosted GitOps solution, complete the simple setup, and you are all ready to leverage extensive CD Ops capabilities.
 Read about [Hosted GitOps]({{site.baseurl}}/docs/incubation/intro-hosted-runtime/). 
 
