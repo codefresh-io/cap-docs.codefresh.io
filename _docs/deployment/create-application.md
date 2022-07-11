@@ -21,7 +21,7 @@ Codefresh provides all the options and functionality to create and manage Argo C
   When the application is created and synced to the cluster, it is displayed in the Applications dashboard. Here, you can select an application to update the application's configuration settings, or delete it.  
   To monitor the health and sync status, deployments, and resources for the application, see [Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/).  
 
-### Application: Definition settings
+### Application: Definitions
 Application definitions include the name, runtime, and the name of the YAML manifest. By default, the YAML manifest has the same name as that of the application. 
 
 {% include 
@@ -197,8 +197,9 @@ Review:
 
 Your application is first committed to Git, and then synced to the cluster which may take a few moments.  
 Track the application in the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="_blank"}.
+
 {::nomarkdown}
-<br>
+<br><br>
 {:/}
 
 ### Update application configuration 
@@ -258,7 +259,9 @@ Update General or Advanced configuration settings for a deployed application. On
 1. To confirm all changes, at the bottom-left, click **Commit**.
   The changes are committed to Git and in a few moments also synced to the cluster. 
 
-
+{::nomarkdown}
+<br><br>
+{:/}
 
 ### Delete an Argo CD application
 Delete an Argo CD application from Codefresh. Deleting an application deletes the manifest from the Git repository, and then from the cluster where it is deployed. When deleted from the cluster, the application is removed from the Applications dashboard in Codefresh.
@@ -272,11 +275,11 @@ Delete an Argo CD application from Codefresh. Deleting an application deletes th
   {% include 
    image.html 
    lightbox="true" 
-   file="/images/applications/delete-app-option.png" 
-   url="/images/applications/delete-app-option.png" 
+   file="/images/applications/app-delete-option.png" 
+   url="/images/applications/app-delete-option.png" 
    alt="Delete application" 
    caption="Delete application"
-   max-width="70%" 
+   max-width="80%" 
    %} 
 
   Pay attention to the implication of the delete action for the selected application that Codefresh displays.
@@ -286,14 +289,17 @@ Delete an Argo CD application from Codefresh. Deleting an application deletes th
    lightbox="true" 
    file="/images/applications/delete-app-prune-affects.png" 
    url="/images/applications/delete-app-prune-affects.png" 
-   alt="Prune setting: Impact when deleting application" 
-   caption="Prune setting: Impact when deleting application"
+   alt="Prune setting impact on deleting application" 
+   caption="Prune setting impact on deleting application"
    max-width="70%" 
    %} 
 
 {:start="4"}
 1. To confirm, click **Commit & Delete**.
 
+{::nomarkdown}
+<br><br>
+{:/}
 
 ### What to read next
 [DORA metrics]({{site.baseurl}}/docs/reporting/dora-metrics/)
