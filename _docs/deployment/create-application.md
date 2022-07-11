@@ -1,5 +1,5 @@
 ---
-title: "Create an application"
+title: "Applications in Codefresh"
 description: ""
 group: deployment
 toc: true
@@ -7,20 +7,21 @@ toc: true
 
 
 
-Create applications that are fully GitOps compliant in the Codefresh UI, from generating the application configuration manifest, committing it to Git, and then syncing and deploying to the cluster. 
+Codefresh provides all the options and functionality to create and manage Argo CD applications in the Codefresh UI.  
+* Create Argo CD applications that are fully GitOps compliant, from generating the application configuration manifest, committing it to Git, and then syncing and deploying to the cluster.  
+  Creating an application in Codefresh includes:  
+  * Application definitions
+  * General configuration settings
+  * Advanced configuration settings  
 
-Creating an application in Codefresh includes defining:
-* Application definitions
-* General configuration settings
-* Advanced configuration settings
+  The Create application wizard guides you through the process of creating an application. For how-to information, see [Create an Argo CD application](#how-to-create-an-argo-cd-application).
+  For example Argo CD applications, see this [repo](https://github.com/oleksandr-codefresh/argocd-example-apps){:target="_blank"}.
 
-The create application wizard guides you through the process of creating an application. For how-to information, see [How to: Create an application](#how-to-create-an-argo-cd-application).
-For example Argo CD applications, see this [repo](https://github.com/oleksandr-codefresh/argocd-example-apps){:target="_blank"}.
+* Edit and delete applications
+  When the application is created and synced to the cluster, it is displayed in the Applications dashboard. Here, you can select an application to update the application's configuration settings, or delete it.  
+  To monitor the health and sync status, deployments, and resources for the application, see [Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/).  
 
-After creating an application and it is synced to the cluster, it is displayed in the Applications dashboard where you can track its health and deployments.
-
-
-### Application definitions
+### Application: Definition settings
 Application definitions include the name, runtime, and the name of the YAML manifest. By default, the YAML manifest has the same name as that of the application. 
 
 {% include 
@@ -34,7 +35,7 @@ Application definitions include the name, runtime, and the name of the YAML mani
    %} 
 
 
-### General configuration settings
+### Application: General configuration settings
 General configuration settings define the source, destination, and sync policies for the application. 
 
 {% include 
@@ -63,10 +64,7 @@ The cluster and namespace to which to deploy the application.
 {::nomarkdown}<b>Prune propagation policy</b>:</br>Defines how resources are pruned, applying Kubernetes cascading deletion prune policies. 
 For more information, see <a href="https://kubernetes.io/docs/concepts/architecture/garbage-collection/#cascading-deletion" target="_blank">Kubernetes - Cascading deletion</a>.</br><ul><li><b>Foreground</b>: The default prune propagation policy used by Argo CD. With this policy, Kubernetes changes the state of the owner resource to `deletion in progress`, until the controller deletes the dependent resources and finally the owner resource itself. </li><li><b>Background</b>: When selected, Kubernetes deletes the owner resource immediately, and then deletes the dependent resources in the background.</li><li><b>Orphan</b>: When selected, Kubernetes deletes the dependent resources that remain orphaned after the owner resource is deleted.</li></ul> </br>{:/}
 All Prune propagation policies can be used with:  
-  
-
-**Replace**: When selected, Argo CD executes `kubectl replace` or `kubectl create`, instead of the default `kubectl apply` to enforce the changes in Git. This action will potentially recreate resources and should be used with care. See [Replace Resource Instead Of Applying Change](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#replace-resource-instead-of-applying-changes){:target="_blank"}.   
-  
+**Replace**: When selected, Argo CD executes `kubectl replace` or `kubectl create`, instead of the default `kubectl apply` to enforce the changes in Git. This action will potentially recreate resources and should be used with care. See [Replace Resource Instead Of Applying Change](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#replace-resource-instead-of-applying-changes){:target="_blank"}.  
 
 **Retry**: When selected, retries a failed sync operation, based on the retry settings configured:   
 * Maximum number of sync retries (**Limit**)  
@@ -74,10 +72,12 @@ All Prune propagation policies can be used with:
 * Maximum duration permitted for each retry (**Max Duration**)  
 * Factor by which to multiply the Duration in the event of a failed retry (**Factor**). A factor of 2 for example, attempts the second retry in 2 X 2 seconds, where 2 seconds is the Duration.
   
-    
+{::nomarkdown}
+<br><br>
+{:/}
 
-### Advanced configuration settings
-Advanced settings define the tool used to create the application, and related settings.
+### Application: Advanced configuration settings
+Advanced settings define the tool used to create the application, and related toll-specific settings.
 
 {% include 
    image.html 
@@ -113,8 +113,11 @@ The tool used to create the application's manifests.  Codefresh supports definin
 
 For example applications, go to the [Argo CD example applications repo](https://github.com/argoproj/argocd-example-apps){:target="_blank"}.
   
+{::nomarkdown}
+<br>
+{:/}
 
-### How to: create an Argo CD application
+### Create an Argo CD application
 Create a new application from the Applications dashboard with the Add Application wizard. 
 Edit the manifest directly in YAML mode, or define the settings in the Form mode. Toggle between the modes as convenient. You can also edit the YAML manifest directly at all stages, after defining configuration settings, and before the final commit.
 
@@ -127,7 +130,7 @@ Review:
 
 **How to**  
 1. In the Codefresh UI, go to [Applications](https://g.codefresh.io/2.0/applications-dashboard?sort=desc-lastUpdated){:target="\_blank"}.
-1. Select **Add Application** on the top-right.
+1. On the top-right, select **Add Application**.
 1. In the Add Application panel, add definitions for the application:
   * Application name: Must be unique within the cluster.
   * Runtime: The runtime to associate with the application.  
@@ -193,7 +196,104 @@ Review:
 
 
 Your application is first committed to Git, and then synced to the cluster which may take a few moments.  
-Track the application in the [Applications](https://g.codefresh.io/2.0/applications-dashboard?sort=desc-lastUpdated){:target="_blank"} dashboard.
+Track the application in the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="_blank"}.
+{::nomarkdown}
+<br>
+{:/}
+
+### Update application configuration 
+Update General or Advanced configuration settings for a deployed application. Once the application is deployed, the Configuration tab is available on selecting the application in the Applications dashboard. 
+
+> You cannot change application definitions (the application name and the selected runtime), and the Git Source with the application manifest.
+
+**How to**  
+
+1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}.
+1. Select the application to update, and then select the **Configuration** tab.
+
+{% include 
+   image.html 
+   lightbox="true" 
+   file="/images/applications/edit-app-configuration-tab.png" 
+   url="/images/applications/edit-app-configuration-tab.png" 
+   alt="Configuration tab with application settings" 
+   caption="Configuration tab with application settings"
+   max-width="70%" 
+   %} 
+
+{:start="3"}
+1. Update the **General** or **Advanced** configuration settings as needed:  
+  [General configuration](#general-configuration-settings)  
+  [Advanced configuration](#advanced-configuration-settings)  
+  When you change a setting, the Commit and Discard Changes buttons are displayed.
+
+  {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/applications/edit-app-change-setting.png" 
+   url="/images/applications/edit-app-change-setting.png" 
+   alt="Edit application settings" 
+   caption="Edit application settings"
+   max-width="70%" 
+   %} 
+
+{:start="4"}
+1. Do one of the following:
+   * To _commit all changes_, click **Commit**. This final commit screen appears with a diff view of the changes.  
+   * To _undo all changes_ and return to the previous settings, click **Discard Changes**. This action removes all the changes you have made so far and returns you to the Applications dashboard.
+
+   >If you change a setting and then restore the existing value, the Commit and Discard Changes buttons are automatically removed as there are no new changes to commit or discard. 
+
+  {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/applications/edit-app-diff-view.png" 
+   url="/images/applications/edit-app-diff-view.png" 
+   alt="Commit changes with diff view" 
+   caption="Commit changes with diff view"
+   max-width="70%" 
+   %} 
+
+{:start="5"}
+1. To confirm all changes, at the bottom-left, click **Commit**.
+  The changes are committed to Git and in a few moments also synced to the cluster. 
+
+
+
+### Delete an Argo CD application
+Delete an Argo CD application from Codefresh. Deleting an application deletes the manifest from the Git repository, and then from the cluster where it is deployed. When deleted from the cluster, the application is removed from the Applications dashboard in Codefresh.
+ 
+>The Prune resources setting determines if only the application is deleted (when not selected), or if both the application and its resources are deleted (when selected). Codefresh warns you of the implication of deleting the selected application in the Delete form. Review [Sync settings](#sync-settings) in this article.
+
+1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}.
+1. Select the application to delete, and then select the **Configuration** tab.
+1. Click the three dots with the additional actions and select **Delete**.
+  
+  {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/applications/delete-app-option.png" 
+   url="/images/applications/delete-app-option.png" 
+   alt="Delete application" 
+   caption="Delete application"
+   max-width="70%" 
+   %} 
+
+  Pay attention to the implication of the delete action for the selected application that Codefresh displays.
+
+   {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/applications/delete-app-prune-affects.png" 
+   url="/images/applications/delete-app-prune-affects.png" 
+   alt="Prune setting: Impact when deleting application" 
+   caption="Prune setting: Impact when deleting application"
+   max-width="70%" 
+   %} 
+
+{:start="4"}
+1. To confirm, click **Commit & Delete**.
+
 
 ### What to read next
-[Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/)
+[DORA metrics]({{site.baseurl}}/docs/reporting/dora-metrics/)
