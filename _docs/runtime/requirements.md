@@ -6,9 +6,11 @@ toc: true
 ---
 
 
-The requirements listed are the **_minimum_** requirements for the Codefresh platform runtimes.  
+The requirements listed are the **_minimum_** requirements to provision **_hybrid runtimes_** in the Codefresh platform.  
 
-> In the documentation, Kubernetes and K8s are used interchangeably. 
+> To provision a hosted runtime as part of Hosted GitOps setup, see [Provision a hosted runtime]({{site.baseurl}}/docs/incubation/hosted-runtime/#1-provision-hosted-runtime) in [Set up Hosted GitOps]({{site.baseurl}}/docs/incubation/hosted-runtime/).
+
+>In the documentation, Kubernetes and K8s are used interchangeably. 
 
 
 ### Kubernetes cluster requirements
