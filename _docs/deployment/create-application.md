@@ -1,5 +1,5 @@
 ---
-title: "Applications in Codefresh"
+title: "Applications"
 description: ""
 group: deployment
 toc: true
@@ -36,6 +36,7 @@ Application definitions include the name, runtime, and the name of the YAML mani
 
 
 ### Application: General configuration settings
+
 General configuration settings define the source, destination, and sync policies for the application. 
 
 {% include 
@@ -71,12 +72,13 @@ All Prune propagation policies can be used with:
 * Duration of each retry attempt in seconds, minutes, or hours (**Duration**)  
 * Maximum duration permitted for each retry (**Max Duration**)  
 * Factor by which to multiply the Duration in the event of a failed retry (**Factor**). A factor of 2 for example, attempts the second retry in 2 X 2 seconds, where 2 seconds is the Duration.
-  
+
 {::nomarkdown}
-<br><br>
+</br></br>
 {:/}
 
 ### Application: Advanced configuration settings
+
 Advanced settings define the tool used to create the application, and related toll-specific settings.
 
 {% include 
@@ -117,7 +119,7 @@ For example applications, go to the [Argo CD example applications repo](https://
 <br>
 {:/}
 
-### Create an Argo CD application
+### Create an application
 Create a new application from the Applications dashboard with the Add Application wizard. 
 Edit the manifest directly in YAML mode, or define the settings in the Form mode. Toggle between the modes as convenient. You can also edit the YAML manifest directly at all stages, after defining configuration settings, and before the final commit.
 
@@ -263,8 +265,8 @@ Update General or Advanced configuration settings for a deployed application. On
 <br><br>
 {:/}
 
-### Delete an Argo CD application
-Delete an Argo CD application from Codefresh. Deleting an application deletes the manifest from the Git repository, and then from the cluster where it is deployed. When deleted from the cluster, the application is removed from the Applications dashboard in Codefresh.
+### Delete an application
+Delete an application from Codefresh. Deleting an application deletes the manifest from the Git repository, and then from the cluster where it is deployed. When deleted from the cluster, the application is removed from the Applications dashboard in Codefresh.
  
 >The Prune resources setting determines if only the application is deleted (when not selected), or if both the application and its resources are deleted (when selected). Codefresh warns you of the implication of deleting the selected application in the Delete form. Review [Sync settings](#sync-settings) in this article.
 
