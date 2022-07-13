@@ -50,10 +50,10 @@
     - title: Managing provisioned runtimes
       url: "/monitor-manage-runtimes"
     - title: Monitoring provisioned runtimes
-      url: "/minitoring-troubleshooting" 
-    - title: Add and manage external clusters
+      url: "/monitoring-troubleshooting" 
+    - title: Adding external clusters to runtimes
       url: "/managed-cluster" 
-    - title: Add and manage Git Sources
+    - title: Adding Git Sources to runtimes
       url: "/git-sources"
 
 

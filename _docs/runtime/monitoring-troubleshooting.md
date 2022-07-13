@@ -1,5 +1,5 @@
 ---
-title: "Montiroing/troubleshooting provisioned runtimes"
+title: "Moinitoring provisioned runtimes"
 description: ""
 group: runtime
 toc: true
@@ -7,7 +7,7 @@ toc: true
 
 Monitor provisioned runtimes for security, and health and sync errors:
 
-* View/download logs for runtimes and for runtime components
+* (Hybrid and hosted) View/download logs for runtimes and for runtime components
 * (Hybrid) Restore provisioned runtimes
 * (Hybrid) Configure browsers to allow access to insecure runtimes
 * (Hybrid) Monitor notifications in the Activity Log
@@ -17,6 +17,10 @@ Monitor provisioned runtimes for security, and health and sync errors:
 Logs are available for completed runtimes, both for the runtime and for individual runtime components. Download runtime log files for offline viewing and analysis, or view online logs for a runtime component, and download if needed for offline analysis. Online logs support free-text search, search-result navigation, and line-warp for enhanced readability.  
 
 Log files include events from the date of the application launch, with the newest events listed first. 
+
+{::nomarkdown}
+<br><br>
+{:/}
 
 #### (Hybrid & hosted) Download logs for runtimes
 Download the log file for a runtime. The runtime log is downloaded as a `.tar.gz` file, which contains the individual log files for each runtime component. 
@@ -55,6 +59,9 @@ Download the log file for a runtime. The runtime log is downloaded as a `.tar.gz
 {:start="5"}
 1. Open a log file with the text editor of your choice.
 
+{::nomarkdown}
+<br><br>
+{:/}
 
 #### View/download logs for runtime components
 View online logs for any runtime component, and if needed, download the log file for offline viewing and analysis.  
@@ -109,6 +116,9 @@ Restoring the runtime:
   `ingressController`  
   `ingressHost` 
 
+{::nomarkdown}
+<br><br>
+{:/}
 
 #### How to restore a hybrid runtime
 Reinstall the hybrid runtime from the existing installation repository to restore it to the same or a different cluster.  
@@ -152,6 +162,9 @@ Reinstall the hybrid runtime from the existing installation repository to restor
 1. If needed, create a new Git integration:  
   `cf integration git add default --runtime <runtime-name> --provider github --api-url https://api.github.com` 
 
+{::nomarkdown}
+<br><br>
+{:/}
 
 #### Ingress example
 This is an example of the `ingress.yaml` for `workflows`.
@@ -185,48 +198,8 @@ status:
   loadBalancer: {}
 ```
 
- 
-### (Hybrid & hosted) View/download logs for runtime components
-View online logs for any runtime component, and if needed, download the log file for offline viewing and analysis.  
 
-Online logs show up to 1000 of the most recent events (lines), updated in real time. Downloaded logs include all the events from the application launch to the date and time of download. 
-
-1. In the Codefresh UI, go to [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}. 
-1. If needed, switch to **List View**, and then select the runtime.
-1. Select the runtime component and then select **View Logs**. 
-
-  {% include 
-	image.html 
-	lightbox="true" 
-	file="/images/runtime/runtime-logs-view-component.png" 
-	url="/images/runtime/runtime-logs-view-component.png" 
-	alt="View log option for individual runtime component" 
-	caption="View log option for individual runtime component"
-    max-width="40%" 
-%}
-
-
-{:start="4"}
-1. Do the following:
-  * Search by free-text for any string, and click the next and previous buttons to navigate between the search results.
-  * To switch on line-wrap for readability, click **Wrap**.
-
-  {% include 
-	image.html 
-	lightbox="true" 
-	file="/images/runtime/runtime-logs-screen-view.png" 
-	url="/images/runtime/runtime-logs-screen-view.png" 
-	alt="Runtime component log example" 
-	caption="Runtime component log example"
-    max-width="50%" 
-%}
-
-{:start="5"}
-1. To download the log, click **Download**.  
-  The file is downloaded as `<component-name>.log`.
-
-
-#### (Hybrid) Configure browser to allow insecure hybrid runtimes
+### (Hybrid) Configure browser to allow insecure hybrid runtimes
 
 If at least one of your hybrid runtimes was installed in insecure mode (without an SSL certificate for the ingress controller from a CA), the UI alerts you that _At least one runtime was installed in insecure mode_.
 {% include
@@ -260,7 +233,7 @@ All you need to do is to configure the browser to trust the URL and receive cont
 * Safari: Click **Show Certificate**, and then select **Always allow content from site**.
 * Edge: Click **Advanced**, and then select **Continue to site(unsafe)**.
 
-#### (Hybrid) View notifications for hybrid runtimes in Activity Log
+### (Hybrid) View notifications for hybrid runtimes in Activity Log
 
 The Activity Log is a quick way to monitor notifications for runtime events such as upgrades. A pull-down panel in the Codefresh toolbar, the Activity Log shows ongoing, success, and error notifications, sorted by date, starting with today's date.
 
@@ -280,7 +253,7 @@ The Activity Log is a quick way to monitor notifications for runtime events such
 
 1. To see more information on an error, select the **+** sign.
 
-#### (Hybrid) Troubleshoot health and sync errors for runtimes
+### (Hybrid) Troubleshoot health and sync errors for runtimes
 
 The ![](/images/icons/error.png?display=inline-block) icon with the runtime in red indicates either health or sync errors.
 

@@ -1,5 +1,5 @@
 ---
-title: "Requirements"
+title: "Hybrid runtime requirements"
 description: ""
 group: runtime
 toc: true
@@ -378,4 +378,4 @@ For detailed information on GitHub tokens, see [Creating a personal access token
 
 
 ### What to read next
-[Runtime installation]({{site.baseurl}}/docs/runtime/installation/)
+[Intalling a hybrid runtime]({{site.baseurl}}/docs/runtime/installation/)
