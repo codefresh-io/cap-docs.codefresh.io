@@ -45,7 +45,7 @@
   pages:
     - title: Hybrid runtime requirements
       url: "/requirements"
-    - title: Installing a hybrid runtime
+    - title: Installing hybrid runtimes
       url: "/installation"
     - title: Managing provisioned runtimes
       url: "/monitor-manage-runtimes"

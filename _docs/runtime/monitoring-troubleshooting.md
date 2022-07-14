@@ -279,4 +279,4 @@ Here is an example of health errors for a runtime.
 ### Related articles
 [Managing provisioned runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/)  
 [Adding Git Sources to runtimes]({{site.baseurl}}/docs/runtime/git-sources/)  
-[Adding managed clusters to runtimes]({{site.baseurl}}/docs/runtime/managed-cluster/)  
+[Adding external clusters to runtimes]({{site.baseurl}}/docs/runtime/managed-cluster/)  

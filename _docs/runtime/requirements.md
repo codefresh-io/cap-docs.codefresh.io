@@ -378,4 +378,4 @@ For detailed information on GitHub tokens, see [Creating a personal access token
 
 
 ### What to read next
-[Intalling a hybrid runtime]({{site.baseurl}}/docs/runtime/installation/)
+[Installing hybrid runtimes]({{site.baseurl}}/docs/runtime/installation/)
