@@ -86,8 +86,10 @@ max-width="70%"
 
 
 1. Download the CLI
-   If you have installed the Codfresh CLI already, make sure you have the latest version.
-   Otherwise, [download the CLI]({{site.baseurl}}/docs/clients/csdp-cli/).
+  * If you have installed the Codfresh CLI already, make sure you have the latest version:
+     `cf version`  
+     And then [click here](https://github.com/codefresh-io/cli-v2/releases) to compare with the latest version from Codefresh.
+  * [Download the CLI]({{site.baseurl}}/docs/clients/csdp-cli/).
 
 1. Uninstall the failed hosted runtime:
   `cf uninstall hosted-codefresh --force`  
