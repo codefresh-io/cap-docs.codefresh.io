@@ -270,7 +270,7 @@ Optional. Create an application in Codefresh, deploy it to the cluster, and trac
 ### (Optional) Connect CI 
 Optional. Integrate Codefresh with the third-party tools you use for CI to enrich image information in deployments.  
 
-[Image enrichment with integrations]({{site.baseurl}}/docs/integration/image-enrichment-overview/) 
+[Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/) 
 
 ### What to read next
 [Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/)

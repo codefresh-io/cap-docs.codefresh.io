@@ -69,7 +69,7 @@ DORA metrics has become integral to enterprises wanting to quantify DevOps perfo
 
 Apart from the metrics themselves, the DORA dashboard in Codefresh has several features such as the Totals bar with key metrics, filters that allow you to pinpoint just which applications or runtimes are contributing to problematic metrics, and the ability to set a different view granularity for each DORA metric.  
 
-See [DORA metrics]({{site.baseurl}}/docs/reporting/dora/).
+See [DORA metrics]({{site.baseurl}}/docs/reporting/dora-metrics/).
 
 {% include
  image.html
