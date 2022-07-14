@@ -57,8 +57,7 @@
       url: "/git-sources"
     - title: Restore runtimes
       url: "/runtime-recovery"
-    - title: Shared runtime configuration
-      url: "/shared-configuration"
+    
 
 - title: Pipelines
   url: "/pipelines"
@@ -143,6 +142,18 @@
     - title: Codefresh IP addresses
       url: "/platform-ip-addresses"
 
+- title: Reference
+  url: "/reference"
+  pages:
+    - title: Secrets
+      url: "/secrets"   
+    - title: Shared configuration repo
+      url: "/reference"
+
+
+  pages:
+    - title: Secrets
+      url: "/secrets"   
 - title: What's New?
   url: "/whats-new"
   pages:
@@ -155,11 +166,7 @@
     - title: Runtimes
       url: "/runtime-issues"
 
-- title: Reference
-  url: "/reference"
-  pages:
-    - title: Secrets
-      url: "/secrets"      
+   
 
 - title: Incubation
   url: "/incubation"
