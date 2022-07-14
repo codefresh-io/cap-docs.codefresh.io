@@ -7,7 +7,8 @@ toc: true
 
 Codefresh supports two installation environments:
 
-* **Hosted (Beta)** environments, with Argo CD installed in the Codefresh cluster  
+
+* **Hosted** environments, with Argo CD installed in the Codefresh cluster (Beta) 
   The runtime is installed and provisioned in a Codefresh cluster, and managed by Codefresh.  
   Hosted enviroments are full-cloud environments, where all updates and improvements are managed by Codefresh, with zero-maintenance overhead for you as the customer. Currently, you can add one hosted runtime per account.
 
