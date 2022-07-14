@@ -11,7 +11,9 @@ Subsequent downloads for upgrade purposes require you to only run the download c
 
 ### Download Codefresh CLI
 Downloading the Codefresh CLI requires you to select the download mode and OS, generate an API key, and authentication context.
-1. In the Welcome page, select **+ Install Runtime**.
+1. Do one of the following:
+  * In the Welcome page, select **+ Install Runtime**.
+  * If you have provisioned a hybrid/hosted runtime, in the Codefresh UI, go to Runtimes, and select **+ Add Runtime**.
 1. Download the Codefresh CLI:
   * Select one of the methods. 
   * Generate the API key and create the authentication context. 
@@ -26,7 +28,11 @@ Downloading the Codefresh CLI requires you to select the download mode and OS, g
    %} 
 
 ### Upgrade Codefresh CLI
-* To upgrade the CLI, select and run the appropriate command:
+Upgrade the CLI to the latest version to prevent installation errors.
+1. Check the version of the CLI you have installed:
+  `cf version`  
+1. Compare with the [latest version](https://github.com/codefresh-io/cli-v2/releases) released by Codefresh.
+1. To upgrade if needed, select and run the appropriate command:
 
 {: .table .table-bordered .table-hover}
 | Download mode | OS       | Commands |
@@ -37,3 +43,6 @@ Downloading the Codefresh CLI requires you to select the download mode and OS, g
 |              | Linux - ARM  |  `curl -L --output - https://github.com/codefresh-io/cli-v2/releases/latest/download/cf-linux-arm64.tar.gz | tar zx && mv ./cf-linux-arm64 /usr/local/bin/cf && cf version`|     
 | `brew` | N/A| `brew tap codefresh-io/cli && brew install cf2`|
 
+### Related articles
+[Install hybrid runtimes]({{site.baseurl}}/docs/runtime/installation)  
+[Set up Hosted GitOps]({{site.baseurl}}/docs/incubation/hosted-runtime) 
