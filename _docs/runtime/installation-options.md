@@ -15,8 +15,8 @@ Codefresh supports two installation environments:
 {% include
  image.html
  lightbox="true"
- file="/images/incubation/intro-hosted-hosted-initial-view.png"
- url="/images/incubation/intro-hosted-hosted-initial-view.png"
+ file="/images/runtime/intro-hosted-hosted-initial-view.png"
+ url="/images/runtime/intro-hosted-hosted-initial-view.png"
  alt="Hosted runtime setup"
  caption="Hosted runtime setup"
     max-width="80%"
@@ -53,6 +53,7 @@ The table below highlights the main differences between hosted and hybrid enviro
 |                         | External cluster   | Managed by customer        | Managed by customer         |
 |                         | Upgrade            | Managed by Codefresh       | Managed by customer |
 |                         | Uninstall          | Managed by customer        | Managed by customer |
+| Argo CD                 |                    | Codefresh cluster          | Customer cluster  |
 | CI Ops                  | Delivery Pipelines |Not supported               | Supported  |
 |                         |Workflows           | Not supported              | Supported  |
 |                         |Workflow Templates  | Not supported              | Supported  |
