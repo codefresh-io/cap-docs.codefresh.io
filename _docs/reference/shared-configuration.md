@@ -12,7 +12,7 @@ A Codefresh account with a hosted or a hybrid runtime can store configuration ma
   As part of the setup for a hosted runtime, Codefresh creates the shared configuration repository in the selected organization, together with the default Git Source repo. See [Connect Git provider]({{site.baseurl}}/docs/incubation/hosted-runtime/#2-connect-git-provider) in Hosted GitOps setup.  
 
 * Hybrid runtimes  
-  When you install the first hybrid runtime for an account, you can manually define the shared configuration repo through the `--shared-config-repo` flag. Or, you can allow Codefresh to automatically create the shared configuration repo in the runtime installation repo, in `shared-config` root. See [Installing a hybrid runtime]({{site.baseurl}}/docs/docs/runtime/installation/).  
+  When you install the first hybrid runtime for an account, you can manually define the shared configuration repo through the `--shared-config-repo` flag. Or, you can allow Codefresh to automatically create the shared configuration repo in the runtime installation repo, in `shared-config` root. See [Installing hybrid runtimes]({{site.baseurl}}/docs/runtime/installation/).  
 
   For older versions of hybrid runtimes, upgrade the runtime to create the shared configuration repo, as described in [Upgrading hybrid runtimes](#upgrading-hybrid-runtimes) later in this article.
 
@@ -114,7 +114,7 @@ You have two options to define the shared configuration repository during upgrad
 
 If the hybrid runtime being upgraded has managed clusters, once the shared configuration repo is created for the account either automatically or manually on upgrade, all clusters are migrated to the same repo when app-proxy is initialized. An Argoproj application manifest is committed to the repo for each cluster managed by the runtime. 
 
-See [(Hybrid) Upgrade runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/#hybrid-upgrade-provisioned-runtimes).
+See [(Hybrid) Upgrade provisioned runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/#hybrid-upgrade-provisioned-runtimes).
 
 
 

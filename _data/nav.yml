@@ -147,11 +147,7 @@
       url: "/secrets"   
     - title: Shared configuration repo
       url: "/shared-configuration"
-
-
-  pages:
-    - title: Secrets
-      url: "/secrets"   
+  
 - title: What's New?
   url: "/whats-new"
   pages:
