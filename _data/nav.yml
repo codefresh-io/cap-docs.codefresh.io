@@ -148,7 +148,7 @@
     - title: Secrets
       url: "/secrets"   
     - title: Shared configuration repo
-      url: "/reference"
+      url: "/shared-configuration"
 
 
   pages:
