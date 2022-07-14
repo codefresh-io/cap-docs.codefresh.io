@@ -32,7 +32,7 @@ Upgrade the CLI to the latest version to prevent installation errors.
 1. Check the version of the CLI you have installed:  
   `cf version`  
 1. Compare with the [latest version](https://github.com/codefresh-io/cli-v2/releases){:target="\_blank"} released by Codefresh.
-1. To upgrade if needed, select and run the appropriate command:
+1. Select and run the appropriate command:
 
 {: .table .table-bordered .table-hover}
 | Download mode | OS       | Commands |
