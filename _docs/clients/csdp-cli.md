@@ -5,15 +5,15 @@ group: clients
 toc: true
 ---
 
-You need the Codefresh CLI to install Codefresh runtimes. For the initial download, you also need to generate the API key and create the API authentication context, all from the UI.  
-
-Subsequent downloads for upgrade purposes require you to only run the download command, using existing API credentials. 
+You need the Codefresh CLI to install Codefresh runtimes.  
+* For the initial download, you also need to generate the API key and create the API authentication context, all from the UI.  
+* Subsequent downloads for upgrade purposes require you to only run the download command, using existing API credentials. 
 
 ### Download Codefresh CLI
 Downloading the Codefresh CLI requires you to select the download mode and OS, generate an API key, and authentication context.
 1. Do one of the following:
-  * In the Welcome page, select **+ Install Runtime**.
-  * If you have provisioned a hybrid/hosted runtime, in the Codefresh UI, go to Runtimes, and select **+ Add Runtime**.
+  * For first-time installation, go to the Welcome page, select **+ Install Runtime**.
+  * If you have provisioned a hybrid/hosted runtime, in the Codefresh UI, go to [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}, and select **+ Add Runtime**.
 1. Download the Codefresh CLI:
   * Select one of the methods. 
   * Generate the API key and create the authentication context. 
@@ -29,9 +29,9 @@ Downloading the Codefresh CLI requires you to select the download mode and OS, g
 
 ### Upgrade Codefresh CLI
 Upgrade the CLI to the latest version to prevent installation errors.
-1. Check the version of the CLI you have installed:
+1. Check the version of the CLI you have installed:  
   `cf version`  
-1. Compare with the [latest version](https://github.com/codefresh-io/cli-v2/releases) released by Codefresh.
+1. Compare with the [latest version](https://github.com/codefresh-io/cli-v2/releases){:target="\_blank"} released by Codefresh.
 1. To upgrade if needed, select and run the appropriate command:
 
 {: .table .table-bordered .table-hover}
