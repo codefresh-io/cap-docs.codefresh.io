@@ -25,24 +25,22 @@
       localurl: /docs/clients/csdp-cli/
 
 
-- title: Runtime
+- title: Installation
   icon: images/home-icons/runtimes.svg
   url: ''
   links:
-    - title: Requirements
+    - title: Hybrid runtime requirements
       localurl: /docs/runtime/requirements/
-    - title: Installation
+    - title: Installing hybrid runtimes
       localurl: /docs/runtime/installation
-    - title: Management
+    - title: Managing provisioned runtimes
       localurl: /docs/runtime/monitor-manage-runtimes/
-    - title: View/download runtime logs
-      localurl: /docs/runtime/download-runtime-logs/
-    - title: Add and manage external clusters
+    - title: Monitoring provisioned runtimes
+      localurl: /docs/runtime/monitoring-troubleshooting/
+    - title: Adding external clusters to runtimes
       localurl: /docs/runtime/managed-cluster/
-    - title:  Add and manage Git Sources
+    - title:  Adding Git Sources to runtimes
       localurl: /docs/runtime/git-sources/
-    - title:  Restore runtimes
-      localurl: /docs/runtime/runtime-recovery/
     
 
 
@@ -129,6 +127,7 @@
   links:
     - title: Runtimes
       localurl: /docs/troubleshooting/runtime-issues
+
 
 - title: Incubation
   icon: images/home-icons/plugins.svg
