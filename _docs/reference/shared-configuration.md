@@ -114,7 +114,8 @@ You have two options to define the shared configuration repository during upgrad
 
 If the hybrid runtime being upgraded has managed clusters, once the shared configuration repo is created for the account either automatically or manually on upgrade, all clusters are migrated to the same repo when app-proxy is initialized. An Argoproj application manifest is committed to the repo for each cluster managed by the runtime. 
 
-See [(Hybrid) Upgrade runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/#upgrade-runtimes).
+See [(Hybrid) Upgrade runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/#hybrid-upgrade-provisioned-runtimes).
+
 
 
 
