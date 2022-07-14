@@ -6,27 +6,11 @@ toc: true
 ---
 
 
-A Git Source is Codefresh's equivalent of an Argo CD application. The Git Source tracks a Git repository to sync the desired state of the repo to the destination K8s cluster. In addition to application resources, the Git Source can store resources for Codefresh runtimes, and CI/CD entities such as delivery pipelines, Workflow Templatess.  
-  
-Provisioning a runtime, either hybrid or hosted, automatically creates a default Git Source that stores resources for the runtime and for the demo CI pipelines that are optionally installed with the runtime. 
-A runtime can have one or more Git Sources. You can add Git Sources at any time, to the same or to different runtimes.  
+A Git Source is the equivalent of an Argo CD application that tracks a Git repository and syncs the desired state of the repo to the destination K8s cluster. In addition to application resources, the Git Source can store resources for Codefresh runtimes, and CI/CD entities such as delivery pipelines, Workflow Templates, workflows, and applications.
+
+Provisioning a runtime automatically creates a Git Source that stores resources for the runtime and for the demo CI pipelines that are optionally installed with the runtime. Every Git Source is associated with a Codefresh runtime. A runtime can have one or more Git Sources. You can add Git Sources at any time, to the same or to different runtimes.
 
 Once you create a Git Source for a runtime, you can store resources for CI/CD entities associated with that runtime. For example, when creating pipelines or applications, you can select the Git Source to which to store manifest definitions.
-
-his repository was created as part of the default Git Source added to your Hosted Codefresh Runtime.
-
-Git Sources are how the Codefresh GitOps Platfrom sycns Kubernetes resource definitions from Git to your clusters.
-
-Resource definitions that should be stored in a Git Source:
-CD
-Argo CD Applications
-Argo CD Projects
-Application Sets
-Pipelines (for Hybrid runtimes only)
-Workflow Templates
-Cluster Templates
-Sensors
-Event Sources
 
 
 ### View Git Sources and definitions
