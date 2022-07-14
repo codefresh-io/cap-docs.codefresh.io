@@ -12,14 +12,15 @@ A Codefresh account with a hosted or a hybrid runtime can store configuration ma
   As part of the setup for a hosted runtime, Codefresh creates the shared configuration repository in the selected organization, together with the default Git Source repo. See [Connect Git provider]({{site.baseurl}}/docs/incubation/hosted-runtime/#2-connect-git-provider) in Hosted GitOps setup.  
 
 * Hybrid runtimes  
-  When you install the first hybrid runtime for an account, you can manually define the shared configuration repo through the `--shared-config-repo` flag. If the flag is omitted, and the runtime account does not have a shared configuration repo, it is created in the runtime installation repo, in `shared-config` root. See [Installing a hybrid runtime]({{site.baseurl}}/docs/docs/runtime/installation/).
+  When you install the first hybrid runtime for an account, you can manually define the shared configuration repo through the `--shared-config-repo` flag. Or, you can allow Codefresh to automatically create the shared configuration repo in the runtime installation repo, in `shared-config` root. See [Installing a hybrid runtime]({{site.baseurl}}/docs/docs/runtime/installation/).  
+
   For older versions of hybrid runtimes, upgrade the runtime to create the shared configuration repo, as described in [Upgrading hybrid runtimes](#upgrading-hybrid-runtimes) later in this article.
 
 > Currently, Codefresh supports a single shared configuration repo per account.
 
 
 ### Shared configuration repo structure
-Below is a representation of the structure of the shared the repository with the shared configuration. 
+Below is a representation of the structure of the repository with the shared configuration. 
 See a [sample repo](https://github.dev/noam-codefresh/shared-gs){:target="\_blank"}.
 
 ```
@@ -44,6 +45,9 @@ See a [sample repo](https://github.dev/noam-codefresh/shared-gs){:target="\_blan
     └── staging                   │ # referenced by <install_repo_2>/apps/runtime2/config_dir.json
         └── in-cluster.yaml      ─┘ #     manage `include` field to decide which dirs/files to sync to cluster
 ```
+{::nomarkdown}
+<br>
+{:/}
 
 #### `resources` directory 
 
@@ -53,8 +57,12 @@ The `resources` directory holds the resources shared by all clusters managed by 
   * `control-planes`: Optional. Valid for hosted runtimes only. When defined, every resource manifest in this directory is applied to each hosted runtime’s `in-cluster`.
   * `runtimes/<runtime_name>`: Optional. Runtime-specific subdirectory. Every resource manifest in a runtime-specific subdirectory is applied to only that runtime. `manifest4.yaml` in the above example is applied only to `runtime1`. 
 
+{::nomarkdown}
+<br>
+{:/}
+
 #### `runtimes` directory 
-Includes subdirectories specific to each runtime installed in the cluster, always with `in-cluster.yaml`, and optionally application manifests for other clusters. 
+Includes subdirectories specific to each runtime installed in the cluster, always with `in-cluster.yaml`, and optionally, application manifests for other clusters. 
 
 **Example application manifest for in-cluster.yaml**
 
@@ -88,7 +96,7 @@ spec:
 
 
 ### Git Source application per runtime
-In addition to the application manifests for the runtimes in the shared configuration repository, every runtime has a Git-Source Application that references `runtimes/<runtime-name>`.  
+In addition to the application manifests for the runtimes in the shared configuration repository, every runtime has a Git Source application that references `runtimes/<runtime-name>`.  
 
 This Git Source application creates an application manifest with the `<cluster-name>` for every cluster managed by the runtime. The `include` field in the `<cluster-name>` application manifest determines which subdirectories in the `resources` directory are synced to the target cluster.
 
