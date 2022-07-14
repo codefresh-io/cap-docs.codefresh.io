@@ -14,7 +14,7 @@ Codefresh supports two installation environments:
 
 * **Hybrid** environments, where the runtime is installed in the customer's premises, and managed by the customer.  
   Hybrid environments are ideal for organizations that want their source code within their premises, or have other security constraints. Hybrid installations strike the perfect balance between security, flexibility, and ease of use. As the customer, you are responsible for installing and upgrading runtimes, while Codefresh continues to maintain most aspects of the platform.  
-  For more information on hybrid environments, see [Hybrid runtime requirements]({{site.baseurl}}/docs/runtime/requirements/), and [Installling hybrid runtimes]({{site.baseurl}}/docs/runtime/installation/).  
+  For more information on hybrid environments, see [Hybrid runtime requirements]({{site.baseurl}}/docs/runtime/requirements/) and [Installling hybrid runtimes]({{site.baseurl}}/docs/runtime/installation/).  
   
 ### Hosted vs.hybrid environments
 
