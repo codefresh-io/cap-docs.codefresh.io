@@ -91,12 +91,12 @@ max-width="70%"
      To compare with the latest version from Codefresh, [click here](https://github.com/codefresh-io/cli-v2/releases){:target="\_blank"}.  
   * [Download the CLI]({{site.baseurl}}/docs/clients/csdp-cli/).
 
-1. Uninstall the failed hosted runtime:
+1. Uninstall the failed hosted runtime:  
   `cf uninstall hosted-codefresh --force`  
   where:  
   `hosted-codefresh` is the name of your hosted runtime, automatically assigned by Codefresh.
 1. In the Codefresh UI, return to Codefresh [Home](https://g.codefresh.io/2.0/?time=LAST_7_DAYS){:target="\_blank"}.
-1. Refresh the page and start with _1. Provision hosted runtime_.
+1. Refresh the page and start with _1. Provision hosted runtime_ above.
 
 
 ### 2. Connect Git provider
