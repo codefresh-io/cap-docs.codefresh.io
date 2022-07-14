@@ -5,7 +5,7 @@ group: runtime
 toc: true
 ---
 
-Monitor provisioned runtimes for security, and health and sync errors:
+Monitor provisioned runtimes for security, health, and sync errors:
 
 * (Hybrid and hosted) View/download logs for runtimes and for runtime components
 * (Hybrid) Restore provisioned runtimes
@@ -13,7 +13,7 @@ Monitor provisioned runtimes for security, and health and sync errors:
 * (Hybrid) Monitor notifications in the Activity Log
 
 
-### (Hybrid & hosted) View/download logs
+### View/download logs to troubleshoot runtimes
 Logs are available for completed runtimes, both for the runtime and for individual runtime components. Download runtime log files for offline viewing and analysis, or view online logs for a runtime component, and download if needed for offline analysis. Online logs support free-text search, search-result navigation, and line-warp for enhanced readability.  
 
 Log files include events from the date of the application launch, with the newest events listed first. 
@@ -22,7 +22,7 @@ Log files include events from the date of the application launch, with the newes
 <br><br>
 {:/}
 
-#### (Hybrid & hosted) Download logs for runtimes
+#### Download logs for runtimes
 Download the log file for a runtime. The runtime log is downloaded as a `.tar.gz` file, which contains the individual log files for each runtime component. 
 
 1. In the Codefresh UI, go to [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}. 
@@ -275,3 +275,8 @@ Here is an example of health errors for a runtime.
   caption="Health errors for runtime example"
   max-width="30%"
   %}
+
+### Related articles
+[Managing provisioned runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/)  
+[Adding Git Sources to runtimes]({{site.baseurl}}/docs/runtime/git-sources/)  
+[Adding managed clusters to runtimes]({{site.baseurl}}/docs/runtime/managed-cluster/)  

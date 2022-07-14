@@ -37,9 +37,9 @@
       localurl: /docs/runtime/monitor-manage-runtimes/
     - title: Monitoring provisioned runtimes
       localurl: /docs/runtime/monitoring-troubleshooting/
-    - title: Add and manage external clusters
+    - title: Adding external clusters to runtimes
       localurl: /docs/runtime/managed-cluster/
-    - title:  Add and manage Git Sources
+    - title:  Adding Git Sources to runtimes
       localurl: /docs/runtime/git-sources/
     
 

@@ -40,7 +40,7 @@
       url: "/csdp-cli"
 
 
-- title: Runtime
+- title: Installation
   url: "/runtime"
   pages:
     - title: Hybrid runtime requirements

@@ -6,9 +6,8 @@ toc: true
 ---
 
 
-The **Runtimes** page displays the provisioned runtimes in your account, both hybrid, and the hosted runtime if you have one. You can view runtime components and information in List or Topology view formats.
+The **Runtimes** page displays the provisioned runtimes in your account, both hybrid, and the hosted runtime if you have one. View runtime components and information in List or Topology view formats. Managed provisioned runtimes in the view mode that suits you.  
 
-Work in the view mode of your choice to manage runtimes.
 > Unless specified otherwise, management options are common to both hybrid and hosted runtimes.
 
 To monitor provisioned runtimes, including recovering runtimes for failed clusters, see [Monitoring provisioned runtimes]({{site.baseurl}}/docs/runtime/monitoring-troubleshooting/).
@@ -86,15 +85,18 @@ Work in either the List or Topology views to manage provisioned runtimes. If an 
 #### (Hybrid) Upgrade provisioned runtimes
 
 Upgrade provisioned hybrid runtimes to install critical security updates or to install the latest version of all components. Upgrade a provisioned hybrid runtime by running a silent upgrade or through the CLI wizard.  
+If you have managed clusters for the hybrid runtime, upgrading the runtime automatically updates runtime components within the managed cluster as well.
 
 > When there are security updates, the UI displays the alert, _At least one runtime requires a security update_. The Version column displays an _Update Required!_ notification.  
 
-> If you have managed clusters for the hybrid runtime, upgrading the runtime automatically updates runtime components within the managed cluster as well.
+> If you have older runtime versions, upgrade to manually define or create the shared configuration repo for your account. See [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/).
+
 
 **Before you begin**  
 For both silent or CLI-wizard based upgrades, make sure you have:  
 
-* The latest version of the Codefresh CLI
+* The latest version of the Codefresh CLI  
+  Run `cf version` to see your version and click [here](https://github.com/codefresh-io/cli-v2/releases) to compare with the latest CLI version.  
 * A valid runtime Git token
 
 **Silent upgrade**  
@@ -156,7 +158,7 @@ For both silent or CLI-wizard based upgrades, make sure you have:
   * To manually define the shared configuration repo, add the `--shared-config-repo` flag with the path to the repo.
 1. Confirm to start the upgrade.
 
-#### (Hybrid and Hosted) Uninstall runtimes
+#### Uninstall provisioned runtimes
 
 Uninstall provisioned hybrid and hosted runtimes that are not in use.  Uninstall a runtime by running a silent uninstall, or through the CLI wizard.  
 > Uninstalling a runtime removes the Git Sources and managed clusters associated with the runtime.
@@ -172,12 +174,11 @@ For both types of uninstalls, make sure you have:
 Pass the mandatory flags in the uninstall command:  
   `cf runtime uninstall <runtime-name> --git-token <git-token> --silent`  
   where:  
-
   `--git-token` is a valid runtime token with the `repo` and `admin-repo.hook` scopes.  
 
 **How to uninstall with the CLI wizard**  
 
-1. In the Codefresh UI, make sure you are in the [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"} page.
+1. In the Codefresh UI, make sure you are in [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
 1. Switch to either the **List View** or to the **Topology View**.
 1. **List view**: On the top-right, select the three dots and then select **Uninstall**.
 
@@ -222,95 +223,9 @@ Pass the mandatory flags in the uninstall command:
 1. Select the Kube context from which to uninstall the runtime, and then confirm the uninstall.
 1. If you get errors, run the uninstall command again, with the `--force` flag.
 
-### (Hybrid) Monitoring provisioned runtimes
 
-Monitor provisioned hybrid runtimes for security, and health and sync errors:
+### Related articles
+[(Hybrid) Monitoring provisioned runtimes]({{site.baseurl}}/docs/runtime/monitoring-troubleshooting/)  
+[Adding Git Sources to runtimes]({{site.baseurl}}/docs/runtime/git-sources/)  
+[Adding managed clusters to runtimes]({{site.baseurl}}/docs/runtime/managed-cluster/)  
 
-  * * View/download losg
-Configure browsers to allow access to insecure runtimes
-
-* Monitor notifications in the Activity Log
-
-#### * View/downloag losg
-
-#### Configure browser to allow insecure hybrid runtimes
-
-If at least one of your hybrid runtimes was installed in insecure mode (without an SSL certificate for the ingress controller from a CA), the UI alerts you that _At least one runtime was installed in insecure mode_.
-{% include
- image.html
- lightbox="true"
- file="/images/runtime/runtime-insecure-alert.png"
- url="/images/runtime/runtime-insecure-alert.png"
- alt="Insecure runtime installation alert"
- caption="Insecure runtime installation alert"
-  max-width="100%"
-%}
-
-All you need to do is to configure the browser to trust the URL and receive content.
-
-1. Select **View Runtimes** to the right of the alert.  
-  You are taken to the Runtimes page, where you can see insecure runtimes tagged as **Allow Insecure**.
-  {% include
- image.html
- lightbox="true"
- file="/images/runtime/runtime-insecure-steps.png"
- url="/images/runtime/runtime-insecure-steps.png"
- alt="Insecure runtimes in Runtime page"
- caption="Insecure runtimes in Runtime page"
-  max-width="40%"
-%}
-{:start="2"}
-1. For _every_ insecure runtime, select **Allow Insecure**, and when the browser prompts you to allow access, do as relevant:
-
-* Chrome: Click **Advanced** and then **Proceed to site**.
-* Firefox: Click **Advanced** and then **Accept the risk and continue**.
-* Safari: Click **Show Certificate**, and then select **Always allow content from site**.
-* Edge: Click **Advanced**, and then select **Continue to site(unsafe)**.
-
-#### View notifications for hybrid runtimes in Activity Log
-
-The Activity Log is a quick way to monitor notifications for runtime events such as upgrades. A pull-down panel in the Codefresh toolbar, the Activity Log shows ongoing, success, and error notifications, sorted by date, starting with today's date.
-
-1. In the Codefresh UI, on the top-right of the toolbar, select ![](/images/pipeline/monitoring/pipeline-activity-log-toolbar.png?display=inline-block) **Activity Log**.
-1. To see notifications for provisioned runtimes, filter by **Runtime**.
-
-  {% include image.html
-  lightbox="true"
-  file="/images/runtime/runtime-activity-log.png"
-  url="/images/runtime/runtime-activity-log.png"
-  alt="Activity Log filtered by Runtime events"
-  caption="Activity Log filtered by Runtime events"
-  max-width="30%"
-  %}
-
-{:start="3"}
-
-1. To see more information on an error, select the **+** sign.
-
-#### Troubleshoot health and sync errors for hybrid runtimes
-
-The ![](/images/icons/error.png?display=inline-block) icon with the runtime in red indicates either health or sync errors.
-
-**Health errors**  
-Health errors are generated by Argo CD and by Codefresh for runtime components.
-
-**Sync errors**  
-Runtimes with sync errors display an **Out of sync** status in Sync Status column. They are related to discrepancies between the desired and actual state of a runtime component or one of the Git sources associated with the runtime.  
-
-**View errors**  
-For both views, select the runtime, and then select **Errors Detected**.  
-Here is an example of health errors for a runtime.
-
-    {% include image.html 
-  lightbox="true"
-  file="/images/runtime/runtime-health-sync-errors.png"
-  url="/images/runtime/runtime-health-sync-errors.png"
-  alt="Health errors for runtime example"
-  caption="Health errors for runtime example"
-  max-width="30%"
-  %}
-
-### What to read next
-
-[Manage Git Sources]({{site.baseurl}}/docs/runtime/git-sources/)  
-[Managed clusters]({{site.baseurl}}/docs/runtime/managed-cluster/)
