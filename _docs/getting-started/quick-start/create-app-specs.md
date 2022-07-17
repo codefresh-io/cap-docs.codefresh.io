@@ -10,7 +10,7 @@ Before you can create an application in Codefresh, you need to create the resour
 
 1. Rollout resource defining the deployment strategy 
 1. Service resource to expose the application to external traffic
-1. Analysis template resource defining the validation requirements before deployment
+1. Analysis Template resource defining the validation requirements before deployment
 
 
 ### Create folder in Git for application resources
@@ -53,7 +53,7 @@ spec:
           name: codefresh-guestbook
           ports:
             - name: http
-              containerPort: 8080
+              containerPort: 80
               protocol: TCP
   minReadySeconds: 30
   strategy:
@@ -79,7 +79,7 @@ spec:
 | `matchLabels`                      | The pods to select for this rollout. In our example, all pods with the label `codefresh-guestbook` are selected.|      
 | `image`                            | The container image for the application with the version tag, `gcr.io/heptio-images/ks-guestbook-demo:0.1` in our example.|                             
 | `name`                             | The name of the application, `codefresh-guestbook` in our example. |       
-| `canary`                           | The deployment strategy, `canary` meaning that the traffic is gradually routed to the new application. Starting with `setWeight` of`25%` followed by a `pause` of 20 seconds, and the remaining `75%` after verification.|  
+| `canary`                           | The deployment strategy, `canary` meaning that the traffic is gradually routed to the new application. Starting with `setWeight` of `25%` followed by a `pause` of 20 seconds, and the remaining `75%` after verification.|  
 | `templateName`                      | The analysis template used to validate the application metrics. Our example has the `background-analysis` template, and interfaces with Prometheus to monitor and validate metric thresholds.|  
 
 
@@ -97,7 +97,7 @@ metadata:
 spec:
   ports:
     - port: 8080
-      targetPort: 3000
+      targetPort: 80
   selector:
     app: codefresh-guestbook # must be the same as the selector defined in rollouts.yaml
   type: LoadBalancer
@@ -109,7 +109,7 @@ spec:
 |  Service field            |  Notes |  
 | --------------            | --------------           |  
 | `spec.ports`              | The internal `port`, 8080 in our example, and external `targetPort`, 3000 in our example.| 
-| `selector.app`            | The pods to select, and MUST be identical to that defined in `rollouts.yaml`, `codefresh.guestbook` in our example.| 
+| `selector.app`            | The pods to select, and MUST be identical to that defined in `rollouts.yaml`, `codefresh-guestbook` in our example.| 
 
 ### Create an AnalysisTemplate for rollout validation
 Create an `AnalysisTemplate` resource to validate that your changes conform to the requirements before deployment. This is the final resource you need before you can create the application.
@@ -119,7 +119,7 @@ For the quick start, you'll create the `background-analysis` analysis template. 
 You can use any third-party metric provider supported by Argo Rollouts, such as Prometheus, Datadog, Wavefront, and more. Read the official documentation on [Analysis section in Argo Rollouts](https://argoproj.github.io/argo-rollouts/){:target="\_blank"}. 
 
 
-* In the Git repository create the `AnalysisTemplate.yaml` file, as in the example below.
+* In the Git repository create the `analysisTemplate.yaml` file, as in the example below.
 
 
 ```yaml
@@ -141,14 +141,14 @@ spec:
             sum(argocd_app_reconcile_sum)
 ```
 
-####  Fields in `background-analysis.yaml`
+####  Fields in `analysisTemplate.yaml`
 
 {: .table .table-bordered .table-hover}
 |  Analyis Template field            |  Notes |  
 | --------------            | --------------           |  
 | `count`                   | The total number of measurements taken, `4` in our example.| 
 | `interval`                | The interval between measurement samplings, `5s` in our example.| 
-| `successCondition`        | The requirement for the rollout to be considered a success. In our example, the resulting metric value must be greater than 100.|
+| `successCondition`        | The requirement for the rollout to be considered a success. In our example, the resulting metric value must be equal or greater than 100.|
 | `failureLimit`            | The maximum number of failures permitted, `1` in our example. If the metric value is below 100 more than once, the rollout is aborted.|
 | `query`                   | The query submitted to the Prometheus server.|
 
