@@ -28,7 +28,7 @@ Image views are layered to show three levels of data:
 * Tags
 * Summary with metadata and binary information 
 
-#### Filters for image views
+#### Filters for Image views
 As with any resource in Codefresh, image views support filters that allow you focus on the data that's important to you.
 Most image filters support multi-selection.  Unless otherwise indicated, the filters are common to all view levels.
 
