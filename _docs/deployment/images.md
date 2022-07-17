@@ -6,7 +6,7 @@ toc: true
 ---
 
 Building Docker images is one of the most basic requirements for creating Delivery Pipelines. 
-Once you create an image, push the image to a registry, and report it to Codefresh, image information is continually updated in the Codefresh UI. 
+Once you create an image, push the image to a registry, and report it to Codefresh, image information is continually updated in the Images page. 
 
 ### Requirements for images in Codefresh
 Complete the mandatory steps to see your images in Codefresh. Each step has links to examples in the Codefresh Hub for Argo.  
