@@ -83,7 +83,7 @@
       url: "/applications-dashboard"
     - title: Create an application
       url: "/create-application"
-    - title: Viewing Images
+    - title: Images in Codefresh
       url: "/images"
 
 - title: Reports & Insights

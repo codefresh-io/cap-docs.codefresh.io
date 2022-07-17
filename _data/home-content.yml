@@ -71,7 +71,7 @@
       localurl: /docs/deployment/applications-dashboard/
     - title: Create an application
       localurl: /docs/deployment/create-application/
-    - title: Viewing Images
+    - title: Images in Codefresh
       localurl: /docs/deployment/images/ 
 
 
