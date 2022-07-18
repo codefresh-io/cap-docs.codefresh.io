@@ -5,9 +5,7 @@ group: reporting
 toc: true
 ---
 
-DevOps is a collaboration paradigm that is sometimes mistaken for being too abstract or too generic. In an effort to quantify the benefits of adopting DevOps,
-[Dora Research](https://www.devops-research.com/research.html#capabilities){:target="\_blank"} (acquired by Google in 2018), has introduced four key metrics that
-define specific goals for improving the software lifecycle in companies interested in adopting DevOps.
+DevOps is a collaboration paradigm that is sometimes mistaken for being too abstract or too generic. In an effort to quantify the benefits of adopting DevOps, [Dora Research](https://www.devops-research.com/research.html#capabilities){:target="\_blank"} (acquired by Google in 2018), has introduced four key metrics that define specific goals for improving the software lifecycle in companies interested in adopting DevOps.
 
 DORA measures these metrics:
 
@@ -18,7 +16,7 @@ DORA measures these metrics:
 
 [Read more on DORA](https://cloud.google.com/blog/products/devops-sre/using-the-four-keys-to-measure-your-devops-performance){:target="\_blank"}. 
 
-### DORA metrics in Codefresh
+### DORA metrics in Codefreh
 
 Monitoring DORA metrics can help identify delivery issues in your organization by detecting bottlenecks among teams, and help to optimize your workflows, at technical or organizational levels.  
 Codefresh offers support for DORA metrics out of the box.  
@@ -42,13 +40,18 @@ More than one option within the same filter type has an OR relationship. More th
 
 * Runtimes: Show metrics for applications from selected runtimes 
 * Clusters: Show metrics for applications deployed to selected clusters
-* Applications: Show metrics for selected applications 
+* Applications: Show metrics for selected applications. 
 * Time: Show metrics from application for a specific time period
 
 > When no filters are defined, all metrics are shown for the last 90 days. 
 
-### Metric totals
+### Metrics for favorite applications
+If you have [starred applications as favorites]({{site.baseurl}}/docs/deployment/applications-dashboard/#filters-and-favorites) in the Applications dashboard, clicking {::nomarkdown}<img src="../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/} in DORA metrics, displays metrics only for those applications.    
 
+> If you select to view favorite applications and apply an Applications filter, results are available only if the favorite application is also defined in the Applications filter.
+
+
+### Metric totals
 As the title indicates, the Totals bar shows the total numbers, based on the filters defined, or for the last 90 days, if there are no filters:
 
 * Deployments
