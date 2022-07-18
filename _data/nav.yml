@@ -89,7 +89,7 @@
       url: "/add-users"
     - title: Set up OAuth2 app
       url: "/oauth-pat-setup"  
-    - title: Git personal access tokens for users
+    - title: User settings
       url: "/user-settings"
     - title: Git tokens
       url: "/git-tokens"
