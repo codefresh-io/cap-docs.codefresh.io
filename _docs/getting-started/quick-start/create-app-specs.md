@@ -8,10 +8,17 @@ toc: true
 
 Before you can create an application in Codefresh, you need to create the resources used by the application:
 
-1. Rollout resource defining the deployment strategy 
+1. Install Argo Rollouts on the target cluster to which you will deploy the application
+1. `Rollout` resource defining the deployment strategy 
 1. Service resource to expose the application to external traffic
 1. Analysis Template resource defining the validation requirements before deployment
 
+### Install Argo Rollouts on the target cluster
+To apply the `Rollout` resource for the application, you must have Argo Rollouts installed on the target cluster. If not installed, follow the steps to install Argo Rollouts.
+
+1. In the Codefresh UI, go to [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+1. Select **Topology View**.
+1. Select the target cluster, and then select **+ Install Argo Rollouts**.
 
 ### Create folder in Git for application resources
 Create a folder in the Git repo in which to save all the resources. 
@@ -108,13 +115,13 @@ spec:
 {: .table .table-bordered .table-hover}
 |  Service field            |  Notes |  
 | --------------            | --------------           |  
-| `spec.ports`              | The internal `port`, 8080 in our example, and external `targetPort`, 3000 in our example.| 
+| `spec.ports`              | The internal `port`, 8080 in our example, and external `targetPort`, 80 in our example.| 
 | `selector.app`            | The pods to select, and MUST be identical to that defined in `rollouts.yaml`, `codefresh-guestbook` in our example.| 
 
 ### Create an AnalysisTemplate for rollout validation
 Create an `AnalysisTemplate` resource to validate that your changes conform to the requirements before deployment. This is the final resource you need before you can create the application.
 
-For the quick start, you'll create the `background-analysis` analysis template. The template interfaces with Prometheus, as the third-party metric provider to validate metrics.  
+The name of the `AnalysisTemplate` in the quick start example is `background-analysis`. The template interfaces with Prometheus as the third-party metric provider to validate metrics.  
 
 You can use any third-party metric provider supported by Argo Rollouts, such as Prometheus, Datadog, Wavefront, and more. Read the official documentation on [Analysis section in Argo Rollouts](https://argoproj.github.io/argo-rollouts/){:target="\_blank"}. 
 
@@ -144,11 +151,11 @@ spec:
 ####  Fields in `analysisTemplate.yaml`
 
 {: .table .table-bordered .table-hover}
-|  Analyis Template field            |  Notes |  
+|  Analysis Template field            |  Notes |  
 | --------------            | --------------           |  
 | `count`                   | The total number of measurements taken, `4` in our example.| 
 | `interval`                | The interval between measurement samplings, `5s` in our example.| 
-| `successCondition`        | The requirement for the rollout to be considered a success. In our example, the resulting metric value must be equal or greater than 100.|
+| `successCondition`        | The requirement for the rollout to be considered a success. In our example, the resulting metric value must be equal to or greater than 100.|
 | `failureLimit`            | The maximum number of failures permitted, `1` in our example. If the metric value is below 100 more than once, the rollout is aborted.|
 | `query`                   | The query submitted to the Prometheus server.|
 

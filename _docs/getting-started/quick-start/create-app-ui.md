@@ -63,7 +63,7 @@ For detailed information, see [Create an application]({{site.baseurl}}/docs/depl
 1. Retain the default **Advanced Settings**.  
 1. To commit all your changes, select **Commit**.  
   The Commit form is displayed with the application's definition on the left, and the read-only version of the manifest with the configuration settings you defined on the right.
-1. Select the **Git Source** to which to commit the application configuration manifest.
+1. Select the **Git Source** to which to commit.
 
 {% include 
    image.html 
