@@ -20,6 +20,16 @@ To apply the `Rollout` resource for the application, you must have Argo Rollouts
 1. Select **Topology View**.
 1. Select the target cluster, and then select **+ Install Argo Rollouts**.
 
+{% include 
+   image.html 
+   lightbox="true" 
+   file="/images/getting-started/quick-start/cdops-app-install-rollout.png" 
+   url="/images/getting-started/quick-start/cdops-app-install-rollout.png" 
+   alt="Install Argo Rollouts on target cluster" 
+   caption="Install Argo Rollouts on target cluster"
+   max-width="50%" 
+   %}
+
 ### Create folder in Git for application resources
 Create a folder in the Git repo in which to save all the resources. 
 
