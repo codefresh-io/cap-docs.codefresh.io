@@ -1,5 +1,5 @@
 ---
-title: "Pipeline creation"
+title: "Create pipelines"
 description: ""
 group: pipelines
 toc: true

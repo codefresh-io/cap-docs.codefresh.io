@@ -1,11 +1,11 @@
 ---
-title: "Manage pipelines"
+title: "Managing pipelines"
 description: ""
 group: pipelines
 toc: true
 ---
 
-Once a Delivery Pipeline is [created and triggered]({{site.baseurl}}/docs/pipelines/create-pipeline/), Codefresh continuously collects and displays real-time analytics on the pipeline and the workflows submitted for that pipeline.  
+Once a Delivery Pipeline is [created and triggered]({{site.baseurl}}/docs/pipelines/create-pipeline/),Codefresh continuously collects and displays real-time analytics on the pipeline and the workflows submitted.  
 >This article focuses on pipeline management. For information on managing workflows in pipelines, see [Managing workflows]({{site.baseurl}}/docs/pipelines/workflows/).
 
 
@@ -23,6 +23,12 @@ Monitor pipelines performance at the global and individual levels. Both levels p
 **Optimizing pipeline configuration**
 Use insights and trends from performance and KPI metrics to optimize the pipeline's Workflow Template, trigger conditions, and arguments. 
 
+
+
+
+
+
+
 ### Monitor sensor and event source notifications for pipelines in Activity Log
 Monitor logs for sensors and event-sources in pipelines in the Activity Log. A pull-down panel in the Codefresh toolbar, the Activity Log shows ongoing, success, and error notifications, by date, starting with today's date. Syntax errors that prevent the sensor from triggering the pipeline are displayed here.
 
@@ -35,7 +41,7 @@ Monitor logs for sensors and event-sources in pipelines in the Activity Log. A p
   url="/images/pipeline/monitoring/monitor-activity-log.png"
   alt="Activity Log filtered by Event Source and Sensor"
   caption="Activity Log filtered by Event Source and Sensor"
-  max-width="60%"
+  max-width="30%"
   %}
 
 {:start="3"}
@@ -61,7 +67,7 @@ Here is an example of the global pipeline view in the Home page.
   url="/images/pipeline/monitoring/monitor-aggregated-view.png"
   alt="Global analytics for Delivery Pipelines in Home page"
   caption="Global analytics for Delivery Pipelines in Home page"
-  max-width="60%"
+  max-width="30%"
   %}
 
 
@@ -86,7 +92,7 @@ Pipeline metrics (KPIs), are displayed as line charts and in list formats.
 * List formats
   Display the average values for the same KPIs, sorted by activity and duration. The different perspectives illustrate both the fluctuations in the KPIs compared to the reference time range, and trending pipelines. The reference time range is the period of time that corresponds to and precedes the selected time range. 
 
-  {::nomarkdown}<ul><li>Pipelines without numbers prefixing the names indicate new pipelines within the selected time frame.</li><li>Pipelines prefixed with numbers (encircled in the image above) indicate existing pipelines. </br> The number indicates the change in position of the pipeline compared to the reference period. </li><li>To drill down into a specific pipeline, select the pipeline.</li></ul>{:/}
+  {::nomarkdown}<ul><li>Pipelines without numbers prefixing the names indicate new pipelines within the selected time frame.</li><li>Pipelines prefixed with numbers (encircled in the image above) indicate existing pipelines. </br> The number indicates the change in position of the pipeline compared to the reference period. </li><li>To drill down into a specific pipeline, select the pipeline.</li></ul>
 
 {: .table .table-bordered .table-hover}
 |  Metric               |  Description|  
