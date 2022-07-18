@@ -8,7 +8,7 @@ toc: true
 
 
 Codefresh provides all the options and functionality to create and manage Argo CD applications in the Codefresh UI.  
-* Create Argo CD applications that are fully GitOps compliant, from generating the application configuration manifest, committing it to Git, and then syncing and deploying to the cluster.  
+* Create Argo CD applications that are fully GitOps compliant, from generating the application configuration manifest, committing it to Git, and syncing and deploying to the cluster.  
   Creating an application in Codefresh includes:  
   * Application definitions
   * General configuration settings
@@ -18,7 +18,7 @@ Codefresh provides all the options and functionality to create and manage Argo C
   For example Argo CD applications, see this [repo](https://github.com/oleksandr-codefresh/argocd-example-apps){:target="_blank"}.
 
 * Edit and delete applications
-  When the application is created and synced to the cluster, it is displayed in the Applications dashboard. Here, you can select an application to update the application's configuration settings, or delete it.  
+  Once the application is created and synced to the cluster, it is displayed in the Applications dashboard. Here, you can select an application to update the application's configuration settings, or delete it.  
   To monitor the health and sync status, deployments, and resources for the application, see [Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/).  
 
 ### Application: Definitions
@@ -53,16 +53,27 @@ General configuration settings define the source, destination, and sync policies
 The Git repository to be tracked for changes to the application's source code.  
 {::nomarkdown}<ul> <li><b>ArgoCD Project</b>: The project group to which the application belongs. A project is useful to enforce restrictions on permitted sources and targets for applications, and roles. If not defined, the application is automatically assigned to the <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">default</span> project, which is created automatically by Argo CD and has no restrictions. </br>For more information, see Argo CD's documentation on <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/projects/#projects" target="\_blank">Projects</a>.</li> <li><b>Repository URL</b>: The Git repo or the Helm package repo with the application source code, to be tracked for changes. If the Argo CD project is not the <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">default</span> project, make sure that the repo has the correct access roles for your application.<ul><li><b>Revision and Path</b>: Applies to Git repositories. </li><li><b>Chart</b>: Applies to Helm repositories. The name of the Helm package with all the resource definitions for the application, and the version. </li></ul>For more information, see <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/" target="\_blank">Tracking and Deployment Strategies</a>.</li></ul> {:/}   
 
+{::nomarkdown}
+<br>
+{:/} 
+
 #### Destination
 The cluster and namespace to which to deploy the application.  
 {::nomarkdown}<ul><li><b>Cluster</b>: The cluster to which to deploy the application, defined as a <b>URL</b>, or as the user-defined display <b>NAME</b>.</li> <li><b>Namespace</b>: The namespace in the cluster to which to deploy the application.</li> </ul> {:/}
- 
+
+{::nomarkdown}
+<br>
+{:/}
+
 #### Sync Settings
-{::nomarkdown}<b>Sync Policy</b>: The synchronization policy to apply when there are differences between the desired state in Git and the actual state in the cluster.</br><ul><li><b>Manual</b>: Manually sync the changes from the Argo CD UI. </li><li><b>Automatic</b>: Automatically sync changes, with the following options if selected:<ul><li><b>Prune resources</b>:When selected, removes legacy resources that do not exist currently in Git. </li><li><b>Self heal</b>: When selected, always enforces a sync to the desired state in Git, if and when there is a change to the actual state in the cluster. See <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing" target="_blank">Automatic self-healing</a>.</li></li></ul> {:/}
-  
-{::nomarkdown}<b>Sync Options</b>: Common to both manual and automatic sync policies.</br><ul><li><b>Skip schema validation</b>: When selected, bypasses validating the YAML schema.</li><li><b>Auto-create namespace</b>: When selected, automatically create the namespace if the specified namespace does not exist in the cluster.</li><li><b>Prune last</b>: When selected, removes those resources that do not exist in the currently deployed version during the final wave of the sync operation. See <a hef="https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last" target="_blank">Prune last</a>.</li><li><b>Apply out of sync only</b>: When selected, syncs only those resources in the application that have been changed and are <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">OutOfSync</span>, instead of syncing every resource regardless of their state. This option is useful to reduce load and save time when you have thousands of resources in an application. See <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#selective-sync" target="_blank">Selective Sync</a>.</li></ul> {:/}
-  
-{::nomarkdown}<b>Prune propagation policy</b>:</br>Defines how resources are pruned, applying Kubernetes cascading deletion prune policies. 
+##### Sync Policy
+{::nomarkdown}The synchronization policy to apply when there are differences between the desired state in Git and the actual state in the cluster.</br><ul><li><b>Manual</b>: Manually sync the changes from the Argo CD UI. </li><li><b>Automatic</b>: Automatically sync changes, with the following options if selected:<ul><li><b>Prune resources</b>:When selected, removes legacy resources that do not exist currently in Git. </li><li><b>Self heal</b>: When selected, always enforces a sync to the desired state in Git, if and when there is a change to the actual state in the cluster. See <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing" target="_blank">Automatic self-healing</a>.</li></li></ul> {:/}
+
+##### Sync Options 
+{::nomarkdown}Common to both manual and automatic sync policies.</br><ul><li><b>Skip schema validation</b>: When selected, bypasses validating the YAML schema.</li><li><b>Auto-create namespace</b>: When selected, automatically create the namespace if the specified namespace does not exist in the cluster.</li><li><b>Prune last</b>: When selected, removes those resources that do not exist in the currently deployed version during the final wave of the sync operation. See <a hef="https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last" target="_blank">Prune last</a>.</li><li><b>Apply out of sync only</b>: When selected, syncs only those resources in the application that have been changed and are <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">OutOfSync</span>, instead of syncing every resource regardless of their state. This option is useful to reduce load and save time when you have thousands of resources in an application. See <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#selective-sync" target="_blank">Selective Sync</a>.</li></ul> {:/}
+
+##### Prune propagation policy
+{::nomarkdown}Defines how resources are pruned, applying Kubernetes cascading deletion prune policies. 
 For more information, see <a href="https://kubernetes.io/docs/concepts/architecture/garbage-collection/#cascading-deletion" target="_blank">Kubernetes - Cascading deletion</a>.</br><ul><li><b>Foreground</b>: The default prune propagation policy used by Argo CD. With this policy, Kubernetes changes the state of the owner resource to `deletion in progress`, until the controller deletes the dependent resources and finally the owner resource itself. </li><li><b>Background</b>: When selected, Kubernetes deletes the owner resource immediately, and then deletes the dependent resources in the background.</li><li><b>Orphan</b>: When selected, Kubernetes deletes the dependent resources that remain orphaned after the owner resource is deleted.</li></ul> </br>{:/}
 All Prune propagation policies can be used with:  
 **Replace**: When selected, Argo CD executes `kubectl replace` or `kubectl create`, instead of the default `kubectl apply` to enforce the changes in Git. This action will potentially recreate resources and should be used with care. See [Replace Resource Instead Of Applying Change](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#replace-resource-instead-of-applying-changes){:target="_blank"}.  
@@ -205,9 +216,9 @@ Track the application in the [Applications dashboard](https://g.codefresh.io/2.0
 {:/}
 
 ### Update application configuration 
-Update General or Advanced configuration settings for a deployed application. Once the application is deployed, the Configuration tab is available on selecting the application in the Applications dashboard. 
+Update General or Advanced configuration settings for a deployed application. Once the application is deployed to the cluster, the Configuration tab is available on selecting the application in the Applications dashboard. 
 
-> You cannot change application definitions (the application name and the selected runtime), and the Git Source with the application manifest.
+> You cannot change application definitions (the application name and the selected runtime), and the Git Source selected for the application.
 
 **How to**  
 
@@ -242,10 +253,10 @@ Update General or Advanced configuration settings for a deployed application. On
 
 {:start="4"}
 1. Do one of the following:
-   * To _commit all changes_, click **Commit**. This final commit screen appears with a diff view of the changes.  
+   * To _commit all changes_, click **Commit**. This final commit screen is displayed with a diff view of the changes.  
    * To _undo all changes_ and return to the previous settings, click **Discard Changes**. This action removes all the changes you have made so far and returns you to the Applications dashboard.
 
-   >If you change a setting and then restore the existing value, the Commit and Discard Changes buttons are automatically removed as there are no new changes to commit or discard. 
+   >If you change settings and then restore existing values for the same, Codefresh automatically removes the Commit and Discard Changes buttons as there are no new changes to commit or discard. 
 
   {% include 
    image.html 
@@ -259,7 +270,7 @@ Update General or Advanced configuration settings for a deployed application. On
 
 {:start="5"}
 1. To confirm all changes, at the bottom-left, click **Commit**.
-  The changes are committed to Git and in a few moments also synced to the cluster. 
+  The changes are committed to Git, and in a few moments also synced to the cluster. 
 
 {::nomarkdown}
 <br><br>
@@ -268,11 +279,12 @@ Update General or Advanced configuration settings for a deployed application. On
 ### Delete an application
 Delete an application from Codefresh. Deleting an application deletes the manifest from the Git repository, and then from the cluster where it is deployed. When deleted from the cluster, the application is removed from the Applications dashboard in Codefresh.
  
->The Prune resources setting determines if only the application is deleted (when not selected), or if both the application and its resources are deleted (when selected). Codefresh warns you of the implication of deleting the selected application in the Delete form. Review [Sync settings](#sync-settings) in this article.
+>The Prune resources setting determines the scope of the delete action. When selected, both the application and its resources are deleted. When not selected, only the application is deleted. For more information, review [Sync settings](#sync-settings) in this article.  
+Codefresh warns you of the implication of deleting the selected application in the Delete form. 
 
 1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}.
-1. Select the application to delete, and then select the **Configuration** tab.
-1. Click the three dots with the additional actions and select **Delete**.
+1. Select the application to delete.
+1. Click the three dots for additional actions, and select **Delete**.
   
   {% include 
    image.html 
@@ -284,7 +296,7 @@ Delete an application from Codefresh. Deleting an application deletes the manife
    max-width="80%" 
    %} 
 
-  Pay attention to the implication of the delete action for the selected application that Codefresh displays.
+  Pay attention to the impact of the delete action for the selected application that Codefresh displays.
 
    {% include 
    image.html 
