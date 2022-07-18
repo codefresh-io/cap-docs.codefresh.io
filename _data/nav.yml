@@ -82,7 +82,7 @@
   pages:
     - title: Applications dashboard
       url: "/applications-dashboard"
-    - title: Create an application
+    - title: Applications
       url: "/create-application"
 
 - title: Reports & Insights
