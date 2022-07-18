@@ -20,7 +20,7 @@ Monitor pipelines performance at the global and individual levels. Both levels p
 * Monitoring sensor and event-source errors for  
 
 
-**Optimizing pipeline configuration**
+**Optimizing pipeline configuration**  
 Use insights and trends from performance and KPI metrics to optimize the pipeline's Workflow Template, trigger conditions, and arguments. 
 
 ### Monitor sensor and event source notifications for pipelines in Activity Log
@@ -35,7 +35,7 @@ Monitor logs for sensors and event-sources in pipelines in the Activity Log. A p
   url="/images/pipeline/monitoring/monitor-activity-log.png"
   alt="Activity Log filtered by Event Source and Sensor"
   caption="Activity Log filtered by Event Source and Sensor"
-  max-width="60%"
+  max-width="40%"
   %}
 
 {:start="3"}
@@ -61,10 +61,8 @@ Here is an example of the global pipeline view in the Home page.
   url="/images/pipeline/monitoring/monitor-aggregated-view.png"
   alt="Global analytics for Delivery Pipelines in Home page"
   caption="Global analytics for Delivery Pipelines in Home page"
-  max-width="60%"
+  max-width="70%"
   %}
-
-
 
 
 #### Filters for global pipeline view
@@ -81,9 +79,9 @@ Filters narrow the scope of aggregated data, allowing you to focus on the inform
 #### Metrics in global pipeline view
 
 Pipeline metrics (KPIs), are displayed as line charts and in list formats. 
-* Line charts
+* Line charts  
   Quick views of KPIs for the selected time frame. To see detailed day-to-day values, select a line chart.
-* List formats
+* List formats  
   Display the average values for the same KPIs, sorted by activity and duration. The different perspectives illustrate both the fluctuations in the KPIs compared to the reference time range, and trending pipelines. The reference time range is the period of time that corresponds to and precedes the selected time range. 
 
   {::nomarkdown}<ul><li>Pipelines without numbers prefixing the names indicate new pipelines within the selected time frame.</li><li>Pipelines prefixed with numbers (encircled in the image above) indicate existing pipelines. </br> The number indicates the change in position of the pipeline compared to the reference period. </li><li>To drill down into a specific pipeline, select the pipeline.</li></ul>{:/}
@@ -114,7 +112,7 @@ Here is an example of the list view of individual pipelines.
   url="/images/pipeline/monitoring/pipeline-list-view.png"
   alt="List view with individual Delivery Pipelines"
   caption="List view with individual Delivery Pipelines"
-  max-width="30%"
+  max-width="70%"
   %}
 
 The table describes the information for each pipeline in the list view.
@@ -122,7 +120,7 @@ The table describes the information for each pipeline in the list view.
 
 
 {: .table .table-bordered .table-hover}
-| Legend        |  Description|  
+| Item        |  Description|  
 | --------------| --------------           |  
 | **Name**      | The name of the pipeline. Select the name to drill down into step analytics, workflows, and configuration.|                             
 | **Recent Activity**| Bar chart of up to ten of the most recent workflows submitted for the pipeline. {::nomarkdown}<ul><li>Each bar represents a workflow that is color-coded to indicate the workflow's status: Green for completed, red for failed, and blue for ongoing workflows. </li><li> Mouse over a bar to see a pop-up with the metadata for the workflow. </li> <li>Selecting View Workflow Details takes you to the Workflow tab where you have several options to manage the workflow and view logs. For more information, see <a href="https://codefresh.io/csdp-docs/docs/pipelines/workflows">Managing workflows</a>.</li></ul> {:/}|          
@@ -162,4 +160,4 @@ For information on the settings, review [Delivery Pipeline creation flow]({{site
   > If there are Errors, Commit is disabled until you resolve the errors.
 
 ### What to read next
-[Managing workflows]({{site.baseurl}}/docs/pipelines/workflows/)
+[Manage workflows]({{site.baseurl}}/docs/pipelines/workflows/)

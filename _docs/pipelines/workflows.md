@@ -10,7 +10,7 @@ Workflows in Codefresh are integrated with and run Argo Workflows, an open-sourc
 
 Workflows are submitted when pipelines are triggered. A workflow executes a series of steps through one or more templates defined in its specification. View, analyze, and manage workflows in Codefresh through the Workflow and Delivery Pipeline dashboards:  
 
-* Track ongoing and completed workflows
+* Track ongoing and completed workflows  
   View and monitor submitted workflows across all pipelines in the Workflows dashboard. Select a time range, or view up to fifty of the most recent workflows for all the pipelines in the runtime. Use filters to customize the dashboard view. Drill down to any workflow for further analysis.
 
    {% include image.html 
@@ -22,7 +22,7 @@ Workflows are submitted when pipelines are triggered. A workflow executes a seri
   max-width="60%"
   %} 
   
-* Track workflow performance by pipelines 
+* Track workflow performance by pipelines  
   Track workflow performance in the context of the pipelines from which they were submitted. 
   See performance KPIs for the workflows such as the success rate, execution rate, and for the steps across all the workflows submitted for the same pipeline. 
 
@@ -35,7 +35,7 @@ Workflows are submitted when pipelines are triggered. A workflow executes a seri
   max-width="60%"
   %} 
 
-* Analyze and troubleshoot workflow executions
+* Analyze and troubleshoot workflow executions  
   Select a workflow and take actions in the context of the pipeline from which it was submitted:  
   * Analyze each step in the workflow, including steps related to the events that triggered the pipeline.
   * Troubleshoot failed steps through real-time logs for ongoing workflows, and archived logs for completed workflows
@@ -74,7 +74,7 @@ The table describes the information in the Workflows dashboard.
   max-width="50%"
   %}
 
-### Tracking workflow performance by pipeline
+### Track workflow performance by pipeline
 View and monitor the collective performance of workflows in the selected pipeline in the Delivery Pipelines dashboard. Performance KPIs are available for the workflow, and for every step across workflows. At the workflow level, view success and execution rates for the workflows, and at the step level, view the average durations and resource consumption for each step. Compare with the performance in the reference period to derive insights. 
  
 1. From the **Delivery Pipelines** page, select a pipeline to see its workflows.
@@ -214,17 +214,9 @@ For further analysis, select the step, or click Logs in the toolbar.
   url="/images/workflows/workflow-error-notification.png"
   alt="Error notifications for failed steps"
   caption="Error notifications for failed steps"
-  max-width="50%"
+  max-width="70%"
   %}
 
- {% include image.html 
-  lightbox="true" 
-  file="/images/workflows/workflow-error-notifications-open.png" 
-  url="/images/workflows/workflow-error-notifications-open.png"
-  alt="Error notifications panel"
-  caption="Error notifications panel"
-  max-width="50%"
-  %}
 
  The Errors tab has links to the logs.
 
@@ -234,12 +226,12 @@ For further analysis, select the step, or click Logs in the toolbar.
   url="/images/workflows/workflow-error-notifications-open.png"
   alt="Error notifications panel"
   caption="Error notifications panel"
-  max-width="30%"
+  max-width="40%"
   %}
 
 **Error and Failed Phase filters**  
 
-Selecting the Error and Failed status filters by steps in the workflow that the statuses. 
+Selecting Error and Failed statuses, filters the steps in the workflow by the selected statuses. 
 
 
  {% include image.html 
@@ -260,7 +252,7 @@ If you know the name of the step, use the Search field to navigate to and betwee
   url="/images/workflows/failed-steps-search.png"
   alt="Search for failed steps"
   caption="Search for failed steps"
-  max-width="30%"
+  max-width="50%"
   %}
 
 
@@ -282,7 +274,7 @@ The tabs displayed differ according to the step type:
   url="/images/workflows/event-source.png"
   alt="Additional info for event-source manifest in workflow"
   caption="Additional info for event-source manifest in workflow"
-  max-width="30%"
+  max-width="50%"
   %}
 
   Example: event-payload.
@@ -293,7 +285,7 @@ The tabs displayed differ according to the step type:
   url="/images/workflows/event-payload.png"
   alt="Additional info for event payload in workflow"
   caption="Additional info for event payload in workflow"
-  max-width="30%"
+  max-width="50%"
   %}
 
  Example: pod step type
@@ -304,7 +296,7 @@ The tabs displayed differ according to the step type:
   url="/images/workflows/workflow-pod-step.png"
   alt="Additional info for pod step type in workflow"
   caption="Additional info for od step type in workflow"
-  max-width="30%"
+  max-width="50%"
   %}
 
 #### View logs for steps or workflows
@@ -360,7 +352,7 @@ OR
 | **Windows/ GNOME/KDE**| `Control`+`X` or `Shift`+`Delete`| `Control`+`C` or `Control`+`Insert`| `Control`+`V` or `Shift`+`Insert`|   
 | **GNOME/KDE terminal emulators**|N/A|`Control`+`Shift`+`C` or `Control`+`Insert`| `Control`+`Shift`+`V` or `Control`+`Shift`+`Insert`; (to paste selected text `Shift`+`Insert` or middle mouse button) |         
 
-### Manage running/completed workflows
+### Actions for running/completed workflows
 When you drill down into the workflow details for a running or completed workflow, the toolbar displays several actions.   
 >The actions in the toolbar are _manual_ actions, different from the same actions that are built into the template which are executed automatically. For example, the Suspend option in the toolbar can be configured in the template as well. 
 
