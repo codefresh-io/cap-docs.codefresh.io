@@ -69,8 +69,16 @@ The cluster and namespace to which to deploy the application.
 ##### Sync Policy
 {::nomarkdown}The synchronization policy to apply when there are differences between the desired state in Git and the actual state in the cluster.</br><ul><li><b>Manual</b>: Manually sync the changes from the Argo CD UI. </li><li><b>Automatic</b>: Automatically sync changes, with the following options if selected:<ul><li><b>Prune resources</b>:When selected, removes legacy resources that do not exist currently in Git. </li><li><b>Self heal</b>: When selected, always enforces a sync to the desired state in Git, if and when there is a change to the actual state in the cluster. See <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing" target="_blank">Automatic self-healing</a>.</li></li></ul> {:/}
 
+{::nomarkdown}
+<br>
+{:/} 
+
 ##### Sync Options 
 {::nomarkdown}Common to both manual and automatic sync policies.</br><ul><li><b>Skip schema validation</b>: When selected, bypasses validating the YAML schema.</li><li><b>Auto-create namespace</b>: When selected, automatically create the namespace if the specified namespace does not exist in the cluster.</li><li><b>Prune last</b>: When selected, removes those resources that do not exist in the currently deployed version during the final wave of the sync operation. See <a hef="https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last" target="_blank">Prune last</a>.</li><li><b>Apply out of sync only</b>: When selected, syncs only those resources in the application that have been changed and are <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">OutOfSync</span>, instead of syncing every resource regardless of their state. This option is useful to reduce load and save time when you have thousands of resources in an application. See <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#selective-sync" target="_blank">Selective Sync</a>.</li></ul> {:/}
+
+{::nomarkdown}
+<br>
+{:/} 
 
 ##### Prune propagation policy
 {::nomarkdown}Defines how resources are pruned, applying Kubernetes cascading deletion prune policies. 
