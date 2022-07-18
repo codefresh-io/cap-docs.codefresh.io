@@ -28,10 +28,10 @@ Workflows are submitted when pipelines are triggered. A workflow executes a seri
 
   {% include image.html 
   lightbox="true" 
-  file="/images/workflows/workflow-dashboard-overview.png" 
-  url="/images/workflows/workflow-dashboard-overview.png"
-  alt="Workflows dashboard"
-  caption="Workflows dashboard"
+  file="/images/workflows/dashboard-workflows-in-pipeline.png" 
+  url="/images/workflows/dashboard-workflows-in-pipeline.png"
+  alt="Workflows in Delivery Pipeline"
+  caption="Workflows in Delivery Pipeline"
   max-width="60%"
   %} 
 
@@ -56,7 +56,7 @@ The Workflows dashboard displays a list of all the _active_ workflows across all
   max-width="50%"
   %}
 
-The table describes the main features in the Workflows dashboard.
+The table describes the information in the Workflows dashboard.
 
 {: .table .table-bordered .table-hover}
 | Item                |  Description|  
@@ -75,7 +75,7 @@ The table describes the main features in the Workflows dashboard.
   %}
 
 ### Tracking workflow performance by pipeline
-View and monitor the collective performance of the workflows in the selected pipeline in the Delivery Pipelines dashboard. Performance KPIs are available at the workflow-level and at the step-level. At the workflow level, you have success and execution rates for the workflows, and at the step level, you have the average durations and resource consumption for each step. Compare with the performance in the reference period to derive insights. 
+View and monitor the collective performance of workflows in the selected pipeline in the Delivery Pipelines dashboard. Performance KPIs are available for the workflow, and for every step across workflows. At the workflow level, view success and execution rates for the workflows, and at the step level, view the average durations and resource consumption for each step. Compare with the performance in the reference period to derive insights. 
  
 1. From the **Delivery Pipelines** page, select a pipeline to see its workflows.
 1. Select the [Dashboard](https://g.codefresh.io/2.0/pipelines/edit/codefresh-v2-production/codefresh-v2-production/argo-platform-push%2Fservice-yaml/dashboard){:target="\_blank"} tab. 
@@ -94,7 +94,7 @@ View and monitor the collective performance of the workflows in the selected pip
 The upper half shows KPIs for all workflows submitted for the pipeline. To customize the view, select filters. In this view, you can also filter by **Branch** which is the Git branch or branches with the events that triggered the pipeline.   
 
 **Step-level analytics**  
-The Step Analytics list view in the lower half show the aggregated average for KPIs in each step of a workflow, across all active workflows for the selected pipeline.  
+The Step Analytics list in the lower half displays the aggregated average for KPIs in each step, across all active workflows for the selected pipeline.  
 Each metric shows the difference in percentage compared to the reference period corresponding to the Time range selected, to help identify how the metrics are trending.  
 
 {: .table .table-bordered .table-hover}
@@ -145,11 +145,12 @@ Select the workflow to focus on, either from the Workflows dashboard or from a D
 
 #### Visualizing workflow steps
 
-View the connection between steps in the workflow, the status of each step, and additional information for the step. 
+View the connections between steps in the workflow, the status of each step, and additional information for the step. 
 
 * Visualize the entire flow, starting with the Argo Events that triggered the workflow, followed by the steps in the workflow itself. 
-* Isolate failed steps to troubleshoot them
 * View detailed information on a step in a pull-out panel. Easily copy paths for attributes from event payloads, view logs for pods, and download artifacts.
+* Troubleshoot failed steps
+
 
 {% include image.html 
   lightbox="true" 
@@ -225,7 +226,7 @@ For further analysis, select the step, or click Logs in the toolbar.
   max-width="50%"
   %}
 
-  The links to the logs are In the Errors tab,  are links to the logs.
+ The Errors tab has links to the logs.
 
  {% include image.html 
   lightbox="true" 
@@ -238,7 +239,7 @@ For further analysis, select the step, or click Logs in the toolbar.
 
 **Error and Failed Phase filters**  
 
-Selecting the Error and Failed status filters isolates the steps in the workflow. 
+Selecting the Error and Failed status filters by steps in the workflow that the statuses. 
 
 
  {% include image.html 
@@ -251,7 +252,7 @@ Selecting the Error and Failed status filters isolates the steps in the workflow
   %}
 
 **Search for failed steps**  
-If you know the name of the steps, use the Search field to navigate to failed steps.
+If you know the name of the step, use the Search field to navigate to and between failed steps.
 
 {% include image.html 
   lightbox="true" 
@@ -266,10 +267,9 @@ If you know the name of the steps, use the Search field to navigate to failed st
 
 #### Detailed information for steps
 To get detailed information for a step, select the step.  
-
 The tabs displayed differ according to the step type:  
 
-  * Almost all workflow step types show the Summary, Manifest, Containers, Inputs, Outputs. 
+  * All workflow step types show the Summary, Manifest, Containers, Inputs, Outputs. 
   * Pod step-types also display the Logs tab.
   * Event-step types show Manifest, Summary and Payload.
     > For Cron and Unknown event types, only the Event Sources are shown. 
@@ -360,7 +360,7 @@ OR
 | **Windows/ GNOME/KDE**| `Control`+`X` or `Shift`+`Delete`| `Control`+`C` or `Control`+`Insert`| `Control`+`V` or `Shift`+`Insert`|   
 | **GNOME/KDE terminal emulators**|N/A|`Control`+`Shift`+`C` or `Control`+`Insert`| `Control`+`Shift`+`V` or `Control`+`Shift`+`Insert`; (to paste selected text `Shift`+`Insert` or middle mouse button) |         
 
-### Actions for running/completed workflows
+### Manage running/completed workflows
 When you drill down into the workflow details for a running or completed workflow, the toolbar displays several actions.   
 >The actions in the toolbar are _manual_ actions, different from the same actions that are built into the template which are executed automatically. For example, the Suspend option in the toolbar can be configured in the template as well. 
 
