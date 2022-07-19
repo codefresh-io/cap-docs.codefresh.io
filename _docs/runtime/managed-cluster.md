@@ -1,5 +1,5 @@
 ---
-title: "Adding external clusters to runtimes"
+title: "Add external clusters to runtimes"
 description: ""
 group: runtime
 toc: true
@@ -223,7 +223,6 @@ Work with managed clusters in hybrid or hosted runtimes in either the Topology o
 
 **Remove cluster**  
   Remove a cluster registered with a runtime from the runtime's list of managed clusters.  
-  <!-->>Removing a managed cluster from a runtime also removes all the applications deployed to the cluster, and removes their data from the Applications dashboard.-->
 
 **How to**
 1. In the Codefresh UI, go to the [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"} page.
