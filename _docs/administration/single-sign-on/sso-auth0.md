@@ -72,7 +72,7 @@ caption="SSO account settings for Auth0 in Codefresh"
 max-width="40%"
 %}
 
-{:start="4"}
+{:start="5"}
 1. Click **Save**.
 1. Copy the Client Name that is assigned to identify this SSO account. You will have to add it to the Auth0 application.
 1. Continue with _Define SSO settings in Auth0 application_.
