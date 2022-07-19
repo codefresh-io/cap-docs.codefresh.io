@@ -35,7 +35,10 @@ Make sure:
 1. In the Add Managed Cluster panel, copy and run the command:  
   `cf cluster add <runtime-name> [--dry-run]`  
   where:  
- 
+
+  <runtime-name> is automatically populated by Codefresh in the command.  
+  `--dry-run` is optional, and required if you want to generate a list of YAML manifests that you can redirect and apply manually with `kubectl`.   
+
 
    {% include 
 	image.html 
@@ -47,7 +50,7 @@ Make sure:
   max-width="40%" 
 %}
 
-
+{:start="5"}
 1. If you used `dry-run`, apply the generated manifests to the same target cluster on which you ran the command.  
   Here is an example of the YAML manifest generated with the `--dry-run` flag. Note that there are placeholders in the example, which are replaced with the actual values with `--dry-run`.  
   
