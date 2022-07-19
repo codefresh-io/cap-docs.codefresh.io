@@ -49,7 +49,7 @@ max-width="40%"
 {:start="5"}
 1. Continue with _Create SSO account for Auth0 in Codefresh_.
 
-## 2. Create SSO account for Auth0 in Codefresh
+### 2. Create SSO account for Auth0 in Codefresh
 After creating an Auth0 application, create an SSO account for OAuth0 in Codefresh. 
 
 1. In the Codefresh UI, go to [Single Sign-On](https://g.codefresh.io/2.0/account-settings/single-sign-on).
@@ -69,7 +69,7 @@ file="/images/administration/sso/auth0/codefresh-settings.png"
 url="/images/administration/sso/auth0/codefresh-settings.png"
 alt="SSO account settings for Auth0 in Codefresh"
 caption="SSO account settings for Auth0 in Codefresh"
-max-width="70%"
+max-width="40%"
 %}
 
 {:start="4"}
@@ -78,7 +78,7 @@ max-width="70%"
 1. Continue with _Define SSO settings in Auth0 application_.
 
 
-## 3. Define SSO settings in Auth0 application
+### 3. Define SSO settings in Auth0 application
 As the final step in Auth0 SSO setup, return to Auth0, and then define the Login URI and Callback URL for the Auth0 application you created in  1. 
 
 1. From the sidebar, select **Applications > Applications**.
