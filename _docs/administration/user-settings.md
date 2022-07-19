@@ -16,9 +16,11 @@ As a user in Codefresh, you can manage the access tokens defined in your account
   Or, you can always generate a personal access token from GitHub and then add the same to Codefresh to authorize access.  
 
 ### Enable access for Codefresh support
-Every user can enable Codefresh support to access your user account. Access to your account by support personnel is useful to give visibility into your account for troubleshooting.  
+Enable Codefresh support personnel to access your user account. Access to your account is useful for visibility during troubleshooting.  
 
-> Codefresh personnel will always confirm with you before performing any major action, and all actions are audited.
+You can disable this security setting at any time.
+
+> Codefresh personnel takes action only after confirmation from you, and all actions are audited.
 
 1. In the CSDP UI, go to [User Settings](https://g.codefresh.io/2.0/user-settings){:target="\_blank"}.
 1. Enable **Allow Codefresh support tem to log in...**.
@@ -33,15 +35,15 @@ Every user can enable Codefresh support to access your user account. Access to y
    max-width="50%" 
 %}
 
-You can disable this security setting at any time.
+
 
 ### Update/delete Git personal access tokens
-Update your Git personal access token for each runtime when needed.  
-To authorize with OAuth2, you have to supply your credentials. When authorized, you are automatically directed to the Git Personal Tokens page. For OAuth2, the permissions and expiry date are pre-configured by the administrator.  
+Update your Git personal access token for hosted and hybrid runtimes when needed from the User Settings page.  
+To authorize with OAuth2, you have to supply your credentials. When authorized, you are automatically directed to the Git Personal Tokens page. 
 
-For Git personal access tokens, when generating a new token, make sure you select `repo` scope for commits and other actions.   
+* For OAuth2, the permissions and expiry date are pre-configured by the administrator.  
+* For Git personal access tokens, when generating a new token, make sure you select `repo` scope for commits and other actions.   
 
-The User Settings page displays the tokens in your account. 
 
 > If you need access to more than one runtime, you can use the same token for multiple runtimes. 
 You must however authorize GitHub access or add the personal access token individually for each runtime.  
@@ -67,9 +69,9 @@ You must however authorize GitHub access or add the personal access token indivi
   * To delete an existing token, select **Delete Token**.
 1. For OAuth2:
    * In the Add Token panel, click **Authorize Access to GitHub**.
-    > If the application is not registered, you get an error. For example, _Git app not registered_. Contact your admin to continue.  
+    > If the application is not registered, you get an error. For example, _Git app not registered_. Contact your admin for help.  
    *  Enter your credentials, and select **Sign In**.
-   * Complete the verification, if you have two-factor authentication for example.
+   * Complete the verification, for example, if you two-factor authentication is configured.
 
     {% include 
       image.html 
@@ -96,7 +98,7 @@ You must however authorize GitHub access or add the personal access token indivi
       max-width="30%"  
    %}
 
-The token is generated, and you are redirected to the User Settings page, where you can see the new Git token for the runtime. 
+The token is generated and you are redirected to the User Settings page, where you can see the new Git token assigned to the runtime. 
 
 ### Related info  
 [Git tokens in Codefresh]({{site.baseurl}}/docs/administration/git-tokens/)
