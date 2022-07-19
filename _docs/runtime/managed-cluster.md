@@ -236,8 +236,8 @@ Work with managed clusters in hybrid or hosted runtimes in either the Topology o
  {% include 
 	image.html 
 	lightbox="true" 
-	file="images/getting-started/quick-start/cdops-app-install-rollout.png" 
-	url="images/getting-started/quick-start/cdops-app-install-rollout.png" 
+	file="images/runtime/cluster-install-rollout.png" 
+	url="images/runtime/cluster-install-rollout.png" 
 	alt="Install Argo Rollouts" 
 	caption="Install Argo Rollouts"
   max-width="50%" 
