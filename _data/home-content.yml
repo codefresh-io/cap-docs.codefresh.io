@@ -45,9 +45,6 @@
       localurl: /docs/runtime/managed-cluster/
     - title:  Adding Git Sources to runtimes
       localurl: /docs/runtime/git-sources/
-    
-
-
 
 - title: Pipelines
   icon: images/home-icons/pipeline.svg
