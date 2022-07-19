@@ -233,14 +233,14 @@ Work with managed clusters in hybrid or hosted runtimes in either the Topology o
     * In the List View, select the runtime, and then select the **Managed Clusters** tab.
 1. To install Argo Rollouts (Topology View only), select **Install Argo Rollouts**. 
 
- {% include 
+{% include 
 	image.html 
 	lightbox="true" 
-	file="images/runtime/cluster-install-rollout.png" 
+	file="/images/runtime/cluster-install-rollout.png" 
 	url="images/runtime/cluster-install-rollout.png" 
 	alt="Install Argo Rollouts" 
 	caption="Install Argo Rollouts"
-  max-width="50%" 
+  max-width="40%" 
 %}
 
 {:start="5"}
