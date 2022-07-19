@@ -7,14 +7,16 @@ toc: true
 
 As a user in Codefresh, you can manage the access tokens defined in your account, and optionally, enable access for Codefresh support.
 
+* Enable access for Codefresh support  
 
-* Enable access for Codefresh support
   Optional. Enable access to your account for troubleshooting purposes. 
 
-* Manage Git tokens for authentication 
+* Manage Git tokens for authentication  
+
   The Git personal token is a user-specific access token per provisioned runtime, and is required to authenticate Git-based actions per runtime in Codefresh.  
   If your admin has set up authentication with OAuth2, you can authorize access to GitHub using OAuth2.  
   Or, you can always generate a personal access token from GitHub and then add the same to Codefresh to authorize access.  
+
 
 ### Enable access for Codefresh support
 Enable Codefresh support personnel to access your user account. Access to your account is useful for visibility during troubleshooting.  
@@ -105,7 +107,7 @@ To authorize with OAuth2, you have to supply your credentials. When authorized, 
    %}
 
 
-The token is generated and you are redirected to the User Settings page, where you can see the new Git token assigned to the runtime. 
+The token is generated and you are redirected to the User Settings page where you can see the new Git token assigned to the runtime. 
 
 
 #### Related articles  
