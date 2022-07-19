@@ -4,6 +4,7 @@ description: ""
 group: administration
 toc: true
 ---
+
 As a user in Codefresh, you can manage the access tokens defined in your account, and optionally, enable access for Codefresh support.
 
 
@@ -48,6 +49,7 @@ To authorize with OAuth2, you have to supply your credentials. When authorized, 
 > If you need access to more than one runtime, you can use the same token for multiple runtimes. 
 You must however authorize GitHub access or add the personal access token individually for each runtime.  
 
+
 {% include 
    image.html 
    lightbox="true" 
@@ -57,6 +59,8 @@ You must however authorize GitHub access or add the personal access token indivi
    caption="Permissions for Git personal token"
    max-width="50%" 
 %}
+
+To authorize with OAuth2, you have to supply your credentials. When authorized, you are automatically directed to the Git Personal Tokens page.
 
 **Before you begin**  
 * To use a Git PAT, generate a valid personal access token from your Git provider  
@@ -73,6 +77,7 @@ You must however authorize GitHub access or add the personal access token indivi
    *  Enter your credentials, and select **Sign In**.
    * Complete the verification, for example, if you two-factor authentication is configured.
 
+
     {% include 
       image.html 
       lightbox="true" 
@@ -83,6 +88,7 @@ You must however authorize GitHub access or add the personal access token indivi
       max-width="30%" 
    %}
    
+
 
 {:start="4"}
 1. For Git personal access tokens:  
@@ -98,7 +104,10 @@ You must however authorize GitHub access or add the personal access token indivi
       max-width="30%"  
    %}
 
+
 The token is generated and you are redirected to the User Settings page, where you can see the new Git token assigned to the runtime. 
 
-### Related info  
+
+#### Related articles  
+
 [Git tokens in Codefresh]({{site.baseurl}}/docs/administration/git-tokens/)
