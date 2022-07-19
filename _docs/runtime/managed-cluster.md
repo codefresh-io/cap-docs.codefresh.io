@@ -230,6 +230,18 @@ Work with managed clusters in hybrid or hosted runtimes in either the Topology o
     * In the Topology View, select the cluster node from the runtime it is registered to. 
     * In the List View, select the runtime, and then select the **Managed Clusters** tab.
 1. To install Argo Rollouts (Topology View only), select **Install Argo Rollouts**. 
+
+ {% include 
+	image.html 
+	lightbox="true" 
+	file="images/getting-started/quick-start/cdops-app-install-rollout.png" 
+	url="images/getting-started/quick-start/cdops-app-install-rollout.png" 
+	alt="Install Argo Rollouts" 
+	caption="Install Argo Rollouts"
+  max-width="50%" 
+%}
+
+{:start="5"}
 1. To uninstall a cluster component from the list, select the three dots next to the component, and then select **Uninstall**.
 1. To remove the cluster from the list managed by the runtime, select the three dots next to the cluster name, and then select **Uninstall**. 
   
