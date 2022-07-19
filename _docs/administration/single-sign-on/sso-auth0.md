@@ -93,7 +93,7 @@ file="/images/administration/sso/auth0/sso-settings-in-auth0.png"
 url="/images/administration/sso/auth0/sso-settings-in-auth0.png"
 alt="SSO settings for application in Auth0"
 caption="SSO settings for application in Auth0"
-max-width="60%"
+max-width="50%"
 %}
 
 {:start="4"}
@@ -103,6 +103,6 @@ You have completed SSO setup for Auth0 in Codefresh.
 
 ### Related articles
 
-[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/#testing-your-identity-provider)
+[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/administration/single-sign-on/)
 
 
