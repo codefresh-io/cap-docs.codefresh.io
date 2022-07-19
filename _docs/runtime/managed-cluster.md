@@ -35,8 +35,10 @@ Make sure:
 1. In the Add Managed Cluster panel, copy and run the command:  
   `cf cluster add <runtime-name> [--dry-run]`  
   where:  
+ 
   <runtime-name> is automatically populated by Codefresh in the command.  
-  `--dry-run` is optional, and required if you want to generate a list of YAML manifests that you can redirect and apply manually with `kubectl`.
+  `--dry-run` is optional, and required if you want to generate a list of YAML manifests that you can redirect and apply manually with `kubectl`.  
+  
   
    {% include 
 	image.html 
