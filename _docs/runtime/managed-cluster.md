@@ -246,11 +246,11 @@ Remove a cluster from the runtime's list of managed clusters from the Codefresh 
 	url="/images/runtime/managed-cluster-remove-single.png" 
 	alt="Remove a managed cluster from runtime (List View)" 
 	caption="Remove a managed cluster from runtime (List View)"
-  max-width="40%" 
+  max-width="50%" 
 %}
 
 
-#### Remove a managed cluster through CLI 
+#### Remove a managed cluster through the Codefresh CLI 
 Remove a  cluster from the list managed by the runtime, through the CLI.  
 
 * Run:  
