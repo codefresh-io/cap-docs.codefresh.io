@@ -205,49 +205,66 @@ resources:
 
 ### Work with managed clusters 
 Work with managed clusters in hybrid or hosted runtimes in either the Topology or List runtime views. For information on runtime views, see [Runtime views]({{site.baseurl}}/docs/runtime/runtime-views).  
-
-**Monitor cluster**     
-  View connection status for the managed cluster, and health and sync errors. Health and sync errors are flagged by the error notification in the toolbar, and visually flagged in the List and Topology views.  
+As the cluster is managed through the runtime, updates to the runtime automatically updates the components on all the managed clusters that include it. 
+     
+View connection status for the managed cluster, and health and sync errors. Health and sync errors are flagged by the error notification in the toolbar, and visually flagged in the List and Topology views.  
   
-**Install/uninstall cluster components** 
+#### Install Argo Rollouts 
+Install Argo Rollouts directly from Codefresh with a single click to visualize rollout progress in the Applications dashboard. If Argo Rollouts has not been installed, an **Install Argo Rollouts** button is displayed on selecting the managed cluster. 
 
-  Install components on one or more managed clusters, and monitor deployed application status and data in the Applications dashboard. 
-  Uninstalling a component from one or more managed clusters do not affect the runtime, but removes the data from those components Applications dashboard.  
-
-**Install Argo Rollouts**  
-
-  Install Argo Rollouts directly from Codefresh. If your managed cluster does not have Argo Rollouts, an **Install Argo Rollouts** button is displayed on selecting the managed cluster.  
-
-**Automatic upgrade**   
-  As the components are managed as part of the runtime, updates to the runtime automatically updates the components on all the managed clusters that include it.  
-
-**Remove cluster**  
-  Remove a cluster registered with a runtime from the runtime's list of managed clusters.  
-
-**How to**
-1. In the Codefresh UI, go to the [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"} page.
-1. Select either the **Topology View** or the **List View** tabs.
-1. Do one of the following:
-    * In the Topology View, select the cluster node from the runtime it is registered to. 
-    * In the List View, select the runtime, and then select the **Managed Clusters** tab.
-1. To install Argo Rollouts (Topology View only), select **Install Argo Rollouts**. 
-
+1. In the Codefresh UI, go to [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+1. Select **Topology View**.
+1. Select the target cluster, and then select **+ Install Argo Rollouts**.
+ 
 {% include 
 	image.html 
 	lightbox="true" 
 	file="/images/runtime/cluster-install-rollout.png" 
-	url="images/runtime/cluster-install-rollout.png" 
+	url="/images/runtime/cluster-install-rollout.png" 
 	alt="Install Argo Rollouts" 
 	caption="Install Argo Rollouts"
   max-width="40%" 
 %}
 
-{:start="5"}
-1. To uninstall a cluster component from the list, select the three dots next to the component, and then select **Uninstall**.
-1. To remove the cluster from the list managed by the runtime, select the three dots next to the cluster name, and then select **Uninstall**. 
-  
 
-### Remove cluster in CLI 
+#### Uninstall all/remove single cluster from Codefresh UI 
+Uninstall all managed clusters registered to a runtime, or remove a single cluster from the runtime's list of managed clusters.  
+
+> You can also remove a single cluster through the CLI.  
+
+
+1. In the Codefresh UI, go to [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+1. Select either the **Topology View** or the **List View** tabs.
+1. Do one of the following:
+    * In the Topology View, select the cluster node from the runtime it is registered to. 
+    * In the List View, select the runtime, and then select the **Managed Clusters** tab.
+1. To _uninstall all the clusters_ registered to that runtime,  a cluster component from the list, select the three dots next to the component, and then select **Uninstall**.
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/runtime/managed-cluster-uninstall-all.png" 
+	url="/images/runtime/managed-cluster-uninstall-all.png" 
+	alt="Uninstall all clusters from selected runtime" 
+	caption="Uninstall all clusters from selected runtime"
+  max-width="40%" 
+%}
+
+{:start="5"}
+1. To remove a single cluster from the list managed by the runtime, select the three dots next to the cluster name, and then select **Remove**. 
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/runtime/managed-cluster-remove-single.png" 
+	url="/images/runtime/managed-cluster-remove-single.png" 
+	alt="Remove a managed cluster from runtime" 
+	caption="Remove a managed cluster from runtime"
+  max-width="40%" 
+%}
+
+
+#### Remove single cluster through CLI 
 You can also remove a cluster through the CLI. 
 
   `cf cluster remove <runtime-name> --server-url <server-url>`  
@@ -257,6 +274,6 @@ You can also remove a cluster through the CLI.
 
 
 ### What to read next
-[Manage runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/)  
-[Manage Git Sources]({{site.baseurl}}/docs/runtime/git-sources/)
-[Recover runtimes]({{site.baseurl}}/docs/runtime/runtime-recovery/)
+[Adding Git Sources to runtimes]({{site.baseurl}}/docs/runtime/git-sources/)  
+[Managing provisioned runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/)  
+[(Hybrid) Monitoring provisioned runtimes]({{site.baseurl}}/docs/runtime/monitoring-troubleshooting/)  
