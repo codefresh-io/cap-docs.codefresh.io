@@ -111,5 +111,4 @@ The token is generated and you are redirected to the User Settings page where yo
 
 
 #### Related articles  
-
-[Git tokens in Codefresh]({{site.baseurl}}/docs/administration/git-tokens/)
+[Git tokens in Codefresh]({{site.baseurl}}/docs/reference/git-tokens/)
