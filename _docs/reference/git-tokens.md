@@ -27,7 +27,7 @@ Git runtime tokens need both repo and admim repo access to create webhooks for G
    url="/images/getting-started/quick-start/quick-start-git-event-permissions.png" 
    alt="Permissions for Git runtime token" 
    caption="Permissions for Git runtime token"
-   max-width="30%" 
+   max-width="60%" 
    %}
 
 #### How to update a Git runtime token
@@ -61,7 +61,7 @@ Git personal tokens need repo access for commits and other actions.
    url="/images/getting-started/github-pat.png" 
    alt="Permissions for Git personal token" 
    caption="Permissions for Git personal token"
-   max-width="30%" 
+   max-width="60%" 
    %}
 
 ### Related articles  
