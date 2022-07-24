@@ -40,6 +40,15 @@ Codefresh supports two installation environments:
 %}
 
   For more information on hybrid environments, see [Hybrid runtime requirements]({{site.baseurl}}/docs/runtime/requirements/) and [Installling hybrid runtimes]({{site.baseurl}}/docs/runtime/installation/).  
+
+  **Codefresh Runtime installations**
+
+See xref to runtime installation options
+ to Git repositories, the Codefresh runtime installation repository, Codefresh Git Sources, and the Codefresh shared configuration repository. It does so for two types of entities:
+**Codefresh Runtime finctionality**
+The runtime:
+* Ensures that the installation repository and the Git Sources are always in sync, and applies Git changes back to the cluster
+* Receives events and information from the user's organization systems to execute workflows
   
 ### Hosted vs.Hybrid environments
 
