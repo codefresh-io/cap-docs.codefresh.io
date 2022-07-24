@@ -1,7 +1,7 @@
 ---
 title: "Git tokens"
 description: ""
-group: administration
+group: reference
 toc: true
 ---
 
