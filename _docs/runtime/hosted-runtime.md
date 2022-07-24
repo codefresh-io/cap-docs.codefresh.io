@@ -92,7 +92,7 @@ max-width="70%"
   * [Download the CLI]({{site.baseurl}}/docs/clients/csdp-cli/).
 
 1. Uninstall the failed hosted runtime:  
-  `cf uninstall hosted-codefresh --force`  
+  `cf runtime uninstall hosted-codefresh --force`  
   where:  
   `hosted-codefresh` is the name of your hosted runtime, automatically assigned by Codefresh.
 1. In the Codefresh UI, return to Codefresh [Home](https://g.codefresh.io/2.0/?time=LAST_7_DAYS){:target="\_blank"}.
