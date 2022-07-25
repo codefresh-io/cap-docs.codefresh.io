@@ -5,7 +5,8 @@ group: getting-started
 toc: true
 ---
 
-The Codefresh GitOps platform is built around an enterprise version of the Argo Ecosystem, that is fully GitOps-compliant, with industry-standard security.
+Codefresh GitOps is built around an enterprise version of the Argo Ecosystem,  that is fully GitOps-compliant, with industry-standard security.
+The architecture diagram below illustrates the generic architecture of the Codefresh platform components. 
 
 
 {% include
@@ -19,7 +20,7 @@ max-width="100%"
 %}
 
 ### Codefresh Platform 
-The Codefresh Platform is the SaaS component in the solution. Located outside the entperise firewall, it does not have direct communication with the Codefresh Runtime, Codefresh Clients, or the organization systems. 
+The Codefresh Platform is the SaaS component in the solution. Located outside the entperise firewall, it does not have direct communication with the Codefresh Runtime, Codefresh Clients, or the organization systems. The Codefresh Application Proxy and the Codefresf Clients retrieve  information from the Codefresh Platform as required.
 
 The Codefresh platform:
 * Securely stores user accounts, and retrieves   
@@ -28,84 +29,67 @@ The Codefresh platform:
 
 ### Codefresh Runtime
 The Codefresh Runtime is installed on a Kubernetes cluster, and houses the enterprise distribution of the Argo Project and the Codefresh Application Proxy.  
-Codefresh offers hosted and hybrid runtime installations to cater to differing requirements and degrees of enterprise security:
-* Hosted runtimes are installed on a _Codefresh-managed cluster_ in the Codefresh platform
-* Hybrid runtimes are installed on a _customer-managed cluster_
+To cater to differing requirements and degrees of enterprise security, Codefresh offers hosted and hybrid runtime installations:  
 
-Codefresh Runtime tools are completely integrated with all Argo components and  simplify and enhance their operations. By building on and integrating Argo Workflows and Events for running delivery pipelines, and Argo CD and Rollouts for GitOps deployments and progressive delivery we’re able to provide a stronger security model with a greatly simplified management that works at scale.
+* Hosted runtimes are installed on a _Codefresh-managed cluster_ in the Codefresh platform
+* Hybrid runtimes are installed on a _customer-managed cluster_. 
+
+The Codefresh Runtime:
+* Integrates with Argo Workflows and Argo Events to run Delivery Pipelines, and with Argo CD and Argo Rollouts to implement GitOps deployments and progressive delivery
+* Ensures that the installation repository and the Git Sources are always in sync, and applies Git changes back to the cluster
+* Receives events and information from the user's organization systems to execute workflows
 
 #### Codefresh Application Proxy
-The Codefresh Application Proxy (App-proxy) functions as the Codefresh agent within the Codefresh Runtime. Deployed as a service, the App-proxy is exposed externally through ingress controllers and load-balancers, and is the point-of-contact for the Codefresh Clients, the Codefresh Platform, and any organizational system that customers use for collaboration, issue tracking and more. 
+The Codefresh Application Proxy (App-Proxy) functions as the Codefresh agent. Deployed as a service in the Codefresh Runtime, the App-proxy is exposed externally through ingress controllers/load-balancers. It is the single point-of-contact from the Codefresh Clients, the Codefresh Platform, and any organizational system to the Codefresh Runtime. 
 
 **Routing**  
 
-The app-proxy:
-
+The App-Proxy:
 * Accepts and serves requests from Codefresh Clients either via the Codefresh UI or CLI. 
 * Retrieves a list of Git repositories for visualization in Codefresh Clients
 
-
 **Authentication and authorization**  
-
-The App-proxy gets permissions from the Codefresh platform to authenticate and authorize users for the required operations.  
+The App-Proxy retreives permissions from the Codefresh platform to authenticate and authorize users for the required operations.  
 
 
 **Write operations**
-The App-proxy performs write operations state-change operations:
+The App-Proxy performs write and state-change operations:
 * Commits for GitOps-controlled entities, such as Delivery Pipelines and other CI resources
 * State-change operations for non-GitOps controlled entities, such as terminating Argo Workflows
 
 
 #### Argo Project 
 
-Argo CD, a declarative GitOps application deployments in the appplication dashabord
-connectts to Git repositorues and correlate deployment of resources in GitOps
+The Argo Project includes:
+* Argo CD for declarative continuous deployment 
+* Argo Rollouts for progressive delivery 
+* Argo Workflows as the workflow engine 
+* Argo Events for event-driven workflow automation framework
 
-Argo Rollouts
-
-Argo Workflows
-basically provides workflow-related execustions capabilities in Codefrsh for Delivery Pipelines 
-CI/CD flows
-
-
-Argo Events
-
-Trigger events incuding  argo workflow Git
 ### Codefresh Clients
 Codefresh Clients include the Codefresh UI and the Codefresh CLI.
 
 **Codefresh UI**
-The Codefresh UI provides a unified view of your enterprise deployment, and CI/CD operations in the same, centralized location.
-* Runtime and managed clusters: View all provisioned runtimes, and the clusters they manage.  across clusters, and  informatSingle UI for all clusters  
-* Dashboards: 
-* Wizards simplify installation, Delivery pipeline and application creation. In contrast to Argo CD which has a UI per cluster, the Codefresh UI 
-Key UI 
-The Home dashboard is your entry to the Giving you a complete picture of your runtimes, managed clusters, builds, and deployments with critical insights. You can easily filter these views and drill down for more details into any area of your software delivery process. Truly an enterprise-wide real-time display of your DevOps process.
+The Codefresh UI provides a unified, enterprise-wide view of your deployment (runtimes and clusters), and CI/CD operations (Delivery Pipelines, workflows, and deployments) in the same location.
+* Runtime and managed clusters: View all provisioned runtimes, and the clusters they manage in a tabbed view in the Runtimes page.   
+* Dashboards for CI and CD visualizations: Starting with the Home dashboard for critical insights into CI and CD lifecycles, the DORA metrics dashboard for DevOps metrics, the Applications dashboard for GitOps details, and the Delivery Pipelines dashboard for workflow details.
+* Wizards to simplify installation, Delivery Pipeline and application creation and mamagment.
+* Integrations for software delivery workflows
 
-Applications dashbaord is the GitOps deployment dashbaord 
-
-Centralized management of Argo, Git, logins, and secrets
-Unified interface for code-to-cloud visibility
-Argo component intercompatibility testing
-Rigorous security validations
-Extended functionality to manage application lifecycles
-Key native integrations for software delivery workflows
-Traceability from source code to artifact to endpoint
-Integrate project management into the release life
-
+**Codefresh CLI**
+Perform runtime and cluster management operations.
 
 
 ### Ingress Controller
-For hybrid runtime installations, the Ingress controller is configured on the same Kubernetes cluster as the Codefresh Runtime. Codefresh supports popular ingress controllers, such as Amabassador, NGINX Enterprise, Istio and Trafix.  compaitble with Kubernetes. See X_REF
-
-The ingress controller implements the ingress traffic rules for the Codefresh Runtime.
-See X-REF
-
-
+For hybrid runtime installations, the ingress controller implements the ingress traffic rules for the Codefresh Runtime. It is configured on the same Kubernetes cluster as the Codefresh Runtime. Codefresh supports popular ingress controllers, such as Amabassador, NGINX Enterprise, Istio and Trafix. See [Ingress controller]({{site.baseurl}}/docs/runtime/requirements/#ingress-controller).
+                
 ### Organizational Systems
-Organizational systems incude the tracking, monitoring, notification, container registeries, Git providers, and other tools sends events and information to the Codefresh Application Proxy to trigger and manage CI/CD flows. 
+Organizational systems include the tracking, monitoring, notification, container registeries, Git providers, and other tools incorportated into the continuous integration and continuous deployment processes. They can be entirely on-premises or in the public cloud.   
+The tools send events to the Codefresh Application Proxy (via the ingress controller) to trigger and manage CI/CD flows. 
 
+### Related articles
+[Set up a hosted runtime environment]({{site.baseurl}}/docs/runtime/hosted-runtime/)  
+[Install hybrid runtimes]({{site.baseurl}}/docs/runtime/installation/)
 
-They can be entirely on-premises or in the public cloud. 
 
 
