@@ -104,16 +104,36 @@ The Git repository per runtime account with shared configuration manifests.
 **Insecure flag**  
 For _on-premises installations_, if the Ingress controller does not have a valid SSL certificate, to continue with the installation, add the `--insecure` flag to the installation command.  
 
-**Repository URLs**  
-The GitHub repository to house the installation definitions.  
+**Enable Git providers**  
+Optional; required for GitLab and Bitbucket.  
+Enable GitLab or Bitbucket as the Git provider for the runtime and for the account. 
+>The Git provider defined for the first runtime must be used for all the runtimes in the same account.  
+  
+* CLI wizard and Silent install: Add the `--enable-git-provider` flag.
 
-* CLI wizard: If the repo doesn't exist, Codefresh creates it during runtime installation.  
+**Git provider**
+Optional; required for GitLab and Bitbucket.
+The name of the Git provider to use for the runtime and the account.  
+
+* CLI wizard and Silent install: Add the `--provider` flag, and define the provider name as either `gitlab` or `bitbucket-server`
+
+**Repository URLs**  
+The Git repository to house the installation definitions. 
+>For GitLab, the repo must be created prior to the installation.
+
+* CLI wizard: If the repo doesn't exist, for GitHub and Bitbucket, Codefresh creates it during runtime installation.  
 * Silent install: Required. Add the `--repo` flag.
+
+**Git user**  
+Optional; required only for Bitbucket.  
+The username for the Git account.  
+
+* CLI wizard and Silent install: For Bitbucket, add the `--git-user` flag, and define the username. For example, `codefresh`  
 
 **Git runtime token**  
 Required.  
 The Git token authenticating access to the GitHub installation repository.  
-* Silent install: Add the `--git-token` flag.  
+* Silent install: Add the `--git-token` flag, and paste the runtime token.  
 
 **Codefresh demo resources**  
 Optional.  
