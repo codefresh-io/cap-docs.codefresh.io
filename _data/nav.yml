@@ -6,7 +6,7 @@
   - title: Quick start
     url: "/quick-start"
     sub-pages:
-       - title: Provision a hosted runtime
+      - title: Provision a hosted runtime
         url:  "/verify-requirements"
       - title: Prepare for hybrid runtime installation
         url:  "/verify-requirements"
