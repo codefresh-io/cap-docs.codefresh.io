@@ -77,7 +77,7 @@ max-width="80%"
   * When prompted to select the `kube-context`, select from the list of available clusters as defined in `kubeconfig`. 
   * Verify that you have configured access to the required IP addresses required. See [Codefresh IP addresses]({{site.baseurl}}/docs/administration/platform-ip-addresses/). 
 
- {% include 
+{% include 
 image.html 
 lightbox="true" 
 file="/images/runtime/hosted-connect-cluster-step.png" 
