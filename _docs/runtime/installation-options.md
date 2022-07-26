@@ -11,6 +11,7 @@ Codefresh supports two installation environments:
 * **Hosted** environments (Beta), with Argo CD installed in the Codefresh cluster.
   The runtime is installed and provisioned in a Codefresh cluster, and managed by Codefresh.  
   Hosted enviroments are full-cloud environments, where all updates and improvements are managed by Codefresh, with zero-maintenance overhead for you as the customer. Currently, you can add one hosted runtime per account.
+  For the architecture illustration, see [Hosted runtime architecture]({{site.baseurl}}/docs/getting-started/architecture/#hosted-runtime-architecture).
 
   
 {% include
@@ -28,6 +29,8 @@ Codefresh supports two installation environments:
 * **Hybrid** environments, with Argo CD installed in the customer's cluster.    
   The runtime is installed in the customer's cluster, and managed by the customer.  
   Hybrid environments are ideal for organizations that want their source code within their premises, or have other security constraints. Hybrid installations strike the perfect balance between security, flexibility, and ease of use. As the customer, you are responsible for installing and upgrading runtimes, while Codefresh continues to maintain other aspects of the platform.  
+  For the architecture illustration, see [Hybrid runtime architecture]({{site.baseurl}}/docs/getting-started/architecture/#hybrid-runtime-architecture).
+
  
 {% include
    image.html
@@ -40,41 +43,6 @@ Codefresh supports two installation environments:
 %}
 
   For more information on hybrid environments, see [Hybrid runtime requirements]({{site.baseurl}}/docs/runtime/requirements/) and [Installling hybrid runtimes]({{site.baseurl}}/docs/runtime/installation/).  
-
-### Hosted and hybrid runtime architecture
-Hosted and hybrid runtimes share similar architectures, with the key difference being the location of the Codefresh Runtime.
-For general architecture and component descriptions, see ???
-This section provides a more detailed look into the architectures of the runtime environments.
-
-
-#### Hosted runtime architecture
-With Hosted GitOps, the Codefresh Runtime is located on a K8s cluster managed by Codefresh. 
-
-{% include
-   image.html
-   lightbox="true"
-   file="/images/runtime/arch-hosted.png"
- url="/images/runtime/arch-hosted.png"
-  alt="Hosted runtime architecture"
-  caption="Hosted runtime architecture"
-  max-width="100%"
-%}
-
-#### Hybrid runtime architecture
-{% include
-   image.html
-   lightbox="true"
-   file="/images/runtime/arch-hosted.png"
- url="/images/runtime/arch-hosted.png"
-  alt="Hosted runtime architecture"
-  caption="Hosted runtime architecture"
-  max-width="100%"
-%}
-
-#### Managed clusters
-Managed clusters are external clusters that you register to a provisioned hosted or hybrid runtime. 
-* Hosted runtime: Requires you to connect to an external K8s cluster as part of setting up the Hosted GitOps environment. You can add more managed clusters after completing the setup.
-* Hybrid runtimes: You can add external clusters after provisioning hybrid runtimes.
 
 
 
@@ -115,3 +83,6 @@ The table below highlights the main differences between hosted and hybrid enviro
 |Dashboards               |Home Analytics      | Hosted runtime and deployments|Runtimes, deployments, Delivery Pipelines |
 |                         |DORA metrics        | Supported                 |Supported        |
 |                         |Applications        | Supported                 |Supported        |
+
+### Related articles
+[Architecture]({{site.baseurl}}/docs/getting-started/architecture/)
