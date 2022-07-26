@@ -60,14 +60,14 @@ max-width="80%"
   * Click **Create**.
   Codefresh creates the two Git repositories in the paths shown.
 
-{% include
-image.html
-lightbox="true"
-file="/images/runtime/hosted-connect-git.png"
-url="/images/runtime/hosted-connect-git.png"
-alt="Connect to Git provider"
-caption=Connect to Git provider"
-max-width="80%"
+  {% include 
+image.html 
+lightbox="true" 
+file="/images/runtime/hosted-connect-git.png" 
+url="/images/runtime/hosted-connect-git.png" 
+alt="Connect to Git provider" 
+caption="Connect to Git provider"
+max-width="80%" 
 %}
 
 {:start="4"}
