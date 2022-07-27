@@ -39,18 +39,28 @@ In the hybrid environment, the Codefresh Runtime is located on the customer's K8
 %}
 
 ### Codefresh Platform
-The Codefresh Platform comprises:
+The Codefresh Platform comprises:  
+
 * Codefresh Control Plane 
 * Codefresh Runtime with the Codefresh Application Proxy and Argo Project
 * Codefresh Clients, the Codefresh UI and the Codefresh CLI
 
-#### Codefresh Control Plane 
-The Codefresh Control Plane is the SaaS component in the platform. External to the entperise firewall, it does not have direct communication with the Codefresh Runtime, Codefresh Clients, or the customer's organizational systems. The Codefresh Application Proxy and the Codefresh Clients communicate with the Codefresh Control Plane to retrieve the required information.
+{::nomarkdown}
+<br><br>
+{:/}
 
-The Codefresh Control Plane:
+#### Codefresh Control Plane 
+The Codefresh Control Plane is the SaaS component in the platform. External to the entperise firewall, it does not have direct communication with the Codefresh Runtime, Codefresh Clients, or the customer's organizational systems. The Codefresh Application Proxy and the Codefresh Clients communicate with the Codefresh Control Plane to retrieve the required information.  
+
+The Codefresh Control Plane:  
+
 * Securely stores user accounts, and retrieves   
 * Enforces the permissions model 
 * Controls authentication, user management, and billing
+
+{::nomarkdown}
+<br><br>
+{:/}
 
 #### Codefresh Runtime
 The Codefresh Runtime is installed on a Kubernetes cluster, and houses the enterprise distribution of the Codefresh Application Proxy and the Argo Project.  
@@ -58,29 +68,35 @@ The Codefresh Runtime is installed on a Kubernetes cluster, and houses the enter
 * Hosted runtimes are installed on a _Codefresh-managed cluster_ in the Codefresh platform
 * Hybrid runtimes are installed on a _customer-managed cluster_
 
-The Codefresh Runtime:
+The Codefresh Runtime:  
+
 * Integrates with Argo Workflows and Argo Events to run Delivery Pipelines (hybrid environment), and with Argo CD and Argo Rollouts to implement GitOps deployments for progressive delivery
 * Ensures that the installation repository and the Git Sources are always in sync, and applies Git changes back to the cluster
 * Receives events and information from the customer's organization systems to execute workflows
 
+{::nomarkdown}
+<br><br>
+{:/}
+
 #### Codefresh Application Proxy
-The Codefresh Application Proxy (App-Proxy) functions as the Codefresh agent. Deployed as a service in the Codefresh Runtime, the App-proxy is exposed externally through ingress controllers/load-balancers. It is the single point-of-contact from the Codefresh Clients, the Codefresh Platform, and any organizational system to the Codefresh Runtime. 
+The Codefresh Application Proxy (App-Proxy) functions as the Codefresh agent. Deployed as a service in the Codefresh Runtime, the App-proxy is exposed externally through ingress controllers/load-balancers. It is the single point-of-contact from the Codefresh Clients, the Codefresh Platform, and any organizational system to the Codefresh Runtime.  
 
 **Routing**  
-
-The App-Proxy:
+The App-Proxy:  
 * Accepts and serves requests from Codefresh Clients either via the Codefresh UI or CLI 
-* Retrieves a list of Git repositories for visualization in Codefresh Clients
+* Retrieves a list of Git repositories for visualization in Codefresh Clients  
 
 **Authentication and authorization**  
 The App-Proxy retreives permissions from the Codefresh Control Plane to authenticate and authorize users for the required operations.  
 
-
-**Write operations**
-The App-Proxy performs write and state-change operations:
+**Write operations**  
+The App-Proxy performs write and state-change operations:  
 * Commits for GitOps-controlled entities, such as Delivery Pipelines and other CI resources
 * State-change operations for non-GitOps controlled entities, such as terminating Argo Workflows
 
+{::nomarkdown}
+<br><br>
+{:/}
 
 #### Argo Project 
 
@@ -90,17 +106,28 @@ The Argo Project includes:
 * Argo Workflows as the workflow engine 
 * Argo Events for event-driven workflow automation framework
 
-#### Codefresh Clients
-Codefresh Clients include the Codefresh UI and the Codefresh CLI.
+{::nomarkdown}
+<br><br>
+{:/}
 
-**Codefresh UI**
-The Codefresh UI provides a unified, enterprise-wide view of your deployment (runtimes and clusters), and CI/CD operations (Delivery Pipelines, workflows, and deployments) in the same location.
+#### Codefresh Clients
+Codefresh Clients include the Codefresh UI and the Codefresh CLI.  
+
+**Codefresh UI**  
+
+The Codefresh UI provides a unified, enterprise-wide view of your deployment (runtimes and clusters), and CI/CD operations (Delivery Pipelines, workflows, and deployments) in the same location:  
+
 * Multi-runtime and multi-cluster management: View all provisioned runtimes, and the clusters they manage in the Runtimes page.   
 * Dashboards for CI and CD visualizations: Starting with the Home dashboard for critical insights into CI and CD lifecycles, the DORA metrics dashboard for DevOps metrics, the Applications dashboard for GitOps details, and the Delivery Pipelines dashboard for workflow details.
 * Wizards to simplify installation, Delivery Pipeline and application creation and mamagment.
-* Integrations for software delivery workflows
+* Integrations for software delivery workflows  
 
-**Codefresh CLI**
+{::nomarkdown}
+<br>
+{:/}
+
+**Codefresh CLI**  
+
 Perform hybrid runtime installation, and runtime and cluster management operations.
 
 ### Customer environment
@@ -109,15 +136,29 @@ The customer environment that communicates with the Codefresh platform, generall
 * Managed clusters
 * Organizational systems
 
+{::nomarkdown}
+<br><br>
+{:/}
+
 #### Ingress Controller
-In hybrid runtime environments, the ingress controller implements the ingress traffic rules for the Codefresh Runtime. It is configured on the same Kubernetes cluster as the Codefresh Runtime. Codefresh supports popular ingress controllers, such as Amabassador, NGINX Enterprise, Istio and Trafix. See [Ingress controller]({{site.baseurl}}/docs/runtime/requirements/#ingress-controller).
+In hybrid runtime environments, the ingress controller implements the ingress traffic rules for the Codefresh Runtime. It is configured on the same Kubernetes cluster as the Codefresh Runtime.  
+Codefresh supports popular ingress controllers, such as Amabassador, NGINX Enterprise, Istio and Trafix. See [Ingress controller]({{site.baseurl}}/docs/runtime/requirements/#ingress-controller).
+
+{::nomarkdown}
+<br><br>
+{:/}
 
 #### Managed clusters
-Managed clusters are external clusters registered to a provisioned hosted or hybrid runtime(s). 
+Managed clusters are external clusters registered to a provisioned hosted or hybrid runtime(s).  
+
 * Hosted runtime: Requires you to connect to an external K8s cluster as part of setting up the Hosted GitOps environment. You can add more managed clusters after completing the setup.
 * Hybrid runtimes: You can add external clusters after provisioning hybrid runtimes.  
 
 See [Add external clusters to runtimes]({{site.baseurl}}/docs/runtime/managed-cluster/).
+
+{::nomarkdown}
+<br><br>
+{:/}
                 
 #### Organizational Systems
 Organizational systems include the tracking, monitoring, notification, container registeries, Git providers, and other tools incorportated into the continuous integration and continuous deployment processes. They can be entirely on-premises or in the public cloud.   
@@ -125,7 +166,7 @@ The tools send events to the Codefresh Application Proxy (via the ingress contro
 
 ### Related articles
 [Set up a hosted runtime environment]({{site.baseurl}}/docs/runtime/hosted-runtime/)  
-[Install hybrid runtimes]({{site.baseurl}}/docs/runtime/installation/)
+[Install a hybrid runtime]({{site.baseurl}}/docs/runtime/installation/)
 
 
 
