@@ -179,5 +179,8 @@ Make a change to a file in the Git repository to trigger the pipeline.
 Continue to tweak the pipeline and enhance its capabilities. 
 
 
+### What to do next
+If you have not created an application in Codefresh, continue with:  
 
+[Create resources for codefresh-guestbook application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-specs)  
 
