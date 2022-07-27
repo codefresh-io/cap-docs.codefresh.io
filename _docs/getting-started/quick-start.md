@@ -15,6 +15,10 @@ The tutorial is divided into these sections:
 Each section indicates the runtime environment it is relevant to.  
 
 ### Provision runtimes
+Based on your deployment model, start by provisioning the hosted or hybrid runtime. Hosted and hybrid runtimes can co-exist with each other.
+
+* Hosted runtimes: Hosted on a Codefresh cluster and managed by Codefresh. You need to provision your hosted runtime once for your account.
+* Hybrid runtimes: Hosted on a customer cluster and managed by the customer. You can provision multiple hybrid runtimes in the same account.
 
 #### Hosted 
 1. [Provision a hosted runtime]({{site.baseurl}}/docs/getting-started/quick-start/install-hosted)  
