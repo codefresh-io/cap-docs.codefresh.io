@@ -70,6 +70,6 @@ When the image tag is updated, the auto-sync initiates the rollout.
 {:start="4"}
 1. To view metric validation details, expand **Background Analysis** in the panel. 
 
-You have completed application deployment in Codefresh. 
+You have created and deployed an application in Codefresh. 
 
   

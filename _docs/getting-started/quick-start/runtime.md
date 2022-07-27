@@ -106,4 +106,6 @@ The **Runtimes** dashboard shows the runtime you just installed. You can drill d
    %} 
 
 ### What to do next
+[Create resources for codefresh-guestbook application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-specs)  
+OR  
 [Trigger the Hello World example pipeline]({{site.baseurl}}/docs/getting-started/quick-start/hello-world)
