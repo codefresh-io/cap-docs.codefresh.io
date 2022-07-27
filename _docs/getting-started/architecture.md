@@ -59,7 +59,7 @@ The Codefresh Control Plane:
 * Controls authentication, user management, and billing
 
 {::nomarkdown}
-<br><br>
+<br>
 {:/}
 
 #### Codefresh Runtime
@@ -75,7 +75,7 @@ The Codefresh Runtime:
 * Receives events and information from the customer's organization systems to execute workflows
 
 {::nomarkdown}
-<br><br>
+<br>
 {:/}
 
 #### Codefresh Application Proxy
@@ -95,7 +95,7 @@ The App-Proxy performs write and state-change operations:
 * State-change operations for non-GitOps controlled entities, such as terminating Argo Workflows
 
 {::nomarkdown}
-<br><br>
+<br>
 {:/}
 
 #### Argo Project 
@@ -107,7 +107,7 @@ The Argo Project includes:
 * Argo Events for event-driven workflow automation framework
 
 {::nomarkdown}
-<br><br>
+<br>
 {:/}
 
 #### Codefresh Clients
@@ -161,7 +161,7 @@ See [Add external clusters to runtimes]({{site.baseurl}}/docs/runtime/managed-cl
 {:/}
                 
 #### Organizational Systems
-Organizational systems include the tracking, monitoring, notification, container registeries, Git providers, and other tools incorportated into the continuous integration and continuous deployment processes. They can be entirely on-premises or in the public cloud.   
+Organizational Systems include the tracking, monitoring, notification, container registeries, Git providers, and other tools incorportated into the continuous integration and continuous deployment processes. They can be entirely on-premises or in the public cloud.   
 The tools send events to the Codefresh Application Proxy (via the ingress controller) to trigger and manage CI/CD flows. 
 
 ### Related articles
