@@ -18,8 +18,8 @@ In the hosted environment, the Codefresh Runtime is located on a K8s cluster man
 {% include
    image.html
    lightbox="true"
-   file="/images/runtime/arch-hosted.png"
- url="/images/runtime/arch-hosted.png"
+   file="/images/getting-started/architecture/arch-hosted.png"
+ url="/images/getting-started/architecture/arch-hosted.png"
   alt="Hosted runtime architecture"
   caption="Hosted runtime architecture"
   max-width="100%"
@@ -31,7 +31,7 @@ In the hybrid environment, the Codefresh Runtime is located on the customer's K8
 {% include
    image.html
    lightbox="true"
-   file="/images/runtime/arch-hosted.png"
+   file="/images/getting-started/architecture/arch-hybrid.png"
  url="/images/runtime/arch-hosted.png"
   alt="Hosted runtime architecture"
   caption="Hosted runtime architecture"
