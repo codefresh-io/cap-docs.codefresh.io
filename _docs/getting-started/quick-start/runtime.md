@@ -7,7 +7,7 @@ toc: true
 ---
 
 
-Install the hybrid runtime on your K8s cluster, to install Argo-project and Codefresh-specific components. The Argo Project is an enterprise-supported version of the Argo CD components, derived from a conformed fork of the Argo ecosystem.
+Install the hybrid runtime on your K8s cluster. Installing the hybrid runtime installs Argo-project and Codefresh-specific components. The Argo Project is an enterprise-supported version of the Argo CD components, derived from a conformed fork of the Argo ecosystem.
 
 ### About hybrid runtime installation
 Installing a hybrid runtime includes installing the:  

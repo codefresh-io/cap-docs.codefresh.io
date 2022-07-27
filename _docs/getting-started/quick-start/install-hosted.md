@@ -15,7 +15,8 @@ If you have Hosted GitOps, set up your hosted runtime environment:
 Read our [blog on Hosted GitOps](https://codefresh.io/blog/codefresh-upends-continuous-delivery-with-hosted-gitops-platform-featuring-dora-dashboards-and-first-class-integrations-for-ci/).  
 For detailed information on each of the steps below, see [Set up a hosted runtime environment]({{site.baseurl}}/docs/runtime/hosted-runtime/).  
 
-**Before you begin**
+**Before you begin**  
+
 Verify the following:  
 * If you have hybrid runtimes installed, make sure you have latest version of the CLI
   * Check version:  
@@ -88,5 +89,5 @@ max-width="70%"
 %}
 
 ### What to do next
-[Create resources for codefresh-guestbook application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-specs)) 
+[Create resources for codefresh-guestbook application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-specs) 
 
