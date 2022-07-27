@@ -32,9 +32,9 @@ In the hybrid environment, the Codefresh Runtime is located on the customer's K8
    image.html
    lightbox="true"
    file="/images/getting-started/architecture/arch-hybrid.png"
- url="/images/runtime/arch-hosted.png"
-  alt="Hosted runtime architecture"
-  caption="Hosted runtime architecture"
+ url="/images/getting-started/architecture/arch-hybrid.png"
+  alt="Hybrid runtime architecture"
+  caption="Hybrid runtime architecture"
   max-width="100%"
 %}
 
@@ -145,7 +145,7 @@ In hybrid runtime environments, the ingress controller implements the ingress tr
 Codefresh supports popular ingress controllers, such as Amabassador, NGINX Enterprise, Istio and Trafix. See [Ingress controller]({{site.baseurl}}/docs/runtime/requirements/#ingress-controller).
 
 {::nomarkdown}
-<br><br>
+<br>
 {:/}
 
 #### Managed clusters
@@ -157,7 +157,7 @@ Managed clusters are external clusters registered to a provisioned hosted or hyb
 See [Add external clusters to runtimes]({{site.baseurl}}/docs/runtime/managed-cluster/).
 
 {::nomarkdown}
-<br><br>
+<br>
 {:/}
                 
 #### Organizational Systems
