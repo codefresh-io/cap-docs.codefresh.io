@@ -179,7 +179,7 @@ Pass the mandatory flags in the uninstall command:
   where:  
   `--git-token` is a valid runtime token with the `repo` and `admin-repo.hook` scopes.  
 
-**How to uninstall with the CLI wizard**  
+**CLI wizard uninstall**  
 
 1. In the Codefresh UI, make sure you are in [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
 1. Switch to either the **List View** or to the **Topology View**.
