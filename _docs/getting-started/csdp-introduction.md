@@ -9,12 +9,15 @@ Codefresh is a full-featured, turn-key solution for application deployments and 
 
 Codefresh offers security, maintainability, traceability, and most importantly, a single control plane for all stakeholders, be they developers, operators, product owners or project managers.
  
-With Codefresh teams can:  
+With Codefresh, you can:
  
 * Deliver software at scale by managing hundreds or thousands of deployment targets and applications
 * Get a secure, enterprise-ready distribution of Argo with built-in identity, RBAC (role-based access control), and secrets
 * Gain clear visibility across all deployments and trace changes and regressions from code to cloud in seconds
 * Get enterprise-level dedicated support for Argo deployments
+* Get insights into every aspect of your CI/CD with smart dashboards 
+* Manage multiple runtimes and multiple clusters in a single pane of glass
+
  
 ### Codefresh deployment models
 
@@ -57,13 +60,13 @@ For details, see [entity model]({{site.baseurl}}/docs/getting-started/entity-mod
 Codefresh makes it easy to both access and visualize critical information for any CI/CD resource at any stage, at any level, and for anyone, from managers to DevOps engineers. 
 
 {::nomarkdown}
-<br><br>
+<br>
  {:/}
 
 #### Global deployment analytics  
 
-The Home dashboard presents enterprise-wide highlights in real-time, making it an ideal tool for management.  
-Get insights into important KPIs for entities across runtimes and clusters, all in the same location. View status of runtimes and managed clusters, deployments, failed deployments with rollbacks, most active applications, and Delivery Pipelines.  
+The Home dashboard presents system-wide highlights in real-time, making it an ideal tool for management.  
+Get insights into important KPIs for entities across runtimes and clusters, in the same location. View status of runtimes and managed clusters, deployments, failed deployments with rollbacks, most active applications, and Delivery Pipelines.  
 
 {% include
  image.html
@@ -109,20 +112,20 @@ The Applications dashboard displays a unified view of applications across runtim
 See [Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/).
 
 {::nomarkdown}
-<br><br>
+<br>
  {:/}
 
 #### Delivery Pipelines
 The Delivery Pipelines dashboard displays aggregated performance analytics based on the pipeline’s workflows, including step analytics across all the workflows in the pipeline. 
 
 {::nomarkdown}
-<br><br>
+<br>
  {:/}
 
 #### Workflows
 View and monitor submitted workflows across all pipelines in the Workflows dashboard. Select a time range, or view up to fifty of the most recent workflows for all the pipelines in the runtime. Drill down to any workflow for further analysis.
 {::nomarkdown}
-<br><br>
+<br>
  {:/}
 
 ### CI/CD resources in Codefresh
@@ -137,7 +140,7 @@ Delivery Pipelines are where the CI magic happens in Codefresh. Our pipeline cre
 See [Create delivery pipelines]({{site.baseurl}}/docs/pipelines/create-pipeline/).  
 
 {::nomarkdown}
-<br><br>
+<br>
  {:/}
 
 #### Workflows 
@@ -145,7 +148,7 @@ Drill down into a workflow to visualize the connections between the steps in the
 A unique feature is the incorporation of Argo Events into the workflow visualization. You get a unified view of Argo Events and Argo Workflows in the same location, the events that triggered the workflow combined with the workflow itself.
 
 {::nomarkdown}
-<br><br>
+<br>
  {:/}
 
 #### Workflow Templates
@@ -166,7 +169,7 @@ Select from ready-to-use Workflow Templates in the Codefresh Hub for Argo or cre
  {:/}
 
 #### Applications
-Create GitOps-compliant applications, and manage the application development lifecycle in the Codefresh UI.
+Create GitOps-compliant applications, and manage the application lifecycle in the Codefresh UI.
 
 Define all application settings in a single location through the intuitive Form mode or directly in YAML, and commit all changes to Git.  
 For easy access, after commit, the configuration settings are available in the Applications dashboard along with the deployment and resource information.
@@ -183,7 +186,7 @@ See [Applications]({{site.baseurl}}/docs/deployment/create-application/).
     max-width="60%"
 %}
 
-### Third-party CI integrations
+### GitOps CI integrations
 
 If you have Hosted GitOps, and your own CI tools for pipelines and workflows, enrich your deployments with CI information without disrupting existing processes.  
 Simply connect your CI tools to Codefresh, and our new report image template retrieves the information.  For example, add the report image step in your GitHub Actions pipeline and reference the different integrations for Codefresh to retrieve and enrich the image with Jira ticket information.  
