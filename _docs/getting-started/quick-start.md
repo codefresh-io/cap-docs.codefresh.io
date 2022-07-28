@@ -48,7 +48,7 @@ Based on your deployment model, start by provisioning the hosted or hybrid runti
   Update the image for the `codefresh-guestbook` application to trigger a rollout.
 
 ### Trigger/create a Delivery Pipeline 
-> Supported in hybrid environments.
+> Available for hybrid deployments.
 
 1. [Trigger the Hello World example pipeline]({{site.baseurl}}/docs/getting-started/quick-start/hello-world)  
   Configure the Git event to trigger the demo pipeline. 
