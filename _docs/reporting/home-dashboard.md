@@ -5,7 +5,7 @@ group: reporting
 toc: true
 ---
 
-Get a global picture of runtimes, managed clusters, deployments, and pipelines in the Home dashboard. The Home dashboard is displayed when you log in to Codefresh. It provides system-wide visualization into all areas in real-time.  
+Get a global picture of runtimes, managed clusters, deployments, and pipelines in the Home dashboard. The Home dashboard is displayed when you log in to Codefresh, providing system-wide visualization in real-time.  
 
 Global filters allow you to narrow the scope of the data, and  drill down into specific entities for more details.
 

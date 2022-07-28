@@ -91,7 +91,7 @@
 - title: Reports & Insights
   url: "/reporting"
   pages:
-    - title: Home dsahboard analytics
+    - title: Home dashboard
       url: "/home-dashboard"
     - title: DORA metrics
       url: "/dora-metrics"
