@@ -78,7 +78,7 @@
   icon: images/home-icons/guides.png
   url: ''
   links:
-    - title: Home dashboard
+    - title: Global analytics
       localurl: /docs/reporting/home-dashboard/
     - title: DORA metrics
       localurl: /docs/reporting/dora-metrics/
