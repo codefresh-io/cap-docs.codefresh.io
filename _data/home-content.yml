@@ -31,7 +31,7 @@
   links:
     - title: Installation environments
       localurl: /docs/runtime/installation-options/
-    - title: Set up a hosted runtime envionment
+    - title: Set up a hosted runtime envionment 
       localurl: /docs/runtime/hosted-runtime/
     - title: Hybrid runtime requirements
       localurl: /docs/runtime/requirements/
@@ -70,14 +70,19 @@
       localurl: /docs/deployment/create-application/
     - title: Images in Codefresh
       localurl: /docs/deployment/images/ 
+    - title: Install Argo Rollouts
+      localurl: /docs/deployment/install-argo-rollouts/ 
 
 
 - title: Reports & Insights
   icon: images/home-icons/guides.png
   url: ''
   links:
+    - title: Home dashboard
+      localurl: /docs/reporting/home-dashboard/
     - title: DORA metrics
       localurl: /docs/reporting/dora-metrics/
+    
 
 - title: Image enrichment
   icon: images/home-icons/integrations.svg
@@ -133,12 +138,7 @@
       localurl: /docs/troubleshooting/runtime-issues
 
 
-- title: Incubation
-  icon: images/home-icons/plugins.svg
-  url: ''
-  links:
-  - title: Hosted GitOps
-    localurl: /docs/incubation/intro-hosted-runtime/
+
 
   
 

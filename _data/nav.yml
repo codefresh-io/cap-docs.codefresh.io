@@ -6,20 +6,22 @@
   - title: Quick start
     url: "/quick-start"
     sub-pages:
-      - title: Prepare for runtime installation
+      - title: Provision a hosted runtime
+        url:  "/install-hosted"
+      - title: Prepare for hybrid runtime installation
         url:  "/verify-requirements"
-      - title: Install runtime
+      - title: Install a hybrid runtime
         url: "/runtime"
-      - title: Trigger the Hello World example pipeline
-        url: "/hello-world"
-      - title: Create a basic CI delivery pipeline
-        url: "/create-ci-pipeline"
       - title: Create resources for the codefresh-guestbook application
         url: "/create-app-specs"
       - title: Create the codefresh-guestbook application
         url: "/create-app-ui"
       - title: Update the image tag for the codefresh-guestbook application
         url: "/create-rollout"
+      - title: Trigger the Hello World example pipeline
+        url: "/hello-world"
+      - title: Create a basic CI delivery pipeline
+        url: "/create-ci-pipeline"
 
         
   - title: Main concepts
@@ -85,12 +87,17 @@
       url: "/create-application"
     - title: Images in Codefresh
       url: "/images"
+    - title: Install Argo Rollouts
+      url: "/install-argo-rollouts"  
 
 - title: Reports & Insights
   url: "/reporting"
   pages:
+    - title: Home dashboard
+      url: "/home-dashboard"
     - title: DORA metrics
       url: "/dora-metrics"
+    
 
 - title: Image enrichment
   url: "/integrations"
@@ -164,14 +171,6 @@
     - title: Runtimes
       url: "/runtime-issues"
       
-      
-- title: Incubation
-  url: "/incubation"
-  pages:
-    - title: Hosted GitOps
-      url: "/intro-hosted-runtime"
-
-
 
 - title: Terms and Privacy Policy
   url: "/terms-and-privacy-policy"
