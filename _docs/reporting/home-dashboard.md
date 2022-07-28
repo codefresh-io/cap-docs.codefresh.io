@@ -1,13 +1,13 @@
 ---
-title: "Global analytics"
+title: "Home dashboard"
 description: ""
 group: reporting
 toc: true
 ---
 
-Get a global picture of runtimes, managed clusters, deployments, and pipelines in the Home dashboard. The Home dashboard is displayed when you log in to Codefresh. It provides enterprise-wide visualization into all areas of the integration and delivery processes in real-time.  
+Get a global picture of runtimes, managed clusters, deployments, and pipelines in the Home dashboard. The Home dashboard is displayed when you log in to Codefresh. It provides system-wide visualization into all areas in real-time.  
 
-Global filters allow you to narrow the scope of the data, and you can also drill down into specific entities for more details.
+Global filters allow you to narrow the scope of the data, and  drill down into specific entities for more details.
 
   {% include 
    image.html 
@@ -34,7 +34,10 @@ Filter the view in the Home dashboard by runtimes and date range.
 
 ### Runtimes and Managed Clusters
 
-Identify the health of the runtimes and managed clusters in your enterprise. 
+Identify the health of the runtimes and managed clusters in your enterprise.  
+Health status is displayed for both hosted (if you have Hosted GitOps), and hybrid runtimes.  
+
+Managed clusters are external clusters registered to runtimes to which you deploy applications and GitOps-managed resources.
 
  {% include 
    image.html 
@@ -99,7 +102,7 @@ Displays up to five of the most active applications and their current deployment
 |**Filter**                | Filter applications by the cluster on which they are deployed.    |
 |**View**                  | Click to go to the Applications dashboard. See   |
 |**Application Name**     | The name of the application, and the names of the runtime and cluster on which it is deployed. Click the name to drill down into the application in the Applications dashboard. |
-|**Health status**         | The health status of the application, and can be either:{::nomarkdown}<ul><li>Healthy (green): The application is running on the cluster.</li><li>Degraded (red): The application failed to run.</li> <li>Rollback (yellow): There was a rollback to the previously deployed version.</li></ul>  {:/}  |
+|**Health status**         | The health status of the application, and can be either:{::nomarkdown}<ul><li>Healthy (green): The application is running on the cluster.</li><li>Degraded (red): The application failed to run.</li> <li>Rollback (yellow): There was a rollback to the previously deployed version.</li></ul> To see the breakdown by health status, mouse over the chart. <br> The number at the end of the bar is the total number of deployments for the application, with the overall decrease or increase compared to the reference period. {:/}  |
 
 
 
