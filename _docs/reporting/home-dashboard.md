@@ -49,9 +49,8 @@ Identify the health of the runtimes and managed clusters in your enterprise.
 {: .table .table-bordered .table-hover}
 | Item                    | Description   |
 | ------------------------| ---------------- |
-|**Runtimes**             | Identify failed runtimes: {::nomarkdown}<img src="../../../images/icons/icon-mark-favorite.png?display=inline-block">: Hosted runtimes<img src="../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/}|
-|**Managed Clusters**    |{::nomarkdown} <ul><li><b>Status</b>: One of the following: <ul><li><b>Connected</b>: Cluster is healthy.</li><li><b>Failed</b>: Cluster is </li> <li> <b>Unknown</b>: No applications are deployed to the cluster.</li></ul><li><b>View</b>: Click to go to the Runtimes page. <br>To see the runtime's managed clusters, select the runtime.</li> </ul> {:/}|
-
+|**Runtimes**             | Identify failed runtimes.|
+|**Managed Clusters**    |{::nomarkdown} <ul><li><b>Status</b>: One of the following: <ul><li><b>Connected</b>: Argo CD is able to connect and successfully deploy resources to the cluster.</li><li><b>Failed</b>: Argo CD is unable to connect to the cluster because of authentication, networking, or other issues. </li> <li> <b>Unknown</b>: Argo CD has no information on the cluster as there are no resources deployed to the managed cluster.</li></ul><li><b>View</b>: Click to go to the Runtimes page. <br>To see the runtime's managed clusters, select the runtime.</li> </ul> {:/}|
 
 
 ### Deployments
@@ -97,14 +96,16 @@ Displays up to five of the most active applications and their current deployment
 
 | Item                    | Description   |
 | ------------------------| ---------------- |
-|**Application Name**     | The name of the application, with name of the runtime and cluster on which it is deployed. Click the name to drill down into the application in the Applications dashboard. |
 |**Filter**                | Filter applications by the cluster on which they are deployed.    |
 |**View**                  | Click to go to the Applications dashboard. See   |
-|**Health status**         | The health status of the application, and can be either:{::nomarkdown}<ul><li>Healthy (green): The application is running on the cluster.</li><li>Degraded (red): The application failed to run.</li> <li>Rollback (yellow): There was a rollback to the previously deployed version.</li></ul> The number at the end of the bar chart is the total number of deployments for the application, with the overall decrease or increase compared to the reference period. For example, the picture shows that there was an 8% decrease for degraded health. Mouse over to see the breakdown by health status.  {:/}  |
+|**Application Name**     | The name of the application, and the names of the runtime and cluster on which it is deployed. Click the name to drill down into the application in the Applications dashboard. |
+|**Health status**         | The health status of the application, and can be either:{::nomarkdown}<ul><li>Healthy (green): The application is running on the cluster.</li><li>Degraded (red): The application failed to run.</li> <li>Rollback (yellow): There was a rollback to the previously deployed version.</li></ul>  {:/}  |
 
 
 
 ### Delivery Pipelines 
+
+> Delivery Pipline data is shown for hybrid enviroments.
 
 Displays all active pipelines for the selected date range, providing insights into trends for pipelines.  Active pipelines are those with at least one active or completed workflow.  
 Analytics are derived by comparing the selected date range to the corresponding reference period. If your date range is the last seven days, the reference period is the seven days that precede the date range.
@@ -124,9 +125,9 @@ Analytics are derived by comparing the selected date range to the corresponding 
 | Item                    | Description   |
 | ------------------------| ---------------- |
 |**Pipelines**            | The number prefixed to the pipeline name indicates the change in position of the pipeline compared to the reference period. To drill down into a specific pipeline, click the pipeline.|
-|**Filter**               | The filters available to focus on the pipelines of interest:{::nomarkdown}<ul><li><b>Status</b>:<ul><li>Succeeded: Pipelines with workflows completed successfully.</li><li>Failed: Pipelines with workflows that failed.</li><li>Error: Pipelines with workflows that resulted in errors.</li></ul><li>Repository: The Git repository or repositories tracked, with the events that triggered or ran the pipelines.</li><li>Event Type: The Git or Calendar event or events by which to view pipelines. If you select Git push, only those pipelines configured to be run on Git push are displayed.</li> <li>Initiator: The user who made the commit that triggered the event and caused the pipeline to run.</li></ul>{:/} |
-|**View**                  | Click to go to the Delivery Pipelines dashboard. See   |
-|**KPI Averages**         | KPI averages for: {::nomarkdown}<ul><li>Success Rate (green): The average number of successful executions, in percentage.</li><li>Average Duration: The average length of time to complete execution, in mm:ss.</li> <li>Executions: The average number of times the pipeline was triggered, in percentage.</li><li>Committers: The number of users whose commits on the repository or repositories triggered the pipelines. User count is aggregated per user, so multiple commits from the same user are counted as a single commit.</li></ul> To see detailed day-to-day values, select a line chart.{:/}|
+|**Filter**               | The filters available to focus on the pipelines of interest:{::nomarkdown}<ul><li><b>Status</b>:<ul><li>Succeeded: Pipelines with workflows completed successfully.</li><li>Failed: Pipelines with workflows that failed.</li><li>Error: Pipelines with workflows that resulted in errors.</li></ul><li><b>Repository</b>: The Git repository or repositories tracked, with the events that triggered or ran the pipelines.</li><li><b>Event Type</b>: The Git or Calendar event or events by which to view pipelines. If you select Git push, only those pipelines configured to be run on Git push are displayed.</li> <li><b>Initiator</b>: The user who made the commit that triggered the event and caused the pipeline to run.</li></ul>{:/} |
+|**View**                  | Click to go to the Delivery Pipelines dashboard.    |
+|**KPI Averages**         | KPI averages for: {::nomarkdown}<ul><li>Success Rate: The average number of successful executions, in percentage.</li><li>Average Duration: The average length of time to complete execution, in mm:ss.</li> <li>Executions: The average number of times the pipeline was triggered, in percentage.</li><li>Committers: The number of users whose commits on the repository or repositories triggered the pipelines. User count is aggregated per user, so multiple commits from the same user are counted as a single commit.</li></ul> To see detailed day-to-day values, select a line chart.{:/}|
 |**Most Active Delivery Pipelines**      | Up to ten pipelines with the highest number of executions. The same KPIs are displayed, and compared to those in the reference period. |
 |**Longest Delivery Pipelines**      | Up to ten pipelines with the longest duration. The same KPIs are displayed, and compared to those in the reference period.  |
 
