@@ -51,7 +51,7 @@ When the image tag is updated, the auto-sync initiates the rollout.
    url="/images/getting-started/quick-start/cdops-app-rollout-in-dashboard.png" 
    alt="Application dashboard with rollout in progress" 
    caption="Application dashboard with rollout in progress"
-   max-width="70%" 
+   max-width="60%" 
    %} 
 
 {:start="3"}
@@ -64,7 +64,7 @@ When the image tag is updated, the auto-sync initiates the rollout.
    url="/images/getting-started/quick-start/cdops-app-rollout-panel.png" 
    alt="Rollout analysis in progress" 
    caption="Rollout analysis in progress"
-   max-width="70%" 
+   max-width="60%" 
    %} 
 
 {:start="4"}
