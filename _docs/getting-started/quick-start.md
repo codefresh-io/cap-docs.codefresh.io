@@ -20,9 +20,17 @@ Based on your deployment model, start by provisioning the hosted or hybrid runti
 * Hosted runtimes: Hosted on a Codefresh cluster and managed by Codefresh. You need to provision your hosted runtime once for your account.
 * Hybrid runtimes: Hosted on a customer cluster and managed by the customer. You can provision multiple hybrid runtimes in the same account.
 
+{::nomarkdown}
+<br>
+{:/}
+
 #### Hosted 
 1. [Provision a hosted runtime]({{site.baseurl}}/docs/getting-started/quick-start/install-hosted)  
   Provision the hosted runtime with a single click, and complete the setup for your hosted environment.  
+
+{::nomarkdown}
+<br>
+{:/}
 
 #### Hybrid
 1. [Prepare for hosted runtime installation]({{site.baseurl}}/docs/getting-started/quick-start/verify-requirements)  
@@ -41,6 +49,7 @@ Based on your deployment model, start by provisioning the hosted or hybrid runti
 
 ### Trigger/create a Delivery Pipeline 
 > Supported in hybrid environments.
+
 1. [Trigger the Hello World example pipeline]({{site.baseurl}}/docs/getting-started/quick-start/hello-world)  
   Configure the Git event to trigger the demo pipeline. 
 1. [Create a basic CI delivery pipeline]({{site.baseurl}}/docs/getting-started/quick-start/create-ci-pipeline)  
