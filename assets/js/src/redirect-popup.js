@@ -22,7 +22,7 @@
   function isRedirectedFromClassicDocs(docTypeCookie) {
     var redirectFromUrl = localStorage.getItem('redirectFrom')
 
-    return isLastlyVisitedCsdp(docTypeCookie) && redirectFromUrl && redirectFromUrl.startsWith(location.origin)
+    return isLastlyVisitedCsdp(docTypeCookie) && redirectFromUrl
   }
 
   function setDocumentationCookie() {
@@ -35,9 +35,9 @@
   }
 
   $(function () {
-    if (window.location.hostname === 'localhost') {
-      return
-    }
+    // if (window.location.hostname === 'localhost') {
+    //   return
+    // }
 
     try {
       var docTypeCookie = getDocTypeCookie()
