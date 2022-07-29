@@ -22,22 +22,22 @@
   function isRedirectedFromClassicDocs(docTypeCookie) {
     var redirectFromUrl = localStorage.getItem('redirectFrom')
 
-    return isLastlyVisitedCsdp(docTypeCookie) && redirectFromUrl
+    return isLastlyVisitedCsdp(docTypeCookie) && redirectFromUrl && redirectFromUrl.startsWith(window.location.origin)
   }
 
   function setDocumentationCookie() {
     document.cookie = 'doctype=Classic; SameSite=Lax; Secure; Domain=.codefresh.io; Max-age=2592000; Path=/'
   }
 
-  function handleNavigateBackToCsdp() {
+  function handleNavigateBackToClassic() {
     setDocumentationCookie()
     $('#redirectModal').modal('hide')
   }
 
   $(function () {
-    // if (window.location.hostname === 'localhost') {
-    //   return
-    // }
+    if (window.location.hostname === 'localhost') {
+      return
+    }
 
     try {
       var docTypeCookie = getDocTypeCookie()
@@ -55,7 +55,7 @@
           })
           var redirectFromUrl = localStorage.getItem('redirectFrom')
           $('#redirectModal .redirect-popup__footer-link').attr('href', redirectFromUrl)
-          $('#redirectModal .redirect-popup__footer-link').on('click', handleNavigateBackToCsdp)
+          $('#redirectModal .redirect-popup__footer-link').on('click', handleNavigateBackToClassic)
         }
       }
     } catch (error) {
