@@ -27,7 +27,8 @@ Install the Codefresh CLI using the option that best suits you: `curl`, `brew`, 
 If you are not sure which OS to select for `curl`, simply select one, and Codefresh automatically identifies and selects the right OS for CLI installation.
 
 ### Installing the hybrid runtime
-
+Install the hybrid runtime either through the CLI wizard or via silent install.
+>The Git provider you select for the first runtime installed in your account is the one used in all other runtimes you install.
 1. Do one of the following:  
   * If this is your first hybrid runtime installation, in the Welcome page, select **+ Install Runtime**.
   * If you have provisioned a hybrid runtime, to provision additional runtimes, in the Codefresh UI, go to [**Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}, and select **+ Add Runtimes**.
@@ -41,7 +42,7 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
 > Hybrid runtime installation starts by checking network connectivity and the K8s cluster server version.  
   To skip these tests, pass the `--skip-cluster-checks` flag.
 
-#### Hybrid runtime flags
+#### Hybrid runtime installation flags
 
 **Runtime name**  
 Required.  
