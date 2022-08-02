@@ -28,7 +28,8 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
 
 ### Installing the hybrid runtime
 Install the hybrid runtime either through the CLI wizard or via silent install.
->The Git provider you select for the first runtime installed in your account is the one used in all other runtimes you install.
+>The Git provider you select when installing the first runtime for your account is the same Git provider used by all other runtimes installed in the same account.
+
 1. Do one of the following:  
   * If this is your first hybrid runtime installation, in the Welcome page, select **+ Install Runtime**.
   * If you have provisioned a hybrid runtime, to provision additional runtimes, in the Codefresh UI, go to [**Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}, and select **+ Add Runtimes**.
