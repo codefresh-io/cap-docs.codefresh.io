@@ -54,7 +54,7 @@ Add a GitHub Action to Codefresh with the required arguments.
 1. Select **GitHub Actions**, and then click **Configure**.
 1. Define the arguments for the GitHub Action. [Review GitHub Action arguments](#codefresh-github-action-integration-arguments). 
   * For the **CF_API_KEY**, click **Generate**. Note down the token generated.
-  * To create a container registry integration for DockerHub if you don't have one, click **Create Container Registry Integration**, and then configure the settings. See [Docker Hub integration]({{site.baseurl}}/docs/integrations/docker-hub/).
+  * To create a container registry integration if you don't have one, click **Create Container Registry Integration**, and then select the one to add. See the Related articles for links to container registry documentation.
   * To create a Jira integration, click **Create Atlassian Jira Integration**, and then configure the settings. See [Jira integration]({{site.baseurl}}/docs/integrations/jira/).
 1. Enter this token in GitHub Actions [as a secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) with the name `CF_API_KEY`.  
   Now you can reference it in all GitHub pipelines as you would any other secret.
@@ -186,7 +186,9 @@ max-width="50%"
 %}
 
 
-### Related articles  
+### Related articles
+[Docker Hub integration]({{site.baseurl}}/docs/runtime/dockerhub/)
+[Quay integration]({{site.baseurl}}/docs/runtime/quay/)  
 [Add Git sources to runtimes]({{site.baseurl}}/docs/runtime/git-sources/)  
 [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration)
 
