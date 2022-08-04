@@ -107,6 +107,20 @@ Codefresh encrypts the credentials for every integration account you create, and
 See [Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/).
 
 #### On-demand app synchronization
+Manually synchronize applications whenever needed directly from Codefresh. The synchronize option is a signifcant enhancement to the application lifecycle managament options that we already support in Codefresh.  
+
+The set of options for application synchronization are identical to that of Argo CD. For uability, they are grouped into two sets: Revision and Additional Options. 
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-jul22-sync-app.png"
+ url="/images/whats-new/rel-notes-jul22-sync-app.png"
+ alt="Synchronize application"
+ caption="Synchronize application"
+    max-width="60%"
+%}
+
 
 #### Activate access for Codefresh support
 User Settings include an option to allow Codefresh support personnel account access for troubleshooting peuposes. The option is disabled by default. When enabled, access is always co-ordinated and approved, and all actions are audited. 
