@@ -8,7 +8,163 @@ toc: true
 ---
 
 We launched the Codefresh platform in February this year. Built on Argo, the world’s most popular and fastest-growing open source software delivery, Codefresh unlocks the full enterprise potential of Argo Workflows, Argo CD, Argo Events, and Argo Rollouts, providing a control-plane for managing them at scale.
-Since the launch, we have continued to work on and grow Codefresh. 
+
+This July release is all about Hosted GitOps.
+
+## July 2022
+
+### Features & enhancements
+
+#### Hosted GitOps
+What do you get with Hosted GitOps?  
+In a nutshell, a hosted and managed version of Argo CD.  
+
+From application analytics, to application creation, rollout, and deployment, you get the best of both worlds: Argo CD with Codefresh's advanced functionalities and features for CD operations.
+What it also means is easy set up and zero maintenance overhead.
+
+Read on for a summary of our Hosted GitOps offering.  
+
+**Hosted runtime**  
+
+Hosted GitOps supports hosted runtimes. The runtime is hosted on a Codefresh cluster and managed by Codefresh. Once you initialize provisioning in the Home dashbaord, Codefresh completes the instalation and  guides you through the three-step process of setting up te hosted environment. Read more in [Hosted runtime](#hosted-runtime).  
+
+**Dashboards for visibility and traceability**  
+
+Home dashboard: For global analytics and system-wide deployment highlights, start with the Home dashboard.  
+DORA metrics: A _new_ dashboard for DORA metrics and DevOps quantification. Read more in [DORA metrics](#dora-metrics).  
+Applications dashboard: Easily track deployments and visualize rolllouts across clusters and runtimes in the Applications dashbaord.  
+ 
+**Application lifecycle management**  
+
+Manage the entire application lifecycle directly in Codefresh, from creating, editing, and deleting applications.  
+Define all application settings in a single location through the intuitive Form mode or directly in YAML, and commit all changes to Git.  
+
+Synchronize applications manually when needed. 
+
+**Integrations for image enrichment**
+With Hosted GitOps, you can integrate your CI tools with Codefresh for image enrichment. Read more in [Integrations for image enrichment](#integrations-for-image-enrichment)
+
+
+#### Hosted runtime
+Hosted GitOps supports a GitHub-based SaaS runtime, hosted on a Codefresh cluster, and managed by Codefresh.  
+Setting up your hosted environment takes just a few clicks. All you need is a Codefresh account, a Git account, and a Kubernetes cluster to which to deploy your applications.
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-jul22-hosted-initial-view.png"
+ url="/images/whats-new/rel-notes-jul22-hosted-initial-view.png"
+ alt="Hosted runtime setup"
+ caption="Hosted runtime setup"
+    max-width="80%"
+%}
+
+Codefresh guides you through the simple three-step process of provisioning your hosted runtime.  From that point, Codefresh handles administration and maintenance of the hosted runtime, including version and security updates.  
+
+See [Set up a hosted (Hosted GitOps) environment]({{site.baseurl}}/docs/runtime/hosted-runtime/).
+
+#### DORA metrics
+DORA metrics have become integral to enterprises wanting to quantify DevOps performance, and Codefresh has out-of-the-box support for it.  
+
+The DORA dashboard in Codefresh goes beyond quantification with features such as the Totals bar displaying key metrics, filters that allow you to pinpoint just which applications or runtimes are contributing to problematic metrics, show metrics for starred applications, and the ability to set a different view granularity for each DORA metric.  
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-jul22-dora-metrics.png"
+ url="/images/whats-new/rel-notes-jul22-dora-metrics.png"
+ alt="DORA metrics"
+ caption="DORA metrics"
+    max-width="60%"
+%}
+
+See [DORA metrics]({{site.baseurl}}/docs/reporting/dora-metrics/).
+
+
+#### Integrations for image enrichment
+If you have Hosted GitOps for CD and a different tool for CI, you can continue to enrich images. Allow Codefresh to retreive and report the image information in your deployments by connecting your CI tools to Codefresh. Connect CI tools, issue tracking tools, container registeries, and more.
+
+
+This release introduces our integration offering, starting with: 
+* GitHub Actions for CI 
+* JIRA for issue tracking
+* Docker Hub, Quay, JFrog, ECR for container registries
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-jul22-github-action-settings.png"
+ url="/images/whats-new/rel-notes-jul22-github-action-settings.png"
+ alt="Image enrichment with GitHub Actions integration"
+ caption="Image enrichment with GitHub Actions integration"
+    max-width="60%"
+%}
+
+ We are continually expanding the range of integrations, so stay tuned for release announcements on new integreations.  
+
+Codefresh encrypts the credentials for every integration account you create, and stores them securely as Kubernetes Sealed Secrets, making the integration flow completely GitOps-compatible. Pipelines reference the integration by the integration name instead of integration credentials. Codefresh retrieves enrichment information using the encrypted Kubernetes secrets.  
+
+See [Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/).
+
+#### On-demand app synchronization
+
+#### Activate access for Codefresh support
+User Settings include an option to allow Codefresh support personnel account access for troubleshooting peuposes. The option is disabled by default. When enabled, access is always co-ordinated and approved, and all actions are audited. 
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-jul22-account-access.png"
+ url="/images/whats-new/rel-notes-jul22-account-access.png"
+ alt="Enable account access"
+ caption="Enable account access"
+    max-width="50%"
+%}
+
+#### View logs by container
+When viewing logs for applications and workflows, you can now select the containter for which to display them. 
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-jul22-log-container.png"
+ url="/images/whats-new/rel-notes-jul22-log-container.png"
+ alt="View logs by container"
+ caption="View logs by container"
+    max-width="50%"
+%}
+
+### Bug fixes
+Unable to remove a cluster after adding it and isc operation failed CR-13184
+Maximum character limit not validated in cluster names CR-13046
+add cluster service account name bug CR-13036
+Failure on downloading logs for all runtime components CR-13031
+Resources without namespaces such as cluster role does not open in Current State (CR-12216)
+Sync state icon is frozen Syncing the application in Current StateTopology view not representing animation on syncing the app - seems to be stuck (CR-12896)
+add cluster service account name bug CR-13036
+Application recreated with the same name as a deletd applo application removed and recreated with same name new releases should be presented on top of existing releases (CR-12702)
+Application with incorrect Source not displayed in UI CR-12970
+New cluster is automatically assigned Unknown status
+Jira issue for Docker image not shown in Applications dashboard CR-12861
+Unable to View, Access, and add SSO integration in Codefresh GitOps.
+Failure on sealing key management check CR-12903 Eti
+Sealed secret remains in cluster after uninstalling runtime CR-12631
+Error not shown when creating an application with the same name as exsting application 
+Sync error message is cut off 
+Home dashboard: Incorrect Most active pipelines and delivery pipelines not work time filter
+Fix find query for image applications CR-8503
+Application release not always return binaryId, repositoryName for transition images CR-8563 Olek
+Incorrect sorting for workflow and pipeline lists
+Images dashboard: Registry filter (images) with other combinations returns wrong results
+	
+fix cli-v2 brew step	
+sync errors in application list page don't show app name
+Can't see rollouts when running on hosted cluster - CR-12848 (Noam)
+Cannot modify or delete integration - CR-12810
+Sync policy appears as Manual though it`s automatic - CR-12774 (olek)
+Validate that source folder exist CR-12726 bogdan
+	
+Workflow details - error while requesting node's templateName CR-8350	
 
 
 ## June 2022
