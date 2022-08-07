@@ -5,19 +5,31 @@ group: runtime
 toc: true
 ---
 
-If you have a hybrid environment, you can provision one or more hybrid runtimes in your Codefresh account. The hybrid runtime comprises Argo CD components and Codefresh-specific components. The Argo CD components are derived from a fork of the Argo ecosystem, and do not correspond to the open-source versions available.
+If you have a hybrid environment, you can provision one or more hybrid runtimes in your Codefresh account. 
+
+**Git providers and runtimes**  
+
+Your Codefresh account is linked to a specific Git provider. This is the Git provider you select when installing the first hybrid runtime in your Codefresh account.  If you have multiple instances of the same Git provider, you must also select the specific server host to associate with the runtime. Other hybrid runtimes in the account use the same Git provider on the same Git server.
+
+>To change your Git provider for your Codefresh account after installation, contact Codefresh support.
+
+
+**Hybrid runtime**  
+
+ The hybrid runtime comprises Argo CD components and Codefresh-specific components. The Argo CD components are derived from a fork of the Argo ecosystem, and do not correspond to the open-source versions available.
 
 > If you have Hosted GitOps, to provision a hosted runtime, see [Provision a hosted runtime]({{site.baseurl}}/docs/runtime/hosted-runtime/#1-provision-hosted-runtime) in [Set up a hosted (Hosted GitOps) environment]({{site.baseurl}}/docs/runtime/hosted-runtime/).
 
 There are two parts to installing a hybrid runtime:
 
 1. Installing the Codefresh CLI
-2. Installing the hybrid runtime from the CLI, either through the CLI wizard or via silent installation.  
-  The hybrid runtime is installed in a specific namespace on your cluster. You can install more runtimes on different clusters in your deployment.  
+2. Installing the hybrid runtime, either through the CLI wizard or via silent installation.  
+  The hybrid runtime is installed in a specific namespace on your cluster. You can install more runtimes on different clusters in your environment.  
   Every hybrid runtime installation makes commits to two Git repos:
 
-  * Runtime install repo: The installation repo that manages the hybrid runtime itself with Argo CD. If the repo URL does not exist, runtime creates it automatically.
-  * Git Source repo: Created automatically during runtime installation. The repo where you store manifests to run CodefreshCodefresh pipelines.
+  * Runtime install repo: The installation repo that manages the hybrid runtime itself with Argo CD. If the repo URL does not exist, the runtime creates it automatically.
+  * Git Source repo: Created automatically during runtime installation. The repo where you store manifests for CI/CD resources such as pipelines and applications.
+
 
 See also [Codefresh architecture]({{site.baseurl}}/docs/getting-started/architecture).
 
@@ -28,7 +40,7 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
 
 ### Installing the hybrid runtime
 Install the hybrid runtime either through the CLI wizard or via silent install.
->The Git provider you select when installing the first runtime for your account is the same Git provider used by all other runtimes installed in the same account.
+>When installing the first runtime for your account, the Git provider you select, and the specific server host if you have more than one instance of the same Git provider, is the same Git provider for all other runtimes installed in the same account.
 
 1. Do one of the following:  
   * If this is your first hybrid runtime installation, in the Welcome page, select **+ Install Runtime**.
@@ -37,13 +49,13 @@ Install the hybrid runtime either through the CLI wizard or via silent install.
   * CLI wizard: Run `cf runtime install`, and follow the prompts to enter the required values.  
   * Silent install: Pass the required flags in the install command:  
     `cf runtime install <runtime-name> --repo <git-repo> --git-token <git-token> --silent`  
-  For the list of flags, see _Hybrid runtime flags_.
+  For the list of flags, see _Hybrid runtime installation flags_.
 
 > Note:  
 > Hybrid runtime installation starts by checking network connectivity and the K8s cluster server version.  
   To skip these tests, pass the `--skip-cluster-checks` flag.
 
-#### Hybrid runtime installation flags
+### Hybrid runtime installation flags
 
 **Runtime name**  
 Required.  
@@ -53,7 +65,7 @@ The runtime name must start with a lower-case character, and can include up to 6
 
 **Namespace resource labels**  
 Optional.  
-The label of the namespace resource to which you are installing the hybrid runtime. You can add more than one label. Labels are required to identity the networks that need access during installation, as is the case when using services meshes such as Istio for example.  
+The label of the namespace resource to which you are installing the hybrid runtime. You can add more than one label. Labels are required to identify the networks that need access during installation, as is the case when using services meshes such as Istio for example.  
 
 * CLI wizard and Silent install: Add the `--namespace-labels` flag, and define the labels in `key=value` format. Separate multiple labels with `commas`.
 
@@ -100,30 +112,30 @@ If you have a different routing service (not NGINX), bypass installing ingress r
 In this case, after completing the installation, manually configure the cluster's routing service, and create and register Git integrations. See _Cluster routing service_ in [Post-installation configuration](#post-installation-configuration).
 
 **Shared configuration repository**
-The Git repository per runtime account with shared configuration manifests.  
+The Git repository per runtime account with shared configuration manifests and resources.  
 * CLI wizard and Silent install: Add the `--shared-config-repo` flag and define the path to the shared repo.  
 
 **Insecure flag**  
 For _on-premises installations_, if the Ingress controller does not have a valid SSL certificate, to continue with the installation, add the `--insecure` flag to the installation command.  
 
 **Enable Git providers**  
-Optional; required for GitLab and Bitbucket.  
+Optional; required for GitLab and Bitbucket Git providers.  
 Enable GitLab or Bitbucket as the Git provider for the runtime and for the account. 
->The Git provider defined for the first runtime must be used for all the runtimes in the same account.  
+>The Git provider defined for the first runtime in the account must be used for all the runtimes in the same account.  
   
 * CLI wizard and Silent install: Add the `--enable-git-provider` flag.
 
 **Git provider**
 Optional; required for GitLab and Bitbucket.
-The name of the Git provider to use for the runtime and the account.  
+The name of the Git provider to use for the runtime and the account. 
 
 * CLI wizard and Silent install: Add the `--provider` flag, and define the provider name as either `gitlab` or `bitbucket-server`
 
 **Repository URLs**  
-The Git repository to house the installation definitions. 
->For GitLab, the repo must be created prior to the installation.
+The Git repository (project in GitLab) that houses the installation definitions. 
+>For GitLab, you must create the group with access to the project prior to the installation.
 
-* CLI wizard: If the repo doesn't exist, for GitHub and Bitbucket, Codefresh creates it during runtime installation.  
+* CLI wizard: If the repo doesn't exist, for GitHub, GitLab, Bitbucket, Codefresh creates it during runtime installation.  
 * Silent install: Required. Add the `--repo` flag.
 
 **Git user**  
@@ -148,7 +160,9 @@ Install demo pipelines to use as a starting point to create your own pipelines. 
 **Git repositories**
 
 * Runtime install repo: The installation repo contains three folders: apps, bootstrap and projects, to manage the runtime itself with Argo CD.  
-* Git source repository: Created with the name `[repo_name]_git-source`. This repo stores manifests for pipelines with sources, events, workflow templates.
+* Git source repo: Created with the name `[repo_name]_git-source`. This repo stores manifests for pipelines with sources, events, workflow templates. See [Add Git Sources to runtimes]({{site.baseurl}}/docs/runtime/git-sources/).   
+
+* Shared configuration repo: The repo that stores configuration manifests such as integration manifests to be shared across runtimes. See [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/).
 
 **Argo CD components**  
 
@@ -212,7 +226,7 @@ For more information, see [Creating records by using the Amazon Route 53 console
   max-width="30%"
 %}
 
-#### Cconfigure cluster routing service
+#### Configure cluster routing service
 
 If you bypassed installing ingress resources with the `--skip-ingress` flag, configure the `host` for the Ingress, or the VirtualService for Istio if used, to route traffic to the `app-proxy` and `webhook` services, as in the examples below.  
 
@@ -367,7 +381,6 @@ If you bypassed installing ingress resources with the `--skip-ingress` flag, or 
 
 ### Related articles
 [Add external clusters to runtimes]({{site.baseurl}}/docs/runtime/managed-cluster/)  
-[Add Git Sources to runtimes]({{site.baseurl}}/docs/runtime/git-sources/)  
 [Manage provisioned runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/)  
 [(Hybrid) Monitor provisioned runtimes]({{site.baseurl}}/docs/runtime/monitoring-troubleshooting/)  
 [Troubleshoot runtime installation]({{site.baseurl}}/docs/troubleshooting/runtime-issues/)
