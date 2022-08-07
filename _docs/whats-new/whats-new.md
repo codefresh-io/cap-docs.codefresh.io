@@ -16,13 +16,12 @@ This July release is all about Hosted GitOps.
 ### Features & enhancements
 
 #### Hosted GitOps
-What do you get with Hosted GitOps?  
-In a nutshell, a hosted and managed version of Argo CD.  
+Our newest offering is Hosted GitOps, a hosted and managed version of Argo CD.  
 
 From application analytics, to application creation, rollout, and deployment, you get the best of both worlds: Argo CD with Codefresh's advanced functionalities and features for CD operations.
 What it also means is easy set up and zero maintenance overhead.
 
-Read on for a summary of our Hosted GitOps offering.  
+Read on for a summary of what you get with Hosted GitOps.  
 
 **Hosted runtime**  
 
@@ -86,9 +85,9 @@ If you have Hosted GitOps for CD and a different tool for CI, you can continue t
 
 
 This release introduces our integration offering, starting with: 
-* GitHub Actions for CI 
+* GitHub Actions, Jenkins, and Codefresh Classic for CI 
 * JIRA for issue tracking
-* Docker Hub, Quay, JFrog, ECR for container registries
+* Docker Hub, Quay, JFrog Artifactory for container registries
 
 {% include
  image.html
@@ -102,9 +101,39 @@ This release introduces our integration offering, starting with:
 
  We are continually expanding the range of integrations, so stay tuned for release announcements on new integreations.  
 
-Codefresh encrypts the credentials for every integration account you create, and stores them securely as Kubernetes Sealed Secrets, making the integration flow completely GitOps-compatible. Pipelines reference the integration by the integration name instead of integration credentials. Codefresh retrieves enrichment information using the encrypted Kubernetes secrets.  
+Codefresh encrypts the credentials for every integration you create, and stores them securely as Kubernetes Sealed Secrets, making the integration flow completely GitOps-compatible. Pipelines reference the integration by the integration name instead of integration credentials. Codefresh retrieves enrichment information using the encrypted Kubernetes secrets.  
 
 See [Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/).
+
+#### Edit and delete applications
+Application management has become easier as you can now edit and delete applications directly in Codefresh.
+
+Update General and Advanced settings for application. Go directly to the Configuration tab for the application by selecting Edit in the Applications dashboard. 
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-july22-edit-app-option.png"
+ url="/images/whats-new/rel-notes-july22-edit-app-option.png"
+ alt="Edit application"
+ caption="Edit application"
+max-width="60%"
+%}
+
+The Delete application option is available when you select an application.
+Codefresh warns you of the implication of deleting the selected application in the Delete form based on the Prune resource setting. 
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-july22-delete-app.png"
+ url="/images/whats-new/rel-notes-july22-delete-app.png"
+ alt="Delete application"
+ caption="Delete application"
+max-width="60%"
+%}
+
+See [Update application configuration]({{site.baseurl}}/docs/deployment/create-application/#update-application-configuration) and [Delete an application]({{site.baseurl}}/docs/deployment/create-application/#delete-an-application).
 
 #### On-demand app synchronization
 Manually synchronize applications whenever needed directly from Codefresh. The synchronize option is a signifcant enhancement to the application lifecycle managament options that we already support in Codefresh.  
@@ -134,6 +163,8 @@ User Settings include an option to allow Codefresh support personnel account acc
  caption="Enable account access"
     max-width="50%"
 %}
+
+See [Enable access for Codefresh support]({{site.baseurl}}/docs/administration/user-settings/#enable-access-for-codefresh-support) 
 
 #### View logs by container
 When viewing logs for applications and workflows, you can now select the containter for which to display them. 
