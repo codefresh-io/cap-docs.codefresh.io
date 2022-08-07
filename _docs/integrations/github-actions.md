@@ -5,15 +5,15 @@ group: integrations
 toc: true
 ---
 
-Codefresh Hosted GitOps can be used with any popular Continuous Integration (CI) solution, not just with Codefresh CI.
+Codefresh Hosted GitOps can be used with any popular Continuous Integration (CI) solution, not just with Codefresh CI.  
 
-You can connect any external CI solution to Codefresh, such as GitHub Actions for example, to take care of common CI tasks such as building/testing/scanning source code, with Codefresh Hosted GitOps still responsible for the deployment, including image enrichment and reporting.  
+GitHub Actions is one of the external CI solutions that you can connect to Codefresh. GitHub Actions handles the common CI tasks such as building/testing/scanning source code, and Codefresh Hosted GitOps handles the deployment, including image enrichment and reporting.  
 See [Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/).
 
 
 ### Codefresh Marketplace GitHub Action 
 
-To support the integration between GitHub Actions and Codefresh, we have created a dedicated action in the [Codefresh marketplace](https://github.com/marketplace/actions/codefresh-report-image){:target="\_blank"}. The action combines image enrichment and reporting through integrations with tracking tools, such as Jira, and container registries, such as DockerHub or Quay.
+To support the integration between GitHub Actions and Codefresh, we have created a dedicated action in the [Codefresh marketplace for GitHub Actions](https://github.com/marketplace/actions/codefresh-report-image){:target="\_blank"}. The action combines image enrichment and reporting through integrations with tracking tools and container registries.
 
 Use the action in the following manner:
 
@@ -32,8 +32,8 @@ The table describes the arguments required for GitHub Action-Codefresh integrati
  {: .table .table-bordered .table-hover}
 | Argument  | Description     | Required/Optional/Default |
 | ---------- |  -------- | ------------------------- |
-| `CF_HOST`                      | Deprecated from v 0.0.456 and higher. This is because the URL as the URL can change and can fail the enrichment. Recommend using `CF_RUNTIME_NAME` instead. The URL to the cluster with the Codefresh runtime to integrate with. If you have more than one runtime, select the runtime from the list. Codefresh displays the URL of the selected runtime cluster.  | Required  |
-| `CF_RUNTIME_NAME`              | The name of the runtime to use for this integration. is this a dropdown??  | Required  |
+| `CF_HOST`                      | Deprecated from v 0.0.456 and higher. Recommend using `CF_RUNTIME_NAME` instead. {::nomarkdown}<b>`CF_HOST` has been deprecated because the URL is not static, and ang change can fail the enrichment.<br><br>  The URL to the cluster with the Codefresh runtime to integrate with. If you have more than one runtime, select the runtime from the list. Codefresh displays the URL of the selected runtime cluster.  | Required  |
+| `CF_RUNTIME_NAME`              | The name of the runtime to use for this integration. Select from the list of runtimes. | Required  |
 | `CF_API_KEY`                   | The API key to authenticate the GitHub Actions user to Codefresh. Generate the key for the GitHub Action. | Required  |
 | `CF_CONTAINER_REGISTRY_INTEGRATION` | The name of the registry integration created in Codefresh to use with the GitHub Action.  | Optional  |
 | `CF_JIRA_INTEGRATION`               | The name of the Jira integration created in Codefresh to use for the GitHub Action. Relevant only if Jira enrichment is required for the image. If you don't have a Jira integration, create a new integration (see [Jira integration]({{site.baseurl}}/docs/integrations/jira/)).   | Optional  |
@@ -111,18 +111,18 @@ jobs:
           echo "Image should be accessible to your local machine (after docker login) by:"
           echo "docker pull $CF_IMAGE"
           docker pull $CF_IMAGE
-          echo "On the next step, the report image would use the integration to pull information on the reported image, and using the specified enrichers."
+          echo "On the next step, the report image would use the integration to pull information on the reported image, using the specified enrichers."
       - name: report image by action
         with:
           # Name of runtime to implement the enrichment
-          CF_RUNTIME_NAME: '[runtime_name]'
+          CF_RUNTIME_NAME: 'codefresh-hosted'
 
-          # Codefresh API key !! Committing a plain text token is a security risk. We highly recommend using an encrypted secrets. !!
+          # Codefresh API key !! Committing a plain text token is a security risk. We highly recommend using encrypted secrets. !!
           # Documentation - https://docs.github.com/en/actions/security-guides/encrypted-secrets
           CF_API_KEY: ${{ secrets.USER_TOKEN }}
 
           # Name of Container registry integration
-          CF_CONTAINER_REGISTRY_INTEGRATION: "docker"
+          CF_CONTAINER_REGISTRY_INTEGRATION: 'docker'
 
           # The git branch which is related for the commit
           CF_GIT_BRANCH: 'main'
@@ -130,20 +130,23 @@ jobs:
           # Image path to enrich 
           CF_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/build-by-github-action:0.0.1
 
-          # GitHub Access token !! Committing a plain text token is a security risk. We highly recommend using an encrypted secrets. !!
+          # GitHub Access token !! Committing a plain text token is a security risk. We highly recommend using encrypted secrets. !!
           # Documentation - https://docs.github.com/en/actions/security-guides/encrypted-secrets
           CF_GITHUB_TOKEN: ${{ secrets.CF_GITHUB_TOKEN }}    
 
-          # String starting with the issue ID to associate with image
-          CF_JIRA_INTEGRATION: "jira" 
+          # Name of Jira integration
+          CF_JIRA_INTEGRATION: 'jira' 
 
-          CF_JIRA_MESSAGE: "A message with embedded issue ( i.e. CR-11027 ) that would be use query jira for the ticket "
+         # String starting with the issue ID to associate with image
+          CF_JIRA_MESSAGE: 'CR-11027'
 
           # Jira project filter
           CF_JIRA_PROJECT_PREFIX: "CR"
         uses: codefresh-io/codefresh-report-image@latest
         
-{% endraw %}'
+'
+        
+{% endraw %}
 {% endhighlight yaml %}
 
 ### GitHub Action logs
