@@ -129,10 +129,10 @@ Enable GitLab or Bitbucket Server as the Git provider for the runtime and for th
 
 **Git provider**  
 
-Optional; required for GitLab and Bitbucket Server.
+Optional; required for GitHub Enterprise, GitLab, and Bitbucket Server.
 The name of the Git provider to use for the runtime and the account. 
 
-* CLI wizard and Silent install: Add the `--provider` flag, and define the provider name as either `gitlab` or `bitbucket-server`
+* CLI wizard and Silent install: Add the `--provider` flag, and define the provider name as either `github`, `gitlab` or `bitbucket-server`
 
 **Repository URLs**  
 The Git repository (project in GitLab) that houses the installation definitions. 
