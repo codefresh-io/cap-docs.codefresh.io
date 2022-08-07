@@ -32,7 +32,7 @@ The table describes the arguments required for GitHub Action-Codefresh integrati
  {: .table .table-bordered .table-hover}
 | Argument  | Description     | Required/Optional/Default |
 | ---------- |  -------- | ------------------------- |
-| `CF_HOST`                      | Deprecated from v 0.0.456 and higher. Recommend using `CF_RUNTIME_NAME` instead. {::nomarkdown}<b>`CF_HOST` has been deprecated because the URL is not static, and ang change can fail the enrichment.<br><br>  The URL to the cluster with the Codefresh runtime to integrate with. If you have more than one runtime, select the runtime from the list. Codefresh displays the URL of the selected runtime cluster.  | Required  |
+| `CF_HOST`                      | _Deprecated from v 0.0.460 and higher._ Recommend using `CF_RUNTIME_NAME` instead. {::nomarkdown}<b>`CF_HOST` has been deprecated because the URL is not static, and ang change can fail the enrichment.<br><br>  The URL to the cluster with the Codefresh runtime to integrate with. If you have more than one runtime, select the runtime from the list. Codefresh displays the URL of the selected runtime cluster.{:/}   | Required  |
 | `CF_RUNTIME_NAME`              | The name of the runtime to use for this integration. Select from the list of runtimes. | Required  |
 | `CF_API_KEY`                   | The API key to authenticate the GitHub Actions user to Codefresh. Generate the key for the GitHub Action. | Required  |
 | `CF_CONTAINER_REGISTRY_INTEGRATION` | The name of the registry integration created in Codefresh to use with the GitHub Action.  | Optional  |
