@@ -106,9 +106,7 @@ Codefresh encrypts the credentials for every integration you create, and stores 
 See [Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/).
 
 #### Edit and delete applications
-Application management has become easier as you can now edit and delete applications directly in Codefresh.
 
-Update General and Advanced settings for application. Go directly to the Configuration tab for the application by selecting Edit in the Applications dashboard. 
 
 {% include
  image.html
@@ -180,36 +178,45 @@ When viewing logs for applications and workflows, you can now select the contain
 %}
 
 ### Bug fixes
-Unable to remove a cluster after adding it and isc operation failed CR-13184
-Maximum character limit not validated in cluster names CR-13046
-add cluster service account name bug CR-13036
-Failure on downloading logs for all runtime components CR-13031
-Resources without namespaces such as cluster role does not open in Current State (CR-12216)
-Sync state icon is frozen Syncing the application in Current StateTopology view not representing animation on syncing the app - seems to be stuck (CR-12896)
-add cluster service account name bug CR-13036
-Application recreated with the same name as a deletd applo application removed and recreated with same name new releases should be presented on top of existing releases (CR-12702)
-Application with incorrect Source not displayed in UI CR-12970
-New cluster is automatically assigned Unknown status
-Jira issue for Docker image not shown in Applications dashboard CR-12861
-Unable to View, Access, and add SSO integration in Codefresh GitOps.
-Failure on sealing key management check CR-12903 Eti
-Sealed secret remains in cluster after uninstalling runtime CR-12631
-Error not shown when creating an application with the same name as exsting application 
-Sync error message is cut off 
-Home dashboard: Incorrect Most active pipelines and delivery pipelines not work time filter
-Fix find query for image applications CR-8503
-Application release not always return binaryId, repositoryName for transition images CR-8563 Olek
-Incorrect sorting for workflow and pipeline lists
-Images dashboard: Registry filter (images) with other combinations returns wrong results
+**Runtimes**  
+
+* Unable to remove managed cluster on failure to add shared configuration repository.
+* Maximum character limit not validated in cluster names.
+* Failure when downloading logs for all runtime components.
+* New cluster automatically assigned Unknown status.
+* Sealed secret remains in cluster after uninstalling runtime.
+* Unable to view rollouts on managed cluster.
+
+
+
+**Applications**  
+
+* Resources without namespaces such as cluster role does not open in Current State.
+* Sync state icon frozen when syncing the application.
+* Application created with the same name as deleted application displayed as new deployment.
+* No error when creating an application with the same name as an existing application.
+* Applications dashboard does not display an application with incorrect Source.
+* Applications dashboard does not display Jira issue for Docker image.
+* Sync policy appears as Manual though set to automatic.
+* Sync error message partially cut off.
+* Application release does not always return binaryId, and repositoryName for transition images.
+* Application name not displayed in sync errors.
+
+**Images**  
+* Registry filter used with other filters returns wrong results.
+* Find query for image applications.
+
+
+**Other**  
+
+* Unable to view, access, and add SSO integrations.
+* Failure on sealing key management check.
+* Home dashboard: Most active pipelines and Delivery Pipelines displayed not aligned with Time filter.
+* Incorrect sorting for workflow and pipeline lists.	
+* Workflow details error when node's templateName.	
+
 	
-fix cli-v2 brew step	
-sync errors in application list page don't show app name
-Can't see rollouts when running on hosted cluster - CR-12848 (Noam)
-Cannot modify or delete integration - CR-12810
-Sync policy appears as Manual though it`s automatic - CR-12774 (olek)
-Validate that source folder exist CR-12726 bogdan
-	
-Workflow details - error while requesting node's templateName CR-8350	
+
 
 
 ## June 2022
