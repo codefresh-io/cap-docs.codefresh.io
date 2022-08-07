@@ -27,11 +27,19 @@ caption="Hosted GitOps setup"
 max-width="80%"
 %}
 
+  >You can provision a single hosted runtime for your Codefresh account.
+
+
+
 ### 1. Provision hosted runtime
 Start installing the hosted runtime with a single-click. Codefresh completes the installation without any further intervention on your part. 
 The hosted runtime is provisioned on the Codefresh cluster, and completely managed by Codefresh with automatic version and security upgrades.
 
-1. Click **Install**.
+
+
+1. Do one of the following:  
+  * To set up Hosted GitOps later, click **Install later**, and continue from step _2_.
+  * To start setup, click **Install**, and continue from step _3_.
 
 {% include
 image.html
@@ -44,6 +52,13 @@ max-width="80%"
 %}
 
 {:start="2"}
+1. Do the following:  
+  * In the Codefresh UI, go to [**Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}, and click **+ Add Runtimes**.
+  * Select **Hosted Runtime**.
+  >An account can be provisioned with a single hosted runtime. If you have already provisioned a hosted runtime for your account, the Hosted Runtime button notifies you of the same.
+  * Continue from _step 3_. 
+
+{:start="3"}
 1. When complete, to view the components for the hosted runtime, click **View Runtime**.
   You are directed to the Runtime Components tab.  
 
