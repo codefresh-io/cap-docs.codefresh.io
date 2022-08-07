@@ -9,9 +9,10 @@ If you have a hybrid environment, you can provision one or more hybrid runtimes 
 
 **Git providers and runtimes**  
 
-Your Codefresh account is linked to a specific Git provider. This is the Git provider you select when installing the first hybrid runtime in your Codefresh account.  If you have multiple instances of the same Git provider, you must also select the specific server host to associate with the runtime. Other hybrid runtimes in the account use the same Git provider on the same Git server.
+Your Codefresh account is always linked to a specific Git provider. This is the Git provider you select when installing the first hybrid runtime in your Codefresh account. All hybrid runtimes in the same account use the same Git provider.  
+If Bitbucker Server is your Git provider, you must select the specific server instance to associate with the runtime. 
 
->To change your Git provider for your Codefresh account after installation, contact Codefresh support.
+>To change the Git provider for your Codefresh account after installation, contact Codefresh support.
 
 
 **Hybrid runtime**  
@@ -111,7 +112,8 @@ Optional.
 If you have a different routing service (not NGINX), bypass installing ingress resources with the `--skip-ingress` flag.  
 In this case, after completing the installation, manually configure the cluster's routing service, and create and register Git integrations. See _Cluster routing service_ in [Post-installation configuration](#post-installation-configuration).
 
-**Shared configuration repository**
+**Shared configuration repository**  
+
 The Git repository per runtime account with shared configuration manifests and resources.  
 * CLI wizard and Silent install: Add the `--shared-config-repo` flag and define the path to the shared repo.  
 
@@ -119,14 +121,15 @@ The Git repository per runtime account with shared configuration manifests and r
 For _on-premises installations_, if the Ingress controller does not have a valid SSL certificate, to continue with the installation, add the `--insecure` flag to the installation command.  
 
 **Enable Git providers**  
-Optional; required for GitLab and Bitbucket Git providers.  
-Enable GitLab or Bitbucket as the Git provider for the runtime and for the account. 
+Optional; required for GitLab and Bitbucket Server Git providers.  
+Enable GitLab or Bitbucket Server as the Git provider for the runtime and for the account. 
 >The Git provider defined for the first runtime in the account must be used for all the runtimes in the same account.  
   
 * CLI wizard and Silent install: Add the `--enable-git-provider` flag.
 
-**Git provider**
-Optional; required for GitLab and Bitbucket.
+**Git provider**  
+
+Optional; required for GitLab and Bitbucket Server.
 The name of the Git provider to use for the runtime and the account. 
 
 * CLI wizard and Silent install: Add the `--provider` flag, and define the provider name as either `gitlab` or `bitbucket-server`
@@ -135,11 +138,11 @@ The name of the Git provider to use for the runtime and the account.
 The Git repository (project in GitLab) that houses the installation definitions. 
 >For GitLab, you must create the group with access to the project prior to the installation.
 
-* CLI wizard: If the repo doesn't exist, for GitHub, GitLab, Bitbucket, Codefresh creates it during runtime installation.  
+* CLI wizard: If the repo doesn't exist, for GitHub, GitLab, Bitbucket Server, Codefresh creates it during runtime installation.  
 * Silent install: Required. Add the `--repo` flag.
 
 **Git user**  
-Optional; required only for Bitbucket.  
+Optional; required only for Bitbucket Server.  
 The username for the Git account.  
 
 * CLI wizard and Silent install: For Bitbucket, add the `--git-user` flag, and define the username. For example, `codefresh`  
