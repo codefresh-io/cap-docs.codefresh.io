@@ -27,10 +27,10 @@ Read on for a summary of what you get with Hosted GitOps.
 Hosted GitOps supports hosted runtimes. The runtime is hosted on a Codefresh cluster and managed by Codefresh. Codefresh guides you through the three-step process of setting up your hosted environment. Read more in [Hosted runtime](#hosted-runtime).  
 
 **Dashboards for visibility and traceability**  
-Here's a recap of Codefresh dashbaords, including a brand new dashboard dedicated to DORA metrics:
+Here's a recap of Codefresh dashboards, including a brand new dashboard dedicated to DORA metrics:
 * Home dashboard: For global analytics and system-wide deployment highlights, start with the Home dashboard.  
 * DORA metrics: A _new_ dashboard for DORA metrics and DevOps quantification. Read more in [DORA metrics](#dora-metrics).  
-* Applications dashboard: Easily track deployments and visualize rolllouts across clusters and runtimes in the Applications dashbaord.  
+* Applications dashboard: Easily track deployments and visualize rollouts across clusters and runtimes in the Applications dashboard.  
  
 **Application lifecycle management**  
 Manage the entire application lifecycle directly in Codefresh, from creating, editing, and deleting applications.  
@@ -107,7 +107,7 @@ This release introduces our integration offering, starting with:
     max-width="60%"
 %}
 
- We are continually expanding the range of integrations, so stay tuned for release announcements on new integreations.  
+ We are continually expanding the range of integrations, so stay tuned for release announcements on new integrations.  
 
 Codefresh encrypts the credentials for every integration you create, and stores them securely as Kubernetes Sealed Secrets, ensuring that the integration flow is completely GitOps-compatible. Pipelines reference the integration by the integration name instead of integration credentials. Codefresh retrieves enrichment information using the encrypted Kubernetes secrets.  
 
@@ -154,7 +154,7 @@ See [Update application configuration]({{site.baseurl}}/docs/deployment/create-a
 {:/}
 
 #### On-demand app synchronization
-Manually synchronize applications whenever needed directly from Codefresh. The synchronize option is a signifcant enhancement to the application lifecycle managament options that we already support in Codefresh.  
+Manually synchronize applications whenever needed directly from Codefresh. The synchronize option is a significant enhancement to the application lifecycle management options that we already support in Codefresh.  
 
 The set of options for application synchronization are identical to that of Argo CD. For usability, they are grouped into two sets: Revision and Additional Options. 
 
@@ -173,7 +173,7 @@ The set of options for application synchronization are identical to that of Argo
 {:/}
 
 #### Activate access for Codefresh support
-User Settings include an option to allow Codefresh support personnel account access for troubleshooting peuposes. The option is disabled by default. When enabled, access is always co-ordinated and approved, and all actions are audited. 
+User Settings include an option to allow Codefresh support personnel account access for troubleshooting purposes. The option is disabled by default. When enabled, access is always coordinated and approved, and all actions are audited. 
 
 {% include
  image.html
@@ -192,7 +192,7 @@ See [Enable access for Codefresh support]({{site.baseurl}}/docs/administration/u
 {:/}
 
 #### View logs by container
-When viewing logs for applications and workflows, you can now select the containter for which to display them. 
+When viewing logs for applications and workflows, you can now select the container for which to display them. 
 
 {% include
  image.html
@@ -216,12 +216,12 @@ When viewing logs for applications and workflows, you can now select the contain
 
 **Applications**  
 
-* Resources without namespaces (such as cluster role) does not open in Current State.
+* Resources without namespaces (such as cluster role) do not open in Current State.
 * Sync state icon frozen when syncing the application.
 * Application created with the same name as deleted application displayed as new deployment.
 * No error when creating an application with the same name as an existing application.
 * Applications dashboard does not display an application with incorrect Source.
-* Applications dashboard does not display Jira issue for Docker image.
+* Applications dashboard does not display the Jira issue for Docker image.
 * Sync policy appears as Manual though set to automatic.
 * Sync error message partially cut off.
 * Application release does not always return binaryId, and repositoryName for transition images.
@@ -236,9 +236,8 @@ When viewing logs for applications and workflows, you can now select the contain
 
 * Unable to view, access, and add SSO integrations.
 * Failure on sealing key management check.
-* Home dashboard: Most active pipelines and Delivery Pipelines displayed not aligned with Time filter.
+* Home dashboard: Most active pipelines and Delivery Pipelines displayed not aligned with the Time filter.
 * Incorrect sorting for workflow and pipeline lists.	
-* Workflow details error when node's templateName.	
 
 
 
