@@ -6,37 +6,23 @@ toc: true
 ---
 
 Codefresh Hosted GitOps can be used with any popular Continuous Integration (CI) solution, not just with Codefresh CI.  
+GitHub Actions is one of the external CI solutions that you can connect to Codefresh. 
 
-GitHub Actions is one of the external CI solutions that you can connect to Codefresh. GitHub Actions handles the common CI tasks such as building/testing/scanning source code, and Codefresh Hosted GitOps handles the deployment, including image enrichment and reporting.  
-See [Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/).
+For information on how to use the image reporting action in your GitHub Action pipeline and how to configure the integration, see [CI Integrations]({{site.baseurl}}/docs/integrations/ci-integrations/).
 
-
-### Codefresh Marketplace GitHub Action 
-
-To support the integration between GitHub Actions and Codefresh, we have created a dedicated action in the [Codefresh marketplace for GitHub Actions](https://github.com/marketplace/actions/codefresh-report-image){:target="\_blank"}. The action combines image enrichment and reporting through integrations with tracking tools and container registries.
-
-Use the action in the following manner:
-
-1. Create a GitHub Actions pipeline like you normally do.
-1. Use any existing CI actions for compiling code, running unit tests, security scanning etc.
-1. Place the final action in the pipeline as the "report image" action provided by Codefresh, copying the arguments and values from the GitHub Actions integration you set up in Codefresh.
-1. When the pipeline completes execution, Codefresh retrieves the information on the image that was built and its metadata (essentially the same data that Codefresh CI would send automatically).
-1. View the image in Codefresh in the [Images dashboard]({{site.baseurl}}/docs/deployment/images/), and in any [GitOps deployment]({{site.baseurl}}/docs/deployment/applications-dashboard/) in which it is used.
-
- 
 
 ### Codefresh-GitHub Action integration arguments
-The table describes the arguments required for GitHub Action-Codefresh integration. 
+The table describes the arguments required to connect GitHub Action to Codefresh. 
 
 
  {: .table .table-bordered .table-hover}
 | Argument  | Description     | Required/Optional/Default |
 | ---------- |  -------- | ------------------------- |
-| `CF_HOST`                      | _Deprecated from v 0.0.460 and higher._ Recommend using `CF_RUNTIME_NAME` instead. {::nomarkdown}<b>`CF_HOST` has been deprecated because the URL is not static, and ang change can fail the enrichment.<br><br>  The URL to the cluster with the Codefresh runtime to integrate with. If you have more than one runtime, select the runtime from the list. Codefresh displays the URL of the selected runtime cluster.{:/}   | Required  |
+| `CF_HOST`                      | _Deprecated from v 0.0.460 and higher._ Recommend using `CF_RUNTIME_NAME` instead. {::nomarkdown}<br>`CF_HOST` has been deprecated because the URL is not static, and any change can fail the enrichment.<br><br>  The URL to the cluster with the Codefresh runtime to integrate with. If you have more than one runtime, select the runtime from the list. Codefresh displays the URL of the selected runtime cluster.{:/}   | Required  |
 | `CF_RUNTIME_NAME`              | The name of the runtime to use for this integration. Select from the list of runtimes. | Required  |
 | `CF_API_KEY`                   | The API key to authenticate the GitHub Actions user to Codefresh. Generate the key for the GitHub Action. | Required  |
-| `CF_CONTAINER_REGISTRY_INTEGRATION` | The name of the registry integration created in Codefresh to use with the GitHub Action.  | Optional  |
-| `CF_JIRA_INTEGRATION`               | The name of the Jira integration created in Codefresh to use for the GitHub Action. Relevant only if Jira enrichment is required for the image. If you don't have a Jira integration, create a new integration (see [Jira integration]({{site.baseurl}}/docs/integrations/jira/)).   | Optional  |
+| `CF_CONTAINER_REGISTRY_INTEGRATION` | The name of the container registry integration created in Codefresh to use for the report image action.  To create a container registry integration if you don't have one, click **Create Container Registry Integration**, and then configure the settings. | Optional  |
+| `CF_JIRA_INTEGRATION`               | The name of the Jira integration created in Codefresh to use for the report image action. Relevant only if Jira enrichment is required for the image. If you don't have a Jira integration, click **Create Atlassian Jira Integration** and configure settings (see [Jira integration]({{site.baseurl}}/docs/integrations/jira/)).  | Optional  |
 | `CF_IMAGE`                    | The path to the image to enrich and report to Codefresh.  | Required  |
 | `CF_WORKFLOW_NAME`           | The name assigned to the workflow that builds the image. When defined, the name is displayed in the Codefresh platform. Example, `Staging step` | Optional  |
 | `CF_GIT_BRANCH`              | The Git branch with the commit.  | Required  |
@@ -44,20 +30,6 @@ The table describes the arguments required for GitHub Action-Codefresh integrati
 | `CF_JIRA_PROJECT_PREFIX`     | Relevant only when `CF_JIRA_INTEGRATION` is defined. The Jira project prefix that identifies the ticket number for which to retrieve information.  | Required  |
 | `CF_JIRA_MESSAGE`            | Relevant only when `CF_JIRA_INTEGRATION` is defined. The Jira issue (the issue ID and the string describing the issue) for the `CF_JIRA_PROJECT_PREFIX` to associate with the image.  | Required  |
 | `CF_JIRA_FAIL_ON_NOT_FOUND`            | Relevant only when `CF_JIRA_INTEGRATION` is defined. The report image action when the `CF_JIRA_MESSAGE` is not found. When set to `true`, the report image action is failed.  | Required  |
-
-
-
-### Connect a GitHub Action in Codefresh
-
-Add a GitHub Action to Codefresh with the required arguments. 
-1. In the Codefresh UI, go to [Integrations](https://g.codefresh.io/2.0/account-settings/integrations){:target="\_blank"}.
-1. Select **GitHub Actions**, and then click **Configure**.
-1. Define the arguments for the GitHub Action. [Review GitHub Action arguments](#codefresh-github-action-integration-arguments). 
-  * For the **CF_API_KEY**, click **Generate**. Note down the token generated.
-  * To create a container registry integration if you don't have one, click **Create Container Registry Integration**, and then select the one to add. See the Related articles for links to container registry documentation.
-  * To create a Jira integration, click **Create Atlassian Jira Integration**, and then configure the settings. See [Jira integration]({{site.baseurl}}/docs/integrations/jira/).
-1. Enter this token in GitHub Actions [as a secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) with the name `CF_API_KEY`.  
-  Now you can reference it in all GitHub pipelines as you would any other secret.
 
 {% include image.html 
 lightbox="true" 
@@ -68,10 +40,6 @@ caption="GitHub Action integration for image enrichment"
 max-width="50%"
 %}
 
-{:start="5"}
-1. To generate the manifest for the report image action, click **Generate Manifest** above the argument list.
-1. In the generated manifest, add the required fields and values.
-1. Click **Copy** and then paste the copied snippet into the GitHub Actions pipeline. See the example below for guidelines.
 
 ### GitHub Actions pipeline example
 
@@ -144,7 +112,6 @@ jobs:
           CF_JIRA_PROJECT_PREFIX: "CR"
         uses: codefresh-io/codefresh-report-image@latest
         
-'
         
 {% endraw %}
 {% endhighlight yaml %}
