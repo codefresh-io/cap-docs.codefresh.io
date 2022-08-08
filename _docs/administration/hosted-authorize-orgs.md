@@ -1,5 +1,5 @@
 ---
-title: "Authorize organizations"
+title: "Authorize organizations/projects"
 description: ""
 group: runtime
 toc: true
@@ -14,14 +14,14 @@ Request or grant access to the organizations defined for the OAuth Codefresh app
 1. Go to your profile in GitHub, and then select **Settings**.
 1. From the sidebar, select **Applications**, and then click the **Authorized OAuth Apps** tab.
 1. Click the **Codefresh** application. 
-1. In the list of organizations that appears, click **Request** or **Grant**, for every organization to authorize as relevant. 
+1. In the list of organizations that appears, for every organization you need to authorize, click **Request** or **Grant**, as relevant. 
 
 {% include
 image.html
 lightbox="true"
 file="/images/administration/authorize-github-oauth-apps.png"
 url="/images/administration/authorize-github-oauth-apps.png"
-alt="Authoize "
-caption="Runtime components for hosted runtime"
+alt="Authorize Codefresh organizations in GitHub"
+caption="Authorize Codefresh organizations in GitHub"
 max-width="70%"
 %}
