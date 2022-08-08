@@ -90,8 +90,8 @@
   links:
     - title: Image enrichment with integrations
       localurl: /docs/integrations/image-enrichment-overview/
-    - title: GitHub Actions
-      localurl: /docs/integrations/github-actions/
+    - title: CI integrations
+      localurl: /docs/integrations/ci-integrations/
     - title: JIRA tracking
       localurl: /docs/integrations/jira/
     - title: Quay Registry

@@ -5,39 +5,56 @@ group: integration
 toc: true
 ---
 
-Codefresh Hosted GitOps can be used with any popular Continuous Integration (CI) solution, not just with Codefresh CI.
+Codefresh's Hosted GitOps can be used with any popular Continuous Integration (CI) solution, not just with Codefresh CI.
 
-You can connect any external CI solution to Codefresh, such as GitHub Actions for example, to take care of common CI tasks such as building/testing/scanning source code, with Codefresh Hosted GitOps still responsible for the deployment, including image enrichment and reporting.  
+You can connect an external CI solution to Codefresh, such as GitHub Actions for example, to take care of common CI tasks such as building/testing/scanning source code, with Codefresh Hosted GitOps still responsible for the deployment, including image enrichment and reporting.  
 See [Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/).
 
 ### Codefresh image reporting and enrichment action
-To support the integration between Codefresh and third-party CI tools, we have created dedicated actions for each tool in the Codefresh Marketplace. The actions combine image enrichment and reporting through integrations with Jira, and container registries.
+To support the integration between Codefresh and third-party CI platforms and tools, we have created dedicated actions for supported CI tools in the Codefresh Marketplace. The actions combine image enrichment and reporting through integrations with issue tracking and container registry tools. 
 
-[Codefresh marketplace](https://github.com/marketplace/actions/codefresh-report-image){:target="\_blank"}. 
+>You can also use the action directly from the Codefresh UI, as described in [Connect a CI platform/tool to Codefresh](#connect-a-ci-platform-tool-to-Codefresh).
 
 
-Use the action in the following manner:
+Use the action as follows:
 
 1. Create your pipeline with your CI platform/tool as you usually do.
-1. Use any existing CI actions for compiling code, running unit tests, security scanning etc.
+1. Use existing CI actions for compiling code, running unit tests, security scanning etc.
 1. Place the final action in the pipeline as the "report image" action provided by Codefresh.  
   See:  
-  ??
-  
-1. When the pipeline completes execution, Codefresh retrieves the information on the image that was built and its metadata (essentially the same
-data that Codefresh CI would send automatically).
-1. View the image in Codefresh in the [Images dashboard]({{site.baseurl}}/docs/deployment/images/), and in any [GitOps deployment]({{site.baseurl}}/docs/deployment/applications-dashboard/) in which it is used.
+ [GitHub Action Codefresh report image](https://github.com/marketplace/actions/codefresh-report-image){:target="\_blank"}.  
+ [Codefresh Classic Codefresh report image](https://codefresh.io/steps/step/codefresh-report-image){:target="\_blank"}.    
+1. When the pipeline completes execution, Codefresh retrieves the information on the image that was built and its metadata through the integration names specified (essentially the same data that Codefresh CI would send automatically).
+1. View the image in Codefresh in the [Images dashboard]({{site.baseurl}}/docs/deployment/images/), and in any [application]({{site.baseurl}}/docs/deployment/applications-dashboard/) in which it is used.
 
 ### Connect a CI platform/tool to Codefresh
+Connecting the CI platform/tool to Codefresh includes configuring the required arguments and then adding the YAML manifest for the report image to your pipeline.  
+
+1. In the Codefresh UI, go to [Integrations](https://g.codefresh.io/2.0/account-settings/integrations){:target="\_blank"}.
+1. Filter by **CI tools**, select the CI tool, and click **Add**.
+1. Define the arguments for the CI tool:
+  [Codefresh Classic]({{site.baseurl}}/docs/integrations/codefresh-classic/)  
+  [GitHub Action]({{site.baseurl}}/docs/integrations/github-action/)
+  [Jenkins]({{site.baseurl}}/docs/integrations/jenkins/)
+1. To generate a YAML snippet with the integration arguments, click **Generate Manifest** on the top-right. 
+1. To copy the YAML manifest, click **Copy**.
+
+{% include image.html 
+lightbox="true" 
+file="/images/integrations/classic/classic-manifest.png" 
+url="/images/integrationsclassic/classic-manifest.png"
+alt="Example of manifest generated for Codefresh Classic"
+caption="Example of manifest generated for Codefresh Classic"
+max-width="50%"
+%}
+
+{:start="6"}
+1. Paste it as the last step in your CI pipeline.
+
+
+### Related articles
 
 
 
 
-### GtiHub Actions arguments
-
-
-### Jenkins arguments
-
-
-### Codefresh Classic arguments
 

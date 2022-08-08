@@ -104,10 +104,17 @@
   pages:
     - title: Image enrichment with integrations
       url: "/image-enrichment-overview"
+    - title: CI integrations
+      url: "/image-enrichment-overview"
+      sub-pages:
+        - title: Codefresh Classic
+          url: "/codefresh-classic"
+        - title: GitHub Actions
+          url: "/github-actions"
+        - title: Jenkins
+          url: "/jenkins"   
     - title: Jira tracking
       url: "/jira"
-    - title: GitHub Actions
-      url: "/github-actions"
     - title: Quay Registry
       url: "/quay"
     - title: Docker Hub Registry
