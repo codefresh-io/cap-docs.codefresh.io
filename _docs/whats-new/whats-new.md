@@ -24,7 +24,7 @@ What it also means is easy set up and zero maintenance overhead.
 Read on for a summary of what you get with Hosted GitOps.  
 
 **Hosted runtime**  
-Hosted GitOps supports hosted runtimes. The runtime is hosted on a Codefresh cluster and managed by Codefresh. Once you initialize runtime provisioning in the Home dashboard, Codefresh completes the installation and  guides you through the three-step process of setting up your hosted environment. Read more in [Hosted runtime](#hosted-runtime).  
+Hosted GitOps supports hosted runtimes. The runtime is hosted on a Codefresh cluster and managed by Codefresh. Codefresh guides you through the three-step process of setting up your hosted environment. Read more in [Hosted runtime](#hosted-runtime).  
 
 **Dashboards for visibility and traceability**  
 Here's a recap of Codefresh dashbaords, including a brand new dashboard dedicated to DORA metrics:
