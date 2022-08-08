@@ -24,13 +24,13 @@ What it also means is easy set up and zero maintenance overhead.
 Read on for a summary of what you get with Hosted GitOps.  
 
 **Hosted runtime**  
-Hosted GitOps supports hosted runtimes. The runtime is hosted on a Codefresh cluster and managed by Codefresh. Once you initialize runtime provisioning in the Home dashbaord, Codefresh completes the instalation and  guides you through the three-step process of setting up your hosted environment. Read more in [Hosted runtime](#hosted-runtime).  
+Hosted GitOps supports hosted runtimes. The runtime is hosted on a Codefresh cluster and managed by Codefresh. Once you initialize runtime provisioning in the Home dashboard, Codefresh completes the installation and  guides you through the three-step process of setting up your hosted environment. Read more in [Hosted runtime](#hosted-runtime).  
 
 **Dashboards for visibility and traceability**  
 Here's a recap of Codefresh dashbaords, including a brand new dashboard dedicated to DORA metrics:
-Home dashboard: For global analytics and system-wide deployment highlights, start with the Home dashboard.  
-DORA metrics: A _new_ dashboard for DORA metrics and DevOps quantification. Read more in [DORA metrics](#dora-metrics).  
-Applications dashboard: Easily track deployments and visualize rolllouts across clusters and runtimes in the Applications dashbaord.  
+* Home dashboard: For global analytics and system-wide deployment highlights, start with the Home dashboard.  
+* DORA metrics: A _new_ dashboard for DORA metrics and DevOps quantification. Read more in [DORA metrics](#dora-metrics).  
+* Applications dashboard: Easily track deployments and visualize rolllouts across clusters and runtimes in the Applications dashbaord.  
  
 **Application lifecycle management**  
 Manage the entire application lifecycle directly in Codefresh, from creating, editing, and deleting applications.  
@@ -89,7 +89,7 @@ See [DORA metrics]({{site.baseurl}}/docs/reporting/dora-metrics/).
 {:/}
 
 #### Integrations for image enrichment
-If you have our Hosted GitOps for CD and a different tool for CI, you can continue to enrich images, ehile retaining your CI tools. Allow Codefresh to retreive and report the image information in your deployments by connecting your CI tools to Codefresh. Connect CI tools, issue tracking tools, container registeries, and more.
+If you have our Hosted GitOps for CD and a different tool for CI, you can continue to enrich images, retaining your CI tools. Allow Codefresh to retrieve and report the image information in your deployments by connecting your CI tools to Codefresh. Connect CI tools, issue tracking tools, container registries, and more.
 
 
 This release introduces our integration offering, starting with: 
@@ -185,7 +185,7 @@ User Settings include an option to allow Codefresh support personnel account acc
     max-width="80%"
 %}
 
-See [Enable access for Codefresh support]({{site.baseurl}}/docs/administration/user-settings/#enable-access-for-codefresh-support) 
+See [Enable access for Codefresh support]({{site.baseurl}}/docs/administration/user-settings/#enable-access-for-codefresh-support).
 
 {::nomarkdown}
 <br>
