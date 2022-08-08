@@ -105,7 +105,7 @@
     - title: Image enrichment with integrations
       url: "/image-enrichment-overview"
     - title: CI integrations
-      url: "/image-enrichment-overview"
+      url: "/ci-integrations"
       sub-pages:
         - title: Codefresh Classic
           url: "/codefresh-classic"
