@@ -134,13 +134,13 @@ The name of the Git provider to use for the runtime and the account.
 
 * CLI wizard and Silent install: Add the `--provider` flag, and define the provider name as either `gitlab`, `bitbucket-server` or `github`.
 
-**Repository URLs**  
+**Repository URL**  
 The `HTTPS` clone URL of the Git repository, or project in GitLab, including the `.git` suffix in which to install the runtime, in the format:  
 `https://<host>/<owner_reponame>.git[/subdirectory][?ref=branch]`  
 where:  
-`<host>/<owner_reponame>.git` is the Git server followed by the username/organization and the name of the repo, identical to the HTTPS clone URL.  For example, `https://github.com/codefresh-io/docs.codefresh.io.git`  
-[/subdirectory] (optional) is the path to a subdirectory within the repo. Whn omitted, the runtime is installed in the root of the repository.  For example, `/docs/images`  
-[?ref=branch] (optional) is the `ref` queryParam to select a specific branch. When omitted, the runtime is installed in the default branch. For example,  `codefresh-prod`
+* `<host>/<owner_reponame>.git` is the Git server followed by the username/organization and the name of the repo, identical to the HTTPS clone URL.  For example, `https://github.com/codefresh-io/docs.codefresh.io.git`.  
+* `[/subdirectory]` (optional) is the path to a subdirectory within the repo. Whn omitted, the runtime is installed in the root of the repository.  For example, `/docs/images`.  
+* `[?ref=branch]` (optional) is the `ref` queryParam to select a specific branch. When omitted, the runtime is installed in the default branch. For example,  `codefresh-prod`.  
 
 > For GitLab, you must create the group with access to the project prior to the installation.
 
