@@ -2,11 +2,12 @@
 title: "Docker Hub Registry"
 description: "Push, Pull and Deploy images from Dockerhub"
 group: integrations
+sub-group: container-registries
 toc: true
 ---
 
 Codefresh has native support for interacting with Docker Hub registries.  
-Adding a Docker Hub integration in Codefresh allows you to reference the integration in external tools such as GitHub Actions by the name of the integration account, instead of explicit credentials. See [Image enrichment overview]({{site.baseurl}}/docs/integrations/image-enrichment-overview/) and [GitHub Action integration]({{site.baseurl}}/docs/integrations/github-actions/).
+For information on adding a Docker Hub integration in Codefresh, see [Container registry integrations]({{site.baseurl}}/docs/integrations/container-registries/) .
 
 ### Prerequisites
 Before you configure settings in Codefresh to integrate Docker Hub registry, do the following:
@@ -15,19 +16,17 @@ Before you configure settings in Codefresh to integrate Docker Hub registry, do 
 * (Optional)[Enable 2FA (Two-Factor Authentication)](https://docs.docker.com/docker-hub/2fa/){:target="\_blank"}
 * [Create a personal account token](https://docs.docker.com/docker-hub/access-tokens/){:target="\_blank"}
 
-### Configure Docker Hub integration in Codefresh
-Once you have completed the prerequisites, configure the Docker Hub integration settings in Codefresh.  
- 
-1. In the Codefresh UI, go to [Integrations](https://g.codefresh.io/2.0/account-settings/integrations){:target="\_blank"}. 
-1. Select **Docker Hub Docker Registry**, and then click **Add**.
-1. Click **Add** on the top-right. 
-1. Configure the Docker Hub integration settings: 
-  * Enter an **Integration name**. You can have multiple Docker Hub instances connected.
-  * Use this integration for **All runtimes**, or specific **Selected runtimes**.
-  * **Username**: The Docker Hub username.
-  * **Password**: 
-    If you enabled two-factor authentication, enter the personal access token for your Docker Hub account for Codefresh to push images. Personal access tokens are more secure and can be revoked when needed. Codefresh can then push your images.  
-    If two-factor authentication is not enabled, enter the password of your Docker Hub account (not recommended).
+### Docker Hub integration settings in Codefresh
+The table describes the arguments required to integrate Docker Hub to Codefresh.  
+
+{: .table .table-bordered .table-hover}
+| Setting    | Description     | Required/Optional/Default |
+| ----------  |  -------- | ------------------------- |
+| **Integration name**       | A friendly name for the integration. This is the name you will reference in the CI platform/tool. |
+| **All Runtimes/Selected Runtimes**   | {::nomarkdown} The runtimes in the account with which to share integration resource. The integration resource is created in the Git repository with the shared configuration, within <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">resources</span>. The exact location depends on whether the integration is shared with all or specific runtimes: <br><ul><li>All runtimes: Created in <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">resources/all-runtimes-all-clusters/</span></li><li>Selected runtimes: Created in <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">resources/runtimes/<runtime-name>/</span></li></ul> You can reference the Docker Hub integration in the CI tool. {:/}|
+| **Username**       | The Docker Hub username.|
+| **Password**       |  If you enabled two-factor authentication, enter the personal access token for your Docker Hub account for Codefresh to push images. Personal access tokens are more secure and can be revoked when needed. Codefresh can then push your images. If two-factor authentication is not enabled, enter the password of your Docker Hub account (not recommended).|
+   
 
     {% include 
    image.html 
@@ -39,18 +38,9 @@ Once you have completed the prerequisites, configure the Docker Hub integration 
    max-width="50%" 
    %}
    
-{:start="5"}
-1. To confirm, click **Commit**.
-  It may take a few moments for the new integration to be synced to the cluster before it appears in the list.
-
-### Integration resource in shared configuration repo
-The integration resource is created in the Git repository with the shared configuration, within `resources`. The exact location depends on whether the integration is shared with all or specific runtimes:  
-
-* All runtimes: Created in `resources/all-runtimes-all-clusters/`
-* Selected runtimes: Created in `resources/runtimes/<runtime-name>/`
 
 ### Related articles
 [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/)  
-[Images]({{site.baseurl}}/docs/deployment/images/)  
-[Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/)    
-[Add Git sources to runtimes]({{site.baseurl}}/docs/runtime/git-sources/)  
+[Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/)
+[CI integrations]({{site.baseurl}}/docs/integrations/ci-integrations/)  
+

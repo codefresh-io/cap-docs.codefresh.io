@@ -1,7 +1,8 @@
 ---
 title: "Jenkins"
 description: ""
-group: integration
+group: integrations
+sub_group: ci-integrations
 toc: true
 ---
 

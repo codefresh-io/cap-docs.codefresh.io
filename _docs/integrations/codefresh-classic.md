@@ -1,7 +1,8 @@
 ---
 title: "Codefresh Classic"
 description: ""
-group: integration
+group: integrations
+sub-group: ci-integrations
 toc: true
 ---
 
@@ -69,7 +70,7 @@ reportImage:
      # String starting with the issue ID to associate with image
      CF_JIRA_MESSAGE: '[issue-id]'
 
-{% endraw %}'
+{% endraw %}
 {% endhighlight yaml %}
 
 ### Codefresh Classic integration logs

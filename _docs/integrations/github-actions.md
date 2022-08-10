@@ -1,7 +1,8 @@
 ---
 title: "GitHub Actions"
-description: "Connect your GitHub Actions pipelines to Codefresh"
+description: ""
 group: integrations
+sub-group: ci-integrations
 toc: true
 ---
 

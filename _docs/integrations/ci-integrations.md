@@ -1,7 +1,7 @@
 ---
 title: "CI integrations"
 description: ""
-group: integration
+group: integrations
 toc: true
 ---
 
@@ -32,9 +32,9 @@ Connecting the CI platform/tool to Codefresh includes configuring the required a
 
 1. In the Codefresh UI, go to [Integrations](https://g.codefresh.io/2.0/account-settings/integrations){:target="\_blank"}.
 1. Filter by **CI tools**, select the CI tool, and click **Configure**.
-1. Define the arguments for the CI tool:
+1. Define the arguments for the CI tool:  
   [Codefresh Classic]({{site.baseurl}}/docs/integrations/codefresh-classic/)  
-  [GitHub Action]({{site.baseurl}}/docs/integrations/github-action/)
+  [GitHub Action]({{site.baseurl}}/docs/integrations/github-action/)  
   [Jenkins]({{site.baseurl}}/docs/integrations/jenkins/)
 1. To generate a YAML snippet with the arguments, click **Generate Manifest** on the top-right. 
 1. In the generated manifest, add fields and values, as needed.

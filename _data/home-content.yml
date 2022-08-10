@@ -90,14 +90,20 @@
   links:
     - title: Image enrichment with integrations
       localurl: /docs/integrations/image-enrichment-overview/
-    - title: CI integrations
-      localurl: /docs/integrations/ci-integrations/
+    - title: Codefresh Classic
+      localurl: /docs/integrations/codefresh-classic/
+    - title: GitHub Actions
+      localurl: /docs/integrations/github-actions/
+    - title: Jenkins
+      localurl: /docs/integrations/jenkins/
     - title: JIRA tracking
       localurl: /docs/integrations/jira/
-    - title: Quay Registry
-      localurl: /docs/integrations/quay/
     - title: Docker Hub Registry
       localurl: /docs/integrations/dockerhub/
+    - title: JFrog Artifactory
+      localurl: /docs/integrations/jfrog/
+    - title: Quay Registry
+      localurl: /docs/integrations/quay/
 
 
 - title: Administration
