@@ -300,6 +300,9 @@ Optional. Integrate Codefresh with the third-party tools you use for CI to enric
 
 [Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/) 
 
-### What to read next
-[Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/)
+### Related articles
+[Manage provisioned runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/)  
+[Add Git Sources to runtimes]({{site.baseurl}}/docs/runtime/git-sources/)  
+[Home dashboard]({{site.baseurl}}/docs/reporting/home-dashboard/) 
+[DORA metrics]({{site.baseurl}}/docs/reporting/dora-metrics/)
 

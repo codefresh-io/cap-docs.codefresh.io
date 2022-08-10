@@ -340,7 +340,8 @@ data:
 #### Git integration registration
 
 If you bypassed installing ingress resources with the `--skip-ingress` flag, or if AWS ALB is your ingress controller, create and register Git integrations using these commands:  
-  `cf integration git add default --runtime <RUNTIME-NAME> --api-url <API-URL>`
+  `cf integration git add default --runtime <RUNTIME-NAME> --api-url <API-URL>`  
+  
   `cf integration git register default --runtime <RUNTIME-NAME> --token <RUNTIME-AUTHENTICATION-TOKEN>`  
 
 ### Related articles
