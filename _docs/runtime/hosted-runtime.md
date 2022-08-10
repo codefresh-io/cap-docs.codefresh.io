@@ -304,5 +304,5 @@ Optional. Integrate Codefresh with the third-party tools you use for CI to enric
 [Manage provisioned runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/)  
 [Add Git Sources to runtimes]({{site.baseurl}}/docs/runtime/git-sources/)  
 [Home dashboard]({{site.baseurl}}/docs/reporting/home-dashboard/)  
-[DORA metrics]({{site.baseurl}}/docs/reporting/dora-metrics/)  
+[DORA metrics]({{site.baseurl}}/docs/reporting/dora-metrics/)
 
