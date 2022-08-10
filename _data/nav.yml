@@ -115,13 +115,16 @@
           url: "/jenkins"   
     - title: Jira tracking
       url: "/jira"
-    - title: CI integrations
-      url: "/ci-integrations"
+    - title: Container registries
+      url: "/container-registries"
       sub-pages:  
-      - title: Quay Registry
-        url: "/quay"
       - title: Docker Hub Registry
         url: "/dockerhub"
+      - title: JFrog Artifactory
+        url: "/jfrog" 
+      - title: Quay Registry
+        url: "/quay"
+
 
 
 - title: Administration
