@@ -54,9 +54,20 @@ max-width="80%"
 {:start="2"}
 1. Do the following:  
   * In the Codefresh UI, go to [**Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}, and click **+ Add Runtimes**.
-  * Select **Hosted Runtime**.
-  >An account can be provisioned with a single hosted runtime. If you have already provisioned a hosted runtime for your account, the Hosted Runtime button notifies you of the same.
+  * Select **Hosted Runtime** and click **Add**.
+  >An account can be provisioned with a single hosted runtime. If you have already provisioned a hosted runtime for your account, the Hosted Runtime option is disabled.
   * Continue from _step 3_. 
+
+{% include
+image.html
+lightbox="true"
+file="/images/runtime/hosted-install-later.png"
+url="/images/runtime/hosted-install-later.png"
+alt="Install hosted runtime"
+caption="Install hosted runtime"
+max-width="40%"
+%}
+
 
 {:start="3"}
 1. When complete, to view the components for the hosted runtime, click **View Runtime**.
@@ -74,7 +85,7 @@ max-width="70%"
 
 > The Git Sources and the Managed Clusters are empty as they will be set up in the next steps.  
 
-If you navigate to **Runtimes > List View**, the Cluster/Namespace column displays Codefresh, and the Module column displays CD Ops, indicating a hosted runtime.
+If you navigate to **Runtimes > List View**, you can identify the hosted runtime through the Type column (Hosted ), the Cluster/Namespace column (Codefresh), and the Module column (CD Ops).
 
 {% include
 image.html

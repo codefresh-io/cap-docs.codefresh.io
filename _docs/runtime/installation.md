@@ -190,7 +190,7 @@ For more information, see [Creating records by using the Amazon Route 53 console
   max-width="30%"
 %}
 
-#### Cconfigure cluster routing service
+#### Configure cluster routing service
 
 If you bypassed installing ingress resources with the `--skip-ingress` flag, configure the `host` for the Ingress, or the VirtualService for Istio if used, to route traffic to the `app-proxy` and `webhook` services, as in the examples below.  
 
