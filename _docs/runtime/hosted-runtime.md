@@ -126,7 +126,10 @@ max-width="70%"
 
 
 ### 2. Connect Git provider
-Connect your hosted runtime to a Git provider for Codefresh to creates the required Git repos.  First authorize access to your Git provider through an OAuth token, and then select the Git organization or account in which to create the required Git repos.  
+Connect your hosted runtime to a Git provider for Codefresh to create the required Git repos.  First authorize access to your Git provider through an OAuth token, and then select the Git organizations or accounts in which to create the required Git repos.  
+
+>Only authorized organizations are displayed in the list. To authorize organizations for the Codefresh application in GitHub, see [Authorize organizations/projects]({{site.baseurl}}/docs/administration/hosted-authorize-orgs/).
+
 
 {% include
 image.html
@@ -169,6 +172,7 @@ max-width="40%"
 
 {:start="3"}
 1. Select the **Git Organization for which to create the repos**.
+  >If the organization does not appear in the list, you need to authorize access to it. See [Authorize organizations/projects]({{site.baseurl}}/docs/administration/hosted-authorize-orgs/).
 1. Click **Create**.
   Codefresh creates the two Git repositories in the paths shown.
 
@@ -303,6 +307,6 @@ Optional. Integrate Codefresh with the third-party tools you use for CI to enric
 ### Related articles
 [Manage provisioned runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/)  
 [Add Git Sources to runtimes]({{site.baseurl}}/docs/runtime/git-sources/)  
-[Home dashboard]({{site.baseurl}}/docs/reporting/home-dashboard/)  
+[Home dashboard]({{site.baseurl}}/docs/reporting/home-dashboard/)   
 [DORA metrics]({{site.baseurl}}/docs/reporting/dora-metrics/)
 
