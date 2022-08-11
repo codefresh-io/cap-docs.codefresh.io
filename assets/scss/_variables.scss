@@ -8,9 +8,9 @@ $cf-border-color: #d6e2e4;
 
 // Local docs variables
 $bd-white:         $white !default;
-$bd-black:         #000 !default;
+$bd-black:        red !default;
 
-$bd-purple:        #563d7c !default;
+$bd-purple:        #6c2ec9 !default;
 $bd-purple-bright: lighten(saturate($bd-purple, 5%), 15%) !default;
 $bd-purple-light:  lighten(saturate($bd-purple, 5%), 45%) !default;
 $bd-dark:          #231f20 !default;
