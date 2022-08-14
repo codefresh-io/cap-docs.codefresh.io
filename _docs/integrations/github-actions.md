@@ -1,12 +1,12 @@
 ---
 title: "GitHub Actions"
-description: "Connect your GitHub Actions pipelines to Codefresh"
+description: ""
 group: integrations
 toc: true
 ---
 
-Codefresh Hosted GitOps can be used with any popular Continuous Integration (CI) solution, not just with Codefresh CI.  
-GitHub Actions is one of the external CI solutions that you can connect to Codefresh. 
+Use Codefresh Hosted GitOps with any popular Continuous Integration (CI) solution, not just with Codefresh CI.  
+GitHub Actions is one of the third-party CI solutions that you can connect to Codefresh. 
 
 For information on how to use the image reporting action in your GitHub Action pipeline and how to configure the integration, see [CI Integrations]({{site.baseurl}}/docs/integrations/ci-integrations/).
 
@@ -135,7 +135,7 @@ max-width="50%"
 
 The Run column includes the link to the build files for the actions.  
 
-Here are examples of the build file for the GitHub Action (top) and of the Codefresh report image step in the action (below).
+Here are examples of the build file for the GitHub Action (top) and of the Codefresh report image step in the action (down).
 
 {% include image.html 
 lightbox="true" 
