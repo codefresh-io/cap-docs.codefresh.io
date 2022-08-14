@@ -40,6 +40,7 @@ caption="GitHub Action integration for image enrichment"
 max-width="50%"
 %}
 
+For how-to instructions, see [Connect a CI platform/tool to Codefresh]({{site.baseurl}}/docs/integrations/ci-integrations/#connect-a-thrird-party-ci-tool-to-Codefresh).  
 
 ### GitHub Actions pipeline example
 
