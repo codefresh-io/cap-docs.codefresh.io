@@ -91,19 +91,19 @@
     - title: Image enrichment with integrations
       localurl: /docs/integrations/image-enrichment-overview/
     - title: Codefresh Classic
-      localurl: /docs/integrations/codefresh-classic/
+      localurl: /docs/integrations/ci/codefresh-classic/
     - title: GitHub Actions
-      localurl: /docs/integrations/github-actions/
+      localurl: /docs/integrations/ci/github-actions/
     - title: Jenkins
-      localurl: /docs/integrations/jenkins/
+      localurl: /docs/integrations/ci/jenkins/
     - title: JIRA tracking
       localurl: /docs/integrations/jira/
     - title: Docker Hub Registry
-      localurl: /docs/integrations/dockerhub/
+      localurl: /docs/integrations/registries/dockerhub/
     - title: JFrog Artifactory
-      localurl: /docs/integrations/jfrog/
+      localurl: /docs/integrations/registries/jfrog/
     - title: Quay Registry
-      localurl: /docs/integrations/quay/
+      localurl: /docs/integrations/registries/quay/
 
 
 - title: Administration
