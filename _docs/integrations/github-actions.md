@@ -6,7 +6,7 @@ toc: true
 ---
 
 Use Codefresh Hosted GitOps with any popular Continuous Integration (CI) solution, not just with Codefresh CI.  
-GitHub Actions is one of the third-party CI solutions that you can connect to Codefresh. 
+GitHub Actions is one of the third-party CI solutions that you can connect to Codefresh for deployment with image reporting and enrichment. 
 
 For information on how to use the image reporting action in your GitHub Action pipeline and how to configure the integration, see [CI Integrations]({{site.baseurl}}/docs/integrations/ci-integrations/).
 
