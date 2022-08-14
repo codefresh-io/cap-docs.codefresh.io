@@ -26,7 +26,7 @@ The table describes the arguments required to connect GitHub Action to Codefresh
 | `CF_IMAGE`                    | The path to the image to enrich and report to Codefresh.  | Required  |
 | `CF_WORKFLOW_NAME`           | The name assigned to the workflow that builds the image. When defined, the name is displayed in the Codefresh platform. Example, `Staging step` | Optional  |
 | `CF_GIT_BRANCH`              | The Git branch with the commit.  | Required  |
-| `CF_GITHUB_TOKEN`            | The GitHub PAT (Personal Access Token) to use for Git integration. The token must have `repo` scope. See [Git tokens]({{site.baseurl}}/docs/reference/git-tokens/). | Required  |
+| `CF_GITHUB_TOKEN`            | Github authentication token -> defaults to `{{secrets.GITHUB_TOKEN}}`. | Required  |
 | `CF_JIRA_PROJECT_PREFIX`     | Relevant only when `CF_JIRA_INTEGRATION` is defined. The Jira project prefix that identifies the ticket number for which to retrieve information.  | Required  |
 | `CF_JIRA_MESSAGE`            | Relevant only when `CF_JIRA_INTEGRATION` is defined. The Jira issue (the issue ID and the string describing the issue) for the `CF_JIRA_PROJECT_PREFIX` to associate with the image.  | Required  |
 | `CF_JIRA_FAIL_ON_NOT_FOUND`            | Relevant only when `CF_JIRA_INTEGRATION` is defined. The report image action when the `CF_JIRA_MESSAGE` is not found. When set to `true`, the report image action is failed.  | Required  |
