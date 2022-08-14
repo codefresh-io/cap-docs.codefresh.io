@@ -35,6 +35,7 @@ See:
  
 * Container registries  
   [DockerHub]({{site.baseurl}}/docs/integrations/dockerhub/)  
+  [JFrog Artifactory]({{site.baseurl}}/docs/integrations/jfrog/)  
   [Quay]({{site.baseurl}}/docs/integrations/quay/)  
 
 We are working on supporting integrations for more tools. Stay tuned for the release announcements.  
@@ -45,25 +46,19 @@ For image enrichment with a tool that is as yet unsupported, you must define the
 Connect a CI platform/tool to Codefresh with an API token for the runtime cluster, the integration accounts, and image information for enrichment and reporting. 
 
 See:  
+[Codefresh Classic]({{site.baseurl}}/docs/integrations/codefresh-classic/)  
 [GitHub Actions]({{site.baseurl}}/docs/integrations/github-actions/)
-[Jenkins]
-[Codefresh Classic]()
+[Jenkins]({{site.baseurl}}/docs/integrations/jenkins/)
 
 
 #### 3. Add the enrichment step for the CI platform/tool to your GitHub Actions pipeline 
 
 Finally, add the enrichment step to your CI pipeline with the API token and integration information. Codefresh uses the integration name to get the corresponding Sealed Secret to securely access and retrieve the information for image enrichment.  
 
-See [Example of GitHub Action pipeline with image enrichment](#example-of-github-action-pipeline-with-image-enrichment) in this article.
-
-
 
 #### 4. View enriched image information
 Once deployed, view enriched information in the dashboards:  
-
-
 * [Images](https://g.codefresh.io/2.0/images){:target="\_blank"}  
-
 * [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}  
 
 

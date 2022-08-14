@@ -1,13 +1,13 @@
 ---
 title: "Docker Hub Registry"
-description: "Push, Pull and Deploy images from Dockerhub"
+description: ""
 group: integrations
 sub-group: container-registries
 toc: true
 ---
 
-Codefresh has native support for interacting with Docker Hub registries.  
-For information on adding a Docker Hub integration in Codefresh, see [Container registry integrations]({{site.baseurl}}/docs/integrations/container-registries/) .
+Codefresh has native support for interacting with Docker Hub registries, to push, pull, and deploy images from Docker Hub.  
+For information on adding a Docker Hub integration in Codefresh, see [Container registry integrations]({{site.baseurl}}/docs/integrations/container-registries/).
 
 ### Prerequisites
 Before you configure settings in Codefresh to integrate Docker Hub registry, do the following:
@@ -20,12 +20,14 @@ Before you configure settings in Codefresh to integrate Docker Hub registry, do 
 The table describes the arguments required to integrate Docker Hub to Codefresh.  
 
 {: .table .table-bordered .table-hover}
-| Setting    | Description     | Required/Optional/Default |
-| ----------  |  -------- | ------------------------- |
-| **Integration name**       | A friendly name for the integration. This is the name you will reference in the CI platform/tool. |
+| Setting    | Description     | 
+| ----------  |  -------- | 
+| **Integration name**       | A friendly name for the integration. This is the name you will reference in the third-party CI platform/tool. |
 | **All Runtimes/Selected Runtimes**   | {::nomarkdown} The runtimes in the account with which to share integration resource. The integration resource is created in the Git repository with the shared configuration, within <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">resources</span>. The exact location depends on whether the integration is shared with all or specific runtimes: <br><ul><li>All runtimes: Created in <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">resources/all-runtimes-all-clusters/</span></li><li>Selected runtimes: Created in <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">resources/runtimes/<runtime-name>/</span></li></ul> You can reference the Docker Hub integration in the CI tool. {:/}|
 | **Username**       | The Docker Hub username.|
 | **Password**       |  If you enabled two-factor authentication, enter the personal access token for your Docker Hub account for Codefresh to push images. Personal access tokens are more secure and can be revoked when needed. Codefresh can then push your images. If two-factor authentication is not enabled, enter the password of your Docker Hub account (not recommended).|
+| **Test connection**       | Click to verify that you can connect to the specified instance before you commit changes. |
+|
    
 
     {% include 
@@ -38,6 +40,7 @@ The table describes the arguments required to integrate Docker Hub to Codefresh.
    max-width="50%" 
    %}
    
+For how-to instructions, see [Configure container registry integrations in Codefresh]({{site.baseurl}}/docs/integrations/container-registries/#configure-container-registry-integrations-in-codefresh) and [Edit/delete container registry integrations in Codefresh]({{site.baseurl}}/docs/integrations/container-registries/#edit-delete-container-registry-integrations-in-codefresh).  
 
 ### Related articles
 [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/)  

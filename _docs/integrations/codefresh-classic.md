@@ -35,7 +35,7 @@ The table describes the arguments required to connect Codefresh Classic to Codef
 | `CF_JIRA_MESSAGE`            | Relevant only when `CF_JIRA_INTEGRATION` is defined. The Jira issue IDs matching the string to associate with the image.  | Required  |
 | `CF_JIRA_FAIL_ON_NOT_FOUND`            | Relevant only when `CF_JIRA_INTEGRATION` is defined. The report image action when the `CF_JIRA_MESSAGE` is not found. When set to `true`, the report image action is failed.  | Required  |
 
-For how-to instructions, see [Connect a CI platform/tool to Codefresh]({{site.baseurl}}/docs/integrations/ci-integrations/#connect-a-thrird-party-ci-tool-to-Codefresh).  
+For how-to instructions, see [Connect a CI platform/tool to Codefresh]({{site.baseurl}}/docs/integrations/ci-integrations/#connect-a-third-party-ci-platform-tool-to-codefresh).  
 
 
 ### Example of report image step in Codefresh Classic pipeline 
@@ -77,7 +77,7 @@ reportImage:
 {% endhighlight yaml %}
 
 ### Codefresh Classic integration logs
-View and analyze logs for nCodefresh Classic workflows through the Logs tab. When a Codefresh Classic pipeline is run, it is added to the Logs tab.  
+View and analyze logs for Codefresh Classic workflows through the Logs tab. When a Codefresh Classic pipeline is run, it is added to the Logs tab.  
 You can:  
 * Filter by status or by date range to view a subset of actions
 * Navigate to the build file in Codefresh Classic, and view the Codefresh report image step
