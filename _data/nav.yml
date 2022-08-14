@@ -108,22 +108,22 @@
       url: "/ci-integrations"
       sub-pages:
         - title: Codefresh Classic
-          url: "/ci/codefresh-classic"
+          url: "/codefresh-classic"
         - title: GitHub Actions
-          url: "/ci/github-actions"
+          url: "/github-actions"
         - title: Jenkins
-          url: "ci/jenkins"   
+          url: "/jenkins"   
     - title: Jira tracking
       url: "/jira"
     - title: Container registries
       url: "/container-registries"
       sub-pages:  
       - title: Docker Hub Registry
-        url: "/registries/dockerhub"
+        url: "/dockerhub"
       - title: JFrog Artifactory
-        url: "/registries/jfrog" 
+        url: "/jfrog" 
       - title: Quay Registry
-        url: "/registries/quay"
+        url: "/quay"
 
 
 
