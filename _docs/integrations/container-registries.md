@@ -1,5 +1,5 @@
 ---
-title: "Docker registry integrations"
+title: "Container registry integrations"
 description: ""
 group: integrations
 toc: true
