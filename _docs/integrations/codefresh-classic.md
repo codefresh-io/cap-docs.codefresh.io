@@ -6,7 +6,7 @@ sub-group: ci-integrations
 toc: true
 ---
 
- Hosted GitOps can be used with any popular Continuous Integration (CI) solution, not just with Codefresh CI. Codefresh Classic is one of the external CI platform/tools that you can connect to Codefresh for image enrichment and reporting. 
+ Use Hosted GitOps with any popular Continuous Integration (CI) solution, not just with Codefresh CI. Codefresh Classic is one of the third-party CI platform/tools that you can connect to Codefresh for deployment with image enrichment and reporting. 
 
 For information on how to use the image reporting action in your Codefresh Classic pipeline and how to configure the integration, see [CI Integrations]({{site.baseurl}}/docs/integrations/ci-integrations/). 
 
@@ -34,6 +34,9 @@ The table describes the arguments required to connect Codefresh Classic to Codef
 |`CF_JIRA_PROJECT_PREFIX` | Relevant only when `CF_JIRA_INTEGRATION` is defined. The Jira project prefix that identifies the ticket number to use.| Required|
 | `CF_JIRA_MESSAGE`            | Relevant only when `CF_JIRA_INTEGRATION` is defined. The Jira issue IDs matching the string to associate with the image.  | Required  |
 | `CF_JIRA_FAIL_ON_NOT_FOUND`            | Relevant only when `CF_JIRA_INTEGRATION` is defined. The report image action when the `CF_JIRA_MESSAGE` is not found. When set to `true`, the report image action is failed.  | Required  |
+
+For how-to instructions, see [Connect a CI platform/tool to Codefresh]({{site.baseurl}}/docs/integrations/ci-integrations/#connect-a-thrird-party-ci-tool-to-Codefresh).  
+
 
 ### Example of report image step in Codefresh Classic pipeline 
 
@@ -92,7 +95,7 @@ max-width="50%"
 
 The Run column includes the link to the pipeline in Codefresh Classic.  
 
-Here is an example of the pipeline build  in Codefresh Classic with the Enrich image for CSDP step (top) and the log (below). 
+Here is an example of the pipeline build  in Codefresh Classic with the Enrich image for CSDP step (top) and the log (down). 
 
 {% include image.html 
 lightbox="true" 

@@ -6,9 +6,10 @@ sub_group: ci-integrations
 toc: true
 ---
 
- Hosted GitOps can be used with any popular Continuous Integration (CI) solution, not just with Codefresh CI. Jenkins is one of the external CI platform/tools that you can connect to Codefresh for image enrichment and reporting. 
+ Use Hosted GitOps with any popular Continuous Integration (CI) solution, not just with Codefresh CI. Jenkins is one of the third-party CI platform/tools that you can connect to Codefresh for deployment with image enrichment and reporting. 
 
-For information on how to use the image reporting action in your Jenkins pipeline and how to configure the integration in Codefresg, see [CI Integrations]({{site.baseurl}}/docs/integrations/ci-integrations/).
+For information on how to use the image reporting action in your Jenkins pipeline and how to configure the integration, see [CI Integrations]({{site.baseurl}}/docs/integrations/ci-integrations/). 
+
 
 
 ### Jenkins-Codefresh integration arguments
@@ -35,6 +36,8 @@ The table describes the arguments to connect Codefresh Classic to Codefresh.
 |`CF_JIRA_PROJECT_PREFIX` | Relevant only when `CF_JIRA_INTEGRATION` is defined. The Jira project prefix that identifies the ticket number to use.| Required|
 | `CF_JIRA_MESSAGE`            | Relevant only when `CF_JIRA_INTEGRATION` is defined. The Jira issue IDs matching the string to associate with the image.  | Required  |
 | `CF_JIRA_FAIL_ON_NOT_FOUND`            | Relevant only when `CF_JIRA_INTEGRATION` is defined. The report image action when the `CF_JIRA_MESSAGE` is not found. When set to `true`, the report image action is failed.  | Required  |
+
+For how-to instructions, see [Connect a CI platform/tool to Codefresh]({{site.baseurl}}/docs/integrations/ci-integrations/#connect-a-thrird-party-ci-tool-to-Codefresh).  
 
 
 ### Example of Jenkins pipeline with report image step
@@ -135,16 +138,7 @@ You can:
 
 The Run column includes the link to the pipeline in Jenkins.  
 
-Here is an example of the pipeline build in Jenkins with the Enrich image for CSDP step (top) and the log (below). 
-
-{% include image.html 
-lightbox="true" 
-file="/images/integrations/classic/classic-pipeline-enrich-step.png" 
-url="/images/integrations/classic/classic-pipeline-enrich-step.png"
-alt="Codefresh Classic pipeline with Codefresh enrich image step"
-caption="Codefresh Classic pipeline with Codefresh enrich image step"
-max-width="50%"
-%}
+Here is an example of the Jenkins log for the pipeline with the report image step. 
 
 {% include image.html 
 lightbox="true" 
