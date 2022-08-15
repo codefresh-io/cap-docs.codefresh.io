@@ -98,6 +98,8 @@
       localurl: /docs/integrations/ci-integrations/jenkins/
     - title: Jira 
       localurl: /docs/integrations/issue-tracking/jira/
+    - title: Amazon ECR
+      localurl: /docs/integrations/container-registries/amazon-ecr/    
     - title: Docker Hub Registry
       localurl: /docs/integrations/container-registries/dockerhub/
     - title: JFrog Artifactory

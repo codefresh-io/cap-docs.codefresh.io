@@ -13,7 +13,7 @@ See [Image enrichment with integrations]({{site.baseurl}}/docs/integrations/imag
 ### Codefresh image reporting and enrichment action
 To support the integration between Codefresh and third-party CI platforms and tools, we have created dedicated actions for supported CI tools in the Codefresh Marketplace. These actions combine image enrichment and reporting through integrations with issue tracking and container registry tools. 
 
->You can also configure the integration directly in the Codefresh UI, as described in [Connect a third-party CI platform/tool to Codefresh](##connect-a-third-party-ci-platformtool-to-codefresh).
+>You can also configure the integration directly in the Codefresh UI, as described in [Connect a third-party CI platform/tool to Codefresh](#connect-a-third-party-ci-platformtool-to-codefresh).
 
 
 Use the action as follows:
@@ -22,8 +22,8 @@ Use the action as follows:
 1. Use existing CI actions for compiling code, running unit tests, security scanning etc.
 1. Place the final action in the pipeline as the "report image" action provided by Codefresh.  
   See:  
- [GitHub Action Codefresh report image](https://github.com/marketplace/actions/codefresh-report-image){:target="\_blank"}.  
- [Codefresh Classic Codefresh report image](https://codefresh.io/steps/step/codefresh-report-image){:target="\_blank"}.    
+ [GitHub Action Codefresh report image](https://github.com/marketplace/actions/codefresh-report-image){:target="\_blank"}
+ [Codefresh Classic Codefresh report image](https://codefresh.io/steps/step/codefresh-report-image){:target="\_blank"}   
 1. When the pipeline completes execution, Codefresh retrieves the information on the image that was built and its metadata through the integration names specified (essentially the same data that Codefresh CI would send automatically).
 1. View the image in Codefresh's [Images dashboard]({{site.baseurl}}/docs/deployment/images/), and in any [application]({{site.baseurl}}/docs/deployment/applications-dashboard/) in which it is used.
 

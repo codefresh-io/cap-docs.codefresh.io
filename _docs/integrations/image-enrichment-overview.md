@@ -41,8 +41,7 @@ For image enrichment with a tool that is as yet unsupported, you must define the
 #### 2. Connect CI platform/tool to Codefresh
 
 Connect a CI platform/tool to Codefresh with an API token for the runtime cluster, the integration accounts, and image information for enrichment and reporting. 
-
-See:  
+ 
 [Codefresh Classic]({{site.baseurl}}/docs/integrations/ci-integrations/codefresh-classic/)  
 [GitHub Actions]({{site.baseurl}}/docs/integrations/ci-integrations/github-actions/)  
 [Jenkins]({{site.baseurl}}/docs/integrations/ci-integrations/jenkins/)
@@ -71,6 +70,6 @@ View:
 
 
 ### Related articles
-[Images]({{site.baseurl}}/docs/deployment/images/)
+[Images]({{site.baseurl}}/docs/deployment/images/)  
 [Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/)
 

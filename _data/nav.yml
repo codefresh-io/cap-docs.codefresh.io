@@ -121,6 +121,8 @@
     - title: Container registries
       url: "/container-registries"
       sub-pages:  
+      - title: Amazon ECR
+        url: "/amazon-ecr"      
       - title: Docker Hub Registry
         url: "/dockerhub"
       - title: JFrog Artifactory
