@@ -2,7 +2,7 @@
 title: "Amazon ECR"
 description: ""
 group: integrations
-sub-group: container-registries
+sub_group: container-registries
 toc: true
 ---
 
@@ -45,3 +45,4 @@ For how-to instructions, see [Configure container registry integrations in Codef
 [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/)  
 [Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/)
 [CI integrations]({{site.baseurl}}/docs/integrations/ci-integrations/)  
+[Issue-tracking]({{site.baseurl}}/docs/integrations/issue-tracking/)  

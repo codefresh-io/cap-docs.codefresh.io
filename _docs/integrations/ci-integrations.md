@@ -33,11 +33,11 @@ Connecting the CI platform/tool to Codefresh from the UI includes configuring th
 1. In the Codefresh UI, go to [Integrations](https://g.codefresh.io/2.0/account-settings/integrations){:target="\_blank"}.
 1. Filter by **CI tools**, select the CI tool, and click **Add**.
 1. Define the arguments for the CI tool:  
-  [Codefresh Classic]({{site.baseurl}}/docs/integrations/codefresh-classic/)  
-  [GitHub Action]({{site.baseurl}}/docs/integrations/github-action/)  
-  [Jenkins]({{site.baseurl}}/docs/integrations/jenkins/)  
+  [Codefresh Classic]({{site.baseurl}}/docs/integrations/ci-integrations/codefresh-classic/)  
+  [GitHub Action]({{site.baseurl}}/docs/integrations/ci-integrations/github-action/)  
+  [Jenkins]({{site.baseurl}}/docs/integrations/ci-integrations/jenkins/)  
 
-  For the general list of arguments, see [CI integration argument reference](#ci-integration-argument-reference) later in this article.
+  For the complete list of arguments you can use, see [CI integration argument reference](#ci-integration-argument-reference) later in this article.
 
 1. To generate a YAML snippet with the arguments, on the top-right, click **Generate Manifest**. 
 1. In the generated manifest, add fields and values, as needed.
@@ -65,7 +65,7 @@ The table describes _all_ the arguments required for CI integrations in general.
 | `CF_RUNTIME_NAME`       | The runtime to use for the integration. If you have more than one runtime, select the runtime from the list. | Required  |
 | `CF_API_KEY`            | The API key for authentication. Generate the key for the integration.  | Required  |
 | `CF_CONTAINER_REGISTRY_INTEGRATION` | The name of the container registry integration created in Codefresh where the image is stored. See [Container registry integrations]({{site.baseurl}}/docs/integrations/container-registries/). | Optional  |
-| `CF_JIRA_INTEGRATION`               | The name of the issue tracking integration created in Codefresh to use to enrich the image. Relevant only if Jira enrichment is required for the image. See [Jira integration]({{site.baseurl}}/docs/integrations/jira/).  | Optional  |
+| `CF_JIRA_INTEGRATION`               | The name of the issue tracking integration created in Codefresh to use to enrich the image. Relevant only if Jira enrichment is required for the image. See [Jira integration]({{site.baseurl}}/docs/integrations/issue-tracking/jira/).  | Optional  |
 | `CF_IMAGE`                    | The image to be enriched and reported in Codefresh. Pass the `[account-name]/[image-name]:[tag]` built in your CI. | Required  |
 | `CF_WORKFLOW_NAME`           | The name assigned to the workflow that builds the image. When defined, the name is displayed in the Codefresh platform. Example, `Staging step` | Optional  |
 | `CF_GIT_BRANCH`              | The Git branch with the commit and PR (pull request) data to add to the image. Pass the Branch from the event payload used to trigger your action.  | Required  |
@@ -82,7 +82,7 @@ The table describes _all_ the arguments required for CI integrations in general.
 
 ### Related articles
 [Container registry integrations]({{site.baseurl}}/docs/integrations/container-registries/)  
-[Jira integrations]({{site.baseurl}}/docs/integrations/jira/)  
+[Issue tracking]({{site.baseurl}}/docs/integrations/issue-tracking/)  
 
 
 

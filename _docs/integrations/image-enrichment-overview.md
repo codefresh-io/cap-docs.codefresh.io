@@ -31,12 +31,13 @@ When you add an integration, Codefresh creates a Sealed Secret with the integrat
 
 See:  
 * Issue tracking  
-  [JIRA]({{site.baseurl}}/docs/integrations/jira/) 
+  [JIRA]({{site.baseurl}}/docs/integrations/issue-tracking/jira/) 
  
 * Container registries  
-  [DockerHub]({{site.baseurl}}/docs/integrations/dockerhub/)  
-  [JFrog Artifactory]({{site.baseurl}}/docs/integrations/jfrog/)  
-  [Quay]({{site.baseurl}}/docs/integrations/quay/)  
+  [Amazon ECR]({{site.baseurl}}/docs/integrations/container-registries/amazon-ecr/)  
+  [DockerHub]({{site.baseurl}}/docs/integrations/container-registries/dockerhub/)  
+  [JFrog Artifactory]({{site.baseurl}}/docs/integrations/container-registries/jfrog/)  
+  [Quay]({{site.baseurl}}/docs/integrations/container-registries/quay/)  
 
 We are working on supporting integrations for more tools. Stay tuned for the release announcements.  
 For image enrichment with a tool that is as yet unsupported, you must define the explicit credentials. 
@@ -46,9 +47,9 @@ For image enrichment with a tool that is as yet unsupported, you must define the
 Connect a CI platform/tool to Codefresh with an API token for the runtime cluster, the integration accounts, and image information for enrichment and reporting. 
 
 See:  
-[Codefresh Classic]({{site.baseurl}}/docs/integrations/codefresh-classic/)  
-[GitHub Actions]({{site.baseurl}}/docs/integrations/github-actions/)
-[Jenkins]({{site.baseurl}}/docs/integrations/jenkins/)
+[Codefresh Classic]({{site.baseurl}}/docs/integrations/ci-integrations/codefresh-classic/)  
+[GitHub Actions]({{site.baseurl}}/docs/integrations/ci-integrations/github-actions/)
+[Jenkins]({{site.baseurl}}/docs/integrations/ci-integrations/jenkins/)
 
 
 #### 3. Add the enrichment step for the CI platform/tool to your GitHub Actions pipeline 
@@ -70,7 +71,6 @@ View:
 * Jira issues, status and details for each deployment
 
 
-### Related articles
-[Images]({{site.baseurl}}/docs/deployment/images/)  
-[Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/) 
+
+
 

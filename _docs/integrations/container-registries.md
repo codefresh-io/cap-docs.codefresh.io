@@ -26,10 +26,10 @@ Configure the settings for a container registry integration in Codefresh.
 1. Filter by **Container Registry**, select the container registry, and click **Configure**.
 1. If you already have integrations, click **Add**.
 1. Define the arguments for the container registry: 
-  [Amazon ECR]({{site.baseurl}}/docs/integrations/amazon-ecr/)   
-  [Docker Hub]({{site.baseurl}}/docs/integrations/dockerhub/)   
-  [JFrog Artifactory]({{site.baseurl}}/docs/integrations/jfrog/)  
-  [Quay]({{site.baseurl}}/docs/integrations/quay/)
+  [Amazon ECR]({{site.baseurl}}/docs/integrations/container-registries/amazon-ecr/)   
+  [Docker Hub]({{site.baseurl}}/docs/integrations/container-registries/dockerhub/)   
+  [JFrog Artifactory]({{site.baseurl}}/docs/integrations/container-registries//jfrog/)  
+  [Quay]({{site.baseurl}}/docs/integrations/container-registries/quay/)  
 1. To test the connection to the container registry before committing the changes, click **Test Connection**.
 1. To confirm, click **Commit**.
   It may take a few moments for the new integration to be synced to the cluster before it appears in the list.

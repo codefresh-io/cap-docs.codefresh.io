@@ -2,7 +2,7 @@
 title: "Quay Registry"
 description: ""
 group: integrations
-sub-group: container-registries
+sub_group: container-registries
 toc: true
 ---
 
@@ -15,24 +15,18 @@ Adding a Quay integration allows you to reference the integration in external CI
 1. [Create a Redhat/Quay account at Quay](https://quay.io/).
 1. Optional. For Codefresh integration, [create a robot account](https://docs.quay.io/glossary/robot-accounts.html).
 
-### Configure Quay integration in Codefresh
-Once you have created a Redhat or Quay, configure the Quay integration settings in Codefresh.  
+### Quay integration settings in Codefresh
 
-**Before you begin**  
-Make sure you have the:  
-* Quay domain username
-* Quay domain-encrypted password or that of the robot account
+The table describes the arguments required to integrate Quay in Codefresh.  
 
-**How to**  
-1. In the Codefresh UI, go to [Integrations](https://g.codefresh.io/2.0/account-settings/integrations){:target="\_blank"}. 
-1. Select **Quay Docker Registry**, and then click **Add**.
-1. Click **Add** on the top-right. 
-1. Configure the Quay integration settings:
-  * Enter an **Integration name**. You can have multiple Quay instances connected.
-  * Use this integration for **All runtimes**, or specific **Selected runtimes**.
-  * Set the **Domain** to `quay.io`.
-  * **Username**: The Quay.io username.
-  * **Password**: The Quay.io encrypted password, or robot account if you created one.
+{: .table .table-bordered .table-hover}
+| Setting    | Description     | 
+| ----------  |  -------- | 
+| **Integration name**       | A friendly name for the integration. This is the name you will reference in the third-party CI platform/tool. |
+| **All Runtimes/Selected Runtimes**   | {::nomarkdown} The runtimes in the account with which to share the integration resource. The integration resource is created in the Git repository with the shared configuration, within <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">resources</span>. The exact location depends on whether the integration is shared with all or specific runtimes: <br><ul><li>All runtimes: Created in <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">resources/all-runtimes-all-clusters/</span></li><li>Selected runtimes: Created in <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">resources/runtimes/<runtime-name>/</span></li></ul> You can reference the Docker Hub integration in the CI tool. {:/}|
+|**Domain**| Set to `quay.io`.|
+|**Username**| The Quay.io username.|
+|**Password**| The Quay.io encrypted password, or robot account if you created one.|
 
  {% include image.html 
  lightbox="true" 
@@ -42,18 +36,16 @@ Make sure you have the:
   caption="Quay Docker Registry integration settings in Codefresh"
   max-width="50%"
   %}
-{:start="5"}
-1. To confirm, click **Commit**.
-  It may take a few moments for the new integration to be synced to the cluster before it appears in the list.
 
-### Integration resource in shared configuration repo
-The integration resource is created in the Git repository with the shared configuration, within `resources`. The exact location depends on whether the integration is shared with all or specific runtimes:  
+For how-to instructions, see [Configure container registry integrations in Codefresh]({{site.baseurl}}/docs/integrations/container-registries/#configure-container-registry-integrations-in-codefresh) and [Edit/delete container registry integrations in Codefresh]({{site.baseurl}}/docs/integrations/container-registries/#edit-delete-container-registry-integrations-in-codefresh).  
 
-* All runtimes: Created in `resources/all-runtimes-all-clusters/`
-* Selected runtimes: Created in `resources/runtimes/<runtime-name>/`
+Make sure you have the:  
+* Quay domain username
+* Quay domain-encrypted password or that of the robot account
 
-### What to read next  
-[Shared runtime configuration]({{site.baseurl}}/docs/reference/shared-configuration/)  
-[Images in Codefresh]({{site.baseurl}}/docs/deployment/images/)  
-[Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/)    
-[Add Git sources to runtimes]({{site.baseurl}}/docs/runtime/git-sources/)  
+
+### Related articles
+[Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/)  
+[Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/)
+[CI integrations]({{site.baseurl}}/docs/integrations/ci-integrations/)  
+[Issue-tracking]({{site.baseurl}}/docs/integrations/issue-tracking/)  

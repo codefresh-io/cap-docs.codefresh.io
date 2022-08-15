@@ -2,18 +2,14 @@
 title: "JFrog Artifactory integration"
 description: ""
 group: integrations
-sub-group: container-registries
+sub_group: container-registries
 toc: true
 ---
 
 Codefresh has native support for interacting with JFrog Artifactory.  
-For information on adding a JFrog Artifactory integration in Codefresh, see [Container registry integrations]({{site.baseurl}}/docs/integrations/container-registries/) .
+For information on adding a JFrog Artifactory integration in Codefresh, see [Container registry integrations]({{site.baseurl}}/docs/integrations/container-registries/).
 
 
-### Prerequisites
-Before you configure settings in Codefresh to integrate JFrog Artifactory, do the following:
-
-??
 
 ### JFrog Artifactory integration settings in Codefresh
 The table describes the arguments required to integrate Docker Hub to Codefresh.  

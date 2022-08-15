@@ -2,11 +2,11 @@
 title: "Docker Hub Registry"
 description: ""
 group: integrations
-sub-group: container-registries
+sub_group: container-registries
 toc: true
 ---
 
-Codefresh has native support for interacting with Docker Hub registries, to push, pull, and deploy images from Docker Hub.  
+Codefresh has native support for interacting with Docker Hub registries, to push, pull, and deploy images.  
 For information on adding a Docker Hub integration in Codefresh, see [Container registry integrations]({{site.baseurl}}/docs/integrations/container-registries/).
 
 ### Prerequisites
@@ -46,4 +46,5 @@ For how-to instructions, see [Configure container registry integrations in Codef
 [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/)  
 [Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/)
 [CI integrations]({{site.baseurl}}/docs/integrations/ci-integrations/)  
+[Issue-tracking]({{site.baseurl}}/docs/integrations/issue-tracking/)  
 

@@ -113,8 +113,11 @@
           url: "/github-actions"
         - title: Jenkins
           url: "/jenkins"   
-    - title: Jira tracking
-      url: "/jira"
+    - title: Issue tracking
+      url: "/issue-tracking"
+      sub-pages:  
+      - title: Jira 
+        url: "/jira"
     - title: Container registries
       url: "/container-registries"
       sub-pages:  
