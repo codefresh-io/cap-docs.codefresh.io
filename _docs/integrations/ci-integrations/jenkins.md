@@ -151,4 +151,7 @@ max-width="50%"
 %}
 
 ### Related articles
-[Image enrichment with integrations]({{site.baseurl}}/docs/integrations/ci-integrations/)
+[Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/)  
+[Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/)  
+[Container registry integrations]({{site.baseurl}}/docs/integrations/container-registries/)  
+[Issue-tracking integrations]({{site.baseurl}}/docs/integrations/issue-tracking/)  

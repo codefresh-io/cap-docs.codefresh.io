@@ -12,12 +12,8 @@ Image enrichment is a crucial part of the CI/CD process, adding to the quality o
 
 If you have your CI tools and our Hosted GitOps, you can still enrich and report images to the Codefresh platform with no disruptions to existing CI processes and flows.  
 
-Codefresh has new report images templates, optimized to work with external CI tools/plaforms for creating pipelines and workflows. Add integration accounts in Codefresh to tools such as Jira, Docker Hub and Quay, and then connect your CI tool with Codefresh for image enrichment and reporting.  
+Codefresh has new report images templates, optimized to work with third-party CI tools/plaforms for creating pipelines and workflows. Add integration accounts in Codefresh to tools such as Jira, Docker Hub and Quay, and then connect your CI tool with Codefresh for image enrichment and reporting.  
 
-Codefresh  popular CI tools including:
-* GitHub Actions
-* Jenkins
-* Codefresh Classic [report image template](https://github.com/marketplace/actions/codefresh-report-image){:target="\_blank"} that combines image enrichment and reporting. 
 
 
 ### CI integration flow for image enrichment
@@ -48,7 +44,7 @@ Connect a CI platform/tool to Codefresh with an API token for the runtime cluste
 
 See:  
 [Codefresh Classic]({{site.baseurl}}/docs/integrations/ci-integrations/codefresh-classic/)  
-[GitHub Actions]({{site.baseurl}}/docs/integrations/ci-integrations/github-actions/)
+[GitHub Actions]({{site.baseurl}}/docs/integrations/ci-integrations/github-actions/)  
 [Jenkins]({{site.baseurl}}/docs/integrations/ci-integrations/jenkins/)
 
 
@@ -56,11 +52,14 @@ See:
 
 Finally, add the enrichment step to your CI pipeline with the API token and integration information. Codefresh uses the integration name to get the corresponding Sealed Secret to securely access and retrieve the information for image enrichment.  
 
+ [GitHub Action Codefresh report image](https://github.com/marketplace/actions/codefresh-report-image){:target="\_blank"}.  
+ [Codefresh Classic Codefresh report image](https://codefresh.io/steps/step/codefresh-report-image){:target="\_blank"}. 
+
 
 #### 4. View enriched image information
-Once deployed, view enriched information in the dashboards:  
-* [Images](https://g.codefresh.io/2.0/images){:target="\_blank"}  
-* [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}  
+Once deployed, view enriched information in the Codefresh UI:  
+* Go to [Images](https://g.codefresh.io/2.0/images){:target="\_blank"}
+* Go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}  
 
 
 View:  
@@ -71,6 +70,7 @@ View:
 * Jira issues, status and details for each deployment
 
 
-
-
+### Related articles
+[Images]({{site.baseurl}}/docs/deployment/images/)
+[Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/)
 

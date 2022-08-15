@@ -35,7 +35,7 @@ The table describes the arguments required to connect Codefresh Classic to Codef
 | `CF_JIRA_MESSAGE`            | Relevant only when `CF_JIRA_INTEGRATION` is defined. The Jira issue IDs matching the string to associate with the image.  | Required  |
 | `CF_JIRA_FAIL_ON_NOT_FOUND`            | Relevant only when `CF_JIRA_INTEGRATION` is defined. The report image action when the `CF_JIRA_MESSAGE` is not found. When set to `true`, the report image action is failed.  | Required  |
 
-For how-to instructions, see [Connect a CI platform/tool to Codefresh]({{site.baseurl}}/docs/integrations/ci-integrations/#connect-a-third-party-ci-platform-tool-to-codefresh).  
+For how-to instructions, see [Connect a CI platform/tool to Codefresh]({{site.baseurl}}/docs/integrations/ci-integrations/#connect-a-third-party-ci-platform-tool-to-codefresh/).  
 
 
 ### Example of report image step in Codefresh Classic pipeline 
@@ -116,4 +116,7 @@ max-width="50%"
 %}
 
 ### Related articles
-[Image enrichment with integrations]({{site.baseurl}}/docs/integrations/ci-integrations/)
+[Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/)  
+[Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/)  
+[Container registry integrations]({{site.baseurl}}/docs/integrations/container-registries/)  
+[Issue-tracking integrations]({{site.baseurl}}/docs/integrations/issue-tracking/)  

@@ -1,5 +1,5 @@
 ---
-title: "Jira tracking"
+title: "Jira"
 description: " "
 group: integrations
 sub_group: issue-tracking
@@ -9,12 +9,12 @@ toc: true
 
 Codefresh has native integration for Atlassian Jira, to enrich images with information from Jira. Codefresh can monitor a feature all the way from the ticket creation phase, up to when it is implemented and deployed to an environment.  
 
-Adding a Jira integration in Codefresh allows you to reference the integration in external CI tools such as GitHub Actions by the name of the integration account, instead of explicit credentials. See [Image enrichment overview]({{site.baseurl}}/docs/integrations/image-enrichment-overview/) and [GitHub Action integration]({{site.baseurl}}/docs/integrations/github-actions/).
+For information on adding a Jira integration in Codefresh, see [Issue-tracking integrations]({{site.baseurl}}/docs/integrations/issue-tracking/).
 
 
 ### Prerequisites
 
-1. Get your Jira instance credentials by following the [Atlassian documentation](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/).
+1. Get your Jira instance credentials by following the [Atlassian documentation](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/){:target="\_blank"}.
 1. Note down the following as you will need them to complete the integration with Codefresh:  
   * Jira URL
   * Jira username/email to be used for the integration

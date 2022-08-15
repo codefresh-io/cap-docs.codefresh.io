@@ -13,7 +13,7 @@ See [Image enrichment with integrations]({{site.baseurl}}/docs/integrations/imag
 ### Codefresh image reporting and enrichment action
 To support the integration between Codefresh and third-party CI platforms and tools, we have created dedicated actions for supported CI tools in the Codefresh Marketplace. These actions combine image enrichment and reporting through integrations with issue tracking and container registry tools. 
 
->You can also configure the integration directly in the Codefresh UI, as described in [Connect a CI platform/tool to Codefresh](#connect-a-ci-platform-tool-to-Codefresh).
+>You can also configure the integration directly in the Codefresh UI, as described in [Connect a third-party CI platform/tool to Codefresh](##connect-a-third-party-ci-platformtool-to-codefresh).
 
 
 Use the action as follows:
@@ -34,7 +34,7 @@ Connecting the CI platform/tool to Codefresh from the UI includes configuring th
 1. Filter by **CI tools**, select the CI tool, and click **Add**.
 1. Define the arguments for the CI tool:  
   [Codefresh Classic]({{site.baseurl}}/docs/integrations/ci-integrations/codefresh-classic/)  
-  [GitHub Action]({{site.baseurl}}/docs/integrations/ci-integrations/github-action/)  
+  [GitHub Action]({{site.baseurl}}/docs/integrations/ci-integrations/github-actions/)  
   [Jenkins]({{site.baseurl}}/docs/integrations/ci-integrations/jenkins/)  
 
   For the complete list of arguments you can use, see [CI integration argument reference](#ci-integration-argument-reference) later in this article.
@@ -82,7 +82,7 @@ The table describes _all_ the arguments required for CI integrations in general.
 
 ### Related articles
 [Container registry integrations]({{site.baseurl}}/docs/integrations/container-registries/)  
-[Issue tracking]({{site.baseurl}}/docs/integrations/issue-tracking/)  
+[Issue tracking intergrations]({{site.baseurl}}/docs/integrations/issue-tracking/)  
 
 
 

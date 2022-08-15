@@ -1,5 +1,5 @@
 ---
-title: "Quay Registry"
+title: "Quay"
 description: ""
 group: integrations
 sub_group: container-registries
@@ -12,8 +12,8 @@ Adding a Quay integration allows you to reference the integration in external CI
 
 ### Prerequisites
 
-1. [Create a Redhat/Quay account at Quay](https://quay.io/).
-1. Optional. For Codefresh integration, [create a robot account](https://docs.quay.io/glossary/robot-accounts.html).
+1. [Create a Redhat/Quay account at Quay](https://quay.io/){:target="\_blank"}.
+1. Optional. For Codefresh integration, [create a robot account](https://docs.quay.io/glossary/robot-accounts.html){:target="\_blank"}.
 
 ### Quay integration settings in Codefresh
 
@@ -37,7 +37,7 @@ The table describes the arguments required to integrate Quay in Codefresh.
   max-width="50%"
   %}
 
-For how-to instructions, see [Configure container registry integrations in Codefresh]({{site.baseurl}}/docs/integrations/container-registries/#configure-container-registry-integrations-in-codefresh) and [Edit/delete container registry integrations in Codefresh]({{site.baseurl}}/docs/integrations/container-registries/#edit-delete-container-registry-integrations-in-codefresh).  
+For how-to instructions, see [Configure container registry integrations in Codefresh]({{site.baseurl}}/docs/integrations/container-registries/#configure-container-registry-integrations-in-codefresh) and [Edit/delete container registry integrations in Codefresh]({{site.baseurl}}/docs/integrations/container-registries/#editdelete-container-registry-integrations-in-codefresh).  
 
 Make sure you have the:  
 * Quay domain username
@@ -46,6 +46,6 @@ Make sure you have the:
 
 ### Related articles
 [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/)  
-[Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/)
+[Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/)  
 [CI integrations]({{site.baseurl}}/docs/integrations/ci-integrations/)  
-[Issue-tracking]({{site.baseurl}}/docs/integrations/issue-tracking/)  
+[Issue-tracking integrations]({{site.baseurl}}/docs/integrations/issue-tracking/)  
