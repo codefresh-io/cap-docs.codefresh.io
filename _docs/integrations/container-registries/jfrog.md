@@ -12,9 +12,9 @@ For information on adding a JFrog Artifactory integration in Codefresh, see [Con
 
 
 ### JFrog Artifactory integration settings in Codefresh
-s
+
 {: .table .table-bordered .table-hover}
-| Setting    | Description     |
+| Setting    | Description  |
 | ----------  |  -------- | 
 | **Integration name**       | A friendly name for the integration. This is the name you will reference in the third-party CI platform/tool. |
 | **All Runtimes/Selected Runtimes**   | {::nomarkdown} The runtimes in the account with which to share integration resource. The integration resource is created in the Git repository with the shared configuration, within <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">resources</span>. The exact location depends on whether the integration is shared with all or specific runtimes: <br><ul><li>All runtimes: Created in <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">resources/all-runtimes-all-clusters/</span></li><li>Selected runtimes: Created in <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">resources/runtimes/<runtime-name>/</span></li></ul> {:/}|
@@ -22,6 +22,7 @@ s
 | **Username**       | The JFrog Artifactory username.|
 | **Password**       | The JFrog Artifactory password.|
 |**Test Connection** | Click to verify that you can connect to the specified instance before you commit changes. |
+
 
     {% include 
    image.html 
