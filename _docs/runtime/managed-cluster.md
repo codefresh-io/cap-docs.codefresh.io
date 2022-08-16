@@ -17,7 +17,7 @@ Adding a managed cluster via Codefresh ensures that Codefresh applies the requir
  
 
 ### Add a managed cluster with Codefresh CLI
-Add the external cluster to a provisioned runtime through the Codefresh CLI.  
+Add an external cluster to a provisioned runtime through the Codefresh CLI. When adding the cluster, you can also add labels and annotations to the cluster, which are added to the cluster secret created by Argo CD.
 Optionally, to first generate the YAML manifests, and then manually apply them, use the `dry-run` flag in the CLI. 
 
 **Before you begin**  
@@ -33,8 +33,10 @@ Make sure:
 1. Topology View: Select {::nomarkdown}<img src="../../../images/icons/add-cluster.png" display=inline-block/>{:/}.  
   List View: Select the **Managed Clusters** tab, and then select **+ Add Cluster**.  
 1. In the Add Managed Cluster panel, copy and run the command:  
-  `cf cluster add <runtime-name> [--dry-run]`  
+  `cf cluster add <runtime-name> [--labels label-key=label-value] [--annotations annotation-key=annotation-value][--dry-run]`  
   where:   
+  `--labels` is optional, and required to add labels to the cluster. When defined, add a label in the format `label-key=label-value`. Separate multiple labels with `commas`.   
+  `--labels` is optional, and required to add labels to the cluster. When defined, add a label in the format `label-key=label-value`. Separate multiple labels with `commas`.   
   `--dry-run` is optional, and required if you want to generate a list of YAML manifests that you can redirect and apply manually with `kubectl`.   
 
 
@@ -226,6 +228,13 @@ Install Argo Rollouts directly from Codefresh with a single click to visualize r
 	caption="Install Argo Rollouts"
   max-width="40%" 
 %}
+
+#### Define labels and annotations to a managed cluster
+Define labels and annotations for a managed cluster, and add them to the cluster secret created by Argo CD. Both labels and annotations are added as key-value pairs, separated by commas, if you are adding more than one label or annotation.
+
+> This functionality is supported in runtime version 0.0.462 and higher.
+
+1. 
 
 
 #### Remove a managed cluster from the Codefresh UI 
