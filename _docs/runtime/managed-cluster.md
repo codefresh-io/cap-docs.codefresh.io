@@ -35,9 +35,9 @@ Make sure:
 1. In the Add Managed Cluster panel, copy and run the command:  
   `cf cluster add <runtime-name> [--labels label-key=label-value] [--annotations annotation-key=annotation-value][--dry-run]`  
   where:   
-  `--labels` is optional, and required to add labels to the cluster. When defined, add a label in the format `label-key=label-value`. Separate multiple labels with `commas`.   
-  `--annotations` is optional, and required to add annotations to the cluster. When defined, add an annotation in the format `annotation-key=annotation-value`. Separate multiple annotations with `commas`.   
-  `--dry-run` is optional, and required if you want to generate a list of YAML manifests that you can redirect and apply manually with `kubectl`.   
+  * `--labels` is optional, and required to add labels to the cluster. When defined, add a label in the format `label-key=label-value`. Separate multiple labels with `commas`.   
+  * `--annotations` is optional, and required to add annotations to the cluster. When defined, add an annotation in the format `annotation-key=annotation-value`. Separate multiple annotations with `commas`.   
+  * `--dry-run` is optional, and required if you want to generate a list of YAML manifests that you can redirect and apply manually with `kubectl`.   
 
 
    {% include 
@@ -201,17 +201,23 @@ configMapGenerator:
         #   CONTEXT_NAME=<TARGET_CONTEXT_NAME>
         #   CLUSTER_NAME=$(kubectl config view --raw --flatten -o jsonpath='{.contexts[?(@.name == "'"${CONTEXT_NAME}"'")].context.cluster}')
         #   kubectl config view --raw --flatten -o jsonpath='{.clusters[?(@.name == "'"${CLUSTER_NAME}"'")].cluster.server}'
-      - "server=<server>"
-secretGenerator:
-  - name: csdp-add-cluster-secret
-    namespace: kube-system
-    behavior: merge
-    literals:
-        # csdpToken is the user's Personal Access Token
-      - "csdpToken=<csdpToken>"
+      - "server=https://<hash>.gr7.us-east-1.eks.amazonaws.com/"
+      - |
+        annotations=<key1: value1>
+        <key2.with.dots/and-backslash: value2 with: as:pace>
+      - |
+        labels=<and.another-one/field: value>
+        <label.key.with.long.name/field: some_long_value>
 
+secretGenerator:
+- behavior: merge
+  literals:
+  - csdpToken=<your-personal-token>
+  name: csdp-add-cluster-secret
+  namespace: kube-system
+ 
 resources:
-  - https://github.com/codefresh-io/cli-v2/manifests/add-cluster/kustomize?ref=v<runtimeVersion>
+  - https://github.com/codefresh-io/cli-v2/manifests/add-cluster/kustomize?ref=<runtimeVersion>
 ```
 
 
