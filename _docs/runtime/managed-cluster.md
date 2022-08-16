@@ -94,7 +94,7 @@ subjects:
 ---
 apiVersion: v1
 data:
-  contextName: <contextName>
+  contextName: <context-name>
   ingressUrl: <ingressUrl>
   server: <server>
 kind: ConfigMap
@@ -107,7 +107,7 @@ data:
   annotations: |
     <annotation-key1>:<annotation-value1>
     <annotation-key2>:<annotation-value2>
-  contextName: arn-aws-eks-us-70592156112-cluster-dev
+  contextName: <context-name>
   ingressUrl: ingressurl.com
   labels: |
     <label-key1>:<label-value1>
