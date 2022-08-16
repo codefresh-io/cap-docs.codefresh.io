@@ -36,7 +36,7 @@ Make sure:
   `cf cluster add <runtime-name> [--labels label-key=label-value] [--annotations annotation-key=annotation-value][--dry-run]`  
   where:   
   `--labels` is optional, and required to add labels to the cluster. When defined, add a label in the format `label-key=label-value`. Separate multiple labels with `commas`.   
-  `--labels` is optional, and required to add labels to the cluster. When defined, add a label in the format `label-key=label-value`. Separate multiple labels with `commas`.   
+  `--annotations` is optional, and required to add annotations to the cluster. When defined, add an annotation in the format `annotation-key=annotation-value`. Separate multiple annotations with `commas`.   
   `--dry-run` is optional, and required if you want to generate a list of YAML manifests that you can redirect and apply manually with `kubectl`.   
 
 
@@ -104,6 +104,15 @@ metadata:
 ---
 apiVersion: v1
 data:
+  annotations: |
+    <annotation-key1>:<annotation-value1>
+    <annotation-key2>:<annotation-value2>
+  contextName: arn-aws-eks-us-70592156112-cluster-dev
+  ingressUrl: ingressurl.com
+  labels: |
+    <label-key1>:<label-value1>
+    <label-key2>:<label-value2>
+  server: https://<hash>.gr7.us-east-1.eks.amazonaws.com/
   csdpToken: <csdpToken>
 kind: Secret
 metadata:
@@ -228,13 +237,6 @@ Install Argo Rollouts directly from Codefresh with a single click to visualize r
 	caption="Install Argo Rollouts"
   max-width="40%" 
 %}
-
-#### Define labels and annotations to a managed cluster
-Define labels and annotations for a managed cluster, and add them to the cluster secret created by Argo CD. Both labels and annotations are added as key-value pairs, separated by commas, if you are adding more than one label or annotation.
-
-> This functionality is supported in runtime version 0.0.462 and higher.
-
-1. 
 
 
 #### Remove a managed cluster from the Codefresh UI 
