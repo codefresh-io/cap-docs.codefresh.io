@@ -9,7 +9,32 @@ toc: true
 
 We launched the Codefresh platform in February this year. Built on Argo, the world’s most popular and fastest-growing open source software delivery, Codefresh unlocks the full enterprise potential of Argo Workflows, Argo CD, Argo Events, and Argo Rollouts, providing a control-plane for managing them at scale.
 
-This July release is all about Hosted GitOps.
+## August 2022
+
+### Features & enhancements
+
+Application Current State: events tab for resource details
+OAuth2 support for` Bitbucket and GitLab in hybrid runtimes
+Replace CF_HOST parameter with CF_RUNTIME_NAME [CR-13179]
+GitHub container registry
+GitHub Enterprise
+Labels and annotations to cluster
+Gitlab subgroups - (CR-13210)
+
+
+
+
+### Bug fixes
+Images: Filters not persisting wehn navigating from page (CR-11556)
+When trying to commit application from the ui, if application already exists in git-source you get commit failure (CR-12551)
+Workflow Template filter does not work for git source [CR-13515]
+gitlab adapter can't process "new branch pushed" event [CR-13480]
+Add validation for WORKFLOW_NAME variable [CR-12190]
+Align integration details in the UI [CR-13156]
+Integration are not deleted after uninstall runtime (secret and configmap are not exist)  [CR-13400]
+Fix Installation of argo rollouts failed on long name cluster CR-14000
+
+
 
 ## July 2022
 
