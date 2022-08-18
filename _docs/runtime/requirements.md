@@ -17,8 +17,8 @@ The requirements listed are the **_minimum_** requirements to provision **_hybri
 {: .table .table-bordered .table-hover}
 | Item                     | Requirement            |  
 | --------------         | --------------           |  
-|Kubernetes cluster      |  Server version 1.18 and higher, without Argo Project components. Tip:  To check the server version, run `kubectl version --short`.|
-| Ingress controller| Configured on Kubernetes cluster and exposed from the cluster.  {::nomarkdown} </br><ul><li>Ambassador</li><li>ALB (AWS Application Load Balancer)</li><li>NGINX Enterprise (nginx.org/ingress-controller)<br></li><li>NGINX Community (k8s.io/ingress-nginx)</li><li>Istio</li><li>Trafik</li></ul>{:/}. |
+|Kubernetes cluster      |  Server version 1.18 and higher, without Argo Project components. {::nomarkdown}<br>Tip:  To check the server version, run `kubectl version --short`.{:/}|
+| Ingress controller| Configured on Kubernetes cluster and exposed from the cluster.  {::nomarkdown}<ul><li>Ambassador</li><li>ALB (AWS Application Load Balancer)</li><li><a href="/#nginx-enterprise-configuration">NGINX Enterprise (nginx.org/ingress-controller)</a><br></li><li>NGINX Community (k8s.io/ingress-nginx)</li><li>Istio</li><li>Trafik</li></ul>{:/}. |
 |Node requirements| {::nomarkdown}<ul><li>Memory: 5000 MB</li><li>CPU: 2</li></ul>{:/}|
 |Runtime namespace | Resource permissions: |
 |                  | `ServiceAccount`: Create, Delete         |                             
@@ -28,7 +28,7 @@ The requirements listed are the **_minimum_** requirements to provision **_hybri
 |                  |`RoleBinding`: In group `rbac.authorization.k8s.io`: Create, Update, Delete  | 
 |                  | `persistentvolumeclaims`: Create, Update, Delete               |   
 |                  | `pods`: Create, Update, Delete               | 
-| Git providers    |{::nomarkdown}Hosted: <ul><li>GitHub</li></ul>Hybrid:<ul><li>GitHub</li><li>GitLab</li>Bitbucket Server</li><li>GitHub Enterprise</li></ul>{:/}|
+| Git providers    |{::nomarkdown}Hosted: <ul><li>GitHub</li></ul>Hybrid:<ul><li>GitHub</li><li>GitLab</li><li>Bitbucket Server</li><li>GitHub Enterprise</li></ul>{:/}|
 | Git access tokens    | {::nomarkdown}Runtime Git token:<ul><li>Valid expiration date</li><li>Scopes: `repo` and `admin-repo.hook`</li></ul>Personal access Git token:<ul><li>Valid expiration date</li><li>Scopes: `repo` and `admin-repo.hook`</li></ul></li></ul>{:/}|
 
 ### NGINX Enterprise configuration
