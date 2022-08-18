@@ -23,7 +23,7 @@ Optionally, to first generate the YAML manifests, and then manually apply them, 
 **Before you begin**  
 
   
-* For _hosted_: [Configure access to these IP addresses]({{site.baseurl}}/docs/administration/platform-ip-addresses/)
+* For _hosted_ runtimes: [Configure access to these IP addresses]({{site.baseurl}}/docs/administration/platform-ip-addresses/)
 * Verify that:
   * Your Git personal access token is valid and has the correct permissions
   * You have installed the latest version of the Codefresh CLI
