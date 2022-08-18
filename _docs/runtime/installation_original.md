@@ -28,38 +28,20 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
 
 ### Installing the hybrid runtime
 
-**Before you begin**
-* Make sure you meet the minimum requirements for runtime installation
-* Make sure your ingress controller is configured correctly:
-  * [NGINX Enterprise configuration]({{site.baseurl}}/docs/runtime/requirements/#nginx-enterprise-configuration)
-
-
-**How to**  
 1. Do one of the following:  
   * If this is your first hybrid runtime installation, in the Welcome page, select **+ Install Runtime**.
-  * If you have provisioned a hybrid runtime, to provision additional runtimes, in the Codefresh UI, go to [**Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
-1. Click **+ Add Runtimes**, and then select **Hybrid Runtimes**.
-1. Do one of the following:  
+  * If you have provisioned a hybrid runtime, to provision additional runtimes, in the Codefresh UI, go to [**Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}, and select **+ Add Runtimes**.
+1. Run:  
   * CLI wizard: Run `cf runtime install`, and follow the prompts to enter the required values.  
   * Silent install: Pass the required flags in the install command:  
     `cf runtime install <runtime-name> --repo <git-repo> --git-token <git-token> --silent`  
-  For the list of flags, see [Hybrid runtime installation flags](#hybrid-runtime-installation-flags).
-1. Complete the configuration for ingress controllers:
-  * [NGINX Ingress Operator: Patch certificate secret]({{site.baseurl}}/docs/runtime/requirements/#nginx-ingress-operator-patch-certificate-secret)
+  For the list of flags, see _Hybrid runtime flags_.
 
 > Note:  
 > Hybrid runtime installation starts by checking network connectivity and the K8s cluster server version.  
   To skip these tests, pass the `--skip-cluster-checks` flag.
 
-### Hybrid runtime installation flags
-This section describes the required and optional flags to install a hybrid runtime.
-For documentation purposes, the flags are grouped into:
-* Runtime flags, relating to runtime, cluster, and namespace requirements
-* Ingress controller flags, relating to ingress controller requirements
-* Git repository flags, relating to Git provider requirements
-
-
-####  Runtime flags
+#### Hybrid runtime flags
 
 **Runtime name**  
 Required.  
@@ -69,7 +51,7 @@ The runtime name must start with a lower-case character, and can include up to 6
 
 **Namespace resource labels**  
 Optional.  
-The label of the namespace resource to which you are installing the hybrid runtime. Labels are required to identity the networks that need access during installation, as is the case when using services meshes such as Istio for example.  
+The label of the namespace resource to which you are installing the hybrid runtime. You can add more than one label. Labels are required to identity the networks that need access during installation, as is the case when using services meshes such as Istio for example.  
 
 * CLI wizard and Silent install: Add the `--namespace-labels` flag, and define the labels in `key=value` format. Separate multiple labels with `commas`.
 
@@ -80,19 +62,9 @@ The cluster defined as the default for `kubectl`. If you have more than one Kube
 * CLI wizard: Select the Kube context from the list displayed.
 * Silent install: Explicitly specify the Kube context with the `--context` flag.
 
-**Shared configuration repository**
-The Git repository per runtime account with shared configuration manifests.  
-* CLI wizard and Silent install: Add the `--shared-config-repo` flag and define the path to the shared repo.  
-
-#### Ingress controller flags
-
-**Skip ingress**  
-Required, if you are using an unsupported ingress controller.  
-For unsupported ingress controllers, bypass installing ingress resources with the `--skip-ingress` flag.  
-In this case, after completing the installation, manually configure the cluster's routing service, and create and register Git integrations. See _Cluster routing service_ in [Post-installation configuration](#post-installation-configuration).
-
 **Ingress class**  
-Required if you have more than one ingress class configured on your cluster.  
+Required.  
+If you have more than one ingress class configured on your cluster:
 
 * CLI wizard: Select the ingress class for runtime installation from the list displayed.
 * Silent install: Explicitly specify the ingress class through the `--ingress-class` flag. Otherwise, runtime installation fails.  
@@ -105,11 +77,10 @@ The IP address or host name of the ingress controller component.
 * Silent install: Add the `--ingress-host` flag. If a value is not provided, takes the host from the ingress controller associated with the **Ingress class**.
   > Important: For AWS ALB, the ingress host is created post-installation. However, when prompted, add the domain name you will create in `Route 53` as the ingress host.  
 
-**Insecure ingress hosts**  
 SSL certificates for the ingress host:  
 If the ingress host does not have a valid SSL certificate, you can continue with the installation in insecure mode, which disables certificate validation.  
 
-* CLI wizard: Automatically detects and prompts you to confirm continuing the installation in insecure mode.  
+* CLI wizard: Automatically detects and prompts you to confirm continuing with the installation in insecure mode.  
 * Silent install: To continue with the installation in insecure mode, add the `--insecure-ingress-host` flag.  
 
 **Internal ingress host**  
@@ -121,8 +92,17 @@ For both CLI wizard and Silent install:
 * For existing installations, commit changes to the installation repository by modifying the `app-proxy ingress` and `<runtime-name>.yaml`  
   See _Internal ingress host configuration (optional for existing runtimes only)_ in [Post-installation configuration](#post-installation-configuration).
 
+**Ingress resources**  
+Optional.  
+If you have a different routing service (not NGINX), bypass installing ingress resources with the `--skip-ingress` flag.  
+In this case, after completing the installation, manually configure the cluster's routing service, and create and register Git integrations. See _Cluster routing service_ in [Post-installation configuration](#post-installation-configuration).
 
-#### Git repository flags
+**Shared configuration repository**
+The Git repository per runtime account with shared configuration manifests.  
+* CLI wizard and Silent install: Add the `--shared-config-repo` flag and define the path to the shared repo.  
+
+**Insecure flag**  
+For _on-premises installations_, if the Ingress controller does not have a valid SSL certificate, to continue with the installation, add the `--insecure` flag to the installation command.  
 
 **Repository URLs**  
 The GitHub repository to house the installation definitions.  
@@ -140,9 +120,6 @@ Optional.
 Install demo pipelines to use as a starting point to create your own pipelines. We recommend installing the demo resources as these are used in our quick start tutorials.  
 
 * Silent install: Add the `--demo-resources` flag. By default, set to `true`.
-
-**Insecure flag**  
-For _on-premises installations_, if the Ingress controller does not have a valid SSL certificate, to continue with the installation, add the `--insecure` flag to the installation command.  
 
 ### Hybrid runtime components
 
