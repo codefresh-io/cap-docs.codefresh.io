@@ -12,7 +12,7 @@ If you have a hybrid environment, you can provision one or more hybrid runtimes 
 There are two parts to installing a hybrid runtime:
 
 1. Installing the Codefresh CLI
-2. Installing the hybrid runtime from the CLI, either through the CLI wizard or via silent installation.  
+2. Installing the hybrid runtime from the CLI, either through the CLI wizard or via silent installation through the installation flags.  
   The hybrid runtime is installed in a specific namespace on your cluster. You can install more runtimes on different clusters in your deployment.  
   Every hybrid runtime installation makes commits to two Git repos:
 
@@ -20,36 +20,6 @@ There are two parts to installing a hybrid runtime:
   * Git Source repo: Created automatically during runtime installation. The repo where you store manifests to run CodefreshCodefresh pipelines.
 
 See also [Codefresh architecture]({{site.baseurl}}/docs/getting-started/architecture).
-
-### Installing the Codefresh CLI
-
-Install the Codefresh CLI using the option that best suits you: `curl`, `brew`, or standard download.  
-If you are not sure which OS to select for `curl`, simply select one, and Codefresh automatically identifies and selects the right OS for CLI installation.
-
-### Installing the hybrid runtime
-
-**Before you begin**
-* Make sure you meet the minimum requirements for runtime installation
-* Make sure your ingress controller is configured correctly:
-  * [NGINX Enterprise configuration]({{site.baseurl}}/docs/runtime/requirements/#nginx-enterprise-configuration)
-
-
-**How to**  
-1. Do one of the following:  
-  * If this is your first hybrid runtime installation, in the Welcome page, select **+ Install Runtime**.
-  * If you have provisioned a hybrid runtime, to provision additional runtimes, in the Codefresh UI, go to [**Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
-1. Click **+ Add Runtimes**, and then select **Hybrid Runtimes**.
-1. Do one of the following:  
-  * CLI wizard: Run `cf runtime install`, and follow the prompts to enter the required values.  
-  * Silent install: Pass the required flags in the install command:  
-    `cf runtime install <runtime-name> --repo <git-repo> --git-token <git-token> --silent`  
-  For the list of flags, see [Hybrid runtime installation flags](#hybrid-runtime-installation-flags).
-1. Complete the configuration for ingress controllers:
-  * [NGINX Ingress Operator: Patch certificate secret]({{site.baseurl}}/docs/runtime/requirements/#nginx-ingress-operator-patch-certificate-secret)
-
-> Note:  
-> Hybrid runtime installation starts by checking network connectivity and the K8s cluster server version.  
-  To skip these tests, pass the `--skip-cluster-checks` flag.
 
 ### Hybrid runtime installation flags
 This section describes the required and optional flags to install a hybrid runtime.
@@ -144,12 +114,47 @@ Install demo pipelines to use as a starting point to create your own pipelines. 
 **Insecure flag**  
 For _on-premises installations_, if the Ingress controller does not have a valid SSL certificate, to continue with the installation, add the `--insecure` flag to the installation command.  
 
+### Install the Codefresh CLI
+
+Install the Codefresh CLI using the option that best suits you: `curl`, `brew`, or standard download.  
+If you are not sure which OS to select for `curl`, simply select one, and Codefresh automatically identifies and selects the right OS for CLI installation.
+
+### Install the hybrid runtime
+
+**Before you begin**
+* Make sure you meet the minimum requirements for runtime installation
+* Review [Hybrid runtime installation flags](#hybrid-runtime-installation-flags)
+* Make sure your ingress controller is configured correctly:
+  * [NGINX Enterprise configuration]({{site.baseurl}}/docs/runtime/requirements/#nginx-enterprise-configuration)
+
+
+**How to**  
+1. Do one of the following:  
+  * If this is your first hybrid runtime installation, in the Welcome page, select **+ Install Runtime**.
+  * If you have provisioned a hybrid runtime, to provision additional runtimes, in the Codefresh UI, go to [**Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+1. Click **+ Add Runtimes**, and then select **Hybrid Runtimes**.
+1. Do one of the following:  
+  * CLI wizard: Run `cf runtime install`, and follow the prompts to enter the required values.  
+  * Silent install: Pass the required flags in the install command:  
+    `cf runtime install <runtime-name> --repo <git-repo> --git-token <git-token> --silent`  
+  For the list of flags, see [Hybrid runtime installation flags](#hybrid-runtime-installation-flags).
+1. Complete the configuration for ingress controllers:
+  * [NGINX Ingress Operator: Patch certificate secret]({{site.baseurl}}/docs/runtime/requirements/#nginx-ingress-operator-patch-certificate-secret)
+
+> Note:  
+> Hybrid runtime installation starts by checking network connectivity and the K8s cluster server version.  
+  To skip these tests, pass the `--skip-cluster-checks` flag.
+
+
+
 ### Hybrid runtime components
 
 **Git repositories**
 
-* Runtime install repo: The installation repo contains three folders: apps, bootstrap and projects, to manage the runtime itself with Argo CD.  
-* Git source repository: Created with the name `[repo_name]_git-source`. This repo stores manifests for pipelines with sources, events, workflow templates.
+* Runtime install repository: The installation repo contains three folders: apps, bootstrap and projects, to manage the runtime itself with Argo CD.  
+* Git source repository: Created with the name `[repo_name]_git-source`. This repo stores manifests for pipelines with sources, events, workflow templates. See [Add Git Sources to runtimes]({{site.baseurl}}/docs/runtime/git-sources/).
+
+* Shared configuration repository: Stores configuration and resource manifests that can be shared across runtimes, such as integration resources. See [Shared configuration repository]({{site.baseurl}}/docs/reference/shared-configuration/)
 
 **Argo CD components**  
 
@@ -355,7 +360,6 @@ If you bypassed installing ingress resources with the `--skip-ingress` flag, or 
 
 ### Related articles
 [Add external clusters to runtimes]({{site.baseurl}}/docs/runtime/managed-cluster/)  
-[Add Git Sources to runtimes]({{site.baseurl}}/docs/runtime/git-sources/)  
 [Manage provisioned runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/)  
 [(Hybrid) Monitor provisioned runtimes]({{site.baseurl}}/docs/runtime/monitoring-troubleshooting/)  
 [Troubleshoot runtime installation]({{site.baseurl}}/docs/troubleshooting/runtime-issues/)
