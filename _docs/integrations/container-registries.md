@@ -27,8 +27,9 @@ Configure the settings for a container registry integration in Codefresh.
 1. If you already have integrations, click **Add**.
 1. Define the arguments for the container registry:  
   [Amazon ECR]({{site.baseurl}}/docs/integrations/container-registries/amazon-ecr/)   
-  [Docker Hub]({{site.baseurl}}/docs/integrations/container-registries/dockerhub/)   
-  [JFrog Artifactory]({{site.baseurl}}/docs/integrations/container-registries/jfrog/)  
+  [Docker Hub]({{site.baseurl}}/docs/integrations/container-registries/dockerhub/)  
+  [GitHub Container Registry]({{site.baseurl}}/docs/integrations/container-registries/github-cr/)   
+  [JFrog Artifactory]({{site.baseurl}}/docs/integrations/container-registries/jfrog/)    
   [Quay]({{site.baseurl}}/docs/integrations/container-registries/quay/)  
 1. To test the connection to the container registry before committing the changes, click **Test Connection**.
 1. To confirm, click **Commit**.
@@ -58,7 +59,7 @@ Every container registry integration displays the following information:
 * Runtime or runtimes it is shared with
 * Sync status
 
-### Edit/delete container registry integrations in Codefresh
+### Edit/delete container registry integrations
 If you have existing integrations, you can change the connection details, or delete an integration.
 >Deleting an integration deletes the integration resource from the shared configuration Git repo, its secrets, the CI workflows that 
 use it. 

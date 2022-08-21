@@ -52,7 +52,7 @@ The table describes the arguments required to integrate Amazon ECR in  Codefresh
    max-width="50%" 
    %}
    
-For how-to instructions, see [Configure container registry integrations in Codefresh]({{site.baseurl}}/docs/integrations/container-registries/#configure-container-registry-integrations-in-codefresh) and [Edit/delete container registry integrations in Codefresh]({{site.baseurl}}/docs/integrations/container-registries/#editdelete-container-registry-integrations-in-codefresh).  
+For how-to instructions, see [Configure container registry integrations in Codefresh]({{site.baseurl}}/docs/integrations/container-registries/#configure-container-registry-integrations-in-codefresh) and [Edit/delete container registry integrations in Codefresh]({{site.baseurl}}/docs/integrations/container-registries/#editdelete-container-registry-integrations).  
 
 ### Related articles
 [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/)  
