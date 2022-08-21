@@ -13,13 +13,48 @@ We launched the Codefresh platform in February this year. Built on Argo, the wor
 
 ### Features & enhancements
 
-Application Current State: events tab for resource details
-OAuth2 support for` Bitbucket and GitLab in hybrid runtimes
-Replace CF_HOST parameter with CF_RUNTIME_NAME [CR-13179]
-GitHub container registry
-GitHub Enterprise
-Labels and annotations to cluster
+#### Summary and event information for application resources
+We have added Summary and Event information in the same view for applications. Clicking on a resource in the Current State tab displays two new tabs entitled Summary and Events in addition to Manifest and Logs. 
+
+The Summary tab, based on the type of resource, gives you a concise  of the application's replicas and  containers. Pods for eample, show state information. 
+SCREENSHOT
+
+The Applications dashboard flags errors in applications at the global level.  through the error notification in the UI. The Events tab isolates errors per resource within the applicatiion. When brDepedning on the resource type. For example, pods may display events for non-exsting images. as its title indicates displays both success and failed/error events if any for that resource in descending order. The most recent events are  
+
+SCREENSHOT  
+
+
+
+
+
+#### OAuth2 support for` Bitbucket and GitLab in hybrid runtimes
+
+#### GitHub Enterprise
+
+
+#### `CF_RUNTIME_NAME` argument in CI integrations
+To make your integrations with Codefresh as fail-safe as possible, we replaced `CF_HOST` with the `CF_RUNTIME_NAME` argument.  
+
+`CF_HOST` is the URL to the cluster with the Codefresh runtime to integrate with, and any change in the URL can fail the enrichment. For this reason, we have deprecated `CF_HOST` from v 0.0.460 and higher, and recommend using `CF_RUNTIME_NAME` as the runtime name once defined remains unless deleted.  
+
+See [CI integrations argument reference]({{site.baseurl}}/docs/integrations/ci-integrations/#ci-integration-argument-reference).
+
+
+#### GitHub container registry
+This release includes yet another container registry integration. 
+
+
+
+
+#### Labels and annotations for managed clusters
+The Codefresh CLI supports labels and annotations for managed clusters. When you add a managed cluster in Codefresh, you can optionally add labels and annotations as well with the  `--labels` and the `--annotations` flags. The Codefresh CLI supports the standard key-value formats for both, with multiple items separated by `,`. K8s rules appl labels and annotations are valid here as well you can add one or more labels and annotations respectively in the standard . 
+See [Adding a managed cluster with Codefresh CLI]({{site.baseurl}}/docs/runtime/managed-cluster/#add-a-managed-cluster-with-codefresh-cli), and [Adding a managed cluster with Kustomize]({{site.baseurl}}/docs/runtime/managed-cluster/#add-a-managed-cluster-with-kustomize).
+
 Gitlab subgroups - (CR-13210)
+
+#### User-friendly messages for validation errors  
+
+Validation errors detected on commit are now not merely highlighted in the YAML manifests but displayed as error messagages with details and the cayse  not only detects errors but now also highlights the location of these errors in Form mode. 
 
 
 
