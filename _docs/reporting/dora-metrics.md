@@ -78,7 +78,7 @@ In addition, you can select the granularity for each graph:
   The average number of days from the first commit for a pull request until the deployment date for the same pull request. The X-axis charts the time based on the granularity, and the Y-axis charts the time in minutes until the deployment. The number shown on the top right is the average number of days for a commit to reach production.  
 
 **Time to Restore Service**  
-  The average number of hours taken for the status to return to Healthy after changing to Degraded or Unhealthy after deployment. The X-axis charts the time based on the granularity, and the Y-axis charts the time in hours. The number shown on the top right is the average number of hours between the previous deployment and rollback for the same application.
+  The average number of hours taken for the status to return to Healthy after changing to Degraded or Unhealthy. The X-axis charts the time based on the granularity, and the Y-axis charts the time in hours. The number shown on the top right is the average number of hours between the previous deployment and rollback for the same application.
 
 ## What to read next  
 [Codefresh architecture]({{site.baseurl}}/docs/getting-started/architecture/)  
