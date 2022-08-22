@@ -17,7 +17,7 @@ The requirements listed are the **_minimum_** requirements to provision **_hybri
 {: .table .table-bordered .table-hover}
 | Item                     | Requirement            |  
 | --------------         | --------------           |  
-|Kubernetes cluster      |  Server version 1.18 and higher, without Argo Project components. {::nomarkdown}<br>Tip:  To check the server version, run `kubectl version --short`.{:/}|
+|Kubernetes cluster      | Server version 1.18 and higher, without Argo Project components. {::nomarkdown}<br><b>Tip</b>:  To check the server version, run:<br> <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">kubectl version --short</span>.{:/}|
 | Ingress controller| Configured on Kubernetes cluster and exposed from the cluster.  {::nomarkdown}<ul><li>Ambassador</li><li>ALB (AWS Application Load Balancer)</li><li><a href="/#nginx-enterprise-configuration">NGINX Enterprise (nginx.org/ingress-controller)</a><br></li><li>NGINX Community (k8s.io/ingress-nginx)</li><li>Istio</li><li>Trafik</li></ul>{:/}. |
 |Node requirements| {::nomarkdown}<ul><li>Memory: 5000 MB</li><li>CPU: 2</li></ul>{:/}|
 |Runtime namespace | Resource permissions: |
@@ -28,8 +28,8 @@ The requirements listed are the **_minimum_** requirements to provision **_hybri
 |                  |`RoleBinding`: In group `rbac.authorization.k8s.io`: Create, Update, Delete  | 
 |                  | `persistentvolumeclaims`: Create, Update, Delete               |   
 |                  | `pods`: Create, Update, Delete               | 
-| Git providers    |{::nomarkdown}Hosted: <ul><li>GitHub</li></ul>Hybrid:<ul><li>GitHub</li><li>GitLab</li><li>Bitbucket Server</li><li>GitHub Enterprise</li></ul>{:/}|
-| Git access tokens    | {::nomarkdown}Runtime Git token:<ul><li>Valid expiration date</li><li>Scopes: `repo` and `admin-repo.hook`</li></ul>Personal access Git token:<ul><li>Valid expiration date</li><li>Scopes: `repo` and `admin-repo.hook`</li></ul></li></ul>{:/}|
+| Git providers    |{::nomarkdown}<ul><li>GitHub</li><li>GitLab</li><li>Bitbucket Server</li><!--<li>Bitbucket Cloud</li>--><li>GitHub Enterprise</li></ul>{:/}|
+| Git access tokens    | {::nomarkdown}Runtime Git token:<ul><li>Valid expiration date</li><li>Scopes: <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">repo</span> and <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">admin-repo.hook</span></li></ul>Personal access Git token:<ul><li>Valid expiration date</li><li>Scopes: <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">repo</span></li></ul></li></ul>{:/}|
 
 ### NGINX Enterprise configuration
 For general information, see [NGINX ingress controller documentation](https://docs.nginx.com/nginx-ingress-controller){:target="\_blank}. 
@@ -37,7 +37,7 @@ For general information, see [NGINX ingress controller documentation](https://do
 {: .table .table-bordered .table-hover}
 | What to configure    |   When to configure |   
 | --------------       | --------------                    | 
-| [Verify valid external IP address](#verify-valid-external-ip-address) |   _Before_ installing hybrid runtime  |     
+|[Verify valid external IP address](#verify-valid-external-ip-address) |   _Before_ installing hybrid runtime  |     
 |[Valid SSL certificate](#valid-ssl-certificate) | |
 |[TCP support](#tcp-support) |  | 
 |[Report status](#report-status) |  | 
@@ -62,13 +62,13 @@ OR
 `service.beta.kubernetes.io/aws-load-balancer-type: nlb`  
 
 #### NGINX Ingress: Enable report status to cluster
-* Pass the `- -report-ingress-status` to `deployment`.
+* Pass `--report-ingress-status` to `deployment`.
 
     ```yaml
     spec:                                                                                                                                                                 
       containers: 
        - args:                                                                                                                                              
-       - -report-ingress-status
+        - -report-ingress-status
     ```
 
 #### NGINX Ingress Operator: Enable report status to cluster
@@ -87,7 +87,7 @@ OR
 You will need to add this to the `ingress-master` when you have completed runtime installation.
 
 #### NGINX Ingress Operator: Patch certificate secret
-> This configuration must be completed _after_ installing the hybrid runtime.
+>  The certifcate secret must be configured _after_ installing the hybrid runtime.
 
 Patch the certificate secret in `spec.tls` of the `ingress-master` resource.  
 The secret must be in the same namespace as the runtime.
