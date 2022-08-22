@@ -7,7 +7,7 @@ toc: true
 
 Codefresh can integrate with popular container registries such as Docker Hub, JFrog Artifactory, and more.  
 
-Adding a container registry integration in Codefresh allows you to reference the integration in third-party CI platforms/tools such as GitHub Actions and Codefresh Classic by the name of the integration, instead of explicit credentials. See [Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/) and [CI integrations]({{site.baseurl}}/docs/integrations/ci-integrations/).You can add more than one integration for the same Docker registry.  
+Adding a container registry integration in Codefresh allows you to reference the integration in third-party CI platforms/tools such as GitHub Actions and Codefresh Classic by the name of the registry integration, instead of explicit credentials. See [Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/) and [CI integrations]({{site.baseurl}}/docs/integrations/ci-integrations/).  
 
 You add a container registry integration in Codefresh by:
 * Defining the integration name 
@@ -16,7 +16,9 @@ You add a container registry integration in Codefresh by:
 * Testing the connection 
 * Committing the changes
 
-Once added, Codefresh displays the list of existing integrations with their sync status. You can edit or delete any registry integration. 
+You can add more than one integration for the same registry. Once added, Codefresh displays the list of existing integrations with their sync status. You can edit or delete any registry integration. 
+
+<!--- > To see all images from all your container registries integrated with Codefresh in the Codefresh UI, go to [Images](https://g.codefresh.io/2.0/images){:target="\_blank"}. For documentation details, see [Images in Codefresh]({{site.baseurl}}/docs/deployment/images/)--->
 
 
 ### Configure container registry integrations in Codefresh
@@ -47,11 +49,11 @@ The example below shows integrations for JFrog Artifactory.
 
 {% include image.html 
 lightbox="true" 
-file="/images/jfrog/jfrog-int-list.png" 
-url="/images/jfrog/jfrog-int-list.png"
+file="/images/integrations/jfrog/jfrog-int-list.png" 
+url="/images/integrations/jfrog/jfrog-int-list.png"
 alt="JFrog integrations in Codefresh"
 caption="JFrog integrations in Codefresh"
-max-width="50%"
+max-width="70%"
 %}
 
 Every container registry integration displays the following information:
