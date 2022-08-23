@@ -13,24 +13,51 @@ We launched the Codefresh platform in February this year. Built on Argo, the wor
 
 ### Features & enhancements
 
-#### Summary and event information for application resources
-We have added Summary and Event information in the same view for applications. Clicking on a resource in the Current State tab displays two new tabs entitled Summary and Events in addition to Manifest and Logs. 
+#### Event information for application resources
+Codefresh pulls in events from Argo CD for application resources, allowing you to view events for application resources directly in Codefresh instead of navigating to Argo CD to view them. Clicking on a application resource in the Current State view for an application displays the Events tab in addition to Manifests and Logs. 
+Events are displayed in descending order, with the most recent displayed first. Historical events older than 30 minutes are not displayed, so the Event tab can sometimes be empty (Argo CD's standard behavior).
 
-The Summary tab, based on the type of resource, gives you a concise  of the application's replicas and  containers. Pods for eample, show state information. 
-SCREENSHOT
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-aug22-events-tab.png"
+ url="/images/whats-new/rel-notes-aug22-events-tab.png"
+ alt="Events tab for application in Current State"
+ caption="Events tab for application in Current State"
+    max-width="80%"
+%}
 
-The Applications dashboard flags errors in applications at the global level.  through the error notification in the UI. The Events tab isolates errors per resource within the applicatiion. When brDepedning on the resource type. For example, pods may display events for non-exsting images. as its title indicates displays both success and failed/error events if any for that resource in descending order. The most recent events are  
+The Applications dashboard flags errors in all applications at the global level.  The Events tab isolates both successful and failed events per resource within an applicatiion, useful for resources such as pods. 
 
-SCREENSHOT  
+#### Application navigation enhancements
+
+**Current State tab**
+Selecting an application from the Applications dashboard takes you to the Current State instead of the Timeline as in previous versions.
 
 
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-aug22-new-app-nav.png"
+ url="/images/whats-new/rel-notes-aug22-new-app-nav.png"
+ alt="Tab order on application drilldown"
+ caption="Tab order on application drilldown"
+    max-width="70%"
+%}
+
+**Context menu for applications**
+TBD
 
 
-
-#### OAuth2 support for` Bitbucket and GitLab in hybrid runtimes
-
-#### GitHub Enterprise
-
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-aug22-new-app-nav.png"
+ url="/images/whats-new/rel-notes-aug22-new-app-nav.png"
+ alt="Tab order on application drilldown"
+ caption="Tab order on application drilldown"
+    max-width="70%"
+%}
 
 #### `CF_RUNTIME_NAME` argument in CI integrations
 To make your integrations with Codefresh as fail-safe as possible, we replaced `CF_HOST` with the `CF_RUNTIME_NAME` argument.  
@@ -39,15 +66,43 @@ To make your integrations with Codefresh as fail-safe as possible, we replaced `
 
 See [CI integrations argument reference]({{site.baseurl}}/docs/integrations/ci-integrations/#ci-integration-argument-reference).
 
+#### `GHCR_GITHUB_TOKEN_AUTHENTICATION` argument in GitHub Action CI
+For GitHub Actions CI, the `CF_CONTAINER_REGISTRY_INTEGRATION` argument has a new value that you can select for GitHub Container registries. Even if you don't have an integration to a GitHub Container registry in Codefresh, you can select `GHCR_GITHUB_TOKEN_AUTHENTICATION`, and Codefresh retrieves and provides the explicit credentials for the container registry on generating the integration manifest.
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-aug22-githubactions-cr-param.png"
+ url="/images/whats-new/rel-notes-aug22-githubactions-cr-param.png"
+ alt="GHCR_GITHUB_TOKEN_AUTHENTICATION` argument in GitHub Action"
+ caption="GHCR_GITHUB_TOKEN_AUTHENTICATION` argument in GitHub Action"
+    max-width="70%"
+%}
+
+See [GitHub Action-Codefresh integration arguments]({{site.baseurl}}/docs/integrations/ci-integrations/github-actions/#github-action-codefresh-integration-arguments).
 
 #### GitHub container registry
-This release includes yet another container registry integration. 
+In this release, we added support for GitHub Container Registry, a popular container registry tool. The settings for GitHub Container registry integration are identical to that of the other container registry integrations:Ypu  the integration name, the runtimes to share the integration with, and the domain, username, and token.   
+You also have the Test Connection option to test credentials before commitiing the changes.  
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-aug22-github-cr.png"
+ url="/images/whats-new/rel-notes-aug22-github-cr.png"
+ alt="GitHub Container registry integration"
+ caption="GitHub Container registry integration"
+    max-width="70%"
+%}
+
+Once defined, you can reference the integration by name in the CI platforms. 
+See [GitHub Container registry]({{site.baseurl}}/docs/integrations/ci-integrations/container-registries/github-cr/).
 
 
 
 
 #### Labels and annotations for managed clusters
-The Codefresh CLI supports labels and annotations for managed clusters. When you add a managed cluster in Codefresh, you can optionally add labels and annotations as well with the  `--labels` and the `--annotations` flags. The Codefresh CLI supports the standard key-value formats for both, with multiple items separated by `,`. K8s rules appl labels and annotations are valid here as well you can add one or more labels and annotations respectively in the standard . 
+The Codefresh CLI supports labels and annotations for managed clusters. When you add a managed cluster in Codefresh, you can optionally add labels and annotations with the  `--labels` and the `--annotations` flags. Codefresh supports the standard key-value formats for both, with multiple items separated by `,`. K8s rules for labels and annotations are valid here as well . 
 See [Adding a managed cluster with Codefresh CLI]({{site.baseurl}}/docs/runtime/managed-cluster/#add-a-managed-cluster-with-codefresh-cli), and [Adding a managed cluster with Kustomize]({{site.baseurl}}/docs/runtime/managed-cluster/#add-a-managed-cluster-with-kustomize).
 
 Gitlab subgroups - (CR-13210)
