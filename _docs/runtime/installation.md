@@ -89,7 +89,7 @@ For both CLI wizard and Silent install:
 
 * For new runtime installations, add the `--internal-ingress-host` flag pointing to the ingress host for `app-proxy`.
 * For existing installations, commit changes to the installation repository by modifying the `app-proxy ingress` and `<runtime-name>.yaml`  
-  See _Internal ingress host configuration (optional for existing runtimes only)_ in [Post-installation configuration](#post-installation-configuration).
+  See [Internal ingress host configuration (optional for existing runtimes only)](#internal-ingress-host-configuration-optional-for-existing-hybrid-runtimes-only).
 
 
 #### Git repository flags
@@ -125,10 +125,20 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
 * Make sure you meet the minimum requirements for runtime installation
 * Review [Hybrid runtime installation flags](#hybrid-runtime-installation-flags)
 * Make sure your ingress controller is configured correctly:
-  * [NGINX Enterprise configuration]({{site.baseurl}}/docs/runtime/requirements/#nginx-enterprise-configuration)
+  * [Ambasador ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#ambassador-ingress-configuration)
+  * [AWS ALB ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#alb-aws-ingress-configuration)
+  * [Istio ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#istio-ingress-configuration)
+  * [NGINX Enterprise ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#nginx-enterprise-ingress-configuration)
+  * [NGINX Community ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#nginx-community-version-ingress-configuration)
+  * [Traefik ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#traefik-ingress-configuration)
 
 
-**How to**  
+**How to** 
+
+> Note:  
+> Hybrid runtime installation starts by checking network connectivity and the K8s cluster server version.  
+  To skip these tests, pass the `--skip-cluster-checks` flag.
+
 1. Do one of the following:  
   * If this is your first hybrid runtime installation, in the Welcome page, select **+ Install Runtime**.
   * If you have provisioned a hybrid runtime, to provision additional runtimes, in the Codefresh UI, go to [**Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
@@ -139,11 +149,14 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
     `cf runtime install <runtime-name> --repo <git-repo> --git-token <git-token> --silent`  
   For the list of flags, see [Hybrid runtime installation flags](#hybrid-runtime-installation-flags).
 1. Complete the configuration for ingress controllers:
-  * [NGINX Ingress Operator: Patch certificate secret]({{site.baseurl}}/docs/runtime/requirements/#nginx-ingress-operator-patch-certificate-secret)
+  * [ALB AWS: Alias DNS record in route53 to load balancer]({{site.baseurl}}/docs/runtime/requirements/#alias-dns-record-in-route53-to-load-balancer)
+  * [Istio: Configure cluster routing service]({{site.baseurl}}/docs/runtime/requirements/#cluster-routing-service)
+  * [NGINX Enterprise ingress controller: Patch certificate secret]({{site.baseurl}}/docs/runtime/requirements/#patch-certificate-secret)  
+1. If you bypassed installing ingress resources with the `--skip-ingress` flag, create and register Git integrations using these commands:  
+  `cf integration git add default --runtime <RUNTIME-NAME> --api-url <API-URL>`  
+  
+  `cf integration git register default --runtime <RUNTIME-NAME> --token <RUNTIME-AUTHENTICATION-TOKEN>`  
 
-> Note:  
-> Hybrid runtime installation starts by checking network connectivity and the K8s cluster server version.  
-  To skip these tests, pass the `--skip-cluster-checks` flag.
 
 
 
@@ -173,39 +186,6 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
 
 Once the hybrid runtime is successfully installed, it is provisioned on the Kubernetes cluster, and displayed in the **Runtimes** page.
 
-### Hybrid runtime post-installation configuration
-
-After provisioning a hybrid runtime, configure additional settings for the following:
-
-* NGINX Enterprise installations (with and without NGINX Ingress Operator)
-* AWS ALB installations
-* Cluster routing service if you bypassed installing ingress resources 
-* (Existing hybrid runtimes) Internal and external ingress host specifications 
-* Register Git integrations
-
-
-
-#### AWS ALB post-install configuration
-
-For AWS ALB installations, do the following:
-
-* Create an `Alias` record in Amazon Route 53
-* Manually register Git integrations - see _Git integration registration_.
-  
-Create an `Alias` record in Amazon Route 53, and map your zone apex (example.com) DNS name to your Amazon CloudFront distribution.
-For more information, see [Creating records by using the Amazon Route 53 console](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-creating.html){:target="\_blank"}.
-
-{% include image.html
-  lightbox="true"
-  file="/images/runtime/post-install-alb-ingress.png"
-  url="/images/runtime/post-install-alb-ingress.png"
-  alt="Route 53 record settings for AWS ALB"
-  caption="Route 53 record settings for AWS ALB"
-  max-width="30%"
-%}
-
-
-Continue with [Git integration registration](#git-integration-registration) in this article. 
 
 #### Internal ingress host configuration (optional for existing hybrid runtimes only)
 

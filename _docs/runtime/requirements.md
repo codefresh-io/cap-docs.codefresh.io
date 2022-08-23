@@ -91,6 +91,9 @@ spec:
 ```
 #### Alias DNS record in route53 to load balancer
 
+>  The alias DNS record must be configured _after_ installing the hybrid runtime.
+
+
 Make sure you have a DNS record available in the correct hosted zone.  
 The hybrid runtime installation automatically creates a load balancer. You should now create an `Alias` record in Amazon Route 53, and map your zone apex (`example.com`) DNS name to your Amazon CloudFront distribution.
 For more information, see [Creating records by using the Amazon Route 53 console](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-creating.html){:target="\_blank"}.
@@ -113,6 +116,79 @@ If the installation failed, as it cam happen if the DNS record was not created w
   where:  
   * `<RUNTIME-NAME>` is the name of the runtime you 
 
+### Istio ingress configuration
+For detailed configuration information, see [Istio ingress controller documentation](https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress){:target="\_blank}.  
+
+The table below lists the specific configuration requirements for Codefresh.
+
+{: .table .table-bordered .table-hover}
+| What to configure    |   When to configure |   
+| --------------       | --------------   | 
+|Valid external IP address |_Before_ installing hybrid runtime  |     
+|Valid SSL certificate| |
+|TCP support |  | 
+|Cluster routing service | _After_ installing hybrid runtime | 
+
+#### Valid external IP address
+Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL-IP` column for your ingress controller shows a valid hostname.  
+  
+#### Valid SSL certificate  
+For secure runtime installation, the ingress controller must have a valid SSL certificate from an authorized CA (Certificate Authority).  
+
+#### TCP support  
+Configure to handle TCP requests.  
+
+#### Cluster routing service
+>  The cluster routing service must be configured _after_ installing the hybrid runtime.
+
+Configure the `VirtualService` to route traffic to the `app-proxy` and `webhook` services, as in the examples below.  
+
+**`VirtualService` example for `app-proxy`:** 
+
+```yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  namespace: test-runtime3 # replace with your runtime name
+  name: cap-app-proxy 
+spec:
+  hosts:
+    - my.support.cf-cd.com # replace with your host name
+  gateways:
+    - my-gateway
+  http:
+    - match:
+      - uri:
+          prefix: /app-proxy 
+      route:
+      - destination:
+          host: cap-app-proxy 
+          port:
+            number: 3017
+```
+**`VirtualService` example for `webhook`:** 
+
+```yaml  
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  namespace: test-runtime3 # replace with your runtime name
+  name: csdp-default-git-source
+spec:
+  hosts:
+    - my.support.cf-cd.com # replace with your host name
+  gateways:
+    - my-gateway
+  http:
+    - match:
+      - uri:
+          prefix: /webhooks/test-runtime3/push-github # replace `test-runtime3` with your runtime name
+      route:
+      - destination:
+          host: push-github-eventsource-svc 
+          port:
+            number: 80
+```
 
 ### NGINX Enterprise ingress configuration
 
@@ -421,77 +497,7 @@ For additional configuration options, see <a target="_blank" href="https://kuber
 
 </details> 
 
-### Istio ingress configuration
-For detailed configuration information, see [Istio ingress controller documentation](https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress){:target="\_blank}.  
 
-The table below lists the specific configuration requirements for Codefresh.
-
-{: .table .table-bordered .table-hover}
-| What to configure    |   When to configure |   
-| --------------       | --------------   | 
-|Valid external IP address |_Before_ installing hybrid runtime  |     
-|Valid SSL certificate| |
-|TCP support |  | 
-|Cluster routing service | _After_ installing hybrid runtime | 
-
-#### Valid external IP address
-Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL-IP` column for your ingress controller shows a valid hostname.  
-  
-#### Valid SSL certificate  
-For secure runtime installation, the ingress controller must have a valid SSL certificate from an authorized CA (Certificate Authority).  
-
-#### TCP support  
-Configure to handle TCP requests.  
-
-#### Cluster routing service
-Configure the `VirtualService` to route traffic to the `app-proxy` and `webhook` services, as in the examples below.  
-
-**`VirtualService` example for `app-proxy`:** 
-
-```yaml
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
-metadata:
-  namespace: test-runtime3 # replace with your runtime name
-  name: cap-app-proxy 
-spec:
-  hosts:
-    - my.support.cf-cd.com # replace with your host name
-  gateways:
-    - my-gateway
-  http:
-    - match:
-      - uri:
-          prefix: /app-proxy 
-      route:
-      - destination:
-          host: cap-app-proxy 
-          port:
-            number: 3017
-```
-**`VirtualService` example for `webhook`:** 
-
-```yaml  
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
-metadata:
-  namespace: test-runtime3 # replace with your runtime name
-  name: csdp-default-git-source
-spec:
-  hosts:
-    - my.support.cf-cd.com # replace with your host name
-  gateways:
-    - my-gateway
-  http:
-    - match:
-      - uri:
-          prefix: /webhooks/test-runtime3/push-github # replace `test-runtime3` with your runtime name
-      route:
-      - destination:
-          host: push-github-eventsource-svc 
-          port:
-            number: 80
-```
 
 ### Traefik ingress configuration
 For detailed configuration information, see [Traefik ingress controller documentation](https://doc.traefik.io/traefik/providers/kubernetes-ingress){:target="\_blank}.  
