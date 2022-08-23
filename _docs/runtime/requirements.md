@@ -18,16 +18,9 @@ The requirements listed are the **_minimum_** requirements to provision **_hybri
 | Item                     | Requirement            |  
 | --------------         | --------------           |  
 |Kubernetes cluster      | Server version 1.18 and higher, without Argo Project components. {::nomarkdown}<br><b>Tip</b>:  To check the server version, run:<br> <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">kubectl version --short</span>.{:/}|
-| Ingress controller| Configured on Kubernetes cluster and exposed from the cluster. {::nomarkdown} <nr>Supported and tested ingress controllers include: <ul><li>Ambassador (see <a href="/" title="ambassador-ingress-configuration">Ambassador ingress configuration</a>)</li><li>ALB (Application Load Balancer) AWS (see <a href="https://codefresh.io/csdp-docs/docs/runtime/requirements/#aws-alb-ingress-configuration">AWS ALB ingress configuration</a>) </li><li>NGINX Enterprise (nginx.org/ingress-controller) (see <a href="https://codefresh.io/csdp-docs/docs/runtime/requirements/#nginx-enterprise-ingress-configuration">NGINX Enterprise ingress configuration</a>)<br></li><li>NGINX Community (k8s.io/ingress-nginx) (see <a href="https://codefresh.io/csdp-docs/docs/runtime/requirements/#nginx-community-ingress-configuration">NGINX Community ingress configuration</a>)</li><li>Istio (see <a href="https://codefresh.io/csdp-docs/docs/runtime/requirements/#istio-ingress-configuration">Istio ingress configuration</a>)</li><li>Trafik (see <a href="https://codefresh.io/csdp-docs/docs/runtime/requirements/#traefik-ingress-configuration">Traefik ingress configuration</a>)</li></ul>{:/}. |
+| Ingress controller| Configured on Kubernetes cluster and exposed from the cluster. {::nomarkdown} <br>Supported and tested ingress controllers include: <ul><li>Ambassador</li>{:/}(see [Ambassador ingress configuration](#ambassador-ingress-configuration)){::nomarkdown}<li>AWS ALB (Application Load Balancer)</li>{:/} (see [AWS ALB ingress configuration](#aws-alb-ingress-configuration)){::nomarkdown}<li>NGINX Enterprise (nginx.org/ingress-controller)</li>{:/} (see [NGINX Enterprise ingress configuration](#nginx-enterprise-ingress-configuration)){::nomarkdown}<li>NGINX Community (k8s.io/ingress-nginx)</li> {:/} (see [NGINX Community ingress configuration](#nginx-community-version-ingress-configuration)){::nomarkdown}<li>Istio</li>{:/} (see [Istio ingress configuration](#istio-ingress-configuration)){::nomarkdown}<li>Trafik</li>{:/}(see [Traefik ingress configuration](#traefik-ingress-configuration))|
 |Node requirements| {::nomarkdown}<ul><li>Memory: 5000 MB</li><li>CPU: 2</li></ul>{:/}|
-|Runtime namespace | Resource permissions: |
-|                  | `ServiceAccount`: Create, Delete         |                             
-|                  | `ConfigMap`: Create, Update, Delete |          
-|                  | `Service`: Create, Update, Delete |       
-|                  | `Role`: In group `rbac.authorization.k8s.io`: Create, Update, Delete |       
-|                  |`RoleBinding`: In group `rbac.authorization.k8s.io`: Create, Update, Delete  | 
-|                  | `persistentvolumeclaims`: Create, Update, Delete               |   
-|                  | `pods`: Create, Update, Delete               | 
+|Cluster permissions | Cluster admin permissions |
 |Git providers    |{::nomarkdown}<ul><li>GitHub</li><li>GitLab</li><li>Bitbucket Server</li><!--<li>Bitbucket Cloud</li>--><li>GitHub Enterprise</li></ul>{:/}|
 |Git access tokens    | {::nomarkdown}Runtime Git token:<ul><li>Valid expiration date</li><li>Scopes: <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">repo</span> and <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">admin-repo.hook</span></li></ul>Personal access Git token:<ul><li>Valid expiration date</li><li>Scopes: <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">repo</span></li></ul></li></ul>{:/}|
 
@@ -52,7 +45,7 @@ For secure runtime installation, the ingress controller must have a valid SSL ce
 #### TCP support  
 Configure to handle TCP requests.  
 
-### ALB AWS ingress configuration
+### AWS ALB ingress configuration
 
 For detailed configuration information, see the [ALB AWS ingress controller documentation](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4){:target="\_blank"}.  
 
@@ -89,13 +82,18 @@ metadata:
 spec:
   controller: ingress.k8s.aws/alb
 ```
-#### Alias DNS record in route53 to load balancer
+#### Create an alias in route53 to load balancer
 
->  The alias DNS record must be configured _after_ installing the hybrid runtime.
+>  The alias  must be configured _after_ installing the hybrid runtime.
 
-
-Make sure you have a DNS record available in the correct hosted zone.  
-The hybrid runtime installation automatically creates a load balancer. You should now create an `Alias` record in Amazon Route 53, and map your zone apex (`example.com`) DNS name to your Amazon CloudFront distribution.
+1. Make sure a DNS record is available in the correct hosted zone. 
+1. _After_ hybrid runtime installation, in Amazon Route 53, create an alias to route traffic to the load balancer that is automatically created during the installation:  
+  * **Record name**: Enter the same record name used in the installation.
+  * Toggle **Alias** to ON.
+  * From the **Route traffic to** list, select **Alais to Application and Classic Load Balancer**.
+  * From the list of Regions, select the region. For example, **US East**.
+  * From the list of load balancers, select the load balancer that was created during installation.  
+  
 For more information, see [Creating records by using the Amazon Route 53 console](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-creating.html){:target="\_blank"}.
 
 {% include image.html

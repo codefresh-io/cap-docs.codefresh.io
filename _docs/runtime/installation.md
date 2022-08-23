@@ -123,6 +123,7 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
 
 **Before you begin**
 * Make sure you meet the minimum requirements for runtime installation
+* [Download/upgrade the latest version of the CLI]({{site.baseurl}}/docs/clients/csdp-cli/#upgrade-codefresh-cli)
 * Review [Hybrid runtime installation flags](#hybrid-runtime-installation-flags)
 * Make sure your ingress controller is configured correctly:
   * [Ambasador ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#ambassador-ingress-configuration)
