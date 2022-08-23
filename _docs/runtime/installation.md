@@ -204,78 +204,7 @@ For more information, see [Creating records by using the Amazon Route 53 console
   max-width="30%"
 %}
 
-#### Configure cluster routing service
 
-If you bypassed installing ingress resources with the `--skip-ingress` flag, configure the `host` for the Ingress, or the VirtualService for Istio if used, to route traffic to the `app-proxy` and `webhook` services, as in the examples below.  
-
-**Ingress resource example for `app-proxy`:** 
-
-```yaml
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: codefresh-cap-app-proxy
-  namespace: codefresh
-spec:
-  ingressClassName: alb
-  rules:
-  - host: my.support.cf-cd.com # replace with your host name
-    http:
-      paths:
-      - backend:
-          service:
-            name: cap-app-proxy 
-            port:
-              number: 3017
-        path: /app-proxy/
-        pathType: Prefix
-```
-
-**`VirtualService` examples for `app-proxy` and `webhook`:** 
-
-```yaml
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
-metadata:
-  namespace: test-runtime3 # replace with your runtime name
-  name: cap-app-proxy 
-spec:
-  hosts:
-    - my.support.cf-cd.com # replace with your host name
-  gateways:
-    - my-gateway
-  http:
-    - match:
-      - uri:
-          prefix: /app-proxy 
-      route:
-      - destination:
-          host: cap-app-proxy 
-          port:
-            number: 3017
-```
-
-```yaml  
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
-metadata:
-  namespace: test-runtime3 # replace with your runtime name
-  name: csdp-default-git-source
-spec:
-  hosts:
-    - my.support.cf-cd.com # replace with your host name
-  gateways:
-    - my-gateway
-  http:
-    - match:
-      - uri:
-          prefix: /webhooks/test-runtime3/push-github # replace `test-runtime3` with your runtime name
-      route:
-      - destination:
-          host: push-github-eventsource-svc 
-          port:
-            number: 80
-```
 Continue with [Git integration registration](#git-integration-registration) in this article. 
 
 #### Internal ingress host configuration (optional for existing hybrid runtimes only)

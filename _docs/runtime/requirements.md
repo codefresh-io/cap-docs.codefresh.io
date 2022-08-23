@@ -18,7 +18,7 @@ The requirements listed are the **_minimum_** requirements to provision **_hybri
 | Item                     | Requirement            |  
 | --------------         | --------------           |  
 |Kubernetes cluster      | Server version 1.18 and higher, without Argo Project components. {::nomarkdown}<br><b>Tip</b>:  To check the server version, run:<br> <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">kubectl version --short</span>.{:/}|
-| Ingress controller| Configured on Kubernetes cluster and exposed from the cluster.  {::nomarkdown}<ul><li>Ambassador</li><li>ALB (AWS Application Load Balancer)</li><li><a href="/#nginx-enterprise-configuration">NGINX Enterprise (nginx.org/ingress-controller)</a><br></li><li>NGINX Community (k8s.io/ingress-nginx)</li><li>Istio</li><li>Trafik</li></ul>{:/}. |
+| Ingress controller| Configured on Kubernetes cluster and exposed from the cluster. Supported and tested ingress controllers include: {::nomarkdown}<ul><li>Ambassador (see <a href="https://codefresh.io/csdp-docs/docs/runtime/requirements/#ambassador-ingress-configuration">Ambassador ingress configuration</a>)</li><li>ALB (Application Load Balancer) AWS (see <a href="https://codefresh.io/csdp-docs/docs/runtime/requirements/#aws-alb-ingress-configuration">AWS ALB ingress configuration</a>) </li><li>NGINX Enterprise (nginx.org/ingress-controller) (see <a href="https://codefresh.io/csdp-docs/docs/runtime/requirements/#nginx-enterprise-ingress-configuration">NGINX Enterprise ingress configuration</a>)<br></li><li>NGINX Community (k8s.io/ingress-nginx) (see <a href="https://codefresh.io/csdp-docs/docs/runtime/requirements/#nginx-community-ingress-configuration">NGINX Community ingress configuration</a>)</li><li>Istio (see <a href="https://codefresh.io/csdp-docs/docs/runtime/requirements/#istio-ingress-configuration">Istio ingress configuration</a>)</li><li>Trafik (see <a href="https://codefresh.io/csdp-docs/docs/runtime/requirements/#traefik-ingress-configuration">Traefik ingress configuration</a>)</li></ul>{:/}. |
 |Node requirements| {::nomarkdown}<ul><li>Memory: 5000 MB</li><li>CPU: 2</li></ul>{:/}|
 |Runtime namespace | Resource permissions: |
 |                  | `ServiceAccount`: Create, Delete         |                             
@@ -28,17 +28,20 @@ The requirements listed are the **_minimum_** requirements to provision **_hybri
 |                  |`RoleBinding`: In group `rbac.authorization.k8s.io`: Create, Update, Delete  | 
 |                  | `persistentvolumeclaims`: Create, Update, Delete               |   
 |                  | `pods`: Create, Update, Delete               | 
-| Git providers    |{::nomarkdown}<ul><li>GitHub</li><li>GitLab</li><li>Bitbucket Server</li><!--<li>Bitbucket Cloud</li>--><li>GitHub Enterprise</li></ul>{:/}|
-| Git access tokens    | {::nomarkdown}Runtime Git token:<ul><li>Valid expiration date</li><li>Scopes: <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">repo</span> and <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">admin-repo.hook</span></li></ul>Personal access Git token:<ul><li>Valid expiration date</li><li>Scopes: <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">repo</span></li></ul></li></ul>{:/}|
+|Git providers    |{::nomarkdown}<ul><li>GitHub</li><li>GitLab</li><li>Bitbucket Server</li><!--<li>Bitbucket Cloud</li>--><li>GitHub Enterprise</li></ul>{:/}|
+|Git access tokens    | {::nomarkdown}Runtime Git token:<ul><li>Valid expiration date</li><li>Scopes: <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">repo</span> and <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">admin-repo.hook</span></li></ul>Personal access Git token:<ul><li>Valid expiration date</li><li>Scopes: <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">repo</span></li></ul></li></ul>{:/}|
 
 ### Ambassador ingress configuration
+For detailed configuration information, see the [Ambassador ingress controller documentation](https://www.getambassador.io/docs/edge-stack/latest/topics/running/ingress-controller){:target="\_blank"}.  
+
+The table below lists the specific configuration requirements for Codefresh.
 
 {: .table .table-bordered .table-hover}
 | What to configure    |   When to configure |   
 | --------------       | --------------                    | 
-|[Verify valid external IP address](#verify-valid-external-ip-address) |   _Before_ installing hybrid runtime  |     
-|[Valid SSL certificate](#valid-ssl-certificate) | |
-|[TCP support](#tcp-support) |  | 
+|Valid external IP address |   _Before_ installing hybrid runtime  |     
+|Valid SSL certificate | |
+|TCP support|  | 
 
 #### Valid external IP address
 Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL-IP` column for your ingress controller shows a valid hostname.  
@@ -49,15 +52,22 @@ For secure runtime installation, the ingress controller must have a valid SSL ce
 #### TCP support  
 Configure to handle TCP requests.  
 
-### ALB AWS configuration
+### ALB AWS ingress configuration
+
+For detailed configuration information, see the [ALB AWS ingress controller documentation](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4){:target="\_blank"}.  
+
+The table below lists the specific configuration requirements for Codefresh.
 
 {: .table .table-bordered .table-hover}
 | What to configure    |   When to configure |   
 | --------------       | --------------                    | 
-|[Verify valid external IP address](#verify-valid-external-ip-address) |   _Before_ installing hybrid runtime  |     
-|[Valid SSL certificate](#valid-ssl-certificate) | |
-|[TCP support](#tcp-support) |  | 
-|[spec.controller](#spec-controller) |  | 
+|Valid external IP address |   _Before_ installing hybrid runtime  |     
+|Valid SSL certificate | |
+|TCP support|  |  
+|Controller  configuration] |  | 
+|Alias DNS record in route53 to load balancer | _After_ installing hybrid runtime | 
+|(Optional) Git integration registration | | 
+
 
 #### Valid external IP address
 Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL-IP` column for your ingress controller shows a valid hostname.  
@@ -68,7 +78,7 @@ For secure runtime installation, the ingress controller must have a valid SSL ce
 #### TCP support  
 Configure to handle TCP requests.  
 
-#### spec.controller 
+#### Controller configuration
 In the ingress resource file, verify that `spec.controller` is configured as `ingress.k8s.aws/alb`. 
 
 ```yaml
@@ -82,7 +92,7 @@ spec:
 #### Alias DNS record in route53 to load balancer
 
 Make sure you have a DNS record available in the correct hosted zone.  
-After the hybrid runtime completes installation, a load balancer is created. You should now create an `Alias` record in Amazon Route 53, and map your zone apex (`example.com`) DNS name to your Amazon CloudFront distribution.
+The hybrid runtime installation automatically creates a load balancer. You should now create an `Alias` record in Amazon Route 53, and map your zone apex (`example.com`) DNS name to your Amazon CloudFront distribution.
 For more information, see [Creating records by using the Amazon Route 53 console](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-creating.html){:target="\_blank"}.
 
 {% include image.html
@@ -94,26 +104,31 @@ For more information, see [Creating records by using the Amazon Route 53 console
   max-width="60%"
 %}
 
-#### Git integration registration
-If the installation failed, as could happen if the DNS record was created, manually create and register Git integrations using these commands:  
+#### (Optional) Git integration registration
+If the installation failed, as it cam happen if the DNS record was not created within the timeframe, manually create and register Git integrations using these commands:  
 
   `cf integration git add default --runtime <RUNTIME-NAME> --api-url <API-URL>`  
   
   `cf integration git register default --runtime <RUNTIME-NAME> --token <RUNTIME-AUTHENTICATION-TOKEN>`  
   where:  
+  * `<RUNTIME-NAME>` is the name of the runtime you 
 
 
-### NGINX Enterprise configuration
-For general information, see [NGINX ingress controller documentation](https://docs.nginx.com/nginx-ingress-controller){:target="\_blank}. 
+### NGINX Enterprise ingress configuration
+
+For detailed configuration information, see [NGINX ingress controller documentation](https://docs.nginx.com/nginx-ingress-controller){:target="\_blank}.  
+
+The table below lists the specific configuration requirements for Codefresh.
 
 {: .table .table-bordered .table-hover}
 | What to configure    |   When to configure |   
 | --------------       | --------------                    | 
-|[Verify valid external IP address](#verify-valid-external-ip-address) |   _Before_ installing hybrid runtime  |     
-|[Valid SSL certificate](#valid-ssl-certificate) | |
-|[TCP support](#tcp-support) |  | 
-|[Report status](#report-status) |  | 
-|[Patch certificate secret](#verify-valid-external-ip-address) |  _After_ installing hybrid runtime  
+|Verify valid external IP address |_Before_ installing hybrid runtime  |     
+|Valid SSL certificate | |
+|TCP support|  | 
+|NGINX Ingress: Enable report status to cluster |  | 
+|NGINX Ingress Operator: Enable report status to cluster| |
+|Patch certificate secret |_After_ installing hybrid runtime  
 
 #### Valid external IP address
 Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL-IP` column for your ingress controller shows a valid hostname.  
@@ -131,12 +146,12 @@ If the ingress controller is not configured to report its status to the cluster,
 
 * Pass `--report-ingress-status` to `deployment`.
 
-    ```yaml
-    spec:                                                                                                                                                                 
-      containers: 
-       - args:                                                                                                                                              
-        - -report-ingress-status
-    ```
+```yaml
+spec:                                                                                                                                                                 
+  containers: 
+    - args:                                                                                                                                              
+      - --report-ingress-status
+```
 
 #### NGINX Ingress Operator: Enable report status to cluster
 
@@ -155,7 +170,7 @@ If the ingress controller is not configured to report its status to the cluster,
 1. Make sure you have a certificate secret in the same namespace as the runtime. Copy an existing secret if you don't have one.  
 You will need to add this to the `ingress-master` when you have completed runtime installation.
 
-#### NGINX Ingress Operator: Patch certificate secret
+#### Patch certificate secret
 >  The certifcate secret must be configured _after_ installing the hybrid runtime.
 
 Patch the certificate secret in `spec.tls` of the `ingress-master` resource.  
@@ -172,22 +187,19 @@ The secret must be in the same namespace as the runtime.
    ```
 
 
+### NGINX Community version ingress configuration
+
+Codefresh has been tested with and supports implementations of the major providers. For your convenience, we have provided configuration instructions, both for supported and untested providers in [Provider-specific configuration](#provider-specific-configuration).  
 
 
-### NGINX Community version configuration
-
-Codefresh is supported with and has been tested with major providers. For your convenience, we have provided configuration instructions, both for supported and untested providers in [Provider-specific configuration](#provider-specific-configuration).  
-
-
-In addition, make sure your NGINX community ingress controller is  must be configured as
+The table below lists the specific configuration requirements for Codefresh.
 
 {: .table .table-bordered .table-hover}
 | What to configure    |   When to configure |   
 | --------------       | --------------                    | 
-|[Verify valid external IP address](#verify-valid-external-ip-address) |   _Before_ installing hybrid runtime  |     
-|[Valid SSL certificate](#valid-ssl-certificate) | |
-|[TCP support](#tcp-support) |  | 
-|[Report status](#report-status) |  | 
+|Verify valid external IP address |   _Before_ installing hybrid runtime  |     
+|Valid SSL certificate | |
+|TCP support |  | 
 
 
 #### Valid external IP address
@@ -409,16 +421,18 @@ For additional configuration options, see <a target="_blank" href="https://kuber
 
 </details> 
 
-### Istio ingress controller configuration
-For general information, see [NGINX ingress controller documentation](https://docs.nginx.com/nginx-ingress-controller){:target="\_blank}. 
+### Istio ingress configuration
+For detailed configuration information, see [Istio ingress controller documentation](https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress){:target="\_blank}.  
+
+The table below lists the specific configuration requirements for Codefresh.
 
 {: .table .table-bordered .table-hover}
 | What to configure    |   When to configure |   
-| --------------       | --------------                    | 
-|[Valid external IP address](#verify-valid-external-ip-address) |   _Before_ installing hybrid runtime  |     
-|[Valid SSL certificate](#valid-ssl-certificate) | |
-|[TCP support](#tcp-support) |  | 
-|[Cluster routing service](#cluster-routing-service) | _After_ installing hybrid runtime | 
+| --------------       | --------------   | 
+|Valid external IP address |_Before_ installing hybrid runtime  |     
+|Valid SSL certificate| |
+|TCP support |  | 
+|Cluster routing service | _After_ installing hybrid runtime | 
 
 #### Valid external IP address
 Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL-IP` column for your ingress controller shows a valid hostname.  
@@ -479,17 +493,19 @@ spec:
             number: 80
 ```
 
-### Traefik ingress controller configuration
-For general information, see [NGINX ingress controller documentation](https://docs.nginx.com/nginx-ingress-controller){:target="\_blank}. 
+### Traefik ingress configuration
+For detailed configuration information, see [Traefik ingress controller documentation](https://doc.traefik.io/traefik/providers/kubernetes-ingress){:target="\_blank}.  
+
+The table below lists the specific configuration requirements for Codefresh.
 
 {: .table .table-bordered .table-hover}
+
 | What to configure    |   When to configure |   
-| --------------       | --------------                    | 
-|[Valid external IP address](#verify-valid-external-ip-address) |   _Before_ installing hybrid runtime  |     
-|[Valid SSL certificate](#valid-ssl-certificate) | |
-|[TCP support](#tcp-support) |  | 
-|[Enable report status](#tcp-support) |  | 
-|[Cluster routing service](#cluster-routing-service) | _After_ installing hybrid runtime | 
+| --------------       | --------------  | 
+|Valid external IP address | _Before_ installing hybrid runtime  |     
+|Valid SSL certificate | |
+|TCP support |  | 
+|Enable report status to cluster|  | 
 
 #### Valid external IP address
 Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL-IP` column for your ingress controller shows a valid hostname.  
@@ -500,7 +516,7 @@ For secure runtime installation, the ingress controller must have a valid SSL ce
 #### TCP support  
 Configure to handle TCP requests.  
 
-#### Report status to cluster  
+#### Enable report status to cluster 
 By default, the Traefik ingress controller is not configured to report its status to the cluster.  If not configured,  Argo’s health check reports the health status as “progressing”, resulting in a timeout error during installation.  
 
 To enable reporting its status, add `publishedService` to `providers.kubernetesIngress.ingressEndpoint`.  
