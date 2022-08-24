@@ -92,7 +92,7 @@ For both CLI wizard and Silent install:
   See [Internal ingress host configuration (optional for existing runtimes only)](#internal-ingress-host-configuration-optional-for-existing-hybrid-runtimes-only).
 
 
-#### Git repository flags
+#### Git repository <!---and provider---> flags
 
 **Repository URLs**  
 The GitHub repository to house the installation definitions.  
@@ -105,6 +105,41 @@ Required.
 The Git token authenticating access to the GitHub installation repository.  
 * Silent install: Add the `--git-token` flag.  
 
+
+<!---**Enable Git providers**  
+Optional; required for GitLab, Bitbucket Server, and GitHub Enterprise Git providers.  
+Enable GitLab, Bitbucket Server, or GitHub Enterprise Server as the Git provider for the runtime and for the account. 
+>The Git provider defined for the first runtime in the account must be used for all the runtimes in the same account.  
+  
+* CLI wizard and Silent install: Add the `--enable-git-provider` flag.
+
+**Git provider**  
+
+Optional for GitHub; required for GitLab, Bitbucket Server, and GitHub Enterprise.
+The name of the Git provider to use for the runtime and the account. 
+
+* CLI wizard and Silent install: Add the `--provider` flag, and define the provider name as either `gitlab`, `bitbucket-server` or `github`.
+
+**Repository URL**  
+The `HTTPS` clone URL of the Git repository, or project in GitLab, including the `.git` suffix in which to install the runtime, in the format:  
+`https://<host>/<owner_reponame>.git[/subdirectory][?ref=branch]`  
+where:  
+* `<host>/<owner_reponame>.git` is the Git server followed by the username/organization and the name of the repo, identical to the HTTPS clone URL.  For example, `https://github.com/codefresh-io/docs.codefresh.io.git`.  
+* `[/subdirectory]` (optional) is the path to a subdirectory within the repo. Whn omitted, the runtime is installed in the root of the repository.  For example, `/docs/images`. 
+* `[?ref=branch]` (optional) is the `ref` queryParam to select a specific branch. When omitted, the runtime is installed in the default branch. For example,  `codefresh-prod`.  
+
+> For GitLab, you must create the group with access to the project prior to the installation.
+
+* CLI wizard: If the repo doesn't exist, for GitHub, GitLab, Bitbucket Server, GitHub Enterprise, Codefresh creates it during runtime installation.  
+* Silent install: Required. Add the `--repo` flag.
+
+**Git user**  
+Optional; required only for Bitbucket Server.  
+The username for the Git account.  
+
+* CLI wizard and Silent install: For Bitbucket Server, add the `--git-user` flag, and define the username. For example, `codefresh`  --->
+
+#### Codefresh resources flags
 **Codefresh demo resources**  
 Optional.  
 Install demo pipelines to use as a starting point to create your own pipelines. We recommend installing the demo resources as these are used in our quick start tutorials.  
