@@ -40,7 +40,8 @@ The table below lists the specific configuration requirements for Codefresh.
 Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL-IP` column for your ingress controller shows a valid hostname.  
   
 #### Valid SSL certificate  
-For secure runtime installation, the ingress controller must have a valid SSL certificate from an authorized CA (Certificate Authority).  
+For secure runtime installation, the ingress controller must have a valid SSL certificate from an authorized CA (Certificate Authority). 
+> Use the FQDN (Fully Qualified Domain Name) of teh ingress controller for the SSL certifcate.
 
 #### TCP support  
 Configure to handle TCP requests.  
@@ -67,6 +68,7 @@ Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL
   
 #### Valid SSL certificate  
 For secure runtime installation, the ingress controller must have a valid SSL certificate from an authorized CA (Certificate Authority).  
+> Use the FQDN (Fully Qualified Domain Name) of teh ingress controller for the SSL certifcate.
 
 #### TCP support  
 Configure to handle TCP requests.  
@@ -93,7 +95,7 @@ spec:
   * From the **Route traffic to** list, select **Alais to Application and Classic Load Balancer**.
   * From the list of Regions, select the region. For example, **US East**.
   * From the list of load balancers, select the load balancer that was created during installation.  
-  
+
 For more information, see [Creating records by using the Amazon Route 53 console](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-creating.html){:target="\_blank"}.
 
 {% include image.html
@@ -132,6 +134,7 @@ Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL
   
 #### Valid SSL certificate  
 For secure runtime installation, the ingress controller must have a valid SSL certificate from an authorized CA (Certificate Authority).  
+> Use the FQDN (Fully Qualified Domain Name) of teh ingress controller for the SSL certifcate.
 
 #### TCP support  
 Configure to handle TCP requests.  
@@ -209,6 +212,7 @@ Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL
   
 #### Valid SSL certificate  
 For secure runtime installation, the ingress controller must have a valid SSL certificate from an authorized CA (Certificate Authority).  
+> Use the FQDN (Fully Qualified Domain Name) of teh ingress controller for the SSL certifcate.
 
 #### TCP support  
 Configure to handle TCP requests.  
@@ -281,6 +285,7 @@ Run `kubectl get svc -A` to get a list of services, and verify that the `EXTERNA
   
 #### Valid SSL certificate  
 For secure runtime installation, the ingress controller must have a valid SSL certificate from an authorized CA (Certificate Authority).  
+> Use the FQDN (Fully Qualified Domain Name) of teh ingress controller for the SSL certifcate.
 
 #### TCP support  
 Configure to handle TCP requests.  
@@ -516,6 +521,7 @@ Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL
   
 #### Valid SSL certificate  
 For secure runtime installation, the ingress controller must have a valid SSL certificate from an authorized CA (Certificate Authority).  
+> Use the FQDN (Fully Qualified Domain Name) of teh ingress controller for the SSL certifcate.
 
 #### TCP support  
 Configure to handle TCP requests.  
@@ -538,4 +544,5 @@ providers:
 ```
 
 ### What to read next
-[Installing hybrid runtimes]({{site.baseurl}}/docs/runtime/installation/)
+[Hybrid runtime installation flags]({{site.baseurl}}/docs/runtime/installation//#hybrid-runtime-installation-flags)  
+[Install hybrid runtimes]({{site.baseurl}}/docs/runtime/installation/)

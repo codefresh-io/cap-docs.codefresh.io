@@ -123,7 +123,7 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
 
 **Before you begin**
 * Make sure you meet the minimum requirements for runtime installation
-* [Download/upgrade the latest version of the CLI]({{site.baseurl}}/docs/clients/csdp-cli/#upgrade-codefresh-cli)
+* [Download/upgrade to the latest version of the CLI]({{site.baseurl}}/docs/clients/csdp-cli/#upgrade-codefresh-cli)
 * Review [Hybrid runtime installation flags](#hybrid-runtime-installation-flags)
 * Make sure your ingress controller is configured correctly:
   * [Ambasador ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#ambassador-ingress-configuration)
@@ -149,7 +149,7 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
   * Silent install: Pass the required flags in the install command:  
     `cf runtime install <runtime-name> --repo <git-repo> --git-token <git-token> --silent`  
   For the list of flags, see [Hybrid runtime installation flags](#hybrid-runtime-installation-flags).
-1. Complete the configuration for ingress controllers:
+1. If relevant, complete the configuration for these ingress controllers:
   * [ALB AWS: Alias DNS record in route53 to load balancer]({{site.baseurl}}/docs/runtime/requirements/#alias-dns-record-in-route53-to-load-balancer)
   * [Istio: Configure cluster routing service]({{site.baseurl}}/docs/runtime/requirements/#cluster-routing-service)
   * [NGINX Enterprise ingress controller: Patch certificate secret]({{site.baseurl}}/docs/runtime/requirements/#patch-certificate-secret)  
@@ -188,7 +188,7 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
 Once the hybrid runtime is successfully installed, it is provisioned on the Kubernetes cluster, and displayed in the **Runtimes** page.
 
 
-#### Internal ingress host configuration (optional for existing hybrid runtimes only)
+#### (Optional) Internal ingress host configuration for existing hybrid runtimes
 
 If you already have provisioned hybrid runtimes, to use an internal ingress host for app-proxy communication and an external ingress host to handle webhooks, change the specs for the `Ingress` and `Runtime` resources in the runtime installation repository. Use the examples as guidelines.  
 
@@ -261,15 +261,9 @@ data:
       version: 99.99.99
 ```
   
-#### Git integration registration
-
-If you bypassed installing ingress resources with the `--skip-ingress` flag, or if AWS ALB is your ingress controller, create and register Git integrations using these commands:  
-  `cf integration git add default --runtime <RUNTIME-NAME> --api-url <API-URL>`  
-  
-  `cf integration git register default --runtime <RUNTIME-NAME> --token <RUNTIME-AUTHENTICATION-TOKEN>`  
 
 ### Related articles
 [Add external clusters to runtimes]({{site.baseurl}}/docs/runtime/managed-cluster/)  
 [Manage provisioned runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/)  
 [(Hybrid) Monitor provisioned runtimes]({{site.baseurl}}/docs/runtime/monitoring-troubleshooting/)  
-[Troubleshoot runtime installation]({{site.baseurl}}/docs/troubleshooting/runtime-issues/)
+[Troubleshoot hybrid runtime installation]({{site.baseurl}}/docs/troubleshooting/runtime-issues/)
