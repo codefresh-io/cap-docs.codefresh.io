@@ -39,12 +39,12 @@ The table below lists the specific configuration requirements for Codefresh.
 #### Valid external IP address
 Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL-IP` column for your ingress controller shows a valid hostname.  
   
-#### Valid SSL certificate  
-For secure runtime installation, the ingress controller must have a valid SSL certificate from an authorized CA (Certificate Authority). 
-> Use the FQDN (Fully Qualified Domain Name) of teh ingress controller for the SSL certifcate.
+#### Valid TLS certificate  
+For secure runtime installation, the ingress controller must have a valid TLS certificate.  
+> Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certifcate.
 
 #### TCP support  
-Configure to handle TCP requests.  
+Configure the ingress contoller to handle TCP requests.  
 
 ### AWS ALB ingress configuration
 
@@ -66,12 +66,12 @@ The table below lists the specific configuration requirements for Codefresh.
 #### Valid external IP address
 Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL-IP` column for your ingress controller shows a valid hostname.  
   
-#### Valid SSL certificate  
-For secure runtime installation, the ingress controller must have a valid SSL certificate from an authorized CA (Certificate Authority).  
-> Use the FQDN (Fully Qualified Domain Name) of teh ingress controller for the SSL certifcate.
+#### Valid TLS certificate  
+For secure runtime installation, the ingress controller must have a valid TLS certificate.  
+> Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certifcate.
 
 #### TCP support  
-Configure to handle TCP requests.  
+Configure the ingress contoller to handle TCP requests.  
 
 #### Controller configuration
 In the ingress resource file, verify that `spec.controller` is configured as `ingress.k8s.aws/alb`. 
@@ -132,12 +132,12 @@ The table below lists the specific configuration requirements for Codefresh.
 #### Valid external IP address
 Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL-IP` column for your ingress controller shows a valid hostname.  
   
-#### Valid SSL certificate  
-For secure runtime installation, the ingress controller must have a valid SSL certificate from an authorized CA (Certificate Authority).  
-> Use the FQDN (Fully Qualified Domain Name) of teh ingress controller for the SSL certifcate.
+#### Valid TLS certificate  
+For secure runtime installation, the ingress controller must have a valid TLS certificate.  
+> Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certifcate.
 
 #### TCP support  
-Configure to handle TCP requests.  
+Configure the ingress contoller to handle TCP requests.  
 
 #### Cluster routing service
 >  The cluster routing service must be configured _after_ installing the hybrid runtime.
@@ -210,12 +210,12 @@ The table below lists the specific configuration requirements for Codefresh.
 #### Valid external IP address
 Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL-IP` column for your ingress controller shows a valid hostname.  
   
-#### Valid SSL certificate  
-For secure runtime installation, the ingress controller must have a valid SSL certificate from an authorized CA (Certificate Authority).  
-> Use the FQDN (Fully Qualified Domain Name) of teh ingress controller for the SSL certifcate.
+#### Valid TLS certificate  
+For secure runtime installation, the ingress controller must have a valid TLS certificate.  
+> Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certifcate.
 
 #### TCP support  
-Configure to handle TCP requests.  
+Configure the ingress contoller to handle TCP requests.   
 
 
 #### NGINX Ingress: Enable report status to cluster
@@ -283,12 +283,12 @@ The table below lists the specific configuration requirements for Codefresh.
 #### Valid external IP address
 Run `kubectl get svc -A` to get a list of services, and verify that the `EXTERNAL-IP` column for your ingress controller shows a valid hostname.  
   
-#### Valid SSL certificate  
-For secure runtime installation, the ingress controller must have a valid SSL certificate from an authorized CA (Certificate Authority).  
-> Use the FQDN (Fully Qualified Domain Name) of teh ingress controller for the SSL certifcate.
+#### Valid TLS certificate  
+For secure runtime installation, the ingress controller must have a valid TLS certificate.  
+> Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certifcate.
 
 #### TCP support  
-Configure to handle TCP requests.  
+Configure the ingress contoller to handle TCP requests.   
 
 Here's an example of TCP configuration for NGINX Community on AWS.  
 Verify that the `ingress-nginx-controller` service manifest has either of the following annotations:  
@@ -519,12 +519,12 @@ The table below lists the specific configuration requirements for Codefresh.
 #### Valid external IP address
 Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL-IP` column for your ingress controller shows a valid hostname.  
   
-#### Valid SSL certificate  
-For secure runtime installation, the ingress controller must have a valid SSL certificate from an authorized CA (Certificate Authority).  
-> Use the FQDN (Fully Qualified Domain Name) of teh ingress controller for the SSL certifcate.
+#### Valid TLS certificate  
+For secure runtime installation, the ingress controller must have a valid TLS certificate.  
+> Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certifcate.
 
 #### TCP support  
-Configure to handle TCP requests.  
+Configure the ingress contoller to handle TCP requests.   
 
 #### Enable report status to cluster 
 By default, the Traefik ingress controller is not configured to report its status to the cluster.  If not configured,  Argo’s health check reports the health status as “progressing”, resulting in a timeout error during installation.  

@@ -92,7 +92,7 @@ For both CLI wizard and Silent install:
   See [Internal ingress host configuration (optional for existing runtimes only)](#internal-ingress-host-configuration-optional-for-existing-hybrid-runtimes-only).
 
 
-#### Git repository <!---and provider---> flags
+#### Git repository <!---and provider --->flags
 
 **Repository URLs**  
 The GitHub repository to house the installation definitions.  
@@ -157,8 +157,8 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
 ### Install the hybrid runtime
 
 **Before you begin**
-* Make sure you meet the minimum requirements for runtime installation
-* [Download/upgrade to the latest version of the CLI]({{site.baseurl}}/docs/clients/csdp-cli/#upgrade-codefresh-cli)
+* Make sure you meet the [minimum requirements]({{site.baseurl}}/docs/runtime/requirements/#minimum-requirements) for runtime installation
+* [Download or upgrade to the latest version of the CLI]({{site.baseurl}}/docs/clients/csdp-cli/#upgrade-codefresh-cli)
 * Review [Hybrid runtime installation flags](#hybrid-runtime-installation-flags)
 * Make sure your ingress controller is configured correctly:
   * [Ambasador ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#ambassador-ingress-configuration)
@@ -170,10 +170,6 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
 
 
 **How to** 
-
-> Note:  
-> Hybrid runtime installation starts by checking network connectivity and the K8s cluster server version.  
-  To skip these tests, pass the `--skip-cluster-checks` flag.
 
 1. Do one of the following:  
   * If this is your first hybrid runtime installation, in the Welcome page, select **+ Install Runtime**.
@@ -188,7 +184,7 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
   * [ALB AWS: Alias DNS record in route53 to load balancer]({{site.baseurl}}/docs/runtime/requirements/#alias-dns-record-in-route53-to-load-balancer)
   * [Istio: Configure cluster routing service]({{site.baseurl}}/docs/runtime/requirements/#cluster-routing-service)
   * [NGINX Enterprise ingress controller: Patch certificate secret]({{site.baseurl}}/docs/runtime/requirements/#patch-certificate-secret)  
-1. If you bypassed installing ingress resources with the `--skip-ingress` flag, create and register Git integrations using these commands:  
+1. If you bypassed installing ingress resources with the `--skip-ingress` flag for ingress controllers not in the supported list, create and register Git integrations using these commands:  
   `cf integration git add default --runtime <RUNTIME-NAME> --api-url <API-URL>`  
   
   `cf integration git register default --runtime <RUNTIME-NAME> --token <RUNTIME-AUTHENTICATION-TOKEN>`  
