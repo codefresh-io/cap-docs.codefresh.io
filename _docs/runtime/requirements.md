@@ -41,10 +41,10 @@ Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL
   
 #### Valid TLS certificate  
 For secure runtime installation, the ingress controller must have a valid TLS certificate.  
-> Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certifcate.
+> Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certificate.
 
 #### TCP support  
-Configure the ingress contoller to handle TCP requests.  
+Configure the ingress controller to handle TCP requests.  
 
 ### AWS ALB ingress configuration
 
@@ -68,10 +68,10 @@ Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL
   
 #### Valid TLS certificate  
 For secure runtime installation, the ingress controller must have a valid TLS certificate.  
-> Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certifcate.
+> Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certificate.
 
 #### TCP support  
-Configure the ingress contoller to handle TCP requests.  
+Configure the ingress controller to handle TCP requests.  
 
 #### Controller configuration
 In the ingress resource file, verify that `spec.controller` is configured as `ingress.k8s.aws/alb`. 
@@ -84,15 +84,15 @@ metadata:
 spec:
   controller: ingress.k8s.aws/alb
 ```
-#### Create an alias in route53 to load balancer
+#### Create an alias to load balancer in route53
 
 >  The alias  must be configured _after_ installing the hybrid runtime.
 
 1. Make sure a DNS record is available in the correct hosted zone. 
 1. _After_ hybrid runtime installation, in Amazon Route 53, create an alias to route traffic to the load balancer that is automatically created during the installation:  
   * **Record name**: Enter the same record name used in the installation.
-  * Toggle **Alias** to ON.
-  * From the **Route traffic to** list, select **Alais to Application and Classic Load Balancer**.
+  * Toggle **Alias** to **ON**.
+  * From the **Route traffic to** list, select **Alias to Application and Classic Load Balancer**.
   * From the list of Regions, select the region. For example, **US East**.
   * From the list of load balancers, select the load balancer that was created during installation.  
 
@@ -108,13 +108,12 @@ For more information, see [Creating records by using the Amazon Route 53 console
 %}
 
 #### (Optional) Git integration registration
-If the installation failed, as it cam happen if the DNS record was not created within the timeframe, manually create and register Git integrations using these commands:  
+If the installation failed, as can happen if the DNS record was not created within the timeframe, manually create and register Git integrations using these commands:  
 
   `cf integration git add default --runtime <RUNTIME-NAME> --api-url <API-URL>`  
   
   `cf integration git register default --runtime <RUNTIME-NAME> --token <RUNTIME-AUTHENTICATION-TOKEN>`  
-  where:  
-  * `<RUNTIME-NAME>` is the name of the runtime you 
+ 
 
 ### Istio ingress configuration
 For detailed configuration information, see [Istio ingress controller documentation](https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress){:target="\_blank}.  
@@ -134,10 +133,10 @@ Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL
   
 #### Valid TLS certificate  
 For secure runtime installation, the ingress controller must have a valid TLS certificate.  
-> Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certifcate.
+> Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certificate.
 
 #### TCP support  
-Configure the ingress contoller to handle TCP requests.  
+Configure the ingress controller to handle TCP requests.  
 
 #### Cluster routing service
 >  The cluster routing service must be configured _after_ installing the hybrid runtime.
@@ -212,10 +211,10 @@ Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL
   
 #### Valid TLS certificate  
 For secure runtime installation, the ingress controller must have a valid TLS certificate.  
-> Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certifcate.
+> Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certificate.
 
 #### TCP support  
-Configure the ingress contoller to handle TCP requests.   
+Configure the ingress controller to handle TCP requests.   
 
 
 #### NGINX Ingress: Enable report status to cluster
@@ -249,7 +248,7 @@ If the ingress controller is not configured to report its status to the cluster,
 You will need to add this to the `ingress-master` when you have completed runtime installation.
 
 #### Patch certificate secret
->  The certifcate secret must be configured _after_ installing the hybrid runtime.
+>  The certificate secret must be configured _after_ installing the hybrid runtime.
 
 Patch the certificate secret in `spec.tls` of the `ingress-master` resource.  
 The secret must be in the same namespace as the runtime.
@@ -285,10 +284,10 @@ Run `kubectl get svc -A` to get a list of services, and verify that the `EXTERNA
   
 #### Valid TLS certificate  
 For secure runtime installation, the ingress controller must have a valid TLS certificate.  
-> Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certifcate.
+> Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certificate.
 
 #### TCP support  
-Configure the ingress contoller to handle TCP requests.   
+Configure the ingress controller to handle TCP requests.   
 
 Here's an example of TCP configuration for NGINX Community on AWS.  
 Verify that the `ingress-nginx-controller` service manifest has either of the following annotations:  
@@ -521,10 +520,10 @@ Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL
   
 #### Valid TLS certificate  
 For secure runtime installation, the ingress controller must have a valid TLS certificate.  
-> Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certifcate.
+> Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certificate.
 
 #### TCP support  
-Configure the ingress contoller to handle TCP requests.   
+Configure the ingress controller to handle TCP requests.   
 
 #### Enable report status to cluster 
 By default, the Traefik ingress controller is not configured to report its status to the cluster.  If not configured,  Argo’s health check reports the health status as “progressing”, resulting in a timeout error during installation.  

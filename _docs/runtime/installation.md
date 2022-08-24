@@ -39,7 +39,7 @@ The runtime name must start with a lower-case character, and can include up to 6
 
 **Namespace resource labels**  
 Optional.  
-The label of the namespace resource to which you are installing the hybrid runtime. Labels are required to identity the networks that need access during installation, as is the case when using services meshes such as Istio for example.  
+The label of the namespace resource to which you are installing the hybrid runtime. Labels are required to identify the networks that need access during installation, as is the case when using services meshes such as Istio for example.  
 
 * CLI wizard and Silent install: Add the `--namespace-labels` flag, and define the labels in `key=value` format. Separate multiple labels with `commas`.
 
@@ -59,7 +59,7 @@ The Git repository per runtime account with shared configuration manifests.
 **Skip ingress**  
 Required, if you are using an unsupported ingress controller.  
 For unsupported ingress controllers, bypass installing ingress resources with the `--skip-ingress` flag.  
-In this case, after completing the installation, manually configure the cluster's routing service, and create and register Git integrations. See the last steo in [Install the hybrid runtime](#install-the-hybrid-runtime).
+In this case, after completing the installation, manually configure the cluster's routing service, and create and register Git integrations. See the last step in [Install the hybrid runtime](#install-the-hybrid-runtime).
 
 **Ingress class**  
 Required if you have more than one ingress class configured on your cluster.  
@@ -76,8 +76,8 @@ The IP address or host name of the ingress controller component.
   > Important: For AWS ALB, the ingress host is created post-installation. However, when prompted, add the domain name you will create in `Route 53` as the ingress host.  
 
 **Insecure ingress hosts**  
-SSL certificates for the ingress host:  
-If the ingress host does not have a valid SSL certificate, you can continue with the installation in insecure mode, which disables certificate validation.  
+TLS certificates for the ingress host:  
+If the ingress host does not have a valid TLS certificate, you can continue with the installation in insecure mode, which disables certificate validation.  
 
 * CLI wizard: Automatically detects and prompts you to confirm continuing the installation in insecure mode.  
 * Silent install: To continue with the installation in insecure mode, add the `--insecure-ingress-host` flag.  
