@@ -6,6 +6,15 @@ sub-group: quick-start
 toc: true
 ---
 
+<!---Now that you have created an application, you need to depploy the application. Deploy the codefresh-guestbook application by creating and commiting resources.  
+You will create and commit the following resources:  
+1. Install Argo Rollouts on the target cluster to which you will deploy the application
+1. `Rollout` resource defining the deployment strategy 
+1. Service resource to expose the application to external traffic
+(what about viewing the resources in the Current State? Move to this section as a separate task?)
+### Before you begin
+[Create the codefresh-guestbook application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-ui)
+--->
 Before you can create an application in Codefresh, you need to create the resources used by the application:
 
 1. Install Argo Rollouts on the target cluster to which you will deploy the application
