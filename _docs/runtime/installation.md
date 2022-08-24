@@ -59,7 +59,7 @@ The Git repository per runtime account with shared configuration manifests.
 **Skip ingress**  
 Required, if you are using an unsupported ingress controller.  
 For unsupported ingress controllers, bypass installing ingress resources with the `--skip-ingress` flag.  
-In this case, after completing the installation, manually configure the cluster's routing service, and create and register Git integrations. See _Cluster routing service_ in [Post-installation configuration](#post-installation-configuration).
+In this case, after completing the installation, manually configure the cluster's routing service, and create and register Git integrations. See the last steo in [Install the hybrid runtime](#install-the-hybrid-runtime).
 
 **Ingress class**  
 Required if you have more than one ingress class configured on your cluster.  
@@ -89,7 +89,7 @@ For both CLI wizard and Silent install:
 
 * For new runtime installations, add the `--internal-ingress-host` flag pointing to the ingress host for `app-proxy`.
 * For existing installations, commit changes to the installation repository by modifying the `app-proxy ingress` and `<runtime-name>.yaml`  
-  See [Internal ingress host configuration (optional for existing runtimes only)](#internal-ingress-host-configuration-optional-for-existing-hybrid-runtimes-only).
+  See [(Optional) Internal ingress host configuration for existing hybrid runtimes](#optional-internal-ingress-host-configuration-for-existing-hybrid-runtimes).
 
 
 #### Git repository <!---and provider --->flags
@@ -139,7 +139,7 @@ The username for the Git account.
 
 * CLI wizard and Silent install: For Bitbucket Server, add the `--git-user` flag, and define the username. For example, `codefresh`  --->
 
-#### Codefresh resources flags
+#### Codefresh resource flags
 **Codefresh demo resources**  
 Optional.  
 Install demo pipelines to use as a starting point to create your own pipelines. We recommend installing the demo resources as these are used in our quick start tutorials.  
@@ -219,7 +219,7 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
 Once the hybrid runtime is successfully installed, it is provisioned on the Kubernetes cluster, and displayed in the **Runtimes** page.
 
 
-#### (Optional) Internal ingress host configuration for existing hybrid runtimes
+### (Optional) Internal ingress host configuration for existing hybrid runtimes
 
 If you already have provisioned hybrid runtimes, to use an internal ingress host for app-proxy communication and an external ingress host to handle webhooks, change the specs for the `Ingress` and `Runtime` resources in the runtime installation repository. Use the examples as guidelines.  
 
@@ -296,5 +296,5 @@ data:
 ### Related articles
 [Add external clusters to runtimes]({{site.baseurl}}/docs/runtime/managed-cluster/)  
 [Manage provisioned runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/)  
-[(Hybrid) Monitor provisioned runtimes]({{site.baseurl}}/docs/runtime/monitoring-troubleshooting/)  
+[Monitor provisioned hybrid runtimes]({{site.baseurl}}/docs/runtime/monitoring-troubleshooting/)  
 [Troubleshoot hybrid runtime installation]({{site.baseurl}}/docs/troubleshooting/runtime-issues/)

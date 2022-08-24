@@ -334,5 +334,5 @@ If you bypassed installing ingress resources with the `--skip-ingress` flag, or 
 [Add external clusters to runtimes]({{site.baseurl}}/docs/runtime/managed-cluster/)  
 [Add Git Sources to runtimes]({{site.baseurl}}/docs/runtime/git-sources/)  
 [Manage provisioned runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/)  
-[(Hybrid) Monitor provisioned runtimes]({{site.baseurl}}/docs/runtime/monitoring-troubleshooting/)  
+[Monitor provisioned hybrid runtimes]({{site.baseurl}}/docs/runtime/monitoring-troubleshooting/)  
 [Troubleshoot runtime installation]({{site.baseurl}}/docs/troubleshooting/runtime-issues/)
