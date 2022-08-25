@@ -39,7 +39,7 @@ The runtime name must start with a lower-case character, and can include up to 6
 
 **Namespace resource labels**  
 Optional.  
-The label of the namespace resource to which you are installing the hybrid runtime. Labels are required to identify the networks that need access during installation, as is the case when using services meshes such as Istio for example.  
+The label of the namespace resource to which you are installing the hybrid runtime. Labels are required to identify the networks that need access during installation, as is the case when using services meshes such as Istio for example. For Gateway APIs, use the namespace label if defined to reference the runtine in the `allowedRoutes.namespaces`. 
 
 * CLI wizard and Silent install: Add the `--namespace-labels` flag, and define the labels in `key=value` format. Separate multiple labels with `commas`.
 
@@ -91,34 +91,26 @@ For both CLI wizard and Silent install:
 * For existing installations, commit changes to the installation repository by modifying the `app-proxy ingress` and `<runtime-name>.yaml`  
   See [(Optional) Internal ingress host configuration for existing hybrid runtimes](#optional-internal-ingress-host-configuration-for-existing-hybrid-runtimes).
 
-#### Gateway API controller flags
+#### Gateway API flags
 
 
 **Gateway name**  
 Required.  
 The name of the gateway for runtime installation. 
 
-* CLI wizard: Select the gateway name for runtime installation from the list displayed.
-* Silent install: Explicitly specify the gateway name through the `--gateway-name` flag. Otherwise, runtime installation fails.
+* CLI wizard and Silent install: Specify the gateway name through the `--gateway-name` flag. 
 
 **Gateway namespace**
 Required.
-The namespace with the **Gateway name**.
-For both CLI wizard and Silent install,  specify the namespace through the `--gateway-namespace` flag.
+The namespace with the **Gateway name**.  
+
+* CLI wizard and Silent install: Specify the namespace through the `--gateway-namespace` flag.
 
 **Ingress host**  
 Required.  
-The IP address or host name of the gateway controller component.  
+The IP address or host name of the gateway.  
 
-* CLI wizard: Automatically selects and displays the host, either from the cluster or the ingress controller associated with the **Ingress class**.  
-* Silent install: Add the `--ingress-host` flag. If a value is not provided, takes the host from the gaeway controller associated with the **Ingress class**.
-  > Important: For AWS ALB, the ingress host is created post-installation. However, when prompted, add the domain name you will create in `Route 53` as the ingress host.  
-
-**Insecure ingress hosts**  
-TLS certificates for the ingress host:  If the ingress host does not have a valid TLS certificate, you can continue with the installation in insecure mode, which disables certificate validation.  
-
-* CLI wizard: Automatically detects and prompts you to confirm continuing the installation in insecure mode.  
-* Silent install: To continue with the installation in insecure mode, add the `--insecure-ingress-host` flag.  
+* CLI wizard and Silent install: Specify the gateway host through the `--ingress-host` flag. 
 
 
 #### Git repository <!---and provider --->flags
@@ -136,7 +128,7 @@ The Git token authenticating access to the GitHub installation repository.
 
 
 <!---**Enable Git providers**  
-Optional; required for GitLab, Bitbucket Server, and GitHub Enterprise Git providers.  
+Optional for GitHub; required for GitLab, Bitbucket Server, and GitHub Enterprise Git providers.  
 Enable GitLab, Bitbucket Server, or GitHub Enterprise Server as the Git provider for the runtime and for the account. 
 >The Git provider defined for the first runtime in the account must be used for all the runtimes in the same account.  
   
