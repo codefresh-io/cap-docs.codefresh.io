@@ -40,11 +40,12 @@ Based on your deployment model, start by provisioning the hosted or hybrid runti
 
 ### Deploy an application
 
-1. [Create resources for codefresh-guestbook application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-specs)  
-  Create rollout, service, and analysis template resources prior to creating the `codefresh-guestbook` application.
 1. [Create the codefresh-guestbook application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-ui)  
   Create the `codefresh-guestbook` application in the Codefresh UI.
-1. [Update the image tag for codefresh-guestbook]({{site.baseurl}}/docs/getting-started/quick-start/create-app-ui)  
+1. [Create and commit resources for codefresh-guestbook application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-specs)  
+  Create rollout and service resources and commit these resources to deploy the `codefresh-guestbook` application.
+1. [Create a ]({{site.baseurl}}/docs/getting-started/quick-start/create-app-specs)  
+1. [Update the image tag for codefresh-guestbook]({{site.baseurl}}/docs/getting-started/quick-start/create-rollout)  
   Update the image for the `codefresh-guestbook` application to trigger a rollout.
 
 ### Trigger/create a Delivery Pipeline 

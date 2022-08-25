@@ -90,24 +90,21 @@ For detailed information, see [Create an application]({{site.baseurl}}/docs/depl
    %} 
 
 {:start="10"}
-1. Select the application, and then click the **Current State** tab to see all the resources created for the application.
-<!--- Select the application. The Current State tab does not display any resources as we have not created any resources for the application. --->
+1. Select the application. The Current State tab does not display any resources as we have not created any resources for the application. 
 
   {% include 
    image.html 
    lightbox="true" 
-   file="/images/getting-started/quick-start/cdops-app-current-state.png" 
-   url="/images/getting-started/quick-start/cdops-app-current-state.png" 
-   alt="Current State for codefresh-guestbook application" 
-   caption="Current State for codefresh-guestbook application"
+   file="/images/getting-started/quick-start/cdops-app-empty-current-state.png" 
+   url="/images/getting-started/quick-start/cdops-app-empty-current-state.png" 
+   alt="Empty Current State for new application" 
+   caption="Empty Current State for new application"
    max-width="70%" 
-   %} 
+   %}
+  
 
-<!--- In the next task, you will create and commit resources for the codefresh-guestbook application to deploy the application. --->
+In the next task, you will create and commit resources for the `codefresh-guestbook` application and trigger a rollout. 
 
-The final step is to make a change in the application manifest to enforce a rollout. 
 
 ### What to do next
-<!--- [Create resources for the application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-specs/) --->
-
-[Update image tag for codefresh-guestbook application]({{site.baseurl}}/docs/getting-started/quick-start/create-rollout)
+[Create resources for the application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-specs/)
