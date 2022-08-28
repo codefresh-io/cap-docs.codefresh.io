@@ -7,15 +7,24 @@ redirect_from:
 toc: true
 ---
 
-We launched the Codefresh platform in February this year. Built on Argo, the world’s most popular and fastest-growing open source software delivery, Codefresh unlocks the full enterprise potential of Argo Workflows, Argo CD, Argo Events, and Argo Rollouts, providing a control-plane for managing them at scale.
+We launched the Codefresh platform in February this year. Built on Argo, the world’s most popular and fastest-growing open source software delivery, Codefresh unlocks the full enterprise potential of Argo Workflows, Argo CD, Argo Events, and Argo Rollouts, providing a control-plane for managing them at scale.  
+
+This month's release is all about quality and usability. 
 
 ## August 2022
 
 ### Features & enhancements
 
+#### Labels and annotations for managed clusters
+The Codefresh CLI supports labels and annotations for managed clusters. When you add a managed cluster in Codefresh, you can optionally add labels and annotations with the  `--labels` and the `--annotations` flags. Codefresh supports the standard key-value formats for both, with multiple items separated by `,`. K8s rules for labels and annotations are valid here as well . 
+See [Adding a managed cluster with Codefresh CLI]({{site.baseurl}}/docs/runtime/managed-cluster/#add-a-managed-cluster-with-codefresh-cli), and [Adding a managed cluster with Kustomize]({{site.baseurl}}/docs/runtime/managed-cluster/#add-a-managed-cluster-with-kustomize).
+
 #### Event information for application resources
-Codefresh pulls in events from Argo CD for application resources, allowing you to view events for application resources directly in Codefresh instead of navigating to Argo CD to view them. Clicking on a application resource in the Current State view for an application displays the Events tab in addition to Manifests and Logs. 
-Events are displayed in descending order, with the most recent displayed first. Historical events older than 30 minutes are not displayed, so the Event tab can sometimes be empty (Argo CD's standard behavior).
+View events for application resources directly in Codefresh, just as you would in Argo CD.  
+Instead of navigating to Argo CD to view events, clicking on a application resource in the Current State view for an application displays the Events tab.  
+Events are displayed in descending order, with the most recent event displayed first. As with Argo CD's standard behavior, historical events older than 30 minutes are not displayed, so the Event tab can sometimes be empty.  
+
+The Applications dashboard flags errors in all applications at the global level. The Events tab isolates both successful and failed events per resource within an applicatiion, useful for resources such as pods. 
 
 {% include
  image.html
@@ -27,12 +36,12 @@ Events are displayed in descending order, with the most recent displayed first. 
     max-width="80%"
 %}
 
-The Applications dashboard flags errors in all applications at the global level.  The Events tab isolates both successful and failed events per resource within an applicatiion, useful for resources such as pods. 
 
-#### Application navigation enhancements
+
+#### Application enhancements
 
 **Current State tab**
-Selecting an application from the Applications dashboard takes you to the Current State instead of the Timeline as in previous versions.
+Codefresh has updated the navigation for individual applications. As the Current State tab is usually the go-to tab for comprehensive information on application resources, on selecting an application from the Applications dashboard, the Current State is displayed instead of the Timeline tab as in previous versions.
 
 
 {% include
@@ -46,7 +55,7 @@ Selecting an application from the Applications dashboard takes you to the Curren
 %}
 
 **Context menu for applications**
-TBD
+As another usability enhancement, every application in the Applications dashboard includes a new context menu providing quick access to functionality such as quick view, editing, and deleting applications.
 
 
 {% include
@@ -59,15 +68,21 @@ TBD
     max-width="70%"
 %}
 
+
+**User-friendly messages for validation error**  
+
+Validation errors detected on commit are displayed are as error messages with details on the possible reasons for the error. The errors are also highlighted in Form mode, and not merely highlighted in the YAML manifests. 
+
+
 #### `CF_RUNTIME_NAME` argument in CI integrations
 To make your integrations with Codefresh as fail-safe as possible, we replaced `CF_HOST` with the `CF_RUNTIME_NAME` argument.  
 
-`CF_HOST` is the URL to the cluster with the Codefresh runtime to integrate with, and any change in the URL can fail the enrichment. For this reason, we have deprecated `CF_HOST` from v 0.0.460 and higher, and recommend using `CF_RUNTIME_NAME` as the runtime name once defined remains unless deleted.  
+`CF_HOST` is the URL to the cluster with the Codefresh runtime to integrate with, and any change in the URL can fail the enrichment. For this reason, `CF_HOST` has been deprecated from v 0.0.460 and higher. We recommend using `CF_RUNTIME_NAME` as the runtime name once defined remains until the runtime is deleted.  
 
 See [CI integrations argument reference]({{site.baseurl}}/docs/integrations/ci-integrations/#ci-integration-argument-reference).
 
 #### `GHCR_GITHUB_TOKEN_AUTHENTICATION` argument in GitHub Action CI
-For GitHub Actions CI, the `CF_CONTAINER_REGISTRY_INTEGRATION` argument has a new value that you can select for GitHub Container registries. Even if you don't have an integration to a GitHub Container registry in Codefresh, you can select `GHCR_GITHUB_TOKEN_AUTHENTICATION`, and Codefresh retrieves and provides the explicit credentials for the container registry on generating the integration manifest.
+For GitHub Actions CI, the `CF_CONTAINER_REGISTRY_INTEGRATION` argument has a new value that you can select exclusively for GitHub Container registries. Even if you don't have an integration to a GitHub Container registry in Codefresh, you can select `GHCR_GITHUB_TOKEN_AUTHENTICATION`, for Codefresh to retrieve and provide the explicit credentials for the container registry on generating the integration manifest.
 
 {% include
  image.html
@@ -82,7 +97,7 @@ For GitHub Actions CI, the `CF_CONTAINER_REGISTRY_INTEGRATION` argument has a ne
 See [GitHub Action-Codefresh integration arguments]({{site.baseurl}}/docs/integrations/ci-integrations/github-actions/#github-action-codefresh-integration-arguments).
 
 #### GitHub container registry
-In this release, we added support for GitHub Container Registry, a popular container registry tool. The settings for GitHub Container registry integration are identical to that of the other container registry integrations:Ypu  the integration name, the runtimes to share the integration with, and the domain, username, and token.   
+In this release, we added support for GitHub Container Registry, a popular container registry tool. The settings for GitHub Container registry integration are identical to that of the other container registry integrations: the integration name, the runtimes to share the integration with, and the domain, username, and token.   
 You also have the Test Connection option to test credentials before commitiing the changes.  
 
 {% include
@@ -101,29 +116,33 @@ See [GitHub Container registry]({{site.baseurl}}/docs/integrations/ci-integratio
 
 
 
-#### Labels and annotations for managed clusters
-The Codefresh CLI supports labels and annotations for managed clusters. When you add a managed cluster in Codefresh, you can optionally add labels and annotations with the  `--labels` and the `--annotations` flags. Codefresh supports the standard key-value formats for both, with multiple items separated by `,`. K8s rules for labels and annotations are valid here as well . 
-See [Adding a managed cluster with Codefresh CLI]({{site.baseurl}}/docs/runtime/managed-cluster/#add-a-managed-cluster-with-codefresh-cli), and [Adding a managed cluster with Kustomize]({{site.baseurl}}/docs/runtime/managed-cluster/#add-a-managed-cluster-with-kustomize).
-
-Gitlab subgroups - (CR-13210)
-
-#### User-friendly messages for validation errors  
-
-Validation errors detected on commit are now not merely highlighted in the YAML manifests but displayed as error messagages with details and the cayse  not only detects errors but now also highlights the location of these errors in Form mode. 
-
-
 
 
 ### Bug fixes
-Images: Filters not persisting wehn navigating from page (CR-11556)
-When trying to commit application from the ui, if application already exists in git-source you get commit failure (CR-12551)
-Workflow Template filter does not work for git source [CR-13515]
-gitlab adapter can't process "new branch pushed" event [CR-13480]
-Add validation for WORKFLOW_NAME variable [CR-12190]
-Align integration details in the UI [CR-13156]
-Integration are not deleted after uninstall runtime (secret and configmap are not exist)  [CR-13400]
-Fix Installation of argo rollouts failed on long name cluster CR-14000
 
+**Runtimes**  
+* Uninstalling runtime does not remove the integrations shared with the runtimes.
+* Uninstalling a hosted or hybrid runtime does not remove it from the shared configuration repository.
+* Unable to install Argo Rollouts on clusters with long cluster names. CR-14000
+* Empty Argo CD logs with "http internal error" in Codefresh  
+* 500 status code on using default GKE/EKS context/cluster names. 
+
+**Applications**  
+* Trying to commit an application that already exists, results in a commit failure. (CR-12551)
+
+**Images**  
+* Filters are not retained on navigating away from Images. (CR-11556)
+
+**Pipelines, workflows and Workflow Templates**  
+
+* Workflow Template filter does not work for Git Source. [CR-13515]
+* Missing validation for `WORKFLOW_NAME` variable [CR-12190]
+* Incorrect sync history date for Workflow Templates
+* Error on detaching predefined filters in pipelines. 
+
+**Integrations**
+* Docker Hub integration list appears empty until refreshed.
+* Test Connection option disabled when Intgration name is not defined.
 
 
 ## July 2022
