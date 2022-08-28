@@ -98,13 +98,13 @@ For both CLI wizard and Silent install:
 Required.  
 The name of the gateway for runtime installation. 
 
-* CLI wizard and Silent install: Specify the gateway name through the `--gateway-name` flag. 
+* Silent install: Specify the gateway name through the `--gateway-name` flag. 
 
 **Gateway namespace**
 Required.
 The namespace with the **Gateway name**.  
 
-* CLI wizard and Silent install: Specify the namespace through the `--gateway-namespace` flag.
+* Silent install: Specify the namespace through the `--gateway-namespace` flag.
 
 **Ingress host**  
 Required.  
