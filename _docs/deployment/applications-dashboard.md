@@ -336,9 +336,9 @@ caption="Current State: Events for resource"
 max-width="50%"
 %}
 
-Events for application resources are supported from v0.0.477 and higher. You may be notified to upgrade your runtime.
-The Events tab pulls in events from Argo CD, starting with the most recent events. Both sucess and failure events are recorded. 
-Argo CD displays events as they occur for an application resource, and retains the display for a duration of 30 minutes. Historical events older than this duration are removed from display, and the Events tab can be empty if there are no ongoing events.
+View events for application resources in the Events tab. If your rutime is lower than the version required to view events, you are notified to upgrade your runtime.
+The Events tab displays both successful and failed events from Argo CD, starting with the most recent event. 
+Argo CD displays events as they occur for an application resource, and retains event information for a duration of 30 minutes. Historical events older than this duration are removed, and the Events tab can be empty if there are no ongoing events.
 
 ### Application timeline 
 The Timeline tab displays the history of deployments for the selected application, sorted by the most recent update (default), and enriched with image, Pull Request (PR), Jira issues, and commit information for each deployment. Ongoing deployments display rollout progress and rollout analysis as the deployment unfolds.   
