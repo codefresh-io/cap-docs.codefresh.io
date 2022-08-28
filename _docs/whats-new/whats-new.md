@@ -21,10 +21,10 @@ See [Adding a managed cluster with Codefresh CLI]({{site.baseurl}}/docs/runtime/
 
 #### Event information for application resources
 View events for application resources directly in Codefresh, just as you would in Argo CD.  
-Instead of navigating to Argo CD to view events, clicking on a application resource in the Current State view for an application displays the Events tab.  
+Instead of navigating to Argo CD to view events, clicking on an application resource in the Current State view for an application displays the Events tab.  
 Events are displayed in descending order, with the most recent event displayed first. As with Argo CD's standard behavior, historical events older than 30 minutes are not displayed, so the Event tab can sometimes be empty.  
 
-The Applications dashboard flags errors in all applications at the global level. The Events tab isolates both successful and failed events per resource within an applicatiion, useful for resources such as pods. 
+The Applications dashboard flags errors in all applications at the global level. The Events tab isolates both successful and failed events per resource within an application, useful for resources such as pods. 
 
 {% include
  image.html
@@ -71,7 +71,7 @@ As another usability enhancement, every application in the Applications dashboar
 
 **User-friendly messages for validation error**  
 
-Validation errors detected on commit are displayed are as error messages with details on the possible reasons for the error. The errors are also highlighted in Form mode, and not merely highlighted in the YAML manifests. 
+Validation errors detected on commit are displayed as error messages with details on the possible reasons for the error. The errors are also highlighted in Form mode, and not merely highlighted in the YAML manifests. 
 
 
 #### `CF_RUNTIME_NAME` argument in CI integrations
@@ -98,7 +98,7 @@ See [GitHub Action-Codefresh integration arguments]({{site.baseurl}}/docs/integr
 
 #### GitHub container registry
 In this release, we added support for GitHub Container Registry, a popular container registry tool. The settings for GitHub Container registry integration are identical to that of the other container registry integrations: the integration name, the runtimes to share the integration with, and the domain, username, and token.   
-You also have the Test Connection option to test credentials before commitiing the changes.  
+You also have the Test Connection option to test credentials before committing the changes.  
 
 {% include
  image.html
@@ -142,7 +142,7 @@ See [GitHub Container registry]({{site.baseurl}}/docs/integrations/ci-integratio
 
 **Integrations**
 * Docker Hub integration list appears empty until refreshed.
-* Test Connection option disabled when Intgration name is not defined.
+* Test Connection option disabled when Integration name is not defined.
 
 
 ## July 2022
