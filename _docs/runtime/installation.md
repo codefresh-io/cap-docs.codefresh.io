@@ -21,6 +21,10 @@ There are two parts to installing a hybrid runtime:
 
 See also [Codefresh architecture]({{site.baseurl}}/docs/getting-started/architecture).
 
+{::nomarkdown}
+</br>
+{:/}
+
 ### Hybrid runtime installation flags
 This section describes the required and optional flags to install a hybrid runtime.
 For documentation purposes, the flags are grouped into:
@@ -28,6 +32,9 @@ For documentation purposes, the flags are grouped into:
 * Ingress controller flags, relating to ingress controller requirements
 * Git repository flags, relating to Git provider requirements
 
+{::nomarkdown}
+</br>
+{:/}
 
 ####  Runtime flags
 
@@ -53,6 +60,10 @@ The cluster defined as the default for `kubectl`. If you have more than one Kube
 **Shared configuration repository**
 The Git repository per runtime account with shared configuration manifests.  
 * CLI wizard and Silent install: Add the `--shared-config-repo` flag and define the path to the shared repo.  
+
+{::nomarkdown}
+</br>
+{:/}
 
 #### Ingress controller flags
 
@@ -92,6 +103,9 @@ For both CLI wizard and Silent install:
   See [(Optional) Internal ingress host configuration for existing hybrid runtimes](#optional-internal-ingress-host-configuration-for-existing-hybrid-runtimes).
 
 
+{::nomarkdown}
+</br>
+{:/}
 
 #### Git repository <!---and provider --->flags
 
@@ -140,6 +154,10 @@ The username for the Git account.
 
 * CLI wizard and Silent install: For Bitbucket Server, add the `--git-user` flag, and define the username. For example, `codefresh`  --->
 
+{::nomarkdown}
+</br>
+{:/}
+
 #### Codefresh resource flags
 **Codefresh demo resources**  
 Optional.  
@@ -150,10 +168,21 @@ Install demo pipelines to use as a starting point to create your own pipelines. 
 **Insecure flag**  
 For _on-premises installations_, if the Ingress controller does not have a valid SSL certificate, to continue with the installation, add the `--insecure` flag to the installation command.  
 
+{::nomarkdown}
+</br>
+{:/}
+{::nomarkdown}
+</br>
+{:/}
+
 ### Install the Codefresh CLI
 
 Install the Codefresh CLI using the option that best suits you: `curl`, `brew`, or standard download.  
 If you are not sure which OS to select for `curl`, simply select one, and Codefresh automatically identifies and selects the right OS for CLI installation.
+
+{::nomarkdown}
+</br></br>
+{:/}
 
 ### Install the hybrid runtime
 
@@ -191,7 +220,9 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
   `cf integration git register default --runtime <RUNTIME-NAME> --token <RUNTIME-AUTHENTICATION-TOKEN>`  
 
 
-
+{::nomarkdown}
+</br>
+{:/}
 
 ### Hybrid runtime components
 
@@ -219,6 +250,9 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
 
 Once the hybrid runtime is successfully installed, it is provisioned on the Kubernetes cluster, and displayed in the **Runtimes** page.
 
+{::nomarkdown}
+</br>
+{:/}
 
 ### (Optional) Internal ingress host configuration for existing hybrid runtimes
 
