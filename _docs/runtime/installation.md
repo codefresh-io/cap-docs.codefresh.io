@@ -62,7 +62,7 @@ For unsupported ingress controllers, bypass installing ingress resources with th
 In this case, after completing the installation, manually configure the cluster's routing service, and create and register Git integrations. See the last step in [Install the hybrid runtime](#install-the-hybrid-runtime).
 
 **Ingress class**  
-Required if you have more than one ingress class configured on your cluster.  
+Required.  
 
 * CLI wizard: Select the ingress class for runtime installation from the list displayed.
 * Silent install: Explicitly specify the ingress class through the `--ingress-class` flag. Otherwise, runtime installation fails.  
