@@ -129,6 +129,90 @@ caption="App of Apps in Applications Dashboard"
 max-width="30%"
 %}
 
+### Application Quick view
+
+The Quick View centralizes deployment and definition information for an application in the same location.
+
+
+#### Summary
+Displays health, sync status, and source and destination definitions.
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/quick-view-summary.png"
+url="/images/applications/quick-view-summary.png"
+alt="Application Quick View: Summary"
+caption="Application Quick View: Summary"
+max-width="50%"
+%}
+
+#### Metadata
+Displays labels and annotations for the application.
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/quick-view-metadata.png"
+url="/images/applications/quick-view-metadata.png"
+alt="Application Quick View: Metadata"
+caption="Application Quick View: Metadata"
+max-width="50%"
+%}
+
+#### Parameters
+Displays parameters configured for the application, based on the tool used to create the application's manifests.  
+The actual parameters displayed differ according to  the  `directory` (as in the screenshot below), `Helm` charts, or `Kustomize` manifests, or the specific plugin.  
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/quick-view-parameters.png"
+url="/images/applications/quick-view-parameters.png"
+alt="Application Quick View: Parameters"
+caption="Application Quick View: Parameters"
+max-width="50%"
+%}
+
+#### Sync options
+Displays sync options enabled for the application.
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/quick-view-parameters.png"
+url="/images/applications/quick-view-parameters.png"
+alt="Application Quick View: Parameters"
+caption="Application Quick View: Parameters"
+max-width="50%"
+%}
+
+#### Manifest
+Displays the YAML version of the application manifest.
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/quick-view-manifest.png"
+url="/images/applications/quick-view-manifest.png"
+alt="Application Quick View: Manifest"
+caption="Application Quick View: Manifest"
+max-width="50%"
+%}
+
+#### Events
+Displays ???.
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/quick-view-events.png"
+url="/images/applications/quick-view-events.png"
+alt="Application Quick View: Events"
+caption="Application Quick View: Events"
+max-width="50%"
+%}
+
 
 ### Application timeline 
 The Timeline tab displays the history of deployments for the selected application, sorted by the most recent update (default), and enriched with image, Pull Request (PR), Jira issues, and commit information for each deployment. Ongoing deployments display rollout progress and rollout analysis as the deployment unfolds.   
