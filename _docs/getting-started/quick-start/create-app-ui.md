@@ -107,4 +107,4 @@ In the next task, you will create and commit resources for the `codefresh-guestb
 
 
 ### What to do next
-[Create resources for application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-specs/)
+[Create and commit resources for application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-specs/)

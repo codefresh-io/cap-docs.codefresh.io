@@ -1,5 +1,5 @@
 ---
-title: "Create resources for application"
+title: "Create and commit resources for application"
 description: ""
 group: getting-started
 sub-group: quick-start
