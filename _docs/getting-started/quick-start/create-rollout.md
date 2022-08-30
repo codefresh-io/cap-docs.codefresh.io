@@ -1,5 +1,5 @@
 ---
-title: "Update image tag for the codefresh-guestbook application"
+title: "Update image tag for application"
 description: ""
 group: getting-started
 sub-group: quick-start
@@ -10,7 +10,7 @@ You will now make a change in the application manifest, and update the image tag
 
 ### Before you begin
 
-* [Create resources for the application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-specs/)
+* [Create resources for application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-specs/)
 
 
 ### Update image tag in rollout.yaml

@@ -1,5 +1,5 @@
 ---
-title: "Create the codefresh-guestbook application"
+title: "Create an application"
 description: ""
 group: getting-started
 sub-group: quick-start
@@ -107,4 +107,4 @@ In the next task, you will create and commit resources for the `codefresh-guestb
 
 
 ### What to do next
-[Create resources for the application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-specs/)
+[Create resources for application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-specs/)

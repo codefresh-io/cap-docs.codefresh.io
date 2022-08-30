@@ -1,5 +1,5 @@
 ---
-title: "Create resources for codefresh-guestbook"
+title: "Create resources for application"
 description: ""
 group: getting-started
 sub-group: quick-start
@@ -13,7 +13,7 @@ You will create and commit the following resources:
 1. `Service` resource to expose the application to external traffic
 
 ### Before you begin
-* [Create the codefresh-guestbook application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-ui)  
+* [Create an application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-ui)  
 * Make sure [Argo Rollouts is installed]({{site.baseurl}}/docs/deployment/install-argo-rollouts) on the target cluster
 
 ### Create folder in Git for application resources
@@ -128,4 +128,4 @@ Once you create and commit the `rollout` and `service` resources, return to the 
 
 ### What to do next
 <!---[Create Jira and Docker Hub integrations ]({{site.baseurl}}/docs/getting-started/quick-start/create-app-ui)--->
-[(Optional) Update image tag for the codefresh-guestbook application]({{site.baseurl}}/docs/getting-started/quick-start/create-rollout)
+[(Optional) Update image tag for application]({{site.baseurl}}/docs/getting-started/quick-start/create-rollout)
