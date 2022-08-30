@@ -22,9 +22,9 @@ For detailed information, see [Create an application]({{site.baseurl}}/docs/depl
   * **Application name**: `codefresh-guestbook` for the quick start.
   * **Runtime**: The runtime to associate with the application, `hosted-runtime` for the quick start.  
   * **Name for YAML file**: The name of the application's configuration manifest, assigned on commit to Git. By default, the manifest is assigned the application name.  
-    You can click the Edit icon and change the name, as needed.
+    You can click the Edit icon and change the name, if needed.
 
-  >The application definitions cannot be changed after you continue to the Configuration settings.
+  >You cannot change the application definitions once you continue to the Configuration settings.
 
 {% include 
    image.html 
@@ -61,7 +61,7 @@ For detailed information, see [Create an application]({{site.baseurl}}/docs/depl
 {:start="6"}
 1. Retain the default **Advanced Settings**.  
 1. To commit all your changes, select **Commit**.  
-  The Commit form is displayed with the application's definition on the left, and the read-only version of the manifest with the configuration settings you defined on the right.
+  The Commit form is displayed with the application's definitions on the left, and the read-only version of the manifest with the configuration settings you defined on the right.
 1. Select the **Git Source** to which to commit.
 
 {% include 
@@ -103,7 +103,7 @@ For detailed information, see [Create an application]({{site.baseurl}}/docs/depl
    %}
   
 
-In the next task, you will create and commit resources for the `codefresh-guestbook` application and trigger a rollout. 
+In the next task, you will create and commit resources for the `codefresh-guestbook` application and deploy the application. 
 
 
 ### What to do next

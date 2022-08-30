@@ -14,7 +14,7 @@ You will create and commit the following resources:
 
 ### Before you begin
 * [Create the codefresh-guestbook application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-ui)  
-* Make sure Argo Rollouts is installed on the target cluster
+* Make sure [Argo Rollouts is installed]({{site.baseurl}}/docs/deployment/install-argo-rollouts) on the target cluster
 
 ### Create folder in Git for application resources
 Create a folder in the Git repo in which to save all the resources for the `codefresh-guestbook` application. 
@@ -113,30 +113,19 @@ spec:
 Once you create and commit the `rollout` and `service` resources, return to the Applications dashboard. The Current State  to see these resources.
 
 1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard?sort=desc-lastUpdated){:target="\_blank"}.  
-1. Select the application. The Current State tab does not display any resources as we have not created any resources for the application. 
- 
+1. Select the application. 
+  The Current State tab is now populated with the `rollout` and `service` resources you added. 
 
   {% include 
    image.html 
    lightbox="true" 
-   file="/images/getting-started/quick-start/cdops-add-app-dashboard.png" 
-   url="/images/getting-started/quick-start/cdops-add-app-dashboard.png" 
-   alt="Application dashboard with new application" 
-   caption="Application dashboard with new application"
-   max-width="70%" 
-   %} 
-
-{:start="10"}
-
-  {% include 
-   image.html 
-   lightbox="true" 
-   file="/images/getting-started/quick-start/cdops-app-empty-current-state.png" 
-   url="/images/getting-started/quick-start/cdops-app-empty-current-state.png" 
-   alt="Empty Current State for new application" 
-   caption="Empty Current State for new application"
+   file="/images/getting-started/quick-start/cdops-app-current-state.png" 
+   url="/images/getting-started/quick-start/cdops-app-current-state.png" 
+   alt="Current State with resources for application" 
+   caption="Current State with resources for application"
    max-width="70%" 
    %}
 
 ### What to do next
-[Create the codefresh-guestbook application]({{site.baseurl}}/docs/getting-started/quick-start/create-app-ui)
+<!---[Create Jira and Docker Hub integrations ]({{site.baseurl}}/docs/getting-started/quick-start/create-app-ui)--->
+[(Optional) Update image tag for the codefresh-guestbook application]({{site.baseurl}}/docs/getting-started/quick-start/create-rollout)
