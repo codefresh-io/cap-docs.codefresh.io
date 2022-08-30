@@ -335,6 +335,10 @@ The sync state is identified by the icon to the left of the resource name and th
 ##### Resource inventory
 At the bottom left is the Resource inventory, summarizing the aggregated count for each resource type in the application. Syncing and Out-of-Sync resources are bucketed separately for visibility and quick access. 
 
+{::nomarkdown}
+<br>
+{:/}
+
 **Click-filters**  
 In the resource inventory, selecting a Syncing or Out-of-Sync resource type, filters the Current State by that resource type and sync state.
 These filters are automatically reflected in the default filter list for both Tree and List views. 
@@ -406,6 +410,9 @@ Selecting a resource, in either Tree or List view, shows resource manifests, log
 
 > Selecting the application resource in Tree View, displays the [Quick View](#application-quick-view) for the application.
 
+{::nomarkdown}
+<br>
+{:/}
 
 **Summary**
  
@@ -426,6 +433,9 @@ max-width="50%"
 * Share resource details: Copy the URL and send to others in your organization to share the resource details for collaborative review and analysis. Pasting the URL in a browser opens to the same resource view.
 * Hide Managed Fields: When selected, hides managed-field information from the manifest. Managed-fields show information on which field manager manages the field, after Kubernetes introduced `Server Side Apply`. For more information, see [Field Management](https://kubernetes.io/docs/reference/using-api/server-side-apply/#field-management){:target="\_blank"}.
 
+{::nomarkdown}
+<br>
+{:/}
 
 **Logs**  
 
@@ -443,6 +453,10 @@ max-width="50%"
 * Wrap: Enable/disable line wrapping 
 * Download: Download the complete log into a text file for offline viewing and analysis.
 
+{::nomarkdown}
+<br>
+{:/}
+
 **Events**
 
 {% include
@@ -455,7 +469,9 @@ caption="Current State: Events for resource"
 max-width="50%"
 %}
 
-View events for application resources in the Events tab. If your rutime is lower than the version required to view events, you are notified to upgrade your runtime.
+View events for application resources in the Events tab.  
+> If your rutime is lower than the version required to view events, you are notified to upgrade your runtime.
+
 The Events tab displays both successful and failed events from Argo CD, starting with the most recent event. 
 Argo CD displays events as they occur for an application resource, and retains event information for a duration of 30 minutes. Historical events older than this duration are removed, and the Events tab can be empty if there are no ongoing events.
 
