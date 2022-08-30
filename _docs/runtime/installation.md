@@ -21,21 +21,12 @@ There are two parts to installing a hybrid runtime:
 
 See also [Codefresh architecture]({{site.baseurl}}/docs/getting-started/architecture).
 
-
-{::nomarkdown}
-</br>
-{:/}
-
 ### Hybrid runtime installation flags
 This section describes the required and optional flags to install a hybrid runtime.
 For documentation purposes, the flags are grouped into:
 * Runtime flags, relating to runtime, cluster, and namespace requirements
 * Ingress controller flags, relating to ingress controller requirements
 * Git repository flags, relating to Git provider requirements
-
-{::nomarkdown}
-</br>
-{:/}
 
 
 ####  Runtime flags
@@ -48,9 +39,7 @@ The runtime name must start with a lower-case character, and can include up to 6
 
 **Namespace resource labels**  
 Optional.  
-
 The label of the namespace resource to which you are installing the hybrid runtime. Labels are required to identify the networks that need access during installation, as is the case when using services meshes such as Istio for example. For Gateway APIs, use the namespace label if defined to reference the runtine in the `allowedRoutes.namespaces`. 
-
 
 * CLI wizard and Silent install: Add the `--namespace-labels` flag, and define the labels in `key=value` format. Separate multiple labels with `commas`.
 
@@ -65,12 +54,6 @@ The cluster defined as the default for `kubectl`. If you have more than one Kube
 The Git repository per runtime account with shared configuration manifests.  
 * CLI wizard and Silent install: Add the `--shared-config-repo` flag and define the path to the shared repo.  
 
-
-{::nomarkdown}
-</br>
-{:/}
-
-
 #### Ingress controller flags
 
 **Skip ingress**  
@@ -79,7 +62,7 @@ For unsupported ingress controllers, bypass installing ingress resources with th
 In this case, after completing the installation, manually configure the cluster's routing service, and create and register Git integrations. See the last step in [Install the hybrid runtime](#install-the-hybrid-runtime).
 
 **Ingress class**  
-Required.  
+Required if you have more than one ingress class configured on your cluster.  
 
 * CLI wizard: Select the ingress class for runtime installation from the list displayed.
 * Silent install: Explicitly specify the ingress class through the `--ingress-class` flag. Otherwise, runtime installation fails.  
@@ -108,7 +91,6 @@ For both CLI wizard and Silent install:
 * For existing installations, commit changes to the installation repository by modifying the `app-proxy ingress` and `<runtime-name>.yaml`  
   See [(Optional) Internal ingress host configuration for existing hybrid runtimes](#optional-internal-ingress-host-configuration-for-existing-hybrid-runtimes).
 
-
 #### Gateway API flags
 
 
@@ -118,22 +100,19 @@ The name of the gateway for runtime installation.
 
 * Silent install: Specify the gateway name through the `--gateway-name` flag. 
 
-**Gateway namespace**
-Required.
+**Gateway namespace**  
+
+Required.  
+
 The namespace with the **Gateway name**.  
 
 * Silent install: Specify the namespace through the `--gateway-namespace` flag.
 
 **Ingress host**  
-Required.  
+Required.   
 The IP address or host name of the gateway.  
 
 * CLI wizard and Silent install: Specify the gateway host through the `--ingress-host` flag. 
-
-
-{::nomarkdown}
-</br>
-{:/}
 
 
 #### Git repository <!---and provider --->flags
@@ -152,7 +131,6 @@ The Git token authenticating access to the GitHub installation repository.
 
 <!---**Enable Git providers**  
 Optional for GitHub; required for GitLab, Bitbucket Server, and GitHub Enterprise Git providers.  
-
 Enable GitLab, Bitbucket Server, or GitHub Enterprise Server as the Git provider for the runtime and for the account. 
 >The Git provider defined for the first runtime in the account must be used for all the runtimes in the same account.  
   
@@ -184,12 +162,6 @@ The username for the Git account.
 
 * CLI wizard and Silent install: For Bitbucket Server, add the `--git-user` flag, and define the username. For example, `codefresh`  --->
 
-
-{::nomarkdown}
-</br>
-{:/}
-
-
 #### Codefresh resource flags
 **Codefresh demo resources**  
 Optional.  
@@ -200,24 +172,10 @@ Install demo pipelines to use as a starting point to create your own pipelines. 
 **Insecure flag**  
 For _on-premises installations_, if the Ingress controller does not have a valid SSL certificate, to continue with the installation, add the `--insecure` flag to the installation command.  
 
-
-{::nomarkdown}
-</br>
-{:/}
-{::nomarkdown}
-</br>
-{:/}
-
 ### Install the Codefresh CLI
 
 Install the Codefresh CLI using the option that best suits you: `curl`, `brew`, or standard download.  
 If you are not sure which OS to select for `curl`, simply select one, and Codefresh automatically identifies and selects the right OS for CLI installation.
-
-
-{::nomarkdown}
-</br></br>
-{:/}
-
 
 ### Install the hybrid runtime
 
@@ -233,10 +191,6 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
   * [NGINX Community ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#nginx-community-version-ingress-configuration)
   * [Traefik ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#traefik-ingress-configuration)
 
-
-{::nomarkdown}
-</br>
-{:/}
 
 **How to** 
 
@@ -256,12 +210,6 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
 1. If you bypassed installing ingress resources with the `--skip-ingress` flag for ingress controllers not in the supported list, create and register Git integrations using these commands:  
   `cf integration git add default --runtime <RUNTIME-NAME> --api-url <API-URL>`  
   `cf integration git register default --runtime <RUNTIME-NAME> --token <RUNTIME-AUTHENTICATION-TOKEN>`  
-
-
-
-{::nomarkdown}
-</br>
-{:/}
 
 
 ### Hybrid runtime components
@@ -289,10 +237,6 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
   * Git Source entity that references the`[repo_name]_git-source`  
 
 Once the hybrid runtime is successfully installed, it is provisioned on the Kubernetes cluster, and displayed in the **Runtimes** page.
-
-{::nomarkdown}
-</br>
-{:/}
 
 
 ### (Optional) Internal ingress host configuration for existing hybrid runtimes
