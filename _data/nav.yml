@@ -14,7 +14,7 @@
         url: "/runtime"
       - title: Create an application
         url: "/create-app-ui"     
-      - title: Create resources for application
+      - title: Create and commit resources for application
         url: "/create-app-specs"
       - title: Update the image tag for application
         url: "/create-rollout"
