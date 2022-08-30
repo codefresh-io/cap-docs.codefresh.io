@@ -142,7 +142,20 @@ The customer environment that communicates with the Codefresh platform, generall
 
 #### Ingress Controller
 In hybrid runtime environments, the ingress controller implements the ingress traffic rules for the Codefresh Runtime. It is configured on the same Kubernetes cluster as the Codefresh Runtime.  
-See [Ingress controller]({{site.baseurl}}/docs/runtime/requirements/#ingress-controller).
+Alternatively, if implemented and supported, you can use the Gateway API instead of an ingress controller.
+
+See [Hybrid runtime requirements]({{site.baseurl}}/docs/runtime/requirements) and [Ingress controller flags]({{site.baseurl}}/docs/runtime/installation/#ingress-controller-flags).
+
+#### Gateway API
+In hybrid runtime environments, the Gateway API implements rules to route traffic to the Codefresh Runtime. It is configured on the same Kubernetes cluster as the Codefresh Runtime.  
+
+The Gateway API is an open source project managed by the SIG-NETWORK community, currently in beta. The Gateway API aims to "evolve Kubernetes service networking through expressive, extensible, and role-oriented interfaces that are implemented by many vendors and have broad industry support".  
+Codefresh is fully compatible with the current version of the Gatway API, and is vendor-agnostic, supporting different implementations and integrations. 
+See [Hybrid runtime requirements]({{site.baseurl}}/docs/runtime/requirements) and [Gateway API flags]({{site.baseurl}}/docs/runtime/installation/#gateway-api-flags).  
+
+
+For detailed information on the Gateway API, see [Kubernetes Gateway API](https://gateway-api.sigs.k8s.io/) and [Implementations](https://gateway-api.sigs.k8s.io/implementations/).
+
 
 {::nomarkdown}
 <br>
