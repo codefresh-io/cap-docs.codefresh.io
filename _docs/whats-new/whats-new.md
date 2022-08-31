@@ -15,15 +15,32 @@ This month's release is all about quality and usability.
 
 ### Features & enhancements
 
+#### GitHub container registry
+In this release, we added support for GitHub Container Registry, a popular container registry tool. The settings for GitHub Container registry integration are identical to that of the other container registry integrations: the integration name, the runtimes to share the integration with, and the domain, username, and token.   
+You also have the Test Connection option to test credentials before committing the changes.  
+Once defined, you can reference the integration by name in the CI platforms. 
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-aug22-github-cr.png"
+ url="/images/whats-new/rel-notes-aug22-github-cr.png"
+ alt="GitHub Container registry integration"
+ caption="GitHub Container registry integration"
+    max-width="70%"
+%}
+
+See [GitHub Container registry]({{site.baseurl}}/docs/integrations/ci-integrations/container-registries/github-cr/).
+
 #### Labels and annotations for managed clusters
 The Codefresh CLI supports labels and annotations for managed clusters. When you add a managed cluster in Codefresh, you can optionally add labels and annotations with the  `--labels` and the `--annotations` flags. Codefresh supports the standard key-value formats for both, with multiple items separated by `,`. K8s rules for labels and annotations are valid here as well.  
 
 See [Adding a managed cluster with Codefresh CLI]({{site.baseurl}}/docs/runtime/managed-cluster/#add-a-managed-cluster-with-codefresh-cli), and [Adding a managed cluster with Kustomize]({{site.baseurl}}/docs/runtime/managed-cluster/#add-a-managed-cluster-with-kustomize).
 
 #### Event information for application resources
-View events for application resources directly in Codefresh. While the Applications dashboard flags errors in all applications at the global level, the Events tab isolates both successful and failed events per resource within an application, useful for resources such as pods. 
+View events for application resources directly in Codefresh. While the Applications dashboard flags errors in all applications at the global level, the Events tab isolates successful and failed events per resource within an application, useful for resources such as pods. 
 
-Instead of navigating to Argo CD to view events, clicking on an application resource in the Current State view displays the Events tab for that resource.  
+Instead of having to navigate to Argo CDto view events for an application resource, clicking the resource in the Current State view displays the Events tab for that resource.  
 Events are displayed in descending order, with the most recent event displayed first. As with Argo CD's standard behavior, historical events older than 30 minutes are not displayed, so the Event tab can sometimes be empty.  
 
 
@@ -34,26 +51,31 @@ Events are displayed in descending order, with the most recent event displayed f
  url="/images/whats-new/rel-notes-aug22-events-tab.png"
  alt="Events tab for application in Current State"
  caption="Events tab for application in Current State"
-    max-width="80%"
+    max-width="60%"
 %}
 
-
-
-#### Application enhancements
-
-**Current State tab**
-Codefresh has updated the order of the tabs when navigating within individual applications. As the Current State tab is usually the go-to tab for comprehensive information on application resources, on selecting an application from the Applications dashboard, the Current State is now displayed instead of the Timeline tab as in previous versions.
-
+#### Quick View for applications
+Similar to the detailed views for application resources, Codefresh offers a detailed view also for the application itself. 
+The Quick View for an application collates definition, deployment, and event information for the application in the same location. Application information is grouped by these tabs for intuitive viewing: Summary, Metadata, Parameters,  Sync Options,  Manifest, and Events (as in the picture below).
+ 
+Easily access the Quick View either by selecting Quick View from the application’s context menu in the Applications dashboard (shown in picture above), or by clicking the application resource in the Current State view.
 
 {% include
  image.html
  lightbox="true"
- file="/images/whats-new/rel-notes-aug22-new-app-nav.png"
- url="/images/whats-new/rel-notes-aug22-new-app-nav.png"
- alt="Tab order on application drilldown"
- caption="Tab order on application drilldown"
-    max-width="70%"
+ file="/images/whats-new/rel-notes-aug22-quickview-events.png"
+ url="/images/whats-new/rel-notes-aug22-quickview-events.png"
+ alt="Application Quick View: Events tab"
+ caption="Application Quick View: Events tab"
+    max-width="60%"
 %}
+
+See [Application Quick View]({{site.baseurl}}/docs/deployment/applications-dashboard/#application-quick-view).
+
+
+
+#### Usability enhancements for applications
+
 
 **Context menu for applications**
 Another usability enhancement is the context menu for applications. Every application in the Applications dashboard includes a new context menu with access to functionality such as Quick View, editing, and deleting applications.
@@ -84,44 +106,13 @@ Codefresh validates Source, Destination, and Advanced Settings such as the Argo 
 max-width="70%"
 %}
 
-#### `CF_RUNTIME_NAME` argument in CI integrations
-To make your integrations with Codefresh as fail-safe as possible, we replaced `CF_HOST` with the `CF_RUNTIME_NAME` argument.  
+#### Miscellaneous changes
 
-`CF_HOST` is the URL to the cluster with the Codefresh runtime to integrate with, and any change in the URL can fail the enrichment. For this reason, `CF_HOST` has been deprecated from v 0.0.460 and higher. We recommend using `CF_RUNTIME_NAME` as the runtime name once defined remains until the runtime is deleted.  
-
-See [CI integrations argument reference]({{site.baseurl}}/docs/integrations/ci-integrations/#ci-integration-argument-reference).
-
-#### `GHCR_GITHUB_TOKEN_AUTHENTICATION` argument in GitHub Action CI
-For GitHub Actions CI, the `CF_CONTAINER_REGISTRY_INTEGRATION` argument has a new value, `GHCR_GITHUB_TOKEN_AUTHENTICATION`, that you can select for GitHub Container registries. Even if you don't have an integration to a GitHub Container registry in Codefresh, selecting this value allows Codefresh to automatically retrieve the credentials for the container registry. You can see the credentials on generating the integration manifest.
-
-{% include
- image.html
- lightbox="true"
- file="/images/whats-new/rel-notes-aug22-githubactions-cr-param.png"
- url="/images/whats-new/rel-notes-aug22-githubactions-cr-param.png"
- alt="GHCR_GITHUB_TOKEN_AUTHENTICATION` argument in GitHub Action"
- caption="GHCR_GITHUB_TOKEN_AUTHENTICATION` argument in GitHub Action"
-    max-width="70%"
-%}
-
-See [GitHub Action-Codefresh integration arguments]({{site.baseurl}}/docs/integrations/ci-integrations/github-actions/#github-action-codefresh-integration-arguments).
-
-#### GitHub container registry
-In this release, we added support for GitHub Container Registry, a popular container registry tool. The settings for GitHub Container registry integration are identical to that of the other container registry integrations: the integration name, the runtimes to share the integration with, and the domain, username, and token.   
-You also have the Test Connection option to test credentials before committing the changes.  
-Once defined, you can reference the integration by name in the CI platforms. 
-
-{% include
- image.html
- lightbox="true"
- file="/images/whats-new/rel-notes-aug22-github-cr.png"
- url="/images/whats-new/rel-notes-aug22-github-cr.png"
- alt="GitHub Container registry integration"
- caption="GitHub Container registry integration"
-    max-width="70%"
-%}
-
-See [GitHub Container registry]({{site.baseurl}}/docs/integrations/ci-integrations/container-registries/github-cr/).
+{: .table .table-bordered .table-hover}
+| Item    | Description     | 
+| ----------  |  -------- | 
+| `CF_HOST`       | Deprecated from v 0.0.460 and higher in CI integrations. Recommend using `CF_RUNTIME_NAME` instead. See [CI integrations argument reference]({{site.baseurl}}/docs/integrations/ci-integrations/#ci-integration-argument-reference). | 
+| `GHCR_GITHUB_TOKEN_AUTHENTICATION`       | New value for `CF_CONTAINER_REGISTRY_INTEGRATION` argument. Can be selected for GitHub Container (GHCR) registries even when you don’t have a GHCR integration in Codefresh. See [GitHub Action-Codefresh integration arguments]({{site.baseurl}}/docs/integrations/ci-integrations/github-actions/#github-action-codefresh-integration-arguments).| 
 
 
 
