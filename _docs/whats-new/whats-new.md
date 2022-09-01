@@ -42,8 +42,7 @@ See [Adding a managed cluster with Codefresh CLI]({{site.baseurl}}/docs/runtime/
 View events for application resources directly in Codefresh.  
 While the Applications dashboard flags errors in all applications at the global level, the Events tab isolates successful and failed events per resource within an application, useful for resources such as pods. 
 
-Instead of having to navigate to Argo CD to view events for an application resource, clicking the resource in the Current State view in Codefresh displays the Events tab for that resource.  
-Events are displayed in descending order, with the most recent event displayed first. As with Argo CD's standard behavior, historical events older than 30 minutes are not displayed, so the Event tab can sometimes be empty.  
+Instead of having to navigate to Argo CD to view events for an application resource, clicking the resource in the Current State view in Codefresh displays the Events tab for that resource. Events are displayed in descending order, with the most recent event displayed first. 
 
 
 {% include
