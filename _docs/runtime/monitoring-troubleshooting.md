@@ -1,5 +1,5 @@
 ---
-title: "Moinitor provisioned runtimes"
+title: "(Hybrid) Monitor provisioned runtimes"
 description: ""
 group: runtime
 toc: true
