@@ -66,7 +66,7 @@ The cluster defined as the default for `kubectl`. If you have more than one Kube
 * CLI wizard: Select the Kube context from the list displayed.
 * Silent install: Explicitly specify the Kube context with the `--context` flag.
 
-**Shared configuration repository**
+**Shared configuration repository**  
 The Git repository per runtime account with shared configuration manifests.  
 * CLI wizard and Silent install: Add the `--shared-config-repo` flag and define the path to the shared repo.  
 
@@ -111,11 +111,6 @@ For both CLI wizard and Silent install:
 * For existing installations, commit changes to the installation repository by modifying the `app-proxy ingress` and `<runtime-name>.yaml`  
   See [(Optional) Internal ingress host configuration for existing hybrid runtimes](#optional-internal-ingress-host-configuration-for-existing-hybrid-runtimes).
 
-
-**Shared configuration repository**  
-
-The Git repository per runtime account with shared configuration manifests and resources.  
-* CLI wizard and Silent install: Add the `--shared-config-repo` flag and define the path to the shared repo.  
 {::nomarkdown}
 </br>
 {:/}
@@ -131,7 +126,6 @@ Enable GitLab, Bitbucket Server, or GitHub Enterprise Server as the Git provider
 * CLI wizard and Silent install: Add the `--enable-git-providers` flag.
 
 **Git provider**  
-
 Optional for GitHub; required for GitLab, Bitbucket Server, and GitHub Enterprise.
 The name of the Git provider to use for the runtime and the account. 
 
@@ -146,6 +140,10 @@ where:
 * `[?ref=branch]` (optional) is the `ref` queryParam to select a specific branch. When omitted, the runtime is installed in the default branch. For example,  `codefresh-prod`.  
 
 > For GitLab, you must create the group with access to the project prior to the installation.
+
+{::nomarkdown}
+</br>
+{:/}
 
 * CLI wizard: If the repo doesn't exist, for GitHub, GitLab, Bitbucket Server, GitHub Enterprise, Codefresh creates it during runtime installation.  
 * Silent install: Required. Add the `--repo` flag.
@@ -191,7 +189,7 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
 </br></br>
 {:/}
 
-### Install the hybrid runtime
+### Install the hybrid runtime  
 
 **Before you begin**
 * Make sure you meet the [minimum requirements]({{site.baseurl}}/docs/runtime/requirements/#minimum-requirements) for runtime installation
@@ -236,15 +234,13 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
 
 ### Hybrid runtime components
 
-**Git repositories**
-
+**Git repositories**  
 * Runtime install repository: The installation repo contains three folders: apps, bootstrap and projects, to manage the runtime itself with Argo CD.  
 * Git source repository: Created with the name `[repo_name]_git-source`. This repo stores manifests for pipelines with sources, events, workflow templates. See [Add Git Sources to runtimes]({{site.baseurl}}/docs/runtime/git-sources/).
 
 * Shared configuration repository: Stores configuration and resource manifests that can be shared across runtimes, such as integration resources. See [Shared configuration repository]({{site.baseurl}}/docs/reference/shared-configuration/)
 
 **Argo CD components**  
-
 * Project, comprising an Argo CD AppProject and an ApplicationSet
 * Installations of the following applications in the project:
   * Argo CD
@@ -253,7 +249,6 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
   * Argo Rollouts
   
 **Codefresh-specific components**  
-
 * Codefresh Applications in the Argo CD AppProject:  
   * App-proxy facilitating behind-firewall access to Git
   * Git Source entity that references the`[repo_name]_git-source`  
@@ -266,8 +261,6 @@ Once the hybrid runtime is successfully installed, it is provisioned on the Kube
 
 
 ### (Optional) Internal ingress host configuration for existing hybrid runtimes
-
-
 If you already have provisioned hybrid runtimes, to use an internal ingress host for app-proxy communication and an external ingress host to handle webhooks, change the specs for the `Ingress` and `Runtime` resources in the runtime installation repository. Use the examples as guidelines.  
 
 `<runtime-install-repo>/apps/app-proxy/overlays/<runtime-name>/ingress.yaml`: change `host`
