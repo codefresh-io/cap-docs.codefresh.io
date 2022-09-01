@@ -476,7 +476,7 @@ In addition to installing Argo Rollouts in your cluster, visualize Argo Rollout 
 **Rollout progress**
 Ongoing rollouts show the progress of the rollout in real time. Completed rollouts show the switch to the new version according to the deployment strategy. 
 
-{% include  s
+{% include 
 	image.html 
 	lightbox="true" 
 	file="/images/whats-new/rel-notes-june22-rollout-in-progress.png" 
