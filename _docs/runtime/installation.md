@@ -7,30 +7,26 @@ toc: true
 
 If you have a hybrid environment, you can provision one or more hybrid runtimes in your Codefresh account. 
 
-**Git providers and runtimes**  
+> If you have Hosted GitOps, to provision a hosted runtime, see [Provision a hosted runtime]({{site.baseurl}}/docs/runtime/hosted-runtime/#1-provision-hosted-runtime) in [Set up a hosted (Hosted GitOps) environment]({{site.baseurl}}/docs/runtime/hosted-runtime/).
 
-Your Codefresh account is always linked to a specific Git provider. This is the Git provider you select when installing the first hybrid runtime in your Codefresh account. All hybrid runtimes in the same account use the same Git provider.  
-If Bitbucker Server is your Git provider, you must select the specific server instance to associate with the runtime. 
+**Git providers and runtimes**  
+Your Codefresh account is always linked to a specific Git provider. This is the Git provider you select on installing the first runtime - hybrid or hosted - in your Codefresh account. All the hybrid runtimes in the same account use the same Git provider.  
+If Bitbucker Server is your Git provider, you must also select the specific server instance to associate with the runtime. 
 
 >To change the Git provider for your Codefresh account after installation, contact Codefresh support.
 
 
 **Hybrid runtime**  
-
- The hybrid runtime comprises Argo CD components and Codefresh-specific components. The Argo CD components are derived from a fork of the Argo ecosystem, and do not correspond to the open-source versions available.
-
-> If you have Hosted GitOps, to provision a hosted runtime, see [Provision a hosted runtime]({{site.baseurl}}/docs/runtime/hosted-runtime/#1-provision-hosted-runtime) in [Set up a hosted (Hosted GitOps) environment]({{site.baseurl}}/docs/runtime/hosted-runtime/).
+ The hybrid runtime comprises Argo CD components and Codefresh-specific components. The Argo CD components are derived from a fork of the Argo ecosystem, and do not correspond to the open-source versions available.  
 
 There are two parts to installing a hybrid runtime:
 
 1. Installing the Codefresh CLI
 2. Installing the hybrid runtime from the CLI, either through the CLI wizard or via silent installation through the installation flags.  
   The hybrid runtime is installed in a specific namespace on your cluster. You can install more runtimes on different clusters in your deployment.  
-  Every hybrid runtime installation makes commits to two Git repos:
-
+  Every hybrid runtime installation makes commits to two Git repos:  
   * Runtime install repo: The installation repo that manages the hybrid runtime itself with Argo CD. If the repo URL does not exist, the runtime creates it automatically.
   * Git Source repo: Created automatically during runtime installation. The repo where you store manifests for CI/CD resources such as pipelines and applications.
-
 
 See also [Codefresh architecture]({{site.baseurl}}/docs/getting-started/architecture).
 
@@ -124,13 +120,13 @@ The Git repository per runtime account with shared configuration manifests and r
 </br>
 {:/}
 
-#### Git repository <!---and provider --->flags
+#### Git repository and provider flags
 
 **Enable Git providers**  
 Optional for GitHub; required for GitLab, Bitbucket Server, and GitHub Enterprise Git providers.  
 Enable GitLab, Bitbucket Server, or GitHub Enterprise Server as the Git provider for the runtime and for the account. 
 
->The Git provider defined for the first runtime in the account must be used for all the runtimes in the same account.  
+>The Git provider defined for the first runtime in the account is used for all the runtimes in the same account.  
   
 * CLI wizard and Silent install: Add the `--enable-git-providers` flag.
 
