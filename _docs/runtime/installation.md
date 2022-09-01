@@ -126,7 +126,7 @@ Optional; required for GitLab, Bitbucket Server, and GitHub Enterprise Git provi
 Enable GitLab, Bitbucket Server, or GitHub Enterprise Server as the Git provider for the runtime and for the account. 
 >The Git provider defined for the first runtime in the account must be used for all the runtimes in the same account.  
   
-* CLI wizard and Silent install: Add the `--enable-git-provider` flag.
+* CLI wizard and Silent install: Add the `--enable-git-providers` flag.
 
 **Git provider**  
 
