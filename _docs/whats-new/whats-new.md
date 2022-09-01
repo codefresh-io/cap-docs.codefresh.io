@@ -33,14 +33,16 @@ Once defined, you can reference the integration by name in the CI platforms.
 See [GitHub Container registry]({{site.baseurl}}/docs/integrations/ci-integrations/container-registries/github-cr/).
 
 #### Labels and annotations for managed clusters
-The Codefresh CLI supports labels and annotations for managed clusters. When you add a managed cluster in Codefresh, you can optionally add labels and annotations with the  `--labels` and the `--annotations` flags. Codefresh supports the standard key-value formats for both, with multiple items separated by `,`. K8s rules for labels and annotations are valid here as well.  
+The Codefresh CLI supports labels and annotations for managed clusters.  
+When you add a managed cluster in Codefresh, you can optionally add labels and annotations with the  `--labels` and the `--annotations` flags.  Codefresh supports the standard key-value formats for both, with multiple items separated by `,`. K8s rules for labels and annotations are valid here as well.  
 
 See [Adding a managed cluster with Codefresh CLI]({{site.baseurl}}/docs/runtime/managed-cluster/#add-a-managed-cluster-with-codefresh-cli), and [Adding a managed cluster with Kustomize]({{site.baseurl}}/docs/runtime/managed-cluster/#add-a-managed-cluster-with-kustomize).
 
 #### Event information for application resources
-View events for application resources directly in Codefresh. While the Applications dashboard flags errors in all applications at the global level, the Events tab isolates successful and failed events per resource within an application, useful for resources such as pods. 
+View events for application resources directly in Codefresh.  
+While the Applications dashboard flags errors in all applications at the global level, the Events tab isolates successful and failed events per resource within an application, useful for resources such as pods. 
 
-Instead of having to navigate to Argo CD to view events for an application resource, clicking the resource in the Current State view displays the Events tab for that resource.  
+Instead of having to navigate to Argo CD to view events for an application resource, clicking the resource in the Current State view in Codefresh displays the Events tab for that resource.  
 Events are displayed in descending order, with the most recent event displayed first. As with Argo CD's standard behavior, historical events older than 30 minutes are not displayed, so the Event tab can sometimes be empty.  
 
 
@@ -56,7 +58,7 @@ Events are displayed in descending order, with the most recent event displayed f
 
 #### Quick View for applications
 Similar to the detailed views for application resources, Codefresh offers a detailed view also for the application itself. 
-The Quick View collates definition, deployment, and event information for the application in the same location. Application information is grouped by these tabs for intuitive viewing: Summary, Metadata, Parameters,  Sync Options,  Manifest, and Events (as in the picture below).
+The Quick View for an application, collates definition, deployment, and event information, in the same location. The information is grouped into tabs for intuitive viewing: Summary, Metadata, Parameters,  Sync Options,  Manifest, and Events (as in the picture below).
  
 Easily access the Quick View either by selecting Quick View from the application’s context menu in the Applications dashboard, or by clicking the application resource in the Current State view.
 
@@ -75,9 +77,7 @@ See [Application Quick View]({{site.baseurl}}/docs/deployment/applications-dashb
 
 
 #### Usability enhancements for applications
-
-
-**Context menu for applications**
+**Context menu for applications**  
 Every application in the Applications dashboard includes a new context menu with access to frequently-used and useful options such as Quick View, synchronize, and edit applications.
 
 
@@ -93,17 +93,17 @@ Every application in the Applications dashboard includes a new context menu with
 
 
 **Validations before commit with intuitive error message**  
-
-Codefresh validates Source, Destination, and Advanced Settings such as the Argo CD Project, when you create or update applications,  _before_ committing the changes. For easy identification, the section with the error is highlighted in the Form, instead of only in the YAML manifest. For example, if the Revision or Path is missing in the General settings, the section is highlighted in red and the error message displayed includes details on the possible reasons for the error.
+Codefresh validates Source, Destination, and Advanced Settings such as the Argo CD Project, when you create or update applications,  _before_ committing the changes.  
+For easy identification, the section with the error is also highlighted in the Form, not only in the YAML manifest. For example, if the Revision or Path is missing in the General settings, the section is highlighted in red and the message displayed includes details on the possible reasons for the error.
 
 {% include
  image.html
  lightbox="true"
- file="/images/whats-new/rel-notes-aug22-app-validation-errors"
- url="/images/whats-new/rel-notes-aug22-app-validation-errors"
+ file="/images/whats-new/rel-notes-aug22-app-validation-errors.png"
+ url="/images/whats-new/rel-notes-aug22-app-validation-errors.png"
  alt="Validation errors in Form mode for application"
  caption="Validation errors in Form mode for application"
-max-width="70%"
+max-width="60%"
 %}
 
 #### Miscellaneous changes
