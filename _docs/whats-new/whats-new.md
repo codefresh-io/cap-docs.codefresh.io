@@ -68,7 +68,7 @@ Easily access the Quick View either by selecting Quick View from the application
  url="/images/whats-new/rel-notes-aug22-quickview-events.png"
  alt="Application Quick View: Events tab"
  caption="Application Quick View: Events tab"
-    max-width="60%"
+    max-width="40%"
 %}
 
 See [Application Quick View]({{site.baseurl}}/docs/deployment/applications-dashboard/#application-quick-view).
