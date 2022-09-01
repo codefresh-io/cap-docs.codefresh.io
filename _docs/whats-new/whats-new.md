@@ -15,8 +15,8 @@ This month's release is all about quality and usability.
 
 ### Features & enhancements
 
-#### GitHub container registry
-In this release, we added support for GitHub Container Registry, a popular container registry tool. The settings for GitHub Container registry integration are identical to that of the other container registry integrations: the integration name, the runtimes to share the integration with, and the domain, username, and token.   
+#### GitHub Container Registry
+In this release, we added support for GitHub Container Registry (GHCR), a popular container registry tool. The settings for GitHub Container registry integration are identical to that of the other container registry integrations: the integration name, the runtimes to share the integration with, and the domain, username, and token.   
 You also have the Test Connection option to test credentials before committing the changes.  
 Once defined, you can reference the integration by name in the CI platforms. 
 
@@ -40,7 +40,7 @@ See [Adding a managed cluster with Codefresh CLI]({{site.baseurl}}/docs/runtime/
 #### Event information for application resources
 View events for application resources directly in Codefresh. While the Applications dashboard flags errors in all applications at the global level, the Events tab isolates successful and failed events per resource within an application, useful for resources such as pods. 
 
-Instead of having to navigate to Argo CDto view events for an application resource, clicking the resource in the Current State view displays the Events tab for that resource.  
+Instead of having to navigate to Argo CD to view events for an application resource, clicking the resource in the Current State view displays the Events tab for that resource.  
 Events are displayed in descending order, with the most recent event displayed first. As with Argo CD's standard behavior, historical events older than 30 minutes are not displayed, so the Event tab can sometimes be empty.  
 
 
@@ -56,9 +56,9 @@ Events are displayed in descending order, with the most recent event displayed f
 
 #### Quick View for applications
 Similar to the detailed views for application resources, Codefresh offers a detailed view also for the application itself. 
-The Quick View for an application collates definition, deployment, and event information for the application in the same location. Application information is grouped by these tabs for intuitive viewing: Summary, Metadata, Parameters,  Sync Options,  Manifest, and Events (as in the picture below).
+The Quick View collates definition, deployment, and event information for the application in the same location. Application information is grouped by these tabs for intuitive viewing: Summary, Metadata, Parameters,  Sync Options,  Manifest, and Events (as in the picture below).
  
-Easily access the Quick View either by selecting Quick View from the application’s context menu in the Applications dashboard (shown in picture above), or by clicking the application resource in the Current State view.
+Easily access the Quick View either by selecting Quick View from the application’s context menu in the Applications dashboard, or by clicking the application resource in the Current State view.
 
 {% include
  image.html
@@ -78,7 +78,7 @@ See [Application Quick View]({{site.baseurl}}/docs/deployment/applications-dashb
 
 
 **Context menu for applications**
-Another usability enhancement is the context menu for applications. Every application in the Applications dashboard includes a new context menu with access to functionality such as Quick View, editing, and deleting applications.
+Every application in the Applications dashboard includes a new context menu with access to frequently-used and useful options such as Quick View, synchronize, and edit applications.
 
 
 {% include
@@ -94,7 +94,7 @@ Another usability enhancement is the context menu for applications. Every applic
 
 **Validations before commit with intuitive error message**  
 
-Codefresh validates Source, Destination, and Advanced Settings such as the Argo CD Project, when you create or update applications,  _before_ committing the changes. The section with the error is highlighted in the Form for easy indentification, nstead of only in the YAML manifests. For example, if the Revision or Path is missing in the General settings, the section is highlighted in red and the error message displayed includes details on the possible reasons for the error.
+Codefresh validates Source, Destination, and Advanced Settings such as the Argo CD Project, when you create or update applications,  _before_ committing the changes. For easy identification, the section with the error is highlighted in the Form, instead of only in the YAML manifest. For example, if the Revision or Path is missing in the General settings, the section is highlighted in red and the error message displayed includes details on the possible reasons for the error.
 
 {% include
  image.html
@@ -447,7 +447,7 @@ By the very nature of its design, the Tree View allows progressive discovery. Vi
 
 **Resource filters**  
 
-The filters in the List view are available also in the Tree view. These global filters help narrow the scope of the resources displayed, by kind, health status, and sync state. The filters set in either the List or Tree vies are retained when navigating between them.   
+The filters in the List view are available also in the Tree view. These global filters help narrow the scope of the resources displayed, by kind, health status, and sync state. The filters set in either the List or Tree views are retained when navigating between them.   
 
 **Resource search and find**  
 
@@ -474,9 +474,9 @@ For details, see [Current State Tree view]({{site.baseurl}}/docs/deployment/appl
 In addition to installing Argo Rollouts in your cluster, visualize Argo Rollout history and progress directly in the Applications (deployment) dashboard. Visualize rollouts from multiple clusters and runtimes in a single centralized location through the Deployment tab.
 
 **Rollout progress**
-Ongoing rollouts show the progress of the rollout in the real time. Completed rollouts show the switch to the new version according to the deployment strategy. 
+Ongoing rollouts show the progress of the rollout in real time. Completed rollouts show the switch to the new version according to the deployment strategy. 
 
-{% include 
+{% include  s
 	image.html 
 	lightbox="true" 
 	file="/images/whats-new/rel-notes-june22-rollout-in-progress.png" 
@@ -605,7 +605,7 @@ For details, see [Runtime installation flags]({{site.baseurl}}/docs/runtime/inst
 
 #### Internal and external ingress hosts 
 Codefresh runtimes support defining two ingress hosts, an internal and an external ingress host, for private and public networks. Previously, runtimes supported a single ingress host for both the app-proxy and webhook ingress resources. Internal and external ingress separation allows you to expose the Codefresh app-proxy service only within your private network, while keeping the webhook ingress unchanged.  
-* New runtime installations: The `--internal-ingress-host` flag lets you can define an ingress host for communication with the app-proxy. For details, see [Runtime installation flags]({{site.baseurl}}/docs/runtime/installation/#runtime-installation-flags).
+* New runtime installations: The `--internal-ingress-host` flag lets you define an ingress host for communication with the app-proxy. For details, see [Runtime installation flags]({{site.baseurl}}/docs/runtime/installation/#runtime-installation-flags).
 * Existing runtimes: To add an internal ingress host, you need to commit changes to the installation repository by modifying `app-proxy ingress` and `<runtime-name>.yaml`.   
 For details, see _Internal ingress host configuration (optional)_ in [Post-installation configuration]({{site.baseurl}}/docs/runtime/installation#post-installation-configuration).  
 
