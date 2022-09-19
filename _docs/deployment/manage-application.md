@@ -179,7 +179,7 @@ By default, Synchronize Resources displays and selects all resources in the appl
    url="/images/applications/sync-manual-resources-form.png" 
    alt="Default settings for Synchronize Resources" 
    caption="Default settings for Synchronize Resources"
-   max-width="70%" 
+   max-width="50%" 
    %} 
 
 You can search/filter resources using part of the resource names or regex strings, and then select the resources you want to sync.
@@ -192,7 +192,7 @@ For example, if you made changes to `api` resources or `audit` resources, type `
    url="/images/applications/sync-manual-resource-search.png" 
    alt="Selective sync in Synchronize Resources" 
    caption="Selective sync in Synchronize Resources"
-   max-width="70%" 
+   max-width="50%" 
    %} 
 
 {::nomarkdown}
