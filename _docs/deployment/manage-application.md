@@ -16,8 +16,6 @@ Creating and deploying applications is the first part of the continuous deployme
 * Delete applications  
   Delete unused or legacy applications to avoid clutter and remove unnecessary resources.
 
-
-
 ### Edit application configuration 
 Optimize deployed applications by updating General or Advanced configuration settings. 
 
@@ -82,7 +80,9 @@ Optimize deployed applications by updating General or Advanced configuration set
 {:/}
 
 ### On-demand application sync
-Synchonize applications manually to sync the desired state with the live state. Instead of waiting for Argo CD to detect differences between the desired and live states to initate the sync, select the relevant sync options or even select the specific resources to sync and expedite Git-to-cluster sync. On-demand application sync is useful if you have updated only a few resources.   
+Synchonize applications manually to sync the desired state with the live state.  
+Instead of waiting for Argo CD to detect differences between the desired and live states and initate the sync, select the relevant sync options or select the specific resources to sync and expedite Git-to-cluster sync.  
+On-demand application sync is useful if you have updated only a few resources.   
 
 Manual application sync options are grouped into:
 * Revision settings with branch and Kubernetes apply options
@@ -92,6 +92,10 @@ Manual application sync options are grouped into:
 > The sync options selected for manual sync override the sync options defined for the application. 
 
 For how-to instructions, see [Manually synchronize an application](#manually-synchronize-an-application).
+
+{::nomarkdown}
+<br>
+{:/}
 
 #### Revision settings for application sync
 Revision settings determine the behavior for the branch you select.  
@@ -112,7 +116,15 @@ When selected, allows you to preview the application before changes are made to 
 **Force**   
 When selected, orphans the dependents of a deleted resource during the sync operation. This option is useful to prevent accumulation of unused resources in deployed applications.
 
+{::nomarkdown}
+<br>
+{:/}
+
 #### Additional Options for application sync
+
+{::nomarkdown}
+<br>
+{:/}
 
 ##### Sync Options
 
@@ -190,8 +202,9 @@ For example, if you made changes to `api` resources or `audit` resources, type `
 #### Manually synchronize an application 
 Perform on-demand app sync when needed.
 
-**Before you begin**
-Review:
+**Before you begin**  
+
+Review:  
 * [Revision settings for application sync](#revision-settings-for-application-sync) 
 * [Additional options for application sync](#additional-options-for-application-sync)
 * [Selective resource synchronization for application sync](#selective-resource-synchronization-for-application-sync)
@@ -199,7 +212,7 @@ Review:
 **How to**  
 1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}.
 1. Select the application to sync, and do one of the following: 
-  * From the context menu on the right, select **Synchronize**. 
+  * From the application's context menu on the right, select **Synchronize**. 
   * On the top-right, click **Synchronize**. 
 1. Select the **Revision** and **Additional Options** for the manual sync.  
 1. Click **Next**.
@@ -217,13 +230,13 @@ Review:
 ### Delete an application
 Delete an application from Codefresh. Deleting an application deletes the manifests from the Git repository, and then from the cluster where it is deployed. When deleted from the cluster, the application is removed from the Applications dashboard in Codefresh.
  
->**Prune resources** in the application's General settings determines the scope of the delete action.  
+>The scope of the delete action is determined by the **Prune resources** option in the application's General settings.    
 When selected, both the application and its resources are deleted. When cleared, only the application is deleted. For more information, review [Sync settings]({{site.baseurl}}/docs/deployment/create-application/#sync-settings).  
 Codefresh warns you of the implication of deleting the selected application in the Delete form. 
 
 1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}.
 1. Select the application to delete.
-1. Click the three dots for additional actions, and select **Delete**.
+1. From the application's context menu on the right, select **Delete**.
   
   {% include 
    image.html 
@@ -251,6 +264,6 @@ Codefresh warns you of the implication of deleting the selected application in t
 1. To confirm, click **Commit & Delete**.
 
 ### Related information
-[Create an application]({{site.baseurl}}/docs/deployment/create-application/)  
+[Creating applications]({{site.baseurl}}/docs/deployment/create-application/)  
 [Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/)  
 [Images in Codefresh]({{site.baseurl}}/docs/deployment/images/)  
