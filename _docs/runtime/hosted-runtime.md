@@ -1,5 +1,5 @@
 ---
-title: "Set up a hosted (Hosted GitOps) environment (Beta)"
+title: "Set up a hosted runtime environment"
 description: ""
 group: runtime
 toc: true
@@ -27,11 +27,19 @@ caption="Hosted GitOps setup"
 max-width="80%"
 %}
 
+  >You can provision a single hosted runtime for your Codefresh account.
+
+
+
 ### 1. Provision hosted runtime
 Start installing the hosted runtime with a single-click. Codefresh completes the installation without any further intervention on your part. 
 The hosted runtime is provisioned on the Codefresh cluster, and completely managed by Codefresh with automatic version and security upgrades.
 
-1. Click **Install**.
+
+
+1. Do one of the following:  
+  * To set up Hosted GitOps later, click **Install later**, and continue from step _2_.
+  * To start setup, click **Install**, and continue from step _3_.
 
 {% include
 image.html
@@ -44,6 +52,24 @@ max-width="80%"
 %}
 
 {:start="2"}
+1. Do the following:  
+  * In the Codefresh UI, go to [**Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}, and click **+ Add Runtimes**.
+  * Select **Hosted Runtime** and click **Add**.
+  >An account can be provisioned with a single hosted runtime. If you have already provisioned a hosted runtime for your account, the Hosted Runtime option is disabled.
+  * Continue from _step 3_. 
+
+{% include
+image.html
+lightbox="true"
+file="/images/runtime/hosted-install-later.png"
+url="/images/runtime/hosted-install-later.png"
+alt="Install hosted runtime"
+caption="Install hosted runtime"
+max-width="40%"
+%}
+
+
+{:start="3"}
 1. When complete, to view the components for the hosted runtime, click **View Runtime**.
   You are directed to the Runtime Components tab.  
 
@@ -59,7 +85,7 @@ max-width="70%"
 
 > The Git Sources and the Managed Clusters are empty as they will be set up in the next steps.  
 
-If you navigate to **Runtimes > List View**, the Cluster/Namespace column displays Codefresh, and the Module column displays CD Ops, indicating a hosted runtime.
+If you navigate to **Runtimes > List View**, you can identify the hosted runtime through the Type column (Hosted ), the Cluster/Namespace column (Codefresh), and the Module column (CD Ops).
 
 {% include
 image.html
@@ -92,7 +118,7 @@ max-width="70%"
   * [Download the CLI]({{site.baseurl}}/docs/clients/csdp-cli/).
 
 1. Uninstall the failed hosted runtime:  
-  `cf uninstall hosted-codefresh --force`  
+  `cf runtime uninstall codefresh-hosted --force`  
   where:  
   `hosted-codefresh` is the name of your hosted runtime, automatically assigned by Codefresh.
 1. In the Codefresh UI, return to Codefresh [Home](https://g.codefresh.io/2.0/?time=LAST_7_DAYS){:target="\_blank"}.
@@ -100,7 +126,10 @@ max-width="70%"
 
 
 ### 2. Connect Git provider
-Connect your hosted runtime to a Git provider for Codefresh to creates the required Git repos.  First authorize access to your Git provider through an OAuth token, and then select the Git organization or account in which to create the required Git repos.  
+Connect your hosted runtime to a Git provider for Codefresh to create the required Git repos.  First authorize access to your Git provider through an OAuth token, and then select the Git organizations or accounts in which to create the required Git repos.  
+
+>Only authorized organizations are displayed in the list. To authorize organizations for the Codefresh application in GitHub, see [Authorize organizations/projects]({{site.baseurl}}/docs/administration/hosted-authorize-orgs/).
+
 
 {% include
 image.html
@@ -143,6 +172,7 @@ max-width="40%"
 
 {:start="3"}
 1. Select the **Git Organization for which to create the repos**.
+  >If the organization does not appear in the list, you need to authorize access to it. See [Authorize organizations/projects]({{site.baseurl}}/docs/administration/hosted-authorize-orgs/).
 1. Click **Create**.
   Codefresh creates the two Git repositories in the paths shown.
 
@@ -201,8 +231,10 @@ max-width="80%"
 
 
 ### 3. Connect a Kubernetes cluster
+
 Connect a destination cluster to the hosted runtime and register it as a managed cluster. Deploy applications and configuration to the cluster.
-For managed cluster information, see [Add and manage external clusters]({{site.baseurl}}/docs/runtime/managed-cluster/).
+For managed cluster information and installing Argo Rollouts, see [Add and manage external clusters]({{site.baseurl}}/docs/runtime/managed-cluster/).
+
 
  {% include 
 image.html 
@@ -272,6 +304,9 @@ Optional. Integrate Codefresh with the third-party tools you use for CI to enric
 
 [Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/) 
 
-### What to read next
-[Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/)
+### Related articles
+[Manage provisioned runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/)  
+[Add Git Sources to runtimes]({{site.baseurl}}/docs/runtime/git-sources/)  
+[Home dashboard]({{site.baseurl}}/docs/reporting/home-dashboard/)   
+[DORA metrics]({{site.baseurl}}/docs/reporting/dora-metrics/)
 
