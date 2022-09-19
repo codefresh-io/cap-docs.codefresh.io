@@ -69,7 +69,7 @@
   links:
     - title: Applications dashboard
       localurl: /docs/deployment/applications-dashboard/
-    - title: Create an application
+    - title: Creating applications
       localurl: /docs/deployment/create-application/
     - title: Managing applications
       localurl: /docs/deployment/manage-application/
