@@ -1,5 +1,5 @@
 ---
-title: "Create an application"
+title: "Creating applications"
 description: ""
 group: deployment
 toc: true
@@ -195,5 +195,8 @@ Review:
 Your application is first committed to Git, and then synced to the cluster which may take a few moments.  
 Track the application in the [Applications](https://g.codefresh.io/2.0/applications-dashboard?sort=desc-lastUpdated){:target="_blank"} dashboard.
 
-### What to read next
-[Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/)
+### Related information
+[Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/)  
+[Managing applications]({{site.baseurl}}/docs/deployment/manage-application/)  
+[Images in Codefresh]({{site.baseurl}}/docs/deployment/images/)  
+
