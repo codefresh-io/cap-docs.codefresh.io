@@ -5,7 +5,9 @@ group: deployment
 toc: true
 ---
 
-View, monitor, and analyze deployments across your enterprise in the Applications dashboard. As a one-stop shop for Argo Rollouts and Argo CD, the Applications dashboard in Codefresh delivers on the challenge of keeping track of deployments, whatever the frequency and scale. A wide range of filters, enriched CI and CD information, provide full traceability and visibility to your deployments. 
+View, monitor, and analyze deployments across your enterprise in the Applications dashboard. As a one-stop shop for Argo Rollouts and Argo CD, the Applications dashboard in Codefresh delivers on the challenge of keeping track of your deployments, whatever the frequency and scale. A wide range of filters, progressive delivery views, and enriched CI and CD information, provide full traceability and visibility to your deployments. 
+
+
 
 Here are some insights you can derive from the Applications dashboard: 
 * Application   
@@ -18,95 +20,55 @@ Here are some insights you can derive from the Applications dashboard:
 >For information on creating and managing applications, see [Creating applications]({{site.baseurl}}/docs/deployment/create-application/) and [Managing applications]({{site.baseurl}}/docs/deployment/manage-application/).
 
 ### Application view modes
-View applications in either list or card views.
+View deployed applications in either list (the default) or card views. Both views are sorted by the most recent deployments by default. 
 
+1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}.
+1. Select **List** or **Cards**.
 
-#### Application list view
+#### Applications List view
 
-The main view shows all deployed applications, sorted by the most recent deployments, by default.   
+Here is an example of the List view in the Applications dashboard. 
 
-
-Here is an example of the main page in the Applications dashboard. 
-
-  {% include
+{% include
 image.html
 lightbox="true"
 file="/images/applications/app-dashboard-main-view.png"
 url="/images/applications/app-dashboard-main-view.png"
-alt="Applications Dashboard"
-caption="pplications Dashboard"
+alt="Applications Dashboard: List view"
+caption="pplications Dashboard: List view"
 max-width="30%"
-%}  
+%} 
 
-### Monitoring applications
-#### Identifying errors in applications
-Errors in applications are flagged through the **Error Detected** button on the top right of the Applications dashboard. Clicking the button shows the list of applications with the errors and the possible reasons for those errors.
+#### Applications Card view
+Here is an example of the Card view in the Applications dashboard.
 
-{% include
+  {% include
 image.html
 lightbox="true"
-file="/images/applications/app-dashboard-errors.png"
-url="/images/applications/app-dashboard-errors.png"
-alt="Error notifications in Applications Dashboard"
-caption="Error notifications in Applications Dashboard"
-max-width="50%"
-%}
+file="/images/applications/app-dashboard-card-view.png"
+url="/images/applications/app-dashboard-card-view.png"
+alt="Applications Dashboard: Card view"
+caption="pplications Dashboard: Card view"
+max-width="30%"
+%} 
 
-You can also 
+#### Application type
+Applications are labeled as one of the following:
+* Git Source App  
+  The application includes other resources such as other applications, workflows, sensor, Delivery Pipelines. See [Git Sources in runtimes]({{site.baseurl}}/docs/docs/runtime/git-sources).
 
-#### Viewing application inventory and state 
-
-The application state snapshot shows at a glance both the total number of applications that are deployed and their breakdown according to state.
-
-> The state snapshot works also as a quick filter. Selecting a state filters the application view by that state.
-
-####  Filtering applications
-Similar to other dashboards, the Applications dashboard also offers a set of filters designed to bring you the information you need as quickly as possible.  
-> Staring applications as favorites or selecting applications by state are alternative ways to filter applications.
-
-Filters are divided into frequently used and advanced filters.
-* **Frequently-used filters**
-  Available at the top of the dashboard. These filters support multi-selection, and results are based on an OR relationship within the same filter with multiple options, and an AND relationship between filters.
-* **Advanced filters**  
-  Available on selecting **More Filters**. These filters include application type, health, and labels.  
-  * Application type  
-    Applications and ApplicationSet  
-  * Health filters  
-    The built-in Argo CD set of health filters.  
-    For detailed information, see the official documentation on [Health sets](https://argo-cd.readthedocs.io/en/stable/operator-manual/health/){:target="\_blank"}. 
-  * Labels  
-    The K8s labels defined for the applications. The list displays labels of _all_ the applications, even if you have applied filters.  
-
-    To see the available labels, select **Add**, and then select the required label and one or more values.  
-    To filter by the labels, select **Add** and then **Apply**.  
-
-    For detailed information, see the official documentation on [Labels and selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/){:target="\_blank"}.
-
-{% include
+    {% include
 image.html
 lightbox="true"
-file="/images/applications/app-dashboard-adv-filters.png"
-url="/images/applications/app-dashboard-adv-filters.png"
-alt="Advanced filters in Applications Dashboard"
-caption="Advanced filters in Applications Dashboard"
+file="/images/applications/apps-git-source-app.png"
+url="/images/applications/apps-git-source-app.png"
+alt="Git Source Apps in Applications Dashboard"
+caption="Git Source Apps in Applications Dashboard"
 max-width="30%"
 %}
 
-#### Starring applications as favorites 
-
-Star applications as favorites to view them with a click.  
-* Select the {::nomarkdown}<img src="../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/} to the left of the application name to star it as a favorite. 
-* To view only favorites, on the filters bar, select {::nomarkdown}<img src="../../../images/icons/icon-fav-starred.png?display=inline-block">{:/}.  
-
->If you star applications as favorites, you can filter by the same applications in the [DORA metrics dashboard]({{site.baseurl}}/docs/reporting/dora-metrics/#metrics-for-favorite-applications).
-
-
-
-#### Deployment type
-Applications are displayed according to their deployment type which can be one of the following:
-* Applications  
-
-  Standalone applications. For detailed information, see the official documentation on [Applications](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications){:target="\_blank"}.  
+* Application
+  The application is a standalone application. For more information, see Argo CD's official documentation on [Applications](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications).{:target="\_blank"}.  
 
   {% include
 image.html
@@ -118,8 +80,8 @@ caption="Standalone applications in Applications Dashboard"
 max-width="30%"
 %}
 
-* Application set  
-  Based on the Argo CD's ApplicationSet CRD, where several applications are always deployed as a set. For detailed information, see the official documentation on [Generating Applications with ApplicationSet](https://argo-cd.readthedocs.io/en/stable/user-guide/application-set/){:target="\_blank"}.
+* ApplicationSet  
+  The application is deployed as a set of applications, based on the Argo CD's ApplicationSet CRD. For more information, see Argo CD's official documentation on [Generating Applications with ApplicationSet](https://argo-cd.readthedocs.io/en/stable/user-guide/application-set/){:target="\_blank"}.
 
   {% include
 image.html
@@ -157,16 +119,85 @@ Every application in the Applications dashboard has a context menu with these op
   Modify application definitions.  
   See [Update application configuration]({{site.baseurl}}/docs/deployment/create-application/#update-application-configuration).
 
+### Filtering applications
+Similar to other dashboards, the Applications dashboard also offers a set of filters designed to bring you the information you need as quickly as possible.  
+> Starring applications as favorites or selecting applications by state are quick alternatives to filter applications.
+
+Filters are divided into frequently used and advanced filters.  
+
+* **Frequently-used filters**
+  Available at the top of the dashboard. These filters support multi-selection, and results are based on an OR relationship within the same filter with multiple options, and an AND relationship between filters.
+* **Advanced filters**  
+  Available on selecting **More Filters**. These filters include application type, health, and labels.  
+  * Application type  
+    Applications and ApplicationSet  
+  * Health filters  
+    The built-in Argo CD set of health filters.  
+    For detailed information, see the official documentation on [Health sets](https://argo-cd.readthedocs.io/en/stable/operator-manual/health/){:target="\_blank"}. 
+  * Labels  
+    The K8s labels defined for the applications. The list displays labels of _all_ the applications, even if you have applied filters.  
+
+    To see the available labels, select **Add**, and then select the required label and one or more values.  
+    To filter by the labels, select **Add** and then **Apply**.  
+
+    For detailed information, see the official documentation on [Labels and selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/){:target="\_blank"}.
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/app-dashboard-adv-filters.png"
+url="/images/applications/app-dashboard-adv-filters.png"
+alt="Advanced filters in Applications Dashboard"
+caption="Advanced filters in Applications Dashboard"
+max-width="30%"
+%}
+
+### Starring applications as favorites 
+
+Star applications as favorites to view them with a click.  
+* Select the {::nomarkdown}<img src="../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/} to the left of the application name to star it as a favorite. 
+* To view only favorites, on the filters bar, select {::nomarkdown}<img src="../../../images/icons/icon-fav-starred.png?display=inline-block">{:/}.  
+
+>If you star applications as favorites, you can filter by the same applications in the [DORA metrics dashboard]({{site.baseurl}}/docs/reporting/dora-metrics/#metrics-for-favorite-applications).
+
+### Filtering applications by state 
+
+The application state snapshot shows at a glance both the total number of applications that are deployed and their breakdown according to state.
+
+> The state snapshot works also as a quick filter. Selecting a state filters the application view by that state.
+
+### Monitoring applications
+
+#### Identifying errors in applications
+Errors in applications are flagged through the **Error Detected** button on the top right of the Applications dashboard. Clicking the button shows the list of applications with the errors and the possible reasons for those errors.
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/app-dashboard-errors.png"
+url="/images/applications/app-dashboard-errors.png"
+alt="Error notifications in Applications Dashboard"
+caption="Error notifications in Applications Dashboard"
+max-width="50%"
+%}
+
+You can also 
 
 
-### Viewing application details
 
 
-The Quick View centralizes deployment, definition, and event information for an application in the same location.
-Access the Quick View from the Applications dashboard through the context menu or after drilldown from the Current State tab.
+
+
+
+### View application details
+
+View deployment, definition, and event information for an application in a centralized location through the Quick View.  
+The Quick View displays application state and location, labels and annotations, parameters configured for the application, sync options, manifest, status and sync events.
+Access the Quick View from the Applications dashboard from the application's context menu, or after drilldown from the Current State tab.
 
 1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}.
-1. In the row with the application, from the context menu on the right, select **Quick View**.
+1. Do one of the following:  
+  * In the row with the application, from the context menu on the right, select **Quick View**.
   
 {% include
 image.html
@@ -178,8 +209,8 @@ caption="Selecting Quick View from the context menu"
 max-width="50%"
 %} 
 
-  OR  
-  Select the application, and in the Current State tab, click the application resource.
+ 
+  * Select the application, and in the Current State tab, click the application resource.
 
 {% include
 image.html
@@ -274,7 +305,8 @@ max-width="40%"
 
 ### Monitoring application resources
 
-Selecting an application shows the live state of the application and the application's resources (Kubernetes objects) on the cluster in Tree or List view formats in the Current State. 
+Selecting an application shows the live state of the application and the application's resources (Kubernetes objects) on the cluster in the Current State tab. 
+The Current State supports Tree and List view formats. 
 * Tree view (default): A hierarchical, interactive visualization of the application and its resources. Useful for complex deployments with multiple clusters and large numbers of resources.  
 
 
@@ -301,11 +333,15 @@ caption="List view of application resources in Current State"
 max-width="50%"
 %}
 
+You can: 
+Filter 
+View summary, event, and log information for resources
+
 #### Filtering application resources
-> Filters are shared between both views, and when applied are retained when switching between views. 
+> Filters are shared between Tree and List views, and when applied are retained when switching between views. 
 
 #### Viewing information for application resources
-Selecting a resource, in either Tree or List view, shows resource manifests, logs, and events if any, based on the resource type you selected. Endpoints for example show only manifests, while pods show manifests, logs, and events.  
+Selecting a resource, in either Tree or List view shows resource manifests, logs, and events if any, based on the resource type you selected. Endpoints for example show only manifests, while pods show manifests, logs, and events.  
 
 > Selecting the application resource in Tree View, displays information for the [application](#application-quick-view).
 
@@ -326,10 +362,10 @@ max-width="50%"
 %}
 
 * Desired and Live states: 
-  * Managed resources stored in Git repositories and using Git as the single source of truth, show both the Desired state and the Live state.    
+  * Managed resources, stored in Git repositories and using Git as the single source of truth, show both the Desired and the Live states.    
     If there are discrepancies between them, the Diff view is displayed, highlighting the differences in both versions for comparison.
   * Resources that are not stored in Git but live in the cluster, show only the Live state.
-* Share resource details: Copy the URL and send to others in your organization to share the resource details for collaborative review and analysis. Pasting the URL in a browser opens to the same resource view.
+* Share resource details: Copy the URL and send to others in your organization to share the resource details for collaborative review and analysis. Pasting the URL in a browser opens to the same view of the resource.
 * Hide Managed Fields: When selected, hides managed-field information from the manifest. Managed-fields show information on which field manager manages the field, after Kubernetes introduced `Server Side Apply`. For more information, see [Field Management](https://kubernetes.io/docs/reference/using-api/server-side-apply/#field-management){:target="\_blank"}.
 
 {::nomarkdown}
