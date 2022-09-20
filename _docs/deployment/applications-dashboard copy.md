@@ -107,24 +107,43 @@ caption="App of Apps in Applications Dashboard"
 max-width="30%"
 %}
 
-#### Application context menu
+<!---#### Application context menu
 Every application in the Applications dashboard has a context menu with these options:
 * Quick view  
   A comprehensive read-only view of the deployment and definition information for the application.  
   See [Application Quick View](#application-quick-view) in this article.  
 * Synchronize
   Manually synchronize the application.  
-  <!---See [Manually sync applications]({{site.baseurl}}/docs/deployment/sync-application).--->  
+  See [Manually sync applications]({{site.baseurl}}/docs/deployment/sync-application). 
 * Edit
   Modify application definitions.  
-  See [Update application configuration]({{site.baseurl}}/docs/deployment/create-application/#update-application-configuration).
+  See [Update application configuration]({{site.baseurl}}/docs/deployment/create-application/#update-application-configuration).---> 
 
 ### Filtering applications
-Similar to other dashboards, the Applications dashboard also offers a set of filters designed to bring you the information you need as quickly as possible.  
-> Starring applications as favorites or selecting applications by state are quick alternatives to filter applications.
+Similar to other dashboards, the Applications dashboard also offers filters designed to bring you the information you need as quickly as possible.  
+Filter applications by:  
+* Application state
+* Starring applications as favorites 
+* 
 
-Filters are divided into frequently used and advanced filters.  
+### Filter applications by state 
 
+The application state snapshot displays both the total number of applications that are deployed and their breakdown according to state.
+
+* Click a state to show only applications that match the state. 
+
+
+### Filter by 'favorite' applications
+
+Star applications as favorites and filter by the starred applications.
+
+* Select the {::nomarkdown}<img src="../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/} to star it as a favorite. 
+* To filter by favorite applications, on the filters bar, select {::nomarkdown}<img src="../../../images/icons/icon-fav-starred.png?display=inline-block">{:/}.  
+
+>If you star applications as favorites, you can filter by the same applications in the [DORA metrics dashboard]({{site.baseurl}}/docs/reporting/dora-metrics/#metrics-for-favorite-applications).
+
+### Filter by application attributes 
+For a fully customized view, filter by a range of attributes such as the application names, runtimes, clusters, namespaces and more. These filters can be grouped into frequently used and advanced filters.  
 * **Frequently-used filters**
   Available at the top of the dashboard. These filters support multi-selection, and results are based on an OR relationship within the same filter with multiple options, and an AND relationship between filters.
 * **Advanced filters**  
@@ -133,14 +152,14 @@ Filters are divided into frequently used and advanced filters.
     Applications and ApplicationSet  
   * Health filters  
     The built-in Argo CD set of health filters.  
-    For detailed information, see the official documentation on [Health sets](https://argo-cd.readthedocs.io/en/stable/operator-manual/health/){:target="\_blank"}. 
+    For more information, see the official documentation on [Health sets](https://argo-cd.readthedocs.io/en/stable/operator-manual/health/){:target="\_blank"}. 
   * Labels  
     The K8s labels defined for the applications. The list displays labels of _all_ the applications, even if you have applied filters.  
 
     To see the available labels, select **Add**, and then select the required label and one or more values.  
     To filter by the labels, select **Add** and then **Apply**.  
 
-    For detailed information, see the official documentation on [Labels and selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/){:target="\_blank"}.
+    For more information, see the official documentation on [Labels and selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/){:target="\_blank"}.
 
 {% include
 image.html
@@ -152,19 +171,9 @@ caption="Advanced filters in Applications Dashboard"
 max-width="30%"
 %}
 
-### Starring applications as favorites 
 
-Star applications as favorites to view them with a click.  
-* Select the {::nomarkdown}<img src="../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/} to the left of the application name to star it as a favorite. 
-* To view only favorites, on the filters bar, select {::nomarkdown}<img src="../../../images/icons/icon-fav-starred.png?display=inline-block">{:/}.  
 
->If you star applications as favorites, you can filter by the same applications in the [DORA metrics dashboard]({{site.baseurl}}/docs/reporting/dora-metrics/#metrics-for-favorite-applications).
 
-### Filtering applications by state 
-
-The application state snapshot shows at a glance both the total number of applications that are deployed and their breakdown according to state.
-
-> The state snapshot works also as a quick filter. Selecting a state filters the application view by that state.
 
 ### Monitoring applications
 
