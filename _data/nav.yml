@@ -47,6 +47,8 @@
   pages:
     - title: Installation options
       url: "/installation-options"
+    - title: Install Codefresh on-premises
+      url: "/install-on-prem"
     - title: Set up a hosted runtime environment
       url: "/hosted-runtime"
     - title: Hybrid runtime requirements
