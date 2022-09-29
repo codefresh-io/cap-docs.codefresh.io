@@ -118,20 +118,21 @@ For both CLI wizard and Silent install:
 #### Git repository and provider flags
 
 **Enable Git providers**  
-Optional for GitHub; required for GitLab, Bitbucket Server, and GitHub Enterprise Git providers.  
-Enable GitLab, Bitbucket Server, or GitHub Enterprise Server as the Git provider for the runtime and for the account. 
+Optional for GitHub; required for GitLab, Bitbucket Server, Bitbucket Cloud, and GitHub Enterprise Git providers.  
+Enable GitLab, Bitbucket Server, Bitbucket Cloud, or GitHub Enterprise Server as the Git provider for the runtime and for the account. 
 
 >The Git provider defined for the first runtime in the account is used for all the runtimes in the same account.  
   
 * CLI wizard and Silent install: Add the `--enable-git-providers` flag.
 
 **Git provider**  
-Optional for GitHub; required for GitLab, Bitbucket Server, and GitHub Enterprise.
+Optional for GitHub; required for GitLab, Bitbucket Server, Bitbucket Cloud, and GitHub Enterprise.
 The name of the Git provider to use for the runtime and the account. 
 
-* CLI wizard and Silent install: Add the `--provider` flag, and define the provider name as either `gitlab`, `bitbucket-server` or `github`.
+* CLI wizard and Silent install: Add the `--provider` flag, and define the provider name as either `gitlab`, `bitbucket-server`, `bitbucket`, or `github`.
 
 **Repository URL**  
+Required.  
 The `HTTPS` clone URL of the Git repository, or project in GitLab, including the `.git` suffix in which to install the runtime, in the format:  
 `https://<host>/<owner_reponame>.git[/subdirectory][?ref=branch]`  
 where:  
@@ -145,8 +146,8 @@ where:
 </br>
 {:/}
 
-* CLI wizard: If the repo doesn't exist, for GitHub, GitLab, Bitbucket Server, GitHub Enterprise, Codefresh creates it during runtime installation.  
-* Silent install: Required. Add the `--repo` flag.
+* CLI wizard: If the repo doesn't exist, for GitHub, GitLab, Bitbucket Server, BitBucket Cloud, and GitHub Enterprise, Codefresh creates it during runtime installation.  
+* Silent install: Add the `--repo` flag.
 
 **Git user**  
 Optional; required only for Bitbucket Server.  
@@ -156,7 +157,7 @@ The username for the Git account.
 
 **Git runtime token**  
 Required.  
-The Git token authenticating access to the GitHub installation repository.  
+The Git token authenticating access to the runtime installation repository.  
 * Silent install: Add the `--git-token` flag, and paste the runtime token.  
 
 {::nomarkdown}
