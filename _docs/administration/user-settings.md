@@ -5,13 +5,14 @@ group: administration
 toc: true
 ---
 
-As a user in Codefresh, you can manage the access tokens defined in your account, and optionally, enable access for Codefresh support.
+As a user in Codefresh, you can authorize access to your Git provider accounts, and optionally, enable access for Codefresh support.
 
 * Enable access for Codefresh support  
 
   Optional. Enable access to your account for troubleshooting purposes. 
 
-* Manage Git tokens for authentication  
+* Authorize Git providers 
+Git tokens for authentication  
 
   The Git personal token is a user-specific access token per provisioned runtime, and is required to authenticate Git-based actions per runtime in Codefresh.  
   If your admin has set up authentication with OAuth2, you can authorize access to GitHub using OAuth2.  
@@ -49,7 +50,7 @@ To authorize with OAuth2, you have to supply your credentials. When authorized, 
 
 
 > If you need access to more than one runtime, you can use the same token for multiple runtimes. 
-You must however authorize GitHub access or add the personal access token individually for each runtime.  
+You must however authorize Git provider access or add the personal access token individually for each runtime.  
 
 
 {% include 
@@ -68,7 +69,7 @@ To authorize with OAuth2, you have to supply your credentials. When authorized, 
 * To use a Git PAT, generate a valid personal access token from your Git provider  
 
 **How to**  
-1. In the CSDP UI, go to [User Settings](https://g.codefresh.io/2.0/user-settings){:target="\_blank"}.
+1. In the Codefresh UI, go to [User Settings](https://g.codefresh.io/2.0/user-settings){:target="\_blank"}.
 1. Select the runtime, and then select one of the following:
   * To add a token, select **Add Token**.
   * To update an existing token by replacing it with a new token, select **Update Token**.
@@ -77,7 +78,7 @@ To authorize with OAuth2, you have to supply your credentials. When authorized, 
    * In the Add Token panel, click **Authorize Access to GitHub**.
     > If the application is not registered, you get an error. For example, _Git app not registered_. Contact your admin for help.  
    *  Enter your credentials, and select **Sign In**.
-   * Complete the verification, for example, if you two-factor authentication is configured.
+   * Complete the verification, for example, if two-factor authentication is configured.
 
 
     {% include 
