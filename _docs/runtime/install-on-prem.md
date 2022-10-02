@@ -12,8 +12,7 @@ Codefresh fully supports on-premises installations. Our proprietary Kubernetes C
 **Preparing for installation**  
 This stage includes the tasks before you start installation, such as verifying system requirements and prerequisites for installation.
 * Take survey to inform Codefresh about your specifications
-* 
-  Before you start Verify that your installation environment matches the system requirements, and you have all the files, certificates before you start the installatio.
+* Verify that your installation environment matches the system requirements, and you have all the files, certificates before you start the installatio.
 
 **Installing Codefresh on-premises**
 This stage includes the installation, configuration, and deployment.
@@ -44,12 +43,12 @@ The table describes the minimum requirements for an on-premises installation.
 Make sure you have the following:
 
 #### Service Account file
-The Service Account file is provided by Codefresh ????.  
+The GCR Service Account JSON file is provided by Codefresh ????.  
 (NIMA: why and what is this used for? where should users save this?)
 
 #### TLS certificates
 For a secured installation, we highly recommend using TLS certificates. 
-Make sure you have your `ssl.cert` and `private.key` are valid.
+Make sure your `ssl.cert` and `private.key` are valid.
 
 >Use a Corporate Signed certificate, or any valid TLS certificate, for example, from lets-encrypt.
 
@@ -104,213 +103,194 @@ Make sure you:
 * Have completed the prerequisites
 
 
-#### Step 1: Download and install kcfi
-
-* Download the `kcfi` binary from [GitHub](https://github.com/codefresh-io/kcfi/releases){:target="\_blank"}.
-
-#### Step 2: Set the current Kube context
-Define the correct context in `kubeconfig`. This context is used for all runtimes that you will later install in your account.
-
-> To display list of contexts, run `kubectl config get-contexts`.
-
-* Set the context:  
-  `kubectl config use-context <my-cluster-name>`  
-  where:   
-  `<my-cluster-name>` is the context for the cluster.
-* Verify the current context:  
-  `kubectl config current-context`
-  
-
-#### Step 3: Initialize the installation directory
-Run the init command to create the installation directory with the `config.yaml` file, and other files and directories required for on-premises installation. The `config.yaml` has the installation settings that you can customize for your on-premises environment.
+#### Step 1: Define the values.yaml to use
+Use either the provided `values.yaml` and customize it as needed, or create a new, empty values file, such as `cf-values.yaml`. 
 
 
-* Run:  
-  `kcfi init codefresh [-d /path/to/stage-dir]`
-
-#### Step 4: Configure config.yaml
-Configure the installation settings in the `config.yaml`.
-
-1. In the `installer` section, define Helm as the installation method:
+#### Step 2: Define image credentials
+Pass `sa.json` as a single line for `password`.
 
 ```yaml
-  installer:
-    # type:
-    #   "operator" - apply codefresh crd definition
-    "helm" - install/upgrade helm chart from client 
+  imageCredentials:
+  registry: gcr.io
+  username: _json_key
+  password: '{ "type": "service_account", "project_id": "codefresh-enterprise", "private_key_id": ... }'
+```
+{: .table .table-bordered .table-hover}
+| Parameter      | Description            | Required value | 
+|----------------|------------------------|------------------|
+| `registry`     | The address of the registry to store the service account image.  | `gcr.io`              | 
+| `username`     | The username to access the registry.  | `_json_key`              | 
+| `password`     | The password to access the registry, and must include the content of `sa.json` in a single line.  | ``              | 
+
+
+#### Step 3: Define `global.appUrl`
+
+
+```yaml
+global:
+  appUrl: <onprem>.<mydomain>
+```
+{: .table .table-bordered .table-hover}
+| Parameter      | Description            | Required value | 
+|----------------|------------------------|------------------|
+| `appUrl`       | The root URL of the codefresh application.  | `onprem.codefresh.local`              | 
+
+#### Step 4: Create TLS certificates
+Enable TLS and certificates for ingress objects.
+
+```yaml
+webTLS:
+  enabled: true
+  secretName: star.codefresh.io
+  cert: "" # (base64 encoded ssl certificate)
+  key: "" # (base64 encoded private key)
 ```
 
-{:start="2"}
+{: .table .table-bordered .table-hover}
+| Parameter      | Description            | Required value | 
+|----------------|------------------------|------------------|
+| `enabled`      | Enable and create TLS certificates for ingress objects.   | `true`              | 
+| `secretName`   | The name of the TLS secret.                               | `star.codefresh.io`              |
+| `cert`         | The base64 encoded custom certificate.                    |  `  `            |
+| `key`          | The base64 encoded custom private key for the certificate. | `  `              |
+
+#### Step 4: Enable Codefresh on-premises 
+Enable the Codefresh on-premises platform, and disable services that are not required.
+
+
 1. Add tags to enable Argo Platform, and disable Helm charts for Codefresh Classic:
 
 ```yaml
-metadata:
- ...
-
 tags:
-  cf-infra: false
-  argo-platform: true
+  cf-infra: false
+  argo-platform: true
 
-global:
-  ...
+argo-platform:
+  enabled: true
+
+  seedJobs:
+    enabled: true
+```
+#### Step 5: Install the Helm chart
+Install the Helm chart with the configuration to deploy the Codefresh on-premises platform.
+
+```yaml
+helm upgrade --install cf ./codefresh \
+    -f cf-values.yaml \
+    --namespace codefresh \
+    --create-namespace \
+    --debug \
+    --wait \
+    --timeout 10m
+```
+where: 
+
+
+### Additional configuration
+Apart from the mandatory settings you need to define to install Codefresh on-premises with Helm, you can define additional settings 
+
+#### Ingressless runtime provisioning
+Codefresh provides the option to provision runtimes in on-premises environments without an ingress controller. 
+To provision ingressless runtimes, add the following section to `values.yaml`. 
+
+```yaml
+codefresh-tunnel-server:
+  enabled: true  # enable ingressless runtime
+
+  codefreshBaseUrl: https://onprem.mydomain.com #replace with your domain, for example,
+
+  tunnels:
+    subdomainHost: tunnels.mydomain.com 
+
+  ingress:
+    host: register-tunnels.mydomain.com
 ```
 
-{:start="3"}
-1. Copy Codefresh images to your private container registry:
-  (NIMA: is this needed?)
-  If you install Codefresh in an air-gapped environment (without access to public Docker Hub or codefresh-enterprise registry), copy the images to your organization's private  container registry. Kubernetes pulls the images from the private registry as part of the installation.
-  * Below `images`, set `usePrivateRegistry` to `true`
-  * Define the `address`, `username`, and `password` for the private registry. 
+#### Ingress controller
+By default Codefresh uses NGINX as the ingress controller. TO use a different controller
 
-  ```yaml
-  images:
-  codefreshRegistrySa: sa.json (NIMA: should we say to comment this out?)
-    usePrivateRegistry: true
-    privateRegistry:
-      address: <private registry address>
-      username: <private registry username>
-      password: <private registry password>
-  lists:
-  - images/images-list
-  ```
 
-  * To push single or multiple images, do one of the following:
+ 
 
-    Single image:
-    
-    ```yaml
-    kcfi images push [-c|--config /path/to/config.yaml] [options] repo/image:tag [repo/image:tag]
-    ```
 
-    Multiple images:
 
-    ```yaml
-    kcfi images push  [-c|--config <path-to-config.yaml>]
-    ```
-(NIMA: is this relevant?) Even if you are running a Kubernetes cluster that has outgoing access to the public Internet, note that Codefresh platform images are not public and can be obtained by using sa.json file provided by Codefresh support personnel.
-
-Use the flag --codefresh-registry-secret to pass the path to the file sa.json.
-
-#### Step 6: Enable TLS certificates
-If using TLS certificates, do the following:
-
-* Save both `ssl.cert` and `private.key` in the `certs/` directory.
-* Set `tls.selfSigned` to `false`.
-
-#### Step 5: Configure external services for database/messaging/caching
+#### Configure external services for database/messaging/caching
 By default, Codefresh  uses internal services such as `cf-mongodb`, `cf-redis`, `cf-rabbitmq`, `cf-postgresql` to run the Argo components. 
-To use your own existing services for data storage/messaging/caching, configure them in `config.yaml`. 
-* In the `global`section, specify the connection URI for required services:
-  MongoDB
-  RabbitMQ
-  Redis
-  Postgresql
+If you have your own  services for data storage/messaging/caching, configure them in `values.yaml`. 
+
+1 In the `global`section, add the connection URI and credentials for required services:
+  * MongoDB
+  * RabbitMQ
+  * Redis
+  * Postgresql
 
 > YAML anchors are used to populate connection URIs to env variables for the corresponding argo-platform services.
 
 Here is an example of the `config.yaml` with all the external services:
 
 ```yaml
-metadata:
-  kind: codefresh
-  installer:
-    type: helm
-    helm:
-      chart: codefresh
-      repoUrl: https://chartmuseum-dev.codefresh.io/codefresh
-      version: 1.2.15-onprem-argo-platform
 
 global:
-  appUrl: onprem.mydomain.com
-  appProtocol: https
+  ...
+
+  mongodbRootUser: root # privileged user will be used for seed jobs and for automatic user creation
+  mongodbRootPassword: <password> # replace with the MongoDB root password 
+  mongoURI: mongodb://cfuser:<password>@my-mongodb.bitnami.svc.cluster.local
 
   postgresSeedJob:
     user: postgres
-    password: 7Aql96FEMI
+    password: <password> 
   postgresUser: cf_user
-  postgresPassword: fJTFJMGV7sg5E4Bj
+  postgresPassword: <password> 
   postgresDatabase: codefresh
   postgresHostname: my-postgresql.bitnami.svc.cluster.local
   postgresPort: 5432
 
   redisUrl: my-redis-master.bitnami.svc.cluster.local
   redisPort: 6379
-  redisPassword: I88I01784Y
-  
-  runtimeRedisHost: my-redis-master.bitnami.svc.cluster.local
-  runtimeRedisPassword: I88I01784Y
-  runtimeRedisPort: 6379
-  runtimeRedisDb: 2
+  redisPassword: <password> 
 
   rabbitmqHostname: my-rabbitmq.bitnami.svc.cluster.local
   rabbitmqUsername: user
   rabbitmqPassword: WBkKrFtyb8K5600y
 
-  mongodbRootUser: root # privileged user will be used for seed jobs and for automatic user creation
-  mongodbRootPassword: bioFPLaDN8 
-  
-  mongoURI: mongodb://cfuser:mTiXcU2wafr9@my-mongodb.bitnami.svc.cluster.local
-  runtimeMongoURI: mongodb://cfuser:mTiXcU2wafr9@my-mongodb.bitnami.svc.cluster.local # in case OfflineLogging feature is enabled (i.e. you have no Firebase)
-  argoPlatformMongoUri: mongodb://argo-platform:oDpLLqEoPM@my-mongodb.bitnami.svc.cluster.local/read-models
 
 argo-platform:
-  enabled: true
+  ...
 
-  ingress:
+  seedJobs:
     enabled: true
+    mongodbRootUser: root
+    mongodbRootPassword: <password>
+    mongoUri: mongodb://argo-platform:<password>@my-mongodb.bitnami.svc.cluster.local:27017
+    postgresUser: postgres
+    postgresPassword: eC9arYka4ZbH
+    postgresHostname: cf-postgresql
 
+  env:
+    MONGODB_PROTOCOL: &MONGODB_PROTOCOL mongodb # mongodb OR mongodb+srv
+    RABBITMQ_PROTOCOL: &RABBITMQ_PROTOCOL amqp # amqp OR amqps
   secrets:
     rabbitmq-host: &rabbitmq-host my-rabbitmq.bitnami.svc.cluster.local
     rabbitmq-port: &rabbitmq-port 5672
     rabbitmq-user: &rabbitmq-user user
-    rabbitmq-password: &rabbitmq-password cUzWIAVYlB
+    rabbitmq-password: &rabbitmq-password <password>
     mongodb-host: &mongodb-host my-mongodb.bitnami.svc.cluster.local
     mongodb-user: &mongodb-user argo-platform
-    mongodb-password: &mongodb-password oDpLLqEoPM
+    mongodb-password: &mongodb-password <password>
     cache-host: &cache-host my-redis-master.bitnami.svc.cluster.local
-    cache-password: &cache-password t90cppjJvH
+    cache-password: &cache-password <password>
     pg-host-name: &pg-host-name my-postgresql.bitnami.svc.cluster.local
     pg-port: &pg-port 5432
     pg-db-name: &pg-db-name analytics
     pg-user-name: &pg-user-name postgres
-    pg-password: &pg-password 7Aql96FEMI
+    pg-password: &pg-password <password>
 
-  api-graphql:
-    secrets:
-      rabbitmq-host: *rabbitmq-host
-      rabbitmq-port: *rabbitmq-port
-      rabbitmq-user: *rabbitmq-user
-      rabbitmq-password: *rabbitmq-password
-      mongodb-host: *mongodb-host
-      mongodb-user: *mongodb-user
-      mongodb-password: *mongodb-password
-      cache-host: *cache-host
-      cache-password: *cache-password
-  api-events:
-    secrets:
-      rabbitmq-host: *rabbitmq-host
-      rabbitmq-port: *rabbitmq-port
-      rabbitmq-user: *rabbitmq-user
-      rabbitmq-password: *rabbitmq-password
-  event-handler:
-    secrets:
-      rabbitmq-host: *rabbitmq-host
-      rabbitmq-port: *rabbitmq-port
-      rabbitmq-user: *rabbitmq-user
-      rabbitmq-password: *rabbitmq-password
-      mongodb-host: *mongodb-host
-      mongodb-user: *mongodb-user
-      mongodb-password: *mongodb-password
-  cron-executor:
-    secrets:
-      rabbitmq-host: *rabbitmq-host
-      rabbitmq-port: *rabbitmq-port
-      rabbitmq-user: *rabbitmq-user
-      rabbitmq-password: *rabbitmq-password
-      mongodb-host: *mongodb-host
-      mongodb-user: *mongodb-user
-      mongodb-password: *mongodb-password
   analytics-reporter:
+    env:
+      MONGODB_PROTOCOL: *MONGODB_PROTOCOL
+      RABBITMQ_PROTOCOL: *RABBITMQ_PROTOCOL
     secrets:
       mongodb-host: *mongodb-host
       mongodb-user: *mongodb-user
@@ -324,9 +304,72 @@ argo-platform:
       pg-db-name: *pg-db-name
       pg-user-name: *pg-user-name
       pg-password: *pg-password
+  api-events:
+    env:
+      RABBITMQ_PROTOCOL: *RABBITMQ_PROTOCOL
+    secrets:
+      rabbitmq-host: *rabbitmq-host
+      rabbitmq-port: *rabbitmq-port
+      rabbitmq-user: *rabbitmq-user
+      rabbitmq-password: *rabbitmq-password
+  api-graphql:
+    env:
+      MONGODB_PROTOCOL: *MONGODB_PROTOCOL
+      RABBITMQ_PROTOCOL: *RABBITMQ_PROTOCOL
+    secrets:
+      rabbitmq-host: *rabbitmq-host
+      rabbitmq-port: *rabbitmq-port
+      rabbitmq-user: *rabbitmq-user
+      rabbitmq-password: *rabbitmq-password
+      mongodb-host: *mongodb-host
+      mongodb-user: *mongodb-user
+      mongodb-password: *mongodb-password
+      cache-host: *cache-host
+      cache-password: *cache-password
+  cron-executor:
+    env:
+      MONGODB_PROTOCOL: *MONGODB_PROTOCOL
+      RABBITMQ_PROTOCOL: *RABBITMQ_PROTOCOL
+    secrets:
+      rabbitmq-host: *rabbitmq-host
+      rabbitmq-port: *rabbitmq-port
+      rabbitmq-user: *rabbitmq-user
+      rabbitmq-password: *rabbitmq-password
+      mongodb-host: *mongodb-host
+      mongodb-user: *mongodb-user
+      mongodb-password: *mongodb-password
+  event-handler:
+    env:
+      MONGODB_PROTOCOL: *MONGODB_PROTOCOL
+      RABBITMQ_PROTOCOL: *RABBITMQ_PROTOCOL
+    secrets:
+      rabbitmq-host: *rabbitmq-host
+      rabbitmq-port: *rabbitmq-port
+      rabbitmq-user: *rabbitmq-user
+      rabbitmq-password: *rabbitmq-password
+      mongodb-host: *mongodb-host
+      mongodb-user: *mongodb-user
+      mongodb-password: *mongodb-password
+  audit:
+    env:
+      MONGODB_PROTOCOL: *MONGODB_PROTOCOL
+      RABBITMQ_PROTOCOL: *RABBITMQ_PROTOCOL
+    secrets:
+      rabbitmq-host: *rabbitmq-host
+      rabbitmq-port: *rabbitmq-port
+      rabbitmq-user: *rabbitmq-user
+      rabbitmq-password: *rabbitmq-password
+      mongodb-host: *mongodb-host
+      mongodb-user: *mongodb-user
+      mongodb-password: *mongodb-password
       
 ...
 ```
+{: .table .table-bordered .table-hover}
+| Parameter      | Description            | Required value | 
+|----------------|------------------------|------------------|
+| `enabled`      | Enable and create TLS certificates for ingress objects.   | `true`              | 
+
 
 #### Step 6: (Optional) Configure Network Load Balancer
 To use an AWS Network Load Balancer, add the following `annotations` to `ingress-nginx.controller.service`:
