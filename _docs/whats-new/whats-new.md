@@ -12,25 +12,16 @@ Built on Argo, the world’s most popular and fastest-growing open source softwa
 The September release focuses on enhancing our CD Ops offering.
 
 ## September 2022
+
+
+
 ### Features & enhancements
+{::nomarkdown}
+<br>
+{:/}
 
-#### Card view for applications
-
-The Applications dashboard offers an alternative layout for applications in the Cards view.  
-The Card view makes it easy to scan information for applications, and use actions to manage the applocation. The left border is color-coded to indicate the health status of the application.
-
-{% include
- image.html
- lightbox="true"
- file="/images/whats-new/rel-notes-rel-notes-sep2-card-view.png"
- url="/images/whats-new/rel-notes-rel-notes-sep2-card-view.png"
- alt="Card view for applications"
- caption="Card view for applications"
-    max-width="60%"
-%}
-
-### Enriched application header
-Every application includes a header that highlights key information and links to key aspects of the application. Especially useful is the information on the sync state, both the current sync state and the result of the previous sync operation. Both sync states have pull-out panels with additional details.
+#### Enriched application header
+Every application includes a header that highlights key information and links to key aspects of the application. For example, you can see both the current sync state and the result of the previous sync operation, with links to pull-out panels including additional details.
 
 
 {% include
@@ -40,15 +31,13 @@ Every application includes a header that highlights key information and links to
  url="/images/whats-new/rel-notes-sep22-app-header.png"
  alt="Application header for selected appplication"
  caption="Application header for selected appplication"
-    max-width="60%"
+    max-width="80%"
 %}
 
 #### Refresh and hard refresh to manage applications
-Just as you can manually synchronize applications directly in the Codefresh, you can now perform Refresh and Hard Refresh for applications.  
-* Refresh syncs the cluster with the Git state.
-* Hard Refresh does the same while replacing the manifest cache in the cluster with the latest desired version from Git.  
+Just as you can manually  synchronize applications directly in Codefresh, you can now perform Refresh and Hard Refresh for applications. 
+In the Applications dashboard, both options are available in the context menu of each application. On  selecting an application, you can see them on the top-right next to the Synchronize button.
 
-In the Applications dashboard, both options are available in the context menu of each application, and on selecting an application, on the top-right next to the Synhronize option.
 
 {% include
  image.html
@@ -57,16 +46,17 @@ In the Applications dashboard, both options are available in the context menu of
  url="/images/whats-new/rel-notes-sep22-refresh-hardrefresh.png"
  alt="Refresh/Hard refresh options for selected application"
  caption="Refresh/Hard refresh options for selected application"
-    max-width="60%"
+    max-width="80%"
 %}
 
 
 
 #### Click resume indefinitely paused rollouts
-Rollouts can be set to be paused indefinitley requiring you to manually resume them, generally through the CLI.    
-You can now do the same directly from the Applications dashboard in Codefresh.  
+Argo Rollouts allows you to pause a rollout indefinitely and resume it manually instead of automatically after a fixed duration. Manually resuming a rollout is generally done through the CLI.   
+Codefresh provides you the option of resuming an indefinitely paused rollout directly from the Applications dashboard in Codefresh, with a single click. 
 
-In the Timelines tab of the selected application, an onging rollout that is indefinitely paused displays the pause button. Resuming the rollout is as simple as clicking the pause button.
+In the Timelines tab of the selected application, an ongoing rollout that is indefinitely paused displays the pause button. Resuming the rollout is as simple as clicking the pause button.
+
 
 {% include
  image.html
@@ -78,41 +68,67 @@ In the Timelines tab of the selected application, an onging rollout that is inde
     max-width="60%"
 %}
 
-####  Flexible  for application resource
-When creating applications, you can now add one or more subfolders in the path to store the resource manifest (YAML).
-Use the front slash to add  subfolders. 
-The resource is created in the selected Git Source according to the path you defined. 
+####  Custom path for application resources
+When creating applications, in addition to changing the name of the manifest, you can now also define the path for the manifest within the Git Source. Use the front slash (/) to add subfolders to the path. The resource is created in the Git Source you select, according to the path you defined. 
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-sep22-app-yaml-location.png"
+ url="/images/whats-new/rel-notes-sep22-app-yaml-location.png"
+ alt="Define location for application YAML"
+ caption="Define location for application YAML"
+    max-width="60%"
+%}
+
+
 
 #### Events tab for applications
-We have promoted the Event 
+In the previous month's release, we added the Events panel displaying successful and events for the application.
+For more visibility and easier access, the same Events tab is now displayed with the Current State, Timeline, Services, and Configuration tabs for the selected application.
 
-
-
-
-
+ 
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-sep22-events-tab.png"
+ url="/images/whats-new/rel-notes-sep22-events-tab.png"
+ alt="Events tab for application"
+ caption="Events tab for application"
+    max-width="60%"
+%}
 
 
 ### Bug fixes
-* Health status does not change to progressing when previously in degraded status (CR-14663)
-* Incorrect status for Hosted runtime when app-proxy is unreachable (CR-14653)
-* Git provider not registered for hosted runtimes that has Git Sources defined in the shared configuration repo. (CR-14635)
-* Rollout-reporter doesn't link to release if event of rollout-reporter were handled before argo-cd event (CR-14605) Olek Not needed
-* Argo CD fails to connect to K8s 1.24 clusters
-* Authentication between platform and app proxy fails (CR-14574)
-* Adding cluster to a runtime shows an error but the cluster is added to the runtime (CR-14569)
-* Fix workflow template selection when there is no Git Source (CR-14565)
-* Duplicate dates in Activyty Log notifications (CR-14528)
+
+{::nomarkdown}
+<br>
+{:/}
+
+**Runtimes**  
+* Incorrect status for Hosted runtime when app-proxy is unreachable. 
+* Git provider not registered for hosted runtimes with Git Sources defined in the shared configuration repo. 
+* Authentication failure between platform and app proxy. 
+* Adding cluster to a runtime shows an error even when the cluster is added to the runtime. 
+* Duplicate dates in Activity Log notifications. 
+* Argo CD fails to connect to K8s 1.24 clusters.
+* After uninstalling a runtime, argo-rollouts and rollout-reporter files remain for managed cluster remain in shared configuration repo.
+* Deleted managed cluster shows as Unknown.
+
+{::nomarkdown}
+<br>
+{:/}
+
+**Applications**  
+* Health status does not change to progressing when previously degraded. 
 * Wrong git source reference (CR-14445) Daniel Maizel
-* Git Source applications in the Applications dashboard not reflected in the Rutnimes > Git Source tab. (CR-14415)
-* Switching from YAML to form view after changing fields does not update valiudation (CR-14333) (Bogdan Volynets)
-* App details drawer crashes when application does not have resources (Cr-14321)
-* Resource sometimes doesn't have namespace (CR-14294) Alina
-* Full Screen does not work in Safari
-* after uninstalling a runtime, managed-cluster argo-rollouts + rollout-reporter files remain in isc
-* Recreating an application with the same name as that of a deleted application displays incorrect data for rollouts in the Timeline tab (CR-13519) Olek
-* Missing button to update invalud runtime token when message appears
-* Deleted managed cluster shows as Unknown ao
-* When there are long sync times, new release appeared with delay in the Timeline tab and caused the data to be attached to the previous release
+* Git Source applications in the Applications dashboard not reflected in the Rutnimes > Git Source tab. 
+* Switching from YAML to form view after changing fields does not update validations. 
+* App details drawer crashes when application does not have resources. 
+* Missing namespace for resources.
+* Full Screen does not work in Safari.
+* Recreating an application with the same name as that of a deleted application displays incorrect data for rollouts in the Timeline tab.
+* In the Timeline tab, data for a new release with long sync duration is assigned to the previous release.
 
 
 ## August 2022
