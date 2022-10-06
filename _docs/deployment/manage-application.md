@@ -239,18 +239,19 @@ Argo CD maintains a cache of the application manifests in the Git repository. Bo
 <!--- 1. Select the view mode, and do one of the following:
   * For Card views, from the context menu, select **Refresh** or **Hard Refresh**.
 
-   {% include 
+    {% include 
    image.html 
    lightbox="true" 
    file="/images/applications/card-view-refresh-hard-refresh" 
    url="/images/applications/card-view-refresh-hard-refresh" 
-   alt="Card view: "Application sync with Refresh/Hard Refresh" 
-   caption="Application sync with Refresh/Hard Refresh"
-   max-width="50%" 
-   %}
+   alt="Card view: Application sync with Refresh/Hard Refresh" 
+   caption="Card view: Application sync with Refresh/Hard Refresh"
+   max-width="60%" 
+  %}
 
   * Drill down into the application, and from the top-right, select **Refresh**, or click the context menu and then select **Hard Refresh**. 
-       {% include 
+       
+  {% include 
    image.html 
    lightbox="true" 
    file="/images/applications/app-refresh-hard-refresh" 
@@ -258,7 +259,8 @@ Argo CD maintains a cache of the application manifests in the Git repository. Bo
    alt="Application sync with Refresh/Hard Refresh" 
    caption="Application sync with Refresh/Hard Refresh"
    max-width="60%" 
-   %} --->
+  %} 
+   --->
 1.  Drill down into the application, and from the top-right, select **Refresh**, or click the context menu and then select **Hard Refresh**. 
 
      {% include 
