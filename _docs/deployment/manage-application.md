@@ -5,16 +5,15 @@ group: deployment
 toc: true
 ---
 
-Creating and deploying applications is the first part of the continuous deployment/delivery process. An equally important part is optimizing deployed applications when needed, including synchronizing them manually. Codefresh gives you the options to manage your applications in a GitOps principles
-
+Creating and deploying applications is the first part of the continuous deployment/delivery process. An equally important part is optimizing deployed applications when needed, including editing application definitions, and synchronizing or refreshing them on-demand. 
 * Edit applications  
   Optimize deployed applications by changing application definitions when needed.
 
 * Synchronize applications  
   Sync applications on-demand by manually applying sync options or selecting which resources to sync.
 
-* Delete applications  
-  Delete unused or legacy applications to avoid clutter and remove unnecessary resources.
+<!---* Delete applications  
+  Delete unused or legacy applications to avoid clutter and remove unnecessary resources.--->
 
 ### Edit application configuration 
 Optimize deployed applications by updating General or Advanced configuration settings. 
@@ -81,7 +80,7 @@ Optimize deployed applications by updating General or Advanced configuration set
 
 ### On-demand application sync
 Synchonize applications manually to sync the desired state with the live state.  
-Instead of waiting for Argo CD to detect differences between the desired and live states and initate the sync, select the relevant sync options or select the specific resources to sync and expedite Git-to-cluster sync.  
+Instead of waiting for Argo CD to detect differences between the desired and live states and initate the sync if automated sync is enabled, expedite Git-to-cluster sync by selecting the relevant sync options or selecting the specific resources to sync. 
 On-demand application sync is useful if you have updated only a few resources.   
 
 Manual application sync options are grouped into:
@@ -227,7 +226,53 @@ Review:
 <br><br>
 {:/}
 
-### Delete an application
+### Refresh/hard refresh sync
+You can sync applications also using the Refresh and Hard Refresh options.  
+Argo CD maintains a cache of the application manifests in the Git repository. Both actions result in Argo CD syncing the application, the only difference being in the state of the cached manifests.  
+
+* Refresh: Compares the desired state in Git to the live state on the cluster, and syncs the desired state with the live state on detecting changes. Manifest cache is left unchanged.
+* Hard Refresh: Also compares the desired state to the live state on the cluster, and syncs the desired state with the live state on detecting changes, and also replaces the manifest cache.
+
+> We recommend using the sync strategies to sync applications. 
+
+1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}.
+<!--- 1. Select the view mode, and do one of the following:
+  * For Card views, from the context menu, select **Refresh** or **Hard Refresh**.
+
+   {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/applications/card-view-refresh-hard-refresh" 
+   url="/images/applications/card-view-refresh-hard-refresh" 
+   alt="Card view: "Application sync with Refresh/Hard Refresh" 
+   caption="Application sync with Refresh/Hard Refresh"
+   max-width="50%" 
+   %}
+
+  * Drill down into the application, and from the top-right, select **Refresh**, or click the context menu and then select **Hard Refresh**. 
+       {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/applications/app-refresh-hard-refresh" 
+   url="/images/applications/app-refresh-hard-refresh" 
+   alt="Application sync with Refresh/Hard Refresh" 
+   caption="Application sync with Refresh/Hard Refresh"
+   max-width="60%" 
+   %} --->
+1.  Drill down into the application, and from the top-right, select **Refresh**, or click the context menu and then select **Hard Refresh**. 
+
+     {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/applications/app-refresh-hard-refresh" 
+   url="/images/applications/app-refresh-hard-refresh" 
+   alt="Application sync with Refresh/Hard Refresh" 
+   caption="Application sync with Refresh/Hard Refresh"
+   max-width="60%" 
+   %}
+
+
+<!---### Delete an application
 Delete an application from Codefresh. Deleting an application deletes the manifests from the Git repository, and then from the cluster where it is deployed. When deleted from the cluster, the application is removed from the Applications dashboard in Codefresh.
  
 >The scope of the delete action is determined by the **Prune resources** option in the application's General settings.    
@@ -261,7 +306,7 @@ Codefresh warns you of the implication of deleting the selected application in t
    %} 
 
 {:start="4"}
-1. To confirm, click **Commit & Delete**.
+1. To confirm, click **Commit & Delete**. --->
 
 ### Related information
 [Creating applications]({{site.baseurl}}/docs/deployment/create-application/)  
