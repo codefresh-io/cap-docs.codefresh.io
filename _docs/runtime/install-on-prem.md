@@ -45,7 +45,7 @@ Make sure your `ssl.cert` and `private.key` are valid.
 
 >Use a Corporate Signed certificate, or any valid TLS certificate, for example, from `lets-encrypt`.
 
-#### Storage for persistent services
+#### PV provisioner support
 Codefresh uses both cluster storage (volumes), as well as external storage. Make sure you meet the minimum capacity for the volumes.
 
 ##### Databases
@@ -55,7 +55,7 @@ The table below displays the list of databases created as part of the installati
 |----------|---------| --------------     |---------|
 | mongoDB    | Store all account data (account settings, users, projects, pipelines, builds etc.) | 8GB          | 4.2.x |
 | postgresql | Store data about events in the account (pipeline updates, deletes, etc.). The audit log uses the data from this database. | 8GB          | 13.x |
-| rabbitmq   | Message broker. | ???         | 6.0.x |
+| rabbitmq   | Message broker. | 8GB        | 3.10.x |
 | redis      | Cache data, and key-value store for trigger manager. | 8GB          | 6.0.x |
 
 > Running on netfs (nfs, cifs) is not recommended by the product admin guide.
