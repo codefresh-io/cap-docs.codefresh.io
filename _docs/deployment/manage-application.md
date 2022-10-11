@@ -79,7 +79,7 @@ Optimize deployed applications by updating General or Advanced configuration set
 {:/}
 
 ### On-demand application sync
-Synchonize applications manually to sync the desired state with the live state.  
+Synchonize applications manually to reconcile the desired state with the live state.  
 Instead of waiting for Argo CD to detect differences between the desired and live states and initate the sync if automated sync is enabled, expedite Git-to-cluster sync by selecting the relevant sync options or selecting the specific resources to sync. 
 On-demand application sync is useful if you have updated only a few resources.   
 
