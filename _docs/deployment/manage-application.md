@@ -226,7 +226,7 @@ Review:
 <br><br>
 {:/}
 
-### Refresh/hard refresh sync
+### Sync with Refresh/hard refresh
 You can sync applications also using the Refresh and Hard Refresh options.  
 Argo CD maintains a cache of the application manifests in the Git repository. Both actions result in Argo CD syncing the application, the only difference being in the state of the cached manifests.  
 
@@ -238,11 +238,11 @@ Argo CD maintains a cache of the application manifests in the Git repository. Bo
 1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}.
 1.  Drill down into the application, and from the top-right, select **Refresh**, or click the context menu and then select **Hard Refresh**. 
 
-     {% include 
+  {% include 
    image.html 
    lightbox="true" 
-   file="/images/applications/app-refresh-hard-refresh" 
-   url="/images/applications/app-refresh-hard-refresh" 
+   file="/images/applications/app-refresh-hard-refresh.png" 
+   url="/images/applications/app-refresh-hard-refresh.png" 
    alt="Application sync with Refresh/Hard Refresh" 
    caption="Application sync with Refresh/Hard Refresh"
    max-width="60%" 
