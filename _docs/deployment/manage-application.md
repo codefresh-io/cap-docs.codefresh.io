@@ -259,8 +259,7 @@ Argo CD maintains a cache of the application manifests in the Git repository. Bo
    alt="Application sync with Refresh/Hard Refresh" 
    caption="Application sync with Refresh/Hard Refresh"
    max-width="60%" 
-  %} 
-   --->
+  %} --->
 1.  Drill down into the application, and from the top-right, select **Refresh**, or click the context menu and then select **Hard Refresh**. 
 
      {% include 
