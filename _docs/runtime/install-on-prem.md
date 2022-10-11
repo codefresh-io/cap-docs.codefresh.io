@@ -39,7 +39,7 @@ The table describes the minimum requirements for an on-premises installation.
 |Git providers TBD    |{::nomarkdown}<ul><li>GitHub</li></ul>{:/}|
 
 
-### Prerequisties for on-premises installations
+### Prerequisites for on-premises installations
 Make sure you have the following:
 
 #### Service Account file
@@ -58,38 +58,15 @@ Codefresh uses both cluster storage (volumes), as well as external storage. Make
 ##### Databases
 The table below displays the list of databases created as part of the installation:
 
-| Database | Purpose | Latest supported version |
-|----------|---------| ---------------|
-| mongoDB | Store all account data (account settings, users, projects, pipelines, builds etc.) | 4.2.x |
-| postgresql | Store data about events in the account (pipeline updates, deletes, etc.). The audit log uses the data from this database. | 13.x |
-| redis | Mainly for caching, and as a key-value store for our trigger manager. | 6.0.x |
+| Database | Purpose | | Minimum Capacity |Latest supported version |
+|----------|---------| --------------     |---------|
+| mongoDB    | Store all account data (account settings, users, projects, pipelines, builds etc.) | 8GB          | 4.2.x |
+| postgresql | Store data about events in the account (pipeline updates, deletes, etc.). The audit log uses the data from this database. | 8GB          | 13.x |
+| rabbitmq   | Message broker. | ???         | 6.0.x |
+| redis      | Cache data, and key-value store for trigger manager. | 8GB          | 6.0.x |
 
-##### Volumes
+> Running on netfs (nfs, cifs) is not recommended by product admin guide.
 
-The table below lists the volumes required by Codefresh on-premises.
-
-
-{: .table .table-bordered .table-hover}
-| Name           | Purpose                | Minimum Capacity | Can run on netfs (nfs, cifs) |
-|----------------|------------------------|------------------|------------------------------|
-| cf-mongodb*    | Main database - Mongo  | 8GB              | Yes**                        |
-| cf-postgresql* | Events databases - Postgres | 8GB         | Yes**                        |
-| cf-rabbitmq*   | Message broker         | 8GB              | No**                         |
-| cf-redis*      | Cache                  | 8GB              | No**                         |
-
-{% raw %}
-
- (*) Possibility to use external service
-
- (**) Running on netfs (nfs, cifs) is not recommended by product admin guide
-
-{% endraw %}
-
-(NIMA: need to rewrite this)
-The default initial volume size (100 Gi) can be overridden in the custom `config.yaml` file. Values descriptions are in the `config.yaml` file.
-The registry’s initial volume size is 100Gi. It also can be overridden in a custom `config.yaml` file. There is a possibility to use a customer-defined registry configuration file (`config.yaml`) that allows using different registry storage back-ends (S3, Azure Blob, GCS, etc.) and other parameters. More details can be found in the [Docker documentation](https://docs.docker.com/registry/configuration/).
-
-Depending on the customer’s Kubernetes version we can assist with PV resizing. Details are can be found in this [Kubernetes blog post](https://kubernetes.io/blog/2018/07/12/resizing-persistent-volumes-using-kubernetes/).
 
 ##### Automatic Volume Provisioning
 Codefresh installation supports automatic storage provisioning based on the standard Kubernetes dynamic provisioner Storage Classes and Persistent Volume Claims. All required installation volumes are provisioned automatically using the default Storage Class or custom Storage Class that can be specified as a parameter in `config.yaml` under `storageClass: my-storage-class`.
@@ -97,11 +74,18 @@ Codefresh installation supports automatic storage provisioning based on the stan
 ### Install Codefresh on-premises
 Follow the steps to install and deploy Codefresh on-premises.
 
+{::nomarkdown}
+</br></br>
+{:/}
+
 #### Before you begin
 Make sure you:
 * Meet the [system requirements](#system-requirements-for-on-premises-installations)
 * Have completed the [prerequisites](#prerequisties-for-on-premises-installations)
 
+{::nomarkdown}
+</br></br>
+{:/}
 
 #### Step 1: Get repo info nad pull Helm chart
 Retrieve the info on the Codefresh repo and pull the Heml chart for on-premises installation.
@@ -111,12 +95,18 @@ helm repo add codefresh-onprem-dev http://chartmuseum-dev.codefresh.io/codefresh
 helm repo update
 helm pull codefresh-onprem-dev/codefresh --untar --version 1.2.18-onprem-argo-platform
 ```
+{::nomarkdown}
+</br></br>
+{:/}
 
 #### Step 2: Define the values.yaml to use
 Use either the provided `values.yaml` and customize it as needed, or create a new, empty values file, such as `cf-values.yaml` and add the required settings. 
 
 > For the purposes of documentation, in this section, we will use `values.yaml`.
 
+{::nomarkdown}
+</br></br>
+{:/}
 
 #### Step 3: Pass sa.json credentials
 Pass `sa.json` as a single line for `password`.
@@ -127,6 +117,7 @@ Pass `sa.json` as a single line for `password`.
   username: _json_key
   password: '{ "type": "service_account", "project_id": "codefresh-enterprise", "private_key_id": ... }'
 ```
+
 {: .table .table-bordered .table-hover}
 | Parameter      | Description            | Default value | 
 |----------------|------------------------|------------------|
@@ -134,18 +125,26 @@ Pass `sa.json` as a single line for `password`.
 | `username`     | The username to access the registry.  | `_json_key`              | 
 | `password`     | The password to access the registry, and must include the content of `sa.json` in a single line.  | ``              | 
 
+{::nomarkdown}
+</br></br>
+{:/}
 
 #### Step 4: Define `global.appUrl`
-Define the rrot URL for Codefresh. 
+Define the root URL for Codefresh. 
 
 ```yaml
 global:
   appUrl: <onprem>.<mydomain>
 ```
+
 {: .table .table-bordered .table-hover}
 | Parameter      | Description            | Default value | 
 |----------------|------------------------|------------------|
 | `appUrl`       | The root URL of the codefresh application.  | `onprem.codefresh.local`              | 
+
+{::nomarkdown}
+</br></br>
+{:/}
 
 #### Step 5: Create TLS certificates
 Enable TLS and certificates for ingress objects.
@@ -166,6 +165,10 @@ webTLS:
 | `cert`         | The base64 encoded custom certificate.                    |  `  `            |
 | `key`          | The base64 encoded custom private key for the certificate. | `  `              |
 
+{::nomarkdown}
+</br></br>
+{:/}
+
 #### Step 6: Enable Codefresh On-premises 
 Enable the Codefresh on-premises platform, and disable services that are not required, such as the Helm charts for Codefresh Classic:
 
@@ -180,6 +183,11 @@ argo-platform:
   seedJobs:
     enabled: true
 ```
+
+{::nomarkdown}
+</br></br>
+{:/}
+
 #### Step 7: Install the Helm chart
 Install the Helm chart with the configuration to deploy Codefresh on-premises.
 
@@ -192,6 +200,7 @@ helm upgrade --install cf ./codefresh \
     --wait \
     --timeout 10m
 ```
+
 {: .table .table-bordered .table-hover}
 | Parameter      | Description            | Default value | 
 |----------------|------------------------|------------------|
@@ -201,14 +210,27 @@ helm upgrade --install cf ./codefresh \
 | `wait`         | The duration in munutes to wait until all pods are up and running before generating a timeout.  | N/A              |
 | `timeout`      | The maximum length of time to `wait` before declaring Helm chart installation failure.  | `10m`             |
 
+{::nomarkdown}
+</br></br>
+{:/}
 
-### Step 8: (Optional) Continue with additional configuration
+#### Step 8: Continue with additional configuration
+There are several post-installation additional configuration options, based on your environment:  
+
+* [Ingressless runtime provisioning](#configure-ingressless-runtime)
+* [Annotations for NGINX ingress controller](#configure-annotations-for-nginx-ingress-controller)
+* [Configure external services for database/messaging/caching](#configure-external-services-for-database-messaging-caching)
 
 
-### Additional configuration for on-premises instllations
+
+{::nomarkdown}
+</br></br>
+{:/}
+
+### Additional configuration for on-premises installations
 Apart from the mandatory settings you need to define to install Codefresh on-premises with Helm, you can define additional settings, based on your requirements.
 
-#### Ingressless runtime provisioning
+#### Configure ingressless runtimes
 Codefresh provides the option to provision runtimes in on-premises environments without an ingress controller. 
 To provision ingressless runtimes, add the `codefresh-tunnel-server` section with the tunnel server defnitions to `values.yaml`. 
 
@@ -224,6 +246,7 @@ codefresh-tunnel-server:
   ingress:
     host: register-tunnels.mydomain.com
 ```
+
 {: .table .table-bordered .table-hover}
 | Parameter      | Description            | Default value | 
 |----------------|------------------------|------------------|
@@ -231,7 +254,11 @@ codefresh-tunnel-server:
 | `subdomainHost`     | ??               | `codefresh`              |
 | `host`              | ??                                             |  `  `            |
 
-#### Ingress controller
+{::nomarkdown}
+</br></br>
+{:/}
+
+#### Configure annotations for NGINX ingress controller
 By default Codefresh uses NGINX as the ingress controller. If you are using AWS L7 ELB with SSL Termination, add the annotations for `ingres-nginx`, and set `webTLS` to `false`.
 
 
@@ -251,6 +278,9 @@ ingress-nginx:
 webTLS:
   enabled: false
 ```
+{::nomarkdown}
+</br></br>
+{:/}
 
 #### Configure external services for database/messaging/caching
 By default, Codefresh  uses internal services such as `cf-mongodb`, `cf-redis`, `cf-rabbitmq`, `cf-postgresql` to run the Argo project components.  
@@ -259,7 +289,7 @@ If you have your own services for data storage/messaging/caching, configure them
 >For Codefresh on-premises, you need to define two sets of parameters, `global`, and `argo-platform`. We recommend using the same values for both sets of parameters.
   YAML anchors are used to populate connection URIs to env variables for the corresponding Codefresh services.
 
-Start be defining the `global` parameters, and then copy them to `argo-platform`. The complete set of parameters are 
+Start by defining the `global` parameters, and then copy them to `argo-platform`. The complete set of parameters are 
 
 1. In the `global`section, add the connection URI and credentials for required services:
   * MongoDB
@@ -275,7 +305,7 @@ Start be defining the `global` parameters, and then copy them to `argo-platform`
   * Postgresql
 
 
-Here is an example of the `values.yaml` with all the external services:
+Here is an example of `values.yaml` with all the external services:
 
 ```yaml
 
@@ -413,6 +443,10 @@ argo-platform:
       
 ...
 ```
+{::nomarkdown}
+</br>
+{:/}
+
 ##### Global: Mongo DB parameters
 
 {: .table .table-bordered .table-hover}
@@ -425,6 +459,9 @@ argo-platform:
 
 > `argo-platform.seedJobs`:`mongodbRootUser`, `mongodbRootPassword` and `mongodbUri`  must be identical to `global` values.
 
+{::nomarkdown}
+</br>
+{:/}
 
 ##### Global: PostgreSQL parameters
 
@@ -439,6 +476,10 @@ argo-platform:
 |        | `postgresHostname`          | The default external address of the PostgreSQL service. The `secrets.pg-host-name` parameter must have the same value.   | `codefresh`     | 
 |        | `postgresPort`              | The default internal PostgreSQL port. The `secrets.pg-port` parameter must have the same value.            | ` `     | 
 
+{::nomarkdown}
+</br>
+{:/}
+
 ##### Global: Redis parameters
 
 {: .table .table-bordered .table-hover}
@@ -448,6 +489,10 @@ argo-platform:
 |        | `redisPort`     | The default internal port used by the Redis service.    | `6379`       | 
 |        | `redisPassword` | The default internal password for the Redis service.    | `postgres`   | 
 
+{::nomarkdown}
+</br>
+{:/}
+
 ##### Global: RabbitMQ parameters
 
 {: .table .table-bordered .table-hover}
@@ -456,6 +501,10 @@ argo-platform:
 |`global`  | `rabbitmqHostname` |The default external address of the RabbitMQ service.  | `nil`        | 
 |          | `rabbitmqUsername` |The default RabbitMQ username.                         | `user`       | 
 |          | `rabbitmqPassword` |The default RabbitMQ password.                         | ` `   | 
+
+{::nomarkdown}
+</br>
+{:/}
 
 ##### argo-platform.env: MongoDB parameters
 
@@ -495,4 +544,4 @@ max-width="80%"
 
 
 ### What to do next
-Provision a runtime - TBD
+Provision a hybrid runtime (TBD)
