@@ -236,30 +236,6 @@ Argo CD maintains a cache of the application manifests in the Git repository. Bo
 > We recommend using the sync strategies to sync applications. 
 
 1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}.
-<!--- 1. Select the view mode, and do one of the following:
-  * For Card views, from the context menu, select **Refresh** or **Hard Refresh**.
-
-    {% include 
-   image.html 
-   lightbox="true" 
-   file="/images/applications/card-view-refresh-hard-refresh" 
-   url="/images/applications/card-view-refresh-hard-refresh" 
-   alt="Card view: Application sync with Refresh/Hard Refresh" 
-   caption="Card view: Application sync with Refresh/Hard Refresh"
-   max-width="60%" 
-  %}
-
-  * Drill down into the application, and from the top-right, select **Refresh**, or click the context menu and then select **Hard Refresh**. 
-       
-  {% include 
-   image.html 
-   lightbox="true" 
-   file="/images/applications/app-refresh-hard-refresh" 
-   url="/images/applications/app-refresh-hard-refresh" 
-   alt="Application sync with Refresh/Hard Refresh" 
-   caption="Application sync with Refresh/Hard Refresh"
-   max-width="60%" 
-  %} --->
 1.  Drill down into the application, and from the top-right, select **Refresh**, or click the context menu and then select **Hard Refresh**. 
 
      {% include 
