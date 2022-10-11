@@ -5,27 +5,21 @@ group: runtime
 toc: true
 ---
 
-Codefresh fully supports on-premises installations. Our proprietary Kubernetes Codefresh Installer, `kcfi`, aggregates all installation components into a single tool, helping you to install and deploy the on-premises version of the Codefresh platform in your environment.  
+Codefresh supports on-premises installations using Helm charts. 
 
-<!---Codefresh on-premises installation can be divided into the following:
+Codefresh on-premises installation can be divided into the following:
 
-**Preparing for installation**  
+**Installation preparation**  
 This stage includes the tasks before you start installation, such as verifying system requirements and prerequisites for installation.
-* Take survey to inform Codefresh about your specifications
-* Verify that your installation environment matches the system requirements, and you have all the files, certificates before you start the installatio.
 
-**Installing Codefresh on-premises**
-This stage includes the installation, configuration, and deployment.
 
-** Activate Codefresh**
-Activate the 
-  After installation and deployment, activate Codefresh by turning on feature flgas.
+**Codefresh on-premises installation**
+This stage includes  installation, configuration, and deployment.
 
-### Take the Codefresh survey
+**Additional configurations**
+This stage includes several post-installation configuration options based on your environment. 
 
-_Before_ starting the installation, complete the survey for Codefresh confirm that your environment is ready for on-premises installation and deployment.  
 
-[Survey](https://docs.google.com/forms/d/e/1FAIpQLSf18sfG4bEQuwMT7p11F6q70JzWgHEgoAfSFlQuTnno5Rw3GQ/viewform){:target="\_blank"} --->
 
 ### System requirements for on-premises installations
 The table describes the minimum requirements for an on-premises installation.
@@ -34,9 +28,8 @@ The table describes the minimum requirements for an on-premises installation.
 | Item                     | Requirement            |  
 | --------------         | --------------           |  
 |Kubernetes cluster      | Server version 1.19 to 1.22  {::nomarkdown}<br><b>Tip</b>:  To check the server version, run:<br> <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">kubectl version --short</span>.{:/}|
-|Operating system|{::nomarkdown} <ul><li>Windows 10/7</li><li>OSX</li>{:/}|
-|Node requirements TBD| {::nomarkdown}<ul><li>Memory: 5000 MB</li><li>CPU: 2</li></ul>{:/}|
-|Git providers TBD    |{::nomarkdown}<ul><li>GitHub</li></ul>{:/}|
+|Node requirements | {::nomarkdown}<ul><li>Memory: 5000 MB</li><li>CPU: 2</li></ul>{:/}|
+|Git providers     |{::nomarkdown}<ul><li>GitHub</li></ul>{:/}|
 
 
 ### Prerequisites for on-premises installations
@@ -65,11 +58,9 @@ The table below displays the list of databases created as part of the installati
 | rabbitmq   | Message broker. | ???         | 6.0.x |
 | redis      | Cache data, and key-value store for trigger manager. | 8GB          | 6.0.x |
 
-> Running on netfs (nfs, cifs) is not recommended by product admin guide.
+> Running on netfs (nfs, cifs) is not recommended by the product admin guide.
 
 
-##### Automatic Volume Provisioning
-Codefresh installation supports automatic storage provisioning based on the standard Kubernetes dynamic provisioner Storage Classes and Persistent Volume Claims. All required installation volumes are provisioned automatically using the default Storage Class or custom Storage Class that can be specified as a parameter in `config.yaml` under `storageClass: my-storage-class`.
 
 ### Install Codefresh on-premises
 Follow the steps to install and deploy Codefresh on-premises.
@@ -200,15 +191,7 @@ helm upgrade --install cf ./codefresh \
     --wait \
     --timeout 10m
 ```
-
-{: .table .table-bordered .table-hover}
-| Parameter      | Description            | Default value | 
-|----------------|------------------------|------------------|
-| `-f`           | The name of the YAML file with the on-premises installation settings.   | `cf-values.yaml`              | 
-| `namespace`    | The namespace in which to install the Helm chart.                  | `codefresh`              |
-| `debug`        | Define for verbosity.                                              |  `  `            |
-| `wait`         | The duration in munutes to wait until all pods are up and running before generating a timeout.  | N/A              |
-| `timeout`      | The maximum length of time to `wait` before declaring Helm chart installation failure.  | `10m`             |
+>For parameter details, see the offical [Helm Upgrade](https://helm.sh/docs/helm/helm_upgrade/){:target="\_blank"} documentation.
 
 {::nomarkdown}
 </br></br>
@@ -289,23 +272,8 @@ If you have your own services for data storage/messaging/caching, configure them
 >For Codefresh on-premises, you need to define two sets of parameters, `global`, and `argo-platform`. We recommend using the same values for both sets of parameters.
   YAML anchors are used to populate connection URIs to env variables for the corresponding Codefresh services.
 
-Start by defining the `global` parameters, and then copy them to `argo-platform`. The complete set of parameters are 
-
-1. In the `global`section, add the connection URI and credentials for required services:
-  * MongoDB
-  * RabbitMQ
-  * Redis
-  * Postgresql
-
-1. In `argo-platform` section, do the following:
-  * Set `seedJobs.enabled` to `true`.
-  * Define MongoDB and PostgreSQL parameters and values identical to those defined in the `global` section.
-  * Add `env` and 
-  * Redis
-  * Postgresql
-
-
-Here is an example of `values.yaml` with all the external services:
+* Define the `global` parameters and values, and then copy the values to `argo-platform`.  
+  Here is an example of `values.yaml` with all the external services:
 
 ```yaml
 
