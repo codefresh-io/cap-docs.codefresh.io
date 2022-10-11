@@ -19,13 +19,13 @@ This stage includes the installation, configuration, and deployment.
 
 ** Activate Codefresh**
 Activate the 
-  After installation and deployment, activate Codefresh by turning on feature flgas.--->
+  After installation and deployment, activate Codefresh by turning on feature flgas.
 
 ### Take the Codefresh survey
 
 _Before_ starting the installation, complete the survey for Codefresh confirm that your environment is ready for on-premises installation and deployment.  
 
-[Survey](https://docs.google.com/forms/d/e/1FAIpQLSf18sfG4bEQuwMT7p11F6q70JzWgHEgoAfSFlQuTnno5Rw3GQ/viewform){:target="\_blank"}
+[Survey](https://docs.google.com/forms/d/e/1FAIpQLSf18sfG4bEQuwMT7p11F6q70JzWgHEgoAfSFlQuTnno5Rw3GQ/viewform){:target="\_blank"} --->
 
 ### System requirements for on-premises installations
 The table describes the minimum requirements for an on-premises installation.
@@ -39,18 +39,18 @@ The table describes the minimum requirements for an on-premises installation.
 |Git providers TBD    |{::nomarkdown}<ul><li>GitHub</li></ul>{:/}|
 
 
-### Prerequisties for on-premises installation
+### Prerequisties for on-premises installations
 Make sure you have the following:
 
 #### Service Account file
-The GCR Service Account JSON file is provided by Codefresh ????.  
-(NIMA: why and what is this used for? where should users save this?)
+The GCR Service Account JSON file, `sa.json` is provided by Codefresh. Contact support to get the file before installation.
+
 
 #### TLS certificates
 For a secured installation, we highly recommend using TLS certificates. 
 Make sure your `ssl.cert` and `private.key` are valid.
 
->Use a Corporate Signed certificate, or any valid TLS certificate, for example, from lets-encrypt.
+>Use a Corporate Signed certificate, or any valid TLS certificate, for example, from `lets-encrypt`.
 
 #### Storage for persistent services
 Codefresh uses both cluster storage (volumes), as well as external storage. Make sure you meet the minimum capacity for the volumes.
@@ -99,15 +99,26 @@ Follow the steps to install and deploy Codefresh on-premises.
 
 #### Before you begin
 Make sure you:
-* Meet the system requirements
-* Have completed the prerequisites
+* Meet the [system requirements](#system-requirements-for-on-premises-installations)
+* Have completed the [prerequisites](#prerequisties-for-on-premises-installations)
 
 
-#### Step 1: Define the values.yaml to use
-Use either the provided `values.yaml` and customize it as needed, or create a new, empty values file, such as `cf-values.yaml`. 
+#### Step 1: Get repo info nad pull Helm chart
+Retrieve the info on the Codefresh repo and pull the Heml chart for on-premises installation.
+
+```yaml
+helm repo add codefresh-onprem-dev http://chartmuseum-dev.codefresh.io/codefresh
+helm repo update
+helm pull codefresh-onprem-dev/codefresh --untar --version 1.2.18-onprem-argo-platform
+```
+
+#### Step 2: Define the values.yaml to use
+Use either the provided `values.yaml` and customize it as needed, or create a new, empty values file, such as `cf-values.yaml` and add the required settings. 
+
+> For the purposes of documentation, in this section, we will use `values.yaml`.
 
 
-#### Step 2: Define image credentials
+#### Step 3: Pass sa.json credentials
 Pass `sa.json` as a single line for `password`.
 
 ```yaml
@@ -117,26 +128,26 @@ Pass `sa.json` as a single line for `password`.
   password: '{ "type": "service_account", "project_id": "codefresh-enterprise", "private_key_id": ... }'
 ```
 {: .table .table-bordered .table-hover}
-| Parameter      | Description            | Required value | 
+| Parameter      | Description            | Default value | 
 |----------------|------------------------|------------------|
 | `registry`     | The address of the registry to store the service account image.  | `gcr.io`              | 
 | `username`     | The username to access the registry.  | `_json_key`              | 
 | `password`     | The password to access the registry, and must include the content of `sa.json` in a single line.  | ``              | 
 
 
-#### Step 3: Define `global.appUrl`
-
+#### Step 4: Define `global.appUrl`
+Define the rrot URL for Codefresh. 
 
 ```yaml
 global:
   appUrl: <onprem>.<mydomain>
 ```
 {: .table .table-bordered .table-hover}
-| Parameter      | Description            | Required value | 
+| Parameter      | Description            | Default value | 
 |----------------|------------------------|------------------|
 | `appUrl`       | The root URL of the codefresh application.  | `onprem.codefresh.local`              | 
 
-#### Step 4: Create TLS certificates
+#### Step 5: Create TLS certificates
 Enable TLS and certificates for ingress objects.
 
 ```yaml
@@ -148,18 +159,15 @@ webTLS:
 ```
 
 {: .table .table-bordered .table-hover}
-| Parameter      | Description            | Required value | 
+| Parameter      | Description            | Default value | 
 |----------------|------------------------|------------------|
 | `enabled`      | Enable and create TLS certificates for ingress objects.   | `true`              | 
 | `secretName`   | The name of the TLS secret.                               | `star.codefresh.io`              |
 | `cert`         | The base64 encoded custom certificate.                    |  `  `            |
 | `key`          | The base64 encoded custom private key for the certificate. | `  `              |
 
-#### Step 4: Enable Codefresh on-premises 
-Enable the Codefresh on-premises platform, and disable services that are not required.
-
-
-1. Add tags to enable Argo Platform, and disable Helm charts for Codefresh Classic:
+#### Step 6: Enable Codefresh On-premises 
+Enable the Codefresh on-premises platform, and disable services that are not required, such as the Helm charts for Codefresh Classic:
 
 ```yaml
 tags:
@@ -172,8 +180,8 @@ argo-platform:
   seedJobs:
     enabled: true
 ```
-#### Step 5: Install the Helm chart
-Install the Helm chart with the configuration to deploy the Codefresh on-premises platform.
+#### Step 7: Install the Helm chart
+Install the Helm chart with the configuration to deploy Codefresh on-premises.
 
 ```yaml
 helm upgrade --install cf ./codefresh \
@@ -184,21 +192,31 @@ helm upgrade --install cf ./codefresh \
     --wait \
     --timeout 10m
 ```
-where: 
+{: .table .table-bordered .table-hover}
+| Parameter      | Description            | Default value | 
+|----------------|------------------------|------------------|
+| `-f`           | The name of the YAML file with the on-premises installation settings.   | `cf-values.yaml`              | 
+| `namespace`    | The namespace in which to install the Helm chart.                  | `codefresh`              |
+| `debug`        | Define for verbosity.                                              |  `  `            |
+| `wait`         | The duration in munutes to wait until all pods are up and running before generating a timeout.  | N/A              |
+| `timeout`      | The maximum length of time to `wait` before declaring Helm chart installation failure.  | `10m`             |
 
 
-### Additional configuration
-Apart from the mandatory settings you need to define to install Codefresh on-premises with Helm, you can define additional settings 
+### Step 8: (Optional) Continue with additional configuration
+
+
+### Additional configuration for on-premises instllations
+Apart from the mandatory settings you need to define to install Codefresh on-premises with Helm, you can define additional settings, based on your requirements.
 
 #### Ingressless runtime provisioning
 Codefresh provides the option to provision runtimes in on-premises environments without an ingress controller. 
-To provision ingressless runtimes, add the following section to `values.yaml`. 
+To provision ingressless runtimes, add the `codefresh-tunnel-server` section with the tunnel server defnitions to `values.yaml`. 
 
 ```yaml
 codefresh-tunnel-server:
   enabled: true  # enable ingressless runtime
 
-  codefreshBaseUrl: https://onprem.mydomain.com #replace with your domain, for example,
+  codefreshBaseUrl: https://onprem.mydomain.com 
 
   tunnels:
     subdomainHost: tunnels.mydomain.com 
@@ -206,28 +224,58 @@ codefresh-tunnel-server:
   ingress:
     host: register-tunnels.mydomain.com
 ```
+{: .table .table-bordered .table-hover}
+| Parameter      | Description            | Default value | 
+|----------------|------------------------|------------------|
+| `codefreshBaseUrl`  | The name of your domain URL.   | `cf-values.yaml`              | 
+| `subdomainHost`     | ??               | `codefresh`              |
+| `host`              | ??                                             |  `  `            |
 
 #### Ingress controller
-By default Codefresh uses NGINX as the ingress controller. TO use a different controller
+By default Codefresh uses NGINX as the ingress controller. If you are using AWS L7 ELB with SSL Termination, add the annotations for `ingres-nginx`, and set `webTLS` to `false`.
 
 
- 
+```yaml
+ingress-nginx:
+  controller:
+    service:
+      annotations:
+        service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "tcp"
+        service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "443"
+        service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout: '3600'
+        service.beta.kubernetes.io/aws-load-balancer-ssl-cert: < CERTIFICATE ARN >
+      targetPorts:
+        http: http
+        https: http
 
-
+webTLS:
+  enabled: false
+```
 
 #### Configure external services for database/messaging/caching
-By default, Codefresh  uses internal services such as `cf-mongodb`, `cf-redis`, `cf-rabbitmq`, `cf-postgresql` to run the Argo components. 
-If you have your own  services for data storage/messaging/caching, configure them in `values.yaml`. 
+By default, Codefresh  uses internal services such as `cf-mongodb`, `cf-redis`, `cf-rabbitmq`, `cf-postgresql` to run the Argo project components.  
+If you have your own services for data storage/messaging/caching, configure them in `values.yaml`.   
 
-1 In the `global`section, add the connection URI and credentials for required services:
+>For Codefresh on-premises, you need to define two sets of parameters, `global`, and `argo-platform`. We recommend using the same values for both sets of parameters.
+  YAML anchors are used to populate connection URIs to env variables for the corresponding Codefresh services.
+
+Start be defining the `global` parameters, and then copy them to `argo-platform`. The complete set of parameters are 
+
+1. In the `global`section, add the connection URI and credentials for required services:
   * MongoDB
   * RabbitMQ
   * Redis
   * Postgresql
 
-> YAML anchors are used to populate connection URIs to env variables for the corresponding argo-platform services.
+1. In `argo-platform` section, do the following:
+  * Set `seedJobs.enabled` to `true`.
+  * Define MongoDB and PostgreSQL parameters and values identical to those defined in the `global` section.
+  * Add `env` and 
+  * Redis
+  * Postgresql
 
-Here is an example of the `config.yaml` with all the external services:
+
+Here is an example of the `values.yaml` with all the external services:
 
 ```yaml
 
@@ -365,38 +413,61 @@ argo-platform:
       
 ...
 ```
+##### Global: Mongo DB parameters
+
 {: .table .table-bordered .table-hover}
-| Parameter      | Description            | Required value | 
-|----------------|------------------------|------------------|
-| `enabled`      | Enable and create TLS certificates for ingress objects.   | `true`              | 
+| Section | Parameter       | Description            | Default value | 
+|----------|----------------|------------------------|------------------|
+|`global`| `mongodbRootUser`      | The user with privileges for seed jobs and automatic user creation.    | `root`              | 
+|        | `mongodbRootPassword`  | The default Mongo DB password.                                         | ` `              | 
+|        | `mongoURI`             | The default Mongo DB URI.                                              | ` `              | 
 
 
-#### Step 6: (Optional) Configure Network Load Balancer
-To use an AWS Network Load Balancer, add the following `annotations` to `ingress-nginx.controller.service`:
-
-```yaml
-...
-
-ingress-nginx:
-  controller:
-    service:
-      annotations:
-        service.beta.kubernetes.io/aws-load-balancer-type: nlb
-        service.beta.kubernetes.io/aws-load-balancer-backend-protocol: tcp
-        service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout: '60'
-        service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: 'true'
-
-...
-```
-
-#### Step 7: Deploy Codefresh on-premises 
-Deploy the Codefresh on-premises platform.
-
-* Run:  
-  `kcfi deploy -c config.yaml --debug --wait --timeout 10m`
+> `argo-platform.seedJobs`:`mongodbRootUser`, `mongodbRootPassword` and `mongodbUri`  must be identical to `global` values.
 
 
-### Activate Codefresh
+##### Global: PostgreSQL parameters
+
+{: .table .table-bordered .table-hover}
+| Section | Parameter      | Description            | Default value | 
+|----------|----------------|------------------------|------------------|
+|`global`| `postgresSeedJob`           |Instantiate databases with seed data in on-premises environments.    |   N/A           | 
+|        | `postgresSeedJob.user`      |The username for the database.                                       | `postgres`             | 
+|        | `postgresSeedJob.password`  | The password for the database.                                      | ` `              | 
+|        | `postgresUser`              | The default internal PostgreSQL username. The`secrets.pg-user-name` parameter must have the same value.    | `postgres` | 
+|        | `postgresPassword`          | The default internal PostgreSQL password. The `secrets.pg-password` parameter must have the same value.    | ` `     | 
+|        | `postgresHostname`          | The default external address of the PostgreSQL service. The `secrets.pg-host-name` parameter must have the same value.   | `codefresh`     | 
+|        | `postgresPort`              | The default internal PostgreSQL port. The `secrets.pg-port` parameter must have the same value.            | ` `     | 
+
+##### Global: Redis parameters
+
+{: .table .table-bordered .table-hover}
+| Section | Parameter      | Description            | Required value | 
+|----------|----------------|------------------------|------------------|
+|`global`| `redisUrl`      |The default external address of the Redis service.       | `nil`        | 
+|        | `redisPort`     | The default internal port used by the Redis service.    | `6379`       | 
+|        | `redisPassword` | The default internal password for the Redis service.    | `postgres`   | 
+
+##### Global: RabbitMQ parameters
+
+{: .table .table-bordered .table-hover}
+| Section  | Parameter      | Description            | Required value | 
+|----------|----------------|------------------------|------------------|
+|`global`  | `rabbitmqHostname` |The default external address of the RabbitMQ service.  | `nil`        | 
+|          | `rabbitmqUsername` |The default RabbitMQ username.                         | `user`       | 
+|          | `rabbitmqPassword` |The default RabbitMQ password.                         | ` `   | 
+
+##### argo-platform.env: MongoDB parameters
+
+{: .table .table-bordered .table-hover}
+| Section | Parameter      | Description            | Required value | 
+|-------------|----------------|------------------------|------------------|
+`argo-platform.env` |`MONGODB_PROTOCOL`| The protocol to connect to MongoDB. Can be either `mongodb` or  `mongodb+srv`      | `mongodb`        | 
+|                   | `MONGODB_PROTOCOL` |The default MongoDB username.    | `user`       | 
+
+
+
+<!---### Activate Codefresh
 After installing and deploying Codefresh on-premises, in Codefresh Classic you must enable Codefresh feature flags for the account and switch to the Codefresh UI.
 
 1. Log in ?????
@@ -419,7 +490,7 @@ max-width="80%"
 %}
 
 1. Click **Switch to Codefresh**.
-  The new 
+  The new --->
 
 
 
