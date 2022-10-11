@@ -17,11 +17,12 @@ Creating an application in Codefresh includes defining:
 The create application wizard guides you through the process of creating an application. For how-to information, see [How to: Create an application](#how-to-create-an-argo-cd-application).
 For example Argo CD applications, see this [repo](https://github.com/oleksandr-codefresh/argocd-example-apps){:target="_blank"}.
 
+
 After creating an application and it is synced to the cluster, it is displayed in the Applications dashboard where you can track its health and deployments.
 
+### Application: Definitions
+Application definitions include the name, runtime, and the location of the YAML manifest. By default, the YAML manifest has the same name as that of the application. You can also define where to save the YAML file within the Git Source you select for the application by adding front slashes to denote subfolders.
 
-### Application definitions
-Application definitions include the name, runtime, and the name of the YAML manifest. By default, the YAML manifest has the same name as that of the application. 
 
 {% include 
    image.html 
