@@ -44,6 +44,75 @@ max-width="50%"
 
 For how-to instructions, see [Connect a third-party CI platform/tool to Codefresh]({{site.baseurl}}/docs/integrations/ci-integrations/#connect-a-third-party-ci-platformtool-to-codefresh).  
 
+### Example of GitHub Actions in
+
+#### CF_IMAGE
+
+**Use case 1: **
+
+Value:  
+
+`${{ github.repository }}:${{ github.ref_name }}-${{github.sha}}` 
+ 
+where:  
+`${{ github.repository }}` reports the owner of the repository and the name of the repository. For example, `codefresh/hello-world`.  
+`${{ github.ref_name }}` reports the short reference to the branch that triggered the workflow.  For example, `auth-feature-branch`.  
+`${{github.sha}}` reports the commit SHA that triggered the workflow. 
+
+
+**Use Case 2: Use a specific image tag**
+This use case illustrates how to define the value for `CF_IMAGE` value when you know the specific image version you want to report.
+
+Value:
+`${{ github.repository }}:<v1.0>`  
+
+where:  `
+`${{ github.repository }}` reports the owner of the repository and the name of the repository. For example, `codefresh/hello-world`.  
+`<v1.0>` reports the hard-coded tag v1.0.
+
+
+**Use case 3: Report the latest Git tag available on repository**
+
+Value:  
+`codefresh/${{CF_REPO_NAME}}:latest`  
+
+where:  
+`codefresh` is the hard-coded re
+`${{CF_REPO_NAME}}` reports the name of the repository that triggered the integration.  
+`latest` reports the latest Git tag available for the repository defined by `${{CF_REPO_NAME}}`.
+
+
+#### CF_GIT_BRANCH 
+
+**Use case 1: Report fully-formed reference of the branch or tag**
+This example shows how to report the fully-formed reference of the branch or tag that triggered the workflow run.  
+For workflows triggered by push events, this is the branch or tag ref that was pushed. 
+For workflows triggered by pull_requests, this is the pull request merge branch.
+
+Value:
+`${{ github.ref }}`
+
+Result: 
+Branch: `refs/heads/production`
+Pull request: `refs/pull/#843/merge`
+
+**Use case 2: Report short reference name of the branch or tag**
+This example shows thow to report only the name of the branch or tag that triggered the workflow run, use:`${{ github.ref-name }}`, instead of the full path to the branch.  
+
+
+Value:
+`${{ github.ref-name }}`
+
+Result: 
+`production`  
+`auth-feature-branch`
+
+**Use case 3: Report the source of the pull request**
+This use casae illustrates how to get the head reference or or source branch of the pull request for pull_request or pull_request_target based events.
+
+`github.head_ref`???
+`github.job` ?????
+
 ### GitHub Actions pipeline example
 
 Here is an example pipeline that uses GitHub Actions to build a container image, and the Codefresh action to enrich and report the resulting image to Codefresh.  
