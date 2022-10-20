@@ -76,7 +76,6 @@ This example illustrates how to define the value for `CF_IMAGE` when you know th
 
 
 **Example: Report the latest Git tag available on repository**  
-
 This example illustrates how to define the value for `CF_IMAGE` value to report the latest Git tag on the repository.   
   
   Value:  
@@ -93,7 +92,7 @@ This example illustrates how to define the value for `CF_IMAGE` value to report 
 
 #### CF_GIT_BRANCH
 
-**Example: Report the fully-formed Git branch**
+**Example: Report the fully-formed Git branch**  
 This example illustrates how to define the value for `CF_GIT_BRANCH` value to report the fully-formed Git branch.   
 
   Value:  
@@ -105,7 +104,6 @@ This example illustrates how to define the value for `CF_GIT_BRANCH` value to re
 
 
 **Example: Report the local Git branch**  
-
 This example illustrates how to define the value for `CF_GIT_BRANCH` value to report only the branch in the repository that triggerred the pipeline.   
 
   Value:  

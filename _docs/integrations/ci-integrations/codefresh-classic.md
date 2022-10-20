@@ -54,7 +54,6 @@ Codefresh Classic offers [system variables](https://codefresh.io/docs/docs/codef
 This example illustrates how to define the value for `CF_IMAGE` to report the repo owner, name, and branch, with the Git hash.
 
   Value:  
-
   {% raw %}`${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}:${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}`{% endraw %}  
 
   where:
@@ -71,8 +70,7 @@ This example illustrates how to define the value for `CF_IMAGE` value when you k
 
   where:
   * {% raw %}`${{CF_REPO_OWNER}}`{% endraw %} and  {% raw %}`${{CF_REPO_NAME}}`{% endraw %} report the names of the repository owner and the repository, respectively. For example, `nr-codefresh` and `codefresh-production`, respectively.
-  * {% raw %}`<v1.0>`{% endraw %} reports the hard-coded tag `v1.0`.
-
+  * {% raw %}`<v1.0>`{% endraw %} reports the hard-coded tag `v1.0`.  
 
 **Example: Report the latest Git tag available on repository**
 This example illustrates how to define the value for `CF_IMAGE` value to report the latest Git tag on the repository.
