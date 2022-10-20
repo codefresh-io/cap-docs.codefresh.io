@@ -9,7 +9,7 @@ toc: true
 
 Codefresh has native integration for Atlassian Jira, to both enrich images with information from Jira and report deployment information back to Jira. You can monitor a feature in Codefresh all the way from the ticket creation phase, up to when it is implemented and deployed to an environment.  
 
-For information on adding a Jira integration in Codefresh, see [Issue-tracking integrations]({{site.baseurl}}/docs/integrations/issue-tracking/).
+For general information on adding, editing, and deleting a Jira integration in Codefresh, see [Issue-tracking integrations]({{site.baseurl}}/docs/integrations/issue-tracking/).
 
 
 

@@ -7,7 +7,8 @@ toc: true
 ---
 
 Codefresh has native support for interacting with Amazon ECR (Elastic Container Registry), to push, pull, and deploy images.  
-For information on adding an Amazon ECR integration in Codefresh, see [Container registry integrations]({{site.baseurl}}/docs/integrations/container-registries/).
+
+For general information on adding, editing, and deleting an Amazon ECR integration in Codefresh, see [Container registry integrations]({{site.baseurl}}/docs/integrations/container-registries/).
 
 >Amazon ECR integration is supported only in hybrid runtimes.
 

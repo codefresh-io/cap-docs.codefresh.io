@@ -7,7 +7,7 @@ toc: true
 ---
 
 Codefresh has native support for interacting with JFrog Artifactory.  
-For information on adding a JFrog Artifactory integration in Codefresh, see [Container registry integrations]({{site.baseurl}}/docs/integrations/container-registries/).
+For general information on adding, editing, and deleting a JFrog Artifactory integration in Codefresh, see [Container registry integrations]({{site.baseurl}}/docs/integrations/container-registries/).
 
 
 

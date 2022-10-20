@@ -7,7 +7,8 @@ toc: true
 ---
 
 Codefresh has native support for interacting with Quay registries, from where you can push, pull, and deploy images.  
-Adding a Quay integration allows you to reference the integration in external CI tools such as GitHub Actions by the name of the integration account, instead of adding explicit credentials. See [Image enrichment overview]({{site.baseurl}}/docs/integrations/image-enrichment-overview/) and [CI integrations]({{site.baseurl}}/docs/integrations/ci-integrations/).
+
+For general information on adding, editing, and deleting a Quay registry integration in Codefresh, see [Container registry integrations]({{site.baseurl}}/docs/integrations/container-registries/)..
 
 
 ### Prerequisites
