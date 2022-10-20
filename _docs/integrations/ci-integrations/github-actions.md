@@ -44,74 +44,83 @@ max-width="50%"
 
 For how-to instructions, see [Connect a third-party CI platform/tool to Codefresh]({{site.baseurl}}/docs/integrations/ci-integrations/#connect-a-third-party-ci-platformtool-to-codefresh).  
 
-### Example of GitHub Actions in
+### Templatization examples for CF arguments
+
+Arguments such as `CF_IMAGE`, `CF_GIT_BRANCH`, and `CF_JIRA_MESSAGE` are populated dynamically when the GitHub Actions pipeline is triggered. You can templatize the values of these arguments to ensure that the required information is included in the reported image.
+
+See GitHub Actions [environment variables](https://docs.github.com/en/actions/learn-github-actions/environment-variables#default-environment-variables) you can use to templatize argument values.
+
+{::nomarkdown}
+<br>
+{:/}
 
 #### CF_IMAGE
 
-**Use case 1: **
+**Example: Report full repo and branch information**  
+This example illustrates how to define the value for `CF_IMAGE` to report the repo owner, name, and short branch, with the Git hash.
 
-Value:  
+  Value:  
 
-`${{ github.repository }}:${{ github.ref_name }}-${{github.sha}}` 
+  {% raw %}}`${{ github.repository }}/${{ github.ref_name }}/${{github.sha}}`{% endraw %}  
+
+  where:
+  * {% raw %}`${{ github.repository }}`{% endraw %} reports the owner of the repository and the name of the repository. For example, `nr-codefresh/codefresh-production`. 
+  * {% raw %}`${{ github.ref_name }}`{% endraw %} reports the short reference to the branch that triggered the workflow.  For example, `auth-feature-branch`.
+  * {% raw %}`${{github.sha}}`{% endraw %} reports the complete commit SHA that triggered the workflow. For example, `fa53bfa91df14c4c9f46e628a65ee21dd574490a`.
  
-where:  
-`${{ github.repository }}` reports the owner of the repository and the name of the repository. For example, `codefresh/hello-world`.  
-`${{ github.ref_name }}` reports the short reference to the branch that triggered the workflow.  For example, `auth-feature-branch`.  
-`${{github.sha}}` reports the commit SHA that triggered the workflow. 
 
 
-**Use Case 2: Use a specific image tag**
-This use case illustrates how to define the value for `CF_IMAGE` value when you know the specific image version you want to report.
+**Example: Report a specific image tag**
+This example illustrates how to define the value for `CF_IMAGE`  when you know the specific image version you want to report.
 
 Value:
-`${{ github.repository }}:<v1.0>`  
-
-where:  `
-`${{ github.repository }}` reports the owner of the repository and the name of the repository. For example, `codefresh/hello-world`.  
-`<v1.0>` reports the hard-coded tag v1.0.
-
-
-**Use case 3: Report the latest Git tag available on repository**
-
-Value:  
-`codefresh/${{CF_REPO_NAME}}:latest`  
+{% raw %}`${{ github.repository }}:<v1.0>`{% endraw %}  
 
 where:  
-`codefresh` is the hard-coded re
-`${{CF_REPO_NAME}}` reports the name of the repository that triggered the integration.  
-`latest` reports the latest Git tag available for the repository defined by `${{CF_REPO_NAME}}`.
+* {% raw %}`${{ github.repository }}`{% endraw %} reports the owner of the repository and the name of the repository. For example, `nr-codefresh/codefresh-production`.  
+* `<v1.0>` reports the hard-coded tag `v1.0`.
+
+
+**Example: Report the latest Git tag available on repository**
+This example illustrates how to define the value for `CF_IMAGE` to report the latest Git tag on the repository.
+
+Value:  
+{% raw %}`codefresh/${{ github.repository }}/latest`{% endraw %}
+
+where:
+* {% raw %}`codefresh`{% endraw %} is the hard-coded owner of the image.
+* {% raw %}`${{ github.repository }}`{% endraw %} reports the owner of the repository and the name of the repository. For example, `nr-codefresh/codefresh-production`. 
+* {% raw %}`latest`{% endraw %} reports the latest Git tag available for the repository defined by {% raw %}`${{ github.repository }}`{% endraw %}. For example, `v1.0.4-14-g2414721`.
 
 
 #### CF_GIT_BRANCH 
 
-**Use case 1: Report fully-formed reference of the branch or tag**
-This example shows how to report the fully-formed reference of the branch or tag that triggered the workflow run.  
+**Example: Report fully-formed reference of the branch or tag**
+This example illustrates how to define the value for `CF_GIT_BRANCH` to report the fully-formed reference of the branch or tag that triggered the workflow run.  
 For workflows triggered by push events, this is the branch or tag ref that was pushed. 
 For workflows triggered by pull_requests, this is the pull request merge branch.
 
 Value:
-`${{ github.ref }}`
+{% raw %}`${{ github.ref }}`{% endraw %}
 
-Result: 
-Branch: `refs/heads/production`
-Pull request: `refs/pull/#843/merge`
+where:
+* {% raw %}`${{ github.ref }}`{% endraw %} is the reference to the branch or tag. For example, `refs/heads/auth-feature-branch` (branch), and `refs/pull/#843/merge` (pull request).
 
-**Use case 2: Report short reference name of the branch or tag**
-This example shows thow to report only the name of the branch or tag that triggered the workflow run, use:`${{ github.ref-name }}`, instead of the full path to the branch.  
+**Example: Report short reference name of the branch or tag**
+This example illustrates how to define the value for `CF_GIT_BRANCH` to report only the name of the branch or tag that triggered the workflow run.  
 
 
 Value:
-`${{ github.ref-name }}`
+{% raw %}`${{ github.ref-name }}`{% endraw %}  
 
-Result: 
-`production`  
-`auth-feature-branch`
+where: 
+{% raw %}`${{ github.ref-name }}`{% endraw %} is the name of the target branch or tag. For example, `auth-feature-branch`. 
 
-**Use case 3: Report the source of the pull request**
-This use casae illustrates how to get the head reference or or source branch of the pull request for pull_request or pull_request_target based events.
+#### CF_JIRA_MESSAGE
+The Jira message represents an existing Jira issue, and must be a literal string.  
 
-`github.head_ref`???
-`github.job` ?????
+  Value:  
+  `CR-1246`
 
 ### GitHub Actions pipeline example
 

@@ -55,24 +55,24 @@ Jenkins offers a Git plugin with [environment variables](https://plugins.jenkins
 This example illustrates how to define the value for `CF_IMAGE` to report Git repo, branch, committer, and Git hash information.
 
   Value:   
-  {% raw %}`${env.GIT_COMMITTER_NAME} ${env.GIT_URL}:${env.GIT_BRANCH} ${env.GIT_REVISION}`{% endraw %}  
+  {% raw %}`${env.GIT_COMMITTER_NAME}/${env.GIT_URL}/${env.GIT_BRANCH}/${env.GIT_REVISION}`{% endraw %}  
 
   where:
-  *  {% raw %}`${env.GIT_COMMITTER_NAME}`{% endraw %} reports the name of the user who made the commit.
-  * {% raw %}`${env.GIT_URL}`{% endraw %} reports the name of the Git repository.  
-  * {% raw %}`${env.GIT_BRANCH}`{% endraw %} reports the name of the Git branch.
-  * {% raw %}`${env.GIT_REVISION}`{% endraw %} reports the Git SHA1 commit ID pointing to the commit that was built.
+  *  {% raw %}`${env.GIT_COMMITTER_NAME}`{% endraw %} reports the name of the user who made the commit. For example, `nr-codefresh`.
+  * {% raw %}`${env.GIT_URL}`{% endraw %} reports the name of the Git repository. For example, `codefresh-production`. 
+  * {% raw %}`${env.GIT_BRANCH}`{% endraw %} reports the name of the Git branch. For example, `pr-2345`, `new-auth-strategy`.
+  * {% raw %}`${env.GIT_REVISION}`{% endraw %} reports the Git SHA1 commit ID pointing to the commit that was built. For example, `fa53bfa91df14c4c9f46e628a65ee21dd574490a`.
 
 
-**Example: Report specific image tag**  
-This example illustrates how to define the value for `CF_IMAGE` to report a specific image version.
+**Example: Report a specific image tag**  
+This example illustrates how to define the value for `CF_IMAGE` when you know the specific image version you want to report.
 
   Value:  
-  {% raw %}`${env.GIT_COMMITTER_NAME}/${env.GIT_URL}:<v1.0>`{% endraw %} 
+  {% raw %}`${env.GIT_COMMITTER_NAME}/${env.GIT_URL}/<v1.0>`{% endraw %} 
   
   where:
-  * {% raw %}`${env.GIT_COMMITTER_NAME}`{% endraw %} and {% raw %}`${env.GIT_URL}`{% endraw %} report the names of the user hwo made the commit and the repository, respectively.  
-  * {% raw %}`<v1.0>`{% endraw %} reports the hard-coded tag v1.0.
+  * {% raw %}`${env.GIT_COMMITTER_NAME}`{% endraw %} and {% raw %}`${env.GIT_URL}`{% endraw %} report the names of the user hwo made the commit and the repository, respectively. For example, `nr-codefresh` and `codefresh-production`, respectively.
+  * {% raw %}`<v1.0>`{% endraw %} reports the hard-coded tag `v1.0`.
 
 
 **Example: Report the latest Git tag available on repository**  
@@ -80,12 +80,12 @@ This example illustrates how to define the value for `CF_IMAGE` to report a spec
 This example illustrates how to define the value for `CF_IMAGE` value to report the latest Git tag on the repository.   
   
   Value:  
-  {% raw %}`codefresh/${env.GIT_URL}:latest`{% endraw %}  
+  {% raw %}`codefresh/${env.GIT_URL}/latest`{% endraw %}  
 
   where:
   * {% raw %}`codefresh`{% endraw %} is the hard-coded re  
   * {% raw %}`${env.GIT_URL}`{% endraw %} reports the name of the repository that triggered the integration.  
-  * {% raw %}`latest`{% endraw %} reports the latest Git tag available for the repository defined by {% raw %}`${env.GIT_URL}`{% endraw %}.
+  * {% raw %}`latest`{% endraw %} reports the latest Git tag available for the repository defined by {% raw %}`${env.GIT_URL}`{% endraw %}. For example, `v1.0.4-14-g2414721`. 
 
 {::nomarkdown}
 <br>
@@ -97,10 +97,10 @@ This example illustrates how to define the value for `CF_IMAGE` value to report 
 This example illustrates how to define the value for `CF_GIT_BRANCH` value to report the fully-formed Git branch.   
 
   Value:  
-  {% raw %}`${env.GIT_URL}: ${env.GIT_BRANCH}`{% endraw %}    
+  {% raw %}`${env.GIT_URL}/${env.GIT_BRANCH}`{% endraw %}    
   
   where:
-  * {% raw %}`${env.GIT_URL}`{% endraw %} is the name of the repository that triggered the piepline.
+  * {% raw %}`${env.GIT_URL}`{% endraw %} is the name of the repository that triggered the pipeline. For example, `codefresh-production`.
   * {% raw %}`${env.GIT_BRANCH}`{% endraw %} is the fully-formed name of the Git branch. For example, `origin/auth-feature-branch`. 
 
 
@@ -109,7 +109,7 @@ This example illustrates how to define the value for `CF_GIT_BRANCH` value to re
 This example illustrates how to define the value for `CF_GIT_BRANCH` value to report only the branch in the repository that triggerred the pipeline.   
 
   Value:  
-  {% raw %}`${env.GIT_URL}: ${env.GIT_LOCAL_BRANCH}`{% endraw %} 
+  {% raw %}`${env.GIT_URL}/${env.GIT_LOCAL_BRANCH}`{% endraw %} 
   
   where:
   * {% raw %}`${env.GIT_URL}`{% endraw %} is the name of the repository that triggered the piepline.
@@ -120,7 +120,10 @@ This example illustrates how to define the value for `CF_GIT_BRANCH` value to re
 {:/}
 
 #### CF_JIRA_MESSAGE
-TBD
+The Jira message represents an existing Jira issue, and must be a literal string.  
+
+  Value:  
+  `CR-1246`
 
 
 ### Example of Jenkins pipeline with report image step
