@@ -115,30 +115,40 @@ For both CLI wizard and Silent install:
 </br>
 {:/}
 
-#### Git repository and provider flags
+#### Git provider flags
 
 **Enable Git providers**  
-Optional for GitHub; required for GitLab, Bitbucket Server, Bitbucket Cloud, and GitHub Enterprise Git providers.  
+Required for GitLab, Bitbucket Server, Bitbucket Cloud, and GitHub Enterprise Git providers.  
+
 Enable GitLab, Bitbucket Server, Bitbucket Cloud, or GitHub Enterprise Server as the Git provider for the runtime and for the account. 
 
->The Git provider defined for the first runtime in the account is used for all the runtimes in the same account.  
+>For GitHub (the default Git provider), omit this flag.  
+  The Git provider defined for the first runtime in the account is used for all the runtimes in the same account.  
   
 * CLI wizard and Silent install: Add the `--enable-git-providers` flag.
 
-**Git provider**  
-Optional for GitHub; required for GitLab, Bitbucket Server, Bitbucket Cloud, and GitHub Enterprise.
+**Git provider name**  
+Required for GitLab, Bitbucket Server, Bitbucket Cloud, and GitHub Enterprise.
 The name of the Git provider to use for the runtime and the account. 
 
-* CLI wizard and Silent install: Add the `--provider` flag, and define the provider name as either `gitlab`, `bitbucket-server`, `bitbucket`, or `github`.
+>For GitHub (the default Git provider), omit this flag. 
+
+* CLI wizard and Silent install: Add the `--provider` flag, and define the provider name as one of the following:
+  * `gitlab`
+  * `bitbucket-server`
+  * `bitbucket` (for Bitbucket Cloud)
+  * `github` (for GitHub Enterprise)
+
+#### Git repository, user, and token flags
 
 **Repository URL**  
 Required.  
-The `HTTPS` clone URL of the Git repository, or project in GitLab, including the `.git` suffix in which to install the runtime, in the format:  
+The `HTTPS` clone URL of the Git repository (project in GitLab), including the `.git` suffix in which to install the runtime, in the format:  
 `https://<host>/<owner_reponame>.git[/subdirectory][?ref=branch]`  
 where:  
 * `<host>/<owner_reponame>.git` is the Git server followed by the username/organization and the name of the repo, identical to the HTTPS clone URL.  For example, `https://github.com/codefresh-io/docs.codefresh.io.git`.  
-* `[/subdirectory]` (optional) is the path to a subdirectory within the repo. Whn omitted, the runtime is installed in the root of the repository.  For example, `/docs/images`.  
-* `[?ref=branch]` (optional) is the `ref` queryParam to select a specific branch. When omitted, the runtime is installed in the default branch. For example,  `codefresh-prod`.  
+* `[/subdirectory]` (optional) is the path to a subdirectory within the repo. When omitted, the runtime is installed in the root of the repository.  For example, `/docs/images`.  
+* `[?ref=branch]` (optional) is the `ref` queryParam to select a specific branch. When omitted, the runtime is installed in the default branch. For example, `codefresh-prod`.  
 
 > For GitLab, you must create the group with access to the project prior to the installation.
 
@@ -150,10 +160,12 @@ where:
 * Silent install: Add the `--repo` flag.
 
 **Git user**  
-Optional; required only for Bitbucket Server.  
-The username for the Git account.  
+Required for Bitbucket Server.    
+Optional for GitHub, GitLab, Bitbucket Cloud, and GitHub Enterprise.  
 
-* CLI wizard and Silent install: For Bitbucket, add the `--git-user` flag, and define the username. For example, `codefresh`  
+The username for the Bitbucket Server account.  
+
+* CLI wizard and Silent install: For Bitbucket Server, add the `--git-user` flag, and define the username. For example, `codefresh`  
 
 **Git runtime token**  
 Required.  
