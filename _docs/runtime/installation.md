@@ -39,7 +39,8 @@ This section describes the required and optional flags to install a hybrid runti
 For documentation purposes, the flags are grouped into:
 * Runtime flags, relating to runtime, cluster, and namespace requirements
 * Ingress controller flags, relating to ingress controller requirements
-* Git repository flags, relating to Git provider requirements
+* Git provider flags, relating to Git provider requirements
+* Git repository, user and token flags, relating to generic and provider-specific requirements for Git repos
 
 {::nomarkdown}
 </br>
@@ -122,10 +123,11 @@ Required for GitLab, Bitbucket Server, Bitbucket Cloud, and GitHub Enterprise Gi
 
 Enable GitLab, Bitbucket Server, Bitbucket Cloud, or GitHub Enterprise Server as the Git provider for the runtime and for the account. 
 
->For GitHub (the default Git provider), omit this flag.  
+>For GitHub (the default Git provider), omit this flag.
+ 
   The Git provider defined for the first runtime in the account is used for all the runtimes in the same account.  
   
-* CLI wizard and Silent install: Add the `--enable-git-providers` flag.
+* CLI wizard and Silent install: Add the `--enable-git-providers` flag, and then define the provider name through the `--provider` flag (see below).
 
 **Git provider name**  
 Required for GitLab, Bitbucket Server, Bitbucket Cloud, and GitHub Enterprise.
@@ -143,6 +145,9 @@ The name of the Git provider to use for the runtime and the account.
 
 **Repository URL**  
 Required.  
+
+The Git repository for the runtime installation. If the repo doesn't exist, for GitHub, GitLab, Bitbucket Server, BitBucket Cloud, and GitHub Enterprise, Codefresh creates it during runtime installation.  
+
 The `HTTPS` clone URL of the Git repository (project in GitLab), including the `.git` suffix in which to install the runtime, in the format:  
 `https://<host>/<owner_reponame>.git[/subdirectory][?ref=branch]`  
 where:  
@@ -156,7 +161,6 @@ where:
 </br>
 {:/}
 
-* CLI wizard: If the repo doesn't exist, for GitHub, GitLab, Bitbucket Server, BitBucket Cloud, and GitHub Enterprise, Codefresh creates it during runtime installation.  
 * Silent install: Add the `--repo` flag.
 
 **Git user**  
@@ -169,8 +173,7 @@ The username for the Bitbucket Server account.
 
 **Git runtime token**  
 Required.  
-The Git token authenticating access to the runtime installation repository.  
-* Silent install: Add the `--git-token` flag, and paste the runtime token.  
+The Git token authenticating access to the runtime installation repository (see [Git runtime tokens]({{site.baseurl}}/docs/docs/reference/git-tokens/#git-runtime-tokens)).
 
 {::nomarkdown}
 </br>
