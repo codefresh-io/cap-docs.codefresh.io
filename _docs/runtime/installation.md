@@ -76,16 +76,7 @@ The Git repository per runtime account with shared configuration manifests.
 {:/}
 
 <!---#### Ingress-less flags
-
-
-
-**Skip ingress**  
-Required for ingress-less runtime installation.    
-
-Install runtime in ingress-less mode, and skip all ingress controller checks. 
-
-* CLI wizard and Silent install: Add the `--skip-ingress` flag.  
-
+These flags are required to install the runtime without an ingress controller. 
 
 **Access mode**
 Required for ingress-less runtime installation.  
@@ -96,15 +87,15 @@ The access mode for ingress-less runtimes, the tunnel mode.
 * CLI wizard and Silent install: Add the flag, `--access-mode`, and define `tunnel` as the value. 
 
 
-**IP whitelist**
+**IP allowlist**
 
 Optional.  
 
-The allowed list of IPs from which to forward requests to the internal customer cluster for ingress-less runtime installations. The whitelist can include IPv4 and IPv6 addresses, with/without subnet and subnet masks. Multiple IPs must be separated by commas.  
+The allowed list of IPs from which to forward requests to the internal customer cluster for ingress-less runtime installations. The allowlist can include IPv4 and IPv6 addresses, with/without subnet and subnet masks. Multiple IPs must be separated by commas.  
 
-When omitted, all incoming requests are authenticated. 
+When omitted, all incoming requests are authenticated regardless of the IPs from which they originated. 
 
-* CLI wizard and Silent install: Add the `--ips-allow-list` flag, followed by the list of comma-separated IPs if there is more than one. For example, `--ips-allow-list 77.126.94.70/16,192.168.0.0` --->
+* CLI wizard and Silent install: Add the `--ips-allow-list` flag, followed by the list of comma-separated IPs to define more than one. For example, `--ips-allow-list 77.126.94.70/16,192.168.0.0` --->
 
 
 #### Ingress controller flags
@@ -149,64 +140,190 @@ For both CLI wizard and Silent install:
 </br>
 {:/}
 
-#### Git provider flags
+#### Git provider and repo flags
+The Git provider defined for the runtime. Because Codefresh creates a [shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration) for the runtimes in your account, the Git provider defined for the first runtime you install is used for all the other runtimes in the same account.  
 
-**Enable Git providers**  
-Required for GitLab, Bitbucket Server, Bitbucket Cloud, and GitHub Enterprise Git providers.  
+Codefresh supports the following Git providers:
+* [GitHub](#github) (the default Git provider for hybrid runtimes)
+* [GitHub Enterprise](#github-enterprise)
+* [GitLab](#gitlab)
+* [Bitbucket Server](#bitbucket-server)
+* [Bitbucket Cloud](#bitbucket-cloud)
 
-Enable GitLab, Bitbucket Server, Bitbucket Cloud, or GitHub Enterprise Server as the Git provider for the runtime and for the account. 
 
->For GitHub (the default Git provider), omit this flag.
- 
-  The Git provider defined for the first runtime in the account is used for all the runtimes in the same account.  
-  
-* CLI wizard and Silent install: Add the `--enable-git-providers` flag, and then define the provider name through the `--provider` flag (see below).
 
-**Git provider name**  
-Required for GitLab, Bitbucket Server, Bitbucket Cloud, and GitHub Enterprise.
-The name of the Git provider to use for the runtime and the account. 
-
->For GitHub (the default Git provider), omit this flag. 
-
-* CLI wizard and Silent install: Add the `--provider` flag, and define the provider name as one of the following:
-  * `gitlab`
-  * `bitbucket-server`
-  * `bitbucket` (for Bitbucket Cloud)
-  * `github` (for GitHub Enterprise)
-
-#### Git repository, user, and token flags
-
+##### GitHub
 **Repository URL**  
 Required.  
 
-The Git repository for the runtime installation. If the repo doesn't exist, for GitHub, GitLab, Bitbucket Server, BitBucket Cloud, and GitHub Enterprise, Codefresh creates it during runtime installation.  
+The Git repository for the runtime installation. If the repo doesn't exist, Codefresh creates it during runtime installation.  
 
-The `HTTPS` clone URL of the Git repository (project in GitLab), including the `.git` suffix in which to install the runtime, in the format:  
+The `HTTPS` clone URL of the Git repository, including the `.git` suffix in which to install the runtime, in the format:  
 `https://<host>/<owner_reponame>.git[/subdirectory][?ref=branch]`  
 where:  
 * `<host>/<owner_reponame>.git` is the Git server followed by the username/organization and the name of the repo, identical to the HTTPS clone URL.  For example, `https://github.com/codefresh-io/docs.codefresh.io.git`.  
 * `[/subdirectory]` (optional) is the path to a subdirectory within the repo. When omitted, the runtime is installed in the root of the repository.  For example, `/docs/images`.  
 * `[?ref=branch]` (optional) is the `ref` queryParam to select a specific branch. When omitted, the runtime is installed in the default branch. For example, `codefresh-prod`.  
 
-> For GitLab, you must create the group with access to the project prior to the installation.
-
-{::nomarkdown}
-</br>
-{:/}
-
-* Silent install: Add the `--repo` flag.
-
-**Git user**  
-Required for Bitbucket Server.    
-Optional for GitHub, GitLab, Bitbucket Cloud, and GitHub Enterprise.  
-
-The username for the Bitbucket Server account.  
-
-* CLI wizard and Silent install: For Bitbucket Server, add the `--git-user` flag, and define the username. For example, `codefresh`  
+Example:  
+`https://github.com/codefresh-io/docs.codefresh.io.git/docs/images?ref=codefresh-prod`
 
 **Git runtime token**  
 Required.  
 The Git token authenticating access to the runtime installation repository (see [Git runtime tokens]({{site.baseurl}}/docs/docs/reference/git-tokens/#git-runtime-tokens)).
+
+##### GitHub Enterprise 
+
+**Enable Git providers**  
+Required.  
+
+Enable GitHub Enterprise Server as the Git provider for the runtime and for the account. 
+
+* CLI wizard and Silent install: Add the `--enable-git-providers` flag, and then define the provider name through the `--provider` flag.
+
+**Git provider name**  
+Required.  
+
+The GitHub Enterprise name as the Git provider for the runtime and the account.
+
+* CLI wizard and Silent install: Add the `--provider` flag, and define `github` as the value.
+
+**Repository URL**  
+Required.  
+
+The Git repository for the runtime installation. If the repo doesn't exist, Codefresh creates it during runtime installation.  
+
+The `HTTPS` clone URL of the Git repository, including the `.git` suffix in which to install the runtime, in the format:  
+`https://<host>/<owner_reponame>.git[/subdirectory][?ref=branch]`  
+where:  
+* `<host>/<owner_reponame>.git` is the Git server followed by the username/organization and the name of the repo, identical to the HTTPS clone URL.  For example, `https://github.com/codefresh-io/docs.codefresh.io.git`.  
+* `[/subdirectory]` (optional) is the path to a subdirectory within the repo. When omitted, the runtime is installed in the root of the repository.  For example, `/docs/images`.  
+* `[?ref=branch]` (optional) is the `ref` queryParam to select a specific branch. When omitted, the runtime is installed in the default branch. For example, `codefresh-prod`.  
+
+Example:  
+`https://github.com/codefresh-io/docs.codefresh.io.git/docs/images?ref=codefresh-prod`
+
+**Git runtime token**  
+Required.  
+The Git token authenticating access to the runtime installation repository (see [Git runtime tokens]({{site.baseurl}}/docs/docs/reference/git-tokens/#git-runtime-tokens)).
+
+##### GitLab 
+
+**Enable Git providers**  
+Required.  
+
+Enable GitLab as the Git provider for the runtime and for the account. 
+
+* CLI wizard and Silent install: Add the `--enable-git-providers` flag, and then define the provider name through the `--provider` flag.
+
+**Git provider name**  
+Required.  
+
+GitLab as the name of the Git provider for the runtime and the account.
+
+* CLI wizard and Silent install: Add the `--provider` flag, and define `gitlab` as the value.
+
+**Project URL**  
+Required.  
+
+The Git project for the runtime installation. If the project doesn't exist, Codefresh creates it during runtime installation.  
+
+> You must create the group with access to the project prior to the installation.
+
+
+The `HTTPS` clone URL of the Git repository, including the `.git` suffix in which to install the runtime, in the format:  
+`https://<host>/<owner_reponame>.git[/subdirectory][?ref=branch]`  
+where:  
+* `<host>/<owner_reponame>.git` is the Git server followed by the username/organization and the name of the repo, identical to the HTTPS clone URL.  For example, `https://github.com/codefresh-io/docs.codefresh.io.git`.  
+* `[/subdirectory]` (optional) is the path to a subdirectory within the repo. When omitted, the runtime is installed in the root of the repository.  For example, `/docs/images`.  
+* `[?ref=branch]` (optional) is the `ref` queryParam to select a specific branch. When omitted, the runtime is installed in the default branch. For example, `codefresh-prod`.  
+
+Example:  
+`https://github.com/codefresh-io/docs.codefresh.io.git/docs/images?ref=codefresh-prod`
+
+**Git runtime token**  
+Required.  
+The Git token authenticating access to the runtime installation repository (see [Git runtime tokens]({{site.baseurl}}/docs/docs/reference/git-tokens/#git-runtime-tokens)).
+
+
+##### Bitbucket Server
+
+**Enable Git providers**  
+Required.  
+
+Enable Bitbucket Server as the Git provider for the runtime and for the account. 
+
+* CLI wizard and Silent install: Add the `--enable-git-providers` flag, and then define the provider name through the `--provider` flag.
+
+**Git provider name**  
+Required.  
+
+Bitbucket Server as the name of the Git provider for the runtime and the account.
+
+* CLI wizard and Silent install: Add the `--provider` flag, and define `bitbucket-server` as the value.
+
+**Repository URL**  
+Required.  
+
+The Git repository for the runtime installation. If the repo doesn't exist, Codefresh creates it during runtime installation.  
+
+The `HTTPS` clone URL of the Git repository, including the `.git` suffix in which to install the runtime, in the format:  
+`https://<host>/<owner_reponame>.git[/subdirectory][?ref=branch]`  
+where:  
+* `<host>/<owner_reponame>.git` is the Git server followed by the username/organization and the name of the repo, identical to the HTTPS clone URL.  For example, `https://github.com/codefresh-io/docs.codefresh.io.git`.  
+* `[/subdirectory]` (optional) is the path to a subdirectory within the repo. When omitted, the runtime is installed in the root of the repository.  For example, `/docs/images`.  
+* `[?ref=branch]` (optional) is the `ref` queryParam to select a specific branch. When omitted, the runtime is installed in the default branch. For example, `codefresh-prod`.  
+
+Example:  
+`https://github.com/codefresh-io/docs.codefresh.io.git/docs/images?ref=codefresh-prod`
+
+**Git user**  
+Required.    
+
+The username for the Bitbucket Server account.  
+
+* CLI wizard and Silent install: Add the `--git-user` flag, and define the username. For example, `codefresh`  
+
+**Git runtime token**  
+Required.  
+The Git token authenticating access to the runtime installation repository (see [Git runtime tokens]({{site.baseurl}}/docs/docs/reference/git-tokens/#git-runtime-tokens)).
+
+##### Bitbucket Cloud
+
+**Enable Git providers**  
+Required.  
+
+Enable Bitbucket Cloud as the Git provider for the runtime and for the account. 
+
+* CLI wizard and Silent install: Add the `--enable-git-providers` flag, and then define the provider name through the `--provider` flag.
+
+**Git provider name**  
+Required.  
+
+Bitbucket Cloud as the name of the Git provider for the runtime and the account.
+
+* CLI wizard and Silent install: Add the `--provider` flag, and define `bitbucket` as the value.
+
+**Repository URL**  
+Required.  
+
+The Git repository for the runtime installation. If the repo doesn't exist, Codefresh creates it during runtime installation.  
+
+The `HTTPS` clone URL of the Git repository, including the `.git` suffix in which to install the runtime, in the format:  
+`https://<host>/<owner_reponame>.git[/subdirectory][?ref=branch]`  
+where:  
+* `<host>/<owner_reponame>.git` is the Git server followed by the username/organization and the name of the repo, identical to the HTTPS clone URL.  For example, `https://github.com/codefresh-io/docs.codefresh.io.git`.  
+* `[/subdirectory]` (optional) is the path to a subdirectory within the repo. When omitted, the runtime is installed in the root of the repository.  For example, `/docs/images`.  
+* `[?ref=branch]` (optional) is the `ref` queryParam to select a specific branch. When omitted, the runtime is installed in the default branch. For example, `codefresh-prod`.  
+
+Example:  
+`https://github.com/codefresh-io/docs.codefresh.io.git/docs/images?ref=codefresh-prod`
+
+**Git runtime token**  
+Required.  
+The Git token authenticating access to the runtime installation repository (see [Git runtime tokens]({{site.baseurl}}/docs/docs/reference/git-tokens/#git-runtime-tokens)).
+
+
 
 {::nomarkdown}
 </br>
