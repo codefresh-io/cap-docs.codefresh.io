@@ -140,6 +140,7 @@ For both CLI wizard and Silent install:
 </br>
 {:/}
 
+
 #### Git provider and repo flags
 The Git provider defined for the runtime. Because Codefresh creates a [shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration) for the runtimes in your account, the Git provider defined for the first runtime you install is used for all the other runtimes in the same account.  
 
@@ -149,6 +150,8 @@ Codefresh supports the following Git providers:
 * [GitLab](#gitlab)
 * [Bitbucket Server](#bitbucket-server)
 * [Bitbucket Cloud](#bitbucket-cloud)
+
+
 
 
 
@@ -173,6 +176,7 @@ Required.
 The Git token authenticating access to the runtime installation repository (see [Git runtime tokens]({{site.baseurl}}/docs/docs/reference/git-tokens/#git-runtime-tokens)).
 
 ##### GitHub Enterprise 
+
 
 **Enable Git providers**  
 Required.  
@@ -322,8 +326,6 @@ Example:
 **Git runtime token**  
 Required.  
 The Git token authenticating access to the runtime installation repository (see [Git runtime tokens]({{site.baseurl}}/docs/docs/reference/git-tokens/#git-runtime-tokens)).
-
-
 
 {::nomarkdown}
 </br>
