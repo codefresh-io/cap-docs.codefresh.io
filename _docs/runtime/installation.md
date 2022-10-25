@@ -150,7 +150,8 @@ The Git provider defined for the runtime.
 You can define any of the following Git providers:
 * [GitHub](#github) (the default Git provider)
 * [GitHub Enterprise](#github-enterprise)
-* [GitLab](#gitlab)
+* [GitLab Cloud](#gitlab-cloud)
+* [GitLab Server](#gitlab-server)
 * [Bitbucket Server](#bitbucket-server)
 * [Bitbucket Cloud](#bitbucket-cloud)
 
@@ -289,6 +290,9 @@ The Git token authenticating access to the runtime installation repository (see 
 </br>
 {:/}
 
+
+
+
 ##### GitLab Server
 
 `--enable-git-providers --provider gitlab --repo <https_project_url> --git-token <git_runtime_token>`
@@ -303,7 +307,7 @@ Define GitLab Server as the Git provider for the runtime and for the account, in
 **Git provider name**  
 Required.  
 
-GitLab as the name of the Git provider for the runtime and the account.
+GitLab Server as the name of the Git provider for the runtime and the account.
 
 * CLI wizard and Silent install: Add the `--provider` flag, and define `gitlab` as the value.
 
@@ -337,6 +341,60 @@ Examples:
 **Git runtime token**  
 Required.  
 The Git token authenticating access to the runtime installation repository (see [Git runtime tokens]({{site.baseurl}}/docs/docs/reference/git-tokens/#git-runtime-tokens)).
+
+
+##### Bitbucket Cloud
+
+**Enable Git providers**  
+Required.  
+
+Enable Bitbucket Cloud as the Git provider for the runtime and for the account, instead of the default provider. 
+
+* CLI wizard and Silent install: Add the `--enable-git-providers` flag, and then define the provider name through the `--provider` flag.
+
+**Git provider name**  
+Required.  
+
+Bitbucket Cloud as the name of the Git provider for the runtime and the account.
+
+* CLI wizard and Silent install: Add the `--provider` flag, and define `bitbucket` as the value.
+
+**Repository URL**  
+Required.  
+
+The `HTTPS` clone URL of the Git repository, including the `.git` suffix, for the runtime installation. Copy the clone URL from your Bitbucket Cloud provider website <!---(see [Atlassian support](https://support.atlassian.com/bitbucket-cloud/docs/change-the-remote-url-to-your-repository/){:target="\_blank"}).-->   
+If the repo doesn't exist, copy an existing clone URL and change the name of the repo. Codefresh creates the repository during runtime installation.  
+
+* Silent install: Add the `--repo` flag, and the URL definition.  
+
+Repo URL format:  
+
+`https://<username>@bitbucket.org<workspace_id><repo_name>.git[/subdirectory][?ref=branch]`  
+where:  
+* `<username>` is your username for the Bitbucket Cloud account.  For example, `nr-codefresh@bitbucket.org`. 
+* `<workspace_id>` is your workspace ID. For example, `nr-codefresh`.
+* `<repo_name>` is the name of the repository. For example, `codefresh`.
+* `[/subdirectory]` (optional) is the path to a subdirectory within the repo. When omitted, the runtime is installed in the root of the repository.  For example, `/runtimes/defs`.  
+* `[?ref=branch]` (optional) is the `ref` queryParam to select a specific branch. When omitted, the runtime is installed in the default branch. For example, `codefresh-prod`.  
+
+Example:  
+`https://nr-codefresh@bitbucket.org/nr-codefresh/codefresh.git/runtimes/defs?ref=codefresh-prod`  
+
+**Git user**  
+Required.    
+
+The username for the Bitbucket Cloud account.  
+
+* CLI wizard and Silent install: Add the `--git-user` flag, and define the username. For example, `codefresh`  
+
+**Git runtime token**  
+Required.  
+The Git token authenticating access to the runtime installation repository (see [Git runtime tokens]({{site.baseurl}}/docs/docs/reference/git-tokens/#git-runtime-tokens)).
+
+{::nomarkdown}
+</br>
+{:/}
+
 ##### Bitbucket Server
 
 `--enable-git-providers --provider bitbucket-server --repo <https_repo_url> --git-token <git_runtime_token>`
@@ -380,58 +438,6 @@ Example:
 Required.    
 
 The username for the Bitbucket Server account.  
-
-* CLI wizard and Silent install: Add the `--git-user` flag, and define the username. For example, `codefresh`  
-
-**Git runtime token**  
-Required.  
-The Git token authenticating access to the runtime installation repository (see [Git runtime tokens]({{site.baseurl}}/docs/docs/reference/git-tokens/#git-runtime-tokens)).
-
-{::nomarkdown}
-</br>
-{:/}
-
-##### Bitbucket Cloud
-
-**Enable Git providers**  
-Required.  
-
-Enable Bitbucket Cloud as the Git provider for the runtime and for the account, instead of the default provider. 
-
-* CLI wizard and Silent install: Add the `--enable-git-providers` flag, and then define the provider name through the `--provider` flag.
-
-**Git provider name**  
-Required.  
-
-Bitbucket Cloud as the name of the Git provider for the runtime and the account.
-
-* CLI wizard and Silent install: Add the `--provider` flag, and define `bitbucket` as the value.
-
-**Repository URL**  
-Required.  
-
-The `HTTPS` clone URL of the Git repository, including the `.git` suffix, for the runtime installation. Copy the clone URL from your Bitbucket Cloud provider website <!---(see [Atlassian support](https://support.atlassian.com/bitbucket-cloud/docs/change-the-remote-url-to-your-repository/){:target="\_blank"}).-->   
-If the repo doesn't exist, copy an existing clone URL and change the name of the repo. Codefresh creates the repository during runtime installation.  
-
-* Silent install: Add the `--repo` flag, and the URL definition.  
-
-Repo URL format:  
-
-`https://<username>@bitbucket.org<workspace_id><repo_name>.git[/subdirectory][?ref=branch]`  
-where:  
-* `<username>` is your username for the Bitbucket Cloud account.  For example, `nr-codefresh@bitbucket.org`. 
-* `<workspace_id>` is your workspace ID. For example, `nr-codefresh`.
-* `<repo_name>` is the name of the repository. For example, `codefresh`.
-* `[/subdirectory]` (optional) is the path to a subdirectory within the repo. When omitted, the runtime is installed in the root of the repository.  For example, `/runtimes/defs`.  
-* `[?ref=branch]` (optional) is the `ref` queryParam to select a specific branch. When omitted, the runtime is installed in the default branch. For example, `codefresh-prod`.  
-
-Example:  
-`https://nr-codefresh@bitbucket.org/nr-codefresh/codefresh.git/runtimes/defs?ref=codefresh-prod`  
-
-**Git user**  
-Required.    
-
-The username for the Bitbucket Cloud account.  
 
 * CLI wizard and Silent install: Add the `--git-user` flag, and define the username. For example, `codefresh`  
 
