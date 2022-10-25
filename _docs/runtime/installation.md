@@ -194,7 +194,7 @@ The Git token authenticating access to the runtime installation repository (see 
 **Enable Git providers**  
 Required.  
 
-Enable GitHub Enterprise Server as the Git provider for the runtime and for the account. 
+Enable GitHub Enterprise Server as the Git provider for the runtime and for the account, instead of the default provider. 
 
 * CLI wizard and Silent install: Add the `--enable-git-providers` flag, and then define the provider name through the `--provider` flag.
 
@@ -241,7 +241,7 @@ The Git token authenticating access to the runtime installation repository (see 
 **Enable Git providers**  
 Required.  
 
-Enable GitLab as the Git provider for the runtime and for the account. 
+Enable GitLab as the Git provider for the runtime and for the account, instead of the default provider. 
 
 * CLI wizard and Silent install: Add the `--enable-git-providers` flag, and then define the provider name through the `--provider` flag.
 
@@ -289,7 +289,7 @@ The Git token authenticating access to the runtime installation repository (see 
 **Enable Git providers**  
 Required.  
 
-Enable Bitbucket Server as the Git provider for the runtime and for the account. 
+Enable Bitbucket Server as the Git provider for the runtime and for the account, instead of the default provider. 
 
 * CLI wizard and Silent install: Add the `--enable-git-providers` flag, and then define the provider name through the `--provider` flag.
 
@@ -338,7 +338,7 @@ The Git token authenticating access to the runtime installation repository (see 
 **Enable Git providers**  
 Required.  
 
-Enable Bitbucket Cloud as the Git provider for the runtime and for the account. 
+Enable Bitbucket Cloud as the Git provider for the runtime and for the account, instead of the default provider. 
 
 * CLI wizard and Silent install: Add the `--enable-git-providers` flag, and then define the provider name through the `--provider` flag.
 
