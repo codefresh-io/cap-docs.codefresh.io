@@ -454,7 +454,7 @@ The Git token authenticating access to the runtime installation repository (see 
 Optional.  
 Install demo pipelines to use as a starting point to create your own pipelines. We recommend installing the demo resources as these are used in our quick start tutorials.  
 
-* Silent install: Add the `--demo-resources` flag. By default, set to `true`.
+* Silent install: Add the `--demo-resources` flag, and define its value as `true` (default), or `false`. For example, `--demo-resources=true`
 
 **Insecure flag**  
 For _on-premises installations_, if the Ingress controller does not have a valid SSL certificate, to continue with the installation, add the `--insecure` flag to the installation command.  
