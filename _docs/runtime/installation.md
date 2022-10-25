@@ -140,39 +140,54 @@ For both CLI wizard and Silent install:
 </br>
 {:/}
 
-#### Git provider and repo flags
-The Git provider defined for the runtime. Because Codefresh creates a [shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration) for the runtimes in your account, the Git provider defined for the first runtime you install is used for all the other runtimes in the same account.  
 
-Codefresh supports the following Git providers:
-* [GitHub](#github) (the default Git provider for hybrid runtimes)
+
+#### Git provider and repo flags
+The Git provider defined for the runtime. 
+
+>Because Codefresh creates a [shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration) for the runtimes in your account, the Git provider defined for the first runtime you install is used for all the other runtimes in the same account.  
+
+You can define any of the following Git providers:
+* [GitHub](#github) (the default Git provider)
 * [GitHub Enterprise](#github-enterprise)
 * [GitLab](#gitlab)
 * [Bitbucket Server](#bitbucket-server)
 * [Bitbucket Cloud](#bitbucket-cloud)
 
-
+{::nomarkdown}
+</br>
+{:/}
 
 ##### GitHub
 **Repository URL**  
 Required.  
 
-The Git repository for the runtime installation. If the repo doesn't exist, Codefresh creates it during runtime installation.  
+The `HTTPS` clone URL of the Git repository, including the `.git` suffix, for the runtime installation (see [Cloning with HTTPS URLs](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls){:target="\_blank"}). If the repo doesn't exist, Codefresh creates it during runtime installation.  
 
-The `HTTPS` clone URL of the Git repository, including the `.git` suffix in which to install the runtime, in the format:  
+* Silent install: Add the `--repo` flag and the URL definition.   
+
+Repo URL format:  
+
 `https://<host>/<owner_reponame>.git[/subdirectory][?ref=branch]`  
 where:  
-* `<host>/<owner_reponame>.git` is the Git server followed by the username/organization and the name of the repo, identical to the HTTPS clone URL.  For example, `https://github.com/codefresh-io/docs.codefresh.io.git`.  
-* `[/subdirectory]` (optional) is the path to a subdirectory within the repo. When omitted, the runtime is installed in the root of the repository.  For example, `/docs/images`.  
+* `<host>/<owner_reponame>.git` is the Git server followed by the username/organization and the name of the repo, identical to the HTTPS clone URL.  For example, `https://github.com/codefresh-io/codefresh.io.git`.  
+* `[/subdirectory]` (optional) is the path to a subdirectory within the repo. When omitted, the runtime is installed in the root of the repository.  For example, `/runtimes/defs`.  
 * `[?ref=branch]` (optional) is the `ref` queryParam to select a specific branch. When omitted, the runtime is installed in the default branch. For example, `codefresh-prod`.  
 
 Example:  
-`https://github.com/codefresh-io/docs.codefresh.io.git/docs/images?ref=codefresh-prod`
+`https://github.com/codefresh-io/codefresh.io.git/runtimes/defs?ref=codefresh-prod`
 
 **Git runtime token**  
 Required.  
 The Git token authenticating access to the runtime installation repository (see [Git runtime tokens]({{site.baseurl}}/docs/docs/reference/git-tokens/#git-runtime-tokens)).
 
+{::nomarkdown}
+</br>
+{:/}
+
 ##### GitHub Enterprise 
+
+`--enable-git-providers --provider github --repo <https-repo-url> --git-token <git-runtime-token>`
 
 **Enable Git providers**  
 Required.  
@@ -191,23 +206,35 @@ The GitHub Enterprise name as the Git provider for the runtime and the account.
 **Repository URL**  
 Required.  
 
-The Git repository for the runtime installation. If the repo doesn't exist, Codefresh creates it during runtime installation.  
+The `HTTPS` clone URL of the Git repository, including the `.git` suffix, for the runtime installation (see [Cloning with HTTPS URLs](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls){:target="\_blank"}). If the repo doesn't exist, Codefresh creates it during runtime installation.  
 
-The `HTTPS` clone URL of the Git repository, including the `.git` suffix in which to install the runtime, in the format:  
+* Silent install: Add the `--repo` flag and the URL definition.  
+
+Repo URL format:  
+
 `https://<host>/<owner_reponame>.git[/subdirectory][?ref=branch]`  
 where:  
-* `<host>/<owner_reponame>.git` is the Git server followed by the username/organization and the name of the repo, identical to the HTTPS clone URL.  For example, `https://github.com/codefresh-io/docs.codefresh.io.git`.  
-* `[/subdirectory]` (optional) is the path to a subdirectory within the repo. When omitted, the runtime is installed in the root of the repository.  For example, `/docs/images`.  
+* `<host>/<owner_reponame>.git` is the Git server followed by the username/organization and the name of the repo, identical to the HTTPS clone URL.  For example, `https://github.com/codefresh-io/codefresh.io.git`.  
+* `[/subdirectory]` (optional) is the path to a subdirectory within the repo. When omitted, the runtime is installed in the root of the repository.  For example, `/runtimes/defs`.  
 * `[?ref=branch]` (optional) is the `ref` queryParam to select a specific branch. When omitted, the runtime is installed in the default branch. For example, `codefresh-prod`.  
 
 Example:  
-`https://github.com/codefresh-io/docs.codefresh.io.git/docs/images?ref=codefresh-prod`
+`https://github.com/codefresh-io/codefresh.io.git/runtimes/defs?ref=codefresh-prod`
 
 **Git runtime token**  
 Required.  
-The Git token authenticating access to the runtime installation repository (see [Git runtime tokens]({{site.baseurl}}/docs/docs/reference/git-tokens/#git-runtime-tokens)).
+The Git token authenticating access to the runtime installation repository (see [Git runtime tokens]({{site.baseurl}}/docs/docs/reference/git-tokens/#git-runtime-tokens)).  
+
+* Silent install: Add the `--git-token` flag, and then add the token.  
+
+
+{::nomarkdown}
+</br>
+{:/}
 
 ##### GitLab 
+
+`--enable-git-providers --provider gitlab --repo <https_project_url> --git-token <git_runtime_token>`
 
 **Enable Git providers**  
 Required.  
@@ -226,27 +253,36 @@ GitLab as the name of the Git provider for the runtime and the account.
 **Project URL**  
 Required.  
 
-The Git project for the runtime installation. If the project doesn't exist, Codefresh creates it during runtime installation.  
+The `HTTPS` clone URL of the Git project for the runtime installation. If the project doesn't exist, Codefresh creates it during runtime installation.  
 
 > You must create the group with access to the project prior to the installation.
 
 
-The `HTTPS` clone URL of the Git repository, including the `.git` suffix in which to install the runtime, in the format:  
-`https://<host>/<owner_reponame>.git[/subdirectory][?ref=branch]`  
+* Silent install: Add the `--repo` flag, and the URL definition.  
+
+Repo URL format:  
+
+`https://<host>/<owner_project_name>.git[/subdirectory][?ref=branch]`  
 where:  
-* `<host>/<owner_reponame>.git` is the Git server followed by the username/organization and the name of the repo, identical to the HTTPS clone URL.  For example, `https://github.com/codefresh-io/docs.codefresh.io.git`.  
-* `[/subdirectory]` (optional) is the path to a subdirectory within the repo. When omitted, the runtime is installed in the root of the repository.  For example, `/docs/images`.  
+* `<host>/<owner_projectname>.git` is the Git server followed by the username and the name of the project, identical to the HTTPS clone URL.  For example, `https://gitlab.com/codefresh-io/codefresh.io.git`.  
+* `[/subdirectory]` (optional) is the path to a subdirectory within the repo. When omitted, the runtime is installed in the root of the repository.  For example, `/runtimes/defs`.  
 * `[?ref=branch]` (optional) is the `ref` queryParam to select a specific branch. When omitted, the runtime is installed in the default branch. For example, `codefresh-prod`.  
 
 Example:  
-`https://github.com/codefresh-io/docs.codefresh.io.git/docs/images?ref=codefresh-prod`
+`https://gitlab.com/codefresh-io/codefresh.io.git/runtimes/defs?ref=codefresh-prod`  
+
 
 **Git runtime token**  
 Required.  
 The Git token authenticating access to the runtime installation repository (see [Git runtime tokens]({{site.baseurl}}/docs/docs/reference/git-tokens/#git-runtime-tokens)).
 
+{::nomarkdown}
+</br>
+{:/}
 
 ##### Bitbucket Server
+
+`--enable-git-providers --provider bitbucket-server --repo <https_repo_url> --git-token <git_runtime_token>`
 
 **Enable Git providers**  
 Required.  
@@ -265,17 +301,20 @@ Bitbucket Server as the name of the Git provider for the runtime and the account
 **Repository URL**  
 Required.  
 
-The Git repository for the runtime installation. If the repo doesn't exist, Codefresh creates it during runtime installation.  
+The `HTTPS` clone URL of the Git repository for the runtime installation (see [Atlassian support](https://support.atlassian.com/bitbucket-cloud/docs/change-the-remote-url-to-your-repository/){:target="\_blank"}). If the repo doesn't exist, Codefresh creates it during runtime installation.  
 
-The `HTTPS` clone URL of the Git repository, including the `.git` suffix in which to install the runtime, in the format:  
-`https://<host>/<owner_reponame>.git[/subdirectory][?ref=branch]`  
+* Silent install: Add the `--repo` flag, and the URL definition.  
+
+Repo URL format:  
+
+`https://<host>/<owner_org_name>.git[/subdirectory][?ref=branch]`  
 where:  
-* `<host>/<owner_reponame>.git` is the Git server followed by the username/organization and the name of the repo, identical to the HTTPS clone URL.  For example, `https://github.com/codefresh-io/docs.codefresh.io.git`.  
-* `[/subdirectory]` (optional) is the path to a subdirectory within the repo. When omitted, the runtime is installed in the root of the repository.  For example, `/docs/images`.  
+* `<host>/<owner_projectname>.git` is the Git server followed by the username/organization and the name of the repo, identical to the HTTPS clone URL.  For example, `https://bitbucket.org/codefresh-io/codefresh.io.git`.  
+* `[/subdirectory]` (optional) is the path to a subdirectory within the repo. When omitted, the runtime is installed in the root of the repository.  For example, `/runtimes/defs`.  
 * `[?ref=branch]` (optional) is the `ref` queryParam to select a specific branch. When omitted, the runtime is installed in the default branch. For example, `codefresh-prod`.  
 
 Example:  
-`https://github.com/codefresh-io/docs.codefresh.io.git/docs/images?ref=codefresh-prod`
+`https://bitbucket.org/codefresh-io/codefresh.io.git/runtimes/defs?ref=codefresh-prod`  
 
 **Git user**  
 Required.    
@@ -287,6 +326,10 @@ The username for the Bitbucket Server account.
 **Git runtime token**  
 Required.  
 The Git token authenticating access to the runtime installation repository (see [Git runtime tokens]({{site.baseurl}}/docs/docs/reference/git-tokens/#git-runtime-tokens)).
+
+{::nomarkdown}
+</br>
+{:/}
 
 ##### Bitbucket Cloud
 
@@ -307,22 +350,24 @@ Bitbucket Cloud as the name of the Git provider for the runtime and the account.
 **Repository URL**  
 Required.  
 
-The Git repository for the runtime installation. If the repo doesn't exist, Codefresh creates it during runtime installation.  
+The `HTTPS` clone URL of the Git repository for the runtime installation (see [Atlassian support](https://support.atlassian.com/bitbucket-cloud/docs/change-the-remote-url-to-your-repository/){:target="\_blank"}). If the repo doesn't exist, Codefresh creates it during runtime installation.  
 
-The `HTTPS` clone URL of the Git repository, including the `.git` suffix in which to install the runtime, in the format:  
-`https://<host>/<owner_reponame>.git[/subdirectory][?ref=branch]`  
+* Silent install: Add the `--repo` flag, and the URL definition.  
+
+Repo URL format:  
+
+`https://<host>/<owner_org_name>.git[/subdirectory][?ref=branch]`  
 where:  
-* `<host>/<owner_reponame>.git` is the Git server followed by the username/organization and the name of the repo, identical to the HTTPS clone URL.  For example, `https://github.com/codefresh-io/docs.codefresh.io.git`.  
-* `[/subdirectory]` (optional) is the path to a subdirectory within the repo. When omitted, the runtime is installed in the root of the repository.  For example, `/docs/images`.  
+* `<host>/<owner_projectname>.git` is the Git server followed by the username/organization and the name of the repo, identical to the HTTPS clone URL.  For example, `https://bitbucket.org/codefresh-io/codefresh.io.git`.  
+* `[/subdirectory]` (optional) is the path to a subdirectory within the repo. When omitted, the runtime is installed in the root of the repository.  For example, `/runtimes/defs`.  
 * `[?ref=branch]` (optional) is the `ref` queryParam to select a specific branch. When omitted, the runtime is installed in the default branch. For example, `codefresh-prod`.  
 
 Example:  
-`https://github.com/codefresh-io/docs.codefresh.io.git/docs/images?ref=codefresh-prod`
+`https://bitbucket.org/codefresh-io/codefresh.io.git/runtimes/defs?ref=codefresh-prod`  
 
 **Git runtime token**  
 Required.  
 The Git token authenticating access to the runtime installation repository (see [Git runtime tokens]({{site.baseurl}}/docs/docs/reference/git-tokens/#git-runtime-tokens)).
-
 
 
 {::nomarkdown}
@@ -416,8 +461,7 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
   
 **Codefresh-specific components**  
 * Codefresh Applications in the Argo CD AppProject:  
-  * App-proxy facilitating behind-firewall access to Git
-  * Git Source entity that references the`[repo_name]_git-source`  
+  * App-proxy facilitating behind-firewall access to                                                           Source entity that references the`[repo_name]_git-source`  
 
 Once the hybrid runtime is successfully installed, it is provisioned on the Kubernetes cluster, and displayed in the **Runtimes** page.
 
