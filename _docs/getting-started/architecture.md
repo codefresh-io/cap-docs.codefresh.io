@@ -148,6 +148,22 @@ See [Ingress controller]({{site.baseurl}}/docs/runtime/requirements/#ingress-con
 <br>
 {:/}
 
+#### Request Routing Service and Request Routing Server
+The Request Routing Service and the Request Routing Server are installed on the same cluster as the Codefresh Runtime in the customer environment.
+The Request Routing Service receives requests from the Ingress Controller and forwards the requests to the Request Routing Server which in turn distributes them to the relevant services. 
+
+The Request Routing Server distributes requests to these services, based on the request URL:
+* App-Proxy Service
+* Argo Workflows Service
+* Argo Events (Webhooks) service
+
+> Important:  
+  The Routing components are available from runtime version 0.0.543 and higher.  
+  There is complete backward compatibility with older runtimes, in which the Ingress Controller continues to route the incoming requests directly to the services.
+  
+
+
+
 #### Managed clusters
 Managed clusters are external clusters registered to a provisioned hosted or hybrid runtime(s).  
 
