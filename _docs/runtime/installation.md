@@ -167,7 +167,7 @@ GitHub is the default Git provider for hybrid runtimes. Being the default provid
 `--repo <repo_url> --git-token <git-runtime-token>`  
 
 where:
-* `--repo <repo_url>` is the `HTTPS` clone URL of the Git repository for the runtime installation, including the `.git` suffix. Copy the clone URL from your GitHub website (see [Cloning with HTTPS URLs](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls){:target="\_blank"}).   
+* `--repo <repo_url>` (required), is the `HTTPS` clone URL of the Git repository for the runtime installation, including the `.git` suffix. Copy the clone URL from your GitHub website (see [Cloning with HTTPS URLs](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls){:target="\_blank"}).   
   If the repo doesn't exist, copy an existing clone URL and change the name of the repo. Codefresh creates the repository during runtime installation.  
 
   Repo URL format:  
@@ -179,7 +179,7 @@ where:
 
   Example:  
   `https://github.com/nr-codefresh/codefresh.io.git/runtimes/defs?ref=codefresh-prod`  
-* `--git-token <git-runtime-token>` is the Git token authenticating access to the runtime installation repository (see [Git runtime tokens]({{site.baseurl}}/docs/docs/reference/git-tokens/#git-runtime-tokens)).
+* `--git-token <git-runtime-token>` (required), is the Git token authenticating access to the runtime installation repository (see [Git runtime tokens]({{site.baseurl}}/docs/docs/reference/git-tokens/#git-runtime-tokens)).
 
 {::nomarkdown}
 </br>
@@ -190,9 +190,9 @@ where:
 `--enable-git-providers --provider github --repo <repo_url> --git-token <git-runtime-token>`  
 
 where:  
-* `--enable-git-providers` indicates that you are not using the default Git provider for the runtime.
-* `--provider github` defines GitHub Enterprise as the Git provider for the runtime and the account.
-* `--repo <repo_url>` is the `HTTPS` clone URL of the Git repository for the runtime installation, including the `.git` suffix. Copy the clone URL for HTTPS from your GitHub Enterprise website (see [Cloning with HTTPS URLs](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls){:target="\_blank"}).  
+* `--enable-git-providers` (required), indicates that you are not using the default Git provider for the runtime.
+* `--provider github` (required), defines GitHub Enterprise as the Git provider for the runtime and the account.
+* `--repo <repo_url>` (required), is the `HTTPS` clone URL of the Git repository for the runtime installation, including the `.git` suffix. Copy the clone URL for HTTPS from your GitHub Enterprise website (see [Cloning with HTTPS URLs](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls){:target="\_blank"}).  
   If the repo doesn't exist, copy an existing clone URL and change the name of the repo. Codefresh creates the repository during runtime installation. 
   Repo URL format:  
 
@@ -204,7 +204,7 @@ where:
 
   Example:  
   `https://ghe-trial.devops.cf-cd.com/codefresh-io/codefresh.io.git/runtimes/defs?ref=codefresh-prod`
-* `--git-token <git-runtime-token>` is the Git token authenticating access to the runtime installation repository (see [Git runtime tokens]({{site.baseurl}}/docs/docs/reference/git-tokens/#git-runtime-tokens)).  
+* `--git-token <git-runtime-token>` (required), is the Git token authenticating access to the runtime installation repository (see [Git runtime tokens]({{site.baseurl}}/docs/docs/reference/git-tokens/#git-runtime-tokens)).  
 
 
 {::nomarkdown}
@@ -216,9 +216,9 @@ where:
 `--enable-git-providers --provider gitlab --repo <https_project_url> --git-token <git_runtime_token>`  
 
 where:  
-* `--enable-git-providers` indicates that you are not using the default Git provider for the runtime.
-* `--provider gitlab` defines GitLab Cloud as the Git provider for the runtime and the account.
-* `--repo <repo_url>` is the `HTTPS` clone URL of the Git repository for the runtime installation, including the `.git` suffix. Copy the clone URL for HTTPS from your GitLab website.   
+* `--enable-git-providers`(required), indicates that you are not using the default Git provider for the runtime.
+* `--provider gitlab` (required), defines GitLab Cloud as the Git provider for the runtime and the account.
+* `--repo <repo_url>` (required), is the `HTTPS` clone URL of the Git project for the runtime installation, including the `.git` suffix. Copy the clone URL for HTTPS from your GitLab website.   
   If the repo doesn't exist, copy an existing clone URL and change the name of the repo. Codefresh creates the repository during runtime installation. 
 
   > Important: You must create the group with access to the project prior to the installation.
@@ -227,7 +227,7 @@ where:
 
   `https://gitlab.com/<owner>/<project_name>.git[/subdirectory][?ref=branch]`  
   where:  
-  * `<owner>` is your username, or the group or group names if the project is within a group or a nested hierarchy of groups. For example, `nr-codefresh` (owner), or `parent-group/child-group` (group hierarchy)
+  * `<owner>` is either your username, or if your project is within a group, the front-slash separated path to the project. For example, `nr-codefresh` (owner), or `parent-group/child-group` (group hierarchy)
   * `<projectname>` is the name of the project.  For example, `codefresh`.  
   * `[/subdirectory]` (optional) is the path to a subdirectory within the repo. When omitted, the runtime is installed in the root of the repository.  For example, `/runtimes/defs`.  
   * `[?ref=branch]` (optional) is the `ref` queryParam to select a specific branch. When omitted, the runtime is installed in the default branch. For example, `codefresh-prod`.  
@@ -237,7 +237,7 @@ where:
 
   `https://gitlab.com/parent-group/child-group/codefresh.git/runtimes/defs?ref=codefresh-prod` (group hierarchy)
 
-* `--git-token <git-runtime-token>` is the Git token authenticating access to the runtime installation repository (see [Git runtime tokens]({{site.baseurl}}/docs/docs/reference/git-tokens/#git-runtime-tokens)).  
+* `--git-token <git-runtime-token>` (required), is the Git token authenticating access to the runtime installation repository (see [Git runtime tokens]({{site.baseurl}}/docs/docs/reference/git-tokens/#git-runtime-tokens)).  
 
 
 {::nomarkdown}
@@ -251,9 +251,9 @@ where:
 `--enable-git-providers --provider gitlab --repo <https_project_url> --git-token <git_runtime_token>`  
 
 where:  
-* `--enable-git-providers` indicates that you are not using the default Git provider for the runtime.
-* `--provider gitlab` defines GitLab Server as the Git provider for the runtime and the account.
-* `--repo <repo_url>` is the `HTTPS` clone URL of the Git repository for the runtime installation, including the `.git` suffix.  
+* `--enable-git-providers` (required), indicates that you are not using the default Git provider for the runtime.
+* `--provider gitlab` (required), defines GitLab Server as the Git provider for the runtime and the account.
+* `--repo <repo_url>` (required), is the `HTTPS` clone URL of the Git repository for the runtime installation, including the `.git` suffix.  
   If the project doesn't exist, copy an existing clone URL and change the name of the project. Codefresh creates the project during runtime installation.  
   
   > Important: You must create the group with access to the project prior to the installation.
@@ -271,7 +271,7 @@ where:
   
   `https://gitlab-onprem.devops.cf-cd.com/parent-group/child-group/codefresh.git/runtimes/defs?ref=codefresh-prod` (group hierarchy)
 
-* `--git-token <git-runtime-token>` is the Git token authenticating access to the runtime installation repository (see [Git runtime tokens]({{site.baseurl}}/docs/docs/reference/git-tokens/#git-runtime-tokens)).  
+* `--git-token <git-runtime-token>` (required), is the Git token authenticating access to the runtime installation repository (see [Git runtime tokens]({{site.baseurl}}/docs/docs/reference/git-tokens/#git-runtime-tokens)).  
 
 
 {::nomarkdown}
@@ -283,9 +283,9 @@ where:
 `--enable-git-providers --provider bitbucket --repo <https_repo_url> --git-user <git_username> --git-token <git_runtime_token>`    
 
 where:  
-* `--enable-git-providers` indicates that you are not using the default Git provider for the runtime.  
-* `--provider gitlab` defines Bitbucket Cloud as the Git provider for the runtime and the account.
-* `--repo <repo_url>` is the `HTTPS` clone URL of the Git repository for the runtime installation, including the `.git` suffix.  
+* `--enable-git-providers` (required), indicates that you are not using the default Git provider for the runtime.  
+* `--provider gitlab` (required), defines Bitbucket Cloud as the Git provider for the runtime and the account.
+* `--repo <repo_url>` (required), is the `HTTPS` clone URL of the Git repository for the runtime installation, including the `.git` suffix.  
   If the project doesn't exist, copy an existing clone URL and change the name of the project. Codefresh creates the project during runtime installation.  
   >Important: Remove the username, including @ from the copied URL. 
   
@@ -300,8 +300,8 @@ where:
 
   Example:  
   `https://bitbucket.org/nr-codefresh/codefresh.git/runtimes/defs?ref=codefresh-prod`    
-* `--git-user <git_username>` is your username for the Bitbucket Cloud account. 
-* `--git-token <git-runtime-token>` is the Git token authenticating access to the runtime installation repository (see [Git runtime tokens]({{site.baseurl}}/docs/docs/reference/git-tokens/#git-runtime-tokens)).
+* `--git-user <git_username>` (required), is your username for the Bitbucket Cloud account. 
+* `--git-token <git-runtime-token>` (required), is the Git token authenticating access to the runtime installation repository (see [Git runtime tokens]({{site.baseurl}}/docs/docs/reference/git-tokens/#git-runtime-tokens)).
 
 
 {::nomarkdown}
@@ -313,9 +313,9 @@ where:
 `--enable-git-providers --provider bitbucket-server --repo <repo_url> --git-user <git_username> --git-token <git_runtime_token>`  
 
 where:  
-* `--enable-git-providers` indicates that you are not using the default Git provider for the runtime.
-* `--provider gitlab` defines Bitbucket Cloud as the Git provider for the runtime and the account.
-* `--repo <repo_url>` is the `HTTPS` clone URL of the Git repository for the runtime installation, including the `.git` suffix.  
+* `--enable-git-providers` (required), indicates that you are not using the default Git provider for the runtime.
+* `--provider gitlab` (required), defines Bitbucket Cloud as the Git provider for the runtime and the account.
+* `--repo <repo_url>` (required), is the `HTTPS` clone URL of the Git repository for the runtime installation, including the `.git` suffix.  
   If the project doesn't exist, copy an existing clone URL and change the name of the project. Codefresh then creates the project during runtime installation.  
   >Important: Remove the username, including @ from the copied URL.  
 
@@ -330,8 +330,8 @@ where:
 
   Example:  
   `https://bitbucket-server-8.2.devops.cf-cd.com:7990/scm/codefresh-io/codefresh.git/runtimes/defs?ref=codefresh-prod` 
-* `--git-user <git_username>` is your username for the Bitbucket Server account. 
-* `--git-token <git-runtime-token>` is the Git token authenticating access to the runtime installation repository (see [Git runtime tokens]({{site.baseurl}}/docs/docs/reference/git-tokens/#git-runtime-tokens)).
+* `--git-user <git_username>` (required), is your username for the Bitbucket Server account. 
+* `--git-token <git-runtime-token>` (required), is the Git token authenticating access to the runtime installation repository (see [Git runtime tokens]({{site.baseurl}}/docs/docs/reference/git-tokens/#git-runtime-tokens)).
 
 {::nomarkdown}
 </br></br>
