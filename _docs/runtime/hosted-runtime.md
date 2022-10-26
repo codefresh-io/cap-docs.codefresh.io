@@ -143,7 +143,7 @@ max-width="80%"
 You can connect your hosted runtime to any of these Git providers:  
 * GitHub (the default)
 * Bitbucket Cloud
-* GitLab
+<!---* GitLab -->
 
 >If the hosted runtime is the first runtime you are provisioning for your account, the Git provider you connect to is used for any hybrid runtimes you provision for the same account. This is because of the configuration repo that is created and shared by runtimes in the same account.
 
