@@ -148,12 +148,15 @@ The Git provider defined for the runtime.
 >Because Codefresh creates a [shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration) for the runtimes in your account, the Git provider defined for the first runtime you install in your account is used for all the other runtimes in the same account.  
 
 You can define any of the following Git providers:
-* [GitHub](#github) (the default Git provider)
-* [GitHub Enterprise](#github-enterprise)
-* [GitLab Cloud](#gitlab-cloud)
-* [GitLab Server](#gitlab-server)
-* [Bitbucket Cloud](#bitbucket-cloud)
-* [Bitbucket Server](#bitbucket-server)
+* GitHub:
+  * [GitHub](#github) (the default Git provider)
+  * [GitHub Enterprise](#github-enterprise)
+* GitLab:
+  * [GitLab Cloud](#gitlab-cloud)
+  * [GitLab Server](#gitlab-server)
+* Bitbucket:
+  * [Bitbucket Cloud](#bitbucket-cloud)
+  * [Bitbucket Server](#bitbucket-server)
 
 {::nomarkdown}
 </br>
