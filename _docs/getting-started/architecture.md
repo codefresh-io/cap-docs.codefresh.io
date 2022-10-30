@@ -148,14 +148,10 @@ See [Ingress controller]({{site.baseurl}}/docs/runtime/requirements/#ingress-con
 <br>
 {:/}
 
-#### Request Routing Service and Request Routing Server
-The Request Routing Service and the Request Routing Server are installed on the same cluster as the Codefresh Runtime in the customer environment.
-The Request Routing Service receives requests from the Ingress Controller and forwards the requests to the Request Routing Server which in turn distributes them to the relevant services. 
+#### Request Routing Service 
+The Request Routing Service is installed on the same cluster as the Codefresh Runtime in the customer environment.
+The Request Routing Service receives requests from the Ingress Controller and based on the request URL forwards them to the Application Proxy, and webhooks directly to the Event Sources. 
 
-The Request Routing Server distributes requests to these services, based on the request URL:
-* App-Proxy Service
-* Argo Workflows Service
-* Argo Events (Webhooks) service
 
 > Important:  
   The Routing components are available from runtime version 0.0.543 and higher.  
