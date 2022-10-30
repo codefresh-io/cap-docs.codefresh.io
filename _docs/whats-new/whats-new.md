@@ -11,6 +11,102 @@ Built on Argo, the world’s most popular and fastest-growing open source softwa
 
 The September release focuses on enhancing our CD Ops offering.
 
+## October 2022
+
+### Features & enhancements
+
+#### Request Routing Service for runtimes
+We have changed the routing mechanism for hybrid runtimes. We have a dedicated Request Routing Service to route request URLs and webhooks that is installed on the same cluster as the Codefresh hybrid runtime. The Ingress Controller now forwards the requests to the Request Routing Service which routes URL requests to the Application Proxy and webhooks to the Event Sources.  
+
+The Request Routing Service is available from runtime version 0.0.543 and higher.  
+There is complete backward compatibilty so existing runtimes are not affected. URL requests continue to be routed through the Ingress Controller to the Application Proxy. Webhooks for existing runtimes are routed through the Routing Service to Event Sources.  
+
+See ???? 
+#### More Git providers for runtimes
+Codefresh runtimes support GitHub Enterprise, GitLab, and Bitbucket as Git providers, apart from GitHub.
+ 
+When installing a hybrid or hosted runtime for you account, you can define the Git provider of choice. Because Codefresh creates a configuration repository that is shared with subsequent runtimes in the same account, you cannot change the Git provider for a different runtime in the same account.  
+Note that for GitLab cloud is not supported for hosted runtimes.
+
+Each Git provider requires runtime tokens with specific scopes and has specific installation requirements.
+See????
+
+You can then authorize access to the Git provider through OAuth or a personal access token. 
+
+### Turn off notifications for runtimes
+Codefresh alerts you to runtimes that are insecure, or have invalid or expired Git personal access tokens. You can turn off these notifications selectively for specific runtimes, such as non-production runtimes, where these alerts are less critical.  
+
+The option is user-specific, and applies to runtimes in the logged-in user's account. 
+
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-oct22-dismiss-runtime-notifications.png"
+ url="/images/whats-new/rel-notes-oct22-dismiss-runtime-notifications.png"
+ alt="Turn off notifications for selected runtime"
+ caption="Turn off notifications for selected runtime"
+    max-width="80%"
+%}
+
+Runtimes with disabled notifications are prefixed with an icon as in the picture below.
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-oct22-dimiss-notifications-indication.png"
+ url="/images/whats-new/rel-notes-oct22-dimiss-notifications-indication.png"
+ alt="Runtime with disabled notifications"
+ caption="Runtime with disabled notifications"
+    max-width="80%"
+%}
+
+#### Rollout Player for applications
+Rollout management has just become simpler and more intuitive. With the Rollout Player you can control individual steps in an onging rollout and even promote the rollout to a release.  
+Clicking the rollout name in Timeline > Updated Services, displays both the visualization of the steps in the rollout and the Rollout Player.
+
+
+
+
+
+The Rollput Player lets you:
+* Pause a running step
+* Resume a paused step without waiting for the specified duration
+* Skip a step
+* Promote a rollout to deployment by skipping remaining steps
+
+
+
+#### Manifests for Analysis Runs
+
+Rollout resources that include analysis templkate
+Resource breakdown and diff views for deployment
+
+The Updated Resources tab for a deployment shows a breakdown of the resources added, updated, or removed during that deployment. 
+Clicking the resource name shows the Full and Compact views displaying the changes that were made.
+
+
+
+
+
+And in the context menu for the rollout resource in the Current State. See also 
+
+#### Context menu for application resources
+We have enhnaced the functionality for application resources in the Current State tab. Every resource now has a context menu with options and actions, that differ according to the type of resource.  
+
+The context menu is fully compatible with open source custom actions. Any action you add is displayed and available. 
+
+**On-demand sync for application resources**
+One of the actions available in the context menu is the Sync option for application resources. Sync the selected resource either when out-of-sync or to manually. Just as you have on-demand p sync for the apllication, you can now easily sync a specific resource when  Sync  Synchronize and Refresh, now you can select a resource and sync it. 
+
+**Rollout resource actions**
+The context menu for Rollout resource types have actions for that resource such as restart
+
+
+#### Other enhancements
+A new application type filter in the Applications dashboard has a new filter for Application Type, Git Sources. A Git Source application is one that  those that Filtering by a Git Source shows all applications synced to a Git Source repository which has additional resources
+
+
 ## September 2022
 
 
