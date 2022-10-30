@@ -167,6 +167,8 @@ You can define any of the following Git providers:
 ##### GitHub
 GitHub is the default Git provider for hybrid runtimes. Being the default provider, for both the CLI wizard and Silent install, you need to provide only the repository URL and the Git runtime token.
 
+> For the required scopes, see [GitHub tokens]({{site.baseurl}}/docs/reference/git-tokens/#github-tokens)
+
 `--repo <repo_url> --git-token <git-runtime-token>`  
 
 where:
@@ -189,6 +191,9 @@ where:
 {:/}
 
 ##### GitHub Enterprise 
+
+> For the required scopes, see [GitHub tokens]({{site.baseurl}}/docs/reference/git-tokens/#github-tokens)
+
 
 `--enable-git-providers --provider github --repo <repo_url> --git-token <git-runtime-token>`  
 
@@ -215,6 +220,8 @@ where:
 {:/}
 
 ##### GitLab Cloud
+> For the required scopes, see [GitLab tokens]({{site.baseurl}}/docs/reference/git-tokens/#gitlab-tokens).
+
 
 `--enable-git-providers --provider gitlab --repo <https_project_url> --git-token <git_runtime_token>`  
 
@@ -251,6 +258,8 @@ where:
 
 ##### GitLab Server
 
+> For the required scopes, see [GitLab tokens]({{site.baseurl}}/docs/reference/git-tokens/#gitlab-tokens).
+
 `--enable-git-providers --provider gitlab --repo <https_project_url> --git-token <git_runtime_token>`  
 
 where:  
@@ -282,6 +291,8 @@ where:
 {:/}
 
 ##### Bitbucket Cloud
+> For the required scopes, see [Bitbucket tokens]({{site.baseurl}}/docs/reference/git-tokens/#bitbucket-tokens).
+
 
 `--enable-git-providers --provider bitbucket --repo <https_repo_url> --git-user <git_username> --git-token <git_runtime_token>`    
 
@@ -312,6 +323,9 @@ where:
 {:/}
 
 ##### Bitbucket Server
+
+> For the required scopes, see [Bitbucket tokens]({{site.baseurl}}/docs/reference/git-tokens/#bitbucket-tokens).
+
 
 `--enable-git-providers --provider bitbucket-server --repo <repo_url> --git-user <git_username> --git-token <git_runtime_token>`  
 
