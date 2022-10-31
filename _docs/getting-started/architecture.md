@@ -98,6 +98,19 @@ The App-Proxy performs write and state-change operations:
 <br>
 {:/}
 
+#### Request Routing Service 
+The Request Routing Service is installed on the same cluster as the Codefresh Runtime in the customer environment.
+It receives requests from the Ingress Controller, and forwards the request URLs to the Application Proxy, and webhooks directly to the Event Sources. 
+
+
+> Important:  
+  The Request Routing Service is available from runtime version 0.0.543 and higher.  
+  Older runtime versions are not affected as there is complete backward compatibility. The Ingress Controller continues to route incoming requests.
+
+{::nomarkdown}
+<br>
+{:/}
+
 #### Argo Project 
 
 The Argo Project includes:
@@ -148,14 +161,7 @@ See [Ingress controller]({{site.baseurl}}/docs/runtime/requirements/#ingress-con
 <br>
 {:/}
 
-#### Request Routing Service 
-The Request Routing Service is installed on the same cluster as the Codefresh Runtime in the customer environment.
-The Request Routing Service receives requests from the Ingress Controller and based on the request URL forwards them to the Application Proxy, and webhooks directly to the Event Sources. 
 
-
-> Important:  
-  The Routing components are available from runtime version 0.0.543 and higher.  
-  There is complete backward compatibility with older runtimes, in which the Ingress Controller continues to route the incoming requests directly to the services.
   
 
 
