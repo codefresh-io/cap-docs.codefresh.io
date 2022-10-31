@@ -27,7 +27,14 @@ Additional components are installed depending on the type of runtime selected, a
   max-width="100%"
 %}
 
-### Codefresh Control Plane
+### Codefresh Platform
+
+The Codefresh Platform comprises:  
+
+* Codefresh Control Plane 
+* Codefresh Tunnel Server for ingress-less hybrid environments
+
+#### Codefresh Control Plane
 The Codefresh Control Plane is the SaaS component in the platform. External to the enterprise firewall, it does not have direct communication with the Codefresh Runtime, Codefresh Clients, or the customer's organizational systems. The Codefresh Application Proxy and the Codefresh Clients communicate with the Codefresh Control Plane to retrieve the required information.  
 
 The Codefresh Control Plane:  
@@ -37,16 +44,13 @@ The Codefresh Control Plane:
 * Controls authentication, user management, and billing
 
 #### Codefresh Tunnel Server
-The Codefresh Tunnel Server is installed in the Codefresh platform for _ingress-less runtime environments_, together with the Codefresh Tunnel Client and the Codefresh Tunnel Router.  
+The Codefresh Tunnel Server is installed in the Codefresh platform for _ingress-less runtime environments.
 A fast reverse proxy (FRP), the Codefresh Tunnel Server communicates with the enterprise cluster located behind a NAT or firewall.  
-It comprises the following containers:  
-* Codefresh FRP Server: Forwards the traffic from Codefresh clients to the customer cluster, and manages the lifecycle with the Codefresh Tunnel Client.
-* Codefresh FRP Plugin: Implements Codefresh logic to authenticate requests from the Codefresh Tunnel Client to open tunneling connections with the Tunnel Server. It runs as a sidecar container.
 
-#### Codefresh Tunnel Router
-The Codefresh Tunnel Router is installed in the Codefresh platform for _ingress-less runtime environments_, together with the Codefresh Tunnel Server and the Codefresh Tunnel Router. Installed as a service, the Codefresh Tunnel Router maps the user traffic from Codefresh clients and routes it to the pod that the required tunnel is connected to. 
-
-
+The Tunnel Server:  
+* Forwards traffic from Codefresh Clients to the customer cluster.
+* Mmanages the lifecycle with the Codefresh Tunnel Client.
+* Authenticates requests from the Codefresh Tunnel Client to open tunneling connections.
 
 
 ### Codefresh Runtime
@@ -60,9 +64,9 @@ It is installed on a cluster either in the Codefresh platform or in the customer
  
 
 The Codefresh Runtime includes:  
+* Codefresh Tunnel Client
 * Codefresh Application Proxy
 * Argo Project
-* Codefresh Tunneling Client
 
 
 The Codefresh Runtime: 
@@ -143,7 +147,7 @@ The customer environment that communicates with the Codefresh platform, generall
 * Organizational systems
 
 #### Ingress Controller
-The ingress controller is is configured on the same Kubernetes cluster as the Codefresh Runtime in hybrid runtime environments. It implements the ingress traffic rules for the Codefresh Runtime. 
+The ingress controller is configured on the same Kubernetes cluster as the Codefresh Runtime in hybrid runtime environments. It implements the ingress traffic rules for the Codefresh Runtime. 
 See [Ingress controller requirements]({{site.baseurl}}/docs/runtime/requirements/#ingress-controller).
 
 {::nomarkdown}
@@ -151,7 +155,8 @@ See [Ingress controller requirements]({{site.baseurl}}/docs/runtime/requirements
 {:/}
 
 #### Managed clusters
-Managed clusters are external clusters registered to provisioned hosted or hybrid runtimes.  
+Managed clusters are external clusters registered to provisioned hosted or hybrid runtimes to which to deploy applications.
+  
 
 * Hosted runtime: Requires you to connect to an external K8s cluster as part of setting up the Hosted GitOps environment. You can add more managed clusters after completing the setup.
 * Hybrid runtimes: You can add external clusters after provisioning hybrid runtimes.  
@@ -163,8 +168,8 @@ See [Add external clusters to runtimes]({{site.baseurl}}/docs/runtime/managed-cl
 {:/}
                 
 #### Organizational Systems
-Organizational Systems include the tracking, monitoring, notification, container <!registries, Git providers, and other tools incorporated into the continuous integration and continuous deployment processes. They can be entirely on-premises or in the public cloud.   
-<!---need to update this-->For hybrid runtime environments with ingress controllers, these tools send events to the Codefresh Application Proxy via the ingress controller to trigger and manage CI/CD flows. For ingress-less hybrid runtimes, all events are routed by the Codefresh Tunnel Server to the Codefresh Tunnel Client which in turn forwards the events to the relevant service.
+Organizational Systems include the customer's tracking, monitoring, notification, container registries, Git providers, and other tools. They can be entirely on-premises or in the public cloud.   
+Either the Ingress Controller (hybrid environments), or the Tunnel Client (ingress-less hybrid environments), forwards incoming events to the Codefresh Application Proxy. 
 
 
 ### Hosted GitOps runtime architecture
@@ -198,6 +203,7 @@ In the hybrid environment, the Codefresh Runtime is located on the customer's K8
 
 ### Hybrid runtime architecture _without ingress_
 
+
 > Hybrid runtimes can be installed with an ingress controller. See [Hybrid runtime architecture _with ingress_](#hybrid-runtime-architecture-without-ingress_)
 
 {% include
@@ -209,33 +215,6 @@ In the hybrid environment, the Codefresh Runtime is located on the customer's K8
   caption="Hybrid runtime architecture _without_ ingress controller"
   max-width="100%"
 %}
-
-### Codefresh Platform
-The Codefresh Platform comprises:  
-
-* Codefresh Control Plane 
-* Codefresh Runtime with the Codefresh Application Proxy and Argo Project
-* Codefresh Clients, the Codefresh UI and the Codefresh CLI
-
-{::nomarkdown}
-<br><br>
-{:/}
-
-
-
-
-{::nomarkdown}
-<br>
-{:/}
-
-#### Codefresh Application Proxy
-
-
-
-
-#### Codefresh Clients
-
-
 
 
 ### Related articles
