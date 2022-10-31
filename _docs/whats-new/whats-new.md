@@ -19,7 +19,7 @@ Built on Argo, the world’s most popular and fastest-growing open source softwa
 We have changed the routing mechanism for hybrid runtimes. A dedicated Request Routing Service installed on the same cluster as the Codefresh hybrid runtime routes request URLs and webhooks. The Ingress Controller now forwards the requests to the Request Routing Service which routes URL requests to the Application Proxy and webhooks to the Event Sources.  
 
 The Request Routing Service is available from runtime version 0.0.543 and higher.  
-Existing runtimes are not affected as there is complete backward compatibilty. URL requests continue to be routed through the Ingress Controller to the Application Proxy. Webhooks for existing runtimes are routed through the Routing Service to Event Sources.  
+Existing runtimes are not affected as there is complete backward compatibility. URL requests continue to be routed through the Ingress Controller to the Application Proxy. Webhooks for existing runtimes are routed through the Routing Service to Event Sources.  
 
 See ???? 
 #### More Git providers for runtimes
@@ -62,7 +62,7 @@ Runtimes with disabled notifications are prefixed with an icon as in the picture
 %}
 
 #### Rollout Player for deployments
-Managing ongoing rollouts during a deployment is now simple with the Rollout Player. Clicking the rollout name in Timeline > Updated Services, displays both the visualization of the steps in the rollout and the Rollout Player. With the Rollout Player you can control individual steps in an onging rollout and even promote the rollout to a release.
+Managing ongoing rollouts during a deployment is now simple with the Rollout Player. Clicking the rollout name in Timeline > Updated Services, displays both the visualization of the steps in the rollout and the Rollout Player. With the Rollout Player you can control individual steps in an ongoing rollout and even promote the rollout to a release.
  
 {% include
  image.html
@@ -73,7 +73,6 @@ Managing ongoing rollouts during a deployment is now simple with the Rollout Pla
  caption="Rollout Player"
     max-width="60%"
 %}
-
 
 
 The Rollput Player allows you to:
@@ -88,10 +87,30 @@ We have enhanced the functionality for application resources in the Current Stat
 As the context menu is fully compatible with open source custom actions, any custom action you add is automatically displayed and available. 
 
 **On-demand sync for individual application resources**  
-Sync is a context menu option available for all resources that track sync status. You can sync individual resources as needed or when out-of-sync without synchronizing or refreshing the application.   
+Sync is a context menu option available for all resources that track sync status. You can sync individual resources as needed or when out-of-sync without synchronizing or refreshing the application. 
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-oct-22-sync-context-menu.png"
+ url="/images/whats-new/rel-notes-oct-22-sync-context-menu.png"
+ alt="Sync option in resource context menu"
+ caption="Sync option in resource context menu"
+    max-width="40%"
+%}  
 
 **Rollout resource actions**  
 The context menu for `rollout` resource types have actions to control the rollout. 
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-oct22-rollout-context-menu.png"
+ url="/images/whats-new/rel-notes-oct22-rollout-context-menu.png"
+ alt="Context menu options for Rollout resource"
+ caption="Context menu options for Rollout resource"
+    max-width="40%"
+%} 
 
 #### Other enhancements
 
@@ -105,7 +124,7 @@ The list of filters for Application Type in the Applications dashboard includes 
  url="/images/whats-new/rel-notes-oct22-app-type-git-source.png"
  alt="Git Source as Application Type filter"
  caption="Git Source as Application Type filter"
-    max-width="60%"
+    max-width="40%"
 %}
 
 
@@ -119,7 +138,7 @@ Analysis Run now shows the manifest in addition to the run results.
  url="/images/whats-new/rel-notes-oct22-analysis-run-manifest.png"
  alt="Manifest for Analysis Run"
  caption="Manifest for Analysis Run"
-    max-width="60%"
+    max-width="40%"
 %}
 
 
@@ -134,9 +153,9 @@ Analysis Run now shows the manifest in addition to the run results.
 * 500: Internal Server Error when adding cluster command to hosted runtime.
 * Commit SHA link in Activity Log goes to the Home page instead of to the Commit URL for the Git provider.
 * Ingress controller errors for cluster even when `skip-ingress` flag is defined.
-* Retry mechanism requests causes delay in Git integration checks. (CR-14659 Oleg)
+* Retry mechanism requests cause delay in Git integration checks. (CR-14659 Oleg)
 * For hosted runtimes, Git Source is not displayed though the Connect to Git provider step is marked as complete.
-* Selecting invalid authenticaiton does not have option to log out.
+* No option to log out on selecting invalid authentication mode.
 * Removing a managed cluster does not display any indication in Codefresh UI.
 * Up-to-date runtimes display upgrade indication.
 
@@ -148,7 +167,7 @@ Analysis Run now shows the manifest in addition to the run results.
 **Applications**  
 * Applications deleted in Git displayed as errors, or as Missing in Codefresh.  
 * Tagging/untagging favorite application breaks relations (CR-14737 Olek)
-* Validation results for cluster URL that does not exist returns wrong entity type for applications.
+* Application definitions validation for cluster URL that does not exist shows wrong entity type.
 * Incorrect number of replicas for previous image in Applications dashboard.
 * Mismatch between information reported for cluster and namespace in Applications dashboard and Images.
 * Source link in Timeline tab redirects to incorrect branch.
