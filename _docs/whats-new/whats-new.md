@@ -9,24 +9,24 @@ toc: true
 
 Built on Argo, the world’s most popular and fastest-growing open source software delivery, Codefresh unlocks the full enterprise potential of Argo Workflows, Argo CD, Argo Events, and Argo Rollouts, providing a control-plane for managing them at scale.  
 
-The September release focuses on enhancing our CD Ops offering.
+
 
 ## October 2022
 
 ### Features & enhancements
 
 #### Request Routing Service for runtimes
-We have changed the routing mechanism for hybrid runtimes. A dedicated Request Routing Service installed on the same cluster as the Codefresh hybrid runtime, routes request URLs and webhooks. The Ingress Controller now forwards the requests to the Request Routing Service which routes URL requests to the Application Proxy and webhooks to the Event Sources.  
+We have changed the routing mechanism for hybrid runtimes. A dedicated Request Routing Service installed on the same cluster as the Codefresh hybrid runtime routes request URLs and webhooks. The Ingress Controller now forwards the requests to the Request Routing Service which routes URL requests to the Application Proxy and webhooks to the Event Sources.  
 
 The Request Routing Service is available from runtime version 0.0.543 and higher.  
-There is complete backward compatibilty so existing runtimes are not affected. URL requests continue to be routed through the Ingress Controller to the Application Proxy. Webhooks for existing runtimes are routed through the Routing Service to Event Sources.  
+Existing runtimes are not affected as there is complete backward compatibilty. URL requests continue to be routed through the Ingress Controller to the Application Proxy. Webhooks for existing runtimes are routed through the Routing Service to Event Sources.  
 
 See ???? 
 #### More Git providers for runtimes
-Codefresh runtimes support GitHub Enterprise, GitLab, and Bitbucket as Git providers, apart from GitHub.
+Codefresh runtimes support GitHub Enterprise, GitLab, and Bitbucket as Git providers, apart from GitHub. which is the default.
  
 When installing a hybrid or hosted runtime for your account, you can define the Git provider of choice. Because Codefresh creates a configuration repository that is shared with subsequent runtimes in the same account, you cannot change the Git provider for a different runtime in the same account.  
-Note that for GitLab cloud is not supported for hosted runtimes.
+Note that GitLab cloud is not supported for hosted runtimes.
 
 Each Git provider requires runtime tokens with specific scopes and has specific installation requirements.
 See????
@@ -34,9 +34,9 @@ See????
 You can then authorize access to the Git provider through OAuth or a personal access token. 
 
 ### Turn off notifications for runtimes
-Codefresh alerts you to runtimes that are insecure or have invalid or expired Git personal access tokens. You can turn off these notifications selectively for specific runtimes for which these alerts are less critical, such as non-production runtimes.  
+Codefresh alerts you to runtimes that are insecure or have invalid or expired Git personal access tokens. You can turn off these notifications selectively for runtimes for which these alerts are less critical, such as non-production runtimes.  
 
-The option is user-specific, and applies to runtimes in the logged-in user's account. 
+The option is user-specific, and applies only to runtimes in the user's account. 
 
 
 {% include
@@ -62,48 +62,66 @@ Runtimes with disabled notifications are prefixed with an icon as in the picture
 %}
 
 #### Rollout Player for deployments
-Rollout management has just become simpler and more intuitive. With the Rollout Player you can control individual steps in an onging rollout and even promote the rollout to a release.  
-Clicking the rollout name in Timeline > Updated Services, displays both the visualization of the steps in the rollout and the Rollout Player.
+Managing ongoing rollouts during a deployment is now simple with the Rollout Player. Clicking the rollout name in Timeline > Updated Services, displays both the visualization of the steps in the rollout and the Rollout Player. With the Rollout Player you can control individual steps in an onging rollout and even promote the rollout to a release.
+ 
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-oct22-rollout-player.png"
+ url="/images/whats-new/rel-notes-oct22-rollout-player.png"
+ alt="Rollout Player"
+ caption="Rollout Player"
+    max-width="60%"
+%}
 
 
 
-
-
-The Rollput Player lets you:
+The Rollput Player allows you to:
 * Resume a paused step without waiting for the specified duration 
 * Forward a step by skipping its execution 
-* Promote the rollout to deployment by skipping remaining pause, anasteps
+* Promote the rollout to deployment by skipping remaining pause, analysis
 
-
-
-#### Manifests for Analysis Runs
-
-Rollout resources that include analysis templkate
-Resource breakdown and diff views for deployment
-
-The Updated Resources tab for a deployment shows a breakdown of the resources added, updated, or removed during that deployment. 
-Clicking the resource name shows the Full and Compact views displaying the changes that were made.
-
-
-
-
-
-And in the context menu for the rollout resource in the Current State. See also 
 
 #### Context menu for application resources
-We have enhnaced the functionality for application resources in the Current State tab. Every resource now has a context menu with options and actions  that differ according to the type of resource.  
+We have enhanced the functionality for application resources in the Current State tab with the context menu for resources. The options available differ according to the type of resource.  
 
 As the context menu is fully compatible with open source custom actions, any custom action you add is automatically displayed and available. 
 
-**On-demand sync for individual application resources**
-Easily sync any resource that is out ouf Application resources with sync statuses have the Sync option in the context menu is the Sync option for application resources. You can sycnSync the selected resource either when out-of-sync or to manually. Just as you have on-demand p sync for the apllication, you can now easily sync a specific resource when  Sync  Synchronize and Refresh, now you can select a resource and sync it. 
+**On-demand sync for individual application resources**  
+Sync is a context menu option available for all resources that track sync status. You can sync individual resources as needed or when out-of-sync without synchronizing or refreshing the application.   
 
-**Rollout resource actions**
-The context menu for Rollout resource types have actions for that resource such as restart
-
+**Rollout resource actions**  
+The context menu for `rollout` resource types have actions to control the rollout. 
 
 #### Other enhancements
-A new application type filter in the Applications dashboard has a new filter for Application Type, Git Sources. A Git Source application is one that  those that Filtering by a Git Source shows all applications synced to a Git Source repository which has additional resources
+
+**Git Sources as Application Type filter**  
+The list of filters for Application Type in the Applications dashboard includes the Git Source filter. Filtering by Git Source shows `Git Source Apps` that sync repositories with other resources in addition to application resources.  
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-oct22-app-type-git-source.png"
+ url="/images/whats-new/rel-notes-oct22-app-type-git-source.png"
+ alt="Git Source as Application Type filter"
+ caption="Git Source as Application Type filter"
+    max-width="60%"
+%}
+
+
+**Manifests for Analysis Runs**
+Analysis Run now shows the manifest in addition to the run results.
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-oct22-analysis-run-manifest.png"
+ url="/images/whats-new/rel-notes-oct22-analysis-run-manifest.png"
+ alt="Manifest for Analysis Run"
+ caption="Manifest for Analysis Run"
+    max-width="60%"
+%}
+
 
 ### Bug fixes
 
@@ -113,14 +131,14 @@ A new application type filter in the Applications dashboard has a new filter for
 
 **Runtimes**  
 
-* 500: Internal Server Error on running add cluster command to hosted runtime.
+* 500: Internal Server Error when adding cluster command to hosted runtime.
 * Commit SHA link in Activity Log goes to the Home page instead of to the Commit URL for the Git provider.
 * Ingress controller errors for cluster even when `skip-ingress` flag is defined.
 * Retry mechanism requests causes delay in Git integration checks. (CR-14659 Oleg)
-* For hosted runtimes, Connect to Git provider step completes before displaying Git Source in list.
-* Missing log out option on selecting invalid authenticaiton.
+* For hosted runtimes, Git Source is not displayed though the Connect to Git provider step is marked as complete.
+* Selecting invalid authenticaiton does not have option to log out.
 * Removing a managed cluster does not display any indication in Codefresh UI.
-* Upgrade indication for runtimes that are up to date.
+* Up-to-date runtimes display upgrade indication.
 
 
 {::nomarkdown}
@@ -128,17 +146,21 @@ A new application type filter in the Applications dashboard has a new filter for
 {:/}
 
 **Applications**  
-* Applications deleted in Git displayed as errors in Codefresh UI.  
-* Applications deleted in Git displayed as Missing in Codefresh UI.
-* Tagging/untagged favorite application breaks relations (CR-14737 Olek)
-* Cluster URL defined for application that does not exist returns wrong entity type.
+* Applications deleted in Git displayed as errors, or as Missing in Codefresh.  
+* Tagging/untagging favorite application breaks relations (CR-14737 Olek)
+* Validation results for cluster URL that does not exist returns wrong entity type for applications.
 * Incorrect number of replicas for previous image in Applications dashboard.
 * Mismatch between information reported for cluster and namespace in Applications dashboard and Images.
 * Source link in Timeline tab redirects to incorrect branch.
 * Missing Health indication for Argo Rollouts in Codefresh UI.
+
+{::nomarkdown}
+<br>
+{:/}
+
 **Delivery Pipelines and workflows**
-* Workflows with more than 20 nodes consume 100% CPU.
-* Discard Changes button enabled even when no changes were made. 
+* 100% CPU consumption for workflows with more than 20 nodes.
+* Discard Changes button enabled when there are no changes. 
 
 ## September 2022
 
