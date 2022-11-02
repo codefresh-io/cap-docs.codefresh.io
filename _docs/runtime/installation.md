@@ -384,6 +384,7 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
 
 **Before you begin**
 * Make sure you meet the [minimum requirements]({{site.baseurl}}/docs/runtime/requirements/#minimum-requirements) for runtime installation
+* Make sure you have [runtime token with the required scopes from your Git provdier]({{site.baseurl}}/docs/reference/git-tokens)
 * [Download or upgrade to the latest version of the CLI]({{site.baseurl}}/docs/clients/csdp-cli/#upgrade-codefresh-cli)
 * Review [Hybrid runtime installation flags](#hybrid-runtime-installation-flags)
 * Make sure your ingress controller is configured correctly:
