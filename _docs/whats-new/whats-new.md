@@ -171,7 +171,7 @@ Analysis Run now shows the manifest in addition to the run results.
 %}
 
 {::nomarkdown}
-<br><br>
+<br>
 {:/}
 
 ### Bug fixes
@@ -212,6 +212,7 @@ Analysis Run now shows the manifest in addition to the run results.
 **Delivery Pipelines and workflows**
 * 100% CPU consumption for workflows with more than 20 nodes.
 * Discard Changes button enabled when there are no changes. 
+
 
 ## September 2022
 
