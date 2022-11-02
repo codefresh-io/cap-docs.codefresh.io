@@ -19,14 +19,23 @@ Built on Argo, the world’s most popular and fastest-growing open source softwa
 {:/}
 
 #### Kubernetes version runtime support
-We now support Kubernetes server versions, 1.21 and higher.
+We now support Kubernetes server versions 1.21 and higher.
+
+{::nomarkdown}
+<br>
+{:/}
 
 #### Request Routing Service for runtimes
 We have changed the routing mechanism for hybrid runtimes. URL requests and webhooks are now routed through a new internal routing service instead of through the ingress controller.  
 
-The change is effective from runtime version 0.0.543 and higher. If you already have runtimes installed, this change does not require any action from you, if want to upgrade to the new runtime version or continue with existing runtime versions. Older runtimes continue to use the ingress controller for routing purposes.  
+The change is effective from runtime version 0.0.543 and higher. If you already have runtimes installed, this change does not require any action from you, both to upgrade to the new runtime version or retain existing runtimes. Older runtimes continue to use the ingress controller for routing purposes.  
 
-See 
+See [Hybrid runtime architecture]({{site.baseurl}}/docs/getting-started/architecture/#hybrid-runtime-architecture) and [Request Routing Service]({{site.baseurl}}/docs/getting-started/architecture/#request-routing-service).
+
+{::nomarkdown}
+<br>
+{:/}
+
 #### More Git providers for runtimes
 Codefresh runtimes now support GitHub Enterprise, GitLab, and Bitbucket as Git providers, apart from GitHub, which is the default.
  
@@ -36,7 +45,11 @@ Each Git provider requires runtime tokens with specific scopes and has specific 
 
 Note that GitLab cloud is not supported for hosted runtimes.
 
+See [Git provider and repo flags]({{site.baseurl}}/docs/runtime/installation/#git-provider-and-repo-flags).
 
+{::nomarkdown}
+<br>
+{:/}
 
 ### Turn off notifications for runtimes
 Codefresh alerts you to runtimes that are insecure or have invalid or expired Git personal access tokens. You can turn off these notifications selectively for runtimes for which these alerts are less critical, such as non-production runtimes.  
@@ -66,30 +79,37 @@ Runtimes with disabled notifications are prefixed with an icon as in the picture
     max-width="80%"
 %}
 
+{::nomarkdown}
+<br>
+{:/}
+
 #### Rollout Player for deployments
 Managing ongoing rollouts during a deployment is now simple with the Rollout Player. Clicking the rollout name in Timeline > Updated Services, displays both the visualization of the steps in the rollout and the Rollout Player. With the Rollout Player you can control individual steps in an ongoing rollout and even promote the rollout to a release.
  
 {% include
  image.html
  lightbox="true"
- file="/images/whats-new/rel-notes-oct22-rollout-player.png"
- url="/images/whats-new/rel-notes-oct22-rollout-player.png"
+ file="/images/whats-new/rel-notes-oct-22-rollout-player.png"
+ url="/images/whats-new/rel-notes-oct-22-rollout-player.png"
  alt="Rollout Player"
  caption="Rollout Player"
-    max-width="60%"
+    max-width="40%"
 %}
 
 
 The Rollput Player allows you to:
-* Resume an indefinitley paused step without waiting for the specified duration 
+* Resume an indefinitley paused step 
 * Forward a step by skipping its execution 
 * Promote the rollout to deployment by skipping remaining pause, analysis
 
+{::nomarkdown}
+<br>
+{:/}
 
 #### Context menu for application resources
 We have enhanced the functionality for application resources in the Current State tab with the context menu for resources. The options available differ according to the type of resource.  
 
-As the context menu is fully compatible with open source custom actions, any custom action you add is automatically displayed and available. 
+<!---As the context menu is fully compatible with open source custom actions, any custom action you add is automatically displayed and available. -->
 
 **On-demand sync for individual application resources**  
 Sync is a context menu option available for all resources that track sync status. You can sync individual resources as needed or when out-of-sync without synchronizing or refreshing the application. 
@@ -101,7 +121,7 @@ Sync is a context menu option available for all resources that track sync status
  url="/images/whats-new/rel-notes-oct-22-sync-context-menu.png"
  alt="Sync option in resource context menu"
  caption="Sync option in resource context menu"
-    max-width="40%"
+    max-width="50%"
 %}  
 
 **Rollout resource actions**  
@@ -114,8 +134,12 @@ The context menu for `rollout` resource types have actions to control the rollou
  url="/images/whats-new/rel-notes-oct22-rollout-context-menu.png"
  alt="Context menu options for Rollout resource"
  caption="Context menu options for Rollout resource"
-    max-width="40%"
+    max-width="50%"
 %} 
+
+{::nomarkdown}
+<br>
+{:/}
 
 #### Other enhancements
 
@@ -133,7 +157,7 @@ The list of filters for Application Type in the Applications dashboard includes 
 %}
 
 
-**Manifests for Analysis Runs**
+**Manifests for Analysis Runs**  
 Analysis Run now shows the manifest in addition to the run results.
 
 {% include
@@ -146,6 +170,9 @@ Analysis Run now shows the manifest in addition to the run results.
     max-width="40%"
 %}
 
+{::nomarkdown}
+<br><br>
+{:/}
 
 ### Bug fixes
 
@@ -171,7 +198,7 @@ Analysis Run now shows the manifest in addition to the run results.
 
 **Applications**  
 * Applications deleted in Git displayed as errors, or as Missing in Codefresh.  
-* Tagging/untagging favorite application breaks relations (CR-14737 Olek)
+* Tagging/untagging favorite application breaks relationship to parent application.
 * Application definitions validation for cluster URL that does not exist shows wrong entity type.
 * Incorrect number of replicas for previous image in Applications dashboard.
 * Mismatch between information reported for cluster and namespace in Applications dashboard and Images.
