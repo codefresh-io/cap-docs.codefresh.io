@@ -105,7 +105,7 @@ It receives requests from the Ingress Controller, and forwards the request URLs 
 
 > Important:  
   The Request Routing Service is available from runtime version 0.0.543 and higher.  
-  Older runtime versions are not affected as there is complete backward compatibility. The Ingress Controller continues to route incoming requests.
+  Older runtime versions are not affected as there is complete backward compatibility, and the Ingress Controller continues to route incoming requests.
 
 {::nomarkdown}
 <br>
