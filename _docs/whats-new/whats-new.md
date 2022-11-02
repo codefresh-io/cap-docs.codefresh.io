@@ -7,6 +7,7 @@ redirect_from:
 toc: true
 ---
 
+
 Built on Argo, the world’s most popular and fastest-growing open source software delivery, Codefresh unlocks the full enterprise potential of Argo Workflows, Argo CD, Argo Events, and Argo Rollouts, providing a control-plane for managing them at scale.  
 
 
@@ -212,6 +213,7 @@ Analysis Run now shows the manifest in addition to the run results.
 **Delivery Pipelines and workflows**
 * 100% CPU consumption for workflows with more than 20 nodes.
 * Discard Changes button enabled when there are no changes. 
+
 
 ## September 2022
 
@@ -462,6 +464,8 @@ max-width="60%"
 **Integrations**
 * Docker Hub integration list appears empty until refreshed even when there are integrations.
 * Test Connection option disabled when integration name is not defined.
+
+
 
 
 ## July 2022
@@ -768,7 +772,7 @@ By the very nature of its design, the Tree View allows progressive discovery. Vi
 
 **Resource filters**  
 
-The filters in the List view are available also in the Tree view. These global filters help narrow the scope of the resources displayed, by kind, health status, and sync state. The filters set in either the List or Tree views are retained when navigating between them.   
+The filters in the List view are available also in the Tree view. These global filters help narrow the scope of the resources displayed, by kind, health status, and sync state. The filters set in either the List or Tree vies are retained when navigating between them.   
 
 **Resource search and find**  
 
@@ -795,7 +799,7 @@ For details, see [Current State Tree view]({{site.baseurl}}/docs/deployment/appl
 In addition to installing Argo Rollouts in your cluster, visualize Argo Rollout history and progress directly in the Applications (deployment) dashboard. Visualize rollouts from multiple clusters and runtimes in a single centralized location through the Deployment tab.
 
 **Rollout progress**
-Ongoing rollouts show the progress of the rollout in real time. Completed rollouts show the switch to the new version according to the deployment strategy. 
+Ongoing rollouts show the progress of the rollout in the real time. Completed rollouts show the switch to the new version according to the deployment strategy. 
 
 {% include 
 	image.html 
@@ -926,7 +930,7 @@ For details, see [Runtime installation flags]({{site.baseurl}}/docs/runtime/inst
 
 #### Internal and external ingress hosts 
 Codefresh runtimes support defining two ingress hosts, an internal and an external ingress host, for private and public networks. Previously, runtimes supported a single ingress host for both the app-proxy and webhook ingress resources. Internal and external ingress separation allows you to expose the Codefresh app-proxy service only within your private network, while keeping the webhook ingress unchanged.  
-* New runtime installations: The `--internal-ingress-host` flag lets you define an ingress host for communication with the app-proxy. For details, see [Runtime installation flags]({{site.baseurl}}/docs/runtime/installation/#runtime-installation-flags).
+* New runtime installations: The `--internal-ingress-host` flag lets you can define an ingress host for communication with the app-proxy. For details, see [Runtime installation flags]({{site.baseurl}}/docs/runtime/installation/#runtime-installation-flags).
 * Existing runtimes: To add an internal ingress host, you need to commit changes to the installation repository by modifying `app-proxy ingress` and `<runtime-name>.yaml`.   
 For details, see _Internal ingress host configuration (optional)_ in [Post-installation configuration]({{site.baseurl}}/docs/runtime/installation#post-installation-configuration).  
 
