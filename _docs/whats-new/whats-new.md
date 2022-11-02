@@ -14,24 +14,29 @@ Built on Argo, the world’s most popular and fastest-growing open source softwa
 ## October 2022
 
 ### Features & enhancements
+{::nomarkdown}
+<br>
+{:/}
+
+#### Kubernetes version runtime support
+We now support Kubernetes server versions, 1.21 and higher.
 
 #### Request Routing Service for runtimes
-We have changed the routing mechanism for hybrid runtimes. A dedicated Request Routing Service installed on the same cluster as the Codefresh hybrid runtime routes request URLs and webhooks. The Ingress Controller now forwards the requests to the Request Routing Service which routes URL requests to the Application Proxy and webhooks to the Event Sources.  
+We have changed the routing mechanism for hybrid runtimes. URL requests and webhooks are now routed through a new internal routing service instead of through the ingress controller.  
 
-The Request Routing Service is available from runtime version 0.0.543 and higher.  
-Existing runtimes are not affected as there is complete backward compatibility. URL requests continue to be routed through the Ingress Controller to the Application Proxy. Webhooks for existing runtimes are routed through the Routing Service to Event Sources.  
+The change is effective from runtime version 0.0.543 and higher. If you already have runtimes installed, this change does not require any action from you, if want to upgrade to the new runtime version or continue with existing runtime versions. Older runtimes continue to use the ingress controller for routing purposes.  
 
-See ???? 
+See 
 #### More Git providers for runtimes
-Codefresh runtimes support GitHub Enterprise, GitLab, and Bitbucket as Git providers, apart from GitHub. which is the default.
+Codefresh runtimes now support GitHub Enterprise, GitLab, and Bitbucket as Git providers, apart from GitHub, which is the default.
  
-When installing a hybrid or hosted runtime for your account, you can define the Git provider of choice. Because Codefresh creates a configuration repository that is shared with subsequent runtimes in the same account, you cannot change the Git provider for a different runtime in the same account.  
+When installing the first hybrid or hosted runtime for your account, you can define the Git provider of choice. Because Codefresh creates a configuration repository that is shared with subsequent runtimes in the same account, you cannot change the Git provider for a different runtime in the same account. 
+
+Each Git provider requires runtime tokens with specific scopes and has specific installation requirements. Once installed, you can authorize access to the Git provider through OAuth or a personal access token.
+
 Note that GitLab cloud is not supported for hosted runtimes.
 
-Each Git provider requires runtime tokens with specific scopes and has specific installation requirements.
-See????
 
-You can then authorize access to the Git provider through OAuth or a personal access token. 
 
 ### Turn off notifications for runtimes
 Codefresh alerts you to runtimes that are insecure or have invalid or expired Git personal access tokens. You can turn off these notifications selectively for runtimes for which these alerts are less critical, such as non-production runtimes.  
@@ -76,7 +81,7 @@ Managing ongoing rollouts during a deployment is now simple with the Rollout Pla
 
 
 The Rollput Player allows you to:
-* Resume a paused step without waiting for the specified duration 
+* Resume an indefinitley paused step without waiting for the specified duration 
 * Forward a step by skipping its execution 
 * Promote the rollout to deployment by skipping remaining pause, analysis
 
@@ -115,7 +120,7 @@ The context menu for `rollout` resource types have actions to control the rollou
 #### Other enhancements
 
 **Git Sources as Application Type filter**  
-The list of filters for Application Type in the Applications dashboard includes the Git Source filter. Filtering by Git Source shows `Git Source Apps` that sync repositories with other resources in addition to application resources.  
+The list of filters for Application Type in the Applications dashboard includes the Git Source filter. Filtering by Git Source shows `Git Source Apps` which are applications created by Codefresh that store definitions of Argo Project resources.  
 
 {% include
  image.html
@@ -153,7 +158,7 @@ Analysis Run now shows the manifest in addition to the run results.
 * 500: Internal Server Error when adding cluster command to hosted runtime.
 * Commit SHA link in Activity Log goes to the Home page instead of to the Commit URL for the Git provider.
 * Ingress controller errors for cluster even when `skip-ingress` flag is defined.
-* Retry mechanism requests cause delay in Git integration checks. (CR-14659 Oleg)
+* Retry mechanism requests cause delay in Git integration checks. 
 * For hosted runtimes, Git Source is not displayed though the Connect to Git provider step is marked as complete.
 * No option to log out on selecting invalid authentication mode.
 * Removing a managed cluster does not display any indication in Codefresh UI.
