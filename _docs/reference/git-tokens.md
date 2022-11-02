@@ -31,6 +31,9 @@ Codefresh requires two types of Git tokens for authentication:
 ### Git runtime tokens
 The Git runtime token is mandatory for runtime installation.
 
+{::nomarkdown}
+</br>
+{:/}
 
 #### GitHub and GitHub Enterprise runtime token scopes
 
@@ -50,13 +53,15 @@ The Git runtime token is mandatory for runtime installation.
 </br>
 {:/}
 
-### Bitbucket Cloud & Bitbucket Server runtime token scopes
+#### Bitbucket Cloud & Bitbucket Server runtime token scopes
 
 * `Project admin`
 * `Repository write`
 * `Project read`
 
-
+{::nomarkdown}
+</br></br>
+{:/}
 
 ### Git personal tokens
 The Git personal token is a user-specific personal access token per provisioned runtime. Unique to each user, it is required after installation to authenticate Git-based actions per runtime in Codefresh. 
