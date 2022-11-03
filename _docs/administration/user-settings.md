@@ -50,9 +50,9 @@ Authorize Git access with OAuth2 if your account admin has set up Codefresh as a
 Make sure you have:
 * For Bitbucket only, your Bitbucket account username
 * If needed, a _personal access token_ from your Git provider with the required scopes 
-  * [GitHub]({{site.baseurl}}/docs/reference/git-tokens/#github-tokens)
+  * [GitHub]({{site.baseurl}}/#generate-github-personal-access-tokens)
   * [GitLab]({{site.baseurl}}/#generate-gitlab-personal-access-tokens)
-  * [Bitbucket]({{site.baseurl}}/docs/reference/git-tokens/#bitbucket-tokens)
+  * [Bitbucket]({{site.baseurl}}/#generate-bitbucket-personal-access-tokens)
 
 
 **How to**
