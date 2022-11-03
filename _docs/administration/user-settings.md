@@ -18,7 +18,11 @@ As a user in Codefresh, you can manage your account by authorizing access to you
   Or, you can always generate a personal access token from your Git provider and then add the same to Codefresh to authorize access.  
 
   > If you have access to more than one runtime, you can use the same token for multiple runtimes.  
-    You must however authorize access individually for each runtime.   
+    You must however authorize access individually for each runtime.  
+
+{::nomarkdown}
+</br>
+{:/} 
 
 ### Enable access for Codefresh support
 Enable Codefresh support personnel to access your user account. Access to your account is useful for visibility during troubleshooting.  
@@ -40,16 +44,20 @@ You can disable this security setting at any time.
    max-width="50%" 
 %}
 
+{::nomarkdown}
+</br>
+{:/}
 
 ### Authorize Git access in Codefresh
 Authorize Git access with OAuth2 if your account admin has set up Codefresh as an OAuth application, or alternatively through personal access tokens from your Git provider.  
 >Notes:  
   For OAuth2:  The adminstrator pre-configures the permissions and expiry date. Once you supply your credentials for authorization, you are automatically directed to the Git Personal Tokens page. 
 
-**Before you begin**
+**Before you begin**  
+
 Make sure you have:
 * For Bitbucket only, your Bitbucket account username
-* If needed, a _personal access token_ from your Git provider with the required scopes 
+* If needed, a _personal access token_ from your Git provider with the required scopes:
   * [GitHub]({{site.baseurl}}/#generate-github-personal-access-tokens)
   * [GitLab]({{site.baseurl}}/#generate-gitlab-personal-access-tokens)
   * [Bitbucket]({{site.baseurl}}/#generate-bitbucket-personal-access-tokens)
@@ -60,27 +68,29 @@ Make sure you have:
 1. Select the runtime, and then do one of the following:
   * To add a token, select **Add Token**.
   * To update an existing token by replacing it with a new token, select **Update Token**.
-1. For OAuth2:
+1. For **OAuth2**:
     > If the application is not registered, the button is disabled. Contact your admin for help.  
    * Click **Authorize Access to GitHub**.
    * Enter your credentials, and select **Sign In**.
    * Complete the verification if required, as when two-factor authentication is configured, for example.
 <!---add new screenshot> -->
 
-{:start="4"}
-1. For Git personal access tokens:  
+
+  For **Git personal access tokens**:  
   * Expand **Advanced authorization options**. 
   * For Bitbucket, enter your **Bitbucket username**. 
-  * In the **Git Personal Access Token** field, paste the token you generated.
+  * In the **Personal Access Token** field, paste the token you generated.
 
 <!---add new screenshot> -->
 
 
 {:start="5"}
-1. Click **Add Token**.
+1. Click **Add Token**.  
   In the Git Personal Access Tokens list, you can see that the new token is assigned to the runtime. 
 
-
+{::nomarkdown}
+</br>
+{:/}
 
 #### Generate GitHub personal access tokens 
 
@@ -104,6 +114,10 @@ Make sure you have:
 {:start="4"}  
 1. Copy the personal access token generated as you will need it to authorize access.
 
+{::nomarkdown}
+</br>
+{:/}
+
 #### Generate GitLab personal access tokens
 
 1. Log in to your GitLab Cloud or Server account.
@@ -125,6 +139,10 @@ Make sure you have:
 
 {:start="4"}  
 1. Copy the personal access token generated as you will need it to authorize access.
+
+{::nomarkdown}
+</br>
+{:/}
 
 #### Generate Bitbucket personal access tokens
 Bitbucket requires your Bitbucket account name and a personal access token to authorize access.  
@@ -148,8 +166,12 @@ Bitbucket requires your Bitbucket account name and a personal access token to au
    max-width="50%" 
   %}
 
+{:start="4"}
 1. Copy the personal access token generated as you will need it to authorize access.
 
-  
+{::nomarkdown}
+</br>
+{:/}
+ 
 ### Related articles  
 [Git tokens in Codefresh]({{site.baseurl}}/docs/reference/git-tokens/)
