@@ -14,21 +14,19 @@ Hybrid environments:
 
 
 
-The sections that follow illustrate the architectures of the different installation environemtns, starting with the high-level overview of the Codefresh Platform,  amd  describe the main components in the Codefresh Platform.
+The sections that follow illustrate the architectures of the different installation environments, starting with a high-level overview of the Codefresh Platform.
 
 ### Codefresh architecture
 
-The diagram shows a high-level overview of the Codefresh Platform. 
-As you can see, the Codefresh Control Plane, the Codefresh Runtime, and the Codefresh Clients are core components in the Codefresh solution. 
-Additional components are installed depending on the type of runtime selected.
+The diagram shows a high-level view of the Codefresh Platform and its core components, the Codefresh Control Plane, the Codefresh Runtime, and the Codefresh Clients. 
 
 {% include
    image.html
    lightbox="true"
    file="/images/getting-started/architecture/arch-codefresh-simple.png"
  url="/images/getting-started/architecture/arch-codefresh-simple.png"
-  alt="Codefresh architecture"
-  caption="Codefresh architecture"
+  alt="Codefresh Platform architecture"
+  caption="Codefresh Platform architecture"
   max-width="100%"
 %}
 
@@ -66,6 +64,7 @@ The Codefresh Runtime:
 {::nomarkdown}
 <br>
 {:/}
+
 #### Codefresh Clients
 
 Codefresh Clients include the Codefresh UI and the Codefresh CLI.  
@@ -84,14 +83,19 @@ Codefresh Clients include the Codefresh UI and the Codefresh CLI.
   The Codefresh CLI includes commands to install hybrid runtimes, add external clusters, and manage runtimes and clusters.
 
 ### Codefresh runtime architecture
-Zoom in  we can zoom in on the different archiectures and components in Codefresh Runtimes.
+The sections that follow show detailed views of runtime architecture for the different installation environments, and the Codefresh Runtime components.
 
-* Hosted GitOps runtime architecture
-* Hybrid runtime architecure:
+* [Hosted GitOps runtime architecture](#hosted-gitops-runtime-architecture)
+* Hybrid runtime architecture:
   * [Ingress-based](#ingress-based-hybrid-runtime-architecture)
   * [Ingress-less](#ingress-less-hybrid-runtime-architecture)
 * Runtime components
-  * 
+  * [Codefresh Application Proxy](#codefresh-application-proxy)
+  * [Argo Project](#argo-project)
+  * [Request Routing Service](#request-routing-service)
+  * [Codefresh Tunnel Server](#codefresh-tunnel-server)
+  * [Codefresh Tunnel Client](#codefresh-tunnel-client)
+
 
 #### Hosted GitOps runtime architecture
 In the hosted environment, the Codefresh Runtime is located on a K8s cluster managed by Codefresh. 
@@ -107,7 +111,7 @@ In the hosted environment, the Codefresh Runtime is located on a K8s cluster man
 %}
 
 #### Ingress-based hybrid runtime architecture
-For ingress-based runtimes in hybrid installation environments, the Codefresh Runtime is located on the customer's K8s cluster, and managed by the customer. An Ingress Controller controls communication between ethe Code from the customer's organizational systems, Codefresh and Git clients, and fro
+For ingress-based runtimes in hybrid installation environments, the Codefresh Runtime is located on the customer's K8s cluster, and managed by the customer. An Ingress Controller controls communication between the client cluster and other systems.
 
 
 
@@ -121,7 +125,7 @@ For ingress-based runtimes in hybrid installation environments, the Codefresh Ru
   max-width="100%"
 %}
 
-### Ingress-less hybrid runtime architecture
+#### Ingress-less hybrid runtime architecture
 
 > Hybrid runtimes can be installed with an ingress controller. See 
 
@@ -165,8 +169,14 @@ The Argo Project includes:
 <br><br>
 {:/}
 
+#### Request Routing Service
+The Request Routing Service is installed on the same cluster as the Codefresh Runtime in the customer environment. It receives requests from the Ingress Controller, and forwards the request URLs to the Application Proxy, and webhooks directly to the Event Sources.
 
-##### Codefresh Tunnel Server
+>Important:  
+The Request Routing Service is available from runtime version 0.0.543 and higher.
+Older runtime versions are not affected as there is complete backward compatibility, and the Ingress Controller continues to route incoming requests.
+
+#### Codefresh Tunnel Server
 Applies only to _ingress-less_ runtimes in hybrid installation environments.  
 The Codefresh Tunnel Server is installed in the Codefresh platform. It communicates with the enterprise cluster located behind a NAT or firewall.  
 
@@ -194,17 +204,15 @@ The Codefresh Tunnel Client:
 {:/}
 
 
-
 ### Customer environment
 The customer environment that communicates with the Codefresh platform, generally includes:
-* Ingress controller for hybrid runtimes  
-  The ingress controller is configured on the same Kubernetes cluster as the Codefresh Runtime in hybrid runtime environments. It implements the ingress traffic rules for the Codefresh Runtime. 
+* Ingress controller for ingress-based hybrid runtimes  
+  The ingress controller is configured on the same Kubernetes cluster as the Codefresh Runtime, and implements the ingress traffic rules for the Codefresh Runtime. 
   See [Ingress controller requirements]({{site.baseurl}}/docs/runtime/requirements/#ingress-controller).
 * Managed clusters  
-  Managed clusters are external clusters registered to provisioned hosted or hybrid runtimes to which to deploy applications.  
-  * Hosted runtime: Requires you to connect at least one external K8s cluster as part of setting up the Hosted GitOps environment. 
-  * Hybrid runtimes: You can add external clusters after provisioning hybrid runtimes. 
-  See [Add external clusters to runtimes]({{site.baseurl}}/docs/runtime/managed-cluster/).
+  Managed clusters are external clusters registered to provisioned hosted or hybrid runtimes for application deployment.  
+  Hosted runtimes requires you to connect at least one external K8s cluster as part of setting up the Hosted GitOps environment.  
+  For hybrid runtimes, you can add external clusters after provisioning them. 
 * Organizational systems  
   Organizational Systems include the customer's tracking, monitoring, notification, container registries, Git providers, and other systems. They can be entirely on-premises or in the public cloud.   
   Either the Ingress Controller (ingress-based hybrid environments), or the Codefresh Tunnel Client (ingress-less hybrid environments), forwards incoming events to the Codefresh Application Proxy. 
@@ -212,6 +220,7 @@ The customer environment that communicates with the Codefresh platform, generall
 ### Related articles
 [Set up a hosted runtime environment]({{site.baseurl}}/docs/runtime/hosted-runtime/)  
 [Install a hybrid runtime]({{site.baseurl}}/docs/runtime/installation/)
+[Add external clusters to runtimes]({{site.baseurl}}/docs/runtime/managed-cluster/)
 
 
 
