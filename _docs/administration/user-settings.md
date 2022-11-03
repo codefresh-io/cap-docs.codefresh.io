@@ -13,7 +13,10 @@ As a user in Codefresh, you can manage your account by authorizing access to you
 * Authorize Git providers  
   The Git personal token is a user-specific access token, required to authenticate Git-based actions from Codefresh clients, per provisioned runtime.  
 
+
   The authorization method depends on the Git provider and on what authorization has been set up by your account admin.
+
+
   If your admin has set up authentication with OAuth2, you can authorize access using OAuth2.  
   Or, you can always generate a personal access token from your Git provider and then add the same to Codefresh to authorize access.  
 
@@ -127,7 +130,7 @@ Make sure you have:
   * Expiration date
   * Select these scopes: `read_api', 'read_user`, `read_repository`
 
-  {% include 
+ {% include 
    image.html 
    lightbox="true" 
    file="/images/administration/user-settings/gitlab-pat-scopes.png" 
@@ -140,12 +143,15 @@ Make sure you have:
 {:start="4"}  
 1. Copy the personal access token generated as you will need it to authorize access.
 
+
+
+
 {::nomarkdown}
 </br>
 {:/}
 
 #### Generate Bitbucket personal access tokens
-Bitbucket requires your Bitbucket account name and a personal access token to authorize access.  
+
 
 1. Log in to your Bitbucket Cloud or Server account.
 1. Select **Personal Settings > App passwords**.
@@ -172,6 +178,6 @@ Bitbucket requires your Bitbucket account name and a personal access token to au
 {::nomarkdown}
 </br>
 {:/}
- 
+
 ### Related articles  
 [Git tokens in Codefresh]({{site.baseurl}}/docs/reference/git-tokens/)
