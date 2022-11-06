@@ -1,30 +1,13 @@
 ---
-title: "Set up OAuth2 authentication"
+title: "Set up OAuth2 authentication for Git providers"
 description: ""
 group: administration
 toc: true
 ---
 
-Easily Connect Codefresh to your Git provider using OAuth2 for authorization. 
-Codefresh integrates with Git to sync repositories to your clusters, implementing Git-based operations when creating resources such as Delivery Pipelines, and to enrich Images with valuable information.
+Codefresh integrates with the Git provider defined for your runtime account to sync repositories to your clusters, implementing Git-based operations when creating resources such as Delivery Pipelines, applications, and enriching images with valuable information.  
 
-
-Codefresh supports OAuth2 or personal access tokens (PATs) for authentication:
-
-* OAuth2 with Codefresh OAuth Application or custom OAuth2 Application
-
-  OAuth2 is the preferred authentication mechanism, supported for popular Git providers such as GitHub, GitHub Enterprise, GitLab Cloud and Server, and Bitbucket Cloud and Server. You have the option to use the default pre-defined Codefresh OAuth Application, or your own Oauth2 Application in your Git account. 
-  To use your own Oauth2 GitHub Application, create a secret on your K8s cluster, and configure OAuth2 access in Authentication > Settings. See [Create a custom OAuth2 provider account](#create-a-custom-oauth2-provider-account) in this article.
-  
-
-  > A runtime can have only one active account for authentication. 
-
-* Token-based authentication using PAT  
-  With token-based authentication, users must generate personal access tokens from their Git providers with the required scopes and enter their personal access tokens when prompted to authorize access. Token-based authentication for users is described in [Authorize Git access in Codefresh]({{site.baseurl}}/docs/administration/user-settings/#authorize-git-access-in-codefresh).
-
-
-### Authentication provider accounts
-The authentication accounts created for a provider are displayed in [Authentication](https://g.codefresh.io/2.0/account-settings/authentication?providerName=github){:target="\_blank"}.  
+As the account administrator, you can select the authentication method for a runtime account. Users in Codefresh will then authorize access to the Git providers through the defined mechanism.  
 
 {% include 
    image.html 
@@ -33,29 +16,65 @@ The authentication accounts created for a provider are displayed in [Authenticat
    url="/images/authentication/authentication-list.png" 
    alt="Git provider authentication accounts" 
    caption="Git provider authentication accounts"
-   max-width="60%" 
+   max-width="80%" 
    %}
-The authentication accounts are organized by Runtimes. Every runtime can have a single authentication account.   
-The Type column identifies the provider account type as either Codefresh or Custom. You can change the provider type to Codefresh or Custom or select manual token entry as the authentication method.  
+
+Codefresh supports OAuth2 or personal access tokens (PATs) for authentication:  
+
+* OAuth2 with Codefresh OAuth Application or custom OAuth2 Application  
+  OAuth2 is the preferred authentication mechanism, supported for popular Git providers such as GitHub, GitHub Enterprise, GitLab Cloud and Server, and Bitbucket Cloud and Server.  
+  You have the option to use the default predefined Codefresh OAuth Application, or a custom Oauth2 Application for Codefresh in your Git provider account.  
+  Hosted runtime accounts automatically use Codefresh's predefined OAuth Application.  
+  To use a custom Oauth2 Application for Codefresh, first create the application in your Git provider account, then create a secret on your K8s cluster, and finally configure OAuth2 access for the custom application in Authentication > Settings. See [Create a custom OAuth2 Application for Git provider](#create-a-custom-oauth2-provider-account) in this article.
+
+* Token-based authentication using PAT  
+  With token-based authentication, users must generate personal access tokens from their Git providers with the required scopes and enter their personal access tokens when prompted to authorize access. See [Authorize Git access in Codefresh]({{site.baseurl}}/docs/administration/user-settings/#authorize-git-access-in-codefresh).
 
 
-### Create a custom OAuth2 provider account 
-Codefresh account administrators can create an OAuth2 Application in their Git provider accounts, and set up authentication within Codefresh. Users in Codefresh can then authorize access to the Git provider using OAuth2, instead of a personal access token.  
+
+### Authentication for Git providers and runtime accounts
+The [Authentication](https://g.codefresh.io/2.0/account-settings/authentication?providerName=github){:target="\_blank"} page displays the accounts by Git provider and the authentication method selected for the same.  
+
+Authentication accounts are organized by Runtimes. A runtime can have a single authentication account.   
+The Type column identifies the authentication for the provider account as either Codefresh, Custom, or PAT (personal access token). 
+
+{% include 
+   image.html 
+   lightbox="true" 
+   file="/images/authentication/authentication-list.png" 
+   url="/images/authentication/authentication-list.png" 
+   alt="Git provider authentication accounts" 
+   caption="Git provider authentication accounts"
+   max-width="80%" 
+   %}
+ 
+As the account administrator, you can change the authentication method for an account at any time to either Codefresh or Custom, or manual token entry. See [Select authentication mechanism for runtime](#select-authentication-mechanism-for-runtime).
+
+### Create a custom OAuth2 Application for Git provider 
+Create a custom OAuth2 Application for Codefresh in your Git provider accounts with the correct scopes, and set up authentication for the same within Codefresh. Users in Codefresh can then authorize access to the Git provider using OAuth2, instead of a personal access token.  
 
 Supported Git providers:
 * GitHub and GitHub Enterprise
 * GitLab Cloud and GitLab Server
 * Bitbucket Cloud (hosted) and Bitbucket Server (hybrid)
 
-To set up OAuth2 authorization for GitHub in Codefresh, you must:
-* [Create OAuth2 Application for Git provider](#create-oauth2-application-for-git-provider) 
-* [Create a K8s `secret` in the runtime cluster with OAuth2 Application credentials]
-* Configure OAuth2 settings in Codefresh to create a K8s `ConfigMap` that references the secret
+To set up OAuth2 authorization in Codefresh, you must:
+* [Create Custom OAuth2 Application in Git](#create-oauth2-application-for-git-provider) 
+* [Create a K8s `secret` in the runtime cluster](#step-2-create-a-k8s-secret-resource-in-the-runtime-cluster)
+* [Configure OAuth2 settings for Custom Application in Codefresh](#step-3-configure-oauth2-settings-in-codefresh)
 
-#### Step 1: Create OAuth2 Application for Git provider
+#### Step 1: Create a custom OAuth2 Application in Git
 Create and register an OAuth App under your organization to authorize Codefresh.  
 
-> Make sure your OAuth app has `repo` scope with write access to code. For more information, see [Scopes for OAuth apps](https://docs.github.com/en/developers/apps/building-oauth-apps/scopes-for-oauth-apps){:target="\_blank"}.   
+> Make sure you define the correct scopes for the custom application:
+  * GitHub: `repo`
+  * GitLab: `read_api', 'read_user`, `read_repository`
+  * Bitbucket: 
+    * **Permissions**: `Read`
+    * **Workspace membership**: `Read`
+    * **Webhooks**: `Read and write`
+    * **Repositories**: `Write`, `Admin`
+
 
 1. Follow the step-by-step instructions for your Git provider:
   **[GitHub]**(https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app){:target="\_blank"}
@@ -128,16 +147,16 @@ data:
    `kubectl apply -f <filename>`   
    
 
-#### Step 3: Configure OAuth2 settings in Codefresh 
+#### Step 3: Configure OAuth2 settings for Custom Application in Codefresh 
 
-To complete custom provider authentication, configure the settings for the OAuth2 Git application in Codefresh. Configuring the settings creates a K8s ConfigMap that references the OAuth secret credentials. When configuring the settings, you can work in Form mode, or directly update the YAML manifest. 
+To complete custom provider authentication, configure the settings for the Custom OAuth2 Application in Codefresh. Configuring the settings creates a K8s ConfigMap that references the OAuth secret credentials. When configuring the settings, you can work in Form mode, or directly update the YAML manifest. 
 
 >Important:  
   > The values for all the settings in the ConfigMap are the `keys` in the secret file. 
 
 1. In the Codefresh UI, go to [Authentication](https://g.codefresh.io/2.0/account-settings/authentication?providerName=github){:target="\_blank"}.
   The list always shows the default predefined Codefresh provider account and custom provider accounts created, organized by Runtime, Type (Codefresh or Custom) and Status. 
-1. From the list, select the runtime to which to apply the current configuration. 
+1. From the list, select the Git provider and the runtime to which to apply the current configuration. 
    >The runtime must be identical to the runtime to which you saved the K8s secret.
 1. Click **Edit** and then select **Use custom provider**.
    > If you have managed clusters registered to the selected runtime, the authentication account is available to all the clusters.  
@@ -184,7 +203,7 @@ To complete custom provider authentication, configure the settings for the OAuth
 
 You have completed the setup to authorize Codefresh as an OAuth App for your Git provider. 
 
-### Select authentication account for runtime
+### Select authentication mechanism for runtime
 For a Git provider and a runtime account, select the authentication mechanism: Codefresh account, Custom provider account if one exists, or token-based authentication.
 
 1. In the Codefresh UI, go to [Authentication](https://g.codefresh.io/2.0/account-settings/authentication?providerName=github){:target="\_blank"}.
