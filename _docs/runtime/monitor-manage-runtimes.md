@@ -184,7 +184,7 @@ You can retain the installation repo used to install the ingress-less runtime. T
 >Before uninstalling the ingress-less runtime, you can save specific patches in a temporary location or retrieve the same from the Git history, and re-apply them after installing the ingress-based runtime.
 
 **Before you begin**  
-* Make sure the ingress controller for the new runtime meets requirements and is configured as needed
+* Make sure the ingress controller for the new runtime meets [requirements and is configured as needed]({{site.baseurl}}/docs/runtime/requirements/)
 
 **How to**  
 1. Uninstall the ingress-less runtime, as described in [Uninstall provisioned runtimes](#uninstall-provisioned-runtimes) in this article.
