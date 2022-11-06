@@ -149,7 +149,7 @@ data:
 
 #### Step 3: Configure OAuth2 settings for Custom Application in Codefresh 
 
-To complete custom provider authentication, configure the settings for the Custom OAuth2 Application in Codefresh. Configuring the settings creates a K8s ConfigMap that references the OAuth secret credentials. When configuring the settings, you can work in Form mode, or directly update the YAML manifest. 
+Configure the settings for the Custom OAuth2 Application in Codefresh. Configuring the settings creates a K8s ConfigMap that references the OAuth secret credentials. When configuring the settings, you can work in Form mode, or directly update the YAML manifest. 
 
 >Important:  
   > The values for all the settings in the ConfigMap are the `keys` in the secret file. 
