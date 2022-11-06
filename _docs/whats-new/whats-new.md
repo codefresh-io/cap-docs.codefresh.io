@@ -7,16 +7,6 @@ redirect_from:
 toc: true
 ---
 
----
-title: "What's new in Codefresh?"
-description: ""
-group: whats-new
-redirect_from:
-  - /docs/whats-new/
-toc: true
----
-
-
 Built on Argo, the world’s most popular and fastest-growing open source software delivery, Codefresh unlocks the full enterprise potential of Argo Workflows, Argo CD, Argo Events, and Argo Rollouts, providing a control-plane for managing them at scale.  
 
 
