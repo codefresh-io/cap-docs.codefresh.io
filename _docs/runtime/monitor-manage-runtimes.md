@@ -9,9 +9,28 @@ toc: true
 ---
 
 
-The **Runtimes** page displays the provisioned runtimes in your account, both hybrid, and the hosted runtime if you have one. View runtime components and information in List or Topology view formats. Managed provisioned runtimes in the view mode that suits you.  
+The **Runtimes** page displays the provisioned runtimes in your account, both hybrid, and the hosted runtime if you have one.  
+View runtime components and information in List or Topology view formats, and upgrade, uninstall, and migrate runtimes.  
 
-> Unless specified otherwise, management options are common to both hybrid and hosted runtimes.
+{% include
+   image.html
+   lightbox="true"
+   file="/images/runtime/runtime-list-view.png"
+ url="/images/runtime/runtime-list-view.png"
+  alt="Runtime List View"
+  caption="Runtime List View"
+  max-width="70%"
+%}
+
+
+Manage provisioned runtimes: 
+* [Add managed clusters to hybrid or hosted runtimes]({{site.baseurl}}/docs/runtime/managed-cluster/))
+* [Add and manage Git Sources associated with hybrid or hosted runtimes]({{site.baseurl}}/docs/runtime/git-sources/))
+* [Upgrade provisioned hybrid runtimes](#hybrid-upgrade-provisioned-runtimes)
+* [Uninstall provisioned runtimes](#uninstall-provisioned-runtimes)
+* [Migrate ingress-less hybrid runtimes]((#hybrid-migrate-ingress-less-runtimes)) 
+
+> Unless specified otherwise, management options are common to both hybrid and hosted runtimes. If an option is valid only for hybrid runtimes, it is indicated as such.
 
 To monitor provisioned hybrid runtimes, including recovering runtimes for failed clusters, see [Monitor provisioned hybrid runtimes]({{site.baseurl}}/docs/runtime/monitoring-troubleshooting/).
 
@@ -76,16 +95,11 @@ Here is a description of the information in the Topology view.
 |**Health/Sync status** |The health and sync status of the runtime or cluster. {::nomarkdown}<ul><li><img src="../../../images/icons/error.png" display="inline-block"> indicates health or sync errors in the runtime, or a managed cluster if one was added to the runtime.</br> The runtime or cluster node is bordered in red and the name is colored red.</li> <li><img src="../../../images/icons/cf-sync-status.png" display=inline-block/> indicates that the runtime is being synced to the cluster on which it is provisioned.</li></ul> {:/} |
 |**Search and View options** | {::nomarkdown}<ul><li>Find a runtime or its clusters by typing part of the runtime/cluster name, and then navigate to the entries found. </li> <li>Topology view options: Resize to window, zoom in, zoom out, full screen view.</li></ul> {:/}|
 
-### Hybrid/hosted runtime management
 
-Work in either the List or Topology views to manage provisioned runtimes. If an option is valid only for hybrid runtimes, it is indicated as such.
 
-* Add managed clusters to hybrid or hosted runtimes (see [Adding & managing external clusters]({{site.baseurl}}/docs/runtime/managed-cluster/))
-* Add and manage Git Sources associated with hybrid or hosted runtimes (see [Adding & managing Git Sources]({{site.baseurl}}/docs/runtime/git-sources/))
-* Upgrade provisioned hybrid runtimes
-* Uninstall hybrid or hosted runtimes
 
-#### (Hybrid) Upgrade provisioned runtimes
+
+### (Hybrid) Upgrade provisioned runtimes
 
 Upgrade provisioned hybrid runtimes to install critical security updates or to install the latest version of all components. Upgrade a provisioned hybrid runtime by running a silent upgrade or through the CLI wizard.  
 If you have managed clusters for the hybrid runtime, upgrading the runtime automatically updates runtime components within the managed cluster as well.
@@ -161,7 +175,7 @@ For both silent or CLI-wizard based upgrades, make sure you have:
   * To manually define the shared configuration repo, add the `--shared-config-repo` flag with the path to the repo.
 1. Confirm to start the upgrade.
 
-#### Uninstall provisioned runtimes
+### Uninstall provisioned runtimes
 
 Uninstall provisioned hybrid and hosted runtimes that are not in use.  Uninstall a runtime by running a silent uninstall, or through the CLI wizard.  
 > Uninstalling a runtime removes the Git Sources and managed clusters associated with the runtime.
@@ -225,6 +239,20 @@ Pass the mandatory flags in the uninstall command:
 1. In your terminal, paste the command, and update the Git token value.
 1. Select the Kube context from which to uninstall the runtime, and then confirm the uninstall.
 1. If you get errors, run the uninstall command again, with the `--force` flag.
+
+### (Hybrid) Migrate ingress-less runtimes
+To migrate an ingress-less runtime to an ingress-based one, you must uninstall the ingress-less runtime and then install a runtime with an ingress controller. 
+You can retain the installation repo used to install the ingress-less runtime. Though empty after uninstalling the ingress-less The new installation creates the new manifests in this re
+
+
+>Before uninstalling the ingress-less runtime, you can save specific patches in a temporary location, or simply grab the same from the Git history, and re-apply them after installing the ingress-based runtime.
+
+**Before you begin**  
+* Make sure the ingress controller for the new runtime meets requirements and is configured as needed
+
+**How to**  
+1. Uninstall the ingress-less runtime, as described in [Uninstall provisioned runtimes](#uninstall-provisioned-runtimes) in this article.
+2. Install the new ingress-based runtime, as described in [Install hybrid runtimes]({{site.baseurl}}/docs/runtime/installation/).
 
 
 ### Related articles
