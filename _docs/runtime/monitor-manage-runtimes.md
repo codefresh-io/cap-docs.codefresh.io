@@ -175,6 +175,21 @@ For both silent or CLI-wizard based upgrades, make sure you have:
   * To manually define the shared configuration repo, add the `--shared-config-repo` flag with the path to the repo.
 1. Confirm to start the upgrade.
 
+
+### (Hybrid) Migrate ingress-less runtimes
+To migrate an ingress-less runtime to an ingress-based one, you must uninstall the ingress-less runtime and then install a runtime with an ingress controller. 
+You can retain the installation repo used to install the ingress-less runtime. Though empty after uninstalling the ingress-less The new installation creates the new manifests in this re
+
+
+>Before uninstalling the ingress-less runtime, you can save specific patches in a temporary location or retrieve the same from the Git history, and re-apply them after installing the ingress-based runtime.
+
+**Before you begin**  
+* Make sure the ingress controller for the new runtime meets requirements and is configured as needed
+
+**How to**  
+1. Uninstall the ingress-less runtime, as described in [Uninstall provisioned runtimes](#uninstall-provisioned-runtimes) in this article.
+2. Install the new ingress-based runtime, as described in [Install hybrid runtimes]({{site.baseurl}}/docs/runtime/installation/).
+
 ### Uninstall provisioned runtimes
 
 Uninstall provisioned hybrid and hosted runtimes that are not in use.  Uninstall a runtime by running a silent uninstall, or through the CLI wizard.  
@@ -239,20 +254,6 @@ Pass the mandatory flags in the uninstall command:
 1. In your terminal, paste the command, and update the Git token value.
 1. Select the Kube context from which to uninstall the runtime, and then confirm the uninstall.
 1. If you get errors, run the uninstall command again, with the `--force` flag.
-
-### (Hybrid) Migrate ingress-less runtimes
-To migrate an ingress-less runtime to an ingress-based one, you must uninstall the ingress-less runtime and then install a runtime with an ingress controller. 
-You can retain the installation repo used to install the ingress-less runtime. Though empty after uninstalling the ingress-less The new installation creates the new manifests in this re
-
-
->Before uninstalling the ingress-less runtime, you can save specific patches in a temporary location, or simply grab the same from the Git history, and re-apply them after installing the ingress-based runtime.
-
-**Before you begin**  
-* Make sure the ingress controller for the new runtime meets requirements and is configured as needed
-
-**How to**  
-1. Uninstall the ingress-less runtime, as described in [Uninstall provisioned runtimes](#uninstall-provisioned-runtimes) in this article.
-2. Install the new ingress-based runtime, as described in [Install hybrid runtimes]({{site.baseurl}}/docs/runtime/installation/).
 
 
 ### Related articles
