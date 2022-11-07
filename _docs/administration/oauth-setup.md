@@ -63,49 +63,46 @@ To set up OAuth2 authorization in Codefresh, you must:
 * [Create a K8s `secret` in the runtime cluster](#step-2-create-a-k8s-secret-resource-in-the-runtime-cluster)
 * [Configure OAuth2 settings for Custom Application in Codefresh](#step-3-configure-oauth2-settings-in-codefresh)
 
+{::nomarkdown}
+<br>
+{:/}
+
 #### Step 1: Create a custom OAuth2 Application in Git
 Create and register an OAuth App under your organization to authorize Codefresh.  
 
-> Make sure you define the correct scopes for the custom application:
-  * GitHub: `repo`
-  * GitLab: `read_api', 'read_user`, `read_repository`
-  * Bitbucket: 
-    * **Permissions**: `Read`
-    * **Workspace membership**: `Read`
-    * **Webhooks**: `Read and write`
-    * **Repositories**: `Write`, `Admin`
+1. Follow the step-by-step instructions for your Git provider:   
 
-
-1. Follow the step-by-step instructions for your Git provider:
-  **[GitHub]**(https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app){:target="\_blank"}
-     Notes:  
-     * For **Authorization callback URL**, enter this value:  
+  * [GitHub](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app){:target="\_blank"}:      
+    * For **Authorization callback URL**, enter this value:  
        `<ingressHost>/app-proxy/api/git-auth/github/callback`  
        where:  
        `<ingressHost>` is the IP address or URL of the ingress host in the runtime cluster.
-     * Make sure **Enable Device Flow** is _not_ selected. 
-     * Select **Register application**. 
+    * Make sure **Enable Device Flow** is _not_ selected. 
+    * Select **Register application**. 
        The client ID is automatically generated, and you are prompted to generate the client secret.
-     * Select **Generate a new client secret**, and copy the generated secret.  
+    * Select **Generate a new client secret**, and copy the generated secret.  
 
-   **[GitLab Cloud and Server]**(https://docs.gitlab.com/ee/integration/oauth_provider.html#user-owned-applications){:target="\_blank"} 
-    * For **Redirect URI**, enter this value:  
+  * [GitLab Cloud and Server](https://docs.gitlab.com/ee/integration/oauth_provider.html#user-owned-applications){:target="\_blank"}:   
+    * For **Redirect URI**, enter this value:   
       `<ingressHost>/app-proxy/api/git-auth/gitlab/callback`  
       where:  
-      `<ingressHost>` is the IP address or URL of the ingress host in the runtime cluster.
+      `<ingressHost>` is the IP address or URL of the ingress host in the runtime cluster.  
 
-  **[Bitbucket Cloud and Server]**(https://support.atlassian.com/bitbucket-cloud/docs/use-oauth-on-bitbucket-cloud/){:target="\_blank"}
+  * [Bitbucket Server](https://support.atlassian.com/bitbucket-cloud/docs/use-oauth-on-bitbucket-cloud){:target="\_blank"}:      
     * For **Callback URL**, enter this value:  
       `<ingressHost>/app-proxy/api/git-auth/bitbucket-server/callback`  
       where:  
       `<ingressHost>` is the IP address or URL of the ingress host in the runtime cluster.
 
+{:start="2"}
 1. Note down the following, as you will need them to create the K8s secret for the Git OAuth2 application:
   * GitHub: Application ID from the URL, Client ID, and the client secret  
   * GitLab Cloud and Server: Application ID and Secret
   * Bitbucket Server: Key and Secret
 
-
+{::nomarkdown}
+<br>
+{:/}
 
 #### Step 2: Create a K8s secret resource in the runtime cluster 
 Create a K8s secret in the runtime cluster, using the example below as a guideline. You must define the application ID (`appId`), client ID (`clientId`) and the client secret (`clientSecret`) from the OAuth2 Application you created in your Git provider, and the Git URL (`url`).  
@@ -146,6 +143,9 @@ data:
 1. Apply the secret to the runtime cluster:  
    `kubectl apply -f <filename>`   
    
+{::nomarkdown}
+<br>
+{:/}
 
 #### Step 3: Configure OAuth2 settings for Custom Application in Codefresh 
 
