@@ -88,7 +88,7 @@ Create and register an OAuth App under your organization to authorize Codefresh.
       where:  
       `<ingressHost>` is the IP address or URL of the ingress host in the runtime cluster.  
 
-  * [Bitbucket Server](https://support.atlassian.com/bitbucket-cloud/docs/use-oauth-on-bitbucket-cloud){:target="\_blank"}:      
+  * [Bitbucket Server](https://confluence.atlassian.com/adminjiraserver0902/configure-an-outgoing-link-1168853925.html){:target="\_blank"}:      
     * For **Callback URL**, enter this value:  
       `<ingressHost>/app-proxy/api/git-auth/bitbucket-server/callback`  
       where:  
