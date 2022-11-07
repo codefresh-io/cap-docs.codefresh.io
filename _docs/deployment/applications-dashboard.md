@@ -70,7 +70,7 @@ Here's a description of the information and actions in the Applications dashboar
 | --------------         | --------------           |  
 |Application filters       | Filter by a range of attributes to customize the information in the dashboard to bring you what you need. {::nomarkdown}  <ul><li>Application state<br>A snapshot that displays a breakdown of the deployed applications by their health status.<br>Click a status to filter by applications that match it.<br>Codefresh tracks Argo CD's set of health statuses. See the official documentation on <a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/health" target=”_blank”>Health sets. </a>.</li><li>Application attributes<br>Attribute filters support multi-selection, and results are based on an OR relationship within the same filter with multiple options, and an AND relationship between filters.<br>Clicking <b>More Filters</b> gives you options to filter by Health status, Cluster names, Namespace, and Type. <br><ul><li>Application Type: Can be any of the following<ul><li>Applications: Standalone applications. See the official documentation on <a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications" target=”_blank”>Applications</a>.</li><li>ApplicationSet: Applications created using the ApplicationSet Custom Resource (CR) template. An ApplicationSet can generate single or multiple applications. See the official documentation on <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/application-set" target=”_blank”>Generating Applications with ApplicationSet</a>.</li><li>Git Source: Applications created by Codefresh that includes other applications and CI resources. See <a href="https://codefresh.io/csdp-docs/docs/runtime/git-sources">Git Sources</a>.</li></ul></li></li><li>Labels:The K8s labels defined for the applications. The list displays labels of <i>all</i> the applications, even if you have applied filters.<br>To see the available labels, select <b>Add</b>, and then select the required label and one or more values. <br>To filter by the labels, select <b>Add</b> and then <b>Apply</b>.<br> See the official documentation on <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels" target=”_blank”>Labels and selectors</a>.</li></ul></ul>{:/}|
 |{::nomarkdown}<img src="../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/}| Star applications as favorites and view only the starred applications.{::nomarkdown}<br>Select the <img src="../../../images/icons/icon-mark-favorite.png?display=inline-block"> to star the application as a favorite.<br><br>To filter by favorite applications, on the filters bar, select <img src="../../../images/icons/icon-fav-starred.png?display=inline-block">.<br>{:/} TIP: If you star applications as favorites in the Applications dashboard, you can filter by the same applications in the [DORA metrics dashboard]({{site.baseurl}}/docs/reporting/dora-metrics/#metrics-for-favorite-applications).  |
-|Application actions| Options to monitor/manage applications through the application's context menu. {::nomarkdown}<ul><li>Quick view<br>A comprehensive read-only view of the deployment and definition information for the application.</li>{:/}See [Application Quick View](#view-deployment-and-configuration-info-for-selected-application) in this article.{::nomarkdown}<li>Synchronize/Sync<br>Manually synchronize the application.</li>{:/}See [Manually sync applications]({{site.baseurl}}/docs/deployment/manage-application/#manually-synchronize-an-application).{::nomarkdown}<li>Edit<br>Modify application definitions.</li>{:/}See [Edit application definitions]({{site.baseurl}}/docs/deployment/manage-application/#edit-application-definitions).{::nomarkdown}<li>Refresh and Hard Refresh: Available in Card view only. In List view, you must first select the application. <ul><li>Refresh: Retrieve desired (Git) state, compare with the live (cluster) state, and refresh the application to sync with the desired state.</li><li>Hard Refresh: Refresh the application to sync with the Git state, while removing the cache.</li></ul>{:/} 
+|Application actions| Options to monitor/manage applications through the application's context menu. {::nomarkdown}<ul><li>Quick view<br>A comprehensive read-only view of the deployment and definition information for the application.</li>{:/}See [Application Quick View](#view-deployment-and-configuration-info-for-selected-application) in this article.{::nomarkdown}<li>Synchronize/Sync<br>Manually synchronize the application.</li>{:/}See [Manually sync applications]({{site.baseurl}}/docs/deployment/manage-application/#manually-synchronize-an-application).{::nomarkdown}<li>Edit<br>Modify application definitions.</li>{:/}See [Edit application definitions]({{site.baseurl}}/docs/deployment/manage-application/#edit-application-definitions).{::nomarkdown}<li>Refresh and Hard Refresh: Available in Card view only. In List view, you must first select the application. <ul><li>Refresh: Retrieve desired (Git) state, compare with the live (cluster) state, and refresh the application to sync with the desired state.</li><li>Hard Refresh: Refresh the application to sync with the Git state, while removing the cache.</li></ul>{:/} |
 
 
 ### Identify applications with warnings/errors 
@@ -494,7 +494,7 @@ max-width="50%"
 
 ### Monitor deployments for selected application  
 Monitor an ongoing deployment for the selected application, and review its historical deployments. 
-The Timeline tab displays the history of deployments for the selected application, sorted by the most recent deployment (default), labelled **Current Version** at the top. 
+The Timeline tab displays the history of deployments for the selected application, sorted by the most recent deployment (default), labeled **Current Version** at the top. 
 
 The deployment chart displays the day-to-day deployments for the selected time period. Mouse over the dot on the deployment chart for information on historical deployments.  
 
@@ -540,7 +540,7 @@ lightbox="true"
 file="/images/applications/app-dashboard-time-expanded-card.png"
 url="/images/applications/app-dashboard-time-expanded-card.png"
 alt="Applications Dashboard: Deployment record for selected application in Timeline tab"
-caption="Applications Dashboard: Deployment record for selected applicatio in Timeline tab"
+caption="Applications Dashboard: Deployment record for selected application in Timeline tab"
 max-width="70%"
 %}
 
@@ -646,7 +646,7 @@ max-width="50%"
 %}
 
  
-The table lists the controls in the Rollout Player to manage an onging rollout.
+The table lists the controls in the Rollout Player to manage an ongoing rollout.
 
 : .table .table-bordered .table-hover}
 | Rollback player option   | Description |  
@@ -658,7 +658,7 @@ The table lists the controls in the Rollout Player to manage an onging rollout.
 
 
  
-##### View analyis run
+##### View analysis run
 If you have defined an analysis template for the rollout, you can check the run results and the manifest. 
  The result of an analysis run determines if the rollout is completed, paused, or aborted. For detailed information, see the [Analysis section in Argo Rollouts](https://argoproj.github.io/argo-rollouts/features/analysis/){:target="\_blank"}.  
 
@@ -669,8 +669,8 @@ image.html
 lightbox="true"
 file="/images/applications/app-rollout-analysis-template-step.png"
 url="/images/applications/app-rollout-analysis-template-step.png"
-alt="Rollout: Analaysis Metrics in Background Analysis"
-caption="Analysis Template: Analaysis Metrics in Background Analysis"
+alt="Rollout: Analysis Metrics in Background Analysis"
+caption="Analysis Template: Analysis Metrics in Background Analysis"
 max-width="50%"
 %}
 
@@ -688,7 +688,7 @@ max-width="50%"
 
 
 ### Monitor services for selected application
-The Services tab for  shows the K8s services for each deployment of the application. 
+The Services tab shows the K8s services for each deployment of the application. 
 Each service shows the number of replicas, the endpoint IP, the labels that reference the application, and the health status.  
 
 For more information, see the official documentation on [Services](https://kubernetes.io/docs/concepts/services-networking/service/){:target="\_blank"}.
