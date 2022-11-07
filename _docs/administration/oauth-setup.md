@@ -58,10 +58,14 @@ Supported Git providers:
 * GitLab Cloud and GitLab Server
 * Bitbucket Cloud (hosted) and Bitbucket Server (hybrid)
 
+{::nomarkdown}
+<br>
+{:/}
+
 To set up OAuth2 authorization in Codefresh, you must:
-* [Create Custom OAuth2 Application in Git](#step-1-create-a-custom-oauth2-application-in-git) 
-* [Create a K8s `secret` in the runtime cluster](#step-2-create-a-k8s-secret-resource-in-the-runtime-cluster)
-* [Configure OAuth2 settings for Custom Application in Codefresh](#step-3-configure-oauth2-settings-for-custom-application-in-codefresh)
+1. [Create Custom OAuth2 Application in Git](#step-1-create-a-custom-oauth2-application-in-git) 
+1. [Create a K8s `secret` in the runtime cluster](#step-2-create-a-k8s-secret-resource-in-the-runtime-cluster)
+1. [Configure OAuth2 settings for Custom Application in Codefresh](#step-3-configure-oauth2-settings-for-custom-application-in-codefresh)
 
 {::nomarkdown}
 <br>
