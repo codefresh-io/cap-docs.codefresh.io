@@ -1,5 +1,5 @@
 ---
-title: "Applications"
+title: "Creating applications"
 description: ""
 group: deployment
 toc: true
@@ -19,7 +19,7 @@ Codefresh provides all the options and functionality to create and manage Argo C
 
 * Edit and delete applications
   Once the application is created and synced to the cluster, it is displayed in the Applications dashboard. Here, you can select an application to update the application's configuration settings, or delete it.  
-  To monitor the health and sync status, deployments, and resources for the application, see [Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/).  
+  To monitor the health and sync status, deployments, and resources for the application, see [Monitoring applications]({{site.baseurl}}/docs/deployment/applications-dashboard/).  
 
 ### Application: Definitions
 Application definitions include the name, runtime, and the name of the YAML manifest. By default, the YAML manifest has the same name as that of the application. 

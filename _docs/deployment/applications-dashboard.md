@@ -5,26 +5,34 @@ group: deployment
 toc: true
 ---
 
-Monitor applications, deployments, application resources, and services in the Applications dashboard. As a one-stop shop for Argo Rollouts and Argo CD, the Applications dashboard in Codefresh delivers on the challenge of keeping track of your deployments, whatever the frequency and scale, across all clusters in your enterprise. A wide range of filters, progressive delivery views, and enriched CI and CD information, provide full traceability and visibility to your deployments. 
+Monitor applications across clusters, and the deployments, resources, and services for an application in the Applications dashboard. As a one-stop shop for Argo Rollouts and Argo CD, the Applications dashboard in Codefresh delivers on the challenge of keeping track of your applications and their deployments, whatever the frequency and scale, across all clusters in your enterprise. A wide range of filters, progressive delivery views, and enriched CI and CD information, provide full traceability and visibility to your deployments.  
 
+Select the view format for the Applications Dashboard, as either [List or Card views](#select-view-mode-for-the-applications-dashboard). The default view displays all applications deployed within the last 30 days. Customize the scope through filters to display the [information](#application-dashboard-information) you need.
 
+{% include
+image.html
+lightbox="true"
+file="/images/applications/app-dashboard-main-view.png"
+url="/images/applications/app-dashboard-main-view.png"
+alt="Applications Dashboard: List view"
+caption="Applications Dashboard: List view"
+max-width="60%"
+%}
 
-You can monitor different aspects of applications and deployments, including the application itself, its deployments, resources, and services.
-* [Monitoring applications](#monitoring-applications)  
-  Monitor  health and sync status of the application, andts resource . 
-  Visibility into deployments from all the clusters associated with the provisioned runtimes, in-cluster and managed
-* [Monitoring application resources](#monitoring-application-resources) 
-  Monitor health, sync, manifests, logs, and events for each resource in the application. Take action on the resources such as rollouts    
-* [Monitoring application deployments](#monitoring-application-deployments) 
-  Monitor current and historical deployments.  
-  View enriched CI information for each deployment, including links to container images, Git hashes correlated with feature requests, Jira issues and more.
+    
+Monitor the current [health and sync status of applications](#identify-applications-with-warnings-errors), and then select an application to drill down into its resources, deployments, and services:  
+* [View deployment and configuration info for selected application](#view-deployment-and-configuration-info-for-selected-application)
+* [Monitor health and sync statuses for selected application](#monitor-health-and-sync-statuses-for-selected-application)
+* [Monitor resources for selected application](#monitor-resources-for-selected-application)
+* [Monitor deployments for selected application](#monitor-deployments-for-selected-application)
+* [Monitor services for selected application](#monitor-services-for-selected-application)
 
->For information on creating and managing applications, see [Creating applications]({{site.baseurl}}/docs/deployment/create-application/) and [Managing applications]({{site.baseurl}}/docs/deployment/manage-application/).
+>For information on creating and managing applications and application resources, see [Creating applications]({{site.baseurl}}/docs/deployment/create-application/) and [Managing applications]({{site.baseurl}}/docs/deployment/manage-application/).
 
 ### Select view mode for the Applications dashboard 
 View deployed applications in either List (the default) or Card views. Both views are sorted by the most recent deployments. 
 
-1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}.
+1. In the Codefresh UI, go to the [Monitoring applications](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}.
 1. Select **List** or **Cards**.
 
 #### Applications List view
@@ -37,11 +45,11 @@ lightbox="true"
 file="/images/applications/app-dashboard-main-view.png"
 url="/images/applications/app-dashboard-main-view.png"
 alt="Applications Dashboard: List view"
-caption="pplications Dashboard: List view"
-max-width="30%"
+caption="Applications Dashboard: List view"
+max-width="60%"
 %} 
 
-<!---#### Applications Card view
+#### Applications Card view
 Here is an example of the Applications dashboard in Card view mode. The Card view provides an scannable view of application data and the actions to manage applications. 
 
   {% include
@@ -50,79 +58,35 @@ lightbox="true"
 file="/images/applications/app-dashboard-card-view.png"
 url="/images/applications/app-dashboard-card-view.png"
 alt="Applications Dashboard: Card view"
-caption="pplications Dashboard: Card view"
-max-width="30%"
-%} -->
+caption="Applications Dashboard: Card view"
+max-width="60%"
+%}
 
-#### Application dashboard information
-Here's a description of the information and actions available in the Applications dashboard.
+### Applications dashboard information 
+Here's a description of the information and actions in the Applications dashboard.
 
 {: .table .table-bordered .table-hover}
 | Item                     | Description            |  
 | --------------         | --------------           |  
-|Application filters       | Filter by a range of attributes to customize the information in the dashboard to bring you what you need. {::nomarkdown}  <ul><li>Application state<br>The application state snapshot displays a breakdown of the deployed applications according to their state.<br>Click a state to filter by applications that match the state.</li><li>Application attributes<br>Attribute filters support multi-selection, and results are based on an OR relationship within the same filter with multiple options, and an AND relationship between filters.<br>Clicking <b>More Filters</b> gives you options to filter by application type, health, and labels. <br><ul><li>Application type: Applications and ApplicationSet </li><li>Health filters: The built-in Argo CD set of health filters. For more information, see the official documentation on <a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/health" target=”_blank”>Health sets</a>.</li><li>Labels:The K8s labels defined for the applications. The list displays labels of <i>all</i> the applications, even if you have applied filters.<br>To see the available labels, select <b>Add</b>, and then select the required label and one or more values. <br>To filter by the labels, select <b>Add</b> and then <b>Apply</b>.<br> For more information, see the official documentation on <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels" target=”_blank”>Labels and selectors</a>.</li></ul></ul>{:/}|
+|Application filters       | Filter by a range of attributes to customize the information in the dashboard to bring you what you need. {::nomarkdown}  <ul><li>Application state<br>A snapshot that displays a breakdown of the deployed applications by their health status.<br>Click a status to filter by applications that match it.<br>Codefresh tracks Argo CD's set of health statuses. See the official documentation on <a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/health" target=”_blank”>Health sets. </a>.</li><li>Application attributes<br>Attribute filters support multi-selection, and results are based on an OR relationship within the same filter with multiple options, and an AND relationship between filters.<br>Clicking <b>More Filters</b> gives you options to filter by Health status, Cluster names, Namespace, and Type. <br><ul><li>Application Type: Can be any of the following<ul><li>Applications: Standalone applications. See the official documentation on <a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications" target=”_blank”>Applications</a>.</li><li>ApplicationSet: Applications created using the ApplicationSet Custom Resource (CR) template. An ApplicationSet can generate single or multiple applications. See the official documentation on <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/application-set" target=”_blank”>Generating Applications with ApplicationSet</a>.</li><li>Git Source: Applications created by Codefresh that includes other applications and CI resources. See <a href="https://codefresh.io/csdp-docs/docs/runtime/git-sources">Git Sources</a>.</li></ul></li></li><li>Labels:The K8s labels defined for the applications. The list displays labels of <i>all</i> the applications, even if you have applied filters.<br>To see the available labels, select <b>Add</b>, and then select the required label and one or more values. <br>To filter by the labels, select <b>Add</b> and then <b>Apply</b>.<br> See the official documentation on <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels" target=”_blank”>Labels and selectors</a>.</li></ul></ul>{:/}|
 |{::nomarkdown}<img src="../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/}| Star applications as favorites and view only the starred applications.{::nomarkdown}<br>Select the <img src="../../../images/icons/icon-mark-favorite.png?display=inline-block"> to star the application as a favorite.<br><br>To filter by favorite applications, on the filters bar, select <img src="../../../images/icons/icon-fav-starred.png?display=inline-block">.<br>{:/} TIP: If you star applications as favorites in the Applications dashboard, you can filter by the same applications in the [DORA metrics dashboard]({{site.baseurl}}/docs/reporting/dora-metrics/#metrics-for-favorite-applications).  |
-|Application label| Applications are labeled as one of the following:{::nomarkdown}<ul><li>Git Source App<br> The application includes other resources such as other applications, workflows, sensor, Delivery Pipelines.</li>{:/}See [Git Sources in runtimes]({{site.baseurl}}/docs/docs/runtime/git-sources).{::nomarkdown}<li>Application<br>The application is a standalone application.</li>{:/}For more information, see Argo CD's official documentation on [Applications](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications){:target="\_blank"}.{::nomarkdown}<li>ApplicationSet<br>The application is deployed as a set of applications, based on Argo CD's ApplicationSet CRD.</li>{:/}For more information, see Argo CD's official documentation on [Generating Applications with ApplicationSet](https://argo-cd.readthedocs.io/en/stable/user-guide/application-set/){:target="\_blank"}.{::nomarkdown}<li>App-of-apps<br>In this deployment model, the parent application deploys a set of child applications.</li>{:/}For more information, see Argo CD's official documentation on [App of Apps](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#app-of-apps){:target="\_blank"}.|
-|Application actions| Options to monitor/manage the applications available in the context menu. {::nomarkdown}<ul><li>Quick view<br>A comprehensive read-only view of the deployment and definition information for the application.</li>{:/}See [Application Quick View](#application-quick-view) in this article.{::nomarkdown}<li>Synchronize<br>Manually synchronize the application.</li>{:/}See [Manually sync applications]({{site.baseurl}}/docs/deployment/sync-application).{::nomarkdown}<li>Edit<br>Modify application definitions.</li>{:/}See [Update application configuration]({{site.baseurl}}/docs/deployment/create-application/#update-application-configuration).{::nomarkdown}<li>Refresh and Hard Refresh: Available in Card view only. <ul><li>Refresh: Retrieve desired (Git) state, compare with the live (cluster) state, and refresh the application to sync with the desired state.</li><li>Hard Refresh: Refresh the application to sync with the Git sycn, while removing the cache.</li></ul>{:/} 
+|Application actions| Options to monitor/manage applications through the application's context menu. {::nomarkdown}<ul><li>Quick view<br>A comprehensive read-only view of the deployment and definition information for the application.</li>{:/}See [Application Quick View](#application-quick-view) in this article.{::nomarkdown}<li>Synchronize/Sync<br>Manually synchronize the application.</li>{:/}See [Manually sync applications]({{site.baseurl}}/docs/deployment/sync-application).{::nomarkdown}<li>Edit<br>Modify application definitions.</li>{:/}See [Update application configuration]({{site.baseurl}}/docs/deployment/create-application/#update-application-configuration).{::nomarkdown}<li>Refresh and Hard Refresh: Available in Card view only. In List view, you must first select the application. <ul><li>Refresh: Retrieve desired (Git) state, compare with the live (cluster) state, and refresh the application to sync with the desired state.</li><li>Hard Refresh: Refresh the application to sync with the Git state, while removing the cache.</li></ul>{:/} 
 
 
-
-
-### Monitoring applications
-The Applications dashbaord displays the applications that match the filter criteria you defined. 
-
-You can: 
-
-Identify errors for applications
-
-
-#### Identify errors for applications
-Errors in applications are flagged through the **Error** button, displayed at the top right of the Applications dashboard. Clicking the button shows the list of applications with the errors and the possible reasons for those errors.
+### Identify applications with warnings/errors 
+All applications with errors are flagged in the **Warnings/Errors** button, displayed at the top right of the Applications dashboard. Clicking the button shows the list of applications with the warnings/errors and the possible reasons for those errors.
 
 {% include
 image.html
 lightbox="true"
 file="/images/applications/app-dashboard-errors.png"
 url="/images/applications/app-dashboard-errors.png"
-alt="Error notifications in Applications Dashboard"
-caption="Error notifications in Applications Dashboard"
+alt="Example of error notifications for applications"
+caption="Example of error notifications for applications"
 max-width="50%"
 %}
 
-#### Monitor health and sync statuses for an application
-Mointor the health of an application, its current sync status, and the result of the previous sync operation.  
-Once you select an application, the quickest option to monitor statuses is through the application header which is always displayed, no matter what tab you navigate to.  
-
-
-
-{% include
-image.html
-lightbox="true"
-file="/images/applications/app-header-health-sync-status.png"
-url="/images/applications/app-header-health-sync-status.png"
-alt="Application header with health and sync status"
-caption="Application header with health and sync status"
-max-width="50%"
-%}
-
-Sync statuses also have **More** links that display details such as the date, tags, and message.
-
-{% include
-image.html
-lightbox="true"
-file="/images/applications/app-header-sync-details.png"
-url="/images/applications/app-header-sync-details.png"
-alt="Sync details panel on clicking More"
-caption="Sync details panel on clicking More"
-max-width="50%"
-%}
-
->Tip:  
-  You can also view the current health and sync status for the application resource in the Current State tab. 
-
-
-
-#### View application details 
+### View deployment and configuration info for selected application
 
 View deployment, definition, and event information for the selected application in a centralized location through the Quick View.  
 A read-only view, the Quick View displays information on the application state and location, labels and annotations, parameters, sync options, manifest, status and sync events.
@@ -178,7 +142,7 @@ file="/images/applications/quick-view-summary.png"
 url="/images/applications/quick-view-summary.png"
 alt="Application Quick View: Summary"
 caption="Application Quick View: Summary"
-max-width="40%"
+max-width="30%"
 %}
 
 ##### Quick View: Metadata
@@ -191,7 +155,7 @@ file="/images/applications/quick-view-metadata.png"
 url="/images/applications/quick-view-metadata.png"
 alt="Application Quick View: Metadata"
 caption="Application Quick View: Metadata"
-max-width="40%"
+max-width="30%"
 %}
 
 ##### Quick View: Parameters
@@ -205,7 +169,7 @@ file="/images/applications/quick-view-parameters.png"
 url="/images/applications/quick-view-parameters.png"
 alt="Application Quick View: Parameters"
 caption="Application Quick View: Parameters"
-max-width="40%"
+max-width="30%"
 %}
 
 ##### Quick View: Sync Options
@@ -218,7 +182,7 @@ file="/images/applications/quick-view-parameters.png"
 url="/images/applications/quick-view-parameters.png"
 alt="Application Quick View: Parameters"
 caption="Application Quick View: Parameters"
-max-width="40%"
+max-width="30%"
 %}
 
 ##### Quick View: Manifest 
@@ -231,7 +195,7 @@ file="/images/applications/quick-view-manifest.png"
 url="/images/applications/quick-view-manifest.png"
 alt="Application Quick View: Manifest"
 caption="Application Quick View: Manifest"
-max-width="40%"
+max-width="30%"
 %}
 
 ##### Quick View: Events
@@ -244,13 +208,44 @@ file="/images/applications/quick-view-events.png"
 url="/images/applications/quick-view-events.png"
 alt="Application Quick View: Events"
 caption="Application Quick View: Events"
+max-width="30%"
+%}
+
+### Monitor health and sync statuses for selected application
+Mointor the health status of the selected application, the current sync status, and the result of the previous sync operation.  
+Once you select an application, the quickest option to monitor statuses is through the application header which is always displayed, no matter what tab you navigate to.  
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/app-header-health-sync-status.png"
+url="/images/applications/app-header-health-sync-status.png"
+alt="Application header with health and sync status"
+caption="Application header with health and sync status"
+max-width="100%"
+%}
+
+Sync statuses also have **More** links that display details such as the date, tags, and message.
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/app-header-sync-details.png"
+url="/images/applications/app-header-sync-details.png"
+alt="Sync details panel on clicking More"
+caption="Sync details panel on clicking More"
 max-width="40%"
 %}
 
+>Tip:  
+  You can also view the current health and sync status for the application as a resource in the Current State tab. 
 
-### Monitoring application resources
 
-Monitor the live state of the application's resources (Kubernetes objects) on the cluster, including health, sync state, manifests, and logs. Selecting an application from the Applications dashboard takes you to the Current State tab which displays the application's resources.  
+### Monitor resources for selected application
+
+Monitor the resources deployed in the current version of the selected application in the Current State tab.  
+Selecting an application from the Applications dashboard takes you to the Current State tab, which as its title indicates, displays the   
+live state of the application's resources (Kubernetes objects) on the cluster, including health, sync state, manifests, and logs. 
 
 {% include
 image.html
@@ -264,23 +259,21 @@ max-width="50%"
 
 The icon for a resource node identifies the type of Kubernetes resource it represents. For general information on K8s resources, see [Working with Kubernetes objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/){:target="\_blank"}. 
 
-You can:
-* [View resources in List or Tree views](#view-modes-for-application-resources)
-* Monitor health, sync, resource information:   
-  * [Health status](#health-status-for-application-resources): Reflects Argo CD's built-in health checks and status for the Application resource and Kubernetes objects. For more information, see [Argo CD Resource Health](https://argo-cd.readthedocs.io/en/stable/operator-manual/health/){:target="\_blank"}.
-  * [Sync status](#sync-status-for-application-resources): Desired state in Git versus live state in cluster.
-  * Monitor resource manifests, logs, and events: 
-    * [Manifests for application resources](#manifests-for-application-resources)
-    * [Logs for application resources](#logs-for-application-resources)
-    * [Manifests for application resources](#events-for-application-resources)
+You can view application resources in [List or Tree views](#view-modes-for-application-resources), and monitor:
+* [Health status](#health-status-for-application-resources)
+* [Sync status](#sync-status-for-application-resources)
+* [Manifests](#manifests-for-application-resources)
+* [Logs](#logs-for-application-resources)
+* [Events](#events-for-application-resources)
 
 
-> To quickly see updated resources for the current or for a specific deployment, switch to the Timeline tab and expand the deployment entry to show Updated Resources. See [Monitor resource updates for deployments](#monitor-resource-updates-for-deployments).
+> To quickly see which resources have been added, modified, or removed for the current or for a specific deployment, switch to the Timeline tab and expand the deployment record to show Updated Resources. See [Monitor resource updates for deployments](#monitor-resource-updates-for-deployments).
 
 #### View modes for application resources
 
 The Current State tab supports Tree and List view formats. 
-* Tree view (default): A hierarchical, interactive visualization of the application and its resources. Useful for complex deployments with multiple clusters and large numbers of resources. See also, [Working with resources in Tree view](#working-with-resources-in-tree-view).
+* Tree view (default): A hierarchical, interactive visualization of the application and its resources. Useful for complex deployments with multiple clusters and large numbers of resources. See also [Working with resources in Tree view](#working-with-resources-in-tree-view).  
+Here is an example of the Current State in Tree view.
 
 
 {% include
@@ -306,10 +299,23 @@ caption="List view of application resources in Current State"
 max-width="50%"
 %}
 
-> Filters are shared between Tree and List views, and when applied are retained when switching between views. 
+> Filters are common to both Tree and List views, and when applied are retained when switching between views. 
 
 ##### Working with resources in Tree view
-The Tree view is designed to impart key information at a glance. Review the sections that follow for pointers to get to what you need in the Tree view.
+The Tree view is designed to impart key information at a glance. Review the sections that follow for pointers to quickly get to what you need in the Tree view.
+
+**Context menu**  
+Every resource has a context menu that opens on clicking the three dots on the right of resource node. The options available differ according to the type of resource.
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/current-state-resource-context-menu.png"
+url="/images/applications/current-state-resource-context-menu.png"
+alt="Current State Tree view: Resource context menu"
+caption="Current State Tree view: Resource context menu"
+max-width="50%"
+%}
 
 **Resource info**  
 Mouse over a node to see a tooltip for that resource. For detailed information, select the resource; see [Detailed resource information](#detailed-resource-information) in this article.
@@ -384,11 +390,11 @@ Identify the health of an application resource through the color-coded border an
 | Health status   | Description | Display in Tree view  | 
 | --------------  | ------------| ------------------|  
 | **Healthy**     | Resource is functioning as required. | {::nomarkdown}<img src="../../../images/icons/current-state-healthy.png" display=inline-block">{:/} | 
-| **Progressing** | Resource is not healthy but can become healthy.| {::nomarkdown}<img src="../../../images/icons/current-state-progressing.png" display=inline-block">{:/} | 
+| **Progressing** | Resource is not healthy but can become healthy before the timeout occurs.| {::nomarkdown}<img src="../../../images/icons/current-state-progressing.png" display=inline-block">{:/} | 
 | **Suspended**   | Resource is not functioning, and is either suspended or paused. For example, Cron job or a canary rollout.| {::nomarkdown}<img src="../../../images/icons/current-state-suspended.png" display=inline-block">{:/} | 
 | **Missing**     | Resource is not present on the cluster. |{::nomarkdown}<img src="../../../images/icons/current-state-missing.png" display=inline-block">{:/} |                        
 | **Degraded**    | Resource is not healthy, or a timeout occured before it could reach a healthy status.| {::nomarkdown}<img src="../../../images/icons/current-state-degraded.png" display=inline-block/>{:/} |
-| **Unknown**   | Resource does not have a health status or the health status is not tracked in Argo CD. For example,`ConfigMaps`.   | {::nomarkdown}<img src="../../../images/icons/current-state-unknown.png" display=inline-block">{:/} | 
+| **Unknown**   | Resource does not have a health status, or the health status is not tracked in Argo CD. For example,`ConfigMaps` resource types.   | {::nomarkdown}<img src="../../../images/icons/current-state-unknown.png" display=inline-block">{:/} | 
 
 See also [Argo CD's set of health checks](https://argo-cd.readthedocs.io/en/stable/operator-manual/health/).
 
@@ -396,7 +402,7 @@ See also [Argo CD's set of health checks](https://argo-cd.readthedocs.io/en/stab
 
 #### Sync status for application resources
 
-Similar to the health status, view and monitor the sync status of an application resource also in the Current State tab, in  Tree or List views. The sync status identifies if the live state of the application resource on the cluster is synced with its desired state in Git.   
+Similar to the health status, the Current State also tracks the sync status of all application resources. The sync status identifies if the live state of the application resource on the cluster is synced with its desired state in Git.   
 Identify the sync status through the icon on the left of the resource name and the color of the resource name (Tree view), or the textual labels at the right of the resource (List view). 
 
 The table describes the possible sync statuses for an application resource, and its representation in the Tree view. 
@@ -406,8 +412,9 @@ The table describes the possible sync statuses for an application resource, and 
 | -------------- | ----------    | ----------     |  
 | **Synced**       | The live state of the resource on the cluster is identical to the desired state in Git.| {::nomarkdown}<img src="../../../images/icons/current-state-synced.png" display=inline-block">{:/} |                            
 | **Syncing**      | The live state of the resource was not identical to the desired state, and is currently being synced.| {::nomarkdown}<img src="../../../images/icons/current-state-syncing.png" display=inline-block/>{:/} |  
-| **Out-of-Sync**  | The live state is not identical to the desired state. | {::nomarkdown}<img src="../../../images/icons/current-state-out-of-sync.png" display=inline-block">{:/} |  
+| **Out-of-Sync**  | {::nomarkdown}The live state is not identical to the desired state.<br>To sync a resource, select the <b>Sync</b> option from the resource's context menu in Tree view. {:/}| {::nomarkdown}<img src="../../../images/icons/current-state-out-of-sync.png" display=inline-block">{:/} |  
 | **Unknown**      | The sync status could not be determined. | {::nomarkdown}<img src="../../../images/icons/current-state-sync-unknown.png" display=inline-block">{:/} |  
+
 
 #### Manifests for application resources
 
@@ -485,9 +492,11 @@ max-width="50%"
 
 
 
-### Monitoring application deployments  
-Monitor ongoing deployments and review historical deployments for the selected application. 
+### Monitor deployments for selected application  
+Monitor an ongoing deployment for the selected application, and review its historical deployments. 
 The Timeline tab displays the history of deployments for the selected application, sorted by the most recent deployment (default), labelled **Current Version** at the top. 
+
+The deployment chart displays the day-to-day deployments for the selected time period. Mouse over the dot on the deployment chart for information on historical deployments.  
 
 {% include
 image.html
@@ -499,28 +508,16 @@ caption="Applications Dashboard: Timeline tab"
 max-width="30%"
 %}
 
-You can:
+You can:  
+* [Monitor CI details by deployments](#monitor-ci-details-by-deployment) 
+* [Monitor updated resources by deployment](#monitor-updated-resources-by-deployment)
+* [Monitor rollouts by deployment](#monitor-rollouts-by-deployment)
 
-* Monitor CI information for deployments  
-  Each deployment record is enriched with CI build, Pull Request (PR), Jira, and commit information, serving as an audit trail for visbility into all aspects and actions leading up to the deployment.   
-
-* Deployment breakdown
-  For every deployment, Codefresh displays a detailed breakdown of the following: 
-  * Updated Kubernetes services 
-  * Updated Argo resources
-  * Updated applications
-
-* Deployment chart 
-  The deployment chart displays the day-to-day deployments for the selected time period. Mouse over the dot on the deployment chart for information on historical deployments.
-
-**Deployment
-Visulaize rollout steps
-Manage rolloiuts
 
 **How to monitor deployments**
 1. If required, set filters to narrow the number of deployments for the selected application.
-1. To view GitOps details for a deployment, mouse over the dot that represents the deployment. 
-1. Expand a deployment entry to view details on the deployment.
+1. To view GitOps details for a deployment, in the deployment chart mouse over the dot that represents the deployment. 
+1. To view additional details, expand the record for that deployment.
 
 {% include
 image.html
@@ -533,7 +530,6 @@ max-width="30%"
 %}
 
 #### Monitor CI details by deployment
-  
 
 Each deployment record displays the complete CI history for that deployment.
 
@@ -555,10 +551,9 @@ max-width="70%"
 
 
 #### Monitor updated resources by deployment
-The deployment record also identifies the resources that were changed (created, updated, or removed), and a diff view of the actual changes in Updated Resources.  
-View changed  the Full or Compact views to see changes. The Full View shows the complete resource manifest, with a diff view of the changes, while the Compact View shows only the lines with the change. 
+Each deployment record also identifies the resources that were changed (created, updated, or removed) as part of that deployment in **Updated Resources**. You can trace the history of a resource, from the original to their final versions. For each version, you can see the actual change or changes through the Diff view. The Full View shows the complete resource manifest, with the diff view of the changes, while the Compact View shows only those lines with the changes. 
 
-> For detailed information on the resource, switch to the Current State tab and click the resource node. See [Monitoring application resources](#monitoring-application-resources).
+> For detailed information on the current state of a resource, switch to the Current State tab and click the resource node. See [Monitoring application resources](#monitoring-application-resources).
 
 1. Select a deployment record, and expand **Updated Resources**.
 
@@ -601,57 +596,44 @@ max-width="70%"
 
 
 
-
 #### Monitor rollouts by deployment
 A rollout is initiated when there is an Argo CD sync due to a change in the desired state.  
-Visualize completed rollouts, and ongoing rollouts in the deployment record in **Services**.  
-The rollout progress bar indicates the status of the rollout. For an ongoing rollout, you can visualize the steps in the rollout and control them using the options in the Rollout Player.  
+Visualize ongoing and completed rollouts by deployments in **Services**. 
 
-
-> To view and manage a rollout, you must have an Argo `rollout` resource defined for your application, and [install Argo Rollouts in the cluster]({site.baseurl}}/docs/_docs/deployment/install-argo-rollouts). 
+> To view and manage a rollout, you must have an Argo `rollout` resource defined for your application, and [install Argo Rollouts in the cluster]({site.baseurl}}/docs/_docs/deployment/install-argo-rollouts).  
 
 For detailed information on Argo Rollouts, see [Argo Rollouts documentation](https://argoproj.github.io/argo-rollouts/){:target="\_blank"}.
 
-##### Visualize rollout progress
-Here is an example of an ongoing rollout for a canary deployment in Timeline > Services  The rollout comprising four steps has not started, and no traffic has not been routed as yet to the new version of the application.
+##### Rollout progress
+For an ongoing rollout, the rollout bar displays the progress of the rollout. You can also visualize the steps in the rollout, and control the rollout using the options in the Rollout Player.  
+
+Here is an example of an ongoing rollout for a canary deployment in Updated Services. The rollout comprising four steps has not started, and no traffic has not been routed as yet to the new version of the application.
 
 {% include
 image.html
 lightbox="true"
 file="/images/applications/apps-dashboard-rollout-in-progress.png"
 url="/images/applications/apps-dashboard-rollout-in-progress.png"
-alt="Application deployment in progress"
-caption="Application deployment in progress"
+alt="Rollout in progress for deployment"
+caption="Rollout in progress for deployment"
 max-width="50%"
 %}
 
-Here is an example of the rollout progress for the same deployment on completion. All traffic has been routed to the new version. 
+Here is an example of the rollout for the same deployment on completion. All traffic has been routed to the new version. 
 
 {% include
 image.html
 lightbox="true"
 file="/images/applications/apps-dashboard-rollout-complete.png"
 url="/images/applications/apps-dashboard-rollout-complete.png"
-alt="Application deployment completed"
-caption="Application deployment completed"
+alt="Rollout completed for deployment"
+caption="Rollout completed for deployment"
 max-width="50%"
 %}
 
 ##### Manage ongoing rollout
-Click the rollout name to visualize its steps. Manually manage the rollout by skipping a specific step, resuming a paused step, or promoting a full rollout through the options in the Rollout Player. 
-Here you can see that two out of four steps have been completed, 25% of the traffic has been routed, and the rollout has been paused for the defined length of time. 
-
-{% include
-image.html
-lightbox="true"
-file="/images/applications/apps-dashboard-rollout-analysis.png"
-url="/images/applications/apps-dashboard-rollout-analysis.png"
-alt="Application rollout: Analysis run"
-caption="Applications rollout: Analysis run"
-max-width="30%"
-%}
-
-The Rollout Player shows the options to manually manage the rollout.
+Click the rollout name to visualize its steps. Manually manage the rollout through the controls in the Rollout Player. 
+Here you can see that two out of four steps have been completed, 25% of the traffic has been routed, and the rollout has been paused for the defined length of time.  
 
 {% include
 image.html
@@ -664,19 +646,19 @@ max-width="50%"
 %}
 
  
-The table lists the options in the Rollout Player to manage an onging rollout.
+The table lists the controls in the Rollout Player to manage an onging rollout.
 
 : .table .table-bordered .table-hover}
 | Rollback player option   | Description |  
 | --------------  | ------------| 
-| **Rollback**      | Not implemented currently.  | 
-| **Resume** {::nomarkdown}<img src="../../../images/icons/rollout-resume.png" display=inline-block"> {:/}| Resume a paused step without waiting for the period of time defined as the pause duration. | 
-| **Skip step** {::nomarkdown}<img src="../../../images/icons/rollout-skip-step.png" display=inline-block"> {:/}  | Skip execution of current step. Skipped steps are marked as Skipped in the rollout visualization. | 
+| **Rollback**      | Not available currently.  | 
+| **Resume** {::nomarkdown}<img src="../../../images/icons/rollout-resume.png" display=inline-block"> {:/}| Resume a step that has been paused indefinitely. | 
+| **Skip step** {::nomarkdown}<img src="../../../images/icons/rollout-skip-step.png" display=inline-block"> {:/}  | Skip execution of current step. Such steps are marked as Skipped in the rollout visualization. | 
 | **Promote full rollout** {::nomarkdown}<img src="../../../images/icons/rollout-promote-full.png" display=inline-block"> {:/}   | Skip remaining pause, traffic routing, and analysis steps, and deploy the current release. |                        
 
 
  
-##### View analyis template
+##### View analyis run
 If you have defined an analysis template for the rollout, you can check the run results and the manifest. 
  The result of an analysis run determines if the rollout is completed, paused, or aborted. For detailed information, see the [Analysis section in Argo Rollouts](https://argoproj.github.io/argo-rollouts/features/analysis/){:target="\_blank"}.  
 
@@ -692,7 +674,7 @@ caption="Analysis Template: Analaysis Metrics in Background Analysis"
 max-width="50%"
 %}
 
-Click the metric link in the step. If you are running Background Analysis, this is the first step.
+Click the metric link in the step. 
 
 {% include
 image.html
@@ -705,7 +687,7 @@ max-width="50%"
 %}
 
 
-### Monitor services by deployment
+### Monitor services for selected application
 The Services tab for  shows the K8s services for each deployment of the application. 
 Each service shows the number of replicas, the endpoint IP, the labels that reference the application, and the health status.  
 
