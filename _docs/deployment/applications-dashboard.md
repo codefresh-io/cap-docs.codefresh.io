@@ -50,7 +50,7 @@ max-width="60%"
 %} 
 
 #### Applications Card view
-Here is an example of the Applications dashboard in Card view mode. The Card view provides an scannable view of application data and the actions to manage applications. 
+Here is an example of the Applications dashboard in Card view mode. The Card view provides a scannable view of application data and the actions to manage applications. 
 
   {% include
 image.html
@@ -212,7 +212,7 @@ max-width="30%"
 %}
 
 ### Monitor health and sync statuses for selected application
-Mointor the health status of the selected application, the current sync status, and the result of the previous sync operation.  
+Monitor the health status of the selected application, the current sync status, and the result of the previous sync operation.  
 Once you select an application, the quickest option to monitor statuses is through the application header which is always displayed, no matter what tab you navigate to.  
 
 {% include
@@ -305,7 +305,7 @@ max-width="50%"
 The Tree view is designed to impart key information at a glance. Review the sections that follow for pointers to quickly get to what you need in the Tree view.
 
 **Context menu**  
-Every resource has a context menu that opens on clicking the three dots on the right of resource node. The options available differ according to the type of resource.
+Every resource has a context menu that opens on clicking the three dots on the right of the node. The options available differ according to the type of resource.
 
 {% include
 image.html
@@ -393,7 +393,7 @@ Identify the health of an application resource through the color-coded border an
 | **Progressing** | Resource is not healthy but can become healthy before the timeout occurs.| {::nomarkdown}<img src="../../../images/icons/current-state-progressing.png" display=inline-block">{:/} | 
 | **Suspended**   | Resource is not functioning, and is either suspended or paused. For example, Cron job or a canary rollout.| {::nomarkdown}<img src="../../../images/icons/current-state-suspended.png" display=inline-block">{:/} | 
 | **Missing**     | Resource is not present on the cluster. |{::nomarkdown}<img src="../../../images/icons/current-state-missing.png" display=inline-block">{:/} |                        
-| **Degraded**    | Resource is not healthy, or a timeout occured before it could reach a healthy status.| {::nomarkdown}<img src="../../../images/icons/current-state-degraded.png" display=inline-block/>{:/} |
+| **Degraded**    | Resource is not healthy, or a timeout occurred before it could reach a healthy status.| {::nomarkdown}<img src="../../../images/icons/current-state-degraded.png" display=inline-block/>{:/} |
 | **Unknown**   | Resource does not have a health status, or the health status is not tracked in Argo CD. For example,`ConfigMaps` resource types.   | {::nomarkdown}<img src="../../../images/icons/current-state-unknown.png" display=inline-block">{:/} | 
 
 See also [Argo CD's set of health checks](https://argo-cd.readthedocs.io/en/stable/operator-manual/health/).
@@ -418,7 +418,7 @@ The table describes the possible sync statuses for an application resource, and 
 
 #### Manifests for application resources
 
-In either Tree or List views, double-click an appplication resource to see its manifests. The manifests are displayed in the Summary tab. 
+In either Tree or List views, double-click an application resource to see its manifests. The manifests are displayed in the Summary tab. 
 > Based on the selected resource type, you can also view logs, and events. Endpoints for example show only manifests, while pods show manifests, logs, and events.  
 
 > To view information for the application resource, select the application node in Tree View. See [Application information](#application-quick-view).
@@ -449,7 +449,7 @@ Here's what you can see and do in the Summary tab:
 {:/}
 
 #### Logs for application resources
-In either Tree or List views, double-click an appplication resource to see its logs. Logs are available only for resource types such as pods.
+In either Tree or List views, double-click an application resource to see its logs. Logs are available only for resource types such as pods.
 
 {% include
 image.html
@@ -471,8 +471,8 @@ max-width="50%"
 {:/}
 
 #### Events for application resources
-In either Tree or List views, double-click an appplication resource to see events in the Events tab. 
-> If your rutime is lower than the version required to view events, you are notified to upgrade to the required version.
+In either Tree or List views, double-click an application resource to see events in the Events tab. 
+> If your runtime is lower than the version required to view events, you are notified to upgrade to the required version.
 
 The Events tab displays both successful and failed events from Argo CD, starting with the most recent event. 
 Argo CD displays events as they occur for an application resource, and retains event information for a duration of 30 minutes. Historical events older than this duration are removed, and the Events tab can be empty if there are no ongoing events.
