@@ -253,8 +253,11 @@ Codefresh warns you of the implication of deleting the selected application in t
 ### Manage rollouts for deployments
 Control ongoing rollouts by resuming indefinitely paused steps, promoting rollouts, aborting, restarting and retrying rollouts.  
 
+{::nomarkdown}
+<br>
+{:/}
 
-#### Resume indefinitely paused rollout
+#### Resume an indefinitely paused rollout step
 Resume an indefinitely paused rollout directly from the Timeline tab in the Applications dashboard in Codefresh, with a single click.
 
 1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
