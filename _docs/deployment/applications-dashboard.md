@@ -32,7 +32,7 @@ Monitor the current [health and sync status of applications](#identify-applicati
 ### Select view mode for the Applications dashboard 
 View deployed applications in either List (the default) or Card views. Both views are sorted by the most recent deployments. 
 
-1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}.
+1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
 1. Select **List** or **Cards**.
 
 #### Applications List view
@@ -92,7 +92,7 @@ View deployment, definition, and event information for the selected application 
 A read-only view, the Quick View displays information on the application state and location, labels and annotations, parameters, sync options, manifest, status and sync events.
 Access the Quick View from the Applications dashboard, either from the application's context menu, or after drilldown, from the Current State tab.
 
-1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}.
+1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
 1. Do one of the following:  
   * From the List or Card views, select the context menu and then select **Quick View**.
   

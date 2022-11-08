@@ -10,7 +10,7 @@ Application creation and deployment is one part of the continuous deployment/del
 * [Edit applications](#edit-application-definitions)  
   Optimize deployed applications by changing application definitions when needed.
 
-* [Synchronize applications](#manually-synchronize-an-application) 
+* [Synchronize applications](#manually-synchronize-an-application)   
   Sync applications on-demand by manually applying sync options or selecting the resources to sync.
 
 <!---* [Delete applications](#delete-an-application)
@@ -31,7 +31,7 @@ Update General or Advanced configuration settings for a deployed application thr
 
 **How to**  
 
-1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}.
+1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
 1. Do one of the following: 
   * Select the application to update, and then from the context menu on the right, select **Edit**. 
   
@@ -49,8 +49,8 @@ Update General or Advanced configuration settings for a deployed application thr
 
 {:start="3"}
 1. Update the **General** or **Advanced** configuration settings as needed:  
-  [General configuration]({{site.baseurl}}docs/deployment/create-application/#application-general-configuration-settings)  
-  [Advanced configuration]({{site.baseurl}}docs/deployment/create-application/#advanced-configuration-settings)  
+  [General configuration]({{site.baseurl}}/docs/deployment/create-application/#application-general-configuration-settings)  
+  [Advanced configuration]({{site.baseurl}}/docs/deployment/create-application/#application-advanced-configuration-settings)  
   When you change a setting, the Commit and Discard Changes buttons are displayed.
 
   {% include 
@@ -101,7 +101,7 @@ The sync options, grouped into Revision and Additional Settings, are identical t
   [Synchronize resources](#synchronize-resources)  
 
 **How to**  
-1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}.
+1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
 1. Sync an application:  
   * Select the application to sync, and do one of the following: 
   * From the context menu on the right, select **Synchronize**. 
@@ -119,6 +119,9 @@ The sync options, grouped into Revision and Additional Settings, are identical t
   * **All**: Sync all resources regardless of their sync state.
   * **Out of sync**: Sync _only_ resources that are `Out of sync`.  
 
+{::nomarkdown}
+<br>
+{:/}
 
 #### Revision settings for application sync
 Revision settings determine the behavior for the branch you select.  
@@ -138,6 +141,10 @@ When selected, allows you to preview the application before changes are made to 
 **Force**  
 When selected, orphans the dependents of a deleted resource during the sync operation. This option is useful to prevent 
 
+{::nomarkdown}
+<br>
+{:/}
+
 #### Additional Options for application sync
 
 ##### Sync Options
@@ -147,7 +154,7 @@ When selected, orphans the dependents of a deleted resource during the sync oper
 * **Auto-create namespace**   
   When selected, automatically creates the namespace if the specified namespace does not exist in the cluster. If the namespace already exists, this setting is ignored.
 * **Prune last**  
-  When selected, removes those resources that do not exist in the currently deployed version during the final wave of the sync operation. See [Prune last](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last){:target="\_blank").  
+  When selected, removes those resources that do not exist in the currently deployed version during the final wave of the sync operation. See [Prune last](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last){:target="\_blank"}.  
 * **Apply out of sync only**
   When selected, syncs only those resources in the application that have been changed and are `OutOfSync`, instead of syncing every resource regardless of their state. This option is useful to reduce load and save time when you have thousands of resources in an application. See [Selective Sync](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#selective-sync){:target="\_blank"}.  
 * **Respect ignore differences**  
@@ -167,6 +174,10 @@ All Prune propagation policies can be used with:
 * Maximum duration permitted for each retry (**Max Duration**)  
 * Factor by which to multiply the Duration in the event of a failed retry (**Factor**). A factor of 2 for example, attempts the second retry in 2 X 2 seconds, where 2 seconds is the Duration.
 
+{::nomarkdown}
+<br>
+{:/}
+
 #### Synchronize resources
 Synchronize Resource options allow you to selectively sync application resources. You can bypass sync settings at the application level, and directly select the resources you want to sync, by state or otherwise.  
 * All resources regardless of their sync states
@@ -182,7 +193,7 @@ By default, Synchronize Resources displays and selects all resources in the appl
    url="/images/applications/sync-manual-resources-form.png" 
    alt="Default settings for Synchronize Resources" 
    caption="Default settings for Synchronize Resources"
-   max-width="70%" 
+   max-width="50%" 
    %} 
 
 You can search/filter resources using part of the resource names or regex strings, and then select the resources you want to sync.
@@ -195,7 +206,7 @@ For example, if you made changes to `api` resources or `audit` resources, type `
    url="/images/applications/sync-manual-resource-search.png" 
    alt="Selective sync in Synchronize Resources" 
    caption="Selective sync in Synchronize Resources"
-   max-width="70%" 
+   max-width="50%" 
    %} 
 
 
@@ -210,7 +221,7 @@ Delete an application from Codefresh. Deleting an application deletes the manife
 When selected, both the application and its resources are deleted. When cleared, only the application is deleted. For more information, review [Sync settings]({{site.baseurl}}/docs/deployment/create-application/#sync-settings).  
 Codefresh warns you of the implication of deleting the selected application in the Delete form. 
 
-1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}.
+1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
 1. Select the application to delete.
 1. Click the three dots for additional actions, and select **Delete**.
   
@@ -246,7 +257,7 @@ Control ongoing rollouts by resuming indefinitely paused steps, promoting rollou
 #### Resume indefinitely paused rollout
 Resume an indefinitely paused rollout directly from the Timeline tab in the Applications dashboard in Codefresh, with a single click.
 
-1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}.
+1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
 1. Select the application and go to the Timelines tab.
 1. In the deployment record for the ongoing rollout, click {::nomarkdown}<img src="../../../images/icons/rollout-resume-indefinite-pause" display=inline-block"> {:/} to resume the rollout.
 
@@ -260,12 +271,14 @@ Resume an indefinitely paused rollout directly from the Timeline tab in the Appl
    max-width="70%" 
    %}
 
-
+{::nomarkdown}
+<br>
+{:/}
 
 #### Manage an ongoing rollout
 Manage an ongoing rollout using the controls in the Rollout Player to skip steps, and promote rollouts.
 
-1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}.
+1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
 1. Select the application and go to the Timelines tab.
 1. In the deployment record for the ongoing rollout, click the name of the rollout. 
 1. Select the option in the Rollout Player.
@@ -284,28 +297,31 @@ max-width="50%"
  
 The table describes the controls in the Rollout Player.
 
-: .table .table-bordered .table-hover}
+{: .table .table-bordered .table-hover}
 | Rollback player option   | Description |  
 | --------------  | ------------| 
 | **Rollback**      | Not available currently.  | 
-| **Resume** {::nomarkdown}<img src="../../../images/icons/rollout-resume.png" display=inline-block"> {:/}| Resume a step that has been paused indefinitely. | 
-| **Skip step** {::nomarkdown}<img src="../../../images/icons/rollout-skip-step.png" display=inline-block"> {:/}  | Skip execution of current step. Use this option to skip a step with a fixed pause duration. Such steps are marked as Skipped in the rollout visualization. | 
-| **Promote full rollout** {::nomarkdown}<img src="../../../images/icons/rollout-promote-full.png" display=inline-block"> {:/}   | Skip remaining pause, traffic routing, and analysis steps, and deploy the current release. |        
+| **Resume** <!---{::nomarkdown}<img src="../../../images/icons/rollout-resume.png" display=inline-block"> {:/}-->| Resume a step that has been paused indefinitely. | 
+| **Skip step** <!---{::nomarkdown}<img src="../../../images/icons/rollout-skip-step.png" display=inline-block"> {:/}--> | Skip execution of current step. Use this option to skip a step with a fixed pause duration. Such steps are marked as Skipped in the rollout visualization. | 
+| **Promote full** <!---{::nomarkdown}<img src="../../../images/icons/rollout-promote-full.png" display=inline-block"> {:/} -->  | Skip remaining pause, traffic routing, and analysis steps, and deploy the current release. |        
 
+{::nomarkdown}
+<br>
+{:/}
 
 #### Manage the rollout resource
 
 Control the rollout through the options available for the Rollout resource. 
 
-1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}.
+1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
 1. Select the application and go to the Current State tab.
 1. Open the context menu of the `Rollout` resource, and select the relevant option. 
 
 {% include
 image.html
 lightbox="true"
-file="/images/applications/rollout-player.png"
-url="/images/applications/rollout-player.png"
+file="/images/applications/rollout-resource-context-menu.png"
+url="/images/applications/rollout-resource-context-menu.png"
 alt="Options for `rollout` resource in the Current State tab"
 caption="Options for `rollout` resource in the Current State tab"
 max-width="50%"
@@ -316,13 +332,13 @@ The table describes the options for the `Rollout` resource.
 {: .table .table-bordered .table-hover}
 | Option             | Description              | 
 | --------------    | --------------           |
-|Abort              | Terminate the current rollout. | 
-|Pause              | Pause the current rollout.  | 
-|Promote-full       | Promote the current rollout by skipping paused, traffic routing, and analysis steps, and deploy the current release.  | 
-|Restart            | Manually restart the pods of the rollout. | 
-|Resume             | Resume a rollout that has been paused. | 
-|Retry              | Retry a rollout that has been aborted. Available only when a rollout has been aborted. | 
-|Skip-current-step  | Skip executing the current step, and continue with the next step. | 
+|**Abort**              | Terminate the current rollout. | 
+|**Pause**              | Pause the current rollout.  | 
+|**Promote-full**       | Promote the current rollout by skipping paused, traffic routing, and analysis steps, and deploy the current release.  | 
+|**Restart**            | Manually restart the pods of the rollout. | 
+|**Resume**             | Resume a rollout that has been paused. | 
+|**Retry**              | Retry a rollout that has been aborted. Available only when a rollout has been aborted. | 
+|**Skip-current-step**  | Skip executing the current step, and continue with the next step. | 
 
 
 
