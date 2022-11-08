@@ -81,10 +81,10 @@
 - title: Deployment
   url: "/deployment"
   pages:
-    - title: Monitoring applications
-      url: "/applications-dashboard"
     - title: Creating applications
       url: "/create-application"
+    - title: Monitoring applications
+      url: "/applications-dashboard"
     - title: Managing applications
       url: "/manage-application"
     - title: Images in Codefresh

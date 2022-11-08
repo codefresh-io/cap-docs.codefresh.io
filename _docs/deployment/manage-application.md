@@ -5,7 +5,7 @@ group: deployment
 toc: true
 ---
 
-Application creation and deployment is one part of the continuous deployment/delivery process. An equally important part is optimizing deployed applications when needed. Codefresh gives you the options to manage your applications using GitOps principles
+Application creation and deployment is one part of the continuous deployment/delivery process. An equally important part is optimizing deployed applications when needed. 
 
 * [Edit applications](#edit-application-definitions)  
   Optimize deployed applications by changing application definitions when needed.
@@ -13,8 +13,13 @@ Application creation and deployment is one part of the continuous deployment/del
 * [Synchronize applications](#manually-synchronize-an-application) 
   Sync applications on-demand by manually applying sync options or selecting the resources to sync.
 
-* [Delete applications](#delete-an-application)
-  Delete unused or legacy applications to avoid clutter and remove unnecessary resources.
+<!---* [Delete applications](#delete-an-application)
+  Delete unused or legacy applications to avoid clutter and remove unnecessary resources.-->
+
+
+* Manage ongoing rollouts for a deployment  
+  Use the controls in the Rollout Player to manage the rollout.
+
 
 
 
@@ -83,17 +88,28 @@ Update General or Advanced configuration settings for a deployed application thr
 {:/}
 
 ### Manually synchronize an application
-Manually synchronize an application to expedite Git-to-cluster sync.  The sync options selected for manual sync override the sync options defined for the application. 
-T
+Manually synchronize an application to expedite Git-to-cluster sync.  The sync options selected for manual sync override the sync options defined for the application.  
 The sync options, grouped into Revision and Additional Settings, are identical to the Sync options in the General settings when you created the application. 
 
-**Before you begin**
+>You can also synchronize application resources with sync statuses,  such as `Service`, `AnalysisTemplate`, and `Rollouts` resources for example, in the Current State tab. The context menu of the resource shows the Sync option. 
+
+**Before you begin**  
+* Review:  
+  [Revision settings for application sync](#revision-settings-for-application-sync)  
+  [Additional Options for application sync](#additional-options-for-application-sync)  
+  [Synchronize resources](#synchronize-resources)  
 
 **How to**  
 1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}.
-1. Select the application to sync, and do one of the following: 
+1. Sync an application:  
+  * Select the application to sync, and do one of the following: 
   * From the context menu on the right, select **Synchronize**. 
-  * On the top-right, click **Synchronize**. 
+  * On the top-right, click **Synchronize**.  
+
+  Sync a resource:  
+  * Click the application with the resource to sync.
+  * In the **Current State** tab, open the context menu of the resource, and then select **Sync**. 
+
 1. Select the **Revision** and **Additional Options** for the manual sync.  
   Review 
 1. Click **Next**.
@@ -101,7 +117,7 @@ The sync options, grouped into Revision and Additional Settings, are identical t
   * To sync only specific resources, search for the resources by any part of their names, or define a Regex to filter by the required resources.  
   * **All**: Sync all resources regardless of their sync state.
   * **Out of sync**: Sync _only_ resources that are `Out of sync`.  
-    If you have already selected **Apply out of sync only** in Additional Options, this 
+
 
 #### Revision settings for application sync
 Revision settings determine the behavior for the branch you select.  
@@ -181,7 +197,12 @@ For example, if you made changes to `api` resources or `audit` resources, type `
    max-width="70%" 
    %} 
 
-### Delete an application
+
+{::nomarkdown}
+<br><br>
+{:/}
+
+<!---### Delete an application
 Delete an application from Codefresh. Deleting an application deletes the manifest from the Git repository, and then from the cluster where it is deployed. When deleted from the cluster, the application is removed from the Applications dashboard in Codefresh.
  
 >**Prune resources** in the application's General settings determines the scope of the delete action.  
@@ -215,12 +236,100 @@ Codefresh warns you of the implication of deleting the selected application in t
    %} 
 
 {:start="4"}
-1. To confirm, click **Commit & Delete**.
+1. To confirm, click **Commit & Delete**.-->
 
-{::nomarkdown}
-<br><br>
-{:/}
+### Manage rollouts for deployments
+Control ongoing rollouts by resuming indefinitely paused steps, promoting rollouts, aborting, restarting and retrying rollouts.  
 
+
+#### Resume indefinitely paused rollout
+Resume an indefinitely paused rollout directly from the Timeline tab in the Applications dashboard in Codefresh, with a single click.
+
+1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}.
+1. Select the application and go to the Timelines tab.
+1. In the deployment record for the ongoing rollout, click {::nomarkdown}<img src="../../../images/icons/rollout-resume-indefinite-pause" display=inline-block"> {:/} to resume the rollout.
+
+{% include 
+   image.html 
+   lightbox="true" 
+   file="/images/applications/rollout-resume-indefinite-pause.png" 
+   url="/images/applications/rollout-resume-indefinite-pause.png" 
+   alt="Resume indefinitely paused rollout" 
+   caption="Resume indefinitely paused rollout"
+   max-width="70%" 
+   %}
+
+
+
+#### Manage an ongoing rollout
+Manage an ongoing rollout using the controls in the Rollout Player to skip steps, and promote rollouts.
+
+1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}.
+1. Select the application and go to the Timelines tab.
+1. In the deployment record for the ongoing rollout, click the name of the rollout. 
+1. Select the option in the Rollout Player.
+
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/rollout-player.png"
+url="/images/applications/rollout-player.png"
+alt="Rollout Player controls for an ongoing rollout"
+caption="Rollout Player controls for an ongoing rollout"
+max-width="50%"
+%}
+
+ 
+The table describes the controls in the Rollout Player.
+
+: .table .table-bordered .table-hover}
+| Rollback player option   | Description |  
+| --------------  | ------------| 
+| **Rollback**      | Not available currently.  | 
+| **Resume** {::nomarkdown}<img src="../../../images/icons/rollout-resume.png" display=inline-block"> {:/}| Resume a step that has been paused indefinitely. | 
+| **Skip step** {::nomarkdown}<img src="../../../images/icons/rollout-skip-step.png" display=inline-block"> {:/}  | Skip execution of current step. Use this option to skip a step with a fixed pause duration. Such steps are marked as Skipped in the rollout visualization. | 
+| **Promote full rollout** {::nomarkdown}<img src="../../../images/icons/rollout-promote-full.png" display=inline-block"> {:/}   | Skip remaining pause, traffic routing, and analysis steps, and deploy the current release. |        
+
+
+#### Manage the rollout resource
+
+Control the rollout through the options available for the Rollout resource. 
+
+1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}.
+1. Select the application and go to the Current State tab.
+1. Open the context menu of the `Rollout` resource, and select the relevant option. 
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/rollout-player.png"
+url="/images/applications/rollout-player.png"
+alt="Options for `rollout` resource in the Current State tab"
+caption="Options for `rollout` resource in the Current State tab"
+max-width="50%"
+%}
+
+The table describes the options for the `Rollout` resource.
+
+{: .table .table-bordered .table-hover}
+| Option             | Description              | 
+| --------------    | --------------           |
+|Abort              | Terminate the current rollout. | 
+|Pause              | Pause the current rollout.  | 
+|Promote-full       | Promote the current rollout by skipping paused, traffic routing, and analysis steps, and deploy the current release.  | 
+|Restart            | Manually restart the pods of the rollout. | 
+|Resume             | Resume a rollout that has been paused. | 
+|Retry              | Retry a rollout that has been aborted. Available only when a rollout has been aborted. | 
+|Skip-current-step  | Skip executing the current step, and continue with the next step. | 
+
+
+
+
+### Related articles
+[Creating applications]({{site.baseurl}}/docs/deployment/create-application)  
+[Home dashboard]({{site.baseurl}}/docs/reporting/home-dashboard)  
+[DORA metrics]({{site.baseurl}}/docs/reporting/dora-metrics)
 
 
 
