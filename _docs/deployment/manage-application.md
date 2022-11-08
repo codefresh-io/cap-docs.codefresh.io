@@ -262,7 +262,7 @@ Resume an indefinitely paused rollout directly from the Timeline tab in the Appl
 
 1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
 1. Select the application and go to the Timelines tab.
-1. In the deployment record for the ongoing rollout, click {::nomarkdown}<img src="../../../images/icons/rollout-resume-indefinite-pause" display=inline-block"> {:/} to resume the rollout.
+1. In the deployment record for the ongoing rollout, click **Resume**<!---{::nomarkdown}<img src="../../../images/icons/rollout-resume-indefinite-pause" display=inline-block"> {:/}-->.
 
 {% include 
    image.html 
