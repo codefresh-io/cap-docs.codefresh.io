@@ -285,7 +285,7 @@ where:
   
   `https://gitlab-onprem.devops.cf-cd.com/parent-group/child-group/codefresh.git/runtimes/defs?ref=codefresh-prod` (group hierarchy)
 
-* `--git-token <git-runtime-token>` (required), is the Git token authenticating access to the runtime installation repository (see [GitLab runtime token scopes](({{site.baseurl}}/docs/reference/git-tokens/#gitlab-cloud-and-gitlab-server-runtime-token-scopes)).  
+* `--git-token <git-runtime-token>` (required), is the Git token authenticating access to the runtime installation repository (see [GitLab runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#gitlab-cloud-and-gitlab-server-runtime-token-scopes)).
 
 
 {::nomarkdown}
