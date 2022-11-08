@@ -17,8 +17,9 @@ Application creation and deployment is one part of the continuous deployment/del
   Delete unused or legacy applications to avoid clutter and remove unnecessary resources.-->
 
 
-* Manage ongoing rollouts for a deployment  
-  Use the controls in the Rollout Player to manage the rollout.
+* [Manage rollouts for deployments](#manage-rollouts-for-deployments)  
+  Control ongoing rollouts by resuming indefinitely paused steps, promoting rollouts, aborting, restarting and retrying rollouts.  
+
 
 
 
