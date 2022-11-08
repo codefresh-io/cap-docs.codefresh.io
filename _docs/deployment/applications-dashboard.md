@@ -318,7 +318,7 @@ max-width="50%"
 %}
 
 **Resource info**  
-Mouse over a node to see a tooltip for that resource. For detailed information, select the resource; see [Detailed resource information](#detailed-resource-information) in this article.
+Mouse over a node to see a tooltip for that resource. For detailed information, select the resource.
 
 {% include
 image.html
@@ -534,16 +534,6 @@ max-width="30%"
 Each deployment record displays the complete CI history for that deployment.
 
 
-{% include
-image.html
-lightbox="true"
-file="/images/applications/app-dashboard-time-expanded-card.png"
-url="/images/applications/app-dashboard-time-expanded-card.png"
-alt="Applications Dashboard: Deployment record for selected application in Timeline tab"
-caption="Applications Dashboard: Deployment record for selected application in Timeline tab"
-max-width="70%"
-%}
-
 * The **CI Builds** shows the image(s) created or updated during deployment. Click to see the **Images** view in a new browser window.
 * The **Pull Request (PRs)** used for the commit.
 * The Jira **Issues** the PR aims to resolve or has resolved, with the current status.
@@ -619,6 +609,7 @@ caption="Rollout in progress for deployment"
 max-width="50%"
 %}
 
+Based on the current state of the rollout, you can pause and resume an ongoing rollout.  
 Here is an example of the rollout for the same deployment on completion. All traffic has been routed to the new version. 
 
 {% include

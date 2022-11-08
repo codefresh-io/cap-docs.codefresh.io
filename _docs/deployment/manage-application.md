@@ -257,20 +257,23 @@ Control ongoing rollouts by resuming indefinitely paused steps, promoting rollou
 <br>
 {:/}
 
-#### Resume an indefinitely paused rollout step
-Resume an indefinitely paused rollout directly from the Timeline tab in the Applications dashboard in Codefresh, with a single click.
+#### Pause/resume ongoing rollouts
+Pause and resume ongoing rollouts directly from the Timeline tab in the Applications dashboard.  
+If the rollout is already automatically paused as result of a step definition, this action pauses the rollout even after the pause duration.
+
 
 1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
 1. Select the application and go to the Timelines tab.
-1. In the deployment record for the ongoing rollout, click **Resume**<!---{::nomarkdown}<img src="../../../images/icons/rollout-resume-indefinite-pause" display=inline-block"> {:/}-->.
+1. In the deployment record for the ongoing rollout, expand **Updated Services**.
+1. Based on the current state of the rollout, click **Pause** or **Resume**, as relevant.
 
 {% include 
    image.html 
    lightbox="true" 
    file="/images/applications/rollout-resume-indefinite-pause.png" 
    url="/images/applications/rollout-resume-indefinite-pause.png" 
-   alt="Resume indefinitely paused rollout" 
-   caption="Resume indefinitely paused rollout"
+   alt="Resume paused rollout" 
+   caption="Resume paused rollout"
    max-width="70%" 
    %}
 
@@ -278,13 +281,13 @@ Resume an indefinitely paused rollout directly from the Timeline tab in the Appl
 <br>
 {:/}
 
-#### Manage an ongoing rollout
+#### Manage an ongoing rollout with the Rollout Player
 Manage an ongoing rollout using the controls in the Rollout Player to skip steps, and promote rollouts.
 
 1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
 1. Select the application and go to the Timelines tab.
 1. In the deployment record for the ongoing rollout, click the name of the rollout. 
-1. Select the option in the Rollout Player.
+1. Select the required option in the Rollout Player.
 
 
 {% include
@@ -304,15 +307,16 @@ The table describes the controls in the Rollout Player.
 | Rollback player option   | Description |  
 | --------------  | ------------| 
 | **Rollback**      | Not available currently.  | 
-| **Resume** <!---{::nomarkdown}<img src="../../../images/icons/rollout-resume.png" display=inline-block"> {:/}-->| Resume a step that has been paused indefinitely. | 
-| **Skip step** <!---{::nomarkdown}<img src="../../../images/icons/rollout-skip-step.png" display=inline-block"> {:/}--> | Skip execution of current step. Use this option to skip a step with a fixed pause duration. Such steps are marked as Skipped in the rollout visualization. | 
-| **Promote full** <!---{::nomarkdown}<img src="../../../images/icons/rollout-promote-full.png" display=inline-block"> {:/} -->  | Skip remaining pause, traffic routing, and analysis steps, and deploy the current release. |        
+| **Pause**         | Pause the rollout. If the rollout is already automatically paused as the result of a step definition, clicking Pause pauses the rollout also after the pause duration. | 
+| **Resume** <!---{::nomarkdown}<img src="../../../images/icons/rollout-resume.png" display=inline-block"> {:/}-->| Resume a rollout that was paused either manually by clicking Pause, or automatically through the step's definition. | 
+| **Skip step** <!---{::nomarkdown}<img src="../../../images/icons/rollout-skip-step.png" display=inline-block"> {:/}--> | Skip execution of current step. Such steps are marked as Skipped in the rollout visualization. | 
+| **Promote full** <!---{::nomarkdown}<img src="../../../images/icons/rollout-promote-full.png" display=inline-block"> {:/} -->  | Skip all remaining steps, and deploy the current image. |        
 
 {::nomarkdown}
 <br>
 {:/}
 
-#### Manage the rollout resource
+#### Manage the `rollout` resource
 
 Control the rollout through the options available for the Rollout resource. 
 
@@ -337,8 +341,8 @@ The table describes the options for the `Rollout` resource.
 | --------------    | --------------           |
 |**Abort**              | Terminate the current rollout. | 
 |**Pause**              | Pause the current rollout.  | 
-|**Promote-full**       | Promote the current rollout by skipping paused, traffic routing, and analysis steps, and deploy the current release.  | 
-|**Restart**            | Manually restart the pods of the rollout. | 
+|**Promote-full**       | Promote the current rollout by skipping all remaining stages in the rollout, and deploy the current image.  | 
+|**Restart**            | Manually restart the pods of the rollout.| 
 |**Resume**             | Resume a rollout that has been paused. | 
 |**Retry**              | Retry a rollout that has been aborted. Available only when a rollout has been aborted. | 
 |**Skip-current-step**  | Skip executing the current step, and continue with the next step. | 
