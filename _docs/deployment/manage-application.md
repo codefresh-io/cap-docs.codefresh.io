@@ -7,13 +7,13 @@ toc: true
 
 Application creation and deployment is one part of the continuous deployment/delivery process. An equally important part is optimizing deployed applications when needed. Codefresh gives you the options to manage your applications using GitOps principles
 
-* Edit applications  
+* [Edit applications](#edit-application-definitions)  
   Optimize deployed applications by changing application definitions when needed.
 
-* Synchronize applications  
-  Sync applications on-demand by manually applying sync options or selecting the reosurces to sync.
+* [Synchronize applications](#manually-synchronize-an-application) 
+  Sync applications on-demand by manually applying sync options or selecting the resources to sync.
 
-* Delete applications  
+* [Delete applications](#delete-an-application)
   Delete unused or legacy applications to avoid clutter and remove unnecessary resources.
 
 
@@ -97,12 +97,11 @@ The sync options, grouped into Revision and Additional Settings, are identical t
 1. Select the **Revision** and **Additional Options** for the manual sync.  
   Review 
 1. Click **Next**.
-1. To syncIn the Synchronize Resources form, select the scope of the manual sync:
+1. In the Synchronize Resources form, select the scope of the manual sync:
   * To sync only specific resources, search for the resources by any part of their names, or define a Regex to filter by the required resources.  
   * **All**: Sync all resources regardless of their sync state.
   * **Out of sync**: Sync _only_ resources that are `Out of sync`.  
     If you have already selected **Apply out of sync only** in Additional Options, this 
-  * **None**: ???.
 
 #### Revision settings for application sync
 Revision settings determine the behavior for the branch you select.  
@@ -120,7 +119,7 @@ When selected, syncs only those resources in the application that have been chan
 When selected, allows you to preview the application before changes are made to the cluster. 
 
 **Force**  
-When selected, orphans (deletes??) the dependents of a deleted resource during the sync operation. This option is useful to prevent 
+When selected, orphans the dependents of a deleted resource during the sync operation. This option is useful to prevent 
 
 #### Additional Options for application sync
 
@@ -133,7 +132,7 @@ When selected, orphans (deletes??) the dependents of a deleted resource during t
 * **Prune last**  
   When selected, removes those resources that do not exist in the currently deployed version during the final wave of the sync operation. See [Prune last](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last){:target="\_blank").  
 * **Apply out of sync only**
-  When selected, syncs only those resources in the application that have been changed and are `OutOfSync`, instead of syncing every resource regardless of their state. This option is useful to reduce load and save time when you have thousands of resources in an application. See <a href="" >[Selective Sync](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#selective-sync){:target="\_blank"}.  
+  When selected, syncs only those resources in the application that have been changed and are `OutOfSync`, instead of syncing every resource regardless of their state. This option is useful to reduce load and save time when you have thousands of resources in an application. See [Selective Sync](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#selective-sync){:target="\_blank"}.  
 * **Respect ignore differences**  
   When selected, Argo CD omits resources defined for the `spec.ignoreDifferences` attribute from the sync. Otherwise, Argo CD implements the desired state ad-hoc during the sync operation. See [Respect ignore difference configs](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#respect-ignore-difference-configs){:target="\_blank"}.
 
@@ -152,7 +151,7 @@ All Prune propagation policies can be used with:
 * Factor by which to multiply the Duration in the event of a failed retry (**Factor**). A factor of 2 for example, attempts the second retry in 2 X 2 seconds, where 2 seconds is the Duration.
 
 #### Synchronize resources
-Synchonize Resource options allow you to selectively sync application resources. You can bypass sync settings at the application level, and directly select the resources you want to sync, by state or otherwise.  
+Synchronize Resource options allow you to selectively sync application resources. You can bypass sync settings at the application level, and directly select the resources you want to sync, by state or otherwise.  
 * All resources regardless of their sync states
 * Only out-of-sync resources
 * Only selected resources
