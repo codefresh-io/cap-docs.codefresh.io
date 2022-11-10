@@ -84,4 +84,7 @@ The table below highlights the main differences between hosted and hybrid enviro
 |                         |Applications        | Supported                 |Supported        |
 
 ### Related articles
-[Architecture]({{site.baseurl}}/docs/getting-started/architecture/)
+[Architecture]({{site.baseurl}}/docs/getting-started/architecture/)  
+[Add Git Sources to runtimes]({{site.baseurl}}/docs/runtime/git-sources/)   
+[Shared configuration repository]({{site.baseurl}}/docs/reference/shared-configuration)  
+
