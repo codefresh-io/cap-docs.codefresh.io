@@ -24,9 +24,8 @@ Use the action as follows:
 1. Use existing CI actions for compiling code, running unit tests, security scanning etc.
 1. Place the final action in the pipeline as the "report image" action provided by Codefresh.  
   See:  
-  [GitHub Action Codefresh report image](https://github.com/marketplace/actions/codefresh-report-image){:target="\_blank"}
+  [GitHub Action Codefresh report image](https://github.com/marketplace/actions/codefresh-report-image){:target="\_blank"}  
   [Codefresh Classic Codefresh report image](https://codefresh.io/steps/step/codefresh-report-image){:target="\_blank"}  
-
 1. When the pipeline completes execution, Codefresh retrieves the information on the image that was built and its metadata through the integration names specified (essentially the same data that Codefresh CI would send automatically).
 1. View the image in Codefresh's [Images dashboard]({{site.baseurl}}/docs/deployment/images/), and in any [application]({{site.baseurl}}/docs/deployment/applications-dashboard/) in which it is used.
 
@@ -40,15 +39,15 @@ Connecting the CI platform/tool to Codefresh from the UI includes configuring th
   [GitHub Action]({{site.baseurl}}/docs/integrations/ci-integrations/github-actions/)  
   [Jenkins]({{site.baseurl}}/docs/integrations/ci-integrations/jenkins/)  
 
-  For the complete list of arguments you can use, see [CI integration argument reference](#ci-integration-argument-reference) later in this article.
+  For the complete list of arguments you can use, see [CI integration argument reference](#ci-integration-argument-reference) in this article.
 
 1. To generate a YAML snippet with the arguments, on the top-right, click **Generate Manifest**.  
    Codefresh validates the generated manifest, and alerts you to undefined arguments that are required, and other errors. 
 
    {% include image.html 
 lightbox="true" 
-file="/images/integrations/classic/generated-manifest-with-error.png" 
-url="/images/integrationsclassic/generated-manifest-with-error.png"
+file="/images/integrations/generated-manifest-with-error.png" 
+url="/images/integrations/generated-manifest-with-error.png"
 alt="Example of manifest generated for Codefresh Classic with validation errors"
 caption="Example of manifest generated for Codefresh Classic with validation errors"
 max-width="50%"
