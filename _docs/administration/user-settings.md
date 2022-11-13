@@ -157,7 +157,7 @@ Make sure you have:
 1. Select **Personal Settings > App passwords**.
 1. Define the **Label**.
   Select these scopes: 
-  * **Permissions**: `Read`
+  * **Account**: `Read`
   * **Workspace membership**: `Read`
   * **Repositories**: `Write`
 
