@@ -6,40 +6,21 @@ sub_group: ci-integrations
 toc: true
 ---
 
- Use Hosted GitOps with any popular Continuous Integration (CI) solution, not just with Codefresh CI. Jenkins is one of the third-party CI platform/tools that you can connect to Codefresh for deployment with image enrichment and reporting. 
+ Use Hosted GitOps with any popular Continuous Integration (CI) solution, not just with Codefresh CI. Jenkins is one of the third-party CI platform/tools that you can connect to Codefresh for deployment with image enrichment and reporting.  
+
+ Connecting a Jenkins pipeline, adds the CI information to images which are displayed in the Images dashboard, as in the example below.  
+
+  {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/integrations/images-dashboard.png" 
+   url="/images/integrations/images-dashboard.png" 
+   alt="Images dashboard with enriched image information" 
+   caption="Images dashboard with enriched image information"
+   max-width="70%" 
+   %} 
 
 For information on how to use the image reporting action in your Jenkins pipeline and how to configure the integration, see [CI Integrations]({{site.baseurl}}/docs/integrations/ci-integrations/). 
-
-
-
-### Jenkins-Codefresh integration arguments
-The table describes the arguments to connect Codefresh Classic to Codefresh.  
-
-{: .table .table-bordered .table-hover}
-| Argument    | Description     | Required/Optional/Default |
-| ----------  |  -------- | ------------------------- |
-| `CF_RUNTIME_NAME`       | The runtime to use for the integration. If you have more than one runtime, select the runtime from the list. | Required  |
-| `CF_API_KEY`            | The API key to authenticate the Codefresh Classic user to Codefresh. Generate the key for the integration.  | Required  |
-| `CF_CONTAINER_REGISTRY_INTEGRATION` | The name of the container registry integration created in Codefresh where the image is stored. To create a container registry integration if you don't have one, click **Create Container Registry Integration**, and then configure the settings. See [Container registry integrations]({{site.baseurl}}/docs/integrations/container-registries/). | Optional  |
-| `CF_JIRA_INTEGRATION`               | The name of the issue tracking integration created in Codefresh to use to enrich the image. Relevant only if Jira enrichment is required for the image. If you don't have a Jira integration, click **Create Atlassian Jira Integration** and configure settings (see [Jira integration]({{site.baseurl}}/docs/integrations/issue-tracking/jira/)).  | Optional  |
-| `CF_IMAGE`                    | The image to be enriched and reported in Codefresh. Pass the `[account-name]/[image-name]:[tag]` built in your CI. | Required  |
-| `CF_GIT_BRANCH`              | The Git branch with the commit and PR (pull request) data to add to the image. Pass the Branch from the event payload used to trigger your action.  | Required  |
-| `CF_GIT_REPO`                | The Git repository with the configuration and code used to build the image.  | Required  |
-| `CF_GIT_PROVIDER`            | The Git provider for the integration, and can be either GiitHub, GitLab, or Bitbucket.  | Required  |
-| `CF_GITHUB_TOKEN`            | The GitHub authentication token. The token must have `repo` scope. See [Git tokens]({{site.baseurl}}/docs/reference/git-tokens/). | Required  |
-| `CF_GITHUB_API_URL`          | The URL to the GitHub developer site.  | Required  |
-| `CF_GITLAB_TOKEN`      | The GitLab token for authentication.  | Required  |
-| `CF_GITLAB_HOST_URL`      | The URL to the GitLab instance.  | Optional  |
-| `CF_BITBUCKET_USERNAME`      | The username for the Bitbucket or the BitBucket Server (on-prem) account. | Required  |
-| `CF_BITBUCKET_PASSWORD`      | The password for the Bitbucket or the BitBucket Server (on-prem) account. | Required  |
-| `CF_BITBUCKET_HOST_URL`      | Relevant for Bitbucket Server accounts only. The URL address of your Bitbucket Server instance. Example, `https://bitbucket-server:7990`. | Required  |
-|`CF_JIRA_PROJECT_PREFIX` | Relevant only when `CF_JIRA_INTEGRATION` is defined. The Jira project prefix that identifies the ticket number to use.| Required|
-| `CF_JIRA_MESSAGE`            | Relevant only when `CF_JIRA_INTEGRATION` is defined. The Jira issue IDs matching the string to associate with the image.  | Required  |
-| `CF_JIRA_FAIL_ON_NOT_FOUND`            | Relevant only when `CF_JIRA_INTEGRATION` is defined. The report image action when the `CF_JIRA_MESSAGE` is not found. When set to `true`, the report image action is failed.  | Required  |
-
-
-For how-to instructions, see [Connect a third-party CI platform/tool to Codefresh]({{site.baseurl}}/docs/integrations/ci-integrations/#connect-a-third-party-ci-platform-tool-to-codefresh).  
-
 
 ### Example of Jenkins pipeline with report image step
 
@@ -127,6 +108,34 @@ pipeline {
 
 {% endraw %}
 {% endhighlight yaml %}
+
+### Jenkins-Codefresh integration arguments
+The table describes the arguments to connect Codefresh Classic to Codefresh.  
+
+{: .table .table-bordered .table-hover}
+| Argument    | Description     | Required/Optional/Default |
+| ----------  |  -------- | ------------------------- |
+| `CF_RUNTIME_NAME`       | The runtime to use for the integration. If you have more than one runtime, select the runtime from the list. | Required  |
+| `CF_API_KEY`            | The API key to authenticate the Codefresh Classic user to Codefresh. Generate the key for the integration.  | Required  |
+| `CF_CONTAINER_REGISTRY_INTEGRATION` | The name of the container registry integration created in Codefresh where the image is stored. To create a container registry integration if you don't have one, click **Create Container Registry Integration**, and then configure the settings. See [Container registry integrations]({{site.baseurl}}/docs/integrations/container-registries/). | Optional  |
+| `CF_JIRA_INTEGRATION`               | Deprecated from version 0.0.565. Replaced by `CF_ISSUE_TRACKING_INTEGRATION`. |  
+| `CF_ISSUE_TRACKING_INTEGRATION` | The name of the issue tracking integration created in Codefresh to use to enrich the image. Relevant only if Jira enrichment is required for the image. If you don't have a Jira integration, click **Create Atlassian Jira Integration** and configure settings. See [Jira integration]({{site.baseurl}}/docs/integrations/issue-tracking/jira/).  | Optional  |
+| `CF_IMAGE`                    | The image to be enriched and reported in Codefresh. Pass the `[account-name]/[image-name]:[tag]` built in your CI. | Required  |
+| `CF_GIT_BRANCH`              | The Git branch with the commit and PR (pull request) data to add to the image. Pass the Branch from the event payload used to trigger your action.  | Required  |
+| `CF_GIT_REPO`                | The Git repository with the configuration and code used to build the image.  | Required  |
+| `CF_GIT_PROVIDER`            | The Git provider for the integration, and can be either GiitHub, GitLab, or Bitbucket.  | Required  |
+| `CF_GITLAB_TOKEN`      | The token to authenticate the GitLab account.  If not defined, Codefresh retrieves it from the runtime's Git context.| Required  |
+| `CF_GITLAB_HOST_URL`      | The URL address of your GitLab Cloud/Server instance.  If not defined, Codefresh retrieves it from the runtime's Git context. | Optional  |
+| `CF_BITBUCKET_USERNAME`      | The username for the Bitbucket or the BitBucket Server (on-prem) account.  If not defined, Codefresh retrieves it from the runtime's Git context.| Required  |
+| `CF_BITBUCKET_PASSWORD`      | The password for the Bitbucket or the BitBucket Server (on-prem) account.  If not defined, Codefresh retrieves it from the runtime's Git context.| Required  |
+| `CF_BITBUCKET_HOST_URL`      | Relevant for Bitbucket Server accounts only. The URL address of your Bitbucket Server instance. Example, `https://bitbucket-server:7990`.  If not defined, Codefresh retrieves it from the runtime's Git context. | Optional  |
+|`CF_JIRA_PROJECT_PREFIX` | Relevant only when `CF_ISSUE_TRACKING_INTEGRATION` is defined. The Jira project prefix that identifies the ticket number to use.| Required|
+| `CF_JIRA_MESSAGE`            | Relevant only when `CF_ISSUE_TRACKING_INTEGRATION` is defined. The Jira issue IDs matching the string to associate with the image.  | Required  |
+| `CF_JIRA_FAIL_ON_NOT_FOUND`            | Relevant only when `CF_ISSUE_TRACKING_INTEGRATION` is defined. The report image action when the `CF_JIRA_MESSAGE` is not found. When set to `true`, the report image action is failed.  | Required  |
+
+
+For how-to instructions, see [Connect a third-party CI platform/tool to Codefresh]({{site.baseurl}}/docs/integrations/ci-integrations/#connect-a-third-party-ci-platform-tool-to-codefresh).  
+
 
 ### Jenkins integration logs
 View and analyze logs for Jenkins through the Logs tab. When a Jenkins pipeline is run, it is added to the Logs tab.  

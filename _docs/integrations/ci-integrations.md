@@ -8,6 +8,8 @@ toc: true
 Use Codefresh's Hosted GitOps with any popular Continuous Integration (CI) solution, not just with Codefresh CI.
 
 You can connect a third-party CI solution to Codefresh, such as GitHub Actions for example, to take care of common CI tasks such as building/testing/scanning source code, and have Codefresh Hosted GitOps still responsible for the deployment, including image enrichment and reporting.  
+The integration brings in all the CI information to your images which you can see in the Images dashboard.   
+
 See [Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/).
 
 ### Codefresh image reporting and enrichment action
@@ -22,8 +24,9 @@ Use the action as follows:
 1. Use existing CI actions for compiling code, running unit tests, security scanning etc.
 1. Place the final action in the pipeline as the "report image" action provided by Codefresh.  
   See:  
- [GitHub Action Codefresh report image](https://github.com/marketplace/actions/codefresh-report-image){:target="\_blank"}
- [Codefresh Classic Codefresh report image](https://codefresh.io/steps/step/codefresh-report-image){:target="\_blank"}   
+  [GitHub Action Codefresh report image](https://github.com/marketplace/actions/codefresh-report-image){:target="\_blank"}
+  [Codefresh Classic Codefresh report image](https://codefresh.io/steps/step/codefresh-report-image){:target="\_blank"}  
+
 1. When the pipeline completes execution, Codefresh retrieves the information on the image that was built and its metadata through the integration names specified (essentially the same data that Codefresh CI would send automatically).
 1. View the image in Codefresh's [Images dashboard]({{site.baseurl}}/docs/deployment/images/), and in any [application]({{site.baseurl}}/docs/deployment/applications-dashboard/) in which it is used.
 
@@ -31,7 +34,7 @@ Use the action as follows:
 Connecting the CI platform/tool to Codefresh from the UI includes configuring the required arguments, and then generating and copying the YAML manifest for the report image to your pipeline.  
 
 1. In the Codefresh UI, go to [Integrations](https://g.codefresh.io/2.0/account-settings/integrations){:target="\_blank"}.
-1. Filter by **CI tools**, select the CI tool, and click **Configure**.
+1. Filter by **CI tools**, then select the CI tool and click **Add**.
 1. Define the arguments for the CI tool:  
   [Codefresh Classic]({{site.baseurl}}/docs/integrations/ci-integrations/codefresh-classic/)  
   [GitHub Action]({{site.baseurl}}/docs/integrations/ci-integrations/github-actions/)  
@@ -39,9 +42,21 @@ Connecting the CI platform/tool to Codefresh from the UI includes configuring th
 
   For the complete list of arguments you can use, see [CI integration argument reference](#ci-integration-argument-reference) later in this article.
 
-1. To generate a YAML snippet with the arguments, on the top-right, click **Generate Manifest**. 
-1. In the generated manifest, add fields and values, as needed.
-1. To copy the YAML manifest, click **Copy**.
+1. To generate a YAML snippet with the arguments, on the top-right, click **Generate Manifest**.  
+   Codefresh validates the generated manifest, and alerts you to undefined arguments that are required, and other errors. 
+
+   {% include image.html 
+lightbox="true" 
+file="/images/integrations/classic/generated-manifest-with-error.png" 
+url="/images/integrationsclassic/generated-manifest-with-error.png"
+alt="Example of manifest generated for Codefresh Classic with validation errors"
+caption="Example of manifest generated for Codefresh Classic with validation errors"
+max-width="50%"
+%}
+
+{:start="5"}
+1. If required, click **Close**, update as needed and generate the manifest again.
+1. If there are no validation errors, click **Copy**.
 
 {% include image.html 
 lightbox="true" 
@@ -53,7 +68,7 @@ max-width="50%"
 %}
 
 {:start="6"}
-1. Paste it as the last step in your CI pipeline.
+1. Paste the copied manifest as the last step in your CI pipeline.
 
 ### CI integration argument reference 
 The table describes _all_ the arguments required for CI integrations in general. The actual arguments required, differs according to the CI integration tool.
@@ -65,20 +80,21 @@ The table describes _all_ the arguments required for CI integrations in general.
 | `CF_RUNTIME_NAME`       | The runtime to use for the integration. If you have more than one runtime, select the runtime from the list. | Required  |
 | `CF_API_KEY`            | The API key for authentication. Generate the key for the integration.  | Required  |
 | `CF_CONTAINER_REGISTRY_INTEGRATION` | The name of the container registry integration created in Codefresh where the image is stored. See [Container registry integrations]({{site.baseurl}}/docs/integrations/container-registries/). | Optional  |
-| `CF_JIRA_INTEGRATION`               | The name of the issue tracking integration created in Codefresh to use to enrich the image. Relevant only if Jira enrichment is required for the image. See [Jira integration]({{site.baseurl}}/docs/integrations/issue-tracking/jira/).  | Optional  |
+| `CF_JIRA_INTEGRATION`               | Deprecated from version 0.0.565. Replaced by `CF_ISSUE_TRACKING_INTEGRATION`. |  
+| `CF_ISSUE_TRACKING_INTEGRATION` | The name of the issue tracking integration created in Codefresh to use to enrich the image. Relevant only if Jira enrichment is required for the image. If you don't have a Jira integration, click **Create Atlassian Jira Integration** and configure settings. See [Jira integration]({{site.baseurl}}/docs/integrations/issue-tracking/jira/).  | Optional  |
 | `CF_IMAGE`                    | The image to be enriched and reported in Codefresh. Pass the `[account-name]/[image-name]:[tag]` built in your CI. | Required  |
 | `CF_WORKFLOW_NAME`           | The name assigned to the workflow that builds the image. When defined, the name is displayed in the Codefresh platform. Example, `Staging step` | Optional  |
 | `CF_GIT_BRANCH`              | The Git branch with the commit and PR (pull request) data to add to the image. Pass the Branch from the event payload used to trigger your action.  | Required  |
 | `CF_GIT_REPO`                | The Git repository with the configuration and code used to build the image.  | Required  |
 | `CF_GIT_PROVIDER`            | The Git provider for the integration, and can be either GitHub, GitLab, or Bitbucket.  | Required  |
-| `CF_GITHUB_TOKEN`            | The GitHub authentication token. The token must have `repo` scope. See [Git tokens]({{site.baseurl}}/docs/reference/git-tokens/). | Required  |
-| `CF_GITHUB_API_URL`          | The URL to the GitHub developer site.  | Required  |
-| `CF_BITBUCKET_USERNAME`      | The username for the Bitbucket or the BitBucket Server (on-prem) account. | Required  |
-| `CF_BITBUCKET_PASSWORD`      | The password for the Bitbucket or the BitBucket Server (on-prem) account. | Required  |
-| `CF_BITBUCKET_HOST_URL`      | Relevant for Bitbucket Server accounts only. The URL address of your Bitbucker Server instance. Example, `https://bitbucket-server:7990`. | Required  |
-|`CF_JIRA_PROJECT_PREFIX` | Relevant only when `CF_JIRA_INTEGRATION` is defined. The Jira project prefix that identifies the ticket number to use.| Required|
-| `CF_JIRA_MESSAGE`            | Relevant only when `CF_JIRA_INTEGRATION` is defined. The Jira issue IDs matching the string to associate with the image.  | Required  |
-| `CF_JIRA_FAIL_ON_NOT_FOUND`            | Relevant only when `CF_JIRA_INTEGRATION` is defined. The report image action when the `CF_JIRA_MESSAGE` is not found. When set to `true`, the report image action is failed.  | Required  |
+| `CF_GITLAB_TOKEN`      | The token to authenticate the GitLab account.  If not defined, Codefresh retrieves it from the runtime's Git context.| Required  |
+| `CF_GITLAB_HOST_URL`      | The URL address of your GitLab Cloud/Server instance.  If not defined, Codefresh retrieves it from the runtime's Git context. | Optional  |
+| `CF_BITBUCKET_USERNAME`      | The username for the Bitbucket or the BitBucket Server (on-prem) account.  If not defined, Codefresh retrieves it from the runtime's Git context.| Required  |
+| `CF_BITBUCKET_PASSWORD`      | The password for the Bitbucket or the BitBucket Server (on-prem) account.  If not defined, Codefresh retrieves it from the runtime's Git context.| Required  |
+| `CF_BITBUCKET_HOST_URL`      | Relevant for Bitbucket Server accounts only. The URL address of your Bitbucket Server instance. Example, `https://bitbucket-server:7990`.  If not defined, Codefresh retrieves it from the runtime's Git context. | Optional  |
+|`CF_JIRA_PROJECT_PREFIX` | Relevant only when `CF_ISSUE_TRACKING_INTEGRATION` is defined. The Jira project prefix that identifies the ticket number to use.| Required|
+| `CF_JIRA_MESSAGE`            | Relevant only when `CF_ISSUE_TRACKING_INTEGRATION` is defined. The Jira issue IDs matching the string to associate with the image.  | Required  |
+| `CF_JIRA_FAIL_ON_NOT_FOUND`            | Relevant only when `CF_ISSUE_TRACKING_INTEGRATION` is defined. The report image action when the `CF_JIRA_MESSAGE` is not found. When set to `true`, the report image action is failed.  | Required  |
 
 ### Related articles
 [Container registry integrations]({{site.baseurl}}/docs/integrations/container-registries/)  
