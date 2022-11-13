@@ -101,7 +101,7 @@ The Git personal token is a user-specific personal access token per provisioned 
 
 #### Bitbucket Cloud and Server personal user token scopes
 
-* **Permissions**: `Read`
+* **Account**: `Read`
 * **Workspace membership**: `Read`
 * **Repositories**: `Write`, `Admin`
 
