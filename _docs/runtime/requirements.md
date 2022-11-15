@@ -186,7 +186,7 @@ The table below lists the specific configuration requirements for Codefresh.
 |Valid TLS certificate| |
 |TCP support |  | 
 |Cluster routing service | _After_ installing hybrid runtime | 
-|Annotation in WorkflowTemplate |  | 
+|Add annotation WorkflowTemplate for application hold |  | 
 
 {::nomarkdown}
 </br>
@@ -320,6 +320,31 @@ spec:
 ```
 
 #### Annotation in WorkflowTemplate
+Configure the `WorkflowTemplate` to wait until the proxy has started to prevent connection refused errors.  
+
+Add `metadata.annotations.proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'`, as in the example below.
+
+```yaml  
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: istio-slack.0.0.7
+spec:
+  entrypoint: send-to-slack
+  templates:
+    - name: send-to-slack
+      serviceAccountName: istio-slack.0.0.7
+      metadata:
+        annotations:
+          proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+      retryStrategy:
+        limit: '3'
+        retryPolicy: 'Always'
+        backoff:
+          duration: '5s'
+...
+```
+
 {::nomarkdown}
 </br></br>
 {:/}
