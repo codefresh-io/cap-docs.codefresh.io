@@ -186,6 +186,7 @@ The table below lists the specific configuration requirements for Codefresh.
 |Valid TLS certificate| |
 |TCP support |  | 
 |Cluster routing service | _After_ installing hybrid runtime | 
+|Annotation in WorkflowTemplate |  | 
 
 {::nomarkdown}
 </br>
@@ -216,13 +217,58 @@ Configure the ingress controller to handle TCP requests.
 #### Cluster routing service
 >  The cluster routing service must be configured _after_ installing the hybrid runtime.
 
-Configure the `VirtualService` to route traffic to the `app-proxy` and `webhook` services, as in the examples below.  
+Based on the runtime version, you need to configure a single or different `VirtualService` resources for these services:
+
+##### Runtime version 0.0.543 or higher
+Configure a single `VirtualService` resource to route traffic to the `app-proxy`, `webhook`, and `workflow` services, as in the examples below.  
+
+```yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  namespace: pov-codefresh-istio-runtime # replace with your runtime name
+  name: internal-router
+spec:
+  hosts:
+    -  pov-codefresh-istio-runtime.sales-dev.codefresh.io   # replace with your host name
+  gateways:
+    - istio-system/internal-router  
+  http:
+    - match:
+      - uri:
+          prefix: /webhooks
+      route:
+      - destination:
+          host: internal-router
+          port:
+            number: 80
+    - match:
+      - uri:
+          prefix: /app-proxy
+      route:
+      - destination:
+          host: internal-router
+          port:
+            number: 80
+    - match:
+      - uri:
+          prefix: /workflows
+      route:
+      - destination:
+          host: internal-router
+          port:
+            number: 80
+```
+
+##### Runtime version 0.0.542 or lower
+
+Configure two different `VirtualService` resources, to route traffic to the `app-proxy` and to the `webhook` services, as in the examples below.  
 
 {::nomarkdown}
 </br>
 {:/}
 
-**`VirtualService` example for `app-proxy`:** 
+**`VirtualService` example for `app-proxy`:**
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -249,7 +295,7 @@ spec:
 </br>
 {:/}
 
-**`VirtualService` example for `webhook`:** 
+**`VirtualService` example for `webhook`:**
 
 ```yaml  
 apiVersion: networking.istio.io/v1alpha3
@@ -272,6 +318,8 @@ spec:
           port:
             number: 80
 ```
+
+#### Annotation in WorkflowTemplate
 {::nomarkdown}
 </br></br>
 {:/}
