@@ -186,7 +186,6 @@ The table below lists the specific configuration requirements for Codefresh.
 |Valid TLS certificate| |
 |TCP support |  | 
 |Cluster routing service | _After_ installing hybrid runtime | 
-|Add annotation WorkflowTemplate for application hold |  | 
 
 {::nomarkdown}
 </br>
@@ -220,7 +219,7 @@ Configure the ingress controller to handle TCP requests.
 Based on the runtime version, you need to configure a single or different `VirtualService` resources for these services:
 
 ##### Runtime version 0.0.543 or higher
-Configure a single `VirtualService` resource to route traffic to the `app-proxy`, `webhook`, and `workflow` services, as in the examples below.  
+Configure a single `VirtualService` resource to route traffic to the `app-proxy`, `webhook`, and `workflow` services, as in the example below.  
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -232,7 +231,7 @@ spec:
   hosts:
     -  pov-codefresh-istio-runtime.sales-dev.codefresh.io   # replace with your host name
   gateways:
-    - istio-system/internal-router  
+    - istio-system/internal-router  # replace with your gateway name
   http:
     - match:
       - uri:
@@ -280,7 +279,7 @@ spec:
   hosts:
     - my.support.cf-cd.com # replace with your host name
   gateways:
-    - my-gateway
+    - my-gateway # replace with your host name
   http:
     - match:
       - uri:
@@ -307,7 +306,7 @@ spec:
   hosts:
     - my.support.cf-cd.com # replace with your host name
   gateways:
-    - my-gateway
+    - my-gateway # replace with your host name
   http:
     - match:
       - uri:
@@ -319,31 +318,7 @@ spec:
             number: 80
 ```
 
-#### Annotation in WorkflowTemplate
-Configure the `WorkflowTemplate` to wait until the proxy has started to prevent connection refused errors.  
 
-Add `metadata.annotations.proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'`, as in the example below.
-
-```yaml  
-apiVersion: argoproj.io/v1alpha1
-kind: WorkflowTemplate
-metadata:
-  name: istio-slack.0.0.7
-spec:
-  entrypoint: send-to-slack
-  templates:
-    - name: send-to-slack
-      serviceAccountName: istio-slack.0.0.7
-      metadata:
-        annotations:
-          proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
-      retryStrategy:
-        limit: '3'
-        retryPolicy: 'Always'
-        backoff:
-          duration: '5s'
-...
-```
 
 {::nomarkdown}
 </br></br>
