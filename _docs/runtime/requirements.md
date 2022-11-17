@@ -261,7 +261,7 @@ spec:
 
 ##### Runtime version 0.0.542 or lower
 
-Configure two different `VirtualService` resources, to route traffic to the `app-proxy` and to the `webhook` services, as in the examples below.  
+Configure two different `VirtualService` resources, one to route traffic to the `app-proxy`, and the second to route traffic to the `webhook` services, as in the examples below.  
 
 {::nomarkdown}
 </br>
