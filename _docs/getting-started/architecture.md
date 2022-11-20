@@ -141,11 +141,12 @@ The Argo Project includes:
 {:/}
 
 #### Request Routing Service
-The Request Routing Service is installed on the same cluster as the Codefresh Runtime in the customer environment. It receives requests from the ingress controller for ingress-based hybrid, and forwards the request URLs to the Application Proxy, and webhooks directly to the Event Sources.
+The Request Routing Service is installed on the same cluster as the Codefresh Runtime in the customer environment.  
+It receives requests from the ingress controller (ingress) or the Tunnel Client (ingress-less), and forwards the request URLs to the Application Proxy, and webhooks directly to the Event Sources.  
 
 >Important:  
-The Request Routing Service is available from runtime version 0.0.543 and higher.
-Older runtime versions are not affected as there is complete backward compatibility, and the ingress controller continues to route incoming requests.
+  The Request Routing Service is available from runtime version 0.0.543 and higher.   
+  Older runtime versions are not affected as there is complete backward compatibility, and the ingress controller continues to route incoming requests.
 
 #### Tunnel Server
 Applies only to _ingress-less_ runtimes in hybrid installation environments.  
