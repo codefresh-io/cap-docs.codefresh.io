@@ -80,8 +80,8 @@ The Git repository per runtime account with shared configuration manifests.
 #### Ingress-less flags
 These flags are required to install the runtime without an ingress controller. 
 
-**Access mode**
-Required for ingress-less runtime installation.  
+**Access mode**  
+Required.  
 
 The access mode for ingress-less runtimes, the tunnel mode. 
  
@@ -99,6 +99,9 @@ When omitted, all incoming requests are authenticated regardless of the IPs from
 
 * CLI wizard and Silent install: Add the `--ips-allow-list` flag, followed by the IP address, or list of comma-separated IPs to define more than one. For example, `--ips-allow-list 77.126.94.70/16,192.168.0.0` 
 
+{::nomarkdown}
+</br>
+{:/}
 
 #### Ingress controller flags
 
