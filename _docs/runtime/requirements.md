@@ -294,7 +294,9 @@ spec:
 </br>
 {:/}
 
-**`VirtualService` example for `webhook`:**
+**`VirtualService` example for `webhook`:**  
+
+> Configure a `webhook` for each event defined in the event source.
 
 ```yaml  
 apiVersion: networking.istio.io/v1alpha3
@@ -306,7 +308,7 @@ spec:
   hosts:
     - my.support.cf-cd.com # replace with your host name
   gateways:
-    - my-gateway # replace with your host name
+    - my-gateway # replace with your gateway name
   http:
     - match:
       - uri:
