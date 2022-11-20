@@ -6,13 +6,12 @@ toc: true
 ---
 
 One of the major highlights of the Codefresh platform is the ability to automatically correlate 
-software features with their deployment, as in where and when the feature was deployed. While the software version of a component is easily identifiable, what is likely more interesting and important is to know which features are included in a release.
+software features with their deployment (where and when). While the software version of a component is easily identifiable, what is likely more interesting and important is to know which features are included in a release.
 
 Adding an issue-tracking integration in Codefresh allows you to reference the integration in third-party CI platforms/tools such as GitHub Actions and Codefresh Classic by the name of the integration, instead of explicit credentials. See [Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/) and [CI integrations]({{site.baseurl}}/docs/integrations/ci-integrations/).
 
 You add an issue-tracking integration in Codefresh by:
 * Defining the integration name 
-* Selecting the authentication method for the integration
 * Selecting the runtime or runtimes it is shared with
 * Defining the arguments
 * Committing the changes
@@ -24,10 +23,23 @@ Configure the settings for an issue tracking integration in Codefresh.
 
 1. In the Codefresh UI, go to [Integrations](https://g.codefresh.io/2.0/account-settings/integrations){:target="\_blank"}.
 1. Filter by **Issue Tracking**, select the issue tracking tool to integrate, and click **Configure**.
+1. Jira integrations only: For a new Jira integration, from the **Add Integration** dropdown, select the type of integration, as either **Deployment reporting** or **Jira enrichment**.
+
+    {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/integrations/jira/jira-integration-type.png" 
+   url="/images/integrations/jira/jira-integration-type.png" 
+   alt="Jira integration for deployment reporting or image enrichment with Jira" 
+   caption="Jira integration for deployment reporting or image enrichment with Jira"
+   max-width="50%" 
+   %}
+
+
+{:start="4"}
 1. If you already have integrations, click **Add**.
 1. Define the arguments for the issue tracking tool:  
   [Jira]({{site.baseurl}}/docs/integrations/issue-tracking/jira/)   
-1. To ensure that connection credentials are valid before you commit the integration, click **Test Connection**.
 1. To confirm, click **Commit**.
   It may take a few moments for the new integration to be synced to the cluster before it appears in the list.
 
@@ -48,14 +60,13 @@ Every issue tracking integration displays the following information:
 
 ### Edit/delete issue-tracking integrations in Codefresh
 If you have existing integrations, you can change the credentials, or delete an integration.
->Deleting an integration deletes the integration resource from the shared configuration Git repo, its secrets, and from the CI workflows that 
+>Deleting an integration deletes the integration resource from the shared configuration Git repo, its secrets, the CI workflows that 
 use it. 
 
 1. In the Codefresh UI, go to [Integrations](https://g.codefresh.io/2.0/account-settings/integrations){:target="\_blank"}.
 1. Filter by **Issue Tracking**, and select the specific integration.
-1. In the row with the integration to edit or delete, click the three dots for Additional Actions, and select **Edit** or **Delete**.
-1. To edit, update the required fields, and click **Test Connection** to verify the account credentials.  
-  >For Jira issue tracking integrations, to disable reporting deployment information to Jira, toggle **Report deployment information to Jira** to off.
+1. In the row with the integration to edit or delete, click the three dots and select **Edit** or **Delete**.
+1. To edit, update the **Username** and **Password** fields, and click **Test Connection** to verify the account credentials.
 1. To delete, type **DELETE** in the text box as instructed.
 
     {% include 
