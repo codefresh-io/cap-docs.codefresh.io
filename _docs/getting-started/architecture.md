@@ -38,7 +38,7 @@ The Codefresh Control Plane is the SaaS component in the platform. External to t
 
 #### Codefresh Runtime
 The Codefresh Runtime is installed on a Kubernetes cluster, and houses the enterprise distribution of the Codefresh Application Proxy and the Argo Project.  
-Depending on the type of installation environment, the Codefresh Runtime is installed either in the Codefresh platform (hybrid), or in the customer environment (hosted). Read more in [Codefresh runtime architecture](#codefresh-runtime-architecture).
+Depending on the type of installation environment, the Codefresh Runtime is installed either in the Codefresh platform (hosted), or in the customer environment (hybrid). Read more in [Codefresh runtime architecture](#codefresh-runtime-architecture).
 
 
 {::nomarkdown}
@@ -57,11 +57,9 @@ The sections that follow show detailed views of runtime architecture in the diff
 * [Hosted GitOps runtime architecture](#hosted-gitops-runtime-architecture)
   In this installation environment, the Codefresh Runtime is installed on a _Codefresh-managed cluster_ in the Codefresh platform.  
 * Hybrid runtime architecture:
-  In this installation environment, the Codefresh Runtime is installed on a _customer-managed cluster_ in the customer environment. The Codefresh Runtime can communicate with the can be ingress-based  
+  In this installation environment, the Codefresh Runtime is installed on a _customer-managed cluster_ in the customer environment. The Codefresh Runtime with or without ingress controllers:  
   * [Ingress-based](#ingress-based-hybrid-runtime-architecture)  
   * [Ingress-less](#ingress-less-hybrid-runtime-architecture)  
-
-
 * Runtime components
   * [Codefresh Application Proxy](#codefresh-application-proxy)
   * [Argo Project](#argo-project)
@@ -114,8 +112,9 @@ Ingress-less runtimes uses tunneling to control communication between the Codefr
 
 
 #### Codefresh Application Proxy
-The Codefresh Application Proxy (App-Proxy) functions as the Codefresh agent, and is deployed as a service in the Codefresh Runtime. It App-Proxy is exposed externally through ingress controllers/load-balancers.  
-For ingress-based hybrid runtimes, the App-Proxy is the single point-of-contact between the Codefresh Runtime, and the Codefresh Clients, the Codefresh Platform, and any organizational systems in the customer environment.    
+The Codefresh Application Proxy (App-Proxy) functions as the Codefresh agent, and is deployed as a service in the Codefresh Runtime.   
+For ingress-based hybrid runtimes, the App-Proxy is the single point-of-contact between the Codefresh Runtime, and the Codefresh Clients, the Codefresh Platform, and any organizational systems in the customer environment.  
+For ingress-less hybrid runtimes, the Tunnel Client forwards the incoming traffic from the Tunnel Server using internal reverse proxy to the App-Proxy. 
  
 The App-Proxy:  
 * Accepts and serves requests from Codefresh Clients either via the Codefresh UI or CLI 
@@ -142,11 +141,11 @@ The Argo Project includes:
 {:/}
 
 #### Request Routing Service
-The Request Routing Service is installed on the same cluster as the Codefresh Runtime in the customer environment. It receives requests from the Ingress Controller, and forwards the request URLs to the Application Proxy, and webhooks directly to the Event Sources.
+The Request Routing Service is installed on the same cluster as the Codefresh Runtime in the customer environment. It receives requests from the ingress controller for ingress-based hybrid, and forwards the request URLs to the Application Proxy, and webhooks directly to the Event Sources.
 
 >Important:  
 The Request Routing Service is available from runtime version 0.0.543 and higher.
-Older runtime versions are not affected as there is complete backward compatibility, and the Ingress Controller continues to route incoming requests.
+Older runtime versions are not affected as there is complete backward compatibility, and the ingress controller continues to route incoming requests.
 
 #### Tunnel Server
 Applies only to _ingress-less_ runtimes in hybrid installation environments.  
@@ -188,7 +187,7 @@ The customer environment that communicates with the Codefresh Runtime and the Co
   See [Add external clusters to runtimes]({{site.baseurl}}/docs/runtime/managed-cluster/).
 * Organizational systems  
   Organizational Systems include the customer's tracking, monitoring, notification, container registries, Git providers, and other systems. They can be entirely on-premises or in the public cloud.   
-  Either the Ingress Controller (ingress-based hybrid environments), or the Tunnel Client (ingress-less hybrid environments), forwards incoming events to the Codefresh Application Proxy. 
+  Either the ingress controller (ingress-based hybrid environments), or the Tunnel Client (ingress-less hybrid environments), forwards incoming events to the Codefresh Application Proxy. 
 
 ### Related articles
 [Set up a hosted runtime environment]({{site.baseurl}}/docs/runtime/hosted-runtime/)  
