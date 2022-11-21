@@ -93,12 +93,20 @@ Every notification identifies:
 
 All errors are Argo CD-generated errors. Codefresh generates custom warnings for the following:
 
+{::nomarkdown}
+<br>
+{:/}
+
 #### Warning: Missing Rollouts reporter in cluster
 
 **Reason**: Codefresh has detected that Argo Rollouts is not installed on the target cluster. Rollout instructions are therefore not executed and the application is not deployed.  
 Applications with `rollout` resources need Argo Rollouts on the target cluster, both to visualize rollouts in the Applications dashboard and control rollout steps with the Rollout Player.  
 
 **Corrective Action**: Click **Install** and install Argo Rollouts on the target cluster.
+
+{::nomarkdown}
+<br>
+{:/}
 
 #### Warning: Long sync 
 **Reason**: Ongoing sync for application exceeds 30 minutes (Argo CD's default duration for a sync operation).
@@ -284,7 +292,7 @@ max-width="50%"
 
 The icon for a resource node identifies the type of Kubernetes resource it represents. For general information on K8s resources, see [Working with Kubernetes objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/){:target="\_blank"}. 
 
-You can view application resources in [List or Tree views](#view-modes-for-application-resources), [filter](#filters-for-application-resources) the view, and monitor:
+You can view application resources in [List or Tree views](#view-modes-for-application-resources), [set filters](#filters-for-application-resources), and monitor:
 * [Health status](#health-status-for-application-resources)
 * [Sync status](#sync-status-for-application-resources)
 * [Manifests](#manifests-for-application-resources)
@@ -414,7 +422,7 @@ Filters are common to both Tree and List views, and when applied are retained wh
 
 >The `IgnoreExtraneous` filter applies only to the sync status. The health status of the resource directly affects the application's health status. If the resource is degraded, then the application is also degraded. 
 
-For the `IgnoreExtraneous`filter to be effective:  
+**For the `IgnoreExtraneous` filter to be effective:**  
 
 * Add `IgnoreExtraneous` as an annotation to the resource, as in the example below of the `ConfigMap` resource. 
 
@@ -428,8 +436,8 @@ caption="Resource with IgnoreExtraneous annotation"
 max-width="50%"
 %}
 
-* Click the `IgnoreExtraneous` filter in the Current State tab.  
-  Now you can see that the `IgnoreExtraneous` filter is active and the `ConfigMap` resource is not displayed in the Current State.
+* In the Current State tab, click the `IgnoreExtraneous` filter.  
+ You can see that the `IgnoreExtraneous` filter is active and the `ConfigMap` resource is not displayed in the Current State.
 
 {% include
 image.html
