@@ -74,7 +74,7 @@ Here's a description of the information and actions in the Applications dashboar
 
 
 ### Identify applications with warnings/errors 
-Applications with errors are flagged in the **Warnings/Errors** button, displayed at the top right of the Applications dashboard. Clicking the button shows the list of applications with the warnings/errors and the possible reasons for these.
+Errors are flagged in the **Warnings/Errors** button, displayed at the top right of the Applications dashboard. Clicking the button shows the list of applications with the warnings/errors and the possible reasons for these.
 
 {% include
 image.html
@@ -95,19 +95,17 @@ All errors are Argo CD-generated errors. Codefresh generates custom warnings for
 
 #### Warning: Missing Rollouts reporter in cluster
 
-**Reason**: Codefresh has detected that Argo Rollouts is not installed on the target cluster. Rollout instructions not executed and the application is not deployed.  
+**Reason**: Codefresh has detected that Argo Rollouts is not installed on the target cluster. Rollout instructions are therefore not executed and the application is not deployed.  
 Applications with `rollout` resources need Argo Rollouts on the target cluster, both to visualize rollouts in the Applications dashboard and control rollout steps with the Rollout Player.  
 
-**Action**: Click **Install** and install Argo Rollouts on the target cluster.
+**Corrective Action**: Click **Install** and install Argo Rollouts on the target cluster.
 
 #### Warning: Long sync 
 **Reason**: Ongoing sync for application exceeds 30 minutes (Argo CD's default duration for a sync operation).
 
-**Action**: 
+**Corrective Action**: 
 * Click **View Details** to take you directly to the Sync Result tab. 
-  Here you can see details on the sync job that was started, and info on the Hooks if any.
-
-
+  Here you can see details on the sync job that was started, and info on the Hooks if any. Failed hooks are dsiplayed at the top. 
 * To see more details such as the message and sync duration, switch to **Sync Info**.
 * To stop the sync operation, click **Terminate**. 
 * Drill down into the application to investigate the issue and make changes.
