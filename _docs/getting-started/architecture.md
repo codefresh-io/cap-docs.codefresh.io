@@ -164,12 +164,12 @@ The Tunnel Server:
 #### Tunnel Client
 Applies only to _ingress-less_ runtimes in hybrid installation environments.  
 
-The Codefresh Tunnel Client functions as the Codefresh agent. Installed in the Codefresh Runtime, it establishes the tunneling connection to the Codefresh Tunnel Server via the WebSocket Secure (WSS) protocol.   
+Installed on the same cluster as the Codefresh Runtime, the Codefresh Tunnel Client establishes the tunneling connection to the Codefresh Tunnel Server via the WebSocket Secure (WSS) protocol.   
 A single Codefresh Runtime can have a single Tunnel Client.  
 
 The Codefresh Tunnel Client: 
 * Initiates the connection with the Codefresh Tunnel Server.
-* Forwards the incoming traffic from the Tunnel Server using internal reverse proxy to App-Proxy, and other services.  
+* Forwards the incoming traffic from the Tunnel Server through the Request Routing Service to App-Proxy, and other services.  
 
 {::nomarkdown}
 <br>
