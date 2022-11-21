@@ -284,7 +284,7 @@ max-width="50%"
 
 The icon for a resource node identifies the type of Kubernetes resource it represents. For general information on K8s resources, see [Working with Kubernetes objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/){:target="\_blank"}. 
 
-You can view application resources in [List or Tree views](#view-modes-for-application-resources), and monitor:
+You can view application resources in [List or Tree views](#view-modes-for-application-resources), [filter](#filters-for-application-resources) the view, and monitor:
 * [Health status](#health-status-for-application-resources)
 * [Sync status](#sync-status-for-application-resources)
 * [Manifests](#manifests-for-application-resources)
