@@ -296,7 +296,10 @@ spec:
 
 **`VirtualService` example for `webhook`:**  
 
-> Configure a `webhook` URI for each event-source.
+
+> Configure a 'webhook VirtualService` for each event-source.
+
+
 
 ```yaml  
 apiVersion: networking.istio.io/v1alpha3
