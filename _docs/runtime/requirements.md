@@ -218,7 +218,7 @@ Configure the ingress controller to handle TCP requests.
 #### Cluster routing service
 >  The cluster routing service must be configured _after_ installing the hybrid runtime.
 
-Based on the runtime version, you need to configure a single or different `VirtualService` resources for these services:
+Based on the runtime version, you need to configure a single or multiple `VirtualService` resources for the `app-proxy`, `webhook`, and `workflow` services.
 
 ##### Runtime version 0.0.543 or higher
 Configure a single `VirtualService` resource to route traffic to the `app-proxy`, `webhook`, and `workflow` services, as in the example below.  
