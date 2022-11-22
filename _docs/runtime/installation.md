@@ -77,13 +77,13 @@ The Git repository per runtime account with shared configuration manifests.
 </br>
 {:/}
 
-#### Ingress-less flags
+#### Tunnel-based (ingress-less) runtime flags
 These flags are required to install the runtime without an ingress controller. 
 
 **Access mode**  
 Required.  
 
-The access mode for ingress-less runtimes, the tunnel mode. 
+The access mode for tunnel-based runtimes, the tunnel mode. 
  
 
 * CLI wizard and Silent install: Add the flag, `--access-mode`, and define `tunnel` as the value. 
@@ -93,7 +93,7 @@ The access mode for ingress-less runtimes, the tunnel mode.
 
 Optional.  
 
-The allowed list of IPs from which to forward requests to the internal customer cluster for ingress-less runtime installations. The allowlist can include IPv4 and IPv6 addresses, with/without subnet and subnet masks. Multiple IPs must be separated by commas.  
+The allowed list of IPs from which to forward requests to the internal customer cluster for tunnel-based runtime installations. The allowlist can include IPv4 and IPv6 addresses, with/without subnet and subnet masks. Multiple IPs must be separated by commas.  
 
 When omitted, all incoming requests are authenticated regardless of the IPs from which they originated. 
 
