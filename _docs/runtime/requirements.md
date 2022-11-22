@@ -296,7 +296,7 @@ spec:
 
 **`VirtualService` example for `webhook`:**  
 
-> Configure a `webhook` for each event defined in the event source.
+> Configure a `webhook` URI for each event-source.
 
 ```yaml  
 apiVersion: networking.istio.io/v1alpha3
@@ -312,10 +312,10 @@ spec:
   http:
     - match:
       - uri:
-          prefix: /webhooks/test-runtime3/push-github # replace `test-runtime3` with your runtime name
+          prefix: /webhooks/test-runtime3/push-github # replace `test-runtime3` with your runtime name, and `push-github' with the name of the event source
       route:
       - destination:
-          host: push-github-eventsource-svc 
+          host: push-github-eventsource-svc # replace `push-github' with the name of the event source
           port:
             number: 80
 ```
