@@ -296,7 +296,7 @@ spec:
 
 **`VirtualService` example for `webhook`:**  
 
-> Configure a `webhook` URI for each event-source.
+> Configure a `uri.prefix` and `destination.host` for each event-source if you have more than one.
 
 ```yaml  
 apiVersion: networking.istio.io/v1alpha3
@@ -312,10 +312,18 @@ spec:
   http:
     - match:
       - uri:
-          prefix: /webhooks/test-runtime3/push-github # replace `test-runtime3` with your runtime name, and `push-github' with the name of the event source
+          prefix: /webhooks/test-runtime3/push-github # replace `test-runtime3` with your runtime name, and `push-github` with the name of your event source
       route:
       - destination:
-          host: push-github-eventsource-svc # replace `push-github' with the name of the event source
+          host: push-github-eventsource-svc # replace `push-github' with the name of your event source
+          port:
+            number: 80
+    - match:
+      - uri:
+          prefix: /webhooks/test-runtime3/cypress-docker-images-push # replace `test-runtime3` with your runtime name, and `cypress-docker-images-push` with the name of your event source
+      route:
+      - destination:
+          host: cypress-docker-images-push-eventsource-svc # replace `cypress-docker-images-push` with the name of your event source
           port:
             number: 80
 ```
