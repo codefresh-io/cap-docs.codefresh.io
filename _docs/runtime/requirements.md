@@ -213,10 +213,12 @@ Configure the ingress controller to handle TCP requests.
 </br>
 {:/}
 
+
+
 #### Cluster routing service
 >  The cluster routing service must be configured _after_ installing the hybrid runtime.
 
-Based on the runtime version, you need to configure a single or different `VirtualService` resources for these services:
+Based on the runtime version, you need to configure a single or multiple `VirtualService` resources for the `app-proxy`, `webhook`, and `workflow` services.
 
 ##### Runtime version 0.0.543 or higher
 Configure a single `VirtualService` resource to route traffic to the `app-proxy`, `webhook`, and `workflow` services, as in the example below.  
@@ -290,13 +292,10 @@ spec:
           port:
             number: 3017
 ```
-{::nomarkdown}
-</br>
-{:/}
 
 **`VirtualService` example for `webhook`:**  
 
-> Configure a `webhook` for each event defined in the event source.
+> Configure a `uri.prefix` and `destination.host` for each event-source if you have more than one.
 
 ```yaml  
 apiVersion: networking.istio.io/v1alpha3
@@ -312,15 +311,21 @@ spec:
   http:
     - match:
       - uri:
-          prefix: /webhooks/test-runtime3/push-github # replace `test-runtime3` with your runtime name
+          prefix: /webhooks/test-runtime3/push-github # replace `test-runtime3` with your runtime name, and `push-github` with the name of your event source
       route:
       - destination:
-          host: push-github-eventsource-svc 
+          host: push-github-eventsource-svc # replace `push-github' with the name of your event source
+          port:
+            number: 80
+    - match:
+      - uri:
+          prefix: /webhooks/test-runtime3/cypress-docker-images-push # replace `test-runtime3` with your runtime name, and `cypress-docker-images-push` with the name of your event source
+      route:
+      - destination:
+          host: cypress-docker-images-push-eventsource-svc # replace `cypress-docker-images-push` with the name of your event source
           port:
             number: 80
 ```
-
-
 
 {::nomarkdown}
 </br></br>
