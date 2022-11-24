@@ -113,7 +113,7 @@ Applications with `rollout` resources need Argo Rollouts on the target cluster, 
 
 **Corrective Action**: 
 * Click **View Details** to take you directly to the Sync Result tab. 
-  Here you can see details on the sync job that was started, and info on the Hooks if any. Failed hooks are dsiplayed at the top. 
+  Here you can see details on the sync job that was started, and info on the Hooks if any. Failed hooks are displayed at the top. 
 * To see more details such as the message and sync duration, switch to **Sync Info**.
 * To stop the sync operation, click **Terminate**. 
 * Drill down into the application to investigate the issue and make changes.
