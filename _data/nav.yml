@@ -66,16 +66,21 @@
 - title: Pipelines
   url: "/pipelines"
   pages:
-    - title: Creation
+    - title: Create pipelines
       url: "/create-pipeline"
+    - title: Manage pipelines
+      url: "/managing-pipelines"
+    - title: Manage workflows
+      url: "/workflows"
+    - title: Nested workflows
+      url: "/nested-workflows"  
     - title: Configure artifact repository
       url: "/configure-artifact-repository"
     - title: Selectors for concurrency synchronization
       url: "/concurrency-limit"
     - title: Sharing file systems
       url: "/sharing-file-system"
-    - title: Nested workflows
-      url: "/nested-workflows"
+
     
 
 - title: Deployment

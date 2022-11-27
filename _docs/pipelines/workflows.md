@@ -1,117 +1,158 @@
+---
+title: "Manage workflows"
+description: ""
+group: pipelines
+toc: true
+---
 
 
+Workflows in Codefresh are integrated with and run Argo Workflows, an open-source container-native workflow engine for orchestrating parallel jobs on Kubernetes, implemented as a K8s CRD (Custom Resource Definition). Read more in [Argo Workflows documentation](https://argoproj.github.io/argo-workflows/).   
 
-Monitor workflows for all delivery pipelines in the Workflows dashboard, or monitor and manage workflows within the context of a specific delivery pipeline.  
-Drill down into a workflow to analyze each step in the workflow, including the Argo-Event steps that triggered the pipeline, view workflow logs, and manage the workflow based on the status. 
+Workflows are submitted when pipelines are triggered. A workflow executes a series of steps through one or more templates defined in its specification. View, analyze, and manage workflows in Codefresh through the Workflow and Delivery Pipeline dashboards:  
 
- {% include image.html 
-  lightbox="true" 
-  file="/images/workflows/workflow-dashboard.png" 
-  url="/images/workflows/workflow-dashboard.png"
-  alt="Workflows Dashboard"
-  caption="Workflows Dashboard"
-  max-width="40%"
-  %}
+* Track ongoing and completed workflows  
+  View and monitor submitted workflows across all pipelines in the Workflows dashboard. Select a time range, or view up to fifty of the most recent workflows for all the pipelines in the runtime. Use filters to customize the dashboard view. Drill down to any workflow for further analysis.
 
-
-
-### Workflows dashboard
-The Workflows dashboard is to continuous integration what the Applications dashboard is to continuous delivery. The dashboard shows all _active_ workflows across all delivery pipelines.  
-
-Here's an example of the Workflows dashboard with different workflow statuses.
+   {% include image.html 
+    lightbox="true" 
+  file="/images/workflows/workflows-dashboard.png" 
+  url="/images/workflows/workflows-dashboard.png"
+  alt="Workflows dashboard"
+  caption="Workflows dashboard"
+  max-width="60%"
+  %} 
+  
+* Track workflow performance by pipelines  
+  Track workflow performance in the context of the pipelines from which they were submitted. 
+  See performance KPIs for the workflows such as the success rate, execution rate, and for the steps across all the workflows submitted for the same pipeline. 
 
   {% include image.html 
   lightbox="true" 
-  file="/images/workflows/workflow-dashboard-all-status.png" 
-  url="/images/workflows/workflow-dashboard-all-status.png"
-  alt="Workflows Dashboard with workflow statuses"
-  caption="Workflows Dashboard workflow statuses"
-  max-width="40%"
-  %}
+  file="/images/workflows/dashboard-workflows-in-pipeline.png" 
+  url="/images/workflows/dashboard-workflows-in-pipeline.png"
+  alt="Workflows in Delivery Pipeline"
+  caption="Workflows in Delivery Pipeline"
+  max-width="60%"
+  %} 
+
+* Analyze and troubleshoot workflow executions  
+  Select a workflow and take actions in the context of the pipeline from which it was submitted:  
+  * Analyze each step in the workflow, including steps related to the events that triggered the pipeline.
+  * Troubleshoot failed steps through real-time logs for ongoing workflows, and archived logs for completed workflows
+  * Manage workflows based on the current status; suspend, stop, or terminate ongoing workflows, and retry, resubmit, or delete completed workflows.
+
+>This article focuses on workflow management. For information on managing Delivery Pipelines, see [Managing Delivery Pipelines]({{site.baseurl}}/docs/pipelines/managing-pipelines/).
 
 
-**Filters**  
-Use the global filters to view a subset of workflows.   
-To focus on workflows in the context of one or more delivery pipelines, select **More filters** and then select one more delivery pipelines. When you then drill down to the workflow details, you can also see the pipeline configuration, manifests and setup details in the same location.
-
-**Workflow chart**  
-The bar-chart shows the workflows submitted in the last seven days, including today. Workflows submitted most recently are added to the end.
-* Color-coded bars identify workflow status at a glance. In the example above, blue bars indicate workflows that are currently active. Purple bars indicate workflows without events for the last hour (Unknown) status.
-* Mouse over to see the tooltip for the workflow, including a link to **View workflow details** to drill down into the workflow.
-
-**Workflow cards**
-Every card has additional details on the workflow. Successfully completed workflows display Git and Jira information. The **View workflow details** link opens the interactive tree view of the workflow, where you can analyze steps, and manage the workflow according to its status.  
-
-Drill down into a workflow to: 
-
-* Analyze the workflow: Analyze each step in the workflow, including the Argo Events that triggered the pipeline
-* View workflow logs: Real-time logs for ongoing workflows, and archived logs for completed workflows
-* Manage the workflow: Retry, resubmit, or delete workflows
-
-> To view the workflow in the context of its delivery pipeline, first select the pipeline.
-
-### Select the workflow to monitor** 
-Select a workflow from the Workflows dashboard, or first  
-1. From the [Workflows dashboard](https://g.codefresh.io/2.0/workflows), select **View workflow details** on the right.
-  OR  
-  In the [Delivery Pipelines](https://g.codefresh.io/2.0/pipelines) page, select a pipeline.
-  Select the workflow, and then select **View workflow details** on the right.
+###  Aggregated workflow performance (Workflows dashboard)
+The Workflows dashboard displays a list of all the _active_ workflows across all Delivery Pipelines. Active workflows are either running or completed workflows. Set filters to view subsets of workflows, including pipeline filters to focus on specific workflows. Then drill down on any workflow to view execution details and manage it.
 
    {% include image.html 
   lightbox="true" 
+  file="/images/workflows/workflows-dashboard.png" 
+  url="/images/workflows/workflows-dashboard.png"
+  alt="Workflows dashboard: Aggregated workflow performance"
+  caption="Workflows dashboard: Aggregated workflow performance"
+  max-width="50%"
+  %}
+
+The table describes the information in the Workflows dashboard.
+
+{: .table .table-bordered .table-hover}
+| Item                |  Description|  
+|---------------------|-------------|
+| **Filters**         | The filters available to customize the view. Selecting **More filters** allows you to filter workflows by one or more pipelines. For details, see [aggregated view]({{site.baseurl}}/docs/pipelines/managing-pipelines/#filters-for-aggregated-views). |                             
+| **Workflow chart**         | The bar chart displaying the workflows for the selected time range. Up to 50 workflows are displayed, starting with the oldest. The color of the bar indicates if the workflow is active (blue), completed successfully (green), failed (red), or unknown (purple). For workflow-specific metadata, mouse over the bar. To drill down on that workflow, select **View Workflow Details** link. (see image below entitled, Pop-up with workflow metadata).  |          
+| **Workflow list**  | The list of workflows with workflow-specific metadata and links, similar to what you see in the bar-chart pop-ups. You can see the git hash, the name of the user who made the commit, the pipeline that submitted the workflow, the start time and duration. Selecting **View Workflow Details** opens the Workflows tab with execution details,  visualization of workflow steps for troubleshooting, analysis, and management.|  
+
+  {% include image.html 
+  lightbox="true" 
+  file="/images/pipeline/monitoring/monitor-workflows-tab-popup.png" 
+  url="/images/pipeline/monitoring/monitor-workflows-tab-popup.png"
+  alt="Workflows dashboard: Pop-up with metadata for workflow in bar chart"
+  caption="Workflows dashboard: Pop-up with metadata for workflow in bar chart"
+  max-width="50%"
+  %}
+
+### Track workflow performance by pipeline
+View and monitor the collective performance of workflows in the selected pipeline in the Delivery Pipelines dashboard. Performance KPIs are available for the workflow, and for every step across workflows. At the workflow level, view success and execution rates for the workflows, and at the step level, view the average durations and resource consumption for each step. Compare with the performance in the reference period to derive insights. 
+ 
+1. From the **Delivery Pipelines** page, select a pipeline to see its workflows.
+1. Select the [Dashboard](https://g.codefresh.io/2.0/pipelines/edit/codefresh-v2-production/codefresh-v2-production/argo-platform-push%2Fservice-yaml/dashboard){:target="\_blank"} tab. 
+
+  {% include image.html 
+  lightbox="true" 
+  file="/images/workflows/monitor-step-analytics.png" 
+  url="/images/workflows/monitor-step-analytics.png"
+  alt="Workflow performance for selected pipeline"
+  caption="Workflow performance for selected pipeline"
+  max-width="60%"
+  %}
+
+**Aggregated workflow analytics**  
+
+The upper half shows KPIs for all workflows submitted for the pipeline. To customize the view, select filters. In this view, you can also filter by **Branch** which is the Git branch or branches with the events that triggered the pipeline.   
+
+**Step-level analytics**  
+The Step Analytics list in the lower half displays the aggregated average for KPIs in each step, across all active workflows for the selected pipeline.  
+Each metric shows the difference in percentage compared to the reference period corresponding to the Time range selected, to help identify how the metrics are trending.  
+
+{: .table .table-bordered .table-hover}
+| Step Analytics        |  Description|  
+| --------------| --------------           |  
+| **Step**      | The name of the step in the workflow. |                             
+| **Type**      | The action executed by the step. For example, the step can execute a Container template, or skip the step. For details, see [Template types in Core Concepts](https://argoproj.github.io/argo-workflows/workflow-concepts/#template-types){:target="\_blank"}.|          
+| **Template**  | The template called by the step.  |       
+| **Workflow Template**| The Workflow Template referenced by the step. Different steps can reference the same or different Workflow Templates.| 
+| **Avg. Duration**| The average length of time for all active workflows to complete execution of this step, in mm:ss. |   
+| **Executions**| The number of times the step was executed. |  
+| **CPU** and **Memory**| The average CPU and memory consumed by the step, across all the active workflows.|  
+| **Errors**| The number of times that the execution of this step resulted in errors.|  
+
+
+### Managing workflows
+
+Both the Workflow and the Delivery Pipeline dashboards allow you to drill down into a specific workflow to view, analyze, and troubleshoot execution.  When you drill down from a Delivery Pipeline, you can see the workflow in the context of its pipeline, including the pipeline's configuration settings, and sensor and event-source manifests. The integrated view of both the workflow steps, workflow logs, and the pipeline configuration in the same location makes it easy to make changes when troubleshooting.  
+
+  {% include image.html 
+    lightbox="true" 
+  file="/images/pipeline/monitoring/pipeline-list-view.png" 
+  url="/images/pipeline/monitoring/pipeline-list-view.png"
+  alt="Workflows in a Delivery Pipeline"
+  caption="Workflows in a Delivery Pipeline"
+  max-width="60%"
+  %}
+
+
+#### Select a workflow 
+Select the workflow to focus on, either from the Workflows dashboard or from a Delivery Pipeline. 
+
+1. In the [Workflows dashboard](https://g.codefresh.io/2.0/workflows), set filters to view the subset of workflows you are interested in.  
+  OR  
+  In the **Delivery Pipelines** page, select a pipeline, and then select the [Workflows](https://g.codefresh.io/2.0/workflows) tab to see all its workflows. 
+
+1. To drill down into a workflow, select **View workflow details** for that workflow.
+
+  {% include image.html 
+    lightbox="true" 
   file="/images/workflows/workflow-drill-down.png" 
   url="/images/workflows/workflow-drill-down.png"
   alt="View Workflow Details"
   caption="View Workflow Details"
-  max-width="30%"
+  max-width="50%"
   %}
   
 
-**Workflow list for delivery pipeline**
-Here's an example of the list of workflows on selecting a delivery pipeline (Workflows tab).
+#### Visualizing workflow steps
 
-   {% include image.html 
-  lightbox="true" 
-  file="/images/pipeline/monitoring/monitor-workflows-tab.png" 
-  url="/images/pipeline/monitoring/monitor-workflows-tab.png"
-  alt="Workflow-level view in Delivery Pipeline"
-  caption="Workflow-level view for Delivery Pipeline"
-  max-width="30%"
-  %}
+View the connections between steps in the workflow, the status of each step, and additional information for the step. 
 
-The table describes the information.
-
-| Legend        |  Description|  
-| --------------| -------------|  
-| **1**         | The filters available to customize the workflow view for the pipeline. The filters are identical to those available for the [aggregated view]({{site.baseurl}}/docs/pipelines/managing-pipelines/#filters-for-aggregated-views). In this view, in addition to the predefined time ranges, you can select a custom time range.  |                             
-| **2**         | The bar chart with the duration and status of all workflows submitted for the pipeline, starting with the most oldest. The color of the bar indicates if the workflow it represents is in progress (blue), completed successfully (green), or failed (red). Mouse over the bar to see a pop-up of workflow-specific information (see image below entitled, Pop-up with workflow metadata).  |          
-| **3**  | Workflow-specific information, similar to what you see in the bar chart pop-ups. You can see the git hash, the name of the user who made the commit, the pipeline that submitted the workflow, the start time and duration.|       
-| **4**| Selecting **View Workflow Details** shows options to monitor and manage workflows, including viewing workflow logs.| 
+* Visualize the entire flow, starting with the Argo Events that triggered the workflow, followed by the steps in the workflow itself. 
+* View detailed information on a step in a pull-out panel. Easily copy paths for attributes from event payloads, view logs for pods, and download artifacts.
+* Troubleshoot failed steps
 
 
-   {% include image.html 
-  lightbox="true" 
-  file="/images/pipeline/monitoring/monitor-workflows-tab-popup.png" 
-  url="/images/pipeline/monitoring/monitor-workflows-tab-popup.png"
-  alt="Pop-up with workflow metadata"
-  caption="Pop-up with workflow metadata"
-  max-width="30%"
-  %}
-
-#### Analyze steps in workflows
-View the connection between steps in the workflow, the status of each step, and additional information for the step. View subsets of steps in the workflow using filters.
-
-* Visualize the entire flow of the pipeline, starting with the Argo Events that triggered the workflow, followed by the steps in the workflow itself. 
-
-* View detailed information on a step in a convenient pull-out panel. Easily copy paths for attributes from event payloads, view logs for pods, and download artifacts.
-
-
-**How to**
-1. Select the [workflow](#select-the-workflow-to-monitor). 
-  You can see all the steps in the selected workflow. Every step has a status indication.
-  Event-type steps have labels within the step to differentiate them from workflow steps.
-  
-   {% include image.html 
+{% include image.html 
   lightbox="true" 
   file="/images/workflows/workflow-steps.png" 
   url="/images/workflows/workflow-steps.png"
@@ -120,7 +161,34 @@ View the connection between steps in the workflow, the status of each step, and 
   max-width="30%"
   %}
 
-  {% include image.html 
+
+**Step status**  
+Every step has a status indication of either active ({::nomarkdown}
+<img src="../../../images/icons/active.png">{:/}), synced ({::nomarkdown}
+<img src="../../../images/icons/success.png">{:/}), or failed ({::nomarkdown}
+<img src="../../../images/icons/error.png">{:/}).
+
+**Step types and filters**  
+Steps in a workflow are either Kubernetes resources (Pods, Containers for example), Argo templates and template invocators (DAG, Step, StepGroup for example), or Resources (Event Sources, Sensors). For more information, see [Template types in Core concepts](https://argoproj.github.io/argo-workflows/workflow-concepts/#template-types).
+
+
+> Important: Node and Phase filters for steps have an _AND_ relationship. To see results, you must select at least one Node type and Phase status.
+
+
+ {% include image.html 
+  lightbox="true" 
+  file="/images/workflows/filters-workflow-steps.png" 
+  url="/images/workflows/filters-workflow-steps.png"
+  alt="Filters for workflow steps"
+  caption="Filters for workflow steps"
+  max-width="50%"
+  %}
+
+
+
+Resource-type steps have labels within the step to differentiate them from workflow steps.
+
+{% include image.html 
   lightbox="true" 
   file="/images/workflows/argo-events-in-wrkflow.png" 
   url="/images/workflows/argo-events-in-wrkflow.png"
@@ -129,67 +197,113 @@ View the connection between steps in the workflow, the status of each step, and 
   max-width="30%"
   %}
 
-{:start="2"}
-1. To display a subset of steps in the workflow, set filters.
+
+#### Troubleshooting failed steps
+Identify failed steps in a workflow through the error notifications alert in the workflow status bar, through Phase filters, or the search mechanism. With Phase status filters, remember to also select at least one Node type for results.  
+For further analysis, select the step, or click Logs in the toolbar.  
+
+
+**Error notifications for failed steps**  
+
+* The status bar alerts you to failed steps through an error notification.   
+  Clicking the notification opens the list of steps in the Errors tab.  
+
+{% include image.html 
+  lightbox="true" 
+  file="/images/workflows/workflow-error-notification.png" 
+  url="/images/workflows/workflow-error-notification.png"
+  alt="Error notifications for failed steps"
+  caption="Error notifications for failed steps"
+  max-width="70%"
+  %}
+
+
+ The Errors tab has links to the logs.
 
  {% include image.html 
   lightbox="true" 
-  file="/images/workflows/filters-workflow-steps.png" 
-  url="/images/workflows/filters-workflow-steps.png"
-  alt="Filters for workflow steps"
-  caption="Filters for workflow steps"
+  file="/images/workflows/workflow-error-notifications-open.png" 
+  url="/images/workflows/workflow-error-notifications-open.png"
+  alt="Error notifications panel"
+  caption="Error notifications panel"
+  max-width="40%"
+  %}
+
+**Error and Failed Phase filters**  
+
+Selecting Error and Failed statuses, filters the steps in the workflow by the selected statuses. 
+
+
+ {% include image.html 
+  lightbox="true" 
+  file="/images/workflows/workflow-steps-failed.png" 
+  url="/images/workflows/workflow-steps-failed.png"
+  alt="Identifying failed steps with Phase filters"
+  caption="Identifying failed steps with Phase filters"
   max-width="30%"
   %}
 
-{:start="2"}
-1. To view additional information for a step, select the step.
+**Search for failed steps**  
+If you know the name of the step, use the Search field to navigate to and between failed steps.
 
-  The header displays the name of the step, followed by the step-type, the date of the most recent update, and its duration.  
-  The tabs displayed differ according to the step type:  
+{% include image.html 
+  lightbox="true" 
+  file="/images/workflows/failed-steps-search.png" 
+  url="/images/workflows/failed-steps-search.png"
+  alt="Search for failed steps"
+  caption="Search for failed steps"
+  max-width="50%"
+  %}
 
-  * Almost all workflow step types show the Summary, Manifest, Containers, Inputs, Outputs. 
+
+
+#### Detailed information for steps
+To get detailed information for a step, select the step.  
+The tabs displayed differ according to the step type:  
+
+  * All workflow step types show the Summary, Manifest, Containers, Inputs, Outputs. 
   * Pod step-types also display the Logs tab.
   * Event-step types show Manifest, Summary and Payload.
     > For Cron and Unknown event types, only the Event Sources are shown. 
   
-  Example: event-source manifest
+  Example: event-source manifest.
 
   {% include image.html 
   lightbox="true" 
   file="/images/workflows/event-source.png" 
   url="/images/workflows/event-source.png"
-  alt="Event source manifest in workflow"
-  caption="Event source manifest in workflow"
-  max-width="30%"
+  alt="Additional info for event-source manifest in workflow"
+  caption="Additional info for event-source manifest in workflow"
+  max-width="50%"
   %}
 
-  Example: event-payload
+  Example: event-payload.
 
  {% include image.html 
   lightbox="true" 
   file="/images/workflows/event-payload.png" 
   url="/images/workflows/event-payload.png"
-  alt="Event payload in workflow"
-  caption="Event source in workflow"
-  max-width="30%"
+  alt="Additional info for event payload in workflow"
+  caption="Additional info for event payload in workflow"
+  max-width="50%"
   %}
 
- Example: pod step-type
+ Example: pod step type
 
  {% include image.html 
   lightbox="true" 
   file="/images/workflows/workflow-pod-step.png" 
   url="/images/workflows/workflow-pod-step.png"
-  alt="Pod step type in workflow"
-  caption="Pod step type in workflow"
-  max-width="30%"
+  alt="Additional info for pod step type in workflow"
+  caption="Additional info for od step type in workflow"
+  max-width="50%"
   %}
 
-#### View logs for workflows
+#### View logs for steps or workflows
 
 View logs for ongoing or completed workflows. As with logs in any standard terminal, you can copy/cut/paste log info. The commands differ based on the OS.
 
-* For ongoing workflows, you can also see live logs for steps in the workflow as they are being executed.  
+* For ongoing workflows, you can see live logs as the steps in the workflow are being executed.  
 * For completed workflows, you can view logs for any step in the workflow.  
 
 > To view logs for completed workflows, you must configure an artifact repository in CSDP to archive them. 
@@ -227,6 +341,7 @@ OR
   max-width="30%"
   %}
 
+{:start="3"}
 1. If needed, copy/cut/paste log details. Refer to the table below for help on commands compatible with your OS.
 
 
@@ -237,46 +352,30 @@ OR
 | **Windows/ GNOME/KDE**| `Control`+`X` or `Shift`+`Delete`| `Control`+`C` or `Control`+`Insert`| `Control`+`V` or `Shift`+`Insert`|   
 | **GNOME/KDE terminal emulators**|N/A|`Control`+`Shift`+`C` or `Control`+`Insert`| `Control`+`Shift`+`V` or `Control`+`Shift`+`Insert`; (to paste selected text `Shift`+`Insert` or middle mouse button) |         
 
-#### Manage workflows 
-Based on the status of the workflow, retry, resubmit, or delete the workflow.
-* **Retry** a workflow to restart the same workflow. You may want to retry a failed workflow, and retry end-to-end testing steps for example.  
-  The retry option is available only for workflows with errors.
-* **Resubmit** a workflow to create a new workflow and submit it. You can resubmit both successfully completed and failed workflows.
-* **Delete** unused or legacy workflows. Deleting a workflow removes it from the pipeline's workflow list and from the Workflows dashboard.
+### Actions for running/completed workflows
+When you drill down into the workflow details for a running or completed workflow, the toolbar displays several actions.   
+>The actions in the toolbar are _manual_ actions, different from the same actions that are built into the template which are executed automatically. For example, the Suspend option in the toolbar can be configured in the template as well. 
 
-**How to**
-1. Select the [workflow](#select-the-workflow-to-monitor). 
-1. To restart a failed workflow, select **Retry**.
+{: .table .table-bordered .table-hover}
+|Action                   |Description                                  | 
+| --------------          | ----------------------------------          | 
+| **Summary**             | Detailed information for both active and completed workflows.  | 
+| **Suspend**/**Resume**  | Temporarily pause execution of a running workflow. Resume execution from the point at which it was suspended. | 
+| **Stop**                | Stop execution of an active workflow through a graceful shutdown. Graceful shutdown implements the actions configured in the ExitHandler, such as cleaning up resources, sending Slack notifications, for example. Compare with Terminate.|                         
+| **Retry**             | Restart a completed but failed workflow. You may want to retry a failed workflow, to retry end-to-end testing steps for example.  The retry option is available only for workflows with errors.                      | `                           
+| **Resubmit**       | Resubmit a successfully completed workflow to create a new instance of the workflow. |   
+| **Terminate**      | Force shutdown to stop the execution of an active workflow. Force shutdown summarily terminates the workflow ignoring the ExitHandler.  | `                           
+| **Delete**         |Delete an unused or legacy completed workflow. Deleting a workflow removes it from the pipeline's  list and from the Workflows dashboard.|         
+| **Logs**           |[View logs for the workflow](#view-logs-forworkflows). | `                           
 
-{% include image.html 
-  lightbox="true" 
-  file="/images/workflows/retry-workflow.png" 
-  url="/images/workflows/retry-workflow.png"
-  alt="Retry workflow"
-  caption="Retry workflow"
-  max-width="50%"
-  %
-
-{:start="3"}
-1. To start a new instance of the workflow, select **Resubmit**.
-
-{% include image.html 
-  lightbox="true" 
-  file="/images/workflows/resubmit-workflow.png" 
-  url="/images/workflows/resubmit-workflow.png"
-  alt="Resubmit workflow"
-  caption="Resubmit workflow"
-  max-width="50%"
-  %
-
-{:start="4"}
-1. To delete the workflow, select **Delete**.
+#### View native workflows
+You can also view the workflow in the Argo UI. 
 
   {% include image.html 
   lightbox="true" 
-  file="/images/workflows/delete-workflow.png" 
-  url="/images/workflows/delete-workflow.png"
-  alt="Delete workflow"
-  caption="Delete workflow"
+  file="/images/workflows/view-native-workflow.png" 
+  url="/images/workflows/view-native-workflow.png"
+  alt="Workflows tab: View Native Workflow option"
+  caption="Workflows tab: View Native Workflow option"
   max-width="50%"
   %}
