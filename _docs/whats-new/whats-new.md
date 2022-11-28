@@ -19,7 +19,7 @@ Built on Argo, the world’s most popular and fastest-growing open source softwa
 #### Tunnel-based hybrid runtimes
 Simplify installation without compromising on security with our tunnel-based installation option for hybrid runtimes.  
 
-Tunnel-based runtimes use tunneling for communication between the customer cluster and the Codefresh platform, with the customer cluster initiating the  tunneling request.   Simply add  the flag `--access-mode` with `tunnel` as the value and you have your tunnel-based, ingress-less runtime. To limit and control access to trusted IP addresses, use IP allow lists as an optional flag.  
+Tunnel-based runtimes use tunneling for communication between the customer cluster and the Codefresh platform, with the customer cluster initiating the  tunneling request.   Simply add  the flag `--access-mode` with `tunnel` as the value and you have your tunnel-based, ingress-less runtime. 
 
 See [Tunnel-based runtime architecture]({{site.baseurl}}/docs/getting-started/architecture/#tunnel-based-hybrid-runtime-architecture) and [Tunnel-based runtime flags]({{site.baseurl}}/docs/runtime/installation/#tunnel-based-ingress-less-runtime-flags).
 
@@ -88,42 +88,40 @@ See [Filters for application resources]({{site.baseurl}}/docs/deployment/applica
 
 **Applications**
 * Incorrect status for current sync operation.
-* Applying filters in DORA metrics  dashboard does not return results.
-* App tree - broken references between parent app and child app-set (Olek)
+* No results on applying filters in DORA metrics dashboard.
+* Broken links between parent and child applications in Application Set in Applications dashboard List view.
 * Discrepancy between status in health snapshot filter and corresponding list of applications.
 * Understand and fix the bug related with CI logs in workflow (Philip - CR-15536)
-* Not synced resources broke current state requests (CR-15357 - Olek)
-* ConfigMap stuck in out of sync (CR-15090 - Olek - this seems to be an issue related to internal implementation in ShopMonkey )
+* Resources with Missing health status not displayed in Current State.
 * "No Git Source with write permissions" error on creating application.
 * codefresh-hosted: Application Missing from Applicationset (Stuck Syncing but no data in UI and no ability to terminate sync) (CR-14980 - Daniel M)
 * Deleted applications shown as errors in the Error/Warning panel.
-* Wrong commit message in timeline view for apps under git-source (CR-15186 Olek)
+* Wrong commit message in the Timelines tab for Git Source-applications.
 * PR (Pull Request) number in the  Timelines tab does not match the commit in the Application header.
 * No indication when application sync exceeds 30 minutes and needs troubleshooting.
-* Codefresh UI does not syncing application as part of application set.
-* Missing option to terminate sync for indefinitley syncing applications. 
+* Codefresh UI does not sync applications as part of Application Set.
+* No option to terminate sync for indefinitely syncing applications. 
 * Scrolling up/down in Current State > Tree View causes resource nodes to move off screen. (CR-14703 - Victor Plakyda)
 
 **Runtimes**
-* Failed to create default-git-source error during hybrid runtime installation.
+* "Failed to create default-git-source" error during hybrid runtime installation.
 * Self-signed certificates and private root CA (Certificate Authority) not supported for on-premises Git providers.
 * Upgrade runtime failure when copying and pasting CLI command from Codfresh UI.
 * Runtime installation reports errors as warnings.
 * Invalid GitLab token passes validation.
 * Status not updated for deleted PAT (Personal Access Token) in User Settings. 
 * GitLab repos with multiple levels incorrectly truncated to the first level by Codefresh.
-* Missing --provider flag for Git Source creation via CLI.
+* Missing `--provider` flag when creating Git Sources via CLI.
 Error: open .deploy/helm/apps/values-api.yaml: no such file or directory
 * INTERNAL_SERVER_ERROR when installong a runtime using --shared-config-repo flag with GitLab
 
 **Pipelines and workflows**
-* Two or more trigger conditions with the same event breaks pipeline. 
+* Pipeline failure when there are two or more trigger conditions with the same event. 
 * Formatting issues for logs with timestamps.
 * Change in Delivery Pipeline manifest overrides current sensor configuration (CR-14848 Yarik)
-* No error message for step with invalid dependency not surfaced as error
-
-* In Safari, Configuration page not shown when Clicking Settings icon on the toolbar
-* No option to log out on selecting incorrect authentication provider
+* No error message for step with invalid dependency.
+* Safari: Clicking Settings icon on the toolbar does not open Configuration page.
+* No option to log out on selecting incorrect authentication provider.
 
 ## October 2022
 
