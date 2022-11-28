@@ -35,7 +35,7 @@ You can disable this security setting at any time.
 > Codefresh personnel takes action only after confirmation from you, and all actions are audited.
 
 1. In the CSDP UI, go to [User Settings](https://g.codefresh.io/2.0/user-settings){:target="\_blank"}.
-1. Enable **Allow Codefresh support tem to log in...**.
+1. Enable **Allow Codefresh support team to log in...**.
 
 {% include 
    image.html 
