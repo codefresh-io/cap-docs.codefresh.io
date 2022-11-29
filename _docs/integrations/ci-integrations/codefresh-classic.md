@@ -32,35 +32,47 @@ For information on how to use the image reporting action in your Codefresh Class
 {% highlight yaml %}
 {% raw %}
 
-reportImage:
-  title: Report image to Codefresh CD
-  type: codefresh-report-image
-  working_directory: /code
-  arguments:
-     # The URL to the cluster with the Codefresh runtime to integrate with.
-     CF_HOST: '[runtime-host-url]'
+version: "1.0"
+stages:
+  - "clone"
+  - "build"
+  - "report"
 
-     # Codefresh API key !! Committing a plain text token is a security risk. We highly recommend using encrypted secrets !!
-     # Documentation - https://codefresh.io/docs/docs/configure-ci-cd-pipeline/secrets-store/
-     CF_API_KEY: ${{API_KEY}}
+steps:
+  clone:
+    title: "Cloning repository"
+    type: "git-clone"
+    repo: "${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}"
+    revision: "${{CF_BRANCH}}"
+    stage: "clone"
+    
+  build:
+    title: "Building Docker image"
+    type: "build"
+    image_name: "${{CF_REPO_OWNER}}/color"
+    working_directory: "${{clone}}"
+    tag: "${{CF_SHORT_REVISION}}"
+    dockerfile: "Dockerfile"
+    registry: docker-lr
+    stage: "build"
 
-     # Image path to enrich
-     CF_IMAGE: '[full image path here, including tag]'
-
-     # Name of Container registry integration
-     CF_CONTAINER_REGISTRY_INTEGRATION: 'v2'
-
-     # The git branch which is related for the commit
-     CF_GIT_BRANCH: '[name-of-your-git-branch]'
-
-     # Name of Jira integration
-     CF_JIRA_INTEGRATION: 'jira'
-
-     # Jira project filter
-     CF_JIRA_PROJECT_PREFIX: '[jira-project-prefix]'
-
-     # String starting with the issue ID to associate with image
-     CF_JIRA_MESSAGE: '[issue-id]'
+  ReportImageMetadataAll:
+    title: Report image to Codefresh CD
+    type: codefresh-report-image
+    working_directory: /code
+    stage: "report"
+    arguments:
+      CF_API_KEY: '${{CF_API_KEY}}'
+      CF_IMAGE: 'docker.io/${{CF_REPO_OWNER}}/color:${{CF_SHORT_REVISION}}'
+      CF_CONTAINER_REGISTRY_INTEGRATION: docker
+      CF_RUNTIME_NAME: "codefresh-hosted"
+      CF_GITHUB_TOKEN: '${{GITHUB_TOKEN}}'
+      CF_GIT_PROVIDER: github
+      CF_GIT_REPO: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
+      CF_GIT_BRANCH: '${{CF_BRANCH}}'
+      CF_ISSUE_TRACKING_INTEGRATION: jira
+      CF_JIRA_MESSAGE: "${{CF_COMMIT_MESSAGE}}"
+      CF_JIRA_PROJECT_PREFIX: CR
 
 {% endraw %}
 {% endhighlight yaml %}
