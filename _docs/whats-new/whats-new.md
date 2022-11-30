@@ -55,11 +55,11 @@ Quickly scan application information top-down, starting with the health and sync
 #### More application alerts
 We added custom warnings for common scenarios with application deployment to our Errors/Warning panel, that both alert you to the problems and possible actions to resolve them.
 
-**Missing Argo Rollouts controller**
+**Missing Argo Rollouts controller**  
 Applications with rollout resources need Argo Rollouts on the managed cluster to execute rollout instructions and deploy the application.
-If the Argo Rollouts controller is missing, you get a warning with the option to install Argo Rollouts on the cluster.
+If the Argo Rollouts controller is missing, you get a warning with the option to install Argo Rollouts on the cluster.  
 
-**Long application sync**
+**Long application sync**  
 Application sync can continue indefinitely because of issues with the application that you need to troubleshoot, unrelated to Codefresh.  
 A new warning alerts you to sync operations that exceed 30 minutes.  
 The View Details option takes you directly to the Sync Results tab with details on the sync job and failed hooks, and the option to terminate the sync, and then troubleshoot the application. 
@@ -115,9 +115,9 @@ See [Filters for application resources]({{site.baseurl}}/docs/deployment/applica
 * Runtime installation reports errors as warnings.
 * Invalid GitLab token passes validation.
 * Status not updated for deleted PAT (Personal Access Token) in User Settings. 
-* GitLab repos with multiple levels incorrectly truncated to the first level by Codefresh.
+* GitLab repos with multiple levels incorrectly truncated to the first level in Codefresh UI.
 * Missing `--provider` flag when creating Git Sources via CLI.
-* INTERNAL_SERVER_ERROR when installing a runtime using --shared-config-repo flag with GitLab.
+* INTERNAL_SERVER_ERROR when installing a runtime using `--shared-config-repo` flag with GitLab.
 
 {::nomarkdown}
 <br>
@@ -126,7 +126,7 @@ See [Filters for application resources]({{site.baseurl}}/docs/deployment/applica
 **Applications**    
 * Incorrect status for current sync operation.
 * No results on applying filters in DORA metrics dashboard.
-* Broken links between parent and child applications in Application Set in Applications dashboard List view.
+* Broken links between parent and child applications in Application Set in Applications dashboard > List view.
 * Discrepancy between status in health snapshot filter and corresponding list of applications.
 * Resources with Missing health status not displayed in Current State.
 * "No Git Source with write permissions" error on creating application.
@@ -134,7 +134,7 @@ See [Filters for application resources]({{site.baseurl}}/docs/deployment/applica
 * Deleted applications shown as errors in the Error/Warning panel.
 * Wrong commit message in the Timelines tab for Git Source-applications.
 * PR (Pull Request) number in the  Timelines tab does not match the commit in the Application header.
-* No indication when application sync exceeds 30 minutes and needs troubleshooting.
+* No indication for extended application sync operations.
 * Codefresh UI does not sync applications as part of Application Set.
 * No option to terminate sync for indefinitely syncing applications. 
 * Scrolling up/down in Current State > Tree View causes resource nodes to move off the screen.
