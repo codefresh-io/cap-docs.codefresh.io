@@ -1,7 +1,7 @@
 ---
 title: "Codefresh On-Premises Upgrade"
-description: "Use the Kubernetes Codefresh Installer to upgrade the Codefresh On-Premises platform "
-group: administration
+description: "Use the Kubernetes Codefresh Installer to upgrade your Codefresh On-Premises platform "
+group: installation
 redirect_from:
   - /docs/enterprise/codefresh-on-prem-upgrade/
 toc: true
@@ -12,10 +12,10 @@ Upgrade the Codefresh on-premises platform to the latest version:
 * Complete post-upgrade configuration: If needed, also based on the version you are upgrading to, complete the required tasks
 
 
-###  Upgrade to 1.1.1
+##  Upgrade to 1.1.1
 Prepare for the upgrade to v1.1.1 by performing the tasks listed below.
 
-#### Maintain backward compatibility for infrastructure services
+### Maintain backward compatibility for infrastructure services
 If you have Codefresh version 1.0.202 or lower installed, and are upgrading to v1.1.1, to retain the existing images for the services listed below, update the `config.yaml` for `kcfi`.
 
 * `cf-mongodb`
@@ -63,7 +63,7 @@ consul:
   ImageTag: 1.0.0 # (default `imageTag:1.11`)
 ...
 ```
-### Upgrade to 1.2.0 and higher
+## Upgrade to 1.2.0 and higher
 This major release **deprecates** the following Codefresh managed charts:
 * Ingress
 * Rabbitmq
@@ -78,7 +78,7 @@ See the instructions below for each of the affected charts.
    `kubectl delete pdb cf-rabbitmq --namespace ${CF_NAMESPACE}` <br />
    `kubectl delete pdb cf-redis --namespace ${CF_NAMESPACE}`
 
-#### Update configuration for Ingress chart
+### Update configuration for Ingress chart
 From version **1.2.0 and higher**, we have deprecated support for `Codefresh-managed-ingress`.
 Kubernetes community public `ingress-nginx` chart replaces `Codefresh-managed-ingress` chart. For more information on the `ingress-nginx`, see [kubernetes/ingress-nginx](https://github.com/kubernetes/ingress-nginx).
 
@@ -90,7 +90,7 @@ You must update `config.yaml`, if you are using:
 * External ingress controllers, including ALB (Application Load Balancer)
 * Codefresh-managed ingress controller with _custom_ values
 
-##### Update configuration for external ingress controllers
+#### Update configuration for external ingress controllers
 
 For external ingress controllers, including ALB (Application Load Balancer), update the relevant sections in `config.yaml` to align with the new name for the ingress chart:
 
@@ -132,7 +132,7 @@ ingress:
 #    kubernetes.io/ingress.class: my-non-codefresh-nginx
 ```
 
-##### Update configuration for Codefresh-managed ingress with custom values
+#### Update configuration for Codefresh-managed ingress with custom values
 
 If you were running `Codefresh-managed ingress` controller with _custom_ values refer to [values.yaml](https://github.com/kubernetes/ingress-nginx/blob/main/charts/ingress-nginx/values.yaml) from the official repo. If needed, update the `ingress-nginx` section in `config.yaml`. The example below shows the default values (already provided in Codefresh chart) for `ingress-nginx`:
 
@@ -168,7 +168,7 @@ ingress-nginx:
   `kubectl get svc cf-ingress-nginx-controller -o jsonpath={.status.loadBalancer.ingress[0].ip`
 
 
-#### Update configuration for RabbitMQ chart
+### Update configuration for RabbitMQ chart
 From version **1.2.2 and higher**, we have deprecated support for the `Codefresh-managed Rabbitmq` chart. Bitnami public `bitnami/rabbitmq` chart has replaced the `Codefresh-managed rabbitmq`. For more information, see [bitnami/rabbitmq](https://github.com/bitnami/charts/tree/master/bitnami/rabbitmq).
 
 > Configuration updates are not required if you are running an **external** RabbitMQ service.
@@ -238,7 +238,7 @@ rabbitmq:
     size: 32Gi
 ```
 
-#### Update configuration for Redis chart
+### Update configuration for Redis chart
 From version **1.2.2 and higher**, we have deprecated support for the `Codefresh-managed Redis` chart. Bitnami public `bitnami/redis` chart has replaced the `Codefresh-managed Redis` chart. For more information, see [bitnami/redis](https://github.com/bitnami/charts/tree/master/bitnami/redis).
 
 Redis storage contains **CRON and Registry** typed triggers so you must migrate existing data from the old deployment to the new stateful set.
@@ -248,7 +248,7 @@ This is done by backing up the existing data before upgrade, and then restoring 
   * When running an **external** Redis service.
   * If CRON and Registy triggers have not been configured.
 
-##### Verify existing Redis data for CRON and Registry triggers
+#### Verify existing Redis data for CRON and Registry triggers
 Check if you have CRON and Registry triggers configured in Redis.
 
 * Run `codefresh get triggers`
@@ -269,7 +269,7 @@ keys * #show keys
 
 * If there are results, continue with _Back up existing Redis data_.
 
-##### Back up existing Redis data
+#### Back up existing Redis data
 Back up the existing data before the upgrade:
 
 * Connect to the pod, run `redis-cli`, export AOF data from old `cf-redis-*` pod:
@@ -281,7 +281,7 @@ REDIS_POD=$(kubectl get pods -l app=cf-redis -o custom-columns=:metadata.name --
 kubectl cp $REDIS_POD:/bitnami/redis/data/appendonly.aof appendonly.aof -c cf-redis
 ```
 
-##### Restore backed-up Redis data
+#### Restore backed-up Redis data
 Restore the data after the upgrade:
 
 * Copy `appendonly.aof` to the new `cf-redis-master-0` pod:
@@ -368,19 +368,19 @@ redis:
 
 > If you run the upgrade without redis backup and restore procedure, **Helm Releases Dashboard** page might be empty for a few minutes after the upgrade.
 
-### Upgrade to 1.3.0 and higher
+## Upgrade to 1.3.0 and higher
 This major release **deprecates** the following Codefresh managed charts:
 * Consul
 * Nats
 
-#### Update configuration for Consul
+### Update configuration for Consul
 From version **1.3.0 and higher**, we have deprecated the Codefresh-managed `consul` chart,  in favor of Bitnami public `bitnami/consul` chart. For more information, see [bitnami/consul](https://github.com/bitnami/charts/tree/master/bitnami/consul).
 
 Consul storage contains data about **Windows** worker nodes, so if you had any Windows nodes connected to your OnPrem installation, see the following instruction:
 
 > Use `https://<your_onprem_domain>/admin/nodes` to check for any existing Windows nodes.
 
-##### Back up existing consul data
+#### Back up existing consul data
 _Before starting the upgrade_, back up existing data.
 
 > Because `cf-consul` is a StatefulSet and has some immutable fields in its spec with both old and new charts having the same names, you cannot perform a direct upgrade.
@@ -403,7 +403,7 @@ kubectl cp -n codefresh cf-consul-0:backup.snap backup.snap
 kubectl delete statefulset cf-consul -n codefresh
 ```
 
-##### Restore backed up data
+#### Restore backed up data
 
 After completing the upgrade to the current version, restore the `consul` data that you backed up.
 
@@ -420,7 +420,7 @@ kubectl exec -it cf-consul-0 -n codefresh -- consul snapshot restore /tmp/backup
   For the complete list of values, see [values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/consul/values.yaml)
 
 
-#### Update Nats configuration
+### Update Nats configuration
 From version **1.3.0 and higher**, we have deprecated Codefresh-managed `nats` chart in favor of Bitnami public `bitnami/nats` chart. For more information, see [bitnami/nats](https://github.com/bitnami/charts/tree/master/bitnami/consul).
 
 > Because `cf-nats` is a StatefulSet and  has some immutable fields in its spec, both the old and new charts have the same names, preventing a direct upgrade.
@@ -438,7 +438,7 @@ kubectl delete statefulset cf-nats -n codefresh
 > Nats chart was replaced, and values structure might be different for some parameters.
   For the complete list of values, see [values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/nats/values.yaml).
 
-#### Upgrade to 1.3.1 and higher
+### Upgrade to 1.3.1 and higher
 
 Chart **v1.3.1** fixes duplicated env vars `CLUSTER_PROVIDERS_URI` and `CLUSTER_PROVIDERS_PORT` in `cf-api` deployment.
 ```yaml
@@ -458,7 +458,7 @@ builder:
   - "myregistrydomain.com:5000"
 ```
 
-### Upgrade the Codefresh Platform with [kcfi](https://github.com/codefresh-io/kcfi)
+## Upgrade the Codefresh Platform with [kcfi](https://github.com/codefresh-io/kcfi)
 
 1. Locate the `config.yaml` file you used in the initial installation.
 1. Change the release number inside it.
@@ -481,7 +481,7 @@ builder:
 1. Log in to the Codefresh UI, and check the new version.
 1. If needed, enable/disable new feature flags.
 
-### Codefresh with Private Registry
+## Codefresh with Private Registry
 
 If you install/upgrade Codefresh on the air-gapped environment (without access to public registries or Codefresh Enterprise registry) you will have to copy the images to your organization container registry.
 

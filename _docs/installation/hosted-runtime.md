@@ -1,7 +1,7 @@
 ---
-title: "Set up a hosted runtime environment"
-description: ""
-group: runtime
+title: "Codefresh Hosted GitOps setup"
+description: "Provision Hosted GitOps runtime and environment"
+group: installation
 toc: true
 ---
 

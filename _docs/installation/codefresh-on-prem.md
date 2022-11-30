@@ -1,5 +1,5 @@
 ---
-title: "Codefresh On-Premises Installation"
+title: "Codefresh On-Premises Installation & Configuration"
 description: "Use the Kubernetes Codefresh Installer to install the Codefresh On-Premises platform "
 group: administration
 redirect_from:

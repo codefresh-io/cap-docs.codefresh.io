@@ -1,6 +1,6 @@
 ---
-title: "Install hybrid runtimes"
-description: ""
+title: "Codefresh Hybrid GitOps Runtime installation"
+description: "Provision Hybrid GitOps Runtimes"
 group: runtime
 toc: true
 ---
