@@ -73,7 +73,7 @@ Here is a description of the information in the List View.
 |**Name**| The name of the provisioned Codefresh runtime.  |
 |**Type**| The type of runtime provisioned, and can be **Hybrid** or **Hosted**.  |
 |**Cluster/Namespace**| The K8s API server endpoint, as well as the namespace with the cluster. |
-|**Modules**| The modules installed based on the type of provisioned runtime. Hybrid runtimes include CI amnd CD Ops modules. Hosted runtimes inlcude CD Ops.   |
+|**Modules**| The modules installed based on the type of provisioned runtime. Hybrid runtimes include CI and CD Ops modules. Hosted runtimes include CD Ops.   |
 |**Managed Cluster**| The number of managed clusters if any, for the runtime. To view list of managed clusters, select the runtime, and then the **Managed Clusters** tab.  To work with managed clusters, see [Adding external clusters to runtimes]({{site.baseurl}}/docs/runtime/managed-cluster).|
 |**Version**| The version of the runtime currently installed. **Update Available!** indicates there are later versions of the runtime. To see all the commits to the runtime, mouse over **Update Available!**, and select **View Complete Change Log**.
 |**Last Updated**| The most recent update information from the runtime to the Codefresh platform. Updates are sent to the platform typically every few minutes. Longer update intervals may indicate networking issues.|
@@ -81,7 +81,7 @@ Here is a description of the information in the List View.
 
 #### Topology view
 
-A hierachical visualization of the provisioned runtimes. The Topology view makes it easy to identify key information such as versions, health and sync status, for both the provisioned runtime and the clusters managed by it.  
+A hierarchical visualization of the provisioned runtimes. The Topology view makes it easy to identify key information such as versions, health and sync status, for both the provisioned runtime and the clusters managed by it.  
 Here is an example of the Topology view for runtimes.
   {% include
  image.html
