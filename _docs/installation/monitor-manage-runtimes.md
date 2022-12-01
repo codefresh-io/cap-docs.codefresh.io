@@ -1,5 +1,5 @@
 ---
-title: "Monitoring/managing GitOps Runtimes"
+title: "Monitoring & managing GitOps Runtimes"
 description: ""
 group: runtime
 redirect_from:
@@ -104,6 +104,10 @@ Here is a description of the information in the Topology view.
 |**Search and View options** | {::nomarkdown}<ul><li>Find a Runtime or its clusters by typing part of the Runtime/cluster name, and then navigate to the entries found. </li> <li>Topology view options: Resize to window, zoom in, zoom out, full screen view.</li></ul> {:/}|
 
 ## Managing provisioned GitOps Runtimes
+* [(Hybrid GitOps) Upgrade GitOps CLI](#hybrid-gitops-upgrade-gitops-cli)
+* [(Hybrid GitOps) Upgrade provisioned Runtimes](#hybrid-gitops-upgrade-provisioned-runtimes)
+* [Uninstall provisioned Runtimes](#uninstall-provisioned-runtimes)
+* [Update Git tokens for Runtimes](#update-git-tokens-for-runtimes)
 
 
 ### (Hybrid GitOps) Upgrade GitOps CLI
@@ -346,6 +350,11 @@ The methods for updating any Git token are the same regardless of the reason for
 1. Click **Update Token**.
 
 ## Monitoring GitOps Runtimes
+* [View/download logs to troubleshoot Runtimes](#viewdownload-logs-to-troubleshoot-runtimes)
+* [(Hybrid GitOps) Restoring provisioned Runtimes](#hybrid-gitops-restoring-provisioned-runtimes)
+* [(Hybrid GitOps) Configure browser to allow insecure Runtimes](#hybrid-gitops-configure-browser-to-allow-insecure-runtimes)
+* [(Hybrid GitOps) View notifications in Activity Log](#hybrid-gitops-view-notifications-in-activity-log)
+* [(Hybrid GitOps) Troubleshoot health and sync errors for Runtimes](#hybrid-gitops-troubleshoot-health-and-sync-errors-for-runtimes)
 
 ### View/download logs to troubleshoot Runtimes
 Logs are available for completed Runtimes, both for the Runtime and for individual Runtime components. Download log files for offline viewing and analysis, or view online logs for a Runtime component, and download if needed for offline analysis. Online logs support free-text search, search-result navigation, and line-wrap for enhanced readability.  
@@ -613,5 +622,8 @@ Here is an example of health errors for a Runtime.
 
 
 ### Related articles
-TBD 
+[Add Git Sources to runtimes]({{site.baseurl}}/docs/installation/git-sources/)  
+[Add external clusters to Hybrid and Hosted Runtimes]({{site.baseurl}}/docs/installation/managed-cluster/)  
+[Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration)  
+
 

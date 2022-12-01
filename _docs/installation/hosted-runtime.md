@@ -1,5 +1,5 @@
 ---
-title: "Installing Hosted GitOps Runtime"
+title: "Hosted GitOps Runtime installation"
 description: "Provision Hosted GitOps environment"
 group: installation
 toc: true
@@ -22,7 +22,7 @@ Set up your hosted environment with the Hosted GitOps Runtime to leverage extens
 ## Where to start with Hosted GitOps Runtimes
 If you have not provisioned a Hosted GitOps Runtime, Codefresh presents you with the setup instructions in the **Home** dashboard.   
 
-**Before you begin**  
+  
 
 * In the Codefresh UI, go to Codefresh [Home](https://g.codefresh.io/2.0/?time=LAST_7_DAYS){:target="\_blank"}.
   Codefresh guides you through the three-step setup, as described below.
@@ -315,8 +315,9 @@ Optional. Integrate Codefresh with the third-party tools you use for CI to enric
 [Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/) 
 
 ### Related articles
-[Manage provisioned runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/)  
-[Add Git Sources to runtimes]({{site.baseurl}}/docs/runtime/git-sources/)  
+[Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/monitor-manage-runtimes/)  
+[Add Git Sources to runtimes]({{site.baseurl}}/docs/installation/git-sources/)  
+[Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration)  
 [Home dashboard]({{site.baseurl}}/docs/reporting/home-dashboard/)   
 [DORA metrics]({{site.baseurl}}/docs/reporting/dora-metrics/)
 

@@ -31,20 +31,22 @@
   links:
     - title: Installation environments
       localurl: /docs/runtime/installation-options/
-    - title: Set up a hosted runtime environment 
-      localurl: /docs/runtime/hosted-runtime/
-    - title: Hybrid runtime requirements
-      localurl: /docs/runtime/requirements/
-    - title: Install hybrid runtimes
-      localurl: /docs/runtime/installation
-    - title: Manage provisioned runtimes
-      localurl: /docs/runtime/monitor-manage-runtimes/
-    - title: Monitor provisioned hybrid runtimes
-      localurl: /docs/runtime/monitoring-troubleshooting/
-    - title: Add external clusters to runtimes
-      localurl: /docs/runtime/managed-cluster/
-    - title:  Add Git Sources to runtimes
-      localurl: /docs/runtime/git-sources/
+    - title: Codefresh Runner installation
+      localurl: /docs/installation/codefresh-runner/ 
+    - title: Hosted GitOps Runtime installation
+      localurl: /docs/installation/hosted-runtime/  
+    - title: Hybrid GitOps Runtime installation
+      localurl: /docs/installation/hybrid-gitops/  
+    - title: Codefresh On-Premises Installation
+      localurl: /docs/installation/codefresh-on-prem/
+    - title: Codefresh On-Premises Upgrade
+      localurl: /docs/installation/codefresh-on-prem-upgrade/
+    - title: Monitoring & managing GitOps Runtimes
+      localurl: /docs/installation/monitor-manage-runtimes/
+    - title: Add external clusters to GitOps Runtimes
+      localurl: /docs/installation/managed-cluster/
+    - title:  Add Git Sources to GitOps Runtimes
+      localurl: /docs/installation/git-sources/
 
 - title: Pipelines
   icon: images/home-icons/pipeline.svg

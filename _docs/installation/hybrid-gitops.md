@@ -1,36 +1,35 @@
 ---
-title: "Codefresh Hybrid GitOps Runtime installation"
+title: "Hybrid GitOps Runtime installation"
 description: "Provision Hybrid GitOps Runtimes"
-group: runtime
+group: installation
 toc: true
 ---
 
 Provision one or more Hybrid Runtimes in your Codefresh account. 
 
-> If you have Hosted GitOps, to provision a hosted runtime, see [Provision a hosted runtime]({{site.baseurl}}/docs/runtime/hosted-runtime/#1-provision-hosted-runtime) in [Set up a hosted (Hosted GitOps) environment]({{site.baseurl}}/docs/runtime/hosted-runtime/).
+> To provision a Hosted GitOps Runtime, see [Provision a hosted runtime]({{site.baseurl}}/docs/installation/hosted-runtime/#1-provision-hosted-runtime) in [Set up a hosted (Hosted GitOps) environment]({{site.baseurl}}/docs/installation/hosted-runtime/).
 
-**Git providers and runtimes**  
-Your Codefresh account is always linked to a specific Git provider. This is the Git provider you select on installing the first runtime, either hybrid or hosted, in your Codefresh account. All the hybrid runtimes you install in the same account use the same Git provider.  
+**Git providers and Hybrid Runtimes**  
+Your Codefresh account is always linked to a specific Git provider. This is the Git provider you select on installing the first GitOps Runtime, either Hybrid or Hosted, in your Codefresh account. All the Hybrid Runtimes you install in the same account use the same Git provider.  
 If Bitbucker Server is your Git provider, you must also select the specific server instance to associate with the runtime. 
 
 >To change the Git provider for your Codefresh account after installation, contact Codefresh support.
 
 
-**Hybrid runtime**  
- The hybrid runtime comprises Argo CD components and Codefresh-specific components. The Argo CD components are derived from a fork of the Argo ecosystem, and do not correspond to the open-source versions available.  
+**Hybrid Runtimes**  
+ The Hybrid Runtime comprises Argo CD components and Codefresh-specific components. The Argo CD components are derived from a fork of the Argo ecosystem, and do not correspond to the open-source versions available.  
 
-There are two parts to installing a hybrid runtime:
+There are two parts to installing a Hybrid Runtime:
 
-1. Installing the Codefresh CLI
-2. Installing the hybrid runtime from the CLI, either through the CLI wizard or via silent installation through the installation flags.  
-  The hybrid runtime is installed in a specific namespace on your cluster. You can install more runtimes on different clusters in your deployment.  
-  Every hybrid runtime installation makes commits to three Git repos:
-  * Runtime install repo: The installation repo that manages the hybrid runtime itself with Argo CD. If the repo URL does not exist, it is automatically created during runtime installation.
-  * Git Source repo: Created automatically during runtime installation. The repo where you store manifests for pipelines and applications. See [Git Sources]({{site.baseurl}}/docs/runtime/git-sources).
-  * Shared configuration repo: Created for the first runtime in a user account. The repo stores configuration manifests for account-level resources and is shared with other runtimes in the same account. See [Shared configuration repository]({{site.baseurl}}/docs/reference/shared-configuration).
+1. [Installing the Codefresh CLI](#gitops-cli-installation)
+2. [Installing the Hybrid GitOps Runtime](#install-hybrid-gitops-runtime), either through the CLI wizard or via silent installation through the installation flags.  
+  The Hybrid Runtime is installed in a specific namespace on your cluster. You can install more Runtimes on different clusters in your deployment.  
+  Every Hybrid Runtime installation makes commits to three Git repos:
+  * Runtime install repo: The installation repo that manages the Hybrid Runtime itself with Argo CD. If the repo URL does not exist, it is automatically created during installation.
+  * Git Source repo: Created automatically during Runtime installation. The repo where you store manifests for pipelines and applications. See [Git Sources]({{site.baseurl}}/docs/runtime/git-sources).
+  * Shared configuration repo: Created for the first GitOps Runtime installed in a user account. The repo stores configuration manifests for account-level resources and is shared with other GitOps Runtimes in the same account. See [Shared configuration repository]({{site.baseurl}}/docs/reference/shared-configuration).
 
 
-See also [Codefresh architecture]({{site.baseurl}}/docs/getting-started/architecture).
 
 {::nomarkdown}
 </br>
@@ -86,33 +85,18 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
    max-width="30%" 
    %} 
 
-### Upgrade Codefresh CLI
-Upgrade the CLI to the latest version to prevent Runtime installation errors.
-1. Check the version of the CLI you have installed:  
-  `cf version`  
-1. Compare with the [latest version](https://github.com/codefresh-io/cli-v2/releases){:target="\_blank"} released by Codefresh.
-1. Select and run the appropriate command:
-
-{: .table .table-bordered .table-hover}
-| Download mode | OS       | Commands |
-| -------------- | ----------| ----------|  
-| `curl`         | MacOS-x64 |  `curl -L --output - https://github.com/codefresh-io/cli-v2/releases/latest/download/cf-darwin-amd64.tar.gz | tar zx && mv ./cf-darwin-amd64 /usr/local/bin/cf && cf version`|
-|             | MacOS-m1 |`curl -L --output - https://github.com/codefresh-io/cli-v2/releases/latest/download/cf-darwin-arm64.tar.gz | tar zx && mv ./cf-darwin-arm64 /usr/local/bin/cf && cf version` |          
-|             | Linux - X64 |`curl -L --output - https://github.com/codefresh-io/cli-v2/releases/latest/download/cf-linux-amd64.tar.gz | tar zx && mv ./cf-linux-amd64 /usr/local/bin/cf && cf version` |       
-|              | Linux - ARM  |  `curl -L --output - https://github.com/codefresh-io/cli-v2/releases/latest/download/cf-linux-arm64.tar.gz | tar zx && mv ./cf-linux-arm64 /usr/local/bin/cf && cf version`|     
-| `brew` | N/A| `brew tap codefresh-io/cli && brew install cf2`|
 
 {::nomarkdown}
 </br></br>
 {:/}
 
-### Install the hybrid runtime  
+## Install Hybrid GitOps Runtime  
 
 **Before you begin**
-* Make sure you meet the [minimum requirements]({{site.baseurl}}/docs/runtime/requirements/#minimum-requirements) for runtime installation
-* Make sure you have [runtime token with the required scopes from your Git provider]({{site.baseurl}}/docs/reference/git-tokens)
-* [Download or upgrade to the latest version of the CLI]({{site.baseurl}}/docs/clients/csdp-cli/#upgrade-codefresh-cli)
-* Review [Hybrid runtime installation flags](#hybrid-runtime-installation-flags)
+* Make sure you meet the [minimum requirements]({{site.baseurl}}/docs/runtime/requirements/#minimum-requirements) for installation
+* Make sure you have [Runtime token with the required scopes from your Git provider]({{site.baseurl}}/docs/reference/git-tokens)
+* [Download or upgrade to the latest version of the CLI]({{site.baseurl}}/docs/installation/hybrid-gitops/#hybrid-gitops-upgrade-gitops-cli)
+* Review [Hybrid Runtime installation flags](#hybrid-runtime-installation-flags)
 * For ingress-based runtimes, make sure your ingress controller is configured correctly:
   * [Ambasador ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#ambassador-ingress-configuration)
   * [AWS ALB ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#alb-aws-ingress-configuration)
@@ -129,8 +113,8 @@ Upgrade the CLI to the latest version to prevent Runtime installation errors.
 **How to** 
 
 1. Do one of the following:  
-  * If this is your first hybrid runtime installation, in the Welcome page, select **+ Install Runtime**.
-  * If you have provisioned a hybrid runtime, to provision additional runtimes, in the Codefresh UI, go to [**Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+  * If this is your first Hybrid Runtime installation, in the Welcome page, select **+ Install Runtime**.
+  * If you have provisioned a Hybrid Runtime, to provision additional runtimes, in the Codefresh UI, go to [**Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
 1. Click **+ Add Runtimes**, and then select **Hybrid Runtimes**.
 1. Do one of the following:  
   * CLI wizard: Run `cf runtime install`, and follow the prompts to enter the required values.  
@@ -151,22 +135,20 @@ Upgrade the CLI to the latest version to prevent Runtime installation errors.
 {:/}
 
 
-
-
-## Hybrid Runtime architecture
+<!--## Hybrid Runtime architecture
 
 ### Tunnel-based
 
 ### Ingress-based
 
-### Components
+### Components-->
 
-## Hybrid runtime installation flags
+## Hybrid Runtime installation flags
 This section describes the required and optional flags to install a Hybrid Runtime.
 For documentation purposes, the flags are grouped into:
-* Runtime flags, relating to runtime, cluster, and namespace requirements
+* Runtime flags, relating to Runtime, cluster, and namespace requirements
 * Ingress-less flags, for tunnel-based installation
-* Ingress-controller flags, relating to ingress controller requirements
+* Ingress-controller flags, for ingress-based installation
 * Git provider flags
 * Codefresh resource flags
 
@@ -174,17 +156,17 @@ For documentation purposes, the flags are grouped into:
 </br>
 {:/}
 
-###  Runtime flags
+### Runtime flags
 
 **Runtime name**  
 Required.  
-The runtime name must start with a lower-case character, and can include up to 62 lower-case characters and numbers.  
+The Runtime name must start with a lower-case character, and can include up to 62 lower-case characters and numbers.  
 * CLI wizard: Add when prompted. 
-* Silent install: Add the `--runtime` flag and define the runtime name.
+* Silent install: Add the `--runtime` flag and define the name.
 
 **Namespace resource labels**  
 Optional.  
-The label of the namespace resource to which you are installing the hybrid runtime. Labels are required to identify the networks that need access during installation, as is the case when using services meshes such as Istio for example.  
+The label of the namespace resource to which you are installing the Hybrid Runtime. Labels are required to identify the networks that need access during installation, as is the case when using services meshes, such as Istio for example.  
 
 * CLI wizard and Silent install: Add the `--namespace-labels` flag, and define the labels in `key=value` format. Separate multiple labels with `commas`.
 
@@ -196,7 +178,7 @@ The cluster defined as the default for `kubectl`. If you have more than one Kube
 * Silent install: Explicitly specify the Kube context with the `--context` flag.
 
 **Shared configuration repository**  
-The Git repository per runtime account with shared configuration manifests.  
+The Git repository per Runtime account with shared configuration manifests.  
 * CLI wizard and Silent install: Add the `--shared-config-repo` flag and define the path to the shared repo.  
 
 {::nomarkdown}
@@ -204,7 +186,7 @@ The Git repository per runtime account with shared configuration manifests.
 {:/}
 
 ### Ingress-less flags
-These flags are required to install tunnel-based Hybird Runtimes, without an ingress controller. 
+These flags are required to install tunnel-based Hybrid Runtimes, without an ingress controller. 
 
 **Access mode**  
 Required.  
@@ -235,13 +217,13 @@ When omitted, all incoming requests are authenticated regardless of the IPs from
 **Skip ingress**  
 Required, if you are using an unsupported ingress controller.  
 For unsupported ingress controllers, bypass installing ingress resources with the `--skip-ingress` flag.  
-In this case, after completing the installation, manually configure the cluster's routing service, and create and register Git integrations. See the last step in [Install the hybrid runtime](#install-the-hybrid-runtime).
+In this case, after completing the installation, manually configure the cluster's routing service, and create and register Git integrations. See the last step in [Install the Hybrid GitOps Runtime](#install-hybrid-gitops-runtime).
 
 **Ingress class**  
 Required.  
 
-* CLI wizard: Select the ingress class for runtime installation from the list displayed.
-* Silent install: Explicitly specify the ingress class through the `--ingress-class` flag. Otherwise, runtime installation fails.  
+* CLI wizard: Select the ingress class for Runtime installation from the list displayed.
+* Silent install: Explicitly specify the ingress class through the `--ingress-class` flag. Otherwise, Runtime installation fails.  
 
 **Ingress host**  
 Required.  
@@ -263,9 +245,9 @@ Optional.
 Enforce separation between internal (app-proxy) and external (webhook) communication by adding an internal ingress host for the app-proxy service in the internal network.  
 For both CLI wizard and Silent install:  
 
-* For new runtime installations, add the `--internal-ingress-host` flag pointing to the ingress host for `app-proxy`.
+* For new Runtime installations, add the `--internal-ingress-host` flag pointing to the ingress host for `app-proxy`.
 * For existing installations, commit changes to the installation repository by modifying the `app-proxy ingress` and `<runtime-name>.yaml`  
-  See [(Optional) Internal ingress host configuration for existing hybrid runtimes](#optional-internal-ingress-host-configuration-for-existing-hybrid-runtimes).
+  See [(Optional) Internal ingress host configuration for existing Hybrid Runtimes](#optional-internal-ingress-host-configuration-for-existing-hybrid-runtimes).
 
 {::nomarkdown}
 </br>
@@ -274,9 +256,9 @@ For both CLI wizard and Silent install:
 
 
 ### Git provider and repo flags
-The Git provider defined for the runtime. 
+The Git provider defined for the Runtime. 
 
->Because Codefresh creates a [shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration) for the runtimes in your account, the Git provider defined for the first runtime you install in your account is used for all the other runtimes in the same account.  
+>Because Codefresh creates a [shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration) for the Runtimes in your account, the Git provider defined for the first Runtime you install in your account is used for all the other Runtimes in the same account.  
 
 You can define any of the following Git providers:
 * GitHub:
@@ -296,26 +278,26 @@ You can define any of the following Git providers:
 
 
 #### GitHub
-GitHub is the default Git provider for hybrid runtimes. Being the default provider, for both the CLI wizard and Silent install, you need to provide only the repository URL and the Git runtime token.
+GitHub is the default Git provider for Hybrid Runtimes. Being the default provider, for both the CLI wizard and Silent install, you need to provide only the repository URL and the Git runtime token.
 
-> For the required scopes, see [GitHub and GitHub Enterprise runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#github-and-github-enterprise-runtime-token-scopes).
+> For the required scopes, see [GitHub and GitHub Enterprise Runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#github-and-github-enterprise-runtime-token-scopes).
 
 `--repo <repo_url> --git-token <git-runtime-token>`  
 
 where:
-* `--repo <repo_url>` (required), is the `HTTPS` clone URL of the Git repository for the runtime installation, including the `.git` suffix. Copy the clone URL from your GitHub website (see [Cloning with HTTPS URLs](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls){:target="\_blank"}).   
-  If the repo doesn't exist, copy an existing clone URL and change the name of the repo. Codefresh creates the repository during runtime installation.  
+* `--repo <repo_url>` (required), is the `HTTPS` clone URL of the Git repository for the Runtime installation, including the `.git` suffix. Copy the clone URL from your GitHub website (see [Cloning with HTTPS URLs](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls){:target="\_blank"}).   
+  If the repo doesn't exist, copy an existing clone URL and change the name of the repo. Codefresh creates the repository during the installation.  
 
   Repo URL format:  
   `https://github.com/<owner>/reponame>.git[/subdirectory][?ref=branch]`  
   where:  
   * `<owner>/<reponame>` is your username or organization name, followed by the name of the repo, identical to the HTTPS clone URL.  For example, `https://github.com/nr-codefresh/codefresh.io.git`.  
-  * `[/subdirectory]` (optional) is the path to a subdirectory within the repo. When omitted, the runtime is installed in the root of the repository.  For example, `/runtimes/defs`.  
-  * `[?ref=branch]` (optional) is the `ref` queryParam to select a specific branch. When omitted, the runtime is installed in the default branch. For example, `codefresh-prod`.  
+  * `[/subdirectory]` (optional) is the path to a subdirectory within the repo. When omitted, the Runtime is installed in the root of the repository.  For example, `/runtimes/defs`.  
+  * `[?ref=branch]` (optional) is the `ref` queryParam to select a specific branch. When omitted, the Runtime is installed in the default branch. For example, `codefresh-prod`.  
 
   Example:  
   `https://github.com/nr-codefresh/codefresh.io.git/runtimes/defs?ref=codefresh-prod`  
-* `--git-token <git-runtime-token>` (required), is the Git token authenticating access to the runtime installation repository (see [GitHub runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#github-and-github-enterprise-runtime-token-scopes)).
+* `--git-token <git-runtime-token>` (required), is the Git token authenticating access to the Runtime installation repository (see [GitHub runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#github-and-github-enterprise-runtime-token-scopes)).
 
 {::nomarkdown}
 </br>
@@ -326,24 +308,23 @@ where:
 > For the required scopes, see [GitHub and GitHub Enterprise runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#github-and-github-enterprise-runtime-token-scopes).
 
 
-`--enable-git-providers --provider github --repo <repo_url> --git-token <git-runtime-token>`  
+`--provider github --repo <repo_url> --git-token <git-runtime-token>`  
 
 where:  
-* `--enable-git-providers` (required), indicates that you are not using the default Git provider for the runtime.
-* `--provider github` (required), defines GitHub Enterprise as the Git provider for the runtime and the account.
-* `--repo <repo_url>` (required), is the `HTTPS` clone URL of the Git repository for the runtime installation, including the `.git` suffix. Copy the clone URL for HTTPS from your GitHub Enterprise website (see [Cloning with HTTPS URLs](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls){:target="\_blank"}).  
-  If the repo doesn't exist, copy an existing clone URL and change the name of the repo. Codefresh creates the repository during runtime installation. 
+* `--provider github` (required), defines GitHub Enterprise as the Git provider for the Runtime and the account.
+* `--repo <repo_url>` (required), is the `HTTPS` clone URL of the Git repository for the Runtime installation, including the `.git` suffix. Copy the clone URL for HTTPS from your GitHub Enterprise website (see [Cloning with HTTPS URLs](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls){:target="\_blank"}).  
+  If the repo doesn't exist, copy an existing clone URL and change the name of the repo. Codefresh creates the repository during the installation. 
   Repo URL format:  
 
   `https://ghe-trial.devops.cf-cd.com/<owner>/<https-repo-url>.git[/subdirectory][?ref=branch]`  
   where:  
   * `<owner>/<reponame>` is your username or organization name, followed by the name of the repo. For example, `codefresh-io/codefresh.io.git`.  
-  * `[/subdirectory]` (optional) is the path to a subdirectory within the repo. When omitted, the runtime is installed in the root of the repository.  For example, `/runtimes/defs`.  
-  * `[?ref=branch]` (optional) is the `ref` queryParam to select a specific branch. When omitted, the runtime is installed in the default branch. For example, `codefresh-prod`.  
+  * `[/subdirectory]` (optional) is the path to a subdirectory within the repo. When omitted, the Runtime is installed in the root of the repository.  For example, `/runtimes/defs`.  
+  * `[?ref=branch]` (optional) is the `ref` queryParam to select a specific branch. When omitted, the Runtime is installed in the default branch. For example, `codefresh-prod`.  
 
   Example:  
   `https://ghe-trial.devops.cf-cd.com/codefresh-io/codefresh.io.git/runtimes/defs?ref=codefresh-prod`
-* `--git-token <git-runtime-token>` (required), is the Git token authenticating access to the runtime installation repository (see [GitHub runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#github-and-github-enterprise-runtime-token-scopes)).  
+* `--git-token <git-runtime-token>` (required), is the Git token authenticating access to the Runtime installation repository (see [GitHub runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#github-and-github-enterprise-runtime-token-scopes)).  
 
 
 {::nomarkdown}
@@ -354,13 +335,12 @@ where:
 > For the required scopes, see [GitLab Cloud and GitLab Server runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#gitlab-cloud-and-gitlab-server-runtime-token-scopes).
 
 
-`--enable-git-providers --provider gitlab --repo <https_project_url> --git-token <git_runtime_token>`  
+`--provider gitlab --repo <https_project_url> --git-token <git_runtime_token>`  
 
 where:  
-* `--enable-git-providers`(required), indicates that you are not using the default Git provider for the runtime.
-* `--provider gitlab` (required), defines GitLab Cloud as the Git provider for the runtime and the account.
-* `--repo <repo_url>` (required), is the `HTTPS` clone URL of the Git project for the runtime installation, including the `.git` suffix. Copy the clone URL for HTTPS from your GitLab website.   
-  If the repo doesn't exist, copy an existing clone URL and change the name of the repo. Codefresh creates the repository during runtime installation. 
+* `--provider gitlab` (required), defines GitLab Cloud as the Git provider for the Runtime and the account.
+* `--repo <repo_url>` (required), is the `HTTPS` clone URL of the Git project for the Runtime installation, including the `.git` suffix. Copy the clone URL for HTTPS from your GitLab website.   
+  If the repo doesn't exist, copy an existing clone URL and change the name of the repo. Codefresh creates the repository during the installation. 
 
   > Important: You must create the group with access to the project prior to the installation.
 
@@ -370,15 +350,15 @@ where:
   where:  
   * `<owner>` is either your username, or if your project is within a group, the front-slash separated path to the project. For example, `nr-codefresh` (owner), or `parent-group/child-group` (group hierarchy)
   * `<projectname>` is the name of the project.  For example, `codefresh`.  
-  * `[/subdirectory]` (optional) is the path to a subdirectory within the repo. When omitted, the runtime is installed in the root of the repository.  For example, `/runtimes/defs`.  
-  * `[?ref=branch]` (optional) is the `ref` queryParam to select a specific branch. When omitted, the runtime is installed in the default branch. For example, `codefresh-prod`.  
+  * `[/subdirectory]` (optional) is the path to a subdirectory within the repo. When omitted, the Runtime is installed in the root of the repository.  For example, `/runtimes/defs`.  
+  * `[?ref=branch]` (optional) is the `ref` queryParam to select a specific branch. When omitted, the Runtime is installed in the default branch. For example, `codefresh-prod`.  
 
   Examples:  
   `https://gitlab.com/nr-codefresh/codefresh.git/runtimes/defs?ref=codefresh-prod` (owner)  
 
   `https://gitlab.com/parent-group/child-group/codefresh.git/runtimes/defs?ref=codefresh-prod` (group hierarchy)
 
-* `--git-token <git-runtime-token>` (required), is the Git token authenticating access to the runtime installation repository (see [GitLab runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#gitlab-cloud-and-gitlab-server-runtime-token-scopes)).  
+* `--git-token <git-runtime-token>` (required), is the Git token authenticating access to the Runtime installation repository (see [GitLab runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#gitlab-cloud-and-gitlab-server-runtime-token-scopes)).  
 
 
 {::nomarkdown}
@@ -390,13 +370,12 @@ where:
 
 > For the required scopes, see [GitLab Cloud and GitLab Server runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#gitlab-cloud-and-gitlab-server-runtime-token-scopes).
 
-`--enable-git-providers --provider gitlab --repo <https_project_url> --git-token <git_runtime_token>`  
+`--provider gitlab --repo <https_project_url> --git-token <git_runtime_token>`  
 
 where:  
-* `--enable-git-providers` (required), indicates that you are not using the default Git provider for the runtime.
-* `--provider gitlab` (required), defines GitLab Server as the Git provider for the runtime and the account.
-* `--repo <repo_url>` (required), is the `HTTPS` clone URL of the Git repository for the runtime installation, including the `.git` suffix.  
-  If the project doesn't exist, copy an existing clone URL and change the name of the project. Codefresh creates the project during runtime installation.  
+* `--provider gitlab` (required), defines GitLab Server as the Git provider for the Runtime and the account.
+* `--repo <repo_url>` (required), is the `HTTPS` clone URL of the Git repository for the Runtime installation, including the `.git` suffix.  
+  If the project doesn't exist, copy an existing clone URL and change the name of the project. Codefresh creates the project during the installation.  
   
   > Important: You must create the group with access to the project prior to the installation.
 
@@ -405,15 +384,15 @@ where:
   where:  
   * `<owner>` is your username, or if the project is within a group or groups, the name of the group. For example, `nr-codefresh` (owner), or `parent-group/child-group` (group hierarchy)
   * `<projectname>` is the name of the project.  For example, `codefresh`.  
-  * `[/subdirectory]` (optional) is the path to a subdirectory within the repo. When omitted, the runtime is installed in the root of the repository.  For example, `/runtimes/defs`.  
-  * `[?ref=branch]` (optional) is the `ref` queryParam to select a specific branch. When omitted, the runtime is installed in the default branch. For example, `codefresh-prod`.  
+  * `[/subdirectory]` (optional) is the path to a subdirectory within the repo. When omitted, the Runtime is installed in the root of the repository.  For example, `/runtimes/defs`.  
+  * `[?ref=branch]` (optional) is the `ref` queryParam to select a specific branch. When omitted, the Runtime is installed in the default branch. For example, `codefresh-prod`.  
 
   Examples:  
   `https://gitlab-onprem.devops.cf-cd.com/nr-codefresh/codefresh.git/runtimes/defs?ref=codefresh-prod` (owner)  
   
   `https://gitlab-onprem.devops.cf-cd.com/parent-group/child-group/codefresh.git/runtimes/defs?ref=codefresh-prod` (group hierarchy)
 
-* `--git-token <git-runtime-token>` (required), is the Git token authenticating access to the runtime installation repository (see [GitLab runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#gitlab-cloud-and-gitlab-server-runtime-token-scopes)).
+* `--git-token <git-runtime-token>` (required), is the Git token authenticating access to the Runtime installation repository (see [GitLab runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#gitlab-cloud-and-gitlab-server-runtime-token-scopes)).
 
 
 {::nomarkdown}
@@ -424,13 +403,12 @@ where:
 > For the required scopes, see [Bitbucket runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#bitbucket-cloud-and-bitbucket-server-runtime-token-scopes).
 
 
-`--enable-git-providers --provider bitbucket --repo <https_repo_url> --git-user <git_username> --git-token <git_runtime_token>`    
+`--provider bitbucket --repo <https_repo_url> --git-user <git_username> --git-token <git_runtime_token>`    
 
 where:  
-* `--enable-git-providers` (required), indicates that you are not using the default Git provider for the runtime.  
-* `--provider gitlab` (required), defines Bitbucket Cloud as the Git provider for the runtime and the account.
-* `--repo <repo_url>` (required), is the `HTTPS` clone URL of the Git repository for the runtime installation, including the `.git` suffix.  
-  If the project doesn't exist, copy an existing clone URL and change the name of the project. Codefresh creates the project during runtime installation.  
+* `--provider gitlab` (required), defines Bitbucket Cloud as the Git provider for the Runtime and the account.
+* `--repo <repo_url>` (required), is the `HTTPS` clone URL of the Git repository for the Runtime installation, including the `.git` suffix.  
+  If the project doesn't exist, copy an existing clone URL and change the name of the project. Codefresh creates the project during Runtime installation.  
   >Important: Remove the username, including @ from the copied URL. 
   
   Repo URL format:  
@@ -439,8 +417,8 @@ where:
   where:  
   * `<workspace_id>` is your workspace ID. For example, `nr-codefresh`.
   * `<repo_name>` is the name of the repository. For example, `codefresh`.
-  * `[/subdirectory]` (optional) is the path to a subdirectory within the repo. When omitted, the runtime is installed in the root of the repository.  For example, `/runtimes/defs`.  
-  * `[?ref=branch]` (optional) is the `ref` queryParam to select a specific branch. When omitted, the runtime is installed in the default branch. For example, `codefresh-prod`.  
+  * `[/subdirectory]` (optional) is the path to a subdirectory within the repo. When omitted, the Runtime is installed in the root of the repository.  For example, `/runtimes/defs`.  
+  * `[?ref=branch]` (optional) is the `ref` queryParam to select a specific branch. When omitted, the Runtime is installed in the default branch. For example, `codefresh-prod`.  
 
   Example:  
   `https://bitbucket.org/nr-codefresh/codefresh.git/runtimes/defs?ref=codefresh-prod`    
@@ -457,13 +435,12 @@ where:
 > For the required scopes, see [Bitbucket runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#bitbucket-cloud-and-bitbucket-server-runtime-token-scopes).
 
 
-`--enable-git-providers --provider bitbucket-server --repo <repo_url> --git-user <git_username> --git-token <git_runtime_token>`  
+`--provider bitbucket-server --repo <repo_url> --git-user <git_username> --git-token <git_runtime_token>`  
 
 where:  
-* `--enable-git-providers` (required), indicates that you are not using the default Git provider for the runtime.
-* `--provider gitlab` (required), defines Bitbucket Cloud as the Git provider for the runtime and the account.
-* `--repo <repo_url>` (required), is the `HTTPS` clone URL of the Git repository for the runtime installation, including the `.git` suffix.  
-  If the project doesn't exist, copy an existing clone URL and change the name of the project. Codefresh then creates the project during runtime installation.  
+* `--provider gitlab` (required), defines Bitbucket Cloud as the Git provider for the Runtime and the account.
+* `--repo <repo_url>` (required), is the `HTTPS` clone URL of the Git repository for the Runtime installation, including the `.git` suffix.  
+  If the project doesn't exist, copy an existing clone URL and change the name of the project. Codefresh then creates the project during the installation.  
   >Important: Remove the username, including @ from the copied URL.  
 
   Repo URL format:  
@@ -472,13 +449,13 @@ where:
   where:  
   * `<owner_org_name>` is your username or organization name.  For example, `codefresh-io.`. 
   * `<repo_name>` is the name of the repo.  For example, `codefresh`.  
-  * `[/subdirectory]` (optional) is the path to a subdirectory within the repo. When omitted, the runtime is installed in the root of the repository.  For example, `/runtimes/defs`.  
-  * `[?ref=branch]` (optional) is the `ref` queryParam to select a specific branch. When omitted, the runtime is installed in the default branch. For example, `codefresh-prod`.  
+  * `[/subdirectory]` (optional) is the path to a subdirectory within the repo. When omitted, the Runtime is installed in the root of the repository.  For example, `/runtimes/defs`.  
+  * `[?ref=branch]` (optional) is the `ref` queryParam to select a specific branch. When omitted, the Runtime is installed in the default branch. For example, `codefresh-prod`.  
 
   Example:  
   `https://bitbucket-server-8.2.devops.cf-cd.com:7990/scm/codefresh-io/codefresh.git/runtimes/defs?ref=codefresh-prod` 
 * `--git-user <git_username>` (required), is your username for the Bitbucket Server account. 
-* `--git-token <git-runtime-token>` (required), is the Git token authenticating access to the runtime installation repository (see [Bitbucket runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#bitbucket-cloud-and-bitbucket-server-runtime-token-scopes)).
+* `--git-token <git-runtime-token>` (required), is the Git token authenticating access to the Runtime installation repository (see [Bitbucket runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#bitbucket-cloud-and-bitbucket-server-runtime-token-scopes)).
 
 {::nomarkdown}
 </br></br>
@@ -487,7 +464,7 @@ where:
 ### Codefresh resource flags
 **Codefresh demo resources**  
 Optional.  
-Install demo pipelines to use as a starting point to create your own pipelines. We recommend installing the demo resources as these are used in our quick start tutorials.  
+Install demo pipelines to use as a starting point to create your own GitOps pipelines. We recommend installing the demo resources as these are used in our quick start tutorials.  
 
 * Silent install: Add the `--demo-resources` flag, and define its value as `true` (default), or `false`. For example, `--demo-resources=true`
 
@@ -501,7 +478,7 @@ For _on-premises installations_, if the Ingress controller does not have a valid
 
 
 
-### Hybrid runtime components
+<!--### Hybrid Runtime components
 
 **Git repositories**  
 * Runtime install repository: The installation repo contains three folders: apps, bootstrap and projects, to manage the runtime itself with Argo CD.  
@@ -522,15 +499,15 @@ For _on-premises installations_, if the Ingress controller does not have a valid
   * App-proxy facilitating behind-firewall access to Git
   * Git Source entity that references the`[repo_name]_git-source`  
 
-Once the hybrid runtime is successfully installed, it is provisioned on the Kubernetes cluster, and displayed in the **Runtimes** page.
+Once the Hybrid Runtime is successfully installed, it is provisioned on the Kubernetes cluster, and displayed in the **Runtimes** page.
 
 {::nomarkdown}
 </br>
-{:/}
+{:/}-->
 
 
-## (Optional) Internal ingress host configuration for existing hybrid runtimes
-If you already have provisioned hybrid runtimes, to use an internal ingress host for app-proxy communication and an external ingress host to handle webhooks, change the specs for the `Ingress` and `Runtime` resources in the runtime installation repository. Use the examples as guidelines.  
+## (Optional) Internal ingress host configuration for existing  Hybrid Runtimes
+If you already have provisioned  Hybrid Runtimes, to use an internal ingress host for app-proxy communication and an external ingress host to handle webhooks, change the specs for the `Ingress` and `Runtime` resources in the Runtime installation repository. Use the examples as guidelines.  
 
 `<runtime-install-repo>/apps/app-proxy/overlays/<runtime-name>/ingress.yaml`: change `host`
 
@@ -604,6 +581,7 @@ data:
 
 ## Related articles
 [Add external clusters to Hybrid and Hosted Runtimes]({{site.baseurl}}/docs/installation/managed-cluster/)  
-[Manage provisioned Hybrid and Hosted Runtimes]({{site.baseurl}}/docs/installation/monitor-manage-runtimes/)  
-[Monitor provisioned Hybrid and Hosted Runtimes]({{site.baseurl}}/docs/installation/monitoring-troubleshooting/)  
+[Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/monitor-manage-runtimes/)  
+[Add Git Sources to runtimes]({{site.baseurl}}/docs/installation/git-sources/)  
+[Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration)  
 [Troubleshoot Hybrid Runtime installation]({{site.baseurl}}/installation/troubleshooting/runtime-issues/)

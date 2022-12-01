@@ -1,7 +1,7 @@
 ---
-title: "Codefresh Runner"
+title: "Codefresh Runner installation"
 description: "Run Codefresh pipelines on your private Kubernetes cluster"
-group: administration
+group: installation
 redirect_from:
   - /docs/enterprise/codefresh-runner/
 toc: true
@@ -11,10 +11,11 @@ Install the Codefresh Runner on your Kubernetes cluster to run pipelines and acc
 
 [Skip to quick installation &#8594;](#installation-with-the-quick-start-wizard)
 
->**Note:** a runner installation is needed for each cluster _running_ Codefresh pipelines. A runner is **not** needed
-in clusters used for _deployment_. It is possible to deploy applications on clusters other than the ones the runner is deployed on.
+>Important:  
+  You must install the Codefresh Runner on _each cluster running Codefresh pipelines_. 
+  The Runner is **not** needed in clusters used for _deployment_. You can deploy applications on clusters other than the ones the runner is deployed on.
 
-The installation process takes care of all runner components and other required resources (config-maps, secrets, volumes).
+The installation process takes care of all Runner components and other required resources (config-maps, secrets, volumes).
 
 ## Prerequisites
 
@@ -26,6 +27,56 @@ To use the Codefresh runner the following is required:
 4. A [Codefresh CLI token]({{site.baseurl}}/docs/integrations/codefresh-api/#authentication-instructions) that will be used to authenticate your Codefresh account.
 
 The runner can be installed from any workstation or laptop with access (i.e. via `kubectl`) to the Kubernetes cluster running Codefresh builds. The Codefresh runner will authenticate to your Codefresh account by using the Codefresh CLI token.
+
+## System Requirements
+
+Once installed the runner uses the following pods:
+
+* `runner` - responsible for picking tasks (builds) from the Codefresh API
+* `engine` - responsible for running pipelines
+* `dind` - responsible for building and using Docker images
+* `dind-volume-provisioner` - responsible for provisioning volumes (PV) for dind 
+* `dind-lv-monitor` - responsible for cleaning **local** volumes
+
+**CPU/Memory**
+
+The following table shows **MINIMUM** resources for each component:
+
+{: .table .table-bordered .table-hover}
+| Component         | CPU requests| RAM requests | Storage                  | Type | Always on |
+| -------------- | --------------|------------- |-------------------------|-------|-------|
+| `runner`        | 100m          | 100Mi        | Doesn't need PV         | Deployment   | Yes   |
+| `engine`         | 100m          | 500Mi        | Doesn't need PV         | Pod   | No   |
+| `dind`         | 400m          | 800Mi        | 16GB PV         | Pod   | No   |
+| `dind-volume-provisioner`         | 300m          | 400Mi        | Doesn't need PV         | Deployment   | Yes   |
+| `dind-lv-monitor`         | 300m          | 400Mi        | Doesn't need PV         | DaemonSet   | Yes   |
+
+Components that are always on consume resources all the time. Components that are not always on only consume resources when pipelines are running (they are created and destroyed automatically for each pipeline).
+
+Node size and count will depend entirely on how many pipelines you want to be “ready” for and how many will use “burst” capacity.  
+
+* Ready (nodes): Lower initialization time and faster build times.
+* Burst (nodes): High initialization time and slower build times. (Not recommended)
+
+The size of your nodes directly relates to the size required for your pipelines and thus it is dynamic.  If you find that only a few larger pipelines require larger nodes you may want to have two Codefresh Runners associated to different node pools.
+
+
+**Storage**
+
+For the storage options needed by the `dind` pod we suggest:
+
+* [Local Volumes](https://kubernetes.io/docs/concepts/storage/volumes/#local) `/var/lib/codefresh/dind-volumes` on the K8S nodes filesystem (**default**)
+* [EBS](https://aws.amazon.com/ebs/) in the case of AWS. See also the [notes](#installing-on-aws) about getting caching working.
+* [Local SSD](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/local-ssd) or [GCE Disks](https://cloud.google.com/compute/docs/disks#pdspecs) in the case of GCP. See [notes](#installing-on-google-kubernetes-engine) about configuration. 
+
+
+**Networking Requirements**
+
+* `dind` - this pod will create an internal network in the cluster to run all the pipeline steps; needs outgoing/egress access to Dockerhub and `quay.io`
+* `runner` - this pod needs outgoing/egress access to `g.codefresh.io`; needs network access to [app-proxy]({{site.baseurl}}/docs/administration/codefresh-runner/#optional-installation-of-the-app-proxy) (if app-proxy is used)
+* `engine` - this pod needs outgoing/egress access to `g.codefresh.io`, `*.firebaseio.com` and `quay.io`; needs network access to `dind` pod
+
+All CNI providers/plugins are compatible with the runner components.
 
 ## Installation with the Quick-start Wizard
 
@@ -111,7 +162,7 @@ codefresh runner init --dry-run
 
 This will execute the wizard in a special mode that will not actually install anything in your cluster. After all configuration questions are asked, all Kubernetes manifests used by the installer will be instead saved locally in a folder `./codefresh_manifests`.
 
-## Installing Codefresh Runner with values file
+## Install Codefresh Runner with values file
 
 To install the Codefresh Runner with pre-defined values file use `--values` flag:
 
@@ -121,7 +172,7 @@ codefresh runner init --values values.yaml
 
 Use [this example](https://github.com/codefresh-io/venona/blob/release-1.0/venonactl/example/values-example.yaml) as a starting point for your values file.
 
-## Installing Codefresh Runner with Helm
+## Install Codefresh Runner with Helm
 
 To install the Codefresh Runner using Helm, follow these steps:
 
@@ -203,7 +254,7 @@ runner-5d549f8bc5-7h5rc                           1/1     Running   0          3
 
 In the same manner you can list secrets, config-maps, logs, volumes etc. for the Codefresh builds.
 
-## Removing the Codefresh Runner
+## Uninstall the Codefresh Runner
 
 You can uninstall the Codefresh runner from your cluster by running:
 
@@ -218,55 +269,7 @@ Like the installation wizard, you can pass the additional options in advance as 
 codefresh runner delete --help
 ```
 
-## System Requirements
 
-Once installed the runner uses the following pods:
-
-* `runner` - responsible for picking tasks (builds) from the Codefresh API
-* `engine` - responsible for running pipelines
-* `dind` - responsible for building and using Docker images
-* `dind-volume-provisioner` - responsible for provisioning volumes (PV) for dind 
-* `dind-lv-monitor` - responsible for cleaning **local** volumes
-
-**CPU/Memory**
-
-The following table shows **MINIMUM** resources for each component:
-
-{: .table .table-bordered .table-hover}
-| Component         | CPU requests| RAM requests | Storage                  | Type | Always on |
-| -------------- | --------------|------------- |-------------------------|-------|-------|
-| `runner`        | 100m          | 100Mi        | Doesn't need PV         | Deployment   | Yes   |
-| `engine`         | 100m          | 500Mi        | Doesn't need PV         | Pod   | No   |
-| `dind`         | 400m          | 800Mi        | 16GB PV         | Pod   | No   |
-| `dind-volume-provisioner`         | 300m          | 400Mi        | Doesn't need PV         | Deployment   | Yes   |
-| `dind-lv-monitor`         | 300m          | 400Mi        | Doesn't need PV         | DaemonSet   | Yes   |
-
-Components that are always on consume resources all the time. Components that are not always on only consume resources when pipelines are running (they are created and destroyed automatically for each pipeline).
-
-Node size and count will depend entirely on how many pipelines you want to be “ready” for and how many will use “burst” capacity.  
-
-* Ready (nodes): Lower initialization time and faster build times.
-* Burst (nodes): High initialization time and slower build times. (Not recommended)
-
-The size of your nodes directly relates to the size required for your pipelines and thus it is dynamic.  If you find that only a few larger pipelines require larger nodes you may want to have two Codefresh Runners associated to different node pools.
-
-
-**Storage**
-
-For the storage options needed by the `dind` pod we suggest:
-
-* [Local Volumes](https://kubernetes.io/docs/concepts/storage/volumes/#local) `/var/lib/codefresh/dind-volumes` on the K8S nodes filesystem (**default**)
-* [EBS](https://aws.amazon.com/ebs/) in the case of AWS. See also the [notes](#installing-on-aws) about getting caching working.
-* [Local SSD](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/local-ssd) or [GCE Disks](https://cloud.google.com/compute/docs/disks#pdspecs) in the case of GCP. See [notes](#installing-on-google-kubernetes-engine) about configuration. 
-
-
-**Networking Requirements**
-
-* `dind` - this pod will create an internal network in the cluster to run all the pipeline steps; needs outgoing/egress access to Dockerhub and `quay.io`
-* `runner` - this pod needs outgoing/egress access to `g.codefresh.io`; needs network access to [app-proxy]({{site.baseurl}}/docs/administration/codefresh-runner/#optional-installation-of-the-app-proxy) (if app-proxy is used)
-* `engine` - this pod needs outgoing/egress access to `g.codefresh.io`, `*.firebaseio.com` and `quay.io`; needs network access to `dind` pod
-
-All CNI providers/plugins are compatible with the runner components.
 
 ## Runner architecture overview
 

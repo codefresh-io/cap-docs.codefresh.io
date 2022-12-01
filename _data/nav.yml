@@ -43,24 +43,27 @@
 
 
 - title: Installation
-  url: "/runtime"
+  url: "/installation"
   pages:
     - title: Installation environments
       url: "/installation-options"
-    - title: Set up a hosted runtime environment
-      url: "/hosted-runtime"
-    - title: Hybrid runtime requirements
-      url: "/requirements"
-    - title: Install hybrid runtimes
-      url: "/installation"
-    - title: Manage provisioned runtimes
+    - title: Codefresh Runner installation
+      url: "/codefresh-runner"
+    - title: Hosted GitOps Runtime installation
+      url: "/hosted-runtime" 
+    - title: Hybrid GitOps Runtime installation
+      url: "/hybrid-gitops"  
+    - title: Codefresh On-Premises Installation
+      url: "/codefresh-on-prem"
+    - title: Codefresh On-Premises Upgrade
+      url: "/codefresh-on-prem-upgrade"
+    - title: Monitoring & managing GitOps Runtimes
       url: "/monitor-manage-runtimes"
-    - title: Monitor provisioned hybrid runtimes
-      url: "/monitoring-troubleshooting" 
-    - title: Add external clusters to runtimes
+    - title: Add external clusters to GitOps Runtimes
       url: "/managed-cluster" 
-    - title: Add Git Sources to runtimes
+    - title: Add Git Sources to to GitOps Runtimes
       url: "/git-sources"
+
 
 
 - title: Pipelines
