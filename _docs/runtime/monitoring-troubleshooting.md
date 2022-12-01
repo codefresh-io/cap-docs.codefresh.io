@@ -126,7 +126,7 @@ Reinstall the hybrid runtime from the existing installation repository to restor
 **Before you begin**
 
 * Have the following information handy: 
-  > All values must be the identical to the runtime to be restored. 
+  > All values must be identical to the runtime to be restored. 
   * Runtime name
   * Repository URL
   * Codefresh context
