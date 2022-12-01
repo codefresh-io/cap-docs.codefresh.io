@@ -115,7 +115,7 @@ For both silent or CLI-wizard based upgrades, make sure you have:
 
 * The latest version of the Codefresh CLI  
   Run `cf version` to see your version and [click here](https://github.com/codefresh-io/cli-v2/releases){:target="\_blank"} to compare with the latest CLI version.  
-* A valid runtime Git token
+* A valid Git token with [the required scopes]({{site.baseurl}}/docs/reference/git-tokens) 
 
 **Silent upgrade**  
 
