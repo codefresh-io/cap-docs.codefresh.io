@@ -1,11 +1,13 @@
 ---
-title: "Pipeline Stages"
-description: "Grouping steps in stages for better visualization"
-group: codefresh-yaml
+title: "Grouping steps in pipelines"
+description: "Group steps into stages for better visualization"
+group: pipelines
 toc: true
 ---
 
-With Codefresh you can [create really complex pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/) with any number of steps. To better visualize the pipeline, you can group several steps into a single _stage_ that will show up as a separate column in the [pipeline view]({{site.baseurl}}/docs/configure-ci-cd-pipeline/monitoring-pipelines/).
+With Codefresh you can [create really complex pipelines]({{site.baseurl}}/docs/pipelines/pipelines/) with any number of steps. 
+
+To better visualize the pipeline, you can group several steps into a single _stage_. The _stage_ with the group of steps are displayed as a separate column in the [pipeline view]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/).
 
 {% include 
 image.html 
@@ -17,11 +19,11 @@ caption="Complex pipeline"
 max-width="70%"
 %}
 
-In this example there are 4 pipeline stages.
+In this example, the pipeline has four stages.
 
-## Assigning steps to a stage.
+## Assigning steps to a stage
 
-Stages are completely optional and for really small pipelines they are not needed at all.
+Stages are completely optional, and for really small pipelines they are not needed at all.
 By default, all pipeline steps are shown one after the other.
 
 {% include 
@@ -75,7 +77,8 @@ As you can see the modifications needed are:
 1. To list all the stage names at the root of the pipeline file 
 1. To use the `stage` property on each step to assign it to a stage
 
->This updated pipeline view is only a nice way to visualize the pipeline. It does not affect the order of step execution. Steps will still execute in the same order listed in the `codefresh.yml` file. If you wish to use parallel execution and advanced workflows see the [parallel steps]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/) page.
+>This updated pipeline view affects only the visualization of the pipeline. It does not affect the order of step execution. Steps are still executed in the same order as listed in the `codefresh.yml` file.   
+  If you wish to use parallel execution and advanced workflows see the [parallel steps]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/) page.
 
 
 ## Example pipeline with several stages
@@ -187,7 +190,6 @@ steps:
 {% endhighlight %}
 
 
-## What to read next
-
-* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
-* [Parallel workflows]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/)
+## Related articles
+[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
+[Parallel workflows]({{site.baseurl}}/docs/pipelines/advanced-workflows/)

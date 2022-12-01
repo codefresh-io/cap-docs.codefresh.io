@@ -1,7 +1,7 @@
 ---
-title: "Docker image Metadata"
+title: "Docker image metadata"
 description: "How to use custom metadata in your Docker images"
-group: codefresh-yaml
+group: pipelines
 redirect_from:
   - /docs/metadata-annotations/
   - /docs/docker-registries/metadata-annotations/
@@ -19,8 +19,8 @@ This article explains how to create advanced view of your images and enrich them
   max-width="65%" 
 %}
 
->We have since expanded this feature and now you are able to add custom annotations to [pipelines and builds as well]({{site.baseurl}}/docs/codefresh-yaml/annotations/). Notice also that the syntax shown in this page is deprecated but still supported. For the new syntax
-see our [hooks documentation]({{site.baseurl}}/docs/codefresh-yaml/hooks/).
+>We have since expanded this feature and now you are able to add custom annotations to [pipelines and builds as well]({{site.baseurl}}/docs/pipelines/annotations/). Notice also that the syntax shown in this page is deprecated but still supported. For the new syntax
+see [Hooks in pipelines]({{site.baseurl}}/docs/pipelines/hooks/).
 
 ## Metadata types
 
@@ -39,11 +39,11 @@ Metadata values may be of the following types:
 You can also use [Expression evaluations]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/#condition-expression-syntax) to set metadata.
 
 ## Annotate your images using Codefresh YAML
-You can annotate an image as part of it's builds process and also on post build steps.
+You can annotate an image as part of its build process and also on post build steps.
 
 {:.text-secondary}
 ### Build step Image Metadata Annotation
-You can annotate an image as part of its build process by declaring the metadata value on the [Build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/):
+You can annotate an image as part of its build process by declaring the metadata value on the [Build step]({{site.baseurl}}/docs/pipelines/steps/build/):
 1. The `metadata` attribute
 2. The `set` operation
 3. An array of key-value metadata
@@ -64,7 +64,7 @@ build_step:
 
 {:.text-secondary}
 ### Adding annotations to Built images on post-build steps
-Any step in the YAML workflow can annotate built images by using [Post-Step Operations]({{site.baseurl}}/docs/codefresh-yaml/post-step-operations/).
+Any step in the YAML workflow can annotate built images by using [Post-Step Operations]({{site.baseurl}}/docs/pipelines/post-step-operations/).
 To annotate a built image, configure any step with:
 1. The post-step operation
 2. The `metadata` attribute
@@ -212,8 +212,6 @@ The possibilities are endless as you can take any combination of image metadata 
 in order to process them in a Codefresh pipeline.
 
 
-### See also
-
-* [External Docker Registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/)
-* [Accessing a Docker registry from your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/access-docker-registry-from-kubernetes/)
-* [Pipeline/Step hooks]({{site.baseurl}}/docs/codefresh-yaml/hooks/)
+## Related articles
+[External Docker Registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/)  
+[Accessing a Docker registry from your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/access-docker-registry-from-kubernetes/)  

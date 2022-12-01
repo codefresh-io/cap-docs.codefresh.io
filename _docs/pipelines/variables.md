@@ -77,16 +77,16 @@ feature-vb145dh
 Notice that this syntax is specific to Codefresh and is **only** available within the Codefresh YAML file itself. If you want to write scripts or programs that use the Codefresh variables, you need to make them aware of the environment variable form.
 .
 
-## System Provided Variables
+## System variables
 
 All system provided variables will also be automatically injected to any freestyle step as environment variables.
 
 > It is important to understand that all Git related variables such `CF_BRANCH`, `CF_COMMIT_MESSAGE`, `CF_REVISION` etc. are coming directly from the Git provider you use and have the same limitations of that provider. For example GitLab is sending less information in pull request events than normal pushes, and Bitbucket sends only the short hash of a commit in pull request events. We suggest you read the documentation of your Git provider first to understand what information is available for every Git event
 
 {: .table .table-bordered .table-hover}
-| Variable                                          | Description                                                                                                                                                                                                                                                                                        |
-| ------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| {% raw %}`${{CF_REPO_OWNER}} `{% endraw %}        | Repository owner.                                                                                                                                                                                                          |
+| Variable                                          | Description |
+| ------------------------------------------------- | ------------------------------------------------------ |
+| {% raw %}`${{CF_REPO_OWNER}} `{% endraw %}        | Repository owner.  |
 | {% raw %}`${{CF_REPO_NAME}}`{% endraw %}          | Repository name. |
 | {% raw %}`${{CF_BRANCH}}`{% endraw %}             | Branch name (or Tag depending on the payload json) of the Git repository of the main pipeline, at the time of execution. <br/>You can also use {% raw %}`${{CF_BRANCH_TAG_NORMALIZED}}`{% endraw %} to get the branch name normalized. It will be without any chars that are illegal in case the branch name were to be used as the Docker image tag name. You can also use {% raw %}`${{CF_BRANCH_TAG_NORMALIZED_LOWER_CASE}}`{% endraw %} to force lowercase. |
 | {% raw %}`${{CF_BASE_BRANCH}}`{% endraw %}      | The base branch used during creation of Tag |
@@ -96,31 +96,31 @@ All system provided variables will also be automatically injected to any freesty
 | {% raw %}`${{CF_PULL_REQUEST_ID}}`{% endraw %}      | The pull request id |
 | {% raw %}`${{CF_PULL_REQUEST_LABELS}}`{% endraw %}      | The labels of pull request (GitHub and GitLab only) |
 | {% raw %}`${{CF_COMMIT_AUTHOR}}`{% endraw %}      | Commit author.                                                                                              |
-| {% raw %}`${{CF_BUILD_INITIATOR}}`{% endraw %}      | The person (username) that started the build. If the build was started by a Git webhook (e.g. from a Pull request) it will hold the webhook user. Notice that if a build is restarted manually it will always hold the username of the person that restarted it.                                                                                                                                                                                                                                                                                    |
+| {% raw %}`${{CF_BUILD_INITIATOR}}`{% endraw %}      | The person (username) that started the build. If the build was started by a Git webhook (e.g. from a Pull request) it will hold the webhook user. Notice that if a build is restarted manually it will always hold the username of the person that restarted it.  |
 | {% raw %}`${{CF_ACCOUNT}}`{% endraw %}         | Codefresh account for this build |
-| {% raw %}`${{CF_COMMIT_URL}}`{% endraw %}         | Commit url.                                                                                                                                                                                                                                                                                       |
-| {% raw %}`${{CF_COMMIT_MESSAGE}}`{% endraw %}     | Commit message of the Git repository revision, at the time of execution.<br/> The messages quotes are escaped (i.e. ' is not \', " is now \").                                                                                                                                                         |
-| {% raw %}`${{CF_COMMIT_MESSAGE_ESCAPED}}`{% endraw %}     | Commit message of the Git repository revision, at the time of execution.<br/> Special characters are escaped.                                                                                                                                                        |
+| {% raw %}`${{CF_COMMIT_URL}}`{% endraw %}         | Commit url.  |
+| {% raw %}`${{CF_COMMIT_MESSAGE}}`{% endraw %}     | Commit message of the Git repository revision, at the time of execution.<br/> The messages quotes are escaped (i.e. ' is not \', " is now \"). |
+| {% raw %}`${{CF_COMMIT_MESSAGE_ESCAPED}}`{% endraw %}     | Commit message of the Git repository revision, at the time of execution.<br/> Special characters are escaped.  |
 | {% raw %}`${{CF_REVISION}}`{% endraw %}           | Revision of the Git repository of the main pipeline, at the time of execution. <br/> You can also use {% raw %}`${{CF_SHORT_REVISION}}`{% endraw %}  to get the abbreviated 7-character revision hash, as used in Git. Note: use this variable as string with quotes to tag the image {% raw %}`${{CF_SHORT_REVISION}}`{% endraw %}                 |
-| {% raw %}`${{CF_VOLUME_NAME}}`{% endraw %}        | Refers to the [shared volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) between [freestyle steps]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/). Normally you only need to define this in [compositions]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/). In freestyle steps, it is automatically present without any extra configuration.   |
-| {% raw %}`${{CF_VOLUME_PATH}}`{% endraw %}        | Refers to the mounted path of the [shared volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) inside a Freestyle container. In the current implementation it expands to `/codefresh/volume`.                                                                                                                                                                                                              |
-| {% raw %}`${{CF_BUILD_TRIGGER}}`{% endraw %}      | Will be an indication of the current build was triggered: *build: The build was triggered from the build button* webhook: The build was triggered from a control version webhook                                                                                                                  |
-| {% raw %}`${{CF_BUILD_ID}}`{% endraw %}           | The build id. Note: use this variable as string with quotes to tag the image {% raw %}`${{CF_BUILD_ID}}`{% endraw %}                                                                                                                                                                                                |
-| {% raw %}`${{CF_BUILD_TIMESTAMP}}`{% endraw %}    | The timestamp the build was created. Note: use this variable as string with quotes to tag the image {% raw %}`${{CF_BUILD_TIMESTAMP}}`{% endraw %}                                                                                                                                                                   |
-| {% raw %}`${{CF_BUILD_URL}}`{% endraw %}          | The URL to the build in Codefresh                                                                                                                                                                                                                                                                 |
-| {% raw %}`${{CF_PIPELINE_NAME}}`{% endraw %}      | The full path of the pipeline, i.e. "project/pipeline"                                                                                                                                                                                                                                                                |
+| {% raw %}`${{CF_VOLUME_NAME}}`{% endraw %}        | Refers to the [shared volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) between [freestyle steps]({{site.baseurl}}/docs/pipelines/steps/freestyle/). Normally you only need to define this in [compositions]({{site.baseurl}}/docs/pipelines/steps/composition/). In freestyle steps, it is automatically present without any extra configuration.   |
+| {% raw %}`${{CF_VOLUME_PATH}}`{% endraw %}        | Refers to the mounted path of the [shared volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) inside a Freestyle container. In the current implementation it expands to `/codefresh/volume`. |
+| {% raw %}`${{CF_BUILD_TRIGGER}}`{% endraw %}      | Will be an indication of the current build was triggered: *build: The build was triggered from the build button* webhook: The build was triggered from a control version webhook |
+| {% raw %}`${{CF_BUILD_ID}}`{% endraw %}           | The build id. Note: use this variable as string with quotes to tag the image {% raw %}`${{CF_BUILD_ID}}`{% endraw %} |
+| {% raw %}`${{CF_BUILD_TIMESTAMP}}`{% endraw %}    | The timestamp the build was created. Note: use this variable as string with quotes to tag the image {% raw %}`${{CF_BUILD_TIMESTAMP}}`{% endraw %}  |
+| {% raw %}`${{CF_BUILD_URL}}`{% endraw %}          | The URL to the build in Codefresh  |
+| {% raw %}`${{CF_PIPELINE_NAME}}`{% endraw %}      | The full path of the pipeline, i.e. "project/pipeline" |
 |  {% raw %}`${{CF_STEP_NAME}}`{% endraw %}      | the name of the step, i.e. "MyUnitTests" |
-| {% raw %}`${{CF_URL}}`{% endraw %}          | The URL of Codefresh system                                                                                                                                                                                                                                                                 |
-| {% raw %}`${{CI}}`{% endraw %}          | The value is always `true`                                                                                                                                                                                                                                                                |
-| {% raw %}`${{CF_KUBECONFIG_PATH}}`{% endraw %}    | Path to injected kubeconfig if at least one Kubernetes cluster [is configured]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/). You can easily run [custom kubectl commands]({{site.baseurl}}/docs/deploy-to-kubernetes/custom-kubectl-commands/) since it is automatically setup by Codefresh in all pipelines.                                                                                                                                                                                                                                                                   |
-| Any variable specified in the pipeline settings   | For example, if you configure the pipeline settings with a variable named PORT, you can put the variable in your YAML build descriptor as {% raw %}`${{PORT}}`{% endraw %}.                                                                                                                                              |
+| {% raw %}`${{CF_URL}}`{% endraw %}          | The URL of Codefresh system  |
+| {% raw %}`${{CI}}`{% endraw %}          | The value is always `true`  |
+| {% raw %}`${{CF_KUBECONFIG_PATH}}`{% endraw %}    | Path to injected kubeconfig if at least one Kubernetes cluster [is configured]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/). You can easily run [custom kubectl commands]({{site.baseurl}}/docs/deploy-to-kubernetes/custom-kubectl-commands/) since it is automatically setup by Codefresh in all pipelines. |
+| Any variable specified in the pipeline settings   | For example, if you configure the pipeline settings with a variable named PORT, you can put the variable in your YAML build descriptor as {% raw %}`${{PORT}}`{% endraw %}.  |
 
-## Context Related Variables
-Context related variables are created dynamically during the workflow execution and according to the used steps.
+## Context-related Variables
+Context-related variables are created dynamically during the workflow execution and according to the used steps.
 
 {: .table .table-bordered .table-hover}
-| Variable                                          | Description                                                                                                                                                                                                                                                                                        |
-| ------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Variable                                          | Description   |
+| ------------------------------------------------- | ------------------------------------------------------ |
 | **Working Directories**                           | For example, you can set the working directory of step `A` with a variable named after a previously executed step, step `B`. Therefore, setting step `A` with {% raw %}`working-directory:${{B}}`{% endraw %} means that step `A` executes in the same working directory as step `B`.                |
 | **Images**                                        | You can set the candidate field of the push step with a variable named after a previously executed build step. Since the details of a created image are not necessarily known ahead of time, the variable can create an association to an optionally dynamic image name. Therefore, setting push step `A` with {% raw %}`candidate:${{B}}`{% endraw %} means that step `A` will push the image built by step `B`. Note that this capability works only for `candidate` and `image` fields in Codefresh steps.               |
 
@@ -147,7 +147,7 @@ In the example above you can see the `MyAppDockerImage` variable that denotes a 
 
 ## Step variables
 
-Every [step]({{site.baseurl}}/docs/codefresh-yaml/steps/) in a Codefresh pipeline also exposes several built-in variables. You can access them via the global `steps` parent variable.
+Every [step]({{site.baseurl}}/docs/pipelines/steps/) in a Codefresh pipeline also exposes several built-in variables. You can access them via the global `steps` parent variable.
 
  * Each step  creates a variable based on the name of the step. You can then use the members of each variable for status conditions such as: `steps.MyUnitTests.result == 'error'` for a step called `MyUnitTests`.
   * To access variables that have a non-standard (i.e. only alphanumeric and _ characters) names, use the Variable() function.
@@ -157,9 +157,9 @@ Every [step]({{site.baseurl}}/docs/codefresh-yaml/steps/) in a Codefresh pipelin
 Variables that are created by steps can have members. The members depend on the step type. For example if you have a build step named `myBuildStep` you can get the ID of the docker image that gets created with {% raw %}`echo ${{steps.myBuildStep.imageId}}`{% endraw %}
 
 {: .table .table-bordered .table-hover}
-| Step Type                                                                                              | Members                                                                                                                                                                        |
-| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| All step types                                                                                         | {::nomarkdown}<ul><li>name</li><li>type</li><li>description</li><li>workingDirectory</li><li>result</li></ul>{:/}                                        |
+| Step Type              | Members      |
+| ----------------------- | -------------------------------------- |
+| All step types           | {::nomarkdown}<ul><li>name</li><li>type</li><li>description</li><li>workingDirectory</li><li>result</li></ul>{:/}  
 | [**Freestyle**]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)        | -                                                                                                                                                                              |
 | [**Composition**]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/)        | -                                                                                                                                                                              |
 | [**Build**]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)             | {::nomarkdown}<ul><li>imageName</li><li>imageTagName</li><li>imageId</li></ul>{:/}                                                                            |
