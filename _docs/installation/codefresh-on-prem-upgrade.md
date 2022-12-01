@@ -6,9 +6,9 @@ redirect_from:
   - /docs/enterprise/codefresh-on-prem-upgrade/
 toc: true
 ---
-Upgrade the Codefresh on-premises platform to the latest version:
+Upgrade the Codefresh On-premises platform to the latest version:
 * Prepare for the upgrade: _Before_ the upgrade, based on the version you are upgrading to, complete the required tasks
-* Upgrade the platform
+* Upgrade On-premises
 * Complete post-upgrade configuration: If needed, also based on the version you are upgrading to, complete the required tasks
 
 
@@ -543,7 +543,7 @@ localhost:5000/codefresh/pipeline-manager:3.121.7
 
 `./push-to-registry.sh localhost:5000 v1.2.14`
 
-**Install/Upgrade Codefresh with private docker registry config**
+#### Install/Upgrade Codefresh with private docker registry config**
 
 Set `usePrivateRegistry: true`, and set privateRegistry address, username and password in `config.yaml`.
 
@@ -571,3 +571,5 @@ images:
     username:
     password:
 ```
+<!---## Related articles
+TBD-->

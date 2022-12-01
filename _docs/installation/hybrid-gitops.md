@@ -5,7 +5,7 @@ group: runtime
 toc: true
 ---
 
-If you have a hybrid environment, you can provision one or more hybrid runtimes in your Codefresh account. 
+Provision one or more Hybrid Runtimes in your Codefresh account. 
 
 > If you have Hosted GitOps, to provision a hosted runtime, see [Provision a hosted runtime]({{site.baseurl}}/docs/runtime/hosted-runtime/#1-provision-hosted-runtime) in [Set up a hosted (Hosted GitOps) environment]({{site.baseurl}}/docs/runtime/hosted-runtime/).
 
@@ -36,11 +36,137 @@ See also [Codefresh architecture]({{site.baseurl}}/docs/getting-started/architec
 </br>
 {:/}
 
-### Hybrid runtime installation flags
-This section describes the required and optional flags to install a hybrid runtime.
+## Minimum system requirements
+
+{: .table .table-bordered .table-hover}
+| Item                     | Requirement            |  
+| --------------         | --------------           |  
+|Kubernetes cluster      | Server version 1.18 and higher, without Argo Project components. {::nomarkdown}<br><b>Tip</b>:  To check the server version, run:<br> <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">kubectl version --short</span>.{:/}|
+| Ingress controller| Configured on Kubernetes cluster and exposed from the cluster. {::nomarkdown} <br>Supported and tested ingress controllers include: <ul><li>Ambassador</li>{:/}(see [Ambassador ingress configuration](#ambassador-ingress-configuration)){::nomarkdown}<li>AWS ALB (Application Load Balancer)</li>{:/} (see [AWS ALB ingress configuration](#aws-alb-ingress-configuration)){::nomarkdown}<li>Istio</li>{:/} (see [Istio ingress configuration](#istio-ingress-configuration)){::nomarkdown}<li>NGINX Enterprise (nginx.org/ingress-controller)</li>{:/} (see [NGINX Enterprise ingress configuration](#nginx-enterprise-ingress-configuration)){::nomarkdown}<li>NGINX Community (k8s.io/ingress-nginx)</li> {:/} (see [NGINX Community ingress configuration](#nginx-community-version-ingress-configuration)){::nomarkdown}<li>Trafik</li>{:/}(see [Traefik ingress configuration](#traefik-ingress-configuration))|
+|Node requirements| {::nomarkdown}<ul><li>Memory: 5000 MB</li><li>CPU: 2</li></ul>{:/}|
+|Cluster permissions | Cluster admin permissions |
+|Git providers    |{::nomarkdown}<ul><li>GitHub</li><li>GitHub Enterprise</li><li>GitLab Cloud</li><li>GitLab Server</li><li>Bitbucket Cloud</li><li>Bitbucket Server</li></ul>{:/}|
+|Git access tokens    | {::nomarkdown}Git runtime token:<ul><li>Valid expiration date</li><li>Scopes: <ul><li>GitHub and GitHub Enterprise: <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">repo</span>, <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">admin-repo.hook</span></li><li>GitLab Cloud and GitLab Server: <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">api</span>, <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">read_repository</span></li><li>Bitbucket Cloud and Server: <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">Permissions: Read</span>, <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">Workspace membership: Read</span>,  <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">Webhooks: Read and write</span>, <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">Repositories: Write, Admin</span> </li></ul>{:/}|
+
+## GitOps CLI installation
+
+### GitOps CLI installation modes
+The table lists the modes available to install the Codefresh CLI.
+
+{: .table .table-bordered .table-hover}
+| Install mode | OS       | Commands |
+| -------------- | ----------| ----------|  
+| `curl`         | MacOS-x64 |  `curl -L --output - https://github.com/codefresh-io/cli-v2/releases/latest/download/cf-darwin-amd64.tar.gz | tar zx && mv ./cf-darwin-amd64 /usr/local/bin/cf && cf version`|
+|             | MacOS-m1 |`curl -L --output - https://github.com/codefresh-io/cli-v2/releases/latest/download/cf-darwin-arm64.tar.gz | tar zx && mv ./cf-darwin-arm64 /usr/local/bin/cf && cf version` |          
+|             | Linux - X64 |`curl -L --output - https://github.com/codefresh-io/cli-v2/releases/latest/download/cf-linux-amd64.tar.gz | tar zx && mv ./cf-linux-amd64 /usr/local/bin/cf && cf version` |       
+|              | Linux - ARM  |  `curl -L --output - https://github.com/codefresh-io/cli-v2/releases/latest/download/cf-linux-arm64.tar.gz | tar zx && mv ./cf-linux-arm64 /usr/local/bin/cf && cf version`|     
+| `brew` | N/A| `brew tap codefresh-io/cli && brew install cf2`|
+
+### Install the GitOps CLI
+Install the Codefresh CLI using the option that best suits you: `curl`, `brew`, or standard download.  
+If you are not sure which OS to select for `curl`, simply select one, and Codefresh automatically identifies and selects the right OS for CLI installation.
+
+1. Do one of the following:
+  * For first-time installation, go to the Welcome page, select **+ Install Runtime**.
+  * If you have provisioned a GitOps Runtime, in the Codefresh UI, go to [GitOps Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}, and select **+ Add Runtime**.
+1. Install the Codefresh CLI:
+  * Select one of the installation modes. 
+  * Generate the API key.
+  * Create the authentication context:
+    `cf config create-context codefresh --api-key <generatedKey>` 
+  
+
+    {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/getting-started/quick-start/quick-start-download-cli.png" 
+   url="/images/getting-started/quick-start/quick-start-download-cli.png" 
+   alt="Download CLI to install runtime" 
+   caption="Download CLI to install runtime"
+   max-width="30%" 
+   %} 
+
+### Upgrade Codefresh CLI
+Upgrade the CLI to the latest version to prevent Runtime installation errors.
+1. Check the version of the CLI you have installed:  
+  `cf version`  
+1. Compare with the [latest version](https://github.com/codefresh-io/cli-v2/releases){:target="\_blank"} released by Codefresh.
+1. Select and run the appropriate command:
+
+{: .table .table-bordered .table-hover}
+| Download mode | OS       | Commands |
+| -------------- | ----------| ----------|  
+| `curl`         | MacOS-x64 |  `curl -L --output - https://github.com/codefresh-io/cli-v2/releases/latest/download/cf-darwin-amd64.tar.gz | tar zx && mv ./cf-darwin-amd64 /usr/local/bin/cf && cf version`|
+|             | MacOS-m1 |`curl -L --output - https://github.com/codefresh-io/cli-v2/releases/latest/download/cf-darwin-arm64.tar.gz | tar zx && mv ./cf-darwin-arm64 /usr/local/bin/cf && cf version` |          
+|             | Linux - X64 |`curl -L --output - https://github.com/codefresh-io/cli-v2/releases/latest/download/cf-linux-amd64.tar.gz | tar zx && mv ./cf-linux-amd64 /usr/local/bin/cf && cf version` |       
+|              | Linux - ARM  |  `curl -L --output - https://github.com/codefresh-io/cli-v2/releases/latest/download/cf-linux-arm64.tar.gz | tar zx && mv ./cf-linux-arm64 /usr/local/bin/cf && cf version`|     
+| `brew` | N/A| `brew tap codefresh-io/cli && brew install cf2`|
+
+{::nomarkdown}
+</br></br>
+{:/}
+
+### Install the hybrid runtime  
+
+**Before you begin**
+* Make sure you meet the [minimum requirements]({{site.baseurl}}/docs/runtime/requirements/#minimum-requirements) for runtime installation
+* Make sure you have [runtime token with the required scopes from your Git provider]({{site.baseurl}}/docs/reference/git-tokens)
+* [Download or upgrade to the latest version of the CLI]({{site.baseurl}}/docs/clients/csdp-cli/#upgrade-codefresh-cli)
+* Review [Hybrid runtime installation flags](#hybrid-runtime-installation-flags)
+* For ingress-based runtimes, make sure your ingress controller is configured correctly:
+  * [Ambasador ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#ambassador-ingress-configuration)
+  * [AWS ALB ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#alb-aws-ingress-configuration)
+  * [Istio ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#istio-ingress-configuration)
+  * [NGINX Enterprise ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#nginx-enterprise-ingress-configuration)
+  * [NGINX Community ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#nginx-community-version-ingress-configuration)
+  * [Traefik ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#traefik-ingress-configuration)
+
+
+{::nomarkdown}
+</br>
+{:/}
+ 
+**How to** 
+
+1. Do one of the following:  
+  * If this is your first hybrid runtime installation, in the Welcome page, select **+ Install Runtime**.
+  * If you have provisioned a hybrid runtime, to provision additional runtimes, in the Codefresh UI, go to [**Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+1. Click **+ Add Runtimes**, and then select **Hybrid Runtimes**.
+1. Do one of the following:  
+  * CLI wizard: Run `cf runtime install`, and follow the prompts to enter the required values.  
+  * Silent install: Pass the required flags in the install command:  
+    `cf runtime install <runtime-name> --repo <git-repo> --git-token <git-token> --silent`  
+  For the list of flags, see [Hybrid runtime installation flags](#hybrid-runtime-installation-flags).
+1. If relevant, complete the configuration for these ingress controllers:
+  * [ALB AWS: Alias DNS record in route53 to load balancer]({{site.baseurl}}/docs/runtime/requirements/#alias-dns-record-in-route53-to-load-balancer)
+  * [Istio: Configure cluster routing service]({{site.baseurl}}/docs/runtime/requirements/#cluster-routing-service)
+  * [NGINX Enterprise ingress controller: Patch certificate secret]({{site.baseurl}}/docs/runtime/requirements/#patch-certificate-secret)  
+1. If you bypassed installing ingress resources with the `--skip-ingress` flag for ingress controllers not in the supported list, create and register Git integrations using these commands:  
+  `cf integration git add default --runtime <RUNTIME-NAME> --api-url <API-URL>`  
+  `cf integration git register default --runtime <RUNTIME-NAME> --token <RUNTIME-AUTHENTICATION-TOKEN>`  
+
+
+{::nomarkdown}
+</br>
+{:/}
+
+
+
+
+## Hybrid Runtime architecture
+
+### Tunnel-based
+
+### Ingress-based
+
+### Components
+
+## Hybrid runtime installation flags
+This section describes the required and optional flags to install a Hybrid Runtime.
 For documentation purposes, the flags are grouped into:
 * Runtime flags, relating to runtime, cluster, and namespace requirements
-* Ingress controller flags, relating to ingress controller requirements
+* Ingress-less flags, for tunnel-based installation
+* Ingress-controller flags, relating to ingress controller requirements
 * Git provider flags
 * Codefresh resource flags
 
@@ -48,7 +174,7 @@ For documentation purposes, the flags are grouped into:
 </br>
 {:/}
 
-####  Runtime flags
+###  Runtime flags
 
 **Runtime name**  
 Required.  
@@ -77,8 +203,8 @@ The Git repository per runtime account with shared configuration manifests.
 </br>
 {:/}
 
-#### Ingress-less flags
-These flags are required to install the runtime without an ingress controller. 
+### Ingress-less flags
+These flags are required to install tunnel-based Hybird Runtimes, without an ingress controller. 
 
 **Access mode**  
 Required.  
@@ -103,7 +229,7 @@ When omitted, all incoming requests are authenticated regardless of the IPs from
 </br>
 {:/}
 
-#### Ingress controller flags
+### Ingress controller flags
 
 
 **Skip ingress**  
@@ -147,7 +273,7 @@ For both CLI wizard and Silent install:
 
 
 
-#### Git provider and repo flags
+### Git provider and repo flags
 The Git provider defined for the runtime. 
 
 >Because Codefresh creates a [shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration) for the runtimes in your account, the Git provider defined for the first runtime you install in your account is used for all the other runtimes in the same account.  
@@ -169,7 +295,7 @@ You can define any of the following Git providers:
 
 
 
-##### GitHub
+#### GitHub
 GitHub is the default Git provider for hybrid runtimes. Being the default provider, for both the CLI wizard and Silent install, you need to provide only the repository URL and the Git runtime token.
 
 > For the required scopes, see [GitHub and GitHub Enterprise runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#github-and-github-enterprise-runtime-token-scopes).
@@ -195,7 +321,7 @@ where:
 </br>
 {:/}
 
-##### GitHub Enterprise 
+#### GitHub Enterprise 
 
 > For the required scopes, see [GitHub and GitHub Enterprise runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#github-and-github-enterprise-runtime-token-scopes).
 
@@ -224,7 +350,7 @@ where:
 </br>
 {:/}
 
-##### GitLab Cloud
+#### GitLab Cloud
 > For the required scopes, see [GitLab Cloud and GitLab Server runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#gitlab-cloud-and-gitlab-server-runtime-token-scopes).
 
 
@@ -260,8 +386,7 @@ where:
 {:/}
 
 
-
-##### GitLab Server
+#### GitLab Server
 
 > For the required scopes, see [GitLab Cloud and GitLab Server runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#gitlab-cloud-and-gitlab-server-runtime-token-scopes).
 
@@ -295,7 +420,7 @@ where:
 </br>
 {:/}
 
-##### Bitbucket Cloud
+#### Bitbucket Cloud
 > For the required scopes, see [Bitbucket runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#bitbucket-cloud-and-bitbucket-server-runtime-token-scopes).
 
 
@@ -327,7 +452,7 @@ where:
 </br>
 {:/}
 
-##### Bitbucket Server
+#### Bitbucket Server
 
 > For the required scopes, see [Bitbucket runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#bitbucket-cloud-and-bitbucket-server-runtime-token-scopes).
 
@@ -359,7 +484,7 @@ where:
 </br></br>
 {:/}
 
-#### Codefresh resource flags
+### Codefresh resource flags
 **Codefresh demo resources**  
 Optional.  
 Install demo pipelines to use as a starting point to create your own pipelines. We recommend installing the demo resources as these are used in our quick start tutorials.  
@@ -374,58 +499,7 @@ For _on-premises installations_, if the Ingress controller does not have a valid
 {:/}
 
 
-### Install the Codefresh CLI
 
-Install the Codefresh CLI using the option that best suits you: `curl`, `brew`, or standard download.  
-If you are not sure which OS to select for `curl`, simply select one, and Codefresh automatically identifies and selects the right OS for CLI installation.
-
-{::nomarkdown}
-</br></br>
-{:/}
-
-### Install the hybrid runtime  
-
-**Before you begin**
-* Make sure you meet the [minimum requirements]({{site.baseurl}}/docs/runtime/requirements/#minimum-requirements) for runtime installation
-* Make sure you have [runtime token with the required scopes from your Git provdier]({{site.baseurl}}/docs/reference/git-tokens)
-* [Download or upgrade to the latest version of the CLI]({{site.baseurl}}/docs/clients/csdp-cli/#upgrade-codefresh-cli)
-* Review [Hybrid runtime installation flags](#hybrid-runtime-installation-flags)
-* Make sure your ingress controller is configured correctly:
-  * [Ambasador ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#ambassador-ingress-configuration)
-  * [AWS ALB ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#alb-aws-ingress-configuration)
-  * [Istio ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#istio-ingress-configuration)
-  * [NGINX Enterprise ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#nginx-enterprise-ingress-configuration)
-  * [NGINX Community ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#nginx-community-version-ingress-configuration)
-  * [Traefik ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#traefik-ingress-configuration)
-
-
-{::nomarkdown}
-</br>
-{:/}
- 
-**How to** 
-
-1. Do one of the following:  
-  * If this is your first hybrid runtime installation, in the Welcome page, select **+ Install Runtime**.
-  * If you have provisioned a hybrid runtime, to provision additional runtimes, in the Codefresh UI, go to [**Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
-1. Click **+ Add Runtimes**, and then select **Hybrid Runtimes**.
-1. Do one of the following:  
-  * CLI wizard: Run `cf runtime install`, and follow the prompts to enter the required values.  
-  * Silent install: Pass the required flags in the install command:  
-    `cf runtime install <runtime-name> --repo <git-repo> --git-token <git-token> --silent`  
-  For the list of flags, see [Hybrid runtime installation flags](#hybrid-runtime-installation-flags).
-1. If relevant, complete the configuration for these ingress controllers:
-  * [ALB AWS: Alias DNS record in route53 to load balancer]({{site.baseurl}}/docs/runtime/requirements/#alias-dns-record-in-route53-to-load-balancer)
-  * [Istio: Configure cluster routing service]({{site.baseurl}}/docs/runtime/requirements/#cluster-routing-service)
-  * [NGINX Enterprise ingress controller: Patch certificate secret]({{site.baseurl}}/docs/runtime/requirements/#patch-certificate-secret)  
-1. If you bypassed installing ingress resources with the `--skip-ingress` flag for ingress controllers not in the supported list, create and register Git integrations using these commands:  
-  `cf integration git add default --runtime <RUNTIME-NAME> --api-url <API-URL>`  
-  `cf integration git register default --runtime <RUNTIME-NAME> --token <RUNTIME-AUTHENTICATION-TOKEN>`  
-
-
-{::nomarkdown}
-</br>
-{:/}
 
 ### Hybrid runtime components
 
@@ -455,7 +529,7 @@ Once the hybrid runtime is successfully installed, it is provisioned on the Kube
 {:/}
 
 
-### (Optional) Internal ingress host configuration for existing hybrid runtimes
+## (Optional) Internal ingress host configuration for existing hybrid runtimes
 If you already have provisioned hybrid runtimes, to use an internal ingress host for app-proxy communication and an external ingress host to handle webhooks, change the specs for the `Ingress` and `Runtime` resources in the runtime installation repository. Use the examples as guidelines.  
 
 `<runtime-install-repo>/apps/app-proxy/overlays/<runtime-name>/ingress.yaml`: change `host`
@@ -528,8 +602,8 @@ data:
 ```
   
 
-### Related articles
-[Add external clusters to runtimes]({{site.baseurl}}/docs/runtime/managed-cluster/)  
-[Manage provisioned runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/)  
-[Monitor provisioned hybrid runtimes]({{site.baseurl}}/docs/runtime/monitoring-troubleshooting/)  
-[Troubleshoot hybrid runtime installation]({{site.baseurl}}/docs/troubleshooting/runtime-issues/)
+## Related articles
+[Add external clusters to Hybrid and Hosted Runtimes]({{site.baseurl}}/docs/installation/managed-cluster/)  
+[Manage provisioned Hybrid and Hosted Runtimes]({{site.baseurl}}/docs/installation/monitor-manage-runtimes/)  
+[Monitor provisioned Hybrid and Hosted Runtimes]({{site.baseurl}}/docs/installation/monitoring-troubleshooting/)  
+[Troubleshoot Hybrid Runtime installation]({{site.baseurl}}/installation/troubleshooting/runtime-issues/)

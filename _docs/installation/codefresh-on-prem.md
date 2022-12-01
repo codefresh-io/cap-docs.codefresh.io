@@ -1,54 +1,54 @@
 ---
-title: "Codefresh On-Premises Installation & Configuration"
+title: "Codefresh On-Prem Installation & Configuration"
 description: "Use the Kubernetes Codefresh Installer to install the Codefresh On-Premises platform "
-group: administration
+group: installation
 redirect_from:
   - /docs/enterprise/codefresh-on-prem/
 toc: true
 ---
 
-## Introduction
 
-This manual will guide you through the installation of the Codefresh platform on your on-prem environment. This manual is intended to cover all aspects of installation,  and maintenance.  Please read this manual carefully before installing Codefresh.
+This article will guide you through the installation of the Codefresh platform on your on-prem environment. This article covers all aspects of installation and configuration.  Please read the article carefully before installing Codefresh.
 
 [kcfi](https://github.com/codefresh-io/kcfi) (the Kubernetes Codefresh Installer) is a one-stop-shop for this purpose. Even though Codefresh offers multiple tools to install components, `kcfi` aggregates all of them into a single tool.
 
-## Survey -- What Codefresh Needs to Know
+## Survey: What Codefresh needs to know
 
-The following information needs to be provided to Codefresh before the installation to make sure your on-prem environment is ready for deployment:
+Fill out this survey before the installation to make sure your on-prem environment is ready for deployment:
 
-Please fill out [this survey](https://docs.google.com/forms/d/e/1FAIpQLSf18sfG4bEQuwMT7p11F6q70JzWgHEgoAfSFlQuTnno5Rw3GQ/viewform).
+[Survey](https://docs.google.com/forms/d/e/1FAIpQLSf18sfG4bEQuwMT7p11F6q70JzWgHEgoAfSFlQuTnno5Rw3GQ/viewform)
 
-## Supported Operating Systems and Git Providers
+## On-prem system requirements
 
-The `kcfi` tool supports the following operating systems:
+{: .table .table-bordered .table-hover}
+| Item                     | Requirement            |  
+| --------------         | --------------           |  
+|Kubernetes cluster      | Server versions v1.19 through v1.22. {::nomarkdown}<br><b>Note</b>: Maintenance support for Kubernetes v1.19 ended on Oct 28, 2021.{:/}|
+|Operating systems|{::nomarkdown}<ul><li>Windows 10/7</li><li>Linux</li><li>OSX</li>{:/}|
+|Node requirements| {::nomarkdown}<ul><li>Memory: 5000 MB</li><li>CPU: 2</li></ul>{:/}|
+|Git providers    |{::nomarkdown}<ul><li>GitHub: SaaS and on-premises versions</li><li>Bitbucket: SaaS and Bitbucket server (on-premises) 5.4.0 version and above</li><li>GitLab: SaaS and on-premise versions (API v4 only)</li></ul>{:/}|
+|Node size   | {::nomarkdown}<ul><li>Single node: 8 CPU core and 16GB RAM</li><li>Multi node: master(s) + 3 nodes with 4 CPU core and 8GB RAM (24 GB in total)</li></ul>{:/}|
 
-- Windows 10/7
-- Linux
-- OSX
 
-Codefresh supports the following Git providers:
-
-- GitHub: SaaS and on-premises versions
-- Bitbucket: SaaS and Bitbucket server (on-premises) 5.4.0 version and above
-- GitLab: SaaS and on-premise versions (API v4 only)
 
 ## Prerequisites
 
-- Kubernetes cluster (version between v1.19 and v1.22)
-  - *Note:* Kubernetes v1.19 maintenance support ended on Oct 28, 2021
-  - Minimum node sizes:
-    - Single node: 8 CPU core and 16GB RAM
-    - Multi node: master(s) + 3 nodes with 4 CPU core and 8GB RAM (24 GB in total)
+### Service Account file
+The GCR Service Account JSON file, `sa.json` is provided by Codefresh. Contact support to get the file before installation.
 
-- Service Account file (provided by Codefresh)
-- Default app credentials (provided by Codefresh)
-- Storage size allocated for Codefresh persisted services - described in the storage section
+### Default app credentials
+Also provided by Codefresh. Contact support to get them file before installation.
 
-Codefresh will need an outbound connection to the Internet for the following services:
+### TLS certificates
+For a secured installation, we highly recommend using TLS certificates. Make sure your `ssl.cert` and `private.key` are valid.
 
-- GCR - pulling platform images
-- Dockerhub - pulling pipeline images
+> Use a Corporate Signed certificate, or any valid TLS certificate, for example, from lets-encrypt.
+
+### Interent connections 
+We require outbound internet connections for these services:  
+* GCR to pull platform images
+* Dockerhub to pull pipeline images
+
 
 ## Security Constraints
 
@@ -56,7 +56,9 @@ Codefresh has some security assumptions about the Kubernetes cluster it is insta
 
 ### RBAC for Codefresh
 
-The Codefresh installer should be run with a Kubernetes RBAC role that allows object creation in a single namespace.  If, by corporate policy, you do not allow the creation of service accounts or roles, a Kubernetes administrator will need to create the role, service account, and binding as shown below.  Users with the `codefresh-app` role do not have the ability to create other roles or role bindings.
+The Codefresh installer should be run with a Kubernetes RBAC role that allows object creation in a single namespace.  If, by corporate policy, you do not allow the creation of service accounts or roles, a Kubernetes administrator will need to create the role, service account, and binding as shown below.  
+
+>Users with the `codefresh-app` role cannot create other roles or role bindings.
 
 `codefresh-app-service-account.yaml`
 ```yaml
@@ -167,46 +169,37 @@ You will also need to modify the `config.yaml` for `kcfi` by setting `skipCRD: t
       skipCRD: true
 ```
 
-## Download and Install `kcfi`
-
-`kcfi` is a single binary and doesn’t have any dependencies.
-
-Download the binary from [GitHub](https://github.com/codefresh-io/kcfi/releases).
->Note: Darwin is for OSX
-
-Extract the downloaded file.
-
-Copy the file to your $PATH, i.e. `cp /path/to/kcfi /usr/local/bin`
-
 ## Install the Codefresh Platform
 
-### Step 1 -- Set the Current Context
+### Before you begin
 
-Make sure you have a `kubeconfig` file with the correct context set.
+### Step1 : Download and extract `kcfi`
+Download the binary for `kcfi`. It is a single binary without dependencies.
 
-i.e.,
+1. Download the binary from [GitHub](https://github.com/codefresh-io/kcfi/releases){:target="\_blank"}.
+  >Note: Darwin is for OSX
+1. Extract the downloaded file.
+1. Copy the file to your $PATH: `cp /path/to/kcfi /usr/local/bin`
+
+### Step 2: Set the current context
+* Make sure you have a `kubeconfig` file with the correct context, as in this example:
 
 ```
 kubectl config get-contexts                  # display list of contexts
 kubectl config use-context my-cluster-name   # set the default context to my-cluster-name
 kubectl config current-context               # verify the current-context`
 ```
+### Step 3: Initialize and configure `config.yaml`
+Prepare the platform for installation by initializing the directory with `config.yaml`. Then edit `config.yaml` and configure all installation settings, including files and directories required, and then deploy to Kubernetes.  
 
-### Step 2 -- Prepare the Codefresh Platform Installation
+The `config.yaml` is includes descriptions for every parameter.  
 
-Run the following:
+1. Create the directory with the `config.yaml`:
 
 ```
 kcfi init codefresh [-d /path/to/stage-dir]
 ```
-Running the init command will create a directory containing a `config.yaml` file, which will be uses to configure our installation, along with other files and directories required for the installation.
-
-Edit the configuration in `config.yaml` and deploy to Kubernetes. The `config.yaml` is very descriptive and it contains an explanation for every parameter.
-
-#### Installation Methods (Helm or Codefresh CRD)
-
-You have the option to install by either the Codefresh CRD Definition (as described above), or by using Helm, which will install/upgrade the chart from the client.
-Define either **operator** or **helm** as your preferred installation method in the `config.yaml`:
+1. Below `installer`, define your installation method as either Helm or Codefresh CRD:
 
 ```yaml
   installer:
@@ -214,9 +207,11 @@ Define either **operator** or **helm** as your preferred installation method in 
     #   "operator" - apply codefresh crd definition
     #   "helm" - install/upgrade helm chart from client
 ```
+1. If you are installing Codefresh in an air-gapped environment (without access to public Docker Hub or codefresh-enterprise registry),  copy the images to your organization container registry (Kubernetes will pull the images from it as part of the installation).  
 
-If you install Codefresh on the air-gapped environment (without access to public Docker Hub or codefresh-enterprise registry) you will have to copy the images to your organization container registry (Kubernetes will pull the images from it as part of the installation).
-This can be done by uncommenting and setting the proper values in the `config.yaml` file:
+    1. Set `usePrivateRegistry` to `true`.
+    1. Define `privateRegistry` `address`, `username` and `password`.
+
 
 ```yaml
 images:
@@ -229,55 +224,56 @@ images:
   lists:
   - images/images-list
 ```
-Set `usePrivateRegistry: true`, and set `privateRegistry` `address`, `username` and `password`.
+1. Push all or a single image:
+    * All images: 
+      ```
+      kcfi images push  [-c|--config /path/to/config.yaml]
+      ```
+   * Single image:
+      ```
+      kcfi images push [-c|--config /path/to/config.yaml] [options] repo/image:tag [repo/image:tag]
+      ```
 
-Then, execute the following:
+  > To get the full list of options, run `kcfi images --help`.
 
-```
-kcfi images push  [-c|--config /path/to/config.yaml]
-```
+  >Even if you are running a Kubernetes cluster with outgoing access to the public internet, note that Codefresh platform images are not public and can be obtained by using `sa.json` file provided by Codefresh support personnel.  
+   Use the flag `--codefresh-registry-secret` to pass the path to the file `sa.json`.
 
-Or, to push a single image, execute the following:
-```
-kcfi images push [-c|--config /path/to/config.yaml] [options] repo/image:tag [repo/image:tag]
-```
+### Step 4: (Optional) Configure TLS certificates 
+If you are using TLS, enable it in `config.yaml`.
 
-You can find a full list of options by running `kcfi images --help`.
+1. Set `tls.selfSigned =false`.
+1. Place both `ssl.crt` and `private.key` into certs/ directory.
 
-Even if you are running a Kubernetes cluster that has outgoing access to the public Internet, note that Codefresh platform images are not public and can be obtained by using `sa.json` file provided by Codefresh support personnel.
+### Step 5: Deploy On-premises platform
 
-Use the flag `--codefresh-registry-secret` to pass the path to the file `sa.json`.
-
-### Step 3 -- TLS Certificates (Optional)
-
-It is highly recommended to use TLS certificates for a secured installation. In the `config.yaml` file set `tls.selfSigned=false` and place both `ssl.crt` and `private.key` into certs/ directory.
-
->Note: Any valid TLS certificate will work, i.e. certificates from lets-encrypt or a Corporate Signed certificate.
-
-### Step 4 -- Deploy
-
-Deploy the Codefresh Platform by running:
+1. Run:
 
 ```
 kcfi deploy [ -c config.yaml ] [ --kube-context <kube-context-name> ] [ --atomic ] [ --debug ] [ helm upgrade parameters ]
 ```
-### Step 5 -- Install the Codefresh Kubernetes Agent
+### Step 6: Install the Codefresh Kubernetes Agent
 
-The cf-k8s-agent is responsible for accessing Kubernetes resources (pods, deployments, services, etc.) behind the firewall in order to display them in the Codefresh UI.  It can be installed in a separate cluster from the installer, or in a separate namespace in the same cluster.
+Install the `cf-k8s-agent` on a cluster separate from the installer, or in a different namespace on the same cluster.  
+The `cf-k8s-agent` accesses Kubernetes resources (pods, deployments, services, etc.) behind the firewall to display them in the Codefresh UI. The agent streams updates from cluster resources and then sends information updates to the `k8s-monitor` service.
 
-The agent streams updates from cluster resources and then sends information updates to the `k8s-monitor` service.
-
-Execute the following:
+1. Create a staging directory for the agent:
 
 ```
 kcfi init k8s-agent
 ```
-A staging directory will be created named k8s-agent with a `config.yaml`.
-Edit k8s-agent/config.yaml and run:
+  A staging directory is created, named k8s-agent with a `config.yaml`.
+1. Edit k8s-agent/config.yaml ?? for what??
+
+1. Run:
 
 ```
 kcfi deploy [ -c config.yaml ] [-n namespace]
 ```
+  where:  
+  [namespace] is the namespace if you are installing the agent in the same cluster.
+
+
 
 
 ## High-Availability (HA) with active-passive clusters
@@ -372,11 +368,11 @@ These services are not considered critical as they are part of build-handling. I
 * `cf-sign`
 
 
-## Additional Configurations
+## Additional configuration
 
-After you install Codefresh, these are some day-2 operations that you should follow.
+After you install Codefresh, these are post-installation operations that you should follow.
 
-### Selectively enable SSO providers
+### Selectively enable SSO provider for account
 As a Codefresh administrator, you can select the providers you want to enable for SSO in your organization, for both new and existing accounts.
 You can always renable a provider when needed.
 
@@ -385,7 +381,7 @@ You can always renable a provider when needed.
 1. From the left pane, select **Providers**.
 1. Disable the providers not relevant for the accounts.
 These providers are not displayed as options during sign-up/sign-in.
-
+<!--- change screenshot>
 {% include image.html
   lightbox="true"
   file="/images/administration/sso/enable-disable-providers.png"
@@ -394,11 +390,11 @@ These providers are not displayed as options during sign-up/sign-in.
   caption="Enable/disable providers for SSO"
   max-width="60%"
 %}
+-->
 
+### (Optional) Set up Git integration
 
-### Setup Git Integration (Optional)
-
-Codefresh supports out-of-the-box Git logins using your local username and password, or logins using your git provider (per the list and instructions of providers below). You can also configure login to supported SSO providers post-install as described [in the Codefresh documentation]({{site.baseurl}}/docs/administration/single-sign-on/sso-setup-oauth2/).
+Codefresh supports out-of-the-box Git logins using your local username and password, or logins using your Git provider, as described below.You can also configure login to supported SSO providers after installation, as described in [Setting up OpenID Connect (OIDC) Federated Single Sign-On (SSO)]({{site.baseurl}}/docs/administration/single-sign-on/oidc).
 
 If you’d like to set up a login to Codefresh using your Git provider, first login using the default credentials (username: `AdminCF`, password: `AdminCF` and add your Git provider OAuth integration details in our admin console:
 
@@ -447,7 +443,7 @@ After app creation, note down the created Application ID and Client Secret. They
 
 ### Proxy Configuration
 
-If your environment resides behind HTTP proxies, you need to uncomment the following section in config.yaml:
+If your environment resides behind HTTP proxies, you need to uncomment the following section in `config.yaml`:
 
 ```yaml
 global:
@@ -518,7 +514,7 @@ Codefresh installation supports automatic storage provisioning based on the stan
 
 
 ### Retention policy for Codefresh builds
-You can define a retention policy to manage Codefresh builds. The retention settings are controlled through `cf-api` deployment environment variables, all of which have default settings which you can retain or customize. The default policy is set to delete builds older than six months, including offline logs.
+Define a retention policy to manage Codefresh builds. The retention settings are controlled through `cf-api` deployment environment variables, all of which have default settings which you can retain or customize. By default, Codefresh deletes builds older than six months, including offline logs.
 
 The retention mechanism, implemented as a Cron Job, removes data from collections such as:
 * workflowproccesses
@@ -526,34 +522,33 @@ The retention mechanism, implemented as a Cron Job, removes data from collection
 * workflowrevisions
 
 {: .table .table-bordered .table-hover}
-| Env Variable                   | Description                                                                     | Default                |
-|------------------------------- |-------------------------------------------------------------------------------- |----------------------  |
-|`RETENTION_POLICY_IS_ENABLED`      | Determines if automatic build deletion through the Cron job is enabled.         | `true`                 |
-|`RETENTION_POLICY_BUILDS_TO_DELETE`| The maximum number of builds to delete by a single Cron job. To avoid database issues, especially when there are large numbers of old builds, we recommend deleting them in small chunks. You can gradually increase the number after verifying that performance is not affected.                                   | `50`                  |
+| Env Variable   | Description             | Default                |
+|---------------|--------------------------- |----------------------  |
+|`RETENTION_POLICY_IS_ENABLED` | Determines if automatic build deletion through the Cron job is enabled.         | `true`                 |
+|`RETENTION_POLICY_BUILDS_TO_DELETE`| The maximum number of builds to delete by a single Cron job. To avoid database issues, especially when there are large numbers of old builds, we recommend deleting them in small chunks. You can gradually increase the number after verifying that performance is not affected.  | `50`                  |
 |`RETENTION_POLICY_DAYS`         | The number of days for which to retain builds. Builds older than the defined retention period are deleted.                                  | `180`              |
 |`RUNTIME_MONGO_URI`             | Optional. The URI of the Mongo database from which to remove MongoDB logs (in addition to the builds). |              |
 
 
 ### Managing Codefresh backups
 
-Codefresh on-premises backups can be automated by installing a specific service as an addon to your Codefresh on-premises installation. It is based on the [mgob](https://github.com/stefanprodan/mgob) open source project and can run scheduled backups with retention, S3 & SFTP upload, notifications, instrumentation with Prometheus and more.
+Codefresh on-premises backups can be automated by installing a specific service as an addon to your Codefresh on-premises installation. It is based on the [mgob](https://github.com/stefanprodan/mgob){:target="\_blank"} open source project, and can run scheduled backups with retention, S3 & SFTP upload, notifications, instrumentation with Prometheus and more.
 
-#### Configuring and Installing the Backup Manager
+#### Configure and deploy the Backup Manager
 
-Backup manager is installed as an addon and therefore it needs an existing Codefresh on-premises installation. Before installing it, please make sure you have selected a proper kube config pointing to the cluster, where you have Codefresh installed on.
+Backup Manager is installed as an addon and therefore it needs an existing Codefresh on-premises installation. 
+Before installing it, please make sure you have selected a proper kube config pointing to the cluster, where you have Codefresh installed on.
 
-To configure backup manager, please go to the staging directory of your Codefresh installation and find a specific config file: `your-CF-stage-dir/addons/backup-manager/config.yaml`.
-
-There you will find a few configuration parameters, which you might want to change:
-
-* `metadada` - various CF-installer-specific parameters, which should not be changed in this case
-* `kubernetes` - here you can specify a kube context, kube config file and a namespace for the backup manager
-* `storage`- storage class, storage size and read modes for persistent volumes to store backups locally within your cluster
-* Backup plan configuration parameters under `jobConfigs.cfBackupPlan`:
+1. Go to the staging directory of your Codefresh installation, and open the config file: `your-CF-stage-dir/addons/backup-manager/config.yaml`.
+1. Retain or customize the values of these configuration parameters:
+  * `metadada`: Various CF-installer-specific parameters, which should not be changed in this case
+  * `kubernetes`: Specify a kube context, kube config file, and a namespace for the backup manager
+  * `storage`: Storage class, storage size and read modes for persistent volumes to store backups locally within your cluster
+  * Backup plan configuration parameters under `jobConfigs.cfBackupPlan`:
     * `target.uri` - target mongo URI. It is recommended to leave the mongo uri value blank - it will be taken automatically from the Codefresh release installed in your cluster
     * `scheduler` - here you can specify cron expression for your backups schedule, backups retention and timeout values
 
-For more advanced backup plan settings, like specifying various remote cloud-based storage providers for your backups, configuring notifications and other, please refer to [this](https://github.com/stefanprodan/mgob#configure) page
+For more advanced backup plan settings, such as specifying various remote cloud-based storage providers for your backups, configuring notifications and other, please refer to [this](https://github.com/stefanprodan/mgob#configure) page
 
 To **deploy the backup manager** service, please select a correct kube context, where you have Codefresh on-premises installed and deploy backup-manager with the following command:
 
