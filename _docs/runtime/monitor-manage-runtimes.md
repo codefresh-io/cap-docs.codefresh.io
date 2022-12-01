@@ -31,15 +31,10 @@ Manage provisioned runtimes:
 * [Add and manage Git Sources associated with hybrid or hosted runtimes]({{site.baseurl}}/docs/runtime/git-sources/))
 * [Upgrade provisioned hybrid runtimes](#hybrid-upgrade-provisioned-runtimes)
 * [Uninstall provisioned runtimes](#uninstall-provisioned-runtimes)
-* [Migrate ingress-less hybrid runtimes]((#hybrid-migrate-ingress-less-runtimes)) 
+* [Update Git tokens for runtimes](#update-git-tokens-for-runtimes)
+<!--* [Migrate ingress-less hybrid runtimes](#hybrid-migrate-ingress-less-runtimes) -->
 
-> Unless specified otherwise, management options are common to both hybrid and hosted runtimes. If an option is valid only for hybrid runtimes, it is indicated as such.
-
-* Add managed clusters to hybrid or hosted runtimes (see [Adding & managing external clusters]({{site.baseurl}}/docs/runtime/managed-cluster/))
-* Add and manage Git Sources associated with hybrid or hosted runtimes (see [Adding & managing Git Sources]({{site.baseurl}}/docs/runtime/git-sources/))
-* Upgrade provisioned hybrid runtimes
-* Uninstall hybrid or hosted runtimes
-* Update Git runtime tokens
+> Unless specified otherwise, management options are common to both hybrid and hosted runtimes. If an option is valid only for hybrid runtimes, it is indicated as such. 
 
 To monitor provisioned hybrid runtimes, including recovering runtimes for failed clusters, see [Monitor provisioned hybrid runtimes]({{site.baseurl}}/docs/runtime/monitoring-troubleshooting/).
 
@@ -81,7 +76,7 @@ Here is a description of the information in the List View.
 
 #### Topology view
 
-A hierarchical visualization of the provisioned runtimes. The Topology view makes it easy to identify key information such as versions, health and sync status, for both the provisioned runtime and the clusters managed by it.  
+A hierarchical visualization of the provisioned runtimes. The Topology view makes it easy to identify key information such as version, health and sync status, for both the provisioned runtime and the clusters managed by it.  
 Here is an example of the Topology view for runtimes.
   {% include
  image.html
@@ -120,7 +115,7 @@ For both silent or CLI-wizard based upgrades, make sure you have:
 
 * The latest version of the Codefresh CLI  
   Run `cf version` to see your version and [click here](https://github.com/codefresh-io/cli-v2/releases){:target="\_blank"} to compare with the latest CLI version.  
-* A valid runtime Git token
+* A valid Git token with [the required scopes]({{site.baseurl}}/docs/reference/git-tokens) 
 
 **Silent upgrade**  
 
@@ -265,26 +260,27 @@ Pass the mandatory flags in the uninstall command:
 
 
 
-### Update Git runtime tokens
+### Update Git tokens for runtimes
 
-Provisioned runtimes require valid Git tokens to authenticate the runtimes.  
+Provisioned runtimes require valid Git tokens at all times to authenticate Git actions by you as a user.  
+>These tokens are specific to the user, and the same token can be used for multiple runtimes.
 
-There are two different situations when you need to update Git runtime tokens:  
-* Update invalid, revoked, or expired tokens: Codefresh automatically flags runtimes with such tokens. It is mandatory to update the Git tokens for these runtimes to continue working with the platform. 
-* Update valid tokens: Optional. You may want to update Git runtime tokens, even valid runtime tokens, by deleting the existing token and replacing it with a new runtime token.
+There are two different situations when you need to update Git tokens:  
+* Update invalid, revoked, or expired tokens: Codefresh automatically flags runtimes with such tokens. It is mandatory to update the Git tokens to continue working with the platform. 
+* Update valid tokens: Optional. You may want to update Git tokens, even valid ones, by deleting the existing token and replacing it with a new token.
 
-The methods for updating any Git runtime token are the same regardless of the reason for the update:  
+The methods for updating any Git token are the same regardless of the reason for the update:  
 * OAuth2 authorization, if your admin has registered an OAuth Application for Codefresh
-* Git access token authentication, by generating a personal access token in your Git provider account with the correct permissions
+* Git access token authentication, by generating a personal access token in your Git provider account with the correct scopes
 
 **Before you begin**  
-* To authenticate through a Git access token, generate an access token for the runtime with the correct scopes: `repo` and `admin-repo`
+* To authenticate through a Git access token, make sure your token is valid and has [the required scopes]({{site.baseurl}}/docs/reference/git-tokens) 
 
 **How to**
 1. Do one of the following:
   * If you see a notification in the Codefresh UI about invalid runtime tokens,  click **[Update Token]**.
-    In the Runtimes page, you can see runtimes with invalid tokens are prefixed by the key icon. Mouse over shows invalid token.
-  * To update an existing runtime token, go to [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+    The Runtimes page shows runtimes with invalid tokens prefixed by the key icon. Mouse over shows invalid token.
+  * To update an existing token, go to [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
 1. Select the runtime for which to update the Git token.
 1. From the context menu with the additional actions at the top-right, select **Update Git Runtime token**.
 
@@ -323,6 +319,8 @@ The methods for updating any Git runtime token are the same regardless of the re
 1. For Git token authentication, expand **Advanced authorization options**, and then paste the generated token in the **Git runtime token** field.
 
 1. Click **Update Token**.
+
+
 
 
 ### Related articles
