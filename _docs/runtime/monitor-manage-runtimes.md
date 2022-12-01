@@ -269,11 +269,11 @@ Pass the mandatory flags in the uninstall command:
 
 Provisioned runtimes require valid Git tokens to authenticate the runtimes.  
 
-There are two different situations when you need to updating Git runtime tokens:  
+There are two different situations when you need to update Git runtime tokens:  
 * Update invalid, revoked, or expired tokens: Codefresh automatically flags runtimes with such tokens. It is mandatory to update the Git tokens for these runtimes to continue working with the platform. 
 * Update valid tokens: Optional. You may want to update Git runtime tokens, even valid runtime tokens, by deleting the existing token and replacing it with a new runtime token.
 
-The methods for updating any Git runtime token is the same regardless of the reason for the update:  
+The methods for updating any Git runtime token are the same regardless of the reason for the update:  
 * OAuth2 authorization, if your admin has registered an OAuth Application for Codefresh
 * Git access token authentication, by generating a personal access token in your Git provider account with the correct permissions
 
