@@ -40,7 +40,7 @@ Manage provisioned GitOps Runtimes:
 <!---* [Migrate ingress-less hybrid runtimes](#hybrid-migrate-ingress-less-runtimes)--> 
 
 
-> Unless specified otherwise, management options are common to both types of GitOps Runtimes. If an option is valid only for Hybrid GitOps, it is indicated as such.
+> Unless specified otherwise, all options are common to both types of GitOps Runtimes. If an option is valid only for Hybrid GitOps, it is indicated as such.
 
 
 ## GitOps Runtime views
@@ -150,7 +150,7 @@ For both silent or CLI-wizard based upgrades, make sure you have:
 
 **CLI wizard-based upgrade**
 
-1. In the Codefresh UI, make sure you are in [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+1. In the Codefresh UI, make sure you are in [GitOps Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
 1. Switch to either the **List View** or to the **Topology View**.  
 1. **List view**:  
   * Select the Runtime name.
