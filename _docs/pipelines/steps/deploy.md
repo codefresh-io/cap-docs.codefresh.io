@@ -82,8 +82,8 @@ with the `candidate` field (otherwise Codefresh will just reuse the docker image
 | `timeout`                        | Seconds to wait for the deployment to be completed. Default is 120 seconds               | Default                   |
 | `candidate`                        | Docker image that will be deployed. Only valid if `service` is defined. Should contain `image` and name of registry as it appears in the [registry integration page]({{site.baseurl}}/docs/docker-registries/external-docker-registries/).                | Optional                  |                  
 | `fail_fast`                                | If a step fails, and the process is halted. The default value is `true`.                                                                                                        | Default                   |
-| `when`                                     | Define a set of conditions which need to be satisfied in order to execute this step.<br>You can find more information in the [Conditional Execution of Steps]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) article.          | Optional                  |
-| `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-Step Operations]({{site.baseurl}}/docs/codefresh-yaml/post-step-operations/).                                                                               | Optional                  |
+| `when`                                     | Define a set of conditions which need to be satisfied in order to execute this step.<br>You can find more information in the [Conditional Execution of Steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) article.          | Optional                  |
+| `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-Step Operations]({{site.baseurl}}/docs/piplines/post-step-operations/).                                                                               | Optional                  |
 | `retry`   | Define retry behavior as described in [Retrying a step]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#retrying-a-step).                                                                               | Optional                  |
 
 ## Examples
@@ -176,9 +176,10 @@ If you find the deploy step limited, feel free to look at the other deployment o
 * [Custom kubectl commands]({{site.baseurl}}/docs/deploy-to-kubernetes/custom-kubectl-commands/) 
 * [Helm]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/) 
 
-## What to read next
-- [Kubernetes Quick start guide]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)  
-- [Manage your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/)
-- [Install HELM chart using Codefresh pipeline]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/)
+## Related articles
+[Kubernetes Quick start guide]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)  
+[Manage your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/)  
+[Install HELM chart using Codefresh pipeline]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/)  
+
 
 

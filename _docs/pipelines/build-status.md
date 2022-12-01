@@ -1,7 +1,7 @@
 ---
 title: "Public logs and status badges"
 description: "Embedding Status Images and viewing public logs"
-group: configure-ci-cd-pipeline
+group: pipelines
 toc: true
 redirect_from:
   - /docs/build-status

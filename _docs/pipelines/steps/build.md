@@ -1,7 +1,7 @@
 ---
 title: "Build"
 description: "Building Docker images in Codefresh pipelines"
-group: codefresh-yaml
+group: pipelines
 sub_group: steps
 redirect_from:
   - /docs/build-1/
@@ -90,11 +90,11 @@ step_name:
 | `build_arguments`                          | A set of [Docker build arguments](https://docs.docker.com/engine/reference/commandline/build/#set-build-time-variables-build-arg) to pass to the build process.                                                                      | Optional                  |
 | `target`                          | target stage in a multistage build (build will run until this stage)                                                                      | Optional                  |
 | `fail_fast`                                | If a step fails, and the process is halted. The default value is `true`.                                                                                                                                                             | Default                   |
-| `when`                                     | Define a set of conditions that need to be satisfied in order to execute this step.<br>You can find more information in the [Conditional Execution of Steps]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) article.                           | Optional                  |
+| `when`                                     | Define a set of conditions that need to be satisfied in order to execute this step.<br>You can find more information in the [Conditional Execution of Steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) article.                           | Optional                  |
 | `metadata`                                 | Annotate the built image with [key-value metadata]({{site.baseurl}}/docs/docker-registries/metadata-annotations/).                                                                                                                             | Optional                  |
-| `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-Step Operations]({{site.baseurl}}/docs/codefresh-yaml/post-step-operations/).                                                                                                      | Optional                  |
+| `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-Step Operations]({{site.baseurl}}/docs/pipelines/post-step-operations/).                                                                                                      | Optional                  |
 | `retry`   | Define retry behavior as described in [Retrying a step]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#retrying-a-step).                                                                               | Optional                  |
-| `buildkit`                                 | Set to `true` to enable [Buildkit]({{site.baseurl}}/docs/codefresh-yaml/steps/build/#buildkit-support) and all of its enhancements                                                                                                    | Optional                 | 
+| `buildkit`                                 | Set to `true` to enable [Buildkit]({{site.baseurl}}/docs/pipelines/steps/build/#buildkit-support) and all of its enhancements                                                                                                    | Optional                 | 
 
 **Exported resources:**
 - Working Directory
@@ -162,7 +162,7 @@ steps:
     registry: my-registry
 {% endhighlight %}
 
-Build two images in two different folders using [Codefresh variables]({{site.baseurl}}/docs/codefresh-yaml/variables/) as tags.
+Build two images in two different folders using [Codefresh variables]({{site.baseurl}}/docs/pipelines/variables/) as tags.
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -186,7 +186,7 @@ steps:
 {% endraw %}         
 {% endhighlight %}
 
-It also possible to build Docker images in [parallel]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/) for faster builds.
+It also possible to build Docker images in [parallel]({{site.baseurl}}/docs/pipelines/advanced-workflows/) for faster builds.
 
 ### Inline Dockerfile
 
@@ -227,7 +227,7 @@ Use this technique only as a last resort. It is better if the Dockerfile exists 
 
 All images built successfully with the build step, will be automatically pushed to the default Docker registry in your account. This behavior is completely automatic and happens without any extra configuration on your part. If you want to disable this then add the `disable_push` property in your build step.
 
->Notice that the [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) in Codefresh is optional and is only needed if you want to push to [external Docker registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/). 
+>Notice that the [push step]({{site.baseurl}}/docs/pipelines/steps/push/) in Codefresh is optional and is only needed if you want to push to [external Docker registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/). 
 
 {% 
   include image.html 
@@ -346,7 +346,7 @@ You might want to use an environment variable to store and retrieve a ssh key. T
 tr '\n' ',' < /path/to/id_rsa
 ```
 
-Copy the output and place it an [environment variable]({{site.baseurl}}/docs/codefresh-yaml/variables/#user-provided-variables). To make the SSH key availabe to the build step, you can write it to the codefresh volume:
+Copy the output and place it an [environment variable]({{site.baseurl}}/docs/pipelines/variables/#user-provided-variables). To make the SSH key availabe to the build step, you can write it to the codefresh volume:
 `codefresh.yml`
 {% highlight yaml %}
 {% raw %}
@@ -374,7 +374,6 @@ You can combine all options (`ssh`, `progress`, `secrets`) in a single build ste
 
 
 
-## What to read next
-
-* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [Pipeline Steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
+## Related articles
+[Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)  
+[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)

@@ -1,7 +1,7 @@
 ---
-title: "Composition"
+title: "Composition step"
 description: "Run a Docker container with its dependencies inside a pipeline"
-group: codefresh-yaml
+group: pipelines
 sub_group: steps
 redirect_from:
   - /docs/composition-1/
@@ -102,8 +102,8 @@ The following describes the fields available in a step of type `composition`
 | `volumes` (service level)                             | Extra volumes for individual services. Used for transferring information between your steps. Explained in detail later in this page.                                                                                                                             | Optional                  |
 | `composition_variables`                    | A set of environment variables to substitute in the composition. Notice that these variables are docker-compose variables and **NOT** environment variables                                                                                                                                                                         | Optional                  |
 | `fail_fast`                                | If a step fails, and the process is halted. The default value is `true`.                                                                                                                                                                 | Default                   |
-| `when`                                     | Define a set of conditions which need to be satisfied in order to execute this step.<br>You can find more information in the [Conditional Execution of Steps]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) article.                               | Optional                  |
-| `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-Step Operations]({{site.baseurl}}/docs/codefresh-yaml/post-step-operations/).                                                                                                            | Optional                  |
+| `when`                                     | Define a set of conditions which need to be satisfied in order to execute this step.<br>You can find more information in the [Conditional Execution of Steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) article.                               | Optional                  |
+| `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-Step Operations]({{site.baseurl}}/docs/pipelines/post-step-operations/).                                                                                                            | Optional                  |
 | `retry`   | Define retry behavior as described in [Retrying a step]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#retrying-a-step).                                                                               | Optional                  |
 
 ## Composition versus Composition Candidates
@@ -290,7 +290,7 @@ By default, the services of a composition run in a completely isolated manner. T
 * Preloading a database with a data script found in Git
 * Running integration tests and then using their [results for reporting]({{site.baseurl}}/docs/testing/test-reports/)
 
-The Codefresh [shared volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) is automatically mounted in [freestyle steps]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) but **NOT** in compositions. You have to mount it yourself if you use that functionality.
+The Codefresh [shared volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) is automatically mounted in [freestyle steps]({{site.baseurl}}/docs/pipelines/steps/freestyle/) but **NOT** in compositions. You have to mount it yourself if you use that functionality.
 
 Here is an example where the shared volume is mounted in a composition -- {% raw %}`'${{CF_VOLUME_NAME}}:${{CF_VOLUME_PATH}}'`{% endraw %} is listed under `volumes`:
 
@@ -426,9 +426,9 @@ run_tests:
 
 In the above example, both `composition` and `composition_candidates` define a service named `test_service`. After merging these definitions, `test_service` will maintain the `command` that was defined in the original composition but will refer to the image built by the step named `build_step`.
 
-## What to read next
+## Related articles
+[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
+[Variables]({{site.baseurl}}/docs/pipelines/variables/)  
+[Introduction to pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  
+[Integration tests]({{site.baseurl}}/docs/testing/integration-tests/)  
 
-* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
-* [Variables]({{site.baseurl}}/docs/codefresh-yaml/variables/)
-* [Introduction to pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
-* [Integration tests]({{site.baseurl}}/docs/testing/integration-tests/)

@@ -1,7 +1,7 @@
 ---
-title: "Pipeline Triggers"
+title: "Triggers for pipelines"
 description: "Choose when your pipelines should run"
-group: configure-ci-cd-pipeline
+group: pipelines
 redirect_from:
   - /docs/pipeline-triggers/
   - /docs/pipeline-triggers/introduction-triggers/
@@ -14,20 +14,20 @@ To create an effective CI/CD process, it should be possible to trigger a Codefre
 Codefresh not only allows you to define different pipelines on a single project but it also offers you the capability to trigger them with completely separate mechanisms.
 
 
-## Codefresh Trigger Types
+## Pipeline trigger types
 
-Trigger types currently supported by Codefresh are:
+The following types of triggers are currently supported pipelines:
 
-* [Git Triggers](git-triggers)
-* [Dockerhub Triggers](dockerhub-triggers)
-* [Azure Registry Triggers](azure-triggers)
-* [Quay Triggers](quay-triggers)
-* [Helm Triggers](helm-triggers)
-* [Artifactory Triggers](jfrog-triggers)
-* [Cron Trigger](cron-triggers)
-* [API/CLI Trigger]({{site.baseurl}}/docs/integrations/codefresh-api/)
+* [Git triggers](git-triggers)
+* [Dockerhub triggers](dockerhub-triggers)
+* [Azure Registry triggers](azure-triggers)
+* [Quay triggers](quay-triggers)
+* [Helm triggers](helm-triggers)
+* [Artifactory triggers](jfrog-triggers)
+* [Cron trigger](cron-triggers)
+* [API/CLI trigger]({{site.baseurl}}/docs/integrations/codefresh-api/)
 
-As an example, this project contains 4 pipelines:
+As an example, this project contains four pipelines:
 
 {% include image.html
 lightbox="true"
@@ -40,7 +40,7 @@ max-width="70%"
 
 Behind the scenes these pipelines are triggered from different events:
 
-* Pipeline "CI-build" is using a GIT trigger and starts after every commit to the code repository
+* Pipeline "CI-build" uses a GIT trigger and starts after every commit to the code repository
 * Pipeline "Sonarcloud" is executed every weekend using a cron (timed) trigger
 * Pipeline "integration-test" is executed whenever a commit happens in a Pull request on the code
 * Pipeline "deploy-prod-k8s" is executed whenever a Docker image is pushed to the Docker registry
@@ -56,7 +56,7 @@ For all trigger types you can also use the [Codefresh CLI](https://codefresh-io.
 
 ## Creating a new trigger for a pipeline
 
-By default, when you create a new project from a GIT provider it will start with a GIT trigger that runs on every commit.
+By default, when you create a new project from a Git provider, it will start with a Git trigger that runs on every commit.
 
 {% include image.html
 lightbox="true"
@@ -82,18 +82,18 @@ max-width="70%"
 
 For more information see:
 
-* [Git Triggers](git-triggers)
-* [Dockerhub Triggers](dockerhub-triggers)
-* [Azure Registry Triggers](azure-triggers)
-* [Quay Triggers](quay-triggers)
-* [Helm Triggers](helm-triggers)
-* [Artifactory Triggers](jfrog-triggers)
-* [Cron Trigger](cron-triggers)
+* [Git triggers](git-triggers)
+* [Dockerhub triggers](dockerhub-triggers)
+* [Azure Registry triggers](azure-triggers)
+* [Quay triggers](quay-triggers)
+* [Helm triggers](helm-triggers)
+* [Artifactory triggers](jfrog-triggers)
+* [Cron trigger](cron-triggers)
 
 ## Disabling triggers
 
-You can easily disable a trigger manually if you don't want to be active anymore.
-On the triggers tab click the gear icon on the top right (*Open advanced options*).
+You can easily disable a trigger manually if you don't want it to be active anymore.
+On the triggers tab, click the gear icon on the top right (*Open advanced options*).
 
 {% include image.html
 lightbox="true"
@@ -108,9 +108,7 @@ max-width="70%"
 Then click the toggle switch on each trigger that you want to enable/disable. You can later enable the same trigger again
 by clicking the same switch.
 
-## What to read next
-
-* [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
-* [Git triggers](git-triggers)
-* [Running pipelines locally]({{site.baseurl}}/docs/configure-ci-cd-pipeline/running-pipelines-locally/)
-* [Trigger a Kubernetes Deployment from a Dockerhub Push Event]({{site.baseurl}}/docs//yaml-examples/examples/trigger-a-k8s-deployment-from-docker-registry/)
+## Related articles
+[Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
+[Running pipelines locally]({{site.baseurl}}/docs/pipelines/running-pipelines-locally/)  
+[Trigger a Kubernetes Deployment from a Dockerhub Push Event]({{site.baseurl}}/docs//yaml-examples/examples/trigger-a-k8s-deployment-from-docker-registry/)

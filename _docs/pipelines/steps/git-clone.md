@@ -1,7 +1,7 @@
 ---
 title: "Git-Clone"
 description: "Checkout code in your pipelines"
-group: codefresh-yaml
+group: pipelines
 sub_group: steps
 redirect_from:
   - /docs/git-clone/
@@ -9,7 +9,7 @@ toc: true
 ---
 Clones a Git repository to the filesystem.
 
-A pipeline can have any number of git clone steps (even none). You can checkout code from any private or public repository. Cloning a repository is not constrained to the trigger of a pipeline. You can trigger a pipeline from a commit that happened on Git repository A while the pipeline is checking out code from Git Repository B.
+A pipeline can have any number of Git clone steps (even none). You can checkout code from any private or public repository. Cloning a repository is not constrained to the trigger of a pipeline. You can trigger a pipeline from a commit that happened on Git repository A while the pipeline is checking out code from Git Repository B.
 
 >Notice that if you are an existing customer before May 2019, Codefresh will automatically checkout the code from a [connected git repository]({{site.baseurl}}/docs/integrations/git-providers/) when a pipeline is created on that repository. In this case an implicit git clone step is included in your pipeline. You can still override it with your own git clone step as explained in this page
 
@@ -50,7 +50,7 @@ step_name:
 | ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- |
 | `title`                                    | The free-text display name of the step.                                                                                                                                                                                            | Optional                  |
 | `description`                              | A basic, free-text description of the step.                                                                                                                                                                                        | Optional                  |
-| `stage`                              | Parent group of this step. See [using stages]({{site.baseurl}}/docs/codefresh-yaml/stages/) for more information.                                                                                                                                                                                          | Optional                  |
+| `stage`                              | Parent group of this step. See [using stages]({{site.baseurl}}/docs/pipelines/stages/) for more information.                                                                                                                                                                                          | Optional                  |
 | `working_directory`                        | The directory to which the repository is cloned. It can be an explicit path in the container's file system, or a variable that references another step. The default value is {% raw %}`${{main_clone}}`{% endraw %}, but note that the default will only be used if you name your step `main_clone`.  See the example on [working inside the cloned directory]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout/#working-inside-the-cloned-directory) for more information.                | Default                   |
 | `git` | The name of the [git integration]({{site.baseurl}}/docs/integrations/git-providers/) you want to use. If left empty, Codefresh will attempt to use the git provider that was used during account sign-up. Note that this might have unexpected results if you are changing your Git integrations.| Required| 
 | `repo`                                     | path of the repository without the domain name in the form of `my_username/my_repo`                                                                                                                                                                                       | Required                  |
@@ -75,7 +75,7 @@ The easiest way to use a git clone step is to use your default git provider as c
 
 Here is an example of a pipeline that will automatically check out the repository that triggered it (i.e. a commit happened on that repository).
 
->Notice that the name of the clone step is `main_clone`. This will automatically set the working directory of all other steps that follow it **inside** the folder of the project that was checked out. This only applies to [built-in]({{site.baseurl}}/docs/codefresh-yaml/steps/#built-in-steps) Codefresh steps and not [custom plugins]({{site.baseurl}}/docs/codefresh-yaml/steps/#creating-a-typed-codefresh-plugin). This is normally what you want for a pipeline that only checks out a single project. If you use any other name apart from `main_clone` the working directory for all subsequent steps will not be affected and it will default on the [shared volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) which is the [parent folder]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#cloning-the-source-code) of checkouts.
+>Notice that the name of the clone step is `main_clone`. This will automatically set the working directory of all other steps that follow it **inside** the folder of the project that was checked out. This only applies to [built-in]({{site.baseurl}}/docs/pipelines/steps/#built-in-steps) Codefresh steps and not [custom plugins]({{site.baseurl}}/docs/pipelines/steps/#creating-a-typed-codefresh-plugin). This is normally what you want for a pipeline that only checks out a single project. If you use any other name apart from `main_clone` the working directory for all subsequent steps will not be affected and it will default on the [shared volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) which is the [parent folder]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#cloning-the-source-code) of checkouts.
 
 
 
@@ -98,7 +98,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-The CF values will be automatically filled by Codefresh from the git trigger. See the [variables page]({{site.baseurl}}/docs/codefresh-yaml/variables/) for more details.
+The CF values will be automatically filled by Codefresh from the git trigger. See the [variables page]({{site.baseurl}}/docs/pipelines/variables/) for more details.
 
 ## Choosing a specific git provider (project-based pipeline)
 
@@ -182,8 +182,8 @@ steps:
 
 ## Checkout code using the Codefresh Runner
 
-If you are using the [Hybrid version]({{site.baseurl}}/docs/enterprise/installation-security/#hybrid-installation) of Codefresh and a have a [Codefresh runner]({{site.baseurl}}/docs/enterprise/codefresh-runner/) installed, you need to use
-the fully qualified path of the git repository:
+If you are using the [Codefresh runner]({{site.baseurl}}/docs/installation/codefresh-runner/), you need to use
+the fully qualified path of the Git repository:
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -204,14 +204,14 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-More details can be found in the [private Git instructions page]({{site.baseurl}}/docs/enterprise/behind-the-firewall/#checking-out-code-from-a-private-git-repository).
+More details can be found in the [private Git instructions page]({{site.baseurl}}/docs/reference/behind-the-firewall/#checking-out-code-from-a-private-git-repository).
 
 
-## Checking multiple git repositories
+## Checking out multiple Git repositories
 
 It is very easy to checkout additional repositories in a single pipeline by adding more `git-clone` steps.
 In that case you should use different names for the steps (instead of `main_clone`) as this will make the working
-folder for all steps the [shared volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps).
+folder for all steps the [shared volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps).
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -359,7 +359,7 @@ This pipeline does the following:
 
 ## Use an SSH key with Git
 
-It is also possible to use an SSH key with git. When [creating your pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/) add your SSH key as an encrypted 
+It is also possible to use an SSH key with git. When [creating your pipeline]({{site.baseurl}}/docs/pipelines/pipelines/) add your SSH key as an encrypted 
 environment variable after processing it with `tr`:
 
 ```
@@ -390,7 +390,7 @@ steps:
 
 ## Using Git behind a proxy
 
-If you use the [Codefresh Runner]({{site.baseurl}}/docs/administration/codefresh-runner/)  and need to use a network proxy in your clone step you need to set the [variables]({{site.baseurl}}/docs/codefresh-yaml/variables/) `HTTP_PROXY` and/or `HTTPS_PROXY` in the pipeline
+If you use the [Codefresh Runner]({{site.baseurl}}/docs/installation/codefresh-runner/)  and need to use a network proxy in your clone step you need to set the [variables]({{site.baseurl}}/docs/pipelines/variables/) `HTTP_PROXY` and/or `HTTPS_PROXY` in the pipeline
 and then activate the property `use_proxy: true` in the clone step. Example:
 
 `codefresh.yml`
@@ -421,16 +421,16 @@ caption="Pipeline variable"
 max-width="40%"
 %}
 
-For more details see the [behind the firewall page]({{site.baseurl}}/docs/administration/behind-the-firewall/).
+For more details see the [behind the firewall page]({{site.baseurl}}/docs/installation/behind-the-firewall/).
 
 
-## What to read next
+## Related articles
+[Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)   
+[Git integrations]({{site.baseurl}}/docs/integrations/git-providers/)  
+[YAML steps]({{site.baseurl}}/docs/pipelines/steps/)   
+[Git Checkout Examples]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout/)  
+[Custom Git Commands]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout-custom/)  
 
-- [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/) 
-- [Git integrations]({{site.baseurl}}/docs/integrations/git-providers/) 
-- [YAML steps]({{site.baseurl}}/docs/codefresh-yaml/steps/) 
-- [Git Checkout Examples]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout/)
-- [Custom Git Commands]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout-custom/)
 
 
 

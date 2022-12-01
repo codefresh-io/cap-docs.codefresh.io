@@ -1,25 +1,25 @@
 ---
-title: "Git Triggers"
+title: "Git triggers"
 description: "Learn how to run pipelines from Git events"
-group: configure-ci-cd-pipeline
+group: pipelines
 sub_group: triggers
 toc: true
 ---
 
-GIT triggers are the most basic types of trigger for performing [Continuous Integration](https://en.wikipedia.org/wiki/Continuous_integration) with Codefresh.
+Git triggers are the most basic of the trigger typesfor performing [Continuous Integration](https://en.wikipedia.org/wiki/Continuous_integration) with Codefresh.
 
-At the trigger level you have the option of selecting:
+At the trigger level, you can select:
 
 * Which code repository will be used as a trigger
 * Which branches will be affected by a pipeline
-* If a trigger will apply to a Pull Request or not
+* If a trigger will apply to a Pull Request (PR) or not
 
- Note that you can select another repository other than the one the project itself belongs to. It is possible
+> You can select a repository other than the one the project itself belongs to. It is possible
  to trigger a build on project A even though a commit happened on project B.
 
-You can also use [Conditional expressions]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) at the pipeline level to further fine-tune the way specific steps (or other transitive pipelines) are executed.
+You can also use [conditional expressions]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) at the pipeline level to further fine-tune the way specific steps (or other transitive pipelines) are executed.
 
-## Manage GIT Triggers with Codefresh UI
+## Manage GIT triggers with Codefresh UI
 
 To add a new GIT trigger, navigate to the Codefresh Pipeline *Configuration* view and expand the *Triggers* section on the right side. Press the *Add Trigger* button and select a *GIT* trigger type to add.
 
@@ -31,7 +31,7 @@ alt="Adding new Trigger dialog"
 max-width="60%"
 %}
 
-## General Trigger Settings
+## General trigger Settings
 
 {% include image.html
 lightbox="true"
@@ -41,7 +41,7 @@ alt="Adding GIT Trigger"
 max-width="50%"
 %}
 
-The Git Trigger is comprised of the following settings:
+The Git trigger is comprised of the following settings:
 
 * *Trigger Name* - a freetext trigger name (required).
 * *Description* - a freetext description (optional).
@@ -111,7 +111,7 @@ Therefore, all tags like `tag1`, `tag-X` **won't** trigger the pipeline.
 
 ### Pull Requests from comments 
 
-Pull Requests from comments are supported for all Git providers, for private and public repositories.  
+Pull Requests from comments are supported for all Git providers, for both private and public repositories.  
 There are two options:
 * **Pull request comment added (restricted)**  
   This option triggers an event only when the PR comments are made by repository owners or collaborators.  
@@ -158,7 +158,7 @@ Once that is done, Codefresh will launch your pipeline against the Pull Request.
 When supporting building of pull requests from forks there are a few "gotchas" to look out for:
 
 * Only comments made by repository owners and [collaborators](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/adding-outside-collaborators-to-repositories-in-your-organization) will result in the pipeline being triggered.
-* Only git pushes by collaborators within the GitHub organization will result in the pipeline being triggered
+* Only Git pushes by collaborators within the GitHub organization will result in the pipeline being triggered
 * If the repository is in a GitHub organization, comments made by private members of the organization will not activate the trigger, even if they are set as an owner or collaborator. Private members means that they need to be explicitly added to the repository. 
 Access cannot be "inherited" by the GitHub team. Currently, only comments from Admins, or Collaborators (directly added, not via teams) are allowed, in order to be caught by this filter.
 * The *Pull request comment added* checkbox should likely be the only one checked, or your pipeline may trigger on other events that you don't anticipate.
@@ -257,9 +257,9 @@ max-width="60%"
   * *Report notification on pipeline execution* - Decide if [Slack notifications]({{site.baseurl}}/docs/integrations/notifications/slack-integration/) will be sent (as well as status updates back to your Git provider)
 * *Runtime Environment* - choose to use pipeline [settings]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings) or override them
 
-## Manually Adding the Trigger to GitHub
+## Manually adding the trigger to GitHub
 
-When creating a Git Trigger in codefresh, sometimes the Git Integration does not have the permissions to create a webhook on the designated repository. When this happens, you get the following error: `Failed to add Trigger`.
+When creating a Git trigger in codefresh, sometimes the Git Integration does not have the permissions to create a webhook on the designated repository. When this happens, you get the following error: `Failed to add Trigger`.
 
 This error means that Codefresh could not create the webhook and verify that it works. With that, Codefresh will mark the Trigger as Unverified. Two additional fields (Endpoint and Secret) will appear under the "Verify Trigger" button when you get this error.
 
@@ -268,12 +268,11 @@ This error means that Codefresh could not create the webhook and verify that it 
 
 ### Adding Webhook to Github
 
-1. When you receive the `Failed to add Trigger`.
-2. Log into GitHub
-   - Make this user can access the repository settings and create Webhooks
-3. Go to the repository mentioned in the "REPOSITORY" section from Unverified Trigger.
-4. Go to Settings > Webhooks and click the "Add webhook" button.
-5. Fill in the form
+1. When you receive the `Failed to add Trigger`, log into GitHub.
+   - Make sure this user can access the repository settings and create Webhooks
+1. Go to the repository mentioned in the "REPOSITORY" section from Unverified Trigger.
+1. Go to Settings > Webhooks and click the "Add webhook" button.
+1. Fill in the form
    - **Payload URL**: The URL from the Endpoint field from the Trigger
    - **Content type**: application/json
    - **Secret**: The token in the Secret field from the Trigger
@@ -282,16 +281,15 @@ This error means that Codefresh could not create the webhook and verify that it 
      1. Select let me select individual events
      2. Match the items selected in the Trigger By field from the Trigger
    - **Active**: Make sure this is selected
-6. Click "Add webhook" when done.
-7. Click "Done" in the Add Trigger form.
-8. Test your webhook by making an event in the repository that will cause the Trigger to start the build.
+1. Click "Add webhook" when done.
+1. Click "Done" in the Add Trigger form.
+1. Test your webhook by making an event in the repository that will cause the Trigger to start the build.
 
 > **Note**:
->
-> - You will be responsible for syncing the Trigger By to the Events sent to us for the webhook. You can select "Send me everything" if you do not want to manually match the Trigger By in the Trigger with the Webhook Events in GitHub.
-> - The Trigger will remain "Unverified" until the integration has the correct permissions to the repository.
+  * You will be responsible for syncing the Trigger By to the Events sent to us for the webhook. You can select "Send me everything" if you do not want to manually match the Trigger By in the Trigger with the Webhook Events in GitHub.
+  * The Trigger will remain "Unverified" until the integration has the correct permissions to the repository.
 
-## Accessing directly the webhook content of the trigger
+## Accessing webhook content of the trigger directly 
 
 If your Git trigger is coming from Github, you can also access the whole payload of the webhook that was responsible for the trigger.
 The webhook content is available at `/codefresh/volume/event.json`. You can read this file in any pipeline step and process it like any other json file (e.g. with the jq utility).
@@ -358,8 +356,8 @@ It has only a single step which uses conditionals that check the name of the bra
 
 The build step calls the second pipeline. The end result is that pipeline B runs only when the Pull Request is opened the first time. Any further commits on the pull request branch will **not** trigger pipeline B (pipeline A will still run but the conditionals will fail).
 
-## What to read next
-
-* [Cron triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/cron-triggers/)
-* [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
-* [Multi-git trigger]({{site.baseurl}}/docs/troubleshooting/common-issues/multi-git-triggers/)
+## Related articles
+[Triggers for pipelines]({{site.baseurl}}/docs/pipelines/triggers)  
+[Cron triggers]({{site.baseurl}}/docs/pipelines/triggers/cron-triggers/)  
+[Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
+[Multi-git trigger]({{site.baseurl}}/docs/troubleshooting/common-issues/multi-git-triggers/)

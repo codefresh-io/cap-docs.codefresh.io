@@ -1,7 +1,7 @@
 ---
 title: "Cron Trigger"
 description: "Run pipelines with a time schedule"
-group: configure-ci-cd-pipeline
+group: pipelines
 sub_group: triggers
 redirect_from:
   - /docs/configure-cron-trigger/
@@ -11,7 +11,7 @@ toc: true
 
 Cron triggers allow you to create pipelines that start on a specific time schedule. This is very useful for cleanup jobs or periodic checks or any other workflow that needs to run after a time interval.
 
->All times mentioned in Cron triggers are using the UTC time zone. 
+>All times mentioned in Cron triggers use the UTC time zone. 
 
 ## Manage Cron Triggers with Codefresh UI
 
@@ -47,7 +47,7 @@ max-width="70%"
 %}
 
 
-### Triggering Codefresh pipeline with cron timer
+### Trigger Codefresh pipeline with cron timer
 
 Now, `cron` will trigger a recurrent pipeline execution based on the defined `cron expression`.
 
@@ -55,7 +55,7 @@ Now, `cron` will trigger a recurrent pipeline execution based on the defined `cr
 
 It is also possible to use the Codefresh Command Line client (`CLI`) to manage Cron based pipeline triggers.
 
-### Cron Trigger
+### Cron trigger
 
 It is possible to trigger a Codefresh CD pipeline(s) periodically, using `cron` expression.
 
@@ -77,7 +77,7 @@ When creating a `cron trigger-event`, it is possible to specify a short text mes
 
 Visit [this page](https://github.com/codefresh-io/cronus/blob/master/docs/expression.md) to learn about the supported `cron` expression format and aliases.
 
-#### Setup pipeline trigger
+#### Set up pipeline trigger
 
 Now, lets create a new pipeline trigger, linking previously defined `cron` `trigger-event` to one or more Codefresh pipelines.
 
@@ -98,7 +98,7 @@ The following variables will be available for any Codefresh pipeline linked to a
 - `EVENT_MESSAGE` - free text message (specified during creation)
 - `EVENT_TIMESTAMP` - event timestamp in RFC 3339 format
 
-## What to read next
-- [Git triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) 
-- [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/) 
+## Related articles
+[Triggers for pipelines]({{site.baseurl}}/docs/pipelines/triggers)  
+[Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 

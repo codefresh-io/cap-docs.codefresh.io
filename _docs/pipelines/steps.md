@@ -1,57 +1,58 @@
 ---
-title: "Steps"
-description: "Learn the types of Pipeline steps"
-group: codefresh-yaml
+title: "Steps in pipelines"
+description: "Types of steps in Codefresh pipelines"
+group: pipelines
 redirect_from:
   - /docs/steps/
 toc: true
 ---
 
-Codefresh [pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/) are composed of a series of steps. 
+Codefresh [pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/) are composed of a series of steps. 
 
-You can create your own pipelines by writing a [codefresh.yml]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) file that describes your pipeline. This file can then be version controlled on its own (pipeline as code).
+You can create your own pipelines by writing a [codefresh.yml]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/) file that describes your pipeline. This file can then be version controlled on its own (pipeline as code).
 
 {% include 
 image.html 
 lightbox="true" 
-file="/images/codefresh-yaml/stages/complex-pipeline.png" 
-url="/images/codefresh-yaml/stages/complex-pipeline.png"
+file="/images/pipelines/stages/complex-pipeline.png" 
+url="/images/pipelines/stages/complex-pipeline.png"
 alt="Pipeline steps" 
 caption="Pipeline steps"
 max-width="80%"
 %}
 
-## Built-in steps
+## Built-in step types
 
 The steps offered by Codefresh are:
 
-* [Git clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
-* [Freestyle]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)
-* [Build]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)
-* [Push]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)
-* [Composition]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/)
-* [Launch test environment]({{site.baseurl}}/docs/codefresh-yaml/steps/launch-composition/)
-* [Deploy]({{site.baseurl}}/docs/codefresh-yaml/steps/deploy/)
-* [Approval]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/)
+* [Git clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/)  
+  **Git clone** steps allow you to checkout code in your pipeline from any internal or external repository. Existing accounts that still use repositories instead of [projects]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-concepts) have an implicit clone step in the pipelines.  
 
-**Git clone** steps allow you to checkout code in your pipeline from any internal or external repository. Existing accounts that still use repositories instead of [projects]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-concepts) have an implicit clone step in the pipelines. 
-
-**Freestyle** steps are the cornerstone of Codefresh pipelines. They allow you to run any command within the context of a Docker container. A lot of Codefresh optimizations such as the [shared docker volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) are designed specifically for freestyle steps.
+* [Freestyle]({{site.baseurl}}/docs/pipelines/steps/freestyle/)  
+  **Freestyle** steps are the cornerstone of Codefresh pipelines. They allow you to run any command within the context of a Docker container. A lot of Codefresh optimizations such as the [shared docker volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) are designed specifically for freestyle steps.
 Freestyle steps are a secure replacement for `docker run` commands.
 
-**Build** steps are the main way where you get access to the Docker daemon (Docker as a service) in Codefresh pipelines. Build steps take as input any Dockerfile and run it on the cloud in a similar manner to what you do on your workstation. Build steps automatically push the result to the default Docker registry of your account (no need for docker login commands). Codefresh also comes with a global Docker cache that automatically gets attached to all build nodes. Build steps are a secure replacement for `docker build` commands.
+* [Build]({{site.baseurl}}/docs/pipelines/steps/build/)  
+  **Build** steps are the main way where you get access to the Docker daemon (Docker as a service) in Codefresh pipelines. Build steps take as input any Dockerfile and run it on the cloud in a similar manner to what you do on your workstation. Build steps automatically push the result to the default Docker registry of your account (no need for docker login commands). Codefresh also comes with a global Docker cache that automatically gets attached to all build nodes. Build steps are a secure replacement for `docker build` commands.  
 
-**Push** steps allow you to push and tag your docker images (created by the build step) in any [external Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/). Push steps are *not* needed at all if you work with only the internal Codefresh registry. Push steps are a secure replacement for the `docker tag` and `docker push` commands.
+* [Push]({{site.baseurl}}/docs/pipelines/steps/push/)  
+**Push** steps allow you to push and tag your docker images (created by the build step) in any [external Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/). Push steps are *not* needed at all if you work with only the internal Codefresh registry. Push steps are a secure replacement for the `docker tag` and `docker push` commands. 
 
-**Composition** steps allow you to run multiple services together in the Codefresh infrastructure and execute unit tests or other commands against them. They are discarded once a pipeline finishes. Composition steps are a secure replacement for `docker-compose` definitions.
+* [Composition]({{site.baseurl}}/docs/pipelines/steps/composition/)  
+  **Composition** steps allow you to run multiple services together in the Codefresh infrastructure and execute unit tests or other commands against them. They are discarded once a pipeline finishes. Composition steps are a secure replacement for `docker-compose` definitions.
 
-**Launch test environment** steps behave similar to compositions, but they persist after the pipeline ends. This is a great way to create preview environment from your pull requests and send to colleagues.
+* [Launch test environment]({{site.baseurl}}/docs/pipelines/steps/launch-composition/)  
+  **Launch test environment** steps behave similar to compositions, but they persist after the pipeline ends. This is a great way to create preview environment from your pull requests and send to colleagues.
 
-**Deploy steps** allow you to [perform Kubernetes deployments]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/) in a declarative manner. They embody the Continuous Deployment aspect of Codefresh.
+* [Deploy]({{site.baseurl}}/docs/pipelines/steps/deploy/)
+  **Deploy steps** allow you to [perform Kubernetes deployments]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/) in a declarative manner. They embody the Continuous Deployment aspect of Codefresh.
 
-**Approval steps** allow you to pause pipelines and wait for human intervention before resuming. They allow you to embrace the concepts of Continuous Delivery.
+* [Approval]({{site.baseurl}}/docs/pipelines/steps/approval/)  
+  **Approval steps** allow you to pause pipelines and wait for human intervention before resuming. They allow you to embrace the concepts of Continuous Delivery.
 
->Note that Codefresh also supports [parallel workflows]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/) as well as running pipelines [locally on your workstation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/running-pipelines-locally/).
+
+
+>Codefresh also supports [parallel workflows]({{site.baseurl}}/docs/pipelines/advanced-workflows/), as well as running pipelines [locally on your workstation]({{site.baseurl}}/docs/pipelines/running-pipelines-locally/).
 
 ## Step directory
 
@@ -85,8 +86,8 @@ When you create a pipeline, you will have access to two categories of steps:
 {% include 
 image.html 
 lightbox="true" 
-file="/images/codefresh-yaml/steps/choose-step.png" 
-url="/images/codefresh-yaml/steps/choose-step.png"
+file="/images/pipelines/steps/choose-step.png" 
+url="/images/pipelines/steps/choose-step.png"
 alt="Choosing a custom step" 
 caption="Choosing a custom step" 
 max-width="60%" 
@@ -94,13 +95,13 @@ max-width="60%"
 
 To use a step, first click on the pipeline section where you want to insert the step.
 You will get a new dialog with all the details of the step along with a live preview of the exact
-[yaml]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) that will be inserted in your pipeline.
+[yaml]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/) that will be inserted in your pipeline.
 
 For all steps you can define:
 
 * The title of the text (which will also be visible in the pipeline UI)
 * A freetext description 
-* The [stage]({{site.baseurl}}/docs/codefresh-yaml/stages/) that will contain the step
+* The [stage]({{site.baseurl}}/docs/pipelines/stages/) that will contain the step
 
 The rest of the fields are specific to each step. See the documentation of each step in order to understand what each field should contain. There are fields for each step that are marked as required and are essential for the step to work. These are marked with an asterisk.
 
@@ -134,7 +135,7 @@ We suggest that you start with custom freestyle steps first and only create type
 
 ### Creating a custom freestyle step
 
-As an example let's say that you need to use the [JFrog CLI](https://jfrog.com/getcli/) in a pipeline in order to interact with a Artifactory or Bintray. JFrog does not offer any Docker image that contains the CLI and you already know that all Codefresh steps [are actually Docker images]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/).
+As an example let's say that you need to use the [JFrog CLI](https://jfrog.com/getcli/) in a pipeline in order to interact with a Artifactory or Bintray. JFrog does not offer any Docker image that contains the CLI and you already know that all Codefresh steps [are actually Docker images]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/).
 
 Therefore you can easily package the CLI into a Docker image and then make it available to any Codefresh pipeline that wishes to use it.
 First you create [a Dockerfile](https://github.com/kostis-codefresh/step-examples/blob/master/jfrog-cli-wrapper/Dockerfile) that packages the CLI
@@ -179,8 +180,8 @@ Once the Dockerfile is ready, you need to push it to Dockerhub. You can either d
 {% include 
 image.html 
 lightbox="true" 
-file="/images/codefresh-yaml/steps/create-custom-step.png" 
-url="/images/codefresh-yaml/steps/create-custom-step.png"
+file="/images/pipelines/steps/create-custom-step.png" 
+url="/images/pipelines/steps/create-custom-step.png"
 alt="Creating a custom freestyle step" 
 caption="Creating a custom freestyle step" 
 max-width="80%" 
@@ -391,8 +392,8 @@ You will now be able to see the new versions of your plugin in the step marketpl
 {% include
 image.html
 lightbox="true"
-file="/images/codefresh-yaml/steps/step-versions.png"
-url="/images/codefresh-yaml/steps/step-versions.png"
+file="/images/pipelines/steps/step-versions.png"
+url="/images/pipelines/steps/step-versions.png"
 alt="Different step versions"
 caption="Different step versions"
 max-width="60%"
@@ -520,7 +521,7 @@ be passed by the plugin user to specify the folder that contains the `package.js
 
 The plugin implementation is specified in the `steps` sections. We use the standard [Node Docker image](https://hub.docker.com/_/node) to read the version from the `package.json` file. Notice how we convert the plugin argument to an environment variable called `WORK_DIR`
 
-By default all plugins start with the Codefresh volume at `/codefresh/volume` as a working folder. So with the `cd` command we enter the project folder (which we assume was checked out in a previous pipeline step). Once the version is read it is made available to all the other pipeline steps with the [cf_export command]({{site.baseurl}}/docs/codefresh-yaml/variables/#using-cf_export-command).
+By default all plugins start with the Codefresh volume at `/codefresh/volume` as a working folder. So with the `cd` command we enter the project folder (which we assume was checked out in a previous pipeline step). Once the version is read it is made available to all the other pipeline steps with the [cf_export command]({{site.baseurl}}/docs/pipelines/variables/#using-cf_export-command).
 
 We now insert our plugin in the marketplace with the following command:
 
@@ -561,8 +562,8 @@ This is a very simple pipeline that checks out a NodeJS project and uses our plu
 {% include 
 image.html 
 lightbox="true" 
-file="/images/codefresh-yaml/steps/input-parameters.png" 
-url="/images/codefresh-yaml/steps/input-parameters.png"
+file="/images/pipelines/steps/input-parameters.png" 
+url="/images/pipelines/steps/input-parameters.png"
 alt="Step input parameters" 
 caption="Step input parameters" 
 max-width="60%" 
@@ -573,8 +574,8 @@ The input parameter is also shown as required in the marketplace.
 {% include 
 image.html 
 lightbox="true" 
-file="/images/codefresh-yaml/steps/input-parameters-definition.png" 
-url="/images/codefresh-yaml/steps/input-parameters-definition.png"
+file="/images/pipelines/steps/input-parameters-definition.png" 
+url="/images/pipelines/steps/input-parameters-definition.png"
 alt="Input parameters on marketplace" 
 caption="Input parameters on marketplace" 
 max-width="40%" 
@@ -699,8 +700,8 @@ The output parameters of the step are now shown in the marketplace so consumers 
 {% include 
 image.html 
 lightbox="true" 
-file="/images/codefresh-yaml/steps/output-parameters-definition.png" 
-url="/images/codefresh-yaml/steps/output-parameters-definition.png"
+file="/images/pipelines/steps/output-parameters-definition.png" 
+url="/images/pipelines/steps/output-parameters-definition.png"
 alt="Output parameters on marketplace" 
 caption="Output parameters on marketplace" 
 max-width="40%" 
@@ -775,8 +776,8 @@ We now have a custom Docker image that contains our executable. If we want other
 {% include 
 image.html 
 lightbox="true" 
-file="/images/codefresh-yaml/steps/create-plugin-image.png" 
-url="/images/codefresh-yaml/steps/create-plugin-image.png"
+file="/images/pipelines/steps/create-plugin-image.png" 
+url="/images/pipelines/steps/create-plugin-image.png"
 alt="Building a public Docker image" 
 caption="Building a public Docker image" 
 max-width="60%" 
@@ -900,8 +901,8 @@ If you look at the plugin entry in the marketplace you will see both input (the 
 {% include 
 image.html 
 lightbox="true" 
-file="/images/codefresh-yaml/steps/plugin-parameters.png" 
-url="/images/codefresh-yaml/steps/plugin-parameters.png"
+file="/images/pipelines/steps/plugin-parameters.png" 
+url="/images/pipelines/steps/plugin-parameters.png"
 alt="Input and output parameters" 
 caption="Input and output parameters" 
 max-width="60%" 
@@ -912,8 +913,8 @@ The plugin is now ready to be used in a pipeline:
 {% include
 image.html
 lightbox="true"
-file="/images/codefresh-yaml/steps/plugin-usage.png"
-url="/images/codefresh-yaml/steps/plugin-usage.png"
+file="/images/pipelines/steps/plugin-usage.png"
+url="/images/pipelines/steps/plugin-usage.png"
 alt="Plugin usage"
 caption="Plugin usage"
 max-width="60%"
@@ -951,7 +952,7 @@ This was a trivial example, but it clearly demonstrates how a custom step commun
 
 ### Exporting parameters manually inside a plugin
 
-Normally, in a pipeline you can either use the [cf_export]({{site.baseurl}}/docs/codefresh-yaml/variables/#using-cf_export-command) command or write directly to the [/codefresh/volume/env_vars_to_export]({{site.baseurl}}/docs/codefresh-yaml/variables/#directly-writing-to-the-file) file.
+Normally, in a pipeline you can either use the [cf_export]({{site.baseurl}}/docs/pipelines/variables/#using-cf_export-command) command or write directly to the [/codefresh/volume/env_vars_to_export]({{site.baseurl}}/docs/pipelines/variables/#directly-writing-to-the-file) file.
 
 However, inside a plugin you can also use the `/meta/env_vars_to_export` file that has the same semantics, but is used for exporting variables in the same scope as the plugin only.
 
@@ -1193,8 +1194,8 @@ The end result is that with a single step you can checkout many projects. Checki
 {% include
 image.html
 lightbox="true"
-file="/images/codefresh-yaml/steps/multi-checkout.png"
-url="/images/codefresh-yaml/steps/multi-checkout.png"
+file="/images/pipelines/steps/multi-checkout.png"
+url="/images/pipelines/steps/multi-checkout.png"
 alt="Checking out multiple Git repositories in a single step"
 caption="Checking out multiple Git repositories in a single step"
 max-width="60%"
@@ -1204,20 +1205,20 @@ This was a contrived example to demonstrate how you can use templates in the Cod
 
 ### Limitations of custom plugins
 
-[Parallel steps]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/) are not supported inside custom steps.
+[Parallel steps]({{site.baseurl}}/docs/pipelines/advanced-workflows/) are not supported inside custom steps.
   
-Within a custom step, the [fail_fast field]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#execution-flow) does not work. Use  the `failFast` field instead.
+Within a custom step, the [fail_fast field]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#execution-flow) does not work. Use  the `failFast` field instead.
 
-Custom steps are not compatible with [service containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/). 
+Custom steps are not compatible with [service containers]({{site.baseurl}}/docs/pipelines/service-containers/). 
 More specifically:
 
- * If you have a [service container in the pipeline-level]({{site.baseurl}}/docs/codefresh-yaml/service-containers/#running-services-for-the-duration-of-the-pipeline), steps inside the custom plugin will not be able to access it
+ * If you have a [service container in the pipeline-level]({{site.baseurl}}/docs/pipelines/service-containers/#running-services-for-the-duration-of-the-pipeline), steps inside the custom plugin will not be able to access it
  * If you try to attach a service container to a custom plugin, the plugin will fail when executed
  * If you try to define a custom plugin where a step inside it has a service container attached, the custom plugin will fail when executed
 
-## What to read next
+## Related articles
+[Introduction to Pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)
+[Freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/)  
+[Build step]({{site.baseurl}}/docs/pipelines/steps/build/)  
+[Push step]({{site.baseurl}}/docs/pipelines/steps/push/)  
 
-* [Introduction to Pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
-* [Freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)
-* [Build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)
-* [Push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)

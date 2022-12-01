@@ -1,29 +1,29 @@
 ---
-title: "Azure Registry Trigger"
-description: "Learn how to trigger Codefresh pipelines from Azure Registry events"
-group: configure-ci-cd-pipeline
+title: "Azure Registry trigger"
+description: "Trigger Codefresh pipelines from Azure Registry events"
+group: pipelines
 sub_group: triggers
 redirect_from:
   - /docs/pipeline-triggers/configure-azure-trigger/
 toc: true
 ---
 
-It is possible to define and manage Azure Registry Pipeline triggers with the Codefresh UI.
+Define and manage Azure Registry triggers for pipelines with the Codefresh UI.
 
 This allows you to trigger Codefresh pipelines when an Azure Registry event happens (e.g. a new Docker image is uploaded).
 
-## Manage Azure Triggers with Codefresh UI
+## Manage Azure triggers with Codefresh UI
 
 
 The process involves two parts:
 
-1. Creating a trigger in Codefresh. This will result in a special Codefresh webhook URL
-1. Creating a new notification in the Azure Registry that will use this URL to call Codefresh
+1. Creating a trigger in Codefresh. This will result in a special Codefresh webhook URL.
+1. Creating a new notification in the Azure Registry that will use this URL to call Codefresh.
 
-Make sure that you have an Azure cloud account and have already [created a registry](https://docs.microsoft.com/en-us/azure/container-registry/).
+> Make sure that you have an Azure cloud account and have already [created a registry](https://docs.microsoft.com/en-us/azure/container-registry/).
 
 
-### Create a new Azure Trigger
+### Create a new Azure trigger
 
 To add a new Azure trigger, navigate to a Codefresh Pipeline *Configuration* view and expand the *Triggers* section. Press the `Add Trigger` button and select a `Registry` trigger type to add.
 
@@ -51,7 +51,7 @@ alt="Azure Registry settings"
 max-width="50%"
 %}
 
-Click next and a new Dialog will appear that shows you the Codefresh webhook URL. Copy it to your clipboard. 
+Click next and a new dialog will appear that shows you the Codefresh webhook URL. Copy it to your clipboard. 
 
 
 {% include image.html
@@ -64,11 +64,11 @@ max-width="50%"
 
 Now we must set Azure to call this URL when an event takes place.
 
-### Setup Azure Notification
+### Set up Azure notification
 
 The easiest way to create an Azure trigger is with the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/acr/webhook?view=azure-cli-latest#az-acr-webhook-create) (Also available in the Azure portal)
 
-Here is the command
+Here is the command:
 
 {% highlight shell %}
 {% raw %}
@@ -83,3 +83,6 @@ The name can be anything you want. The URI is the Codefresh URL that was created
 
 Now, every time you push a new Docker image to the selected Azure Docker repository, manually, with Codefresh or any other CI/CD tool, Codefresh will trigger execution of all pipelines associated with that Azure Push trigger event.
 
+## Related articles
+[Triggers for pipelines]({{site.baseurl}}/docs/pipelines/triggers)  
+[Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  

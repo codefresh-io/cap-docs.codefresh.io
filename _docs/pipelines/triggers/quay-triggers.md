@@ -1,17 +1,17 @@
 ---
 title: "Quay Trigger"
-description: "How to trigger Codefresh pipelines from Quay"
-group: configure-ci-cd-pipeline
+description: "Trigger Codefresh pipelines from Quay"
+group: pipelines
 sub_group: triggers
 redirect_from:
   - /docs/pipeline-triggers/configure-quay-trigger/
 toc: true
 ---
 
-It is possible to define and manage Quay pipeline triggers with the Codefresh UI.
+Define and manage Quay triggers for pipelines with the Codefresh UI.
 This allows you to trigger Codefresh pipelines when a Quay event happens (e.g. a new Docker image is uploaded).
 
-## Manage Quay Triggers with Codefresh UI
+## Manage Quay triggers with Codefresh UI
 
 
 The process involves two parts:
@@ -19,7 +19,7 @@ The process involves two parts:
 1. Creating a trigger in Codefresh (this will result in a special Codefresh webhook URL)
 1. Creating a new notification in Quay that will use this URL to call Codefresh
 
-Make sure that you have a Quay account and have already [created a repository](https://docs.quay.io/guides/create-repo.html) (or pushed a Docker image at least once).
+> Make sure that you have a Quay account and have already [created a repository](https://docs.quay.io/guides/create-repo.html) (or pushed a Docker image at least once).
 
 
 ### Create a new Quay Trigger
@@ -63,7 +63,7 @@ max-width="50%"
 
 Now we must set Quay to call this URL when an event takes place.
 
-### Setup Quay Notification
+### Set up Quay notification
 
 Log in your Quay account and go to the respective repository. You can also click the link shown in the Codefresh dialog to go directly to the settings of that repository.
 
@@ -97,3 +97,6 @@ Finally click *Create Notification*.
 
 Now, every time you push a new Docker image to the selected Quay repository, manually, with Codefresh or any other CI/CD tool, Codefresh will trigger execution of all pipelines associated with that Quay Push trigger event.
 
+## Related articles
+[Triggers for pipelines]({{site.baseurl}}/docs/pipelines/triggers)  
+[Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  

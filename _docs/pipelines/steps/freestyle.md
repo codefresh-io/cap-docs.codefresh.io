@@ -35,7 +35,7 @@ CollectAllMyDeps:
 
 Select an image to start a container, then you can specify a working directory, and commands.
 If you do not specify a working directory or commands, the step runs the organic commands specified by the image.
-In all freestyle steps Codefresh automatically [uses a shared docker volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) that contains your git source code.
+In all freestyle steps Codefresh automatically [uses a shared docker volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) that contains your git source code.
 
 ## Usage
 
@@ -84,7 +84,7 @@ step_name:
 | ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- |
 | `title`                                    | The free-text display name of the step.                                                                                                                                                                                                                                                                                                                                     | Optional                  |
 | `description`                              | A basic, free-text description of the step.                                                                                                                                                                                                                                                                                                                                 | Optional                  |
-| `stage`                              | Parent group of this step. See [using stages]({{site.baseurl}}/docs/codefresh-yaml/stages/) for more information.                                                                                                                                                                                          | Optional                  |
+| `stage`                              | Parent group of this step. See [using stages]({{site.baseurl}}/docs/pipelines/stages/) for more information.                                                                                                                                                                                          | Optional                  |
 | `image`                                    | The image from which the executable container is created. It can be an explicit ID of a Docker image, or a variable that references a **Build** or **Push** step.                                                                                                                                                                                                           | Required                  |
 | `working_directory`                        | The directory from which the commands are executed. It can be an explicit path in the container's file system, or a variable that references another step. The default `working_directory` is the cloned repository directory and not the working directory specified by the image. If you need to use the default working directory of the image use `IMAGE_WORK_DIR`.     | Default                   |
 | `commands`                                 | One or more commands to execute in a shell in the container, as array of strings.                                                                                                                                                                                                                                                                                                                                        | Optional                  |
@@ -95,8 +95,8 @@ step_name:
 | `fail_fast`                                | If a step fails, and the process is halted. The default value is `true`.                                                                                                                                                                                                                                                                                                    | Default                   |
 | `registry_context`                                 | Advanced property for resolving Docker images when [working with multiple registries with the same domain]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#working-with-multiple-registries-with-the-same-domain)                            | Optional                  |
 | `volumes` | One or more volumes for the container. All volumes must be mounted from the existing shared volume (see details below) |Optional 
-| `when`                                     | Define a set of conditions that need to be satisfied in order to execute this step. You can find more information in the [Conditional Execution of Steps]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) article.                                                                                                                                                                     | Optional                  |
-| `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-Step Operations]({{site.baseurl}}/docs/codefresh-yaml/post-step-operations/).                                                                                                                                                                                                                                             | Optional                  |
+| `when`                                     | Define a set of conditions that need to be satisfied in order to execute this step. You can find more information in the [Conditional Execution of Steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) article.                                                                                                                                                                     | Optional                  |
+| `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-Step Operations]({{site.baseurl}}/docs/pipelines/post-step-operations/).                                                                                                                                                                                                                                             | Optional                  |
 | `retry`   | Define retry behavior as described in [Retrying a step]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#retrying-a-step).                                                                               | Optional                  |
 
 **Exported resources:**
@@ -104,7 +104,7 @@ step_name:
 
 ## Examples
 
-Here are some full pipelines with freestyle steps. Notice that in all cases the pipelines are connected to [git repositories]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-creation-modes)
+Here are some full pipelines with freestyle steps. Notice that in all cases the pipelines are connected to [git repositories]({{site.baseurl}}/docs/pipelines/pipelines/#pipeline-creation-modes)
 so the source code is already checked out and available to all pipeline steps.
 
 **Creating a [JAR file]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/):**
@@ -173,7 +173,7 @@ steps:
 ## Dynamic freestyle steps
 
 Codefresh has the unique ability to allow you to run freestyle steps in the context of a docker image
-created on the same pipeline. This means that you can dynamically [create docker images]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) on demand within the pipeline
+created on the same pipeline. This means that you can dynamically [create docker images]({{site.baseurl}}/docs/pipelines/steps/build/) on demand within the pipeline
 that needs them.
 
 Creating a custom docker image with extra tools (Terraform and Ansible)
@@ -197,7 +197,7 @@ steps:
 {% endraw %} 
 {% endhighlight %}
 
-Here the `UseMyCustomImage` freestyle step is running in the [context]({{site.baseurl}}/docs/codefresh-yaml/variables/#context-related-variables) of the Docker image that was created in the previous step.
+Here the `UseMyCustomImage` freestyle step is running in the [context]({{site.baseurl}}/docs/pipelines/variables/#context-related-variables) of the Docker image that was created in the previous step.
 In fact, a very common pattern that you will see in Codefresh pipelines is the executions of [unit tests]({{site.baseurl}}/docs/testing/unit-tests/) in the image that was created in a build step:
 
 `codefresh.yml`
@@ -248,7 +248,7 @@ entry_point:
 
 When you use the `commands` field, it will override the container original `entry_point` and will execute the commands in a shell inside the container.    
 The provided commands are concatenated into a single command using the shell's `;` operator, and are run using the default shell `/bin/sh` as an entry point.  
-Additional settings that are set only when using commands are `set -e`, and the [`cf_export`]({{site.baseurl}}/docs/codefresh-yaml/variables/#using-cf_export-command) utility.
+Additional settings that are set only when using commands are `set -e`, and the [`cf_export`]({{site.baseurl}}/docs/pipelines/variables/#using-cf_export-command) utility.
 
 > Using complex commands in the freestyle step requires use of [YAML block scalars](http://stackoverflow.com/questions/3790454/in-yaml-how-do-i-break-a-string-over-multiple-lines).
 
@@ -275,9 +275,9 @@ commands:
 
 ## Custom volumes
 
-If you are familiar with [Codefresh pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) you should know that all freestyle steps automatically share a [volume](https://docs.docker.com/storage/) mounted at `/codefresh/volume` which can be used to transfer data (e.g. dependencies and test results) from each step to the next.
+If you are familiar with [Codefresh pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) you should know that all freestyle steps automatically share a [volume](https://docs.docker.com/storage/) mounted at `/codefresh/volume` which can be used to transfer data (e.g. dependencies and test results) from each step to the next.
 
-**This volume is automatically mounted by Codefresh and needs no configuration at all**. All you have to do to access it, is read/write the `/codefresh/volume` folder from your application. This folder also [includes by default the source code]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#cloning-the-source-code) of the git repository connected to the pipeline (at the `/codefresh/volume/<repo_name>` subfolder)
+**This volume is automatically mounted by Codefresh and needs no configuration at all**. All you have to do to access it, is read/write the `/codefresh/volume` folder from your application. This folder also [includes by default the source code]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#cloning-the-source-code) of the git repository connected to the pipeline (at the `/codefresh/volume/<repo_name>` subfolder)
 
 You can use the `volumes` property to create your own custom volumes that can be mounted in different folders. **For security reasons however all source volume data (i.e. the "host" folder) still needs to be bound with `/codefresh/volume` or any of its subdirectories**:
 
@@ -345,9 +345,8 @@ max-width="80%"
 %}
 
 
-## What to read next
-
-* [Introduction to Pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
-* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [Pipeline Steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
+## Related articles
+[Introduction to Pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  
+[Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)  
+[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
 

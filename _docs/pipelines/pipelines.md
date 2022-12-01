@@ -1,7 +1,7 @@
 ---
-title: "Creating Pipelines"
-description: "How to define Pipelines in Codefresh"
-group: configure-ci-cd-pipeline
+title: "Creating pipelines"
+description: "How to define pipelines in Codefresh"
+group: pipelines
 redirect_from:
   - /docs/pipeline
   - /docs/pipeline/
@@ -14,11 +14,11 @@ redirect_from:
 toc: true
 ---
 
-Before reading this page make sure that you are familiar with the theory behind Codefresh pipelines at the [introduction page]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/).
+Before creating a pipeline, make sure you are familiar with the theory behind [Codefresh pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/).
 
-## Pipeline Concepts
+## Pipeline concepts
 
-The aim of Codefresh pipelines is to have re-usable sequences of steps that can be used for different applications (or micro-services) via the use of git triggers.
+The aim of Codefresh pipelines is to have re-usable sequences of steps that can be used for different applications (or micro-services) via the use of Git triggers.
 
 All the main concepts are shown below:
 
@@ -32,13 +32,13 @@ caption="Pipeline concepts"
 max-width="60%"
 %}
 
-* **Projects**: the top-level concept in Codefresh. You can create projects to group pipelines that are related. In most cases a single project will be a single application (that itself contains many micro-services). You are free to use projects as you see fit. For example, you could create a project for a specific Kubernetes cluster or a specific team/department.
+* **Projects**: The top-level concept in Codefresh. Projects are used to group related pipelines. In most cases a single project will be a single application (that itself contains many micro-services). You are free to use projects as you see fit. For example, you could create a project for a specific Kubernetes cluster or a specific team/department.
 
-* **Pipelines**: each project can have multiple pipelines.  Pipelines that belong to a single project are easily managed all together. It is also very easy to create a new pipeline in a project by copying an existing pipeline. Notice that unlike other CI solutions a pipeline in Codefresh is **NOT** tied to a specific git repository. You should try to make your pipelines generic enough so that they can be reused for similar applications even when they exist in different git repositories (a fairly typical setup for microservices).
+* **Pipelines**: Each project can have multiple pipelines.  Pipelines that belong to a single project can be managed as a unit. You can also create a new pipeline by copying an existing pipeline. Notice that unlike other CI solutions, a pipeline in Codefresh is **NOT** tied to a specific Git repository. You should try to make your pipelines generic enough so that they can be reused for similar applications even when they exist in different Git repositories (a fairly typical setup for microservices).
 
-* **Pipeline Steps**: each pipeline has a definition that defines the [pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/) that are executed each time this pipeline is triggered. The definition of a pipeline is described in a special [codefresh.yml]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) file. The `codefresh.yml` file can be fetched from the same repository of the source code, from a completely different repository or even defined in-place in the Codefresh pipeline editor. Again, notice that it is possible to have a pipeline that checks out its source code from git repository A, but actually defines its steps in a `codefresh.yml` file that is fetched from git repository B.
+* **Pipeline steps**: Each pipeline has a definition that defines the [pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/) that are executed each time this pipeline is triggered. The definition of a pipeline is described in a special [codefresh.yml]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) file. The `codefresh.yml` file can be fetched from the same repository as that of the source code, from a completely different repository, or even defined in-place in the Codefresh pipeline editor. Again, notice you can have a pipeline that checks out its source code from Git repository A, but actually defines its steps in a `codefresh.yml` file that is fetched from Git repository B.
 
-* **Triggers**: each pipeline can have zero, one, or more [triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/). Codefresh supports several kinds of triggers such as Git, Cron or Docker push triggers. Triggers that happen with Git webhooks can come from the same git repository that contains the git code **OR** any other completely different repository. Triggers are the linking medium between a pipeline and a git repository. You can have a pipeline with many triggers so it will be executed when a code change happens to any of them.
+* **Triggers**: A pipeline can have zero, one, or more [triggers]({{site.baseurl}}/docs/pipeline/triggers/). Codefresh supports several kinds of triggers such as Git, Cron, and Docker push triggers. Triggers that happen with Git webhooks can come from the same Git repository that contains the git code, **OR**, a completely different repository. Triggers are the linking medium between a pipeline and a Git repository. You can have a pipeline with multiple triggers to be executed when a code change happens to any of them.
 
 With these basic building blocks, you can define many complex workflows. In particular, it is very easy in Codefresh to create a scenario where:
 
@@ -49,7 +49,7 @@ With these basic building blocks, you can define many complex workflows. In part
 Of course, it also possible to have a simpler scenario where the trigger, the pipeline steps and the source code of the application are all defined for the same GIT repository.
 
 
-## Creating New Pipelines
+## Creating a pipeline
 
 You can create new projects by clicking on *Projects* in the left sidebar and then selecting the *New Project* button on the top right corner. A dialog will appear that will ask you for the project name and optional tags that you can use for [access control]({{site.baseurl}}/docs/enterprise/access-control/).
 
@@ -75,7 +75,7 @@ or by copying an existing one from the same project or a completely different pr
 
 1. The main window shows the definition of the current pipeline. The screenshot shows the inline editor but pipelines can also be defined from external files (checked into source control) as explained later.
 
-1. The right part of the window shows extra settings for this pipeline such as [premade steps]({{site.baseurl}}/docs/codefresh-yaml/steps/), [triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/) and launch variables/parameters.
+1. The right part of the window shows extra settings for this pipeline such as [premade steps]({{site.baseurl}}/docs/codefresh-yaml/steps/), [triggers]({{site.baseurl}}/docs/pipelines/triggers/) and launch variables/parameters.
 
 
 
@@ -129,38 +129,37 @@ You can then copy and paste a URL to a raw Codefresh YAML file.  This will allow
 
 As an example, instead of using `https://github.com/codefresh-contrib/example-voting-app/blob/master/codefresh.yml` you should enter `https://raw.githubusercontent.com/codefresh-contrib/example-voting-app/master/codefresh.yml`
 
-## Pipeline Settings
+## Pipeline settings
 
 Once you create your pipeline you can also click on the top tab called *Settings* for some extra parameters.
 
 ### General 
 
-- **Pipeline Name**: the name of your pipeline (useful for working with the [Codefresh CLI](https://codefresh-io.github.io/cli/))
-- **Pipeline ID**: the ID of your pipeline (useful for working with the [Codefresh CLI](https://codefresh-io.github.io/cli/))
-> Note that the Pipeline Name and ID are interchangeable when working with the Codefresh CLI
-- **Pipeline Description**: a freetext pipeline description
-- **Pipeline Tags**: One or more tags used for [access control]({{site.baseurl}}/docs/enterprise/access-control/)
-- **Public Build Logs**: If enabled, the builds of this pipeline will be [viewable by users without a Codefresh account]({{site.baseurl}}/docs/configure-ci-cd-pipeline/build-status/#public-build-logs
-)
-- **Template**: Convert this pipeline to a template (see the next section for details on templates)
-- **Badges**: simple images that show you the last [build status]({{site.baseurl}}/docs/configure-ci-cd-pipeline/build-status/)
+- **Pipeline Name**: The name of your pipeline (useful for working with the [Codefresh CLI](https://codefresh-io.github.io/cli/))
+- **Pipeline ID**: The ID of your pipeline (useful for working with the [Codefresh CLI](https://codefresh-io.github.io/cli/))
+  > When working with the Codefresh CLI, the Pipeline Name and ID are interchangeable.
+- **Pipeline Description**: Freetext pdescription of the pipeline. 
+- **Pipeline Tags**: One or more tags used for [access control]({{site.baseurl}}/docs/administration/access-control/)
+- **Public Build Logs**: If enabled, [users without a Codefresh account]({{site.baseurl}}/docs/pipelines/build-status/#public-build-logs) can view the builds of this pipeline.
+- **Template**: Convert this pipeline to a template (see the next section for details on templates).
+- **Badges**: Simple images that show you the last [build status]({{site.baseurl}}/docs/pipelines/build-status/).
 
 ### Policies
 
-- **Pipeline Concurrency**: the maximum number of concurrent builds (0-14 or unlimited) -- set this when your pipeline has only one trigger  
+- **Pipeline Concurrency**: The maximum number of concurrent builds (0-14 or unlimited). Set the concurrency when your pipeline has only one trigger.  
   > A Pipeline Concurrency of **0** freezes execution of the pipeline, switching it to maintenance mode. Use this concurrency setting to modify existing pipelines and freeze execution until you complete the changes. 
-- **Trigger Concurrency**: the maximum number of concurrent builds per trigger (1-15 or unlimited) -- set this when your pipeline has multiple triggers
-- **Branch Concurrency**: the maximum number of concurrent builds per branch (1-15 or unlimited) -- set this when your pipeline can build different branches
-- **Build Termination**: various toggles for when a build from the pipeline should terminate
+- **Trigger Concurrency**: The maximum number of concurrent builds per trigger (1-15 or unlimited). Define the trigger concurrency when your pipeline has multiple triggers.
+- **Branch Concurrency**: The maximum number of concurrent builds per branch (1-15 or unlimited). Define this when your pipeline can build different branches.
+- **Build Termination**: Options that determine when a build from the pipeline should terminate:
   - Once a build is created terminate previous builds from the same branch
   - Once a build is created terminate previous builds only from a specific branch (name matches a regular expression)
   - Once a build is created, terminate all other running builds
   - Once a build is terminated, terminate all child builds initiated from it
-- **Pending approval volume**: choose what happens with the [pipeline volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) when a pipeline is waiting for [approval]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/#keeping-the-shared-volume-after-an-approval)
+- **Pending approval volume**: Choose what happens with the [pipeline volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) when a pipeline is waiting for [approval]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/#keeping-the-shared-volume-after-an-approval)
   - Keep the volume available
   - Discard the volume
   - Honor the option defined globally in your Codefresh account
-- **Pending approval concurrency limit effect**: decide if a build that is pending approval [counts against]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/#define-concurrency-limits) the concurrency limits or not
+- **Pending approval concurrency limit effect**: Determines if a build that is pending approval [counts against]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/#define-concurrency-limits) the concurrency limits or not
   - Builds in pending approval will **not** be counted when determining the concurrency limit for a pipeline
   - Builds in pending approval will **be** counted when determining the concurrency limit for a pipeline
   - Honor the option defined globally in your Codefresh account  
@@ -185,7 +184,7 @@ Some common scenarios are:
 
 For the volume behavior during approvals, notice that if [you keep the volume available]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/#keeping-the-shared-volume-after-an-approval) on the pipeline while it is waiting for approval it will still count as "running" against your pricing tier limit.
 
-### External Resources
+### External resources
 
 In a big organization you might have some reusable scripts or other resources (such as Dockerfiles) that you want to use in multiple pipelines. Instead of fetching them manually in freestyle steps you can simply define them as *external resources*. When a pipeline runs, Codefresh will fetch them automatically and once the pipeline starts the files/folders will already be available in the paths that you define.
 
@@ -217,10 +216,11 @@ You can define multiple external resources in a single pipeline.
   - Small (recommended for 1-2 concurrent steps)
   - Medium (recommended 3-4 steps)
   - Large (recommended 5-6 steps)
-
+<!--add here the disk space for builds-->
 ## Using Pipeline Templates
 
-Codefresh also supports the creation of pipeline "templates" which are blueprints for creating new pipelines. To enable the creation of pipelines from templates first visit the global pipeline configuration at [https://g.codefresh.io/account-admin/account-conf/pipeline-settings](https://g.codefresh.io/account-admin/account-conf/pipeline-settings) and toggle the *Enable Pipeline Templates* button.
+Codefresh also supports the creation of pipeline "templates", which are blueprints for creating new pipelines.  
+To enable the creation of pipelines from templates first visit the global pipeline configuration at [https://g.codefresh.io/account-admin/account-conf/pipeline-settings](https://g.codefresh.io/account-admin/account-conf/pipeline-settings) and toggle the *Enable Pipeline Templates* button.
 
 The easiest way to create a new template is by clicking the "3 dots menu" on the pipeline name:
 
@@ -295,12 +295,11 @@ max-width="90%"
 Pipelines that belong to a project will mention it below their name so it is very easy to understand which pipelines belong to a project and which do not.
 
 
-## What to read next
-
-* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
-* [External Docker Registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/)
-* [YAML Examples]({{site.baseurl}}/docs/yaml-examples/examples/)
+## Related articles
+[Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)  
+[Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)  
+[External Docker Registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/)  
+[YAML Examples]({{site.baseurl}}/docs/yaml-examples/examples/)
 
 
 

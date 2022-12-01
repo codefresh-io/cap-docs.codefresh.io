@@ -131,9 +131,9 @@ For more details on access control and users see also the [access control page](
 
 ## Keeping the Shared Volume after an Approval
 
-As soon as a pipeline starts waiting for an approval, all contents of the [shared Codefresh volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) are lost. Once the pipeline continues running all files that were created manually inside the volume are not available any more. 
+As soon as a pipeline starts waiting for an approval, all contents of the [shared Codefresh volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) are lost. Once the pipeline continues running all files that were created manually inside the volume are not available any more. 
 
-If you want to keep any temporary files that were there before the approval, you need to enable the respective policy in your [pipeline settings]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#policies).
+If you want to keep any temporary files that were there before the approval, you need to enable the respective policy in your [pipeline settings]({{site.baseurl}}/docs/pipelines/pipelines/#policies).
 
 You can either set this option differently per pipeline, or globally in your account at your [account settings](https://g.codefresh.io/account-admin/account-conf/pipeline-settings).
 
@@ -149,7 +149,7 @@ max-width="90%"
 
 >Notice that if you do decide to keep the volume after an approval, the pipeline will still count as "running" against your pricing plan (if you use the SAAS version of Codefresh). If you don't keep the volume, the pipeline is stopped/paused while it is waiting for approval and doesn't count against your pricing plan. We advise you to keep the volume only for pipelines that really need this capability.
 
->Notice also that you if you use the [Hybrid version]({{site.baseurl}}/docs/administration/behind-the-firewall/) of Codefresh and your [Runner]({{site.baseurl}}/docs/administration/codefresh-runner/) is setup with local volumes, then the volume will only be present if the dind pod
+>Notice also that you if you use the [Codefresh Runner]({{site.baseurl}}/docs/reference/behind-the-firewall/) and your [Runner]({{site.baseurl}}/docs/installation/codefresh-runner/) is setup with local volumes, then the volume will only be present if the dind pod
 is scheduled in the same node once the pipeline resumes. Otherwise the volume will not be reused.
 
 ## Controlling the Rejection Behavior
@@ -175,7 +175,7 @@ In this case you can also read the approval result and make the pipeline work di
 
 ## Getting the Approval Result
 
-As also explained in [step dependencies]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/#custom-steps-dependencies) all steps in the Codefresh pipeline belong to a global object
+As also explained in [step dependencies]({{site.baseurl}}/docs/pipelines/advanced-workflows/#custom-steps-dependencies) all steps in the Codefresh pipeline belong to a global object
 called `steps` (indexed by name). You can read the `result` property for an approval step to see if it was approved or rejected.
 
 Here is an example:
@@ -335,16 +335,14 @@ max-width="50%"
 %}
 
 Also, if you run a pipeline manually that includes an approval step you should check
-the "Report notification of pipeline execution" checkbox as explained in [Monitoring Pipelines](
-{{site.baseurl}}/docs/configure-ci-cd-pipeline/monitoring-pipelines/#monitoring-pipelines-outside-the-codefresh-ui).
+the "Report notification of pipeline execution" checkbox as explained in [Monitoring Pipelines]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#monitoring-pipelines-outside-the-codefresh-ui).
 
 
 
-## What to read next
-
-- [Post-Step Operations]({{site.baseurl}}/docs/codefresh-yaml/post-step-operations/) 
-- [Advanced Workflows ]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/) 
-- [Conditional Execution of Steps]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) 
-- [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
+## Related articles
+[Post-Step Operations]({{site.baseurl}}/docs/pipelines/post-step-operations/)  
+[Advanced Workflows ]({{site.baseurl}}/docs/pipelines/advanced-workflows/)  
+[Conditional Execution of Steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) 
+[Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)
 
 
