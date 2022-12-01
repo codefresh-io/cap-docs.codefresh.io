@@ -14,7 +14,7 @@ Monitor provisioned runtimes for security, health, and sync errors:
 
 
 ### View/download logs to troubleshoot runtimes
-Logs are available for completed runtimes, both for the runtime and for individual runtime components. Download runtime log files for offline viewing and analysis, or view online logs for a runtime component, and download if needed for offline analysis. Online logs support free-text search, search-result navigation, and line-warp for enhanced readability.  
+Logs are available for completed runtimes, both for the runtime and for individual runtime components. Download runtime log files for offline viewing and analysis, or view online logs for a runtime component, and download if needed for offline analysis. Online logs support free-text search, search-result navigation, and line-wrap for enhanced readability.  
 
 Log files include events from the date of the application launch, with the newest events listed first. 
 
