@@ -130,7 +130,6 @@ See [Filters for application resources]({{site.baseurl}}/docs/deployment/applica
 * Discrepancy between status in health snapshot filter and corresponding list of applications.
 * Resources with Missing health status not displayed in Current State.
 * "No Git Source with write permissions" error on creating application.
-<!--* codefresh-hosted: Application Missing from Applicationset (Stuck Syncing but no data in UI and no ability to terminate sync) (CR-14980 - Daniel M)-->
 * Deleted applications shown as errors in the Error/Warning panel.
 * Wrong commit message in the Timelines tab for Git Source-applications.
 * PR (Pull Request) number in the  Timelines tab does not match the commit in the Application header.
@@ -155,7 +154,7 @@ See [Filters for application resources]({{site.baseurl}}/docs/deployment/applica
 
 **Others**  
 * Safari: Clicking Settings icon on the toolbar does not open Configuration page.
-* No option to log out on selecting incorrect authentication provider.
+* No option to log out on selecting an incorrect authentication provider.
 
 ## October 2022
 
