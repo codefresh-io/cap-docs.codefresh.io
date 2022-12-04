@@ -104,9 +104,9 @@
 - title: Image enrichment
   url: "/gitops-integrations"
   pages:
-    - title: Image enrichment with integrations
+    - title: Image enrichment with GitOps integrations
       url: "/image-enrichment-overview"
-    - title: CI integrations
+    - title: GitOps CI integrations
       url: "/ci-integrations"
       sub-pages:
         - title: Codefresh Classic
@@ -115,12 +115,12 @@
           url: "/github-actions"
         - title: Jenkins
           url: "/jenkins"   
-    - title: Issue tracking
+    - title: GitOps issue tracking integrations
       url: "/issue-tracking"
       sub-pages:  
       - title: Jira 
         url: "/jira"
-    - title: Container registries
+    - title: GitOps container registry integrations
       url: "/container-registries"
       sub-pages:  
       - title: Amazon ECR
