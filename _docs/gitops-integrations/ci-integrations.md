@@ -1,7 +1,7 @@
 ---
 title: "CI integrations"
 description: ""
-group: integrations
+group: gitops-integrations
 toc: true
 ---
 
@@ -10,7 +10,7 @@ Use Codefresh's Hosted GitOps with any popular Continuous Integration (CI) solut
 You can connect a third-party CI solution to Codefresh, such as GitHub Actions for example, to take care of common CI tasks such as building/testing/scanning source code, and have Codefresh Hosted GitOps still responsible for the deployment, including image enrichment and reporting.  
 The integration brings in all the CI information to your images which you can see in the Images dashboard.   
 
-See [Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/).
+See [Image enrichment with integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/).
 
 ### Codefresh image reporting and enrichment action
 To support the integration between Codefresh and third-party CI platforms and tools, we have created dedicated actions for supported CI tools in the Codefresh Marketplace. These actions combine image enrichment and reporting through integrations with issue tracking and container registry tools. 
@@ -32,12 +32,12 @@ Use the action as follows:
 ### Connect a third-party CI platform/tool to Codefresh
 Connecting the CI platform/tool to Codefresh from the UI includes configuring the required arguments, and then generating and copying the YAML manifest for the report image to your pipeline.  
 
-1. In the Codefresh UI, go to [Integrations](https://g.codefresh.io/2.0/account-settings/integrations){:target="\_blank"}.
+1. In the Codefresh UI, go to [GitOps Integrations](https://g.codefresh.io/2.0/account-settings/integrations){:target="\_blank"}.
 1. Filter by **CI tools**, then select the CI tool and click **Add**.
 1. Define the arguments for the CI tool:  
-  [Codefresh Classic]({{site.baseurl}}/docs/integrations/ci-integrations/codefresh-classic/)  
-  [GitHub Action]({{site.baseurl}}/docs/integrations/ci-integrations/github-actions/)  
-  [Jenkins]({{site.baseurl}}/docs/integrations/ci-integrations/jenkins/)  
+  [Codefresh Classic]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/codefresh-classic/)  
+  [GitHub Action]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/github-actions/)  
+  [Jenkins]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/jenkins/)  
 
   For the complete list of arguments you can use, see [CI integration argument reference](#ci-integration-argument-reference) in this article.
 
@@ -79,9 +79,9 @@ The table describes _all_ the arguments required for CI integrations in general.
 | `CF_RUNTIME_NAME`       | The runtime to use for the integration. If you have more than one runtime, select the runtime from the list. | Required  |
 | `CF_PLATFORM_URL`       | The root URL of the Codefresh application. The default value is `https://g.codefresh.io`.  | Optional  |
 | `CF_API_KEY`            | The API key for authentication. Generate the key for the integration.  | Required  |
-| `CF_CONTAINER_REGISTRY_INTEGRATION` | The name of the container registry integration created in Codefresh where the image is stored. See [Container registry integrations]({{site.baseurl}}/docs/integrations/container-registries/). | Optional  |
+| `CF_CONTAINER_REGISTRY_INTEGRATION` | The name of the container registry integration created in Codefresh where the image is stored. See [Container registry integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/). | Optional  |
 | `CF_JIRA_INTEGRATION`               | _Deprecated from version 0.0.565 and higher._ Replaced by `CF_ISSUE_TRACKING_INTEGRATION`. |  _Deprecated_
-| `CF_ISSUE_TRACKING_INTEGRATION` | The name of the issue tracking integration created in Codefresh to use for image enrichment. Relevant only if Jira enrichment is required for the image. If you don't have a Jira integration, click **Create Atlassian Jira Integration** and configure settings. See [Jira integration]({{site.baseurl}}/docs/integrations/issue-tracking/jira/).  | Optional  |
+| `CF_ISSUE_TRACKING_INTEGRATION` | The name of the issue tracking integration created in Codefresh to use for image enrichment. Relevant only if Jira enrichment is required for the image. If you don't have a Jira integration, click **Create Atlassian Jira Integration** and configure settings. See [Jira integration]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/jira/).  | Optional  |
 | `CF_IMAGE`                    | The image to be enriched and reported in Codefresh. Pass the `[account-name]/[image-name]:[tag]` built in your CI. | Required  |
 | `CF_WORKFLOW_NAME`           | The name assigned to the workflow that builds the image. When defined, the name is displayed in the Codefresh platform. Example, `Staging step` | Optional  |
 | `CF_GIT_BRANCH`              | The Git branch with the commit and PR (pull request) data to add to the image. Pass the Branch from the event payload used to trigger your action.  | Required  |
@@ -97,8 +97,8 @@ The table describes _all_ the arguments required for CI integrations in general.
 | `CF_JIRA_FAIL_ON_NOT_FOUND`            | Relevant only when `CF_ISSUE_TRACKING_INTEGRATION` is defined. The report image action when the `CF_JIRA_MESSAGE` is not found. When set to `true`, the report image action is failed.  | Required  |
 
 ### Related articles
-[Container registry integrations]({{site.baseurl}}/docs/integrations/container-registries/)  
-[Issue tracking intergrations]({{site.baseurl}}/docs/integrations/issue-tracking/)  
+[Container registry integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/)  
+[Issue tracking intergrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/)  
 
 
 

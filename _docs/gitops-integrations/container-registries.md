@@ -1,13 +1,13 @@
 ---
-title: "Container registry integrations"
+title: "Container registry GitOps integrations"
 description: ""
-group: integrations
+group: gitops-integrations
 toc: true
 ---
 
 Codefresh can integrate with popular container registries such as Docker Hub, JFrog Artifactory, and more.  
 
-Adding a container registry integration in Codefresh allows you to reference the integration in third-party CI platforms/tools such as GitHub Actions and Codefresh Classic by the name of the registry integration, instead of explicit credentials. See [Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/) and [CI integrations]({{site.baseurl}}/docs/integrations/ci-integrations/).  
+Adding a container registry integration in Codefresh allows you to reference the integration in third-party CI platforms/tools such as GitHub Actions and Codefresh Classic by the name of the registry integration, instead of explicit credentials. See [Image enrichment with integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/) and [CI integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/).  
 
 You add a container registry integration in Codefresh by:
 * Defining the integration name 
@@ -28,11 +28,11 @@ Configure the settings for a container registry integration in Codefresh.
 1. Filter by **Container Registry**, select the container registry, and click **Configure**.
 1. If you already have integrations, click **Add**.
 1. Define the arguments for the container registry:  
-  [Amazon ECR]({{site.baseurl}}/docs/integrations/container-registries/amazon-ecr/)   
-  [Docker Hub]({{site.baseurl}}/docs/integrations/container-registries/dockerhub/)  
-  [GitHub Container Registry]({{site.baseurl}}/docs/integrations/container-registries/github-cr/)   
-  [JFrog Artifactory]({{site.baseurl}}/docs/integrations/container-registries/jfrog/)    
-  [Quay]({{site.baseurl}}/docs/integrations/container-registries/quay/)  
+  [Amazon ECR]({{site.baseurl}}/docs/gitops-integrations/container-registries/amazon-ecr/)   
+  [Docker Hub]({{site.baseurl}}/docs/gitops-integrations/container-registries/dockerhub/)  
+  [GitHub Container Registry]({{site.baseurl}}/docs/gitops-integrations/container-registries/github-cr/)   
+  [JFrog Artifactory]({{site.baseurl}}/docs/gitops-integrations/container-registries/jfrog/)    
+  [Quay]({{site.baseurl}}/docs/gitops-integrations/container-registries/quay/)  
 1. To test the connection to the container registry before committing the changes, click **Test Connection**.
 1. To confirm, click **Commit**.
   It may take a few moments for the new integration to be synced to the cluster before it appears in the list.
@@ -66,7 +66,7 @@ If you have existing integrations, you can change the connection details, or del
 >Deleting an integration deletes the integration resource from the shared configuration Git repo, its secrets, the CI workflows that 
 use it. 
 
-1. In the Codefresh UI, go to [Integrations](https://g.codefresh.io/2.0/account-settings/integrations){:target="\_blank"}.
+1. In the Codefresh UI, go to [GitOps Integrations](https://g.codefresh.io/2.0/account-settings/integrations){:target="\_blank"}.
 1. Filter by **Container Registry**, and select the specific container registry integration.
 1. In the row with the integration to edit or delete, click the three dots and select **Edit** or **Delete**.
 1. To edit, update the **Username** and **Password** fields, and click **Test Connection** to verify the account credentials.
@@ -83,8 +83,8 @@ use it.
    %}
 
 ### Related articles
-[CI integrations]({{site.baseurl}}/docs/integrations/ci-integrations/)  
-[Issue-tracking integrations]({{site.baseurl}}/docs/integrations/issue-tracking/)  
+[CI integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/)  
+[Issue-tracking integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/)  
 [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/)  
 [Images]({{site.baseurl}}/docs/deployment/images/)  
 [Monitoring applications]({{site.baseurl}}/docs/deployment/applications-dashboard/)    

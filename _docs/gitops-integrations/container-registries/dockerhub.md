@@ -1,13 +1,13 @@
 ---
 title: "Docker Hub"
 description: ""
-group: integrations
+group: gitops-integrations
 sub_group: container-registries
 toc: true
 ---
 
 Codefresh has native support for interacting with Docker Hub registries, to push, pull, and deploy images.  
-For information on adding a Docker Hub integration in Codefresh, see [Container registry integrations]({{site.baseurl}}/docs/integrations/container-registries/).
+For information on adding a Docker Hub integration in Codefresh, see [Container registry integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/).
 
 ### Prerequisites
 Before you configure settings in Codefresh to integrate Docker Hub registry, do the following:
@@ -39,11 +39,11 @@ The table describes the arguments required to integrate Docker Hub to Codefresh.
    max-width="50%" 
    %}
    
-For how-to instructions, see [Configure container registry integrations in Codefresh]({{site.baseurl}}/docs/integrations/container-registries/#configure-container-registry-integrations-in-codefresh) and [Edit/delete container registry integrations in Codefresh]({{site.baseurl}}/docs/integrations/container-registries/#editdelete-container-registry-integrations).  
+For how-to instructions, see [Configure container registry integrations in Codefresh]({{site.baseurl}}/docs/gitops-integrations/container-registries/#configure-container-registry-integrations-in-codefresh) and [Edit/delete container registry integrations in Codefresh]({{site.baseurl}}/docs/gitops-integrations/container-registries/#editdelete-container-registry-integrations).  
 
 ### Related articles
 [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/)  
-[Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/)
-[CI integrations]({{site.baseurl}}/docs/integrations/ci-integrations/)  
-[Issue-tracking integrations]({{site.baseurl}}/docs/integrations/issue-tracking/)  
+[Image enrichment with integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/)
+[CI integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/)  
+[Issue-tracking integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/)  
 

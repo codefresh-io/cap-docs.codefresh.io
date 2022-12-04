@@ -102,7 +102,7 @@
     
 
 - title: Image enrichment
-  url: "/integrations"
+  url: "/gitops-integrations"
   pages:
     - title: Image enrichment with integrations
       url: "/image-enrichment-overview"

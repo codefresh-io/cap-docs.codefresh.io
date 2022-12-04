@@ -1,7 +1,7 @@
 ---
 title: "Jira"
 description: " "
-group: integrations
+group: gitops-integrations
 sub_group: issue-tracking
 toc: true
 ---
@@ -9,7 +9,7 @@ toc: true
 
 Codefresh has native integration for Atlassian Jira, to enrich images with information from Jira. Codefresh can monitor a feature all the way from the ticket creation phase, up to when it is implemented and deployed to an environment.  
 
-For information on adding a Jira integration in Codefresh, see [Issue-tracking integrations]({{site.baseurl}}/docs/integrations/issue-tracking/).
+For information on adding a Jira integration in Codefresh, see [Issue-tracking integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/).
 
 
 ### Prerequisites
@@ -45,7 +45,7 @@ The table describes the arguments required to integrate Jira in Codefresh.
   max-width="60%" 
 %}
  
-For information on adding a Jira integration in Codefresh, see [Issue-tracking integrations]({{site.baseurl}}/docs/integrations/issue-tracking/).
+For information on adding a Jira integration in Codefresh, see [Issue-tracking integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/).
 
 ### Using Jira integration in pipelines
 For pipelines based on GitHub Actions, configure the Jira integration in Codefresh, and then connect your GitHub Action to Codefresh, referencing the Jira integration by name.  
@@ -53,6 +53,6 @@ Codefresh uses the Secret Key stored in the runtime cluster to securely access J
 
 ### Related articles
 [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/)  
-[Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/)
-[CI integrations]({{site.baseurl}}/docs/integrations/ci-integrations/)  
-[Container registry integrations]({{site.baseurl}}/docs/integrations/container-registries/)  
+[Image enrichment with integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/)
+[CI integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/)  
+[Container registry integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/)  

@@ -1,13 +1,13 @@
 ---
 title: "Quay"
 description: ""
-group: integrations
+group: gitops-integrations
 sub_group: container-registries
 toc: true
 ---
 
 Codefresh has native support for interacting with Quay registries, from where you can push, pull, and deploy images.  
-Adding a Quay integration allows you to reference the integration in external CI tools such as GitHub Actions by the name of the integration account, instead of adding explicit credentials. See [Image enrichment overview]({{site.baseurl}}/docs/integrations/image-enrichment-overview/) and [CI integrations]({{site.baseurl}}/docs/integrations/ci-integrations/).
+Adding a Quay integration allows you to reference the integration in external CI tools such as GitHub Actions by the name of the integration account, instead of adding explicit credentials. See [Image enrichment overview]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/) and [CI integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/).
 
 
 ### Prerequisites
@@ -37,7 +37,7 @@ The table describes the arguments required to integrate Quay in Codefresh.
   max-width="50%"
   %}
 
-For how-to instructions, see [Configure container registry integrations in Codefresh]({{site.baseurl}}/docs/integrations/container-registries/#configure-container-registry-integrations-in-codefresh) and [Edit/delete container registry integrations in Codefresh]({{site.baseurl}}/docs/integrations/container-registries/#editdelete-container-registry-integrations).  
+For how-to instructions, see [Configure container registry integrations in Codefresh]({{site.baseurl}}/docs/gitops-integrations/container-registries/#configure-container-registry-integrations-in-codefresh) and [Edit/delete container registry integrations in Codefresh]({{site.baseurl}}/docs/gitops-integrations/container-registries/#editdelete-container-registry-integrations).  
 
 Make sure you have the:  
 * Quay domain username
@@ -46,6 +46,6 @@ Make sure you have the:
 
 ### Related articles
 [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/)  
-[Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/)  
-[CI integrations]({{site.baseurl}}/docs/integrations/ci-integrations/)  
-[Issue-tracking integrations]({{site.baseurl}}/docs/integrations/issue-tracking/)  
+[Image enrichment with integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/)  
+[CI integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/)  
+[Issue-tracking integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/)  
