@@ -1,11 +1,11 @@
 ---
-title: "Shared configuration"
+title: "Shared configuration for piplines"
 description: "How to keep your pipelines DRY"
 group: configure-ci-cd-pipeline
 toc: true
 ---
   
-After creating several pipelines in Codefresh you will start to notice several common values between them. Common examples are access tokens, environment URLs, configuration properties etc.
+After creating several pipelines in Codefresh, you will start to notice several common values between them. Common examples are access tokens, environment URLs, configuration properties etc.
 
 Codefresh allows you to create those shared values in a central place and then reuse them in your pipelines
 avoiding the use of copy-paste.
@@ -107,7 +107,7 @@ max-width="50%"
 %}
 
 Once you click *Add* the values from the shared configuration will be appended to the ones
-you have in your pipelines. In case of similar values the shared configuration will follow the [precedence rules]({{site.baseurl}}/docs/codefresh-yaml/variables/#user-provided-variables).
+you have in your pipelines. In case of similar values the shared configuration will follow the [precedence rules]({{site.baseurl}}/docs/pipelines/variables/#user-provided-variables).
 
 
 ## Using shared Helm values
@@ -135,7 +135,7 @@ Not only it will be used for this Helm chart, but it will be added in your globa
 
 ## Using values from the Shared Configuration in your Helm step
 
-Additionally, you can define shared variables in your account settings and reuse those across your Helm steps, and specifically, in your [custom Helm values](https://codefresh.io/docs/docs/new-helm/using-helm-in-codefresh-pipeline/#helm-values).
+Additionally, you can define shared variables in your account settings and reuse those across your Helm steps, and specifically, in your [custom Helm values]({{site.baseurl}}/docs/docs/new-helm/using-helm-in-codefresh-pipeline/#helm-values).
 
 Under *Account Setting* > *Shared Configuration*, add the variable to your shared configuration. 
 
@@ -257,9 +257,8 @@ See the [context section](https://codefresh-io.github.io/cli/contexts/create-con
 
 
 
-## What to read next
-
-* [Variables]({{site.baseurl}}/docs/codefresh-yaml/variables/)
-* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
+## Related articles
+[Variables]({{site.baseurl}}/docs/pipelines/variables/)  
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
 

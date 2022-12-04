@@ -1,5 +1,5 @@
 ---
-title: "Variables"
+title: "Variables in pipelines"
 description: ""
 group: codefresh-yaml
 redirect_from:
@@ -75,11 +75,11 @@ feature-vb145dh
 
 
 Notice that this syntax is specific to Codefresh and is **only** available within the Codefresh YAML file itself. If you want to write scripts or programs that use the Codefresh variables, you need to make them aware of the environment variable form.
-.
+
 
 ## System variables
 
-All system provided variables will also be automatically injected to any freestyle step as environment variables.
+System variables are automatically injected to any freestyle step as environment variables.
 
 > It is important to understand that all Git related variables such `CF_BRANCH`, `CF_COMMIT_MESSAGE`, `CF_REVISION` etc. are coming directly from the Git provider you use and have the same limitations of that provider. For example GitLab is sending less information in pull request events than normal pushes, and Bitbucket sends only the short hash of a commit in pull request events. We suggest you read the documentation of your Git provider first to understand what information is available for every Git event
 
@@ -169,7 +169,7 @@ Variables that are created by steps can have members. The members depend on the 
 
 
 
-## GitHub Release Variables
+## GitHub release variables
 
 GitHub allows you to create [releases](https://help.github.com/articles/creating-releases/) for marking specific Git tags for general availability.
 
@@ -185,7 +185,7 @@ You can set a [trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/
 | {% raw %}`${{CF_RELEASE_ID}}`{% endraw %}       | Internal ID for this release   |
 | {% raw %}`${{CF_PRERELEASE_FLAG}}`{% endraw %}  | true if the release if marked as non-production ready, false if it is ready for production   |
 
-## GitHub Pull Request Variables
+## GitHub Pull Request variables
 
 When a pull request is closed in GitHub, the following variables are also available
 
@@ -197,9 +197,9 @@ When a pull request is closed in GitHub, the following variables are also availa
 | {% raw %}`${{CF_PULL_REQUEST_MERGED_COMMIT_SHA}}`{% endraw %}       | the commit SHA on the base branch after the pull request was merged (in most cases it will be master)   |
 | {% raw %}`${{CF_PULL_REQUEST_HEAD_COMMIT_SHA}}`{% endraw %}  | the commit SHA on the head branch (the branch that we want to push)  |
 
-## User Provided Variables
+## User-defined variables
 
-User provided variables can be defined at 6 levels:
+User variables can be defined at 6 levels:
 
 1. Manually within a step using the [export](http://linuxcommand.org/lc3_man_pages/exporth.html) command or in any **subsequent** step with the [cf_export]({{site.baseurl}}/docs/codefresh-yaml/variables/#using-cf_export-command) command
 1. [Freestyle Step Definition]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/#examples) (using the `environment` field)
@@ -328,13 +328,11 @@ max-width="60%"
 >Notice that this feature is currently available only in Enterprise accounts.
 
 
-## Escape Characters
+## Escape characters
 When passing special characters through environmental variables `\` can be used as an escape character. For example if you were passing a cassandra connection string you might do something like `Points\=hostname\;Port\=16376\;Username\=user\;Password\=password`
 
 This will safely escape `;` and `=`.
 
-## What to read next
-
-* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
-* [Codefresh Conditionals]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/)
-* [Expression Syntax]({{site.baseurl}}/docs/codefresh-yaml/condition-expression-syntax/)
+## Related articles
+[Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)  
+[Codefresh Conditionals]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/)  

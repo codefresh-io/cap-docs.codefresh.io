@@ -1,32 +1,35 @@
 ---
-title: "Advanced Workflows with Parallel steps"
-description: "Learn how to create complex workflows in Codefresh with step dependencies"
+title: "Advanced workflows with parallel steps"
+description: "Create complex workflows in Codefresh with step dependencies"
 group: codefresh-yaml
 toc: true
 ---
 
-Codefresh is very flexible when it comes to pipeline complexity and depth. You can easily create:
+Codefresh is very flexible when it comes to pipeline complexity and depth.  
 
- * Sequential pipelines where step order is same as the listing order in yaml (simple)
+You can easily create:
+ * Sequential pipelines where step order is the same as the listing order in YAML (simple)
  * Sequential pipelines that have some parallel parts (intermediate)
  * Parallel pipelines where step order is explicitly defined (advanced)
 
 With the parallel execution mode, you can define complex pipelines with fan-in/out configurations capable of matching even the most complicated workflows within an organization.
 
->Notice that in Codefresh parallel execution is unrelated with [stages]({{site.baseurl}}/docs/codefresh-yaml/stages/). Stages are only a way to visually organize your pipeline steps. The actual execution is independent from the visual layout in the logs view.
+>In Codefresh, parallel execution is unrelated to [stages]({{site.baseurl}}/docs/codefresh-yaml/stages/). Stages are only a way to visually organize your pipeline steps. The actual execution is independent from the visual layout in the logs view.
 
 Before going any further make sure that you are familiar with the [basics of Codefresh pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/).
 
 Codefresh offers two modes of execution:
 
-1. Sequential Mode (which is the default)
-1. Parallel Mode
+1. Sequential mode (which is the default)
+1. Parallel mode
 
 ## Sequential execution mode
 
 The sequential mode is very easy to understand and visualize.
 
-In Sequential mode the Codefresh execution engine starts from the first step defined at the top of the `codefresh.yml` file and executes all steps one by one going down to the end of the file. A step is either executed or skipped according to its conditions. The condition for each step is only examined **once**.
+In sequential mode, the Codefresh execution engine starts from the first step defined at the top of the `codefresh.yml` file, and executes all steps one by one going down to the end of the file. A step is either executed or skipped according to its conditions.  
+
+>The condition for each step is only examined **once**.
 
 `YAML`
 {% highlight yaml %}
@@ -49,7 +52,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-Here we have two steps, one that creates a Docker image and a second one that runs [unit tests]({{site.baseurl}}/docs/testing/unit-tests/) inside it. The order of execution is the same order of the steps in the YAML file. This means that unit tests will always run after the Docker image creation.
+Here we have two steps, one that creates a Docker image and a second one that runs [unit tests]({{site.baseurl}}/docs/testing/unit-tests/) inside it. The order of execution is identical to the order of the steps in the YAML file. This means that unit tests will always run after the Docker image creation.
 
 Notice that the line `mode: sequential` is shown only for illustration purposes. Sequential mode is the default, and therefore this line can be omitted.
 
@@ -91,9 +94,9 @@ The final order of execution will be
 1. Task 2A and Task2B at the same time
 1. Task 3
 
-This is the recommended way to start using parallelism in your Codefresh pipelines and it will be enough for most scenarios that require parallelism.
+This is the recommended way to start using parallelism in your Codefresh pipelines. It is sufficient for most scenarios that require parallelism.
 
->Notice that step names should be unique within the same pipeline. The parent and child steps should NOT share the same name.
+>The step names must be unique within the same pipeline. The parent and child steps should NOT share the same name.
 
 ### Example: pushing multiple Docker images in parallel
 
@@ -143,8 +146,8 @@ steps:
 
 The order of execution is the following:
 
-1. MyAppDockerImage ([build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)) 
-1. jfrog_PushingTo_jfrog_BintrayRegistry, PushingToGoogleRegistry, PushingToDockerRegistry ([push steps]({{site.baseurl}}/docs/codefresh-yaml/steps/push/))
+1. MyAppDockerImage ([build step]({{site.baseurl}}/docs/pipelines/steps/build/)) 
+1. jfrog_PushingTo_jfrog_BintrayRegistry, PushingToGoogleRegistry, PushingToDockerRegistry ([push steps]({{site.baseurl}}/docs/pipelines/steps/push/))
 
 The pipeline view for this yaml file is the following.
 
@@ -158,10 +161,10 @@ caption="Parallel Docker push"
 max-width="80%"
 %}
 
-As you can see we have also marked the steps with [stages]({{site.baseurl}}/docs/codefresh-yaml/stages/) so that we get a visualization that matches the execution.
+As you can see we have also marked the steps with [stages]({{site.baseurl}}/docs/pipelines/stages/) so that we get a visualization that matches the execution.
 
 
-### Example: running multiple test suites in parallel
+### Example: Running multiple test suites in parallel
 
 All types of steps can by placed inside a parallel phase. Another common use case would be the parallel execution of [freestyle steps]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) for unit/integration tests.
 
@@ -264,7 +267,7 @@ In the example above we have explicitly defined that even if the integration or 
 
 ### Shared Codefresh volume and race conditions
 
-In any pipeline step, Codefresh automatically attaches a [shared volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) that is used to transfer artifacts between steps. The same volume is also shared between steps that run in parallel.
+In any pipeline step, Codefresh automatically attaches a [shared volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) that is used to transfer artifacts between steps. The same volume is also shared between steps that run in parallel.
 
 
 Here is an example where two parallel steps are writing two files. After they finish execution, we list the contents of the project folder.
@@ -524,10 +527,10 @@ of matrix variations can quickly grow if you add too many dimensions.
 
 Notice that, as with the `scale` syntax, the defined values/properties are merged between parent step (`MyUnitTests` in the example above) and children steps. For example, if you set an environment variable on the parent and also on child matrix steps , the result will a merged environment where all values are available.
 
-## Parallel pipeline mode
-> If you use parallel pipeline mode, you _cannot_ use _implicit parallel steps_.
+## Parallel pipeline execution
+> If you use parallel execution mode for pipelines, you _cannot_ use _implicit parallel steps_.
 
-To activate advanced parallel mode for the whole pipeline you need to declare it explicitly at the root of the `codefresh.yml` file:
+To activate advanced parallel mode for the whole pipeline, you need to declare it explicitly at the root of the `codefresh.yml` file:
 
 ```
 version: '1.0'
@@ -536,14 +539,14 @@ steps:
 [...]
 ```
 
-In full parallel mode, the order of steps inside the `codefresh.yml` is **not** affecting the order of execution at all. The Codefresh pipeline engine instead:
+In full parallel mode, the order of steps inside the `codefresh.yml` **does not** affect the order of execution at all. The Codefresh pipeline engine instead:
 
-1. Evaluates all steps conditions *at the same* time
+1. Evaluates all step-conditions *at the same* time
 2. Executes those that have their requirements met
 3. Starts over with the remaining steps
-4. Stops when there no more steps to evaluate
+4. Stops when there are no more steps to evaluate
 
-This means that in parallel mode the conditions of a step are evaluated **multiple times** as the Codefresh execution engine is trying to find which steps it should run next. This implication is very important when you try to understand the order of step execution.
+This means that in parallel mode the conditions of a step are evaluated **multiple times** as the Codefresh execution engine tries to find which steps it should run next. This implication is very important when you try to understand the order of step execution.
 
 Notice also that in parallel mode, if you don't define any step conditions, Codefresh will try to run **all** steps at once, which is probably not what you want in most cases. 
 
@@ -551,7 +554,7 @@ With parallel mode you are expected to define the order of steps in the yaml fil
 
 In the next sections we describe how you can define the steps dependencies in a parallel pipeline.
 
-### Single Step Dependencies
+### Single step dependencies
 
 At the most basic level, you can define that a step *depends on* the execution of another step. This dependency is very flexible as Codefresh allows you run a second step once:
 
@@ -666,7 +669,7 @@ If you run the pipeline you will see that Codefresh automatically understands th
 Also notice the `fail_fast: false` line in the unit tests. By default, if *any* steps fails in a pipeline the whole pipeline is marked as a failure. With the `fail_fast` directive we can allow the pipeline to continue so that other steps that depend on the failed step can still run even.
 
 
-### Multiple Step dependencies
+### Multipl step dependencies
 
 A pipeline step can also depend on multiple other steps. 
 
@@ -789,11 +792,11 @@ steps:
 In this case Codefresh will make sure that cleanup happens only when both unit and integration tests are finished. 
 
 
-### Custom Steps Dependencies
+### Custom step dependencies
 
-For maximum flexibility you can define a custom conditional for a step.
+For maximum flexibility you can define a custom condition for a step.
 
-It is hard to describe all possible cases, because Codefresh support a [mini DSL]({{site.baseurl}}/docs/codefresh-yaml/condition-expression-syntax/) for conditions. All examples mentioned in [conditional execution]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) are still valid in parallel pipelines.
+It is hard to describe all possible cases, because Codefresh supports a [mini DSL]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/#condition-expression-syntax) for conditions. All examples mentioned in conditional execution are still valid in parallel pipelines.
 
 For example, run this step only if a PR is opened against the production branch:
 
@@ -956,11 +959,9 @@ The possible values for `workflow.result` are:
 * `success`
 
 
-## What to read next
-
-* [Codefresh Conditionals]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/)
-* [Variables]({{site.baseurl}}/docs/codefresh-yaml/variables/)
-* [Pipeline/Step hooks]({{site.baseurl}}/docs/codefresh-yaml/hooks/)
+## Related articles
+[Variables in pipelines]({{site.baseurl}}/docs/pipelines/variables/)  
+[Hooks in pipelines]({{site.baseurl}}/docs/pipelines/hooks/)
 
 
 

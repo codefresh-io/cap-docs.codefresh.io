@@ -14,7 +14,7 @@ toc: true
 Codefresh offers its own built-in format for creating pipelines. The pipeline specification is
 based on the YAML syntax allowing you to describe your pipelines in a completely declarative manner.
 
-Using Codefresh yaml is the recommended way to [create pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/).
+Using Codefresh yaml is the recommended way to [create pipelines]({{site.baseurl}}/docs/pipelines/pipelines/).
 
 ## Simple example for codefresh.yml
 
@@ -40,9 +40,9 @@ steps:
       - gulp unit_test
 {% endhighlight %}
 
-It contains two [steps]({{site.baseurl}}/docs/codefresh-yaml/steps/), one named *build_image* that creates a docker image, and another one called *perform_tests* that runs unit test with `gulp`.
+It contains two [steps]({{site.baseurl}}/docs/pipelines/steps/), one named *build_image* that creates a docker image, and another one called *perform_tests* that runs unit test with `gulp`.
 
-If you want to know more about how steps work in Codefresh make sure to read [the introduction to Pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/) first, before moving on.
+If you want to know more about how steps work in Codefresh make sure to read [the introduction to pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/) first, before moving on.
 
 ## Basic pipeline syntax
 
@@ -63,38 +63,38 @@ steps:
     [step-contents]
 {% endhighlight %}
  
-You must define a step type for each step, unless you are using a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/). Each step uses Docker images and containers as facilitators for execution. For example, the [**Freestyle**]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) step spins up a container and executes the specified shell commands from the YAML file. 
+You must define a step type for each step, unless you are using a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/). Each step uses Docker images and containers as facilitators for execution. For example, the **Freestyle** step spins up a container and executes the specified shell commands from the YAML file. 
 
 The step names should be unique within the same pipeline. This mainly affects the visualization of the pipeline when it runs.
 
-Each step produces a resource, which you can [reference](https://github.com/codefresh-contrib/python-flask-sample-app/blob/master/codefresh.yml#L23) in other steps, and are executed in real-time. For example, a [**Freestyle**]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) step can reference an image that was produced by a [**Build**]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) step. This allows you to chain steps together and create highly-customized builds.
+Each step produces a resource, which you can [reference](https://github.com/codefresh-contrib/python-flask-sample-app/blob/master/codefresh.yml#L23) in other steps, and are executed in real-time. For example, a **Freestyle** step can reference an image that was produced by a [**Build**]({{site.baseurl}}/docs/pipelines/steps/build/) step. This allows you to chain steps together and create highly-customized builds.
 
-<div class="bd-callout bd-callout-info" markdown="1">
+
 ##### Variables
 
-Steps chaining and referencing is possible due to implementation of variables in yml file - read more on relevant [section]({{site.baseurl}}/docs/codefresh-yaml/variables/)
-</div>
+Steps chaining and referencing is possible due to implementation of variables in the YAML file - read more on relevant [section]({{site.baseurl}}/docs/pipelines/variables/).
+
 
 {: .table .table-bordered .table-hover}
 | Step Type                                                                                                         | Description                                    |
 | ----------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| [Freestyle]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)                      | Executes one or more shell commands in a container similar to `docker run`.            |
-| [Build]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)                            | Builds a Docker image like `docker build`.                         |
-| [Push]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)                              | Pushes a Docker image to an external registry similar to `docker tag` and `docker push`. |
-| [Git Clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)                      | Overrides the default git clone behavior. |
-| [Composition]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/)                | Starts a Docker Composition like `docker-compose`. Discarded once pipelines finishes.             |
-| [Launch Composition]({{site.baseurl}}/docs/codefresh-yaml/steps/launch-composition/)  | Starts a long term Docker composition that stays up after the end of the pipeline.        |
-| [Deploy]({{site.baseurl}}/docs/codefresh-yaml/steps/deploy/)  | Deploys to Kubernetes clusters.         |
-| [Approval]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/)  | Pauses a pipeline and waits for human intervention.          |
+| [Freestyle]({{site.baseurl}}/docs/pipelines/steps/freestyle/)                      | Executes one or more shell commands in a container similar to `docker run`.            |
+| [Build]({{site.baseurl}}/docs/pipelines/steps/build/)                            | Builds a Docker image like `docker build`.                         |
+| [Push]({{site.baseurl}}/docs/pipelines/steps/push/)                              | Pushes a Docker image to an external registry similar to `docker tag` and `docker push`. |
+| [Git Clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/)                      | Overrides the default git clone behavior. |
+| [Composition]({{site.baseurl}}/docs/pipelines/steps/composition/)                | Starts a Docker Composition like `docker-compose`. Discarded once pipelines finishes.             |
+| [Launch Composition]({{site.baseurl}}/docs/pipelines/steps/launch-composition/)  | Starts a long term Docker composition that stays up after the end of the pipeline.        |
+| [Deploy]({{site.baseurl}}/docs/pipelines/steps/deploy/)  | Deploys to Kubernetes clusters.         |
+| [Approval]({{site.baseurl}}/docs/pipelines/steps/approval/)  | Pauses a pipeline and waits for human intervention.          |
 
 
-For more information on creating your own step, see the [steps page]({{site.baseurl}}/docs/codefresh-yaml/steps/).
+For more information on creating your own step, see the [Steps in piplines]({{site.baseurl}}/docs/pipelines/steps/).
 
 You can also see the [full YAML specification]({{site.baseurl}}/docs/integrations/codefresh-api/#full-pipeline-specification) supported for pipelines. Note however that several fields are only accessible by using the [Codefresh API]({{site.baseurl}}/docs/integrations/codefresh-api) or [CLI](https://codefresh-io.github.io/cli/).
 
 ## Yaml validation
 
-If you are editing Codefresh yaml within the Codefresh GUI, the editor will automatically highlight errors as they happen.
+If you are editing Codefresh yaml within the Codefresh UI, the editor will automatically highlight errors as they happen.
 
 This allows you to make quick edits (and possibly run some builds) straight from the GUI. Once you are happy with your pipeline you should commit it to your repository as `codefresh.yml` (pipeline as code).
 
@@ -126,7 +126,7 @@ By default, Codefresh will execute all steps in the yaml file and instantly fail
 presents an error. To change this behavior add the `fail_fast:false` property in any step that you wish to be ignored
 in case of errors. 
 
-For example, if you have a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that runs integration tests, and you don't want the whole pipeline
+For example, if you have a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) that runs integration tests, and you don't want the whole pipeline
 to fail if any of the tests fail, add the `fail_fast` line to that step:
 
   
@@ -144,21 +144,22 @@ Now the pipeline will continue to run even if the step `perform_tests` fails.
 Notice also that by default Codefresh pipelines run in *sequential mode*. All steps will be executed one after
 the other and in the same order as included in the `codefresh.yml` file.
 
-If you wish to use parallel steps in your pipelines, see the [parallel steps]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/) page.
+If you wish to use parallel steps in your pipelines, see the [parallel steps]({{site.baseurl}}/docs/pipelines/advanced-workflows/) page.
 
 ## Working directories
 
 In the context of a step, a working directory can be of the following type:
 
 {: .table .table-bordered .table-hover}
-| Working Directory                                                                                                                             | Description                                                                                                                                                                                                                       |
-| --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Empty                                                                                                                                         | Defaults to the [Codefresh volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) (found at `/codefresh/volume`). If there is a [git clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) with the special name `main_clone` then the default working directory for built-in steps is now the [project folder]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#cloning-the-source-code) that was checked out - this only applies to [built-in]({{site.baseurl}}/docs/codefresh-yaml/steps/#built-in-steps) Codefresh steps and not [custom plugins]({{site.baseurl}}/docs/codefresh-yaml/steps/#creating-a-typed-codefresh-plugin).                                              |
-| Variable that contains the ID of a [Git-Clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step          | Runs the step within the cloned directory.                                                                                                                                                                                        |
-| Variable that contains the ID of any other step                                                                                               | Runs the step within the same working directory that the specified was executed. This option is not available for for [**Git-Clone**]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)  steps.     |
-| Absolute filesystem path                                                                                                                      | Treated as is within the container.                                                                                                                                                                                               |
-| Relative filesystem path                                                                                                                      | Treated as relative path from the cloned directory of the service                                                                                                                                                                 |
-| 'IMAGE_WORK_DIR'                                                                                                                              | Use this value in order to use the image working directory for example:<br> `working_directory: IMAGE_WORK_DIR`         |
+| Working Directory   | Description      |
+| --------------------- | -------------------------------------------- |
+| Empty                 | Defaults to the [Codefresh volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) (found at `/codefresh/volume`). If there is a [git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/) with the special name `main_clone` then the default working directory for built-in steps is now the [project folder]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#cloning-the-source-code) that was checked out - this only applies to [built-in]({{site.baseurl}}/docs/pipelines/steps/#built-in-steps) Codefresh steps and not [custom plugins]({{site.baseurl}}/docs/pipelines/steps/#creating-a-typed-codefresh-plugin).                                              |
+| Variable that contains the ID of a [Git-Clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step    | Runs the step within the cloned directory.    |
+| Variable that contains the ID of any other step  | Runs the step within the same working directory that the specified was executed. This option is not available for for [**Git-Clone**]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)  steps.     |
+| Absolute filesystem path  | Treated as is within the container.  |
+| Relative filesystem path   | Treated as relative path from the cloned directory of the service  |
+| 'IMAGE_WORK_DIR' | Use this value in order to use the image working directory for example:<br> `working_directory: IMAGE_WORK_DIR`         |
+
 
 ## Retrying a step
 
@@ -227,7 +228,7 @@ Notice that Codefresh also provides the following variables that allow you chang
 * `CF_CURRENT_ATTEMPT` contains the number of current retry attempt.
 * `CF_MAX_ATTEMPTS` contains all the number of total attempts defined.
 
-The retry mechanism is available for all kinds of [steps]({{site.baseurl}}/docs/codefresh-yaml/steps/).
+The retry mechanism is available for all kinds of [steps]({{site.baseurl}}/docs/pipelines/steps/).
 
 ## Escaping strings
 
@@ -362,13 +363,12 @@ For the second step, we extend the first one and only change the name of the clu
 to point to production. Everything else (i.e. namespace and service) are exactly the same.
 
 
-## What to read next
-
-* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
-* [Variables]({{site.baseurl}}/docs/codefresh-yaml/variables/)
-* [Advanced workflows]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/)
-* [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
-* [YAML examples]({{site.baseurl}}/docs/yaml-examples/examples/)
+## Related articles
+[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)   
+[Variables]({{site.baseurl}}/docs/pipelines/variables/)  
+[Advanced workflows]({{site.baseurl}}/docs/pipelines/advanced-workflows/)  
+[Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
+[YAML examples]({{site.baseurl}}/docs/yaml-examples/examples/)  
 
 
 

@@ -1,11 +1,11 @@
 ---
-title: "Using secrets"
+title: "Secrets in pipelines"
 description: "Use Kubernetes secrets in Codefresh"
 group: configure-ci-cd-pipeline
 toc: true
 ---
 
-Once you have [connected Codefresh to your secrets storage]({{site.baseurl}}/docs/integrations/secret-storage/), you can use them in any pipeline or GUI screen.
+Once you have [connected Codefresh to your secrets storage]({{site.baseurl}}/docs/integrations/secret-storage/), you can use them in any pipeline or UI screen.
 
 > Note: This feature is for Enterprise accounts only.
 
@@ -13,12 +13,13 @@ Once you have [connected Codefresh to your secrets storage]({{site.baseurl}}/doc
 
 The syntax for using the secret is {% raw %}`${{secrets.NAME_IN_CODEFRESH.KEY}}`{% endraw %}.
 
-> Note that if you did not include the resource-name as a part of your secret store context creation, the syntax for using your secret differs slightly:
-The syntax is: {% raw %}${{secrets.NAME_IN_CODEFRESH.RESOURCE-NAME@KEY}}{% endraw %} The previous KEY portion is now made of two parts separated using @, where the left side is the name of the resource in the namespace, and the right side the key in that resource.
+> If you did not include the resource-name as a part of your secret store context creation, the syntax for using your secret differs slightly:  
+  {% raw %}${{secrets.NAME_IN_CODEFRESH.RESOURCE-NAME@KEY}}{% endraw %}  
+  The previous KEY portion is now made of two parts separated using @, where the left side is the name of the resource in the namespace, and the right side the key in that resource.
 
 To use the secret in your pipeline, you have two options:
 
-Define it as a pipeline variable:
+* Define it as a pipeline variable:
 
 {% include 
 image.html 
@@ -44,7 +45,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-Or use it directly in your yaml
+* Use the secret directly in your YAML
 
 `codefresh.yaml`
 {% highlight yaml %}
@@ -63,11 +64,11 @@ steps:
 {% endhighlight %}
 
 
-## Using secrets in the Codefresh GUI
+## Using secrets in the Codefresh UI
 
 You can also use secrets in the GUI screens that support them. Currently you can use secrets in:
 
-* Values in [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/)
+* Values in [shared configuration]({{site.baseurl}}/docs/pipelines/shared-configuration/)
 * Integration with [cloud storage]({{site.baseurl}}/docs/testing/test-reports/#connecting-your-storage-account)
 
 Where secret integration is supported, click on the lock icon and enable the toggle button. You will get a list of your connected secrets:
@@ -87,10 +88,9 @@ If you have already specified the resource field during secret definition the ju
 If you didn't include a resource name during secret creation then enter the full name in the field like `my-secret-resource@my-secret-key`.
 
 
-## What to Read Next
-
-* [Shared Configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/)
-* [Git triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/)
-* [Running pipelines locally]({{site.baseurl}}/docs/configure-ci-cd-pipeline/running-pipelines-locally/)
-* [Debugging Pipelines]({{site.baseurl}}/docs//yaml-examples/examples/trigger-a-k8s-deployment-from-docker-registry/)
+## Related articles
+[Shared Configuration]({{site.baseurl}}/docs/pipelines/shared-configuration/)  
+[Git triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/)  
+[Running pipelines locally]({{site.baseurl}}/docs/pipelines/running-pipelines-locally/)  
+[Debugging Pipelines]({{site.baseurl}}/docs//yaml-examples/examples/trigger-a-k8s-deployment-from-docker-registry/)  
 

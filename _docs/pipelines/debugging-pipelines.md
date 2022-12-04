@@ -1,13 +1,12 @@
 ---
-title: "Debugging Codefresh pipelines"
+title: "Debugging pipelines"
 description: "How to pause and inspect pipelines"
 group: configure-ci-cd-pipeline
 toc: true
 ---
 
-In addition to [running pipelines locally]({{site.baseurl}}/docs/configure-ci-cd-pipeline/running-pipelines-locally/) Codefresh also allows you to debug pipelines by stopping their execution and inspecting manually their state (files, environment variables, tools etc.)
+In addition to [running pipelines locally]({{site.baseurl}}/docs/pipelines/running-pipelines-locally/), Codefresh also allows you to debug pipelines by stopping their execution and inspecting manually their state (files, environment variables, tools etc.)
 
-## How Debugging works
 
 The Codefresh pipeline debugger works similar to your IDE debugger. You can place breakpoints on one or more pipeline steps and once the pipeline hits one of them, it will stop. You will then get a terminal like interface inside your pipeline step where you can run any commands that you wish in order to understand the state of the container.
 
@@ -22,7 +21,7 @@ The Codefresh pipeline debugger works similar to your IDE debugger. You can plac
   max-width="70%"
 %}
 
-There are several option for defining exactly when a step will stop.
+There are several options for defining exactly when a step will stop.
 
 ## Entering the debugger mode
 
@@ -67,7 +66,7 @@ Now you are ready to place breakpoints in steps.
 
 ## Placing breakpoints
 
-Once the debugging mode is active all pipeline steps will get an extra breakpoint icon on the far right of their box.
+Once the debugging mode is active, all pipeline steps will get an extra breakpoint icon on the far right of their box.
 
 {%
   include image.html
@@ -83,11 +82,11 @@ Once the debugging mode is active all pipeline steps will get an extra breakpoin
 You can click on this icon and define a breakpoint for this particular step. You have the following options
 
 * *Before* - place a breakpoint before the step is initialized 
-* *Override* - place a breakpoint after the step has initialized but before its execution ([freestyle steps]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/))
+* *Override* - place a breakpoint after the step has initialized but before its execution ([freestyle steps]({{site.baseurl}}/docs/pipelines/steps/freestyle/))
 * *After* - place a breaking point after the step has finished execution.
 
 You can choose multiple debugging phases. In most cases the `Override` option is the most useful one. The `before` phase allows you to inspect
-a pipeline step even before [service containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/) are up.
+a pipeline step even before [service containers]({{site.baseurl}}/docs/pipelines/service-containers/) are up.
 
 The `after` phase is useful if you want to verify files or variables after a step has finished its execution but before the next step starts. 
 
@@ -112,12 +111,12 @@ You can now manually type commands to inspect your container. If your Codefresh 
 * `printenv` to see environment variables
 * `cat` to read files
 * `top` to see what is running
-* `export` and [cf_export]({{site.baseurl}}/docs/codefresh-yaml/variables/#using-cf_export-command) to create environment variables
+* `export` and [cf_export]({{site.baseurl}}/docs/pipelines/variables/#using-cf_export-command) to create environment variables
 * `exit` to finish the debugging session
 
 If you have placed a breakpoint in the `override` phase of a freestyle step then the container image is the same as the one defined in the step. Therefore you can execute all tools that you have placed in the image (e.g. compilers, linters, test frameworks etc.)
 
-In all cases the [shared Codefresh volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) is automounted so you can examine your source code or any other intermediate artifacts placed in your project folder or the pipeline cache.
+In all cases the [shared Codefresh volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) is automounted so you can examine your source code or any other intermediate artifacts placed in your project folder or the pipeline cache.
 
 If the breakpoint is on a `before` or `after` phase, the command line terminal is powered by an [alpine](https://alpinelinux.org/) image. The image has already useful tools such as `wget`, `nc` and `vi`. If you have the advanced debugging capabilities in your Codefresh plan you can then install additional tools on your own directly in the terminal with [apk](https://wiki.alpinelinux.org/wiki/Alpine_Linux_package_management). Examples:
 
@@ -245,13 +244,7 @@ The debugger windows needs some extra tools in a docker image in order to work (
 If you get the message *your linux distribution is not supported* please contact us so that we can examine your docker image and make sure it is compatible with the Codefresh debugger.
 
 
-
-
-
-
-## What to read next
-
-* [Introduction to Codefresh pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines)
-* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
-* [Running pipelines locally]({{site.baseurl}}/docs/configure-ci-cd-pipeline/running-pipelines-locally/)
+## Related articles
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
+[Running pipelines locally]({{site.baseurl}}/docs/pipelines/running-pipelines-locally/)  

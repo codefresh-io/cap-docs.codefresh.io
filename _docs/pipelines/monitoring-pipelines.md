@@ -6,9 +6,9 @@ toc: true
 ---
 
 
-All pipeline activity in Codefresh can be viewed on the *Builds* tab. 
-There is one global view from the left-side menu that shows builds for all projects
-across your organization and a project-based view from the settings inside an individual project.
+All pipeline activity in Codefresh can be viewed in the *Builds* tab. 
+* The global build view shows builds for all projects  across your organization
+* The project-based view from the settings inside an individual project shows the builds for the selected project
 
 Both views have the same controls and filters.
 
@@ -152,7 +152,7 @@ There are also extra options if you click the small "3-dot" menu button on the r
 
 - View the logs 
 - View the YAML
-- View or add [annotations]({{site.baseurl}}/docs/codefresh-yaml/annotations/)
+- View or add [annotations]({{site.baseurl}}/docs/pipelines/annotations/)
 - View the images produced (and consequently launch an on-demand [test environment]({{site.baseurl}}/docs/getting-started/on-demand-environments/#launching-a-docker-image-using-codefresh))
 
 Notice that if you restart a pipeline it will trigger with the exact settings it *originally* had. So 
@@ -182,7 +182,7 @@ Each section in this screen corresponds to each pipeline step. There are two spe
 * *Initializing Process* 
 * *Cloning Main Repository*
 
-These are Codefresh built-in steps and will appear for most builds (you can also create a pipeline that doesn't clone a git repository by default). The rest of the step names depend on your `codefresh.yml` (or the default step names provided by Codefresh). The different columns take the names from the defined [pipeline stages]({{site.baseurl}}/docs/codefresh-yaml/stages/).
+These are Codefresh built-in steps and will appear for most builds (you can also create a pipeline that doesn't clone a git repository by default). The rest of the step names depend on your `codefresh.yml` (or the default step names provided by Codefresh). The different columns take the names from the defined [pipeline stages]({{site.baseurl}}/docs/pipelines/stages/).
 
 ### Viewing status for pipeline steps
 
@@ -272,7 +272,7 @@ The variables are grouped by granularity, starting with the global project-level
 * Pipeline
 * Trigger  
 
-A variable with a strikethrough indicates an override by the same variable in a lower-level group. For rules on precedence and overrides for variables in builds, see [Variables]({{site.baseurl}}/docs/codefresh-yaml/variables/).  
+A variable with a strikethrough indicates an override by the same variable in a lower-level group. For rules on precedence and overrides for variables in builds, see [Variables]({{site.baseurl}}/docs/pipelines/variables/).  
 
 >Notes:  
   * Variables exported across steps with `cf_export` are not identified as `cf-exported` variables in the list.  
@@ -369,7 +369,7 @@ caption="Restart a pipeline"
 max-width="70%"
 %}
 
->It is important to note that "Restart from beginning" will restart a pipeline with the **same** state that it had in its original execution (including the original git commit). If you want to execute a pipeline again with a new state instead, you need to use the *Run* button in the [pipeline editor]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#using-the-inline-pipeline-editor) and selecting any of the available [triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/).
+>It is important to note that "Restart from beginning" will restart a pipeline with the **same** state that it had in its original execution (including the original git commit). If you want to execute a pipeline again with a new state instead, you need to use the *Run* button in the [pipeline editor]({{site.baseurl}}/docs/pipelines/pipelines/#using-the-inline-pipeline-editor) and selecting any of the available [triggers]({{site.baseurl}}/docs/pipelines/triggers/).
 
 
 
@@ -389,15 +389,15 @@ max-width="70%"
 
 >Notice again that restarting a pipeline from a failed step means restarting the pipeline with the **same** state that it had at the point in time (including the original git commit).
 
-If your pipeline has some flaky steps, you can also use the [retry syntax]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#retrying-a-step) in your yaml instead of restarting them manually each time they fail.
+If your pipeline has some flaky steps, you can also use the [retry syntax]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step) in your yaml instead of restarting them manually each time they fail.
 
 
-## Monitoring Pipelines outside the Codefresh UI
+## Monitoring pipelines outside the Codefresh UI
 
 You don't always have to be in the Codefresh UI in order to monitor the status of your builds. 
 
 
-### Monitoring Pipelines that check Pull requests
+### Monitoring pipelines that check Pull Requests
 
 One of the most
 important roles of a CI platform is to automatically update the status of a GIT Pull request with the result
@@ -413,7 +413,7 @@ caption="Pull Request Status (click image to enlarge)"
 max-width="50%" 
 %}
 
-If you have setup a [GIT trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) in Codefresh then by default this happens automatically without any other configuration
+If you have setup a [GIT trigger]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) in Codefresh then by default this happens automatically without any other configuration
 for all automated commits (that are coming from webhooks).
 
 If you start a build manually then by default the git status will **not** be updated (i.e. the result of the pipeline
@@ -436,9 +436,9 @@ This way the pipeline status *will* change the build status even with manual bui
 The same behavior is also available to the [Codefresh CLI](https://codefresh-io.github.io/cli/pipelines/run-pipeline/). In that case use the parameter `--enable-notifications`
 to specify if manually triggering a build will also change the GIT status.
 
-For open source projects you also have the ability to [trigger builds from external forks]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/#support-for-building-pull-requests-from-forks).
+For open source projects you also have the ability to [trigger builds from external forks]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#support-for-building-pull-requests-from-forks).
 
-### Viewing Pipeline status from text/html files
+### Viewing pipeline status from text/html files
 
 Codefresh also supports build badges that allow you to show the
 status of a Pipeline in Text files or web pages.
@@ -453,12 +453,11 @@ caption="Codefresh build badges"
 max-width="100%" 
 %}
 
-See the [build badges page]({{site.baseurl}}/docs/configure-ci-cd-pipeline/build-status/) for more information.
+See the [build badges page]({{site.baseurl}}/docs/pipelines/build-status/) for more information.
 
 
-## What to read next
-
-* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
-* [Test report]({{site.baseurl}}/docs/configure-ci-cd-pipeline/test-reports/)
-* [Status badges]({{site.baseurl}}/docs/configure-ci-cd-pipeline/build-status/)
+## Related articles
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
+[Test report]({{site.baseurl}}/docs/pipelines/test-reports/)  
+[Status badges]({{site.baseurl}}/docs/pipelines/build-status/)

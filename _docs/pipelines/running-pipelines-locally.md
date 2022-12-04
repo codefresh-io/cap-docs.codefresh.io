@@ -8,7 +8,7 @@ redirect_from:
   - /docs/troubleshooting/common-issues/access-and-debug-the-pipeline-volume-image/
 ---
   
-Codefresh can run your pipelines locally. This is very handy when you need to debug a pipeline, or when you want to do quick changes to the [codefresh.yml file]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) with the fastest turn-around time possible.
+Codefresh can run your pipelines locally. This is very handy when you need to debug a pipeline, or when you want to do quick changes to the [codefresh.yml file]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/) with the fastest turn-around time possible.
 
 ## Prerequisites 
 
@@ -60,7 +60,7 @@ codefresh run francisco-codefresh/jan_19/my-basic-pipeline --local -b master -t 
 ### Keeping the pipeline volume in the local workstation
 
 If you are familiar with 
-[how Codefresh pipelines work]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines) you should know about the unique docker volume that is automatically shared between all pipeline steps.
+[how Codefresh pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines) you should know about the unique docker volume that is automatically shared between all pipeline steps.
 
 This volume (which also includes the project folder) makes data sharing between all steps very easy (e.g. with thing such as test reports or binary dependencies).
 
@@ -118,9 +118,7 @@ codefresh run francisco-codefresh/jan_19/my-basic-pipeline --local --local-volum
 
 When this pipeline runs locally, it will use whatever steps exist in `my-codefresh.yml` instead of the git version. The shared data volume will also be left intact after the build is finished as explained in the previous section.
 
-## What to read next
-
-
-* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
-* [Introduction to Codefresh pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines)
+## Related articles
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
+[Introduction to Codefresh pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines)  
