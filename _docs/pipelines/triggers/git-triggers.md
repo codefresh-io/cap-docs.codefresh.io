@@ -257,6 +257,14 @@ max-width="60%"
   * *Report notification on pipeline execution* - Decide if [Slack notifications]({{site.baseurl}}/docs/integrations/notifications/slack-integration/) will be sent (as well as status updates back to your Git provider)
 * *Runtime Environment* - choose to use pipeline [settings]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings) or override them
 
+### Set minimum disk space for build volume by trigger
+Set the disk space you need for the build volume in the context of the selected trigger. Setting the disk space for the trigger overrides that set for the pipeline.  
+
+1. In **Workflow > Triggers**, expand **Advanced Options**.
+1. From the Runtime Environment list, select **Override pipeline settings**, and then select the runtime for which to override the pipeline setting. 
+1. If required, change the resource size.
+1. Enable **Set minimum disk space**, and then change as required. 
+
 ## Manually adding the trigger to GitHub
 
 When creating a Git trigger in codefresh, sometimes the Git Integration does not have the permissions to create a webhook on the designated repository. When this happens, you get the following error: `Failed to add Trigger`.
