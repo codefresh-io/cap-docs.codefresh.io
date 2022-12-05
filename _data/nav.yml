@@ -207,13 +207,13 @@
         - title: Checking out Git repositories
           url: "/git-checkout"
         - title: Custom Git commmands
-          url: "/example-catalog/git-checkout-custom"
+          url: "/git-checkout-custom"
         - title: Non-Git checkouts
-          url: "example-catalog/non-git-checkout"
+          url: "/non-git-checkout"
         - title: Use Git Hash in CI
-          url: "example-catalog/get-short-sha-id-and-use-it-in-a-ci-process"
+          url: "/get-short-sha-id-and-use-it-in-a-ci-process"
         - title: Build an Image with the Dockerfile in Root Directory
-          url: "/build-an-image-dockerfile-in-root-directory"
+          url: "/build-an-image-with-the-dockerfile-in-root-directory"
         - title: Build an Image - Specify Dockerfile Location
           url: "/build-an-image-specify-dockerfile-location"
         - title: Build an Image from a Different Git Repository
