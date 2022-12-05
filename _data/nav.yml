@@ -196,10 +196,13 @@
 
  
     
-- title: "Example catalog"
-  url: "/example-catalog/examples"
+- title: Example catalog
+  url: "/example-catalog"
   pages:
-    - title: "Git"
+    - title: "Examples"
+      url: "/examples"
+    - title: "CI examples"
+      url: "/ci-examples"
       sub-pages:
         - title: Checking out Git repositories
           url: "/git-checkout"
@@ -209,8 +212,6 @@
           url: "example-catalog/non-git-checkout"
         - title: Use Git Hash in CI
           url: "example-catalog/get-short-sha-id-and-use-it-in-a-ci-process"
-    - title: "Image builds"
-      sub-pages:
         - title: Build an Image with the Dockerfile in Root Directory
           url: "/build-an-image-dockerfile-in-root-directory"
         - title: Build an Image - Specify Dockerfile Location
@@ -227,29 +228,18 @@
           url: "/uploading-or-downloading-from-gs"
         - title: Calling other pipelines
           url: "/call-child-pipelines"
-        - title: Trigger a K8s Deployment from a DockerHub Push Event
-          url: "/trigger-a-k8s-deployment-from-docker-registry"
-    - title: "Testing"
-      url: "/examples"
-      sub-pages:
         - title: Run Unit Tests
           url: "/run-unit-tests"
         - title: Run Integration Tests
           url: "/run-integration-tests"
         - title: Fan-in/Fan-out Example with Unit Tests
-          url: "fan-in-fan-out"
-    - title: "Code Coverage"
-      url: "/examples"
-      sub-pages:
-        - title: Codecov Coverage Reports
+          url: "/fan-in-fan-out"
+          - title: Codecov Coverage Reports
           url: "/codecov-testing"
         - title: Coveralls Coverage Reports
           url: "/coveralls-testing"
         - title: Codacy Coverage Reports
           url: "/codacy-testing"
-    - title: "Databases"
-      url: "/examples"
-      sub-pages:
         - title: Run Integration Tests with Mongo
           url: "/integration-tests-with-mongo"
         - title: Run Integration Tests with MySQL
@@ -264,10 +254,36 @@
           url: "/shared-volumes-of-service-from-composition-step-for-other-yml-steps"          
         - title: Import data to MongoDB
           url: "/import-data-to-mongodb"
-    - title: "Deployments"
-      url: "/examples"
+        - title: Vault Secrets in the Pipeline
+          url: "/vault-secrets-in-the-pipeline"
+        - title: Decryption with Mozilla SOPS
+          url: "/decryption-with-mozilla-sops"
+        - title: GitOps secrets
+          url: "/gitops-secrets" 
+        - title: Launch Composition
+          url: "/launch-composition"
+        - title: Use Docker compose
+          url: "/launching-a-composition-and-defining-a-service-environment-variables-using-a-file"
+        - title: Sending the notification to Slack
+          url: "/sending-the-notification-to-slack"
+        - title: Sending the notification to Jira
+          url: "/sending-the-notification-to-jira"
+    - title: "CD examples"
+      url: "/cd-examples"
       sub-pages:
-        - title: Deploy to VM
+        - title: MongoDB preload data
+          url: "/import-data-to-mongodb"
+        - title: NodeJS + Angular2 + MongoDB
+          url: "/nodejs-angular2-mongodb"
+        - title: Secure a Docker Container Using HTTP Basic Auth
+          url: "/secure-a-docker-container-using-http-basic-auth"
+        - title: Spring Boot + Kafka + Zookeeper
+          url: "/spring-boot-kafka-zookeeper"
+        - title: Web terminal
+          url: "/web-terminal"
+        - title: Trigger a K8s Deployment from a DockerHub Push Event
+          url: "/trigger-a-k8s-deployment-from-docker-registry"
+          - title: Deploy to VM
           url: "/packer-gcloud"
         - title: Deploy to a VM using ftp
           url: "/transferring-php-ftp"
@@ -292,44 +308,8 @@
         - title: Amazon ECS/Fargate
           url: "/amazon-ecs"
         - title: Elastic Beanstalk
-          url: "/elastic-beanstalk"          
-    - title: "Secrets"
-      url: "/examples"
-      sub-pages:
-        - title: Vault Secrets in the Pipeline
-          url: "/vault-secrets-in-the-pipeline"
-        - title: Decryption with Mozilla SOPS
-          url: "/decryption-with-mozilla-sops"
-        - title: GitOps secrets
-          url: "/gitops-secrets"          
-    - title: "Compositions"
-      url: "/examples"
-      sub-pages:
-        - title: Launch Composition
-          url: "/launch-composition"
-        - title: Use Docker compose
-          url: "/launching-a-composition-and-defining-a-service-environment-variables-using-a-file"
-    - title: "Notifications"
-      url: "/examples"
-      sub-pages:
-        - title: Sending the notification to Slack
-          url: "/sending-the-notification-to-slack"
-        - title: Sending the notification to Jira
-          url: "/sending-the-notification-to-jira"
-    - title: "Security"
-      url: "/examples"
-      sub-pages:
-        - title: Secure a Docker Container Using HTTP Basic Auth
-          url: "/secure-a-docker-container-using-http-basic-auth"
-    - title: "General"
-      url: "/examples"
-      sub-pages:
-        - title: NodeJS + Angular2 + MongoDB
-          url: "/nodejs-angular2-mongodb"
-        - title: Spring Boot + Kafka + Zookeeper
-          url: "/spring-boot-kafka-zookeeper"
-        - title: Web terminal
-          url: "/web-terminal"
+          url: "/elastic-beanstalk"  
+
 
 
 
