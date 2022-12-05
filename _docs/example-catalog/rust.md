@@ -1,7 +1,7 @@
 ---
 title: "Compile and test a Rust application"
 description: "Using Codefresh pipelines"
-group: learn-by-example
+group: example-catalog
 toc: true
 ---
 

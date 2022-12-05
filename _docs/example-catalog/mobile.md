@@ -1,7 +1,7 @@
 ---
 title: "Mobile Apps"
 description: "How to build Mobile applications with Codefresh CI/CD pipelines"
-group: learn-by-example
+group: example-catalog
 toc: true
 ---
 This section contains Codefresh examples for Mobile application.

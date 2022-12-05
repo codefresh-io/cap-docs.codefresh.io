@@ -1,7 +1,7 @@
 ---
 title: "Trigger a Kubernetes Deployment from a Dockerhub Push Event"
 description: "Learn how to trigger a Kubernetes deployment when an image is updated"
-group: yaml-examples
+group: example-catalog
 sub_group: examples
 toc: true
 ---

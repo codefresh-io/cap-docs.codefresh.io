@@ -1,7 +1,7 @@
 ---
 title: "Deploy to Kubernetes with Kustomize"
 description: "Deploy your services to Kubernetes using Kustomize"
-group: yaml-examples
+group: example-catalogog
 sub_group: examples
 toc: true
 ---

@@ -1,7 +1,7 @@
 ---
 title: "C# on .NET Core"
 description: "How to build a C# project in Codefresh"
-group: learn-by-example
+group: example-catalog
 toc: true
 ---
 

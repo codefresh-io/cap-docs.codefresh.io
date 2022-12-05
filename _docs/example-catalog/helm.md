@@ -1,7 +1,7 @@
 ---
 title: "Deploy with Helm"
 description: "Use Helm in a Codefresh pipeline"
-group: yaml-examples
+group: example-catalog
 sub_group: examples
 toc: true
 ---

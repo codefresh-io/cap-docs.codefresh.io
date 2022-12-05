@@ -1,7 +1,7 @@
 ---
 title: "C/C++"
 description: "How to build C/C++ applications with Codefresh CI/CD pipelines"
-group: learn-by-example
+group: example-catalog
 toc: true
 ---
 This section contains Codefresh examples based on C and C++.

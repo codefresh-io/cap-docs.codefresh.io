@@ -2,7 +2,7 @@
 title: "Voting app"
 description: ""
 excerpt: ""
-group: learn-by-example
+group: example-catalog
 sub_group: nodejs
 redirect_from:
   - /docs/voting-app/

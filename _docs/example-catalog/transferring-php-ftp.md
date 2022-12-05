@@ -1,7 +1,7 @@
 ---
 title: "Transferring Applications via FTP"
 description: "Deploying a Php Application to a VM using FTP"
-group: yaml-examples
+group: example-catalog
 sub_group: examples
 toc: true
 redirect_from:

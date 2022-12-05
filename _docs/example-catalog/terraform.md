@@ -1,7 +1,7 @@
 ---
 title: "Deploy with Terraform"
 description: "Use Terraform in a Codefresh pipeline with Docker"
-group: yaml-examples
+group: example-catalog
 sub_group: examples
 toc: true
 ---

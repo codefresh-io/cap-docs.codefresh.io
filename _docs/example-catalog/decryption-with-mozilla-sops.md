@@ -1,7 +1,7 @@
 ---
 title: "Decryption with Mozilla SOPS"
 description: "Store secrets in your repository and decrypt them using Mozilla SOPS"
-group: yaml-examples
+group: example-catalogog
 sub_group: examples
 toc: true
 ---

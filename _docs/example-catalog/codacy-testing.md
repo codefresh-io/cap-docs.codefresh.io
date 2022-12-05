@@ -1,7 +1,7 @@
 ---
 title: "Codacy Coverage Reports"
 description: "How to forward coverage reports to Codacy"
-group: yaml-examples
+group: example-catalog
 toc: true
 ---
 

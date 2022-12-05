@@ -1,7 +1,7 @@
 ---
 title: "Deploy to Heroku"
 description: "Deploying your application or image to Heroku"
-group: yaml-examples
+group: example-catalog
 sub_group: examples
 toc: true
 ---

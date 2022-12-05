@@ -1,7 +1,7 @@
 ---
 title: "Python"
 description: ""
-group: learn-by-example
+group: example-catalog
 redirect_from:
   - /docs/python/
 toc: true

@@ -1,7 +1,7 @@
 ---
 title: "Integration Tests Example"
 description: "Launching separate App and test containers"
-group: yaml-examples
+group: example-catalog
 sub_group: examples
 redirect_from:
   - /docs/run-integration-tests/

@@ -2,7 +2,7 @@
 title: "Java Example with Gradle and Docker"
 description: "Create Docker images for Spring/Gradle"
 excerpt: ""
-group: learn-by-example
+group: example-catalog
 sub_group: java
 redirect_from:
   - /docs/java/gradle/

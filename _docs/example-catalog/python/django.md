@@ -2,7 +2,7 @@
 title: "Python Django example"
 description: "Create Docker images for Python applications"
 excerpt: ""
-group: learn-by-example
+group: example-catalog
 sub_group: python
 redirect_from:
   - /docs/django/

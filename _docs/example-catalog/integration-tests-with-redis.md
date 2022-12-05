@@ -1,7 +1,7 @@
 ---
 title: "Integration Tests with Redis"
 description: "Launching a Redis service container"
-group: yaml-examples
+group: example-catalog
 sub_group: examples
 redirect_from:
   - /docs/python-redis/

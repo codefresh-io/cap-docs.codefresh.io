@@ -1,7 +1,7 @@
 ---
 title: "Compile and package an Android application"
 description: "Using Codefresh pipelines"
-group: learn-by-example
+group: example-catalog 
 sub_group: mobile
 toc: true
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Integration Tests with Mongo"
 description: "Launching a MongoDB service container"
-group: yaml-examples
+group: example-catalog
 sub_group: examples
 redirect_from:
   - /docs/nodejsmongo/

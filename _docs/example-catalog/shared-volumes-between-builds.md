@@ -1,7 +1,7 @@
 ---
 title: "Sharing data between pipeline steps"
 description: "How to cache folders between steps and builds"
-group: yaml-examples
+group: example-catalog
 sub_group: examples
 redirect_from:
   - /docs/shared-volumes-between-builds/

@@ -1,7 +1,7 @@
 ---
 title: "Java"
 description: ""
-group: learn-by-example
+group: example-catalog
 redirect_from:
   - /docs/java/
 toc: true

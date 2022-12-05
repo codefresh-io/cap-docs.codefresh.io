@@ -1,7 +1,7 @@
 ---
 title: "Checking out from other Source Control systems"
 description: "Work with non-git repositories"
-group: yaml-examples
+group: example-catalogog
 sub_group: examples
 toc: true
 ---

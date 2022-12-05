@@ -1,8 +1,7 @@
 ---
 title: "Checking out Git repositories"
 description: "Using the Codefresh native GIT integration"
-group: yaml-examples
-sub_group: examples
+group: example-catalog
 toc: true
 ---
 

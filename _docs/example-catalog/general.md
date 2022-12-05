@@ -1,7 +1,7 @@
 ---
 title: "General"
 description: ""
-group: learn-by-example
+group: example-catalog
 redirect_from:
   - /docs/learn-by-example/general/
 toc: true

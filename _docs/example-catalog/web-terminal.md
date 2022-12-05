@@ -1,7 +1,7 @@
 ---
 title: "Web terminal"
 description: ""
-group: yaml-examples
+group: example-catalog
 sub_group: examples
 redirect_from:
   - /docs/web-terminal/

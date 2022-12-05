@@ -1,7 +1,7 @@
 ---
 title: "Let's Chat example"
 description: "Create Docker images for Node/Express.js applications"
-group: learn-by-example
+group: example-catalog
 sub_group: nodejs
 redirect_from:
   - /docs/lets-chat/

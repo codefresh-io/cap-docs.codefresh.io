@@ -1,8 +1,8 @@
 ---
 title: "Build an Image from a Different Git Repository"
 description: "Build microservices from other repositories"
-group: yaml-examples
-sub_group: examples
+group: example-catalog
+sub_group: 
 redirect_from:
   - /docs/build-an-image-from-a-different-git-repository/
 toc: true

@@ -1,7 +1,7 @@
 ---
 title: "Launching a composition and defining a service environment variable using a file"
 description: ""
-group: yaml-examples
+group: example-catalog
 sub_group: examples
 redirect_from:
   - /docs/launching-a-composition-and-passing-a-service-environment-variable-using-a-file/

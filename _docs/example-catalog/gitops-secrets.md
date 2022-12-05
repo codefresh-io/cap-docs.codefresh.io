@@ -1,7 +1,7 @@
 ---
 title: "Using secrets with GitOps"
 description: "Store secrets in Git with Bitnami sealed secrets"
-group: yaml-examples
+group: example-catalog
 sub_group: examples
 toc: true
 ---

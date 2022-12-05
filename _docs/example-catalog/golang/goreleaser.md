@@ -1,7 +1,7 @@
 ---
 title: "Compile and release a Go application"
 description: "Using Codefresh pipelines"
-group: learn-by-example
+group: example-catalog
 sub_group: golang
 toc: true
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Codecov Coverage Reports"
 description: "How to forward coverage reports to Codecov"
-group: yaml-examples
+group: example-catalog
 toc: true
 ---
 

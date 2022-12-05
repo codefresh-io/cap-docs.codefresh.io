@@ -1,7 +1,7 @@
 ---
 title: "Spring Boot + Kafka + Zookeeper"
 description: ""
-group: yaml-examples
+group: example-catalogogog
 sub_group: examples
 redirect_from:
   - /docs/spring-boot-kafka-zookeeper/

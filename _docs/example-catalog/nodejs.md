@@ -1,7 +1,7 @@
 ---
 title: "Node.js"
 description: ""
-group: learn-by-example
+group: example-catalog
 redirect_from:
   - /docs/nodejs/
 toc: true

@@ -2,7 +2,7 @@
 title: "Scala: Hello World"
 description: "Use Scala and Codefresh to clone, package, and build a Docker image"
 excerpt: ""
-group: learn-by-example
+group: example-catalog
 sub_group: scala
 redirect_from:
   - /docs/scala-hello-world/

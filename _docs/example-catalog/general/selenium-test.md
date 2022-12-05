@@ -2,7 +2,7 @@
 title: "Selenium test"
 description: ""
 excerpt: ""
-group: learn-by-example
+group: example-catalog
 sub_group: general
 redirect_from:
   - /docs/general/selenium-test/

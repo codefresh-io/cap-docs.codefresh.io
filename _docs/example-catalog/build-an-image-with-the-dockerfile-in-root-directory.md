@@ -1,7 +1,7 @@
 ---
 title: "Build an Image with the Dockerfile in Root Directory"
 description: "Get started quickly with building Docker images"
-group: yaml-examples
+group: example-catalog
 sub_group: examples
 permalink: /:collection/yaml-examples/examples/build-an-image-dockerfile-in-root-directory/
 redirect_from:

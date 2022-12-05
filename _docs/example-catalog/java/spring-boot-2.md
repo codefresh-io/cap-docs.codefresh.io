@@ -2,7 +2,7 @@
 title: "Spring Boot 2/Maven"
 description: "Create Docker images for Spring/Maven"
 excerpt: ""
-group: learn-by-example
+group: example-catalog
 sub_group: java
 redirect_from:
   - /docs/spring-boot-2/

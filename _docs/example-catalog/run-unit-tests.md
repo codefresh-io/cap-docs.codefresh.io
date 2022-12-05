@@ -1,7 +1,7 @@
 ---
 title: "Run Unit Tests"
 description: "Running unit tests in Codefresh pipelines"
-group: yaml-examples
+group: example-catalogog
 sub_group: examples
 redirect_from:
   - /docs/run-unit-tests/

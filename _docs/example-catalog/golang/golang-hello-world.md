@@ -1,7 +1,7 @@
 ---
 title: "Create a Docker image for GO"
 description: "Using Codefresh pipelines"
-group: learn-by-example
+group: example-catalog
 sub_group: golang
 redirect_from:
   - /docs/go/cf-example-golang-hello-world/

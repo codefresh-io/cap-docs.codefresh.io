@@ -2,7 +2,7 @@
 title: "Publish Jar"
 description: "How to upload a JAR file to Nexus or artifactory"
 excerpt: ""
-group: learn-by-example
+group: example-catalog
 sub_group: java
 toc: true
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Sending a notification to Slack"
 description: "Connect your Codefresh pipelines to Slack"
-group: yaml-examples
+group: example-catalog
 sub_group: examples
 redirect_from:
   - /docs/sending-the-notification-to-slack/

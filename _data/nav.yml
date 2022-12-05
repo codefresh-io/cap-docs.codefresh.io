@@ -197,18 +197,18 @@
  
     
 - title: "Example catalog"
-  url: "/examples"
+  url: "/example-catalog/examples"
   pages:
     - title: "Git"
       sub-pages:
         - title: Checking out Git repositories
           url: "/git-checkout"
         - title: Custom Git commmands
-          url: "/git-checkout-custom"
+          url: "/example-catalog/git-checkout-custom"
         - title: Non-Git checkouts
-          url: "/non-git-checkout"
+          url: "example-catalog/non-git-checkout"
         - title: Use Git Hash in CI
-          url: "/get-short-sha-id-and-use-it-in-a-ci-process"
+          url: "example-catalog/get-short-sha-id-and-use-it-in-a-ci-process"
     - title: "Image builds"
       sub-pages:
         - title: Build an Image with the Dockerfile in Root Directory

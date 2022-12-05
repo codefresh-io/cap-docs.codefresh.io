@@ -1,7 +1,7 @@
 ---
 title: "Elastic Beanstalk"
 description: ""
-group: yaml-examples
+group: example-catalog
 sub_group: examples
 redirect_from:
   - /docs/elastic-beanstalk/

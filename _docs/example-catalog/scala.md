@@ -1,7 +1,7 @@
 ---
 title: "Scala"
 description: ""
-group: learn-by-example
+group: example-catalog
 redirect_from:
   - /docs/scala/
 toc: true

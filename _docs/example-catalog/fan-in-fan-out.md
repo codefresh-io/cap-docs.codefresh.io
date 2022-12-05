@@ -1,7 +1,7 @@
 ---
 title: "Fan-out-fan-in Pipeline"
 description: "Use parallel mode to fan-in and fan-out your step dependencies"
-group: yaml-examples
+group: example-catalog
 sub_group: examples
 toc: true
 ---

@@ -2,7 +2,7 @@
 
 title: "Import data to MongoDB"
 description: ""
-group: yaml-examples
+group: example-catalog
 sub_group: examples
 redirect_from:
   - /docs/import-data-to-mongodb-in-composition/

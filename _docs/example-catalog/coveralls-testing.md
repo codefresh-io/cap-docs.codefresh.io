@@ -1,7 +1,7 @@
 ---
 title: "Coveralls Coverage Reports"
 description: "How to forward coverage reports to Coveralls"
-group: yaml-examples
+group: example-catalog
 toc: true
 ---
 

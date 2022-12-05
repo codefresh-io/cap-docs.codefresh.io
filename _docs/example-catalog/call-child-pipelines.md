@@ -1,7 +1,7 @@
 ---
 title: "Calling a CD pipeline from a CI pipeline"
 description: "Learn how to call children pipelines from a parent pipeline"
-group: yaml-examples
+group: example-catalog
 sub_group: examples
 toc: true
 ---

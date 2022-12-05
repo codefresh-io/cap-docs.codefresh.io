@@ -1,7 +1,7 @@
 ---
 title: "Build an Image - Specify Dockerfile Location"
 description: "How to choose a Dockerfile to build with Codefresh pipelines"
-group: yaml-examples
+group: example-catalog
 sub_group: examples
 redirect_from:
   - /docs/build-an-image-specify-dockerfile-location/

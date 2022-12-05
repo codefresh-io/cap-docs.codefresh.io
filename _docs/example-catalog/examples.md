@@ -1,7 +1,7 @@
 ---
 title: "CI/CD pipeline examples"
 description: "A collection of examples for Codefresh pipelines"
-group: yaml-examples
+group: example-catalog
 redirect_from:
   - /docs/examples-v01/
   - examples.html

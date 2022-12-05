@@ -1,7 +1,7 @@
 ---
 title: "Integration Tests with Postgres"
 description: "Launching a PostgreSQL service container"
-group: yaml-examples
+group: example-catalogog
 sub_group: examples
 redirect_from:
   - /docs/unit-tests-with-postgres/

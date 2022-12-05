@@ -1,7 +1,7 @@
 ---
 title: "Compile and test a C application"
 description: "Using Codefresh pipelines"
-group: learn-by-example
+group: example-catalog
 sub_group: cc
 toc: true
 ---

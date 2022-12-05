@@ -1,7 +1,7 @@
 ---
 title: "Uploading/Downloading Files to/from Google Storage"
 description: "Upload and download a jar from Google Storage from within a pipeline"
-group: yaml-examples
+group: example-catalog
 sub_group: examples
 toc: true
 ---

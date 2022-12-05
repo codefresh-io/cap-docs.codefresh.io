@@ -1,7 +1,7 @@
 ---
 title: "React example with Yarn"
 description: "Create Docker images for React applications"
-group: learn-by-example
+group: example-catalog
 sub_group: nodejs
 toc: true
 ---

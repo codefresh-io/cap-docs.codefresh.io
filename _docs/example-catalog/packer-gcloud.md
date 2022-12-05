@@ -1,7 +1,7 @@
 ---
 title: "Deploy to a Virtual Machine"
 description: "Deploy to Google Cloud in a Codefresh pipeline with Packer"
-group: yaml-examples
+group: example-catalog
 sub_group: examples
 toc: true
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Build and Push an Image"
 description: "How to build Docker images and push them to registries with Codefresh"
-group: yaml-examples
+group: example-catalog
 sub_group: examples
 redirect_from:
   - /docs/build-and-push-an-image/

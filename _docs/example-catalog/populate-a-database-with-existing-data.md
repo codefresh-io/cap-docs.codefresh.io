@@ -1,7 +1,7 @@
 ---
 title: "Populate a database with existing data"
 description: "Preloading test data before integration tests"
-group: yaml-examples
+group: example-catalog
 sub_group: examples
 redirect_from:
   - /docs/populate-a-database-with-existing-data-copied/

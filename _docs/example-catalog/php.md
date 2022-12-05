@@ -1,7 +1,7 @@
 ---
 title: "Create a Docker image for Php"
 description: "Using Codefresh pipelines"
-group: learn-by-example
+group: example-catalog
 toc: true
 ---
 

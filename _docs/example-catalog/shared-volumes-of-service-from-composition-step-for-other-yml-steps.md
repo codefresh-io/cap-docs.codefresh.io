@@ -1,7 +1,7 @@
 ---
 title: "Shared volumes of service from composition step for other yml steps"
 description: "How to share data in compositions"
-group: yaml-examples
+group: example-catalog
 sub_group: examples
 redirect_from:
   - /docs/shared-volumes-of-service-from-composition-step-for-other-yml-steps/

@@ -1,7 +1,7 @@
 ---
 title: "Secure a Docker Container Using HTTP Basic Auth"
 description: ""
-group: yaml-examples
+group: example-catalogog
 sub_group: examples
 redirect_from:
   - /docs/securing-docker-container-with-http-basic-auth/

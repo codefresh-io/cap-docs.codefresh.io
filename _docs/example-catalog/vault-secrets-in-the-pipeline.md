@@ -1,7 +1,7 @@
 ---
 title: "Vault Secrets in the Pipeline"
 description: "Accessing and Referring to Vault Secrets in the Pipeline"
-group: yaml-examples
+group: example-catalog
 sub_group: examples
 toc: true
 ---

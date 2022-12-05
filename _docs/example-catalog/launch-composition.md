@@ -1,7 +1,7 @@
 ---
 title: "Launch Composition"
 description: "Create a dynamic environment to preview your feature"
-group: yaml-examples
+group: example-catalogogog
 sub_group: examples
 redirect_from:
   - /docs/launch-composition-1/

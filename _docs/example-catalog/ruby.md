@@ -1,7 +1,7 @@
 ---
 title: "Ruby"
 description: "How to build a Ruby On Rails project in Codefresh"
-group: learn-by-example
+group: example-catalog
 toc: true
 ---
 Ruby on Rails is a very popular development framework that combines ease of use and a great amount of programming languages. In Codefresh, ROR projects behave like any other web application. You can easily build them, run [integration tests]({{site.baseurl}}/docs/testing/integration-tests/) and launch them on [demo environments]({{site.baseurl}}/docs/getting-started/on-demand-environments/).

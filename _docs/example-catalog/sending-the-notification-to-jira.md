@@ -1,7 +1,7 @@
 ---
 title: "Sending the notification to Jira"
 description: ""
-group: yaml-examples
+group: example-catalog
 sub_group: examples
 toc: true
 ---

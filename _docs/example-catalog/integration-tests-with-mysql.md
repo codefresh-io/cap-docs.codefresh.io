@@ -1,7 +1,7 @@
 ---
 title: "Integration Tests with MySQL"
 description: "Launching a MySQL service container"
-group: yaml-examples
+group: example-catalog
 sub_group: examples
 redirect_from:
   - /docs/nodejsmysql/
