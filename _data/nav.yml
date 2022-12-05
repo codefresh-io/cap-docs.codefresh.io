@@ -234,7 +234,7 @@
           url: "/run-integration-tests"
         - title: Fan-in/Fan-out Example with Unit Tests
           url: "/fan-in-fan-out"
-          - title: Codecov Coverage Reports
+        - title: Codecov Coverage Reports
           url: "/codecov-testing"
         - title: Coveralls Coverage Reports
           url: "/coveralls-testing"
@@ -283,7 +283,7 @@
           url: "/web-terminal"
         - title: Trigger a K8s Deployment from a DockerHub Push Event
           url: "/trigger-a-k8s-deployment-from-docker-registry"
-          - title: Deploy to VM
+        - title: Deploy to VM
           url: "/packer-gcloud"
         - title: Deploy to a VM using ftp
           url: "/transferring-php-ftp"

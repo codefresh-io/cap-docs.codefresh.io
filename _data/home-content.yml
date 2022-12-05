@@ -116,20 +116,44 @@
   icon: images/home-icons/administration.svg
   url: ''
   links:
-  - title: Manage users
-    localurl: /docs/administration/add-users/
-  - title: Single Sign-On
-    localurl: /docs/administration/single-sign-on/
-  - title: Set up OAuth2 authentication for Git providers
-    localurl: /docs/administration/oauth-setup/  
-  - title: User settings
-    localurl: /docs/administration/user-settings/
-  - title: Access Control
-    localurl: /docs/administration/access-control/
-  - title: Audit
-    localurl: /docs/administration/audit/
-  - title: Codefresh IP addresses
-    localurl: /docs/administration/platform-ip-addresses/
+    - title: Manage users
+      localurl: /docs/administration/add-users/
+    - title: Single Sign-On
+      localurl: /docs/administration/single-sign-on/
+    - title: Set up OAuth2 authentication for Git providers
+      localurl: /docs/administration/oauth-setup/  
+    - title: User settings
+      localurl: /docs/administration/user-settings/
+    - title: Access Control
+      localurl: /docs/administration/access-control/
+    - title: Audit
+      localurl: /docs/administration/audit/
+    - title: Codefresh IP addresses
+      localurl: /docs/administration/platform-ip-addresses/
+
+- title: Example catalog
+  icon: images/home-icons/tutorial.svg
+  url: ''
+  links:
+    - title: CI/CD examples for pipelines
+      localurl: /docs/example-catalog/examples/
+    - title: Go
+      localurl: /docs/example-catalog/ci-examples/golang/
+    - title: Java
+      localurl: /docs/example-catalog/java/
+    - title: Node.js
+      localurl: /docs/example-catalog/nodejs/
+    - title: Php
+      localurl: /docs/example-catalog/php/
+    - title: Python
+      localurl: /docs/example-catalog/python/
+    - title: Ruby On Rails
+      localurl: /docs/example-catalog/ruby/
+    - title: C/C++
+      localurl: /docs/example-catalog/cc/   
+    - title: C# (.NET core)
+      localurl: /docs/example-catalog/dotnet/
+
 
 - title: Reference
   icon: images/home-icons/guides.png
