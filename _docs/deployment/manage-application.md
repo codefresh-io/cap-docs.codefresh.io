@@ -5,26 +5,36 @@ group: deployment
 toc: true
 ---
 
-Creating and deploying applications is the first part of the continuous deployment/delivery process. An equally important part is optimizing deployed applications when needed, including editing application definitions, and synchronizing or refreshing them on-demand. 
-* Edit applications  
+Application creation and deployment is one part of the continuous deployment/delivery process. An equally important part is optimizing deployed applications when needed. 
+
+* [Edit applications](#edit-application-definitions)  
   Optimize deployed applications by changing application definitions when needed.
 
-* Synchronize applications  
-  Sync applications on-demand by manually applying sync options or selecting which resources to sync.
+* [Synchronize applications](#manually-synchronize-an-application)   
+  Sync applications on-demand by manually applying sync options or selecting the resources to sync.
 
-<!---* Delete applications  
-  Delete unused or legacy applications to avoid clutter and remove unnecessary resources.--->
+<!---* [Delete applications](#delete-an-application)
+  Delete unused or legacy applications to avoid clutter and remove unnecessary resources.-->
 
-### Edit application configuration 
-Optimize deployed applications by updating General or Advanced configuration settings. 
+
+* [Manage rollouts for deployments](#manage-rollouts-for-deployments)  
+  Control ongoing rollouts by resuming indefinitely paused steps, promoting rollouts, aborting, restarting and retrying rollouts.  
+
+
+
+
+
+### Edit application definitions 
+Update General or Advanced configuration settings for a deployed application through the Configuration tab. Once the application is deployed to the cluster, the Configuration tab is available on selecting the application in the Applications dashboard. 
 
 > You cannot change application definitions (the application name and the selected runtime), and the Git Source selected for the application.
 
 **How to**  
 
-1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}.
+1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
 1. Do one of the following: 
   * Select the application to update, and then from the context menu on the right, select **Edit**. 
+  
   * Click the application and then select the **Configuration** tab.
 
 {% include 
@@ -39,8 +49,8 @@ Optimize deployed applications by updating General or Advanced configuration set
 
 {:start="3"}
 1. Update the **General** or **Advanced** configuration settings as needed:  
-  [General configuration]({{site.baseurl}}docs/deployment/create-application/#application-general-configuration-settings)  
-  [Advanced configuration]({{site.baseurl}}docs/deployment/create-application/#advanced-configuration-settings)  
+  [General configuration]({{site.baseurl}}/docs/deployment/create-application/#application-general-configuration-settings)  
+  [Advanced configuration]({{site.baseurl}}/docs/deployment/create-application/#application-advanced-configuration-settings)  
   When you change a setting, the Commit and Discard Changes buttons are displayed.
 
   {% include 
@@ -78,19 +88,36 @@ Optimize deployed applications by updating General or Advanced configuration set
 <br><br>
 {:/}
 
-### On-demand application sync
-Synchonize applications manually to reconcile the desired state with the live state.  
-Instead of waiting for Argo CD to detect differences between the desired and live states and initate the sync if automated sync is enabled, expedite Git-to-cluster sync by selecting the relevant sync options or selecting the specific resources to sync. 
-On-demand application sync is useful if you have updated only a few resources.   
+### Manually synchronize an application
+Manually synchronize an application to expedite Git-to-cluster sync.  The sync options selected for manual sync override the sync options defined for the application.  
+The sync options, grouped into Revision and Additional Settings, are identical to the Sync options in the General settings when you created the application. 
 
-Manual application sync options are grouped into:
-* Revision settings with branch and Kubernetes apply options
-* Additional settings with sync options as in the General application settings
-* Synchonize Resource settings to selectively sync resources
+>You can also synchronize application resources with sync statuses,  such as `Service`, `AnalysisTemplate`, and `Rollouts` resources for example, in the Current State tab. The context menu of the resource shows the Sync option. 
 
-> The sync options selected for manual sync override the sync options defined for the application. 
+**Before you begin**  
+* Review:  
+  [Revision settings for application sync](#revision-settings-for-application-sync)  
+  [Additional Options for application sync](#additional-options-for-application-sync)  
+  [Synchronize resources](#synchronize-resources)  
 
-For how-to instructions, see [Manually synchronize an application](#manually-synchronize-an-application).
+**How to**  
+1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
+1. Sync an application:  
+  * Select the application to sync, and do one of the following: 
+  * From the context menu on the right, select **Synchronize**. 
+  * On the top-right, click **Synchronize**.  
+
+  Sync a resource:  
+  * Click the application with the resource to sync.
+  * In the **Current State** tab, open the context menu of the resource, and then select **Sync**. 
+
+1. Select the **Revision** and **Additional Options** for the manual sync.  
+  Review 
+1. Click **Next**.
+1. In the Synchronize Resources form, select the scope of the manual sync:
+  * To sync only specific resources, search for the resources by any part of their names, or define a Regex to filter by the required resources.  
+  * **All**: Sync all resources regardless of their sync state.
+  * **Out of sync**: Sync _only_ resources that are `Out of sync`.  
 
 {::nomarkdown}
 <br>
@@ -99,31 +126,26 @@ For how-to instructions, see [Manually synchronize an application](#manually-syn
 #### Revision settings for application sync
 Revision settings determine the behavior for the branch you select.  
 
-**Revision**  
-The branch in Git to synchronize with the cluster.  
+**Revision** 
+The branch in Git to synchronize with the cluster.
 
-**Prune**  
-When selected, removes legacy resources from the cluster that do not exist currently in the Git branch.  
+**Prune**
+When selected, removes legacy resources from the cluster that do not exist currently in the Git branch. 
 
-**Apply only**   
-When selected, uses the Kubernetes apply command (`kubectl apply`) to update the existing configuration with _only_ the changes.  
-For more information, see [In-place updates of resources](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/#in-place-updates-of-resources), or read this [blog](https://www.containiq.com/post/kubectl-apply-vs-create).  
+**Apply only**
+When selected, syncs only those resources in the application that have been changed and are `OutOfSync`, instead of syncing every resource regardless of their state. This option is useful to reduce load and save time when you have thousands of resources in an application. See [Selective Sync](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#selective-sync){:target="\_blank"}.
 
-**Dry run**  
-When selected, allows you to preview the application before changes are made to the cluster.  
+**Dry run**
+When selected, allows you to preview the application before changes are made to the cluster. 
 
-**Force**   
-When selected, orphans the dependents of a deleted resource during the sync operation. This option is useful to prevent accumulation of unused resources in deployed applications.
+**Force**  
+When selected, orphans the dependents of a deleted resource during the sync operation. This option is useful to prevent 
 
 {::nomarkdown}
 <br>
 {:/}
 
 #### Additional Options for application sync
-
-{::nomarkdown}
-<br>
-{:/}
 
 ##### Sync Options
 
@@ -134,14 +156,9 @@ When selected, orphans the dependents of a deleted resource during the sync oper
 * **Prune last**  
   When selected, removes those resources that do not exist in the currently deployed version during the final wave of the sync operation. See [Prune last](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last){:target="\_blank"}.  
 * **Apply out of sync only**
-  When selected, syncs only those resources in the application that have been changed and are `OutOfSync`, instead of syncing every resource regardless of their state. This option is useful to reduce load and save time when you have thousands of resources in an application. See <a href="" >[Selective Sync](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#selective-sync){:target="\_blank"}. 
-  > Selecting this option overrides specific resources selected in `Synchronize Resource` options.
+  When selected, syncs only those resources in the application that have been changed and are `OutOfSync`, instead of syncing every resource regardless of their state. This option is useful to reduce load and save time when you have thousands of resources in an application. See [Selective Sync](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#selective-sync){:target="\_blank"}.  
 * **Respect ignore differences**  
   When selected, Argo CD omits resources defined for the `spec.ignoreDifferences` attribute from the sync. Otherwise, Argo CD implements the desired state ad-hoc during the sync operation. See [Respect ignore difference configs](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#respect-ignore-difference-configs){:target="\_blank"}.
-
-{::nomarkdown}
-<br>
-{:/}
 
 ##### Prune propagation policy
 {::nomarkdown}Defines how resources are pruned, applying Kubernetes cascading deletion prune policies. 
@@ -161,13 +178,11 @@ All Prune propagation policies can be used with:
 <br>
 {:/}
 
-#### Selective resource synchronization for application sync
-Synchonize Resource options allow you to selectively sync application resources. You can bypass sync settings at the application level, and directly select the resources you want to sync, by state or otherwise.  
+#### Synchronize resources
+Synchronize Resource options allow you to selectively sync application resources. You can bypass sync settings at the application level, and directly select the resources you want to sync, by state or otherwise.  
 * All resources regardless of their sync states
 * Only out-of-sync resources
 * Only selected resources
-
-> Selecting `Apply out of sync only` in Additional options, ignores specifc resources selected here.
 
 By default, Synchronize Resources displays and selects all resources in the application. 
 
@@ -194,71 +209,21 @@ For example, if you made changes to `api` resources or `audit` resources, type `
    max-width="50%" 
    %} 
 
-{::nomarkdown}
-<br><br>
-{:/}
-
-#### Manually synchronize an application 
-Perform on-demand app sync when needed.
-
-**Before you begin**  
-
-Review:  
-* [Revision settings for application sync](#revision-settings-for-application-sync) 
-* [Additional options for application sync](#additional-options-for-application-sync)
-* [Selective resource synchronization for application sync](#selective-resource-synchronization-for-application-sync)
-
-**How to**  
-1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}.
-1. Select the application to sync, and do one of the following: 
-  * From the application's context menu on the right, select **Synchronize**. 
-  * On the top-right, click **Synchronize**. 
-1. Select the **Revision** and **Additional Options** for the manual sync.  
-1. Click **Next**.
-1. In **Synchronize Resources**, select the scope of the manual sync:
-  * To sync only specific resources, search for the resources by any part of their names, or define a Regex to filter by the required resources.  
-  * **All**: Sync all resources regardless of their sync state.
-  * **Out of sync**: Sync _only_ resources that are `Out of sync`.  
-    > If you have already selected **Apply out of sync only** in Additional Options, this option is ignored.
-  * **None**: Deselect all resources.
 
 {::nomarkdown}
 <br><br>
 {:/}
-
-### Sync with Refresh/hard refresh
-You can sync applications also using the Refresh and Hard Refresh options.  
-Argo CD maintains a cache of the application manifests in the Git repository. Both actions result in Argo CD syncing the application, the only difference being in the state of the cached manifests.  
-
-* Refresh: Compares the desired state in Git to the live state on the cluster, and syncs the desired state with the live state on detecting changes. Manifest cache is left unchanged.
-* Hard Refresh: Also compares the desired state to the live state on the cluster, and syncs the desired state with the live state on detecting changes, and also replaces the manifest cache.
-
-> We recommend using the sync strategies to sync applications. 
-
-1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}.
-1.  Drill down into the application, and from the top-right, select **Refresh**, or click the context menu and then select **Hard Refresh**. 
-
-  {% include 
-   image.html 
-   lightbox="true" 
-   file="/images/applications/app-refresh-hard-refresh.png" 
-   url="/images/applications/app-refresh-hard-refresh.png" 
-   alt="Application sync with Refresh/Hard Refresh" 
-   caption="Application sync with Refresh/Hard Refresh"
-   max-width="60%" 
-   %}
-
 
 <!---### Delete an application
-Delete an application from Codefresh. Deleting an application deletes the manifests from the Git repository, and then from the cluster where it is deployed. When deleted from the cluster, the application is removed from the Applications dashboard in Codefresh.
+Delete an application from Codefresh. Deleting an application deletes the manifest from the Git repository, and then from the cluster where it is deployed. When deleted from the cluster, the application is removed from the Applications dashboard in Codefresh.
  
->The scope of the delete action is determined by the **Prune resources** option in the application's General settings.    
+>**Prune resources** in the application's General settings determines the scope of the delete action.  
 When selected, both the application and its resources are deleted. When cleared, only the application is deleted. For more information, review [Sync settings]({{site.baseurl}}/docs/deployment/create-application/#sync-settings).  
 Codefresh warns you of the implication of deleting the selected application in the Delete form. 
 
-1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}.
+1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
 1. Select the application to delete.
-1. From the application's context menu on the right, select **Delete**.
+1. Click the three dots for additional actions, and select **Delete**.
   
   {% include 
    image.html 
@@ -283,9 +248,113 @@ Codefresh warns you of the implication of deleting the selected application in t
    %} 
 
 {:start="4"}
-1. To confirm, click **Commit & Delete**. --->
+1. To confirm, click **Commit & Delete**.-->
 
-### Related information
-[Creating applications]({{site.baseurl}}/docs/deployment/create-application/)  
-[Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/)  
-[Images in Codefresh]({{site.baseurl}}/docs/deployment/images/)  
+### Manage rollouts for deployments
+Control ongoing rollouts by resuming indefinitely paused steps, promoting rollouts, aborting, restarting and retrying rollouts.  
+
+{::nomarkdown}
+<br>
+{:/}
+
+#### Pause/resume ongoing rollouts
+Pause and resume ongoing rollouts directly from the Timeline tab in the Applications dashboard.  
+If the rollout is already automatically paused as result of a step definition, this action pauses the rollout even after the pause duration.
+
+
+1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
+1. Select the application and go to the Timelines tab.
+1. In the deployment record for the ongoing rollout, expand **Updated Services**.
+1. Based on the current state of the rollout, click **Pause** or **Resume**, as relevant.
+
+{% include 
+   image.html 
+   lightbox="true" 
+   file="/images/applications/rollout-resume-indefinite-pause.png" 
+   url="/images/applications/rollout-resume-indefinite-pause.png" 
+   alt="Resume paused rollout" 
+   caption="Resume paused rollout"
+   max-width="70%" 
+   %}
+
+{::nomarkdown}
+<br>
+{:/}
+
+#### Manage an ongoing rollout with the Rollout Player
+Manage an ongoing rollout using the controls in the Rollout Player to skip steps, and promote rollouts.
+
+1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
+1. Select the application and go to the Timelines tab.
+1. In the deployment record for the ongoing rollout, click the name of the rollout. 
+1. Select the required option in the Rollout Player.
+
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/rollout-player.png"
+url="/images/applications/rollout-player.png"
+alt="Rollout Player controls for an ongoing rollout"
+caption="Rollout Player controls for an ongoing rollout"
+max-width="50%"
+%}
+
+ 
+The table describes the controls in the Rollout Player.
+
+{: .table .table-bordered .table-hover}
+| Rollback player option   | Description |  
+| --------------  | ------------| 
+| **Rollback**      | Not available currently.  | 
+| **Pause**         | Pause the rollout. If the rollout is already automatically paused as the result of a step definition, clicking Pause pauses the rollout also after the pause duration. | 
+| **Resume** <!---{::nomarkdown}<img src="../../../images/icons/rollout-resume.png" display=inline-block"> {:/}-->| Resume a rollout that was paused either manually by clicking Pause, or automatically through the step's definition. | 
+| **Skip step** <!---{::nomarkdown}<img src="../../../images/icons/rollout-skip-step.png" display=inline-block"> {:/}--> | Skip execution of current step. Such steps are marked as Skipped in the rollout visualization. | 
+| **Promote full** <!---{::nomarkdown}<img src="../../../images/icons/rollout-promote-full.png" display=inline-block"> {:/} -->  | Skip all remaining steps, and deploy the current image. |        
+
+{::nomarkdown}
+<br>
+{:/}
+
+#### Manage the `rollout` resource
+
+Control the rollout through the options available for the Rollout resource. 
+
+1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
+1. Select the application and go to the Current State tab.
+1. Open the context menu of the `Rollout` resource, and select the relevant option. 
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/rollout-resource-context-menu.png"
+url="/images/applications/rollout-resource-context-menu.png"
+alt="Options for `rollout` resource in the Current State tab"
+caption="Options for `rollout` resource in the Current State tab"
+max-width="50%"
+%}
+
+The table describes the options for the `Rollout` resource.
+
+{: .table .table-bordered .table-hover}
+| Option             | Description              | 
+| --------------    | --------------           |
+|**Abort**              | Terminate the current rollout. | 
+|**Pause**              | Pause the current rollout.  | 
+|**Promote-full**       | Promote the current rollout by skipping all remaining stages in the rollout, and deploy the current image.  | 
+|**Restart**            | Manually restart the pods of the rollout.| 
+|**Resume**             | Resume a rollout that has been paused. | 
+|**Retry**              | Retry a rollout that has been aborted. Available only when a rollout has been aborted. | 
+|**Skip-current-step**  | Skip executing the current step, and continue with the next step. | 
+
+
+
+
+### Related articles
+[Creating applications]({{site.baseurl}}/docs/deployment/create-application)  
+[Home dashboard]({{site.baseurl}}/docs/reporting/home-dashboard)  
+[DORA metrics]({{site.baseurl}}/docs/reporting/dora-metrics)
+
+
+
+

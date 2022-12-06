@@ -25,8 +25,9 @@ The requirements listed are the **_minimum_** requirements to provision **_hybri
 | Ingress controller| Configured on Kubernetes cluster and exposed from the cluster. {::nomarkdown} <br>Supported and tested ingress controllers include: <ul><li>Ambassador</li>{:/}(see [Ambassador ingress configuration](#ambassador-ingress-configuration)){::nomarkdown}<li>AWS ALB (Application Load Balancer)</li>{:/} (see [AWS ALB ingress configuration](#aws-alb-ingress-configuration)){::nomarkdown}<li>Istio</li>{:/} (see [Istio ingress configuration](#istio-ingress-configuration)){::nomarkdown}<li>NGINX Enterprise (nginx.org/ingress-controller)</li>{:/} (see [NGINX Enterprise ingress configuration](#nginx-enterprise-ingress-configuration)){::nomarkdown}<li>NGINX Community (k8s.io/ingress-nginx)</li> {:/} (see [NGINX Community ingress configuration](#nginx-community-version-ingress-configuration)){::nomarkdown}<li>Trafik</li>{:/}(see [Traefik ingress configuration](#traefik-ingress-configuration))|
 |Node requirements| {::nomarkdown}<ul><li>Memory: 5000 MB</li><li>CPU: 2</li></ul>{:/}|
 |Cluster permissions | Cluster admin permissions |
-|Git providers    |{::nomarkdown}<ul><li>GitHub</li></ul>{:/}|
-|Git access tokens    | {::nomarkdown}Runtime Git token:<ul><li>Valid expiration date</li><li>Scopes: <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">repo</span> and <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">admin-repo.hook</span></li></ul>Personal access Git token:<ul><li>Valid expiration date</li><li>Scopes: <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">repo</span></li></ul></li></ul>{:/}|
+|Git providers    |{::nomarkdown}<ul><li>GitHub</li><li>GitHub Enterprise</li><li>GitLab Cloud</li><li>GitLab Server</li><li>Bitbucket Cloud</li><li>Bitbucket Server</li></ul>{:/}|
+|Git access tokens    | {::nomarkdown}Git runtime token:<ul><li>Valid expiration date</li><li>Scopes: <ul><li>GitHub and GitHub Enterprise: <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">repo</span>, <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">admin-repo.hook</span></li><li>GitLab Cloud and GitLab Server: <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">api</span>, <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">read_repository</span></li><li>Bitbucket Cloud and Server: <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">Permissions: Read</span>, <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">Workspace membership: Read</span>,  <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">Webhooks: Read and write</span>, <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">Repositories: Write, Admin</span> </li></ul>{:/}|
+
 
 <!---### General ingress configuration
 This section lists the configuration required for _all_ supported ingress controllers, _before_ installing a hybrid runtime. 
@@ -212,16 +213,63 @@ Configure the ingress controller to handle TCP requests.
 </br>
 {:/}
 
+
+
 #### Cluster routing service
 >  The cluster routing service must be configured _after_ installing the hybrid runtime.
 
-Configure the `VirtualService` to route traffic to the `app-proxy` and `webhook` services, as in the examples below.  
+Based on the runtime version, you need to configure a single or multiple `VirtualService` resources for the `app-proxy`, `webhook`, and `workflow` services.
+
+##### Runtime version 0.0.543 or higher
+Configure a single `VirtualService` resource to route traffic to the `app-proxy`, `webhook`, and `workflow` services, as in the example below.  
+
+```yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  namespace: pov-codefresh-istio-runtime # replace with your runtime name
+  name: internal-router
+spec:
+  hosts:
+    -  pov-codefresh-istio-runtime.sales-dev.codefresh.io   # replace with your host name
+  gateways:
+    - istio-system/internal-router  # replace with your gateway name
+  http:
+    - match:
+      - uri:
+          prefix: /webhooks
+      route:
+      - destination:
+          host: internal-router
+          port:
+            number: 80
+    - match:
+      - uri:
+          prefix: /app-proxy
+      route:
+      - destination:
+          host: internal-router
+          port:
+            number: 80
+    - match:
+      - uri:
+          prefix: /workflows
+      route:
+      - destination:
+          host: internal-router
+          port:
+            number: 80
+```
+
+##### Runtime version 0.0.542 or lower
+
+Configure two different `VirtualService` resources, one to route traffic to the `app-proxy`, and the second to route traffic to the `webhook` services, as in the examples below.  
 
 {::nomarkdown}
 </br>
 {:/}
 
-**`VirtualService` example for `app-proxy`:** 
+**`VirtualService` example for `app-proxy`:**
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -233,7 +281,7 @@ spec:
   hosts:
     - my.support.cf-cd.com # replace with your host name
   gateways:
-    - my-gateway
+    - my-gateway # replace with your host name
   http:
     - match:
       - uri:
@@ -244,11 +292,10 @@ spec:
           port:
             number: 3017
 ```
-{::nomarkdown}
-</br>
-{:/}
 
-**`VirtualService` example for `webhook`:** 
+**`VirtualService` example for `webhook`:**  
+
+> Configure a `uri.prefix` and `destination.host` for each event-source if you have more than one.
 
 ```yaml  
 apiVersion: networking.istio.io/v1alpha3
@@ -260,17 +307,26 @@ spec:
   hosts:
     - my.support.cf-cd.com # replace with your host name
   gateways:
-    - my-gateway
+    - my-gateway # replace with your gateway name
   http:
     - match:
       - uri:
-          prefix: /webhooks/test-runtime3/push-github # replace `test-runtime3` with your runtime name
+          prefix: /webhooks/test-runtime3/push-github # replace `test-runtime3` with your runtime name, and `push-github` with the name of your event source
       route:
       - destination:
-          host: push-github-eventsource-svc 
+          host: push-github-eventsource-svc # replace `push-github' with the name of your event source
+          port:
+            number: 80
+    - match:
+      - uri:
+          prefix: /webhooks/test-runtime3/cypress-docker-images-push # replace `test-runtime3` with your runtime name, and `cypress-docker-images-push` with the name of your event source
+      route:
+      - destination:
+          host: cypress-docker-images-push-eventsource-svc # replace `cypress-docker-images-push` with the name of your event source
           port:
             number: 80
 ```
+
 {::nomarkdown}
 </br></br>
 {:/}
