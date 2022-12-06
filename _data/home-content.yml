@@ -75,14 +75,16 @@
   icon: images/home-icons/pipeline.svg
   url: ''
   links:
-    - title: Creation
-      localurl: /docs/pipelines/create-pipeline
+    - title: Creating workflows
+      localurl: /docs/workflows/create-pipeline
+    - title: Nested workflows
+      localurl: /docs/workflows/nested-workflows/      
     - title: Configure artifact repository
-      localurl: /docs/pipelines/configure-artifact-repository/
+      localurl: /docs/workflows/configure-artifact-repository/
     - title: Selectors for concurrency synchronization
-      localurl: /docs/pipelines/concurrency-limit/
+      localurl: /docs/workflows/concurrency-limit/
     - title: Sharing file systems
-      localurl: /docs/pipelines/sharing-file-system/  
+      localurl: /docs/workflows/sharing-file-system/  
        
 
 - title: Deployment

@@ -150,26 +150,20 @@
       url: "/what-is-the-codefresh-yaml"     
 
 
-
-
-
-
-
-
-
 - title: Workflows
-  url: "/pipelines"
+  url: "/workflows"
   pages:
-    - title: Creation
+    - title: Creating workflows
       url: "/create-pipeline"
+    - title: Nested workflows
+      url: "/nested-workflows"
     - title: Configure artifact repository
       url: "/configure-artifact-repository"
     - title: Selectors for concurrency synchronization
       url: "/concurrency-limit"
     - title: Sharing file systems
       url: "/sharing-file-system"
-    - title: Nested workflows
-      url: "/nested-workflows"
+
     
 
 - title: Deployment
