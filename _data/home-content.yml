@@ -85,7 +85,7 @@
     - title: DORA metrics
       localurl: /docs/reporting/dora-metrics/
     
-- title: Integrations
+- title: Pipeline integrations
   icon: images/home-icons/cloud-integrations.png
   url: ''
   links:
@@ -121,7 +121,7 @@
     localurl: /docs/integrations/codefresh-api/
 
 
-- title: Image enrichment for GitOps
+- title: GitOps integrations
   icon: images/home-icons/integrations.svg
   url: ''
   links:
