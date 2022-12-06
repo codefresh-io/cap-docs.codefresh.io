@@ -7,7 +7,30 @@ toc: true
 ---
 
 
-Codefresh has native integration for Atlassian Jira, to both enrich images with information from Jira and report deployment information back to Jira. You can monitor a feature in Codefresh all the way from the ticket creation phase, up to when it is implemented and deployed to an environment.  
+Codefresh has native integration for Atlassian Jira, to both enrich images with information from Jira and report deployment information back to Jira. You can monitor a feature in Codefresh all the way, from the ticket creation phase to when it is implemented and deployed to an environment.  
+
+Here are examples of the Images dashboard in Codefresh enriched with Jira information, and the Deployment tab in Jira with the reported information.  
+
+  {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/integrations/jira/jira-image-dashboard.png" 
+   url="/images/integrations/jira/jira-image-dashboard.png" 
+   alt="Images dashboard: Summary with enriched image information" 
+   caption="Images dashboard: Summary with enriched image information"
+   max-width="50%" 
+   %}
+
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/integrations/jira/jira-deployment-info.png" 
+	url="/images/integrations/jira/jira-deployment-info.png" 
+	alt="Deployment information reported in Jira" 
+	caption="Deployment information reported in Jira"
+  max-width="50%" 
+   %}
 
 For general information on adding, editing, and deleting a Jira integration in Codefresh, see [Issue-tracking integrations]({{site.baseurl}}/docs/integrations/issue-tracking/).
 
@@ -85,11 +108,6 @@ The table describes the arguments required to integrate Jira in Codefresh, both 
   max-width="80%" 
 %}
  
-<!---### View deployment information in Jira
-
-### View enriched Jira information--->
-
-
 
 ### Using Jira integration in pipelines
 In your CI pipeline, configure the Jira integration in Codefresh, and reference the Jira integration by name.  
