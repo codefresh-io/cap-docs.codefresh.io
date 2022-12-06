@@ -45,7 +45,7 @@
 - title: Installation
   url: "/runtime"
   pages:
-    - title: Installation options
+    - title: Installation environments
       url: "/installation-options"
     - title: Set up a hosted runtime environment
       url: "/hosted-runtime"
@@ -81,10 +81,10 @@
 - title: Deployment
   url: "/deployment"
   pages:
-    - title: Applications dashboard
-      url: "/applications-dashboard"
     - title: Creating applications
       url: "/create-application"
+    - title: Monitoring applications
+      url: "/applications-dashboard"
     - title: Managing applications
       url: "/manage-application"
     - title: Images in Codefresh
@@ -143,7 +143,7 @@
       url: "/add-users"
     - title: User settings
       url: "/user-settings"
-    - title: Set up OAuth2 authentication
+    - title: Set up OAuth2 authentication for Git providers
       url: "/oauth-setup"
     - title: Authorize access to organizations/projects
       url: "/hosted-authorize-orgs"  

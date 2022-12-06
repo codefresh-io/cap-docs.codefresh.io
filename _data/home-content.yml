@@ -64,10 +64,10 @@
   icon: images/home-icons/deployment.svg
   url: ''
   links:
-    - title: Applications dashboard
-      localurl: /docs/deployment/applications-dashboard/
     - title: Creating applications
       localurl: /docs/deployment/create-application/
+    - title: Monitoring applications
+      localurl: /docs/deployment/applications-dashboard/
     - title: Managing applications
       localurl: /docs/deployment/manage-application/
     - title: Images in Codefresh
@@ -120,7 +120,7 @@
     localurl: /docs/administration/add-users/
   - title: Single Sign-On
     localurl: /docs/administration/single-sign-on/
-  - title: Set up OAuth2 authentication
+  - title: Set up OAuth2 authentication for Git providers
     localurl: /docs/administration/oauth-setup/  
   - title: User settings
     localurl: /docs/administration/user-settings/
