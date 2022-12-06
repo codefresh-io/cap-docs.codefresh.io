@@ -17,8 +17,9 @@ You add an issue-tracking integration in Codefresh by:
 * Committing the changes
 
 Once added, Codefresh displays the list of existing integrations with their sync status. You can edit or delete any integration. 
-### Configure container registry integrations in Codefresh
-Configure the settings for a container registry integration in Codefresh.
+
+### Configure issue tracking integrations in Codefresh
+Configure the settings for an issue tracking integration in Codefresh.
 
 1. In the Codefresh UI, go to [Integrations](https://g.codefresh.io/2.0/account-settings/integrations){:target="\_blank"}.
 1. Filter by **Issue Tracking**, select the issue tracking tool to integrate, and click **Configure**.
