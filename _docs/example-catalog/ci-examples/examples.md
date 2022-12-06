@@ -7,8 +7,8 @@ redirect_from:
   - examples.html
   - /docs/catalog-examples/
   - /docs/examples/
-  - /docs/codefresh-yaml-examples/  
-  - /docs/codefresh-yaml/codefresh-yaml-examples/
+  - /docs/pipelines-examples/  
+  - /docs/pipelines/pipelines-examples/
 toc: true
 ---
 Codefresh enables you to define the steps of your pipeline in a [YAML file]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/). By default, the file is named `codefresh.yml`, and is located in the root directory of the repository.
@@ -31,7 +31,7 @@ Codefresh is agnostic as far as programming languages are concerned. All major p
 
 ## Source code checkout examples
 
-You can check out code from one or more repositories in any pipeline phase. Codefresh includes [built-in GIT integration]({{site.baseurl}}/docs/integrations/git-providers/) with all the popular GIT providers and can be used with [git-clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) steps.
+You can check out code from one or more repositories in any pipeline phase. Codefresh includes [built-in GIT integration]({{site.baseurl}}/docs/integrations/git-providers/) with all the popular GIT providers and can be used with [git-clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/) steps.
 
 - [Cloning Git repositories using the built-in integration]({{site.baseurl}}/docs/example-catalog/git-checkout/)
 - [Cloning Git repositories using manual Git commands]({{site.baseurl}}/docs/example-catalog/git-checkout-custom/)

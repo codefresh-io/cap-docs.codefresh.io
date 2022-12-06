@@ -50,7 +50,7 @@ one should create the Docker image.
 
 ### Create a CI pipeline for Spring
 
-The repository also contains a premade [Codefresh YAML file]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) that you can use as a starting point in your own Spring Boot 2 projects.
+The repository also contains a premade [Codefresh YAML file]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/) that you can use as a starting point in your own Spring Boot 2 projects.
 
 Here are the full contents of the file.
 
@@ -106,8 +106,8 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-The pipeline starts by checking out the code using a [git clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/). The next step is  a [freestyle]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) one and packages the jar file. Next we have a [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) that creates the docker image. Finally we have another freestyle
-step that uses [service containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/) to run integration tests.
+The pipeline starts by checking out the code using a [git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/). The next step is  a [freestyle]({{site.baseurl}}/docs/pipelines/steps/freestyle/) one and packages the jar file. Next we have a [build step]({{site.baseurl}}/docs/pipelines/steps/build/) that creates the docker image. Finally we have another freestyle
+step that uses [service containers]({{site.baseurl}}/docs/pipelines/service-containers/) to run integration tests.
 
 {% include image.html 
 lightbox="true" 
@@ -122,7 +122,7 @@ After checking out the code we use the standard [Maven Docker image](https://hub
 
 ### Caching the Maven dependencies
 
-Codefresh is smart enough that [caches automatically]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/) for us the workspace of a build (`/codefresh/volume`). This works great for build tools that keep their cache in the project folder, but not for Maven/Gradle which keep their cache externally. By changing the location of the Maven repo on the project folder (the `m2_repository` name is arbitrary) we make sure that Codefresh will cache automatically the Maven libraries resulting in much faster builds.
+Codefresh is smart enough that [caches automatically]({{site.baseurl}}/docs/pipelines/pipeline-caching/) for us the workspace of a build (`/codefresh/volume`). This works great for build tools that keep their cache in the project folder, but not for Maven/Gradle which keep their cache externally. By changing the location of the Maven repo on the project folder (the `m2_repository` name is arbitrary) we make sure that Codefresh will cache automatically the Maven libraries resulting in much faster builds.
 
 The next step is a Docker build. We name our image **spring-boot-2-sample-app** and tag it with a string `non-multi-stage` but of course you can use any other tag name that you wish.
 
@@ -137,7 +137,7 @@ max-width="80%"
 
 Once the pipeline is finished you will see the Spring Boot 2 Docker image your [Docker image dashboard]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#viewing-docker-images).
 
-The last step is similar to the unit tests, but this time we run integration tests. We define again a custom cache folder so when you run the build you will see that Maven will automatically pick the cache from the previous step. All Codefresh steps in a pipeline [run on the same workspace]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps), so the build results from one step are visible to the next.
+The last step is similar to the unit tests, but this time we run integration tests. We define again a custom cache folder so when you run the build you will see that Maven will automatically pick the cache from the previous step. All Codefresh steps in a pipeline [run on the same workspace]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps), so the build results from one step are visible to the next.
 
 >Notice that because the [Maven lifecycle](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html) also executes the previous steps in a build, the `mvn verify` command essentially will run `mvn package` as well. In theory we could just have the _Integration_ step in this pipeline on its own. That step would build the code, run unit and integration tests all in one stage. For demonstration purposes however, we include two steps so that you can see the correct usage of Maven cache.
 
@@ -247,10 +247,10 @@ much faster after the first one finishes.
 ## What to read next
 
 * [Gradle example]({{site.baseurl}}/docs/learn-by-example/java/gradle/)
-* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
-* [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
-* [How pipelines work]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
+* [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)
+* [Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)
+* [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)
+* [How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)
 
 
 

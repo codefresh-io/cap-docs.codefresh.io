@@ -8,7 +8,7 @@ redirect_from:
 toc: true
 ---
 
-Codefresh creates a [shared volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) in each pipeline that is automatically shared on all freestyle steps.
+Codefresh creates a [shared volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) in each pipeline that is automatically shared on all freestyle steps.
 
 {% include 
 image.html 
@@ -22,7 +22,7 @@ max-width="90%"
 
 This volume exists at `/codefresh/volume` by default. You can simply copy files there to have them available in all Codefresh steps (as well as subsequent builds of the same pipeline)
 
->Notice that the [git clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) will delete any files **not** mentioned in `.gitignore`. Therefore if you want to cache a folder that exists in your project directory (such as `node_modules`) you also need to add it to `.gitignore`
+>Notice that the [git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/) will delete any files **not** mentioned in `.gitignore`. Therefore if you want to cache a folder that exists in your project directory (such as `node_modules`) you also need to add it to `.gitignore`
 
 ## Using the shared volume
 
@@ -81,10 +81,10 @@ steps:
 
 This pipeline does the following:
 
-1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
-1. Builds a docker image using a [Build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)
-1. Copies the file `artifact.example` to the volume with a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)
-1. Reads the contents of the volume in a different [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)
+1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
+1. Builds a docker image using a [Build step]({{site.baseurl}}/docs/pipelines/steps/build/)
+1. Copies the file `artifact.example` to the volume with a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/)
+1. Reads the contents of the volume in a different [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/)
 
 If you run the pipeline you will see the file contents in the fourth step:
 
@@ -104,14 +104,14 @@ If you also run the pipeline a second time, you will see the dummy file in all s
 
 ## Caching build dependencies and Docker layers
 
-More information about caching build dependencies can be found in the [caching documentation page]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/) as well as [in this blog post](https://codefresh.io/blog/caching-build-dependencies-codefresh-volumes/).
+More information about caching build dependencies can be found in the [caching documentation page]({{site.baseurl}}/docs/pipelines/pipeline-caching/) as well as [in this blog post](https://codefresh.io/blog/caching-build-dependencies-codefresh-volumes/).
 
 
 ## What to read next
 
-* [Introduction to Codefresh pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
-* [Pipeline caching]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/)
-* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [Freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)
+* [Introduction to Codefresh pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)
+* [Pipeline caching]({{site.baseurl}}/docs/pipelines/pipeline-caching/)
+* [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)
+* [Freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/)
 
 

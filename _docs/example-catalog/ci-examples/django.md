@@ -164,12 +164,12 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-Codefresh is smart enough that [caches automatically]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/) for us the workspace of a build (`/codefresh/volume`). This works great for build tools that keep their cache in the project folder, but not for pip which keeps its cache externally (e.g. `~/.cache/pip`). By changing the location of the Pip cache on the project folder (the `pip-cache` name is arbitrary) we make sure that Codefresh will cache automatically the Pip libraries resulting in much faster builds.
+Codefresh is smart enough that [caches automatically]({{site.baseurl}}/docs/pipelines/pipeline-caching/) for us the workspace of a build (`/codefresh/volume`). This works great for build tools that keep their cache in the project folder, but not for pip which keeps its cache externally (e.g. `~/.cache/pip`). By changing the location of the Pip cache on the project folder (the `pip-cache` name is arbitrary) we make sure that Codefresh will cache automatically the Pip libraries resulting in much faster builds.
 
 ## What to read next
 
 * [Python examples]({{site.baseurl}}/docs/learn-by-example/python/)
-* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
-* [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
-* [How pipelines work]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
+* [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)
+* [Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)
+* [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)
+* [How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)

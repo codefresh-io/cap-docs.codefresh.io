@@ -16,10 +16,10 @@ There are many ways to integrate slack with Codefresh
 
 ## Custom webhook to Slack
 
-Use a container image with a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) such as `byrnedo/alpine-curl` to send a notification to a Slack channel.
+Use a container image with a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) such as `byrnedo/alpine-curl` to send a notification to a Slack channel.
 
 {:start="1"}
-1. Get the {% raw %}```${{SLACK_WEB_URL}}```{% endraw %} and put it in the Environment Variables or use [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/)
+1. Get the {% raw %}```${{SLACK_WEB_URL}}```{% endraw %} and put it in the Environment Variables or use [shared configuration]({{site.baseurl}}/docs/pipelines/shared-configuration/)
 
 {{site.data.callout.callout_info}}
 You can find how to integrate with slack here [https://api.slack.com/incoming-webhooks](https://api.slack.com/incoming-webhooks){:target="_blank"}
@@ -40,6 +40,6 @@ slack_notify:
 ## What to read next
 
 * [Global Slack Integration]({{site.baseurl}}/docs/integrations/notifications/slack-integration/)
-* [Advanced Workflows]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/)
-* [Pipeline Hooks]({{site.baseurl}}/docs/codefresh-yaml/hooks/)
-* [Shared Configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/)
+* [Advanced Workflows]({{site.baseurl}}/docs/pipelines/advanced-workflows/)
+* [Pipeline Hooks]({{site.baseurl}}/docs/pipelines/hooks/)
+* [Shared Configuration]({{site.baseurl}}/docs/pipelines/shared-configuration/)

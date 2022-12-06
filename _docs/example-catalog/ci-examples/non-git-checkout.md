@@ -9,7 +9,7 @@ toc: true
 Codefresh has [Native Git support]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout/) but you can still use any other version control system such as SVN, CVS, hg, etc.
 
 The only requirement is that you find or create a Docker image that contains the client for that source control system and then use a 
-[freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) to run it.
+[freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) to run it.
 
 ## Checking out Subversion code
 
@@ -90,12 +90,12 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-The environments variables should be defined in [Codefresh shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/).
+The environments variables should be defined in [Codefresh shared configuration]({{site.baseurl}}/docs/pipelines/shared-configuration/).
 
 
 ## What to read next
 
 * [Native Git checkout]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout/)
 * [Running custom git commands]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout-custom/)
-* [Freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)
-* [Git Clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
+* [Freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/)
+* [Git Clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)

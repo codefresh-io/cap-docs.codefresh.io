@@ -103,10 +103,10 @@ max-width="80%"
 ## What to read next
 
 * [C/C++ examples]({{site.baseurl}}/docs/learn-by-example/cc/)
-* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
-* [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
-* [How pipelines work]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
+* [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)
+* [Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)
+* [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)
+* [How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)
 
 
 

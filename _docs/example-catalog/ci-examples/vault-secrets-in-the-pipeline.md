@@ -35,7 +35,7 @@ You cannot run the application locally, as it needs to run in the pipeline in or
 
 ## Create the Pipeline
 
-We will be running the following pipeline that contains three step types: a vault step, a [git-clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step, and a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/).
+We will be running the following pipeline that contains three step types: a vault step, a [git-clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/) step, and a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/).
 
 {% include image.html 
 lightbox="true" 
@@ -93,9 +93,9 @@ steps:
 The above pipeline does the following:
 
 1. Imports the key-value pairs from the Vault server and exports them into the pipeline under `/meta/env_vars_to_export`.
-2. Clones the main repository (note the special use of naming the step `main_clone`).  This ensures that all subsequent commands are run [inside the project that was checked out]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/#basic-clone-step-project-based-pipeline).
+2. Clones the main repository (note the special use of naming the step `main_clone`).  This ensures that all subsequent commands are run [inside the project that was checked out]({{site.baseurl}}/docs/pipelines/steps/git-clone/#basic-clone-step-project-based-pipeline).
 3. The last step, `package_jar`, does a few special things to take note of:
-   - Spins up a [Service Container]({{site.baseurl}}/docs/codefresh-yaml/service-containers/) running Redis on port 6379 , and sets the password to the database using our exported environment variable
+   - Spins up a [Service Container]({{site.baseurl}}/docs/pipelines/service-containers/) running Redis on port 6379 , and sets the password to the database using our exported environment variable
    - Sets `maven.repo.local` to cache Maven dependencies into the local codefresh volume to [speed up builds]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/#caching-the-maven-dependencies)
    - Runs unit tests and packages the jar.  Note how you can directly refer to the service container's name (`my-redis-db-host`) when we set `server.host`
 
@@ -111,6 +111,6 @@ You will see that the variable was correctly exported to the pipeline by running
   
 ## What to Read Next
 
-- [Git-clone Step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
-- [Freestyle Step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)
-- [Service Containers]({{site.baseurl}}//docs/codefresh-yaml/service-containers/)
+- [Git-clone Step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
+- [Freestyle Step]({{site.baseurl}}/docs/pipelines/steps/freestyle/)
+- [Service Containers]({{site.baseurl}}//docs/pipelines/service-containers/)

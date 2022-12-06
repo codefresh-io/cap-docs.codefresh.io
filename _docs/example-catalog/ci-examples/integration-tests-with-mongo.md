@@ -83,15 +83,15 @@ steps:
 
 This pipeline does the following:
 
-1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
-1. [Builds a Docker image]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) with the application source code as well as the Mocha tests
-1. Runs mocha tests while launching a [service container]({{site.baseurl}}/docs/codefresh-yaml/service-containers/) for an active MongoDB instance
+1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
+1. [Builds a Docker image]({{site.baseurl}}/docs/pipelines/steps/build/) with the application source code as well as the Mocha tests
+1. Runs mocha tests while launching a [service container]({{site.baseurl}}/docs/pipelines/service-containers/) for an active MongoDB instance
 
 Notice that we also use the `readiness` property in the testing phase so that we can verify MongoDB is ready and listening, before running the tests.
 
 ## What to read next
 
-- [Service Containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/)
+- [Service Containers]({{site.baseurl}}/docs/pipelines/service-containers/)
 - [Integration test example]({{site.baseurl}}/docs/yaml-examples/examples/run-integration-tests/)
 - [Integration Tests with Postgres]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-postgres/)
 - [Integration Tests with MySQL]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mysql/)

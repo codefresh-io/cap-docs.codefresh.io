@@ -12,7 +12,7 @@ This project uses `Node JS` to build an application which will eventually become
 
 ## Looking around
 
-In the root of this repository you'll find a file named `codefresh.yml`, this is our [pipeline definition]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) and it describes the different steps that comprise our process. Let's quickly review the contents of this file:
+In the root of this repository you'll find a file named `codefresh.yml`, this is our [pipeline definition]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/) and it describes the different steps that comprise our process. Let's quickly review the contents of this file:
 
   `codefresh.yml`
 {% highlight yaml %}
@@ -55,7 +55,7 @@ steps:
 {% endhighlight %}
 
 The pipeline clones the source code, builds a docker image and then 
- [creates a preview environment]({{site.baseurl}}/docs/codefresh-yaml/steps/launch-composition/) with that image.
+ [creates a preview environment]({{site.baseurl}}/docs/pipelines/steps/launch-composition/) with that image.
 
 
 {{site.data.callout.callout_warning}}

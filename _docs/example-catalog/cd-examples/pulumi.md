@@ -85,7 +85,7 @@ steps:
 
 This pipeline does the following:
 
-1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/codefresh-yaml/pipelines/git-clone/)
+1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/pipelines/pipelines/git-clone/)
 1. Runs `yarn install` to download dependencies. In this example we use TypeScript, but Go and Python would work as well (or any other language supported by Pulumi)
 1. Chooses the cluster that will be used for deployments (if you have more than one). Use your own cluster name as seen in the [Kubernetes dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/) of Codefresh
 1. Runs `pulumi up` with the same target cluster

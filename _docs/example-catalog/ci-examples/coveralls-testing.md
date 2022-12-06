@@ -2,10 +2,11 @@
 title: "Coveralls Coverage Reports"
 description: "How to forward coverage reports to Coveralls"
 group: example-catalog
+sub_group: ci-examples
 toc: true
 ---
 
-[Coveralls](https://coveralls.io/) is a web service that allows users to track the code coverage of their application over time in order to optimize the effectiveness of their unit tests. This section details how coverage reports can be generated and forwarded to Coveralls with every Codefresh build.
+[Coveralls](https://coveralls.io/){:target="\_blank"} is a web service that allows users to track the code coverage of their application over time in order to optimize the effectiveness of their unit tests. This section details how coverage reports can be generated and forwarded to Coveralls with every Codefresh build.
 
 Analysis reports displayed within Coveralls dashboard:
 {% include image.html 
@@ -22,9 +23,9 @@ max-width="80%"
 * A [Coveralls account](https://coveralls.io/) (free or enterprise) -- Note that all open-source projects are free on Coveralls
 * A testing tool added to your project that produces coverage reports
 
-Coveralls supports [22 different language integrations](https://docs.coveralls.io/about-coveralls). Each example provided in the official documentation suggests several coverage report tools that can be used in combination with Coveralls.
+Coveralls supports [22 different language integrations](https://docs.coveralls.io/about-coveralls){:target="\_blank"}. Each example provided in the official documentation suggests several coverage report tools that can be used in combination with Coveralls.
 
-You could try it out by cloning our [node example application](https://github.com/codefresh-contrib/coveralls-sample-app) that utilises [jest](https://jestjs.io/).
+You could try it out by cloning our [node example application](https://github.com/codefresh-contrib/coveralls-sample-app){:target="\_blank"} that utilises [jest](https://jestjs.io/){:target="\_blank"}.
 
 ## Prepare your Repository
 
@@ -37,9 +38,9 @@ npm install coveralls --save-dev
 {% endraw %}
 {% endhighlight %}
 
-Coveralls requires a [script](https://github.com/nickmerwin/node-coveralls) that takes standard input and sends it to coveralls.io to report your code coverage. Depending on the framework that you are using, you will have to add a different script to your application. 
+Coveralls requires a [script](https://github.com/nickmerwin/node-coveralls){:target="\_blank"} that takes standard input and sends it to coveralls.io to report your code coverage. Depending on the framework that you are using, you will have to add a different script to your application. 
 
-Any coverage reports can be forwarded that are within a [lcov data format](http://ltp.sourceforge.net/coverage/lcov/geninfo.1.php) (including [mocha's LCOV reporter](https://www.npmjs.com/package/mocha-lcov-reporter)). For this, we are going to set-up a “bin” folder, and within the folder a coveralls.js file that contains the following content:
+Any coverage reports can be forwarded that are within a [lcov data format](http://ltp.sourceforge.net/coverage/lcov/geninfo.1.php){:target="\_blank"} (including [mocha's LCOV reporter](https://www.npmjs.com/package/mocha-lcov-reporter){:target="\_blank"}). For this, we are going to set-up a “bin” folder, and within the folder a coveralls.js file that contains the following content:
 
 {% highlight yaml %}
 {% raw %}
@@ -82,7 +83,8 @@ max-width="80%"
 
 ## Codefresh Pipeline
 
-In case the project that you want to use Coveralls in does not have a pipeline, [create a new pipeline](https://codefresh.io/docs/docs/getting-started/create-a-basic-pipeline/).
+<!--change the x-ref after final update-->
+In case the project that you want to use Coveralls in does not have a pipeline, [create a new pipeline]({{site.baseurl}}/docs/getting-started/create-a-basic-pipeline/).
 
 {% include image.html 
 lightbox="true" 
@@ -122,7 +124,7 @@ The testing step requires three different environment variables to connect to Co
 {% endraw %}
 {% endhighlight %}
 
-We specify several variables within this step. Those, which start with ’CF’ are [Codefresh-specific steps](https://codefresh.io/docs/docs/codefresh-yaml/variables/) and the value is automatically provided by Codefresh once you run the pipeline. Our entire codefresh.yml will look as such:
+We specify several variables within this step. Those, which start with ’CF’ are [Codefresh-specific steps]({{site.baseurl}}/docs/pipelines/variables/) and the value is automatically provided by Codefresh once you run the pipeline. Our entire codefresh.yml will look as such:
 
 {% highlight yaml %}
 {% raw %}
@@ -138,7 +140,7 @@ steps:
     type: "git-clone"
     repo: "anais-codefresh/coveralls-sample-app"
     # CF_BRANCH value is auto set when pipeline is triggered
-    # Learn more at codefresh.io/docs/docs/codefresh-yaml/variables/
+    # Learn more at codefresh.io/docs/docs/pipelines/variables/
     revision: "${{CF_BRANCH}}"
     git: "github"
     stage: "clone"
@@ -209,10 +211,10 @@ alt="Coveralls report details"
 max-width="80%" 
 %}
 
-## What to read next
 
-* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
-* [Unit tests]({{site.baseurl}}/docs/testing/unit-tests/)
-* [Integration tests]({{site.baseurl}}/docs/testing/integration-tests/)
-* [Sonarqube Integration]({{site.baseurl}}/docs/testing/sonarqube-integration/) 
+## Related articles
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
+[Unit tests]({{site.baseurl}}/docs/testing/unit-tests/)  
+[Integration tests]({{site.baseurl}}/docs/testing/integration-tests/)  
+[Sonarqube Integration]({{site.baseurl}}/docs/testing/sonarqube-integration/) 

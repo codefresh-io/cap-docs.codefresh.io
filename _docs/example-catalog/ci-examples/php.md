@@ -42,7 +42,7 @@ COPY --from=vendor /tmp/vendor/ /var/www/html/vendor/
 ## Create a Docker image for Php project
 
 An [example pipeline](https://github.com/codefresh-contrib/php-composer-sample-app/blob/master/codefresh.yml) is also offered in the git repository.
-It contains just two [steps]({{site.baseurl}}/docs/codefresh-yaml/steps/). A [clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) to fetch the code and a [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) to create a Docker image.
+It contains just two [steps]({{site.baseurl}}/docs/pipelines/steps/). A [clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/) to fetch the code and a [build step]({{site.baseurl}}/docs/pipelines/steps/build/) to create a Docker image.
 
  `codefresh.yml`
 {% highlight yaml %}
@@ -125,8 +125,8 @@ Notice that these environments are only for testing and previewing your applicat
 
 ## What to read next
 
-* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
-* [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
-* [How pipelines work]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
+* [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)
+* [Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)
+* [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)
+* [How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)
 

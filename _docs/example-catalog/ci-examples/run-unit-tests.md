@@ -85,14 +85,14 @@ steps:
 
 This pipeline does the following:
 
-1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
+1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
 1. Runs unit test for the GO application using the Dockerhub image `golang:1.12`
-1. [Builds the Docker image]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) for the Go application
+1. [Builds the Docker image]({{site.baseurl}}/docs/pipelines/steps/build/) for the Go application
 1. Builds the Docker image for the Python application
 1. Runs unit tests for the Python application using as runtime context the application image that was just created.
 
 
-Notice that in the second case the tests run in the context of `build_before_my_tests` which is the name of the step that creates the Docker image for Python. See [context variables]({{site.baseurl}}/docs/codefresh-yaml/variables/#context-related-variables) for more information on this technique.
+Notice that in the second case the tests run in the context of `build_before_my_tests` which is the name of the step that creates the Docker image for Python. See [context variables]({{site.baseurl}}/docs/pipelines/variables/#context-related-variables) for more information on this technique.
 
 We generally recommend the first approach, so that your production Docker image does not contain any unit testing libraries or frameworks, but there is no right or wrong choice regarding the way you run unit tests. 
 
@@ -100,6 +100,6 @@ We generally recommend the first approach, so that your production Docker image 
 
 - [Unit tests]({{site.baseurl}}/docs/testing/unit-tests/)
 - [Integration test example]({{site.baseurl}}/docs/yaml-examples/examples/run-integration-tests/)
-- [Service Containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/)
-- [Freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/)
+- [Service Containers]({{site.baseurl}}/docs/pipelines/service-containers/)
+- [Freestyle step]({{site.baseurl}}/docs/pipelines/steps/)
 

@@ -226,7 +226,7 @@ manifests. In a real application you should have two Git repositories (one of th
 ## What to Read Next
 
 - [Codefresh GitOps]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/)
-- [Using secrets]({{site.baseurl}}/docs/configure-ci-cd-pipeline/secrets-store/)
+- [Using secrets]({{site.baseurl}}/docs/pipelines/secrets-store/)
 - [Secrets with Mozilla Sops]({{site.baseurl}}/docs/yaml-examples/examples/decryption-with-mozilla-sops/)
 - [Vault Secrets in the Pipeline]({{site.baseurl}}/docs/yaml-examples/examples/vault-secrets-in-the-pipeline/)
 

@@ -100,20 +100,20 @@ steps:
 
 > Note that you should change `codefreshdemo` in the clone step with your own Github account if you fork the repository. Also in both build steps you should change `codefreshdemo/demochat` with your own image name that is compliant to your Dockerhub account or other connected registry.
 
-This pipeline has 4 [stages]({{site.baseurl}}/docs/codefresh-yaml/stages/) and performs the following:
+This pipeline has 4 [stages]({{site.baseurl}}/docs/pipelines/stages/) and performs the following:
 
- 1. clones the source code using the [git-clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step
- 1. Builds a Docker image for unit tests with the [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)
- 1. Runs [unit tests]({{site.baseurl}}/docs/testing/unit-tests/) in the Docker image that was just created with a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)
+ 1. clones the source code using the [git-clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/) step
+ 1. Builds a Docker image for unit tests with the [build step]({{site.baseurl}}/docs/pipelines/steps/build/)
+ 1. Runs [unit tests]({{site.baseurl}}/docs/testing/unit-tests/) in the Docker image that was just created with a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/)
  1. Building a Docker image for the final application
- 1. Runs [integration tests]({{site.baseurl}}/docs/testing/integration-tests/) using a [composition step]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/)
+ 1. Runs [integration tests]({{site.baseurl}}/docs/testing/integration-tests/) using a [composition step]({{site.baseurl}}/docs/pipelines/steps/composition/)
 
-If you run the pipeline multiple times, you will also see the [Codefresh caching mechanisms]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/) in action for faster build times.
+If you run the pipeline multiple times, you will also see the [Codefresh caching mechanisms]({{site.baseurl}}/docs/pipelines/pipeline-caching/) in action for faster build times.
 
 ## What to read next
 
 * [Voting app example]({{site.baseurl}}/docs/learn-by-example/nodejs/voting-app/)
-* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
-* [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
-* [How pipelines work]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
+* [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)
+* [Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)
+* [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)
+* [How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)

@@ -8,9 +8,9 @@ redirect_from:
 toc: true
 ---
 
-In most cases, your Codefresh pipeline will checkout a single Git repository. Codefresh also has great support for [Monorepos]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/#using-the-modified-files-field-to-constrain-triggers-to-specific-folderfiles) if you have placed all your applications in a single repository.
+In most cases, your Codefresh pipeline will check out a single Git repository. Codefresh also has great support for [Monorepos]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#using-the-modified-files-field-to-constrain-triggers-to-specific-folderfiles) if you have placed all your applications in a single repository.
 
-A Codefresh pipeline is not really tied to a specific git repository, which means that by [checking out multiple git repositories]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout/#cloning-multiple-repositories) you can build docker images from other unrelated repositories in a single pipeline if you wish to do so.
+A Codefresh pipeline is not really tied to a specific Git repository, which means that by [checking out multiple git repositories]({{site.baseurl}}/docs/example-catalog/git-checkout/#cloning-multiple-repositories) you can build docker images from other unrelated repositories in a single pipeline if you wish to do so.
 
 ## Building Docker images from other Git repositories
 
@@ -26,7 +26,7 @@ caption="Checkout and build docker images"
 max-width="100%" 
 %}
 
-And here is the [pipeline definition]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/).
+And here is the [pipeline definition]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/).
 
  `codefresh.yml`
 {% highlight yaml %}
@@ -71,7 +71,7 @@ steps:
 
 The pipeline first checks out two different Git repositories (which themselves contain Dockerfiles). Then it creates a Docker image for each one using the respective Dockerfile.
 
-You can see both images in the [Docker image dashboard]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#viewing-docker-images) .
+<!--check if this topic exists-->You can see both images in the [Docker image dashboard]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#viewing-docker-images) .
 
 {% include image.html 
 lightbox="true" 
@@ -86,9 +86,8 @@ max-width="100%"
 Notice that there are no explicit push steps in the pipeline, as all successful Codefresh pipelines automatically push to the private Docker registry.
 
 
-## What to read next
-
-- [Git Clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) 
-- [Build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) 
-- [Build and Push an image]({{site.baseurl}}/docs/yaml-examples/examples/build-and-push-an-image/) 
-- [Parallel pipelines]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/) 
+## Related articles
+[Git Clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)  
+[Build step]({{site.baseurl}}/docs/pipelines/steps/build/)  
+[Build and Push an image]({{site.baseurl}}/docs/pipelines/examples/build-and-push-an-image/)  
+[Parallel pipelines]({{site.baseurl}}/docs/pipelines/advanced-workflows/)  

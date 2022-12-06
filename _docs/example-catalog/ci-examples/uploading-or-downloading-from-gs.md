@@ -68,7 +68,7 @@ steps:
 
 This pipeline does the following:
 
-1. A [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that uploads a jar from Maven into our Google Storage bucket.
+1. A [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) that uploads a jar from Maven into our Google Storage bucket.
 
 ## Create the Second Pipeline
 
@@ -140,14 +140,14 @@ steps:
 
 This pipeline does the following:
 
-1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/).
-2. A [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that downloads the dependency jar from our publicly-accessible Google Storage bucket.
-3. Builds a docker image using a [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/).
-4. Pushes the Docker image using a [Push step](https://codefresh.io/docs/docs/codefresh-yaml/steps/push/) to the DockerHub registry you have integrated with Codefresh.
+1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/).
+2. A [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) that downloads the dependency jar from our publicly-accessible Google Storage bucket.
+3. Builds a docker image using a [build step]({{site.baseurl}}/docs/pipelines/steps/build/).
+4. Pushes the Docker image using a [Push step](https://codefresh.io/docs/docs/pipelines/steps/push/) to the DockerHub registry you have integrated with Codefresh.
 
 ## What to Read Next
 
-- [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-- [Git-clone Step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
-- [Freestyle Step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)
-- [Build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)
+- [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)
+- [Git-clone Step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
+- [Freestyle Step]({{site.baseurl}}/docs/pipelines/steps/freestyle/)
+- [Build step]({{site.baseurl}}/docs/pipelines/steps/build/)

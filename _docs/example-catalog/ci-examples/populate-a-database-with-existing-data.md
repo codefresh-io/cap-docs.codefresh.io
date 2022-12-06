@@ -9,7 +9,7 @@ toc: true
 old_url: /docs/populate-a-database-with-existing-data-copied
 was_hidden: true
 ---
-In an another example we have seen how you can run [integration tests with a database]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-postgres/) such as PostgreSQL. Sometimes however, the integration tests require the database to already have some test data beforehand. With Codefresh you can use the [setup block]({{site.baseurl}}/docs/codefresh-yaml/service-containers/#preloading-data-to-databases) in service containers to preload data to a db.
+In an another example we have seen how you can run [integration tests with a database]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-postgres/) such as PostgreSQL. Sometimes however, the integration tests require the database to already have some test data beforehand. With Codefresh you can use the [setup block]({{site.baseurl}}/docs/pipelines/service-containers/#preloading-data-to-databases) in service containers to preload data to a db.
 
 
 {% include image.html 
@@ -125,9 +125,9 @@ steps:
 
 This pipeline does the following:
 
-1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/).
-1. Compiles the code with a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that runs `go build`
-1. Runs the tests while launching a [service container]({{site.baseurl}}/docs/codefresh-yaml/service-containers/) for an active PostgreSQL instance. Before tests are run we launch another container with the `psql` executable to load db data
+1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/).
+1. Compiles the code with a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) that runs `go build`
+1. Runs the tests while launching a [service container]({{site.baseurl}}/docs/pipelines/service-containers/) for an active PostgreSQL instance. Before tests are run we launch another container with the `psql` executable to load db data
 
 
 > In this simple example we use `psql` to preload the database. In a production application you might also use dedicated db tools such as [liquibase](https://hub.docker.com/r/liquibase/liquibase) or [flyway](https://hub.docker.com/r/flyway/flyway) or other command line tools that communicate with your database.
@@ -143,7 +143,7 @@ All containers are discarded after the pipeline has finished.
 
 ## What to read next
 
-- [Service Containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/)
+- [Service Containers]({{site.baseurl}}/docs/pipelines/service-containers/)
 - [Integration Tests with Postgres]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-postgres/)
 - [Integration Tests with MySQL]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mysql/)
 - [Integration Tests with Redis]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-redis/)

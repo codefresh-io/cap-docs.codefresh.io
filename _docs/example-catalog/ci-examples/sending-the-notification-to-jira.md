@@ -44,7 +44,7 @@ These arguments are required to use the step:
 
 Then we added these arguments for our specific step:
 - `JIRA_ISSUE_SOURCE_FIELD`: This is the tag that identifies your issue e.g. MKTG-102
-- Within the comment, we are using a [Codefresh native variable](https://codefresh.io/docs/docs/codefresh-yaml/variables/) `CF_BUILD_URL`, which will reference your pipeline build and will allow you to search for your pipeline. 
+- Within the comment, we are using a [Codefresh native variable](https://codefresh.io/docs/docs/pipelines/variables/) `CF_BUILD_URL`, which will reference your pipeline build and will allow you to search for your pipeline. 
 
 All variables use the Codefresh specific variable notation ${% raw %}`{{MY_VARIABLE_EXAMPLE}}`{% endraw %}`.
 
@@ -57,7 +57,7 @@ Since it is a new stage in your Codefresh pipeline, you want to add it at the to
     - "JiraCommentCreate"
 {% endhighlight yaml %}
 
-Note that you can [provide the variables]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/) needed for the Jira step directly in the shared configuration. The benefits are:
+Note that you can [provide the variables]({{site.baseurl}}/docs/pipelines/shared-configuration/) needed for the Jira step directly in the shared configuration. The benefits are:
 * You do not have to post sensitive information, such as the API key, directly in the codefresh.yml. 
 * If you use the same step across multiple pipelines, you don't have to copy-paste the same variables. 
 
@@ -85,4 +85,4 @@ max-width="80%"
 
 * [Sending notifications to Slack]({{site.baseurl}}/docs/yaml-examples/examples/sending-the-notification-to-slack/)
 * Have a look at other things that you can do with your Codefresh Pipeline in the [example section]({{site.baseurl}}/docs/yaml-examples/examples/)
-* [Create a pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
+* [Create a pipeline]({{site.baseurl}}/docs/pipelines/pipelines/)

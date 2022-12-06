@@ -25,7 +25,7 @@ You can see the example project at [https://github.com/codefresh-contrib/gorelea
 
 
 There is already a [Docker image for Goreleaser](https://hub.docker.com/r/goreleaser/goreleaser/) so it is very easy to use it in Codefresh pipeline.
-In the most simple case you case run goreleaser in a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/).
+In the most simple case you case run goreleaser in a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/).
 
  `YAML`
 {% highlight yaml %}
@@ -84,7 +84,7 @@ steps:
 {% endhighlight %}
 
 Note that GoReleaser [requires a GitHub API token](https://goreleaser.com/environment/) (`GITHUB_TOKEN`) with the `repo` scope to deploy artifacts to GitHub.
-Here we use [cf_export]({{site.baseurl}}/docs/codefresh-yaml/variables/#exporting-environment-variables-from-a-freestyle-step) and the [codefresh CLI](https://codefresh-io.github.io/cli/) in order to ask Codefresh about the existing token (that was used in git integrations). In your case you need to change `github-1` with the name of your [GitHub integration]({{site.baseurl}}/docs/integrations/git-providers/).
+Here we use [cf_export]({{site.baseurl}}/docs/pipelines/variables/#exporting-environment-variables-from-a-freestyle-step) and the [codefresh CLI](https://codefresh-io.github.io/cli/) in order to ask Codefresh about the existing token (that was used in git integrations). In your case you need to change `github-1` with the name of your [GitHub integration]({{site.baseurl}}/docs/integrations/git-providers/).
 
 It also possible to pass a GITHUB_TOKEN directly in the pipeline, if you don't want to re-use the existing one. This is an alternative way of allowing Goreleaser to create GitHub releases.
 
@@ -97,7 +97,7 @@ caption="Passing a specific github token in the pipeline"
 max-width="70%" 
 %}
 
-You could also store the token in [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/).
+You could also store the token in [shared configuration]({{site.baseurl}}/docs/pipelines/shared-configuration/).
 Regardless of the way you choose to pass the GitHub token, the final step is to make sure that your pipeline is only executed for tag events.
 
 
@@ -110,12 +110,12 @@ caption="Run pipeline only on tag creation"
 max-width="80%" 
 %}
 
-This means that this pipeline will not run on normal commits. It is also possible to use [step conditionals]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) for more complex cases.
+This means that this pipeline will not run on normal commits. It is also possible to use [step conditionals]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) for more complex cases.
 
 ## What to read next
 
-* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
-* [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
-* [How pipelines work]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
+* [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)
+* [Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)
+* [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)
+* [How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)
 

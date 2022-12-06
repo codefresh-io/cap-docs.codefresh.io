@@ -17,7 +17,7 @@ you lose the native Codefresh integration such as git authentication and automat
 
 ## Cloning with the git executable
 
-It is very easy to run custom git commands in a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/). Pass any parameters to the git clone step as you would pass them on your local workstation.
+It is very easy to run custom git commands in a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/). Pass any parameters to the git clone step as you would pass them on your local workstation.
 
 {% highlight yaml %}
 {% raw %}
@@ -40,7 +40,7 @@ steps:
 
 Notice the `rm` command before the clone step. This makes sure that every time the pipeline will run the `git clone` step will happen in an empty directory. Otherwise the `git clone` command will fail (git will refuse to clone on an existing directory).
 
-You can enter your own git username/password or [reuse the credentials]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/#reuse-a-git-token-from-codefresh-integrations) from the Codefresh integration.
+You can enter your own git username/password or [reuse the credentials]({{site.baseurl}}/docs/pipelines/steps/git-clone/#reuse-a-git-token-from-codefresh-integrations) from the Codefresh integration.
 
 ## Running Git commands manually
 
@@ -94,12 +94,12 @@ steps:
 
 If you run this pipeline you will see git used as part of the `go get` mechanism.
 
-More examples such as using SSH keys and working with GIT submodules can be found in the [clone step documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/).
+More examples such as using SSH keys and working with GIT submodules can be found in the [clone step documentation]({{site.baseurl}}/docs/pipelines/steps/git-clone/).
 
 
 ## What to read next
 
 * [Native Git checkout]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout/)
 * [Native Git integration]({{site.baseurl}}/docs/integrations/git-providers/)
-* [Freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)
-* [Git Clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
+* [Freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/)
+* [Git Clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)

@@ -56,7 +56,7 @@ Notice the order of commands and especially the fact that we copy the `Gemfile` 
 
 >Codefresh also supports multi-stage docker builds. You can use one parent docker image for preparing your gem modules and another one for actually deployment the application.
 
-Once you have a Dockerfile, [creating a pipeline in Codefresh]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/) is very easy either from the GUI or with the yaml syntax.
+Once you have a Dockerfile, [creating a pipeline in Codefresh]({{site.baseurl}}/docs/pipelines/pipelines/) is very easy either from the GUI or with the yaml syntax.
 
 ## Simple pipeline with Docker image and unit tests
 
@@ -95,7 +95,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-The first step is a [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) named `BuildingDockerImage`. It reads the Dockerfile and creates a Docker image out of it. The second step is a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) called `RunningUnitTests`. It uses the image mentioned in the first step and executes custom commands inside it.
+The first step is a [build step]({{site.baseurl}}/docs/pipelines/steps/build/) named `BuildingDockerImage`. It reads the Dockerfile and creates a Docker image out of it. The second step is a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) called `RunningUnitTests`. It uses the image mentioned in the first step and executes custom commands inside it.
 
 
 ## Inspecting your Docker image
@@ -174,8 +174,8 @@ You can share this link with other people in your team.
 
 ## What to read next
 
-* [Introduction to Pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
-* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
+* [Introduction to Pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)
+* [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)
 * [On demand environments]({{site.baseurl}}/docs/getting-started/on-demand-environments/)
 * [Integration tests]({{site.baseurl}}/docs/testing/integration-tests/)
 

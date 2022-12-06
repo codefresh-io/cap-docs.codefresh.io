@@ -177,7 +177,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-The pipeline starts by checking out the code using a [git clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/). The next two steps are [freestyle]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/), while the last one is a [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/).
+The pipeline starts by checking out the code using a [git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/). The next two steps are [freestyle]({{site.baseurl}}/docs/pipelines/steps/freestyle/), while the last one is a [build step]({{site.baseurl}}/docs/pipelines/steps/build/).
 
 {% include image.html 
 lightbox="true" 
@@ -192,9 +192,9 @@ After checking out the code we use the standard [Gradle Docker image](https://hu
 
 ### Using the Gradle cache in Codefresh
 
-Codefresh is smart enough that [caches automatically]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#how-caching-works-in-codefresh) for us the workspace of a build (`/codefresh/volume`). This works great for build tools that keep their cache in the project folder, but not for Maven/Gradle which keep their cache externally. By changing the location of the Gradle cache we make sure that Codefresh will cache automatically the Gradle libraries resulting in much faster builds. We also place in the shared volume the local maven repo so that all jars that are created by Gradle (i.e. with an `install` task) are also available to the next pipeline stage.
+Codefresh is smart enough that [caches automatically]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#how-caching-works-in-codefresh) for us the workspace of a build (`/codefresh/volume`). This works great for build tools that keep their cache in the project folder, but not for Maven/Gradle which keep their cache externally. By changing the location of the Gradle cache we make sure that Codefresh will cache automatically the Gradle libraries resulting in much faster builds. We also place in the shared volume the local maven repo so that all jars that are created by Gradle (i.e. with an `install` task) are also available to the next pipeline stage.
 
-The next step is similar to the previous one, but this time we actually build the JAR file. We define again a custom cache folder so when you run the build you will see that Gradle will automatically pick the cache from the previous step. All Codefresh steps in a pipeline [run on the same workspace]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps), so the build results from one step are visible to the next.
+The next step is similar to the previous one, but this time we actually build the JAR file. We define again a custom cache folder so when you run the build you will see that Gradle will automatically pick the cache from the previous step. All Codefresh steps in a pipeline [run on the same workspace]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps), so the build results from one step are visible to the next.
 
 The last step is a Docker build. We name our image **gradle-sample-app** and tag it with a string `non-multi-stage` but of course you can use any other tag name that you wish.
 Once the pipeline is finished you will see the Spring Boot 2 Docker image your [Docker image dashboard]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#viewing-docker-images).
@@ -202,7 +202,7 @@ Once the pipeline is finished you will see the Spring Boot 2 Docker image your [
 ## What to read next
 
 * [Spring Maven example]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/)
-* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
-* [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
-* [How pipelines work]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
+* [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)
+* [Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)
+* [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)
+* [How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)

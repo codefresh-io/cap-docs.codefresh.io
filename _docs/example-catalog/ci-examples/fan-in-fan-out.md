@@ -21,8 +21,8 @@ As you can see by the diagram, Step1 fans out to Step2 and Step4 (which run in p
 
 You can achieve parallelism in your Codefresh pipelines by using the following:
 
-- Simple parallel jobs ([inserting parallel steps into a sequential pipeline]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/#inserting-parallel-steps-in-a-sequential-pipeline))
-- [Full parallel mode]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/#parallel-pipeline-mode)
+- Simple parallel jobs ([inserting parallel steps into a sequential pipeline]({{site.baseurl}}/docs/pipelines/advanced-workflows/#inserting-parallel-steps-in-a-sequential-pipeline))
+- [Full parallel mode]({{site.baseurl}}/docs/pipelines/advanced-workflows/#parallel-pipeline-mode)
 - Fan-out/fan-in parallel pipelines, as covered here
 
 ## Prerequisites
@@ -184,7 +184,7 @@ steps:
 {% endhighlight %}
 
 Note the special use of `mode: parallel` declared at the root of our yaml.  This syntax makes the pipeline use the full parallel mode. 
-The order of your build steps doesn't matter in this case, each step is executed according to its [conditionals](https://codefresh.io/docs/docs/codefresh-yaml/conditional-execution-of-steps/).
+The order of your build steps doesn't matter in this case, each step is executed according to its [conditionals](https://codefresh.io/docs/docs/pipelines/conditional-execution-of-steps/).
 
 - Step1 (unit tests) fans out to Step2 and Step4 (web tests), which run in parallel
 - Step3 (smoke tests) does not execute until Step2 is completed
@@ -192,15 +192,15 @@ The order of your build steps doesn't matter in this case, each step is executed
 
 This pipeline consists of the following:
 
-1. A [git-clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step that clones the main repository
-2. A [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) that builds the cloned source code into a Docker image
-3. 5 [freestyle steps]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that:
+1. A [git-clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/) step that clones the main repository
+2. A [build step]({{site.baseurl}}/docs/pipelines/steps/build/) that builds the cloned source code into a Docker image
+3. 5 [freestyle steps]({{site.baseurl}}/docs/pipelines/steps/freestyle/) that:
   - Runs unit tests according to their respective @Tags
-  - Uses the image built in the second step as a [Service container]({{site.baseurl}}/docs/codefresh-yaml/service-containers/)
+  - Uses the image built in the second step as a [Service container]({{site.baseurl}}/docs/pipelines/service-containers/)
  
 ## What to Read Next
  
- - [Git-clone Step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
- - [Freestyle Step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)
- - [Service Containers]({{site.baseurl}}//docs/codefresh-yaml/service-containers/) 
- - [Parallel Mode]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/#parallel-pipeline-mode)
+ - [Git-clone Step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
+ - [Freestyle Step]({{site.baseurl}}/docs/pipelines/steps/freestyle/)
+ - [Service Containers]({{site.baseurl}}//docs/pipelines/service-containers/) 
+ - [Parallel Mode]({{site.baseurl}}/docs/pipelines/advanced-workflows/#parallel-pipeline-mode)

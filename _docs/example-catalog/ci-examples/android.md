@@ -2,7 +2,7 @@
 title: "Compile and package an Android application"
 description: "Using Codefresh pipelines"
 group: example-catalog 
-sub_group: mobile
+sub_group: ci-examples
 toc: true
 ---
 
@@ -68,14 +68,14 @@ steps:
 
 This pipeline clones the source code, runs unit tests and finally builds the Android application. 
 
-Codefresh is smart enough that [caches automatically]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#how-caching-works-in-codefresh) for us the workspace of a build (`/codefresh/volume`). This works great for build tools that keep their cache in the project folder, but not for Maven/Gradle which keep their cache externally. By changing the location of the Gradle cache we make sure that Codefresh will cache automatically the Gradle libraries resulting in much faster builds.
+Codefresh is smart enough that [caches automatically]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#how-caching-works-in-codefresh) for us the workspace of a build (`/codefresh/volume`). This works great for build tools that keep their cache in the project folder, but not for Maven/Gradle which keep their cache externally. By changing the location of the Gradle cache we make sure that Codefresh will cache automatically the Gradle libraries resulting in much faster builds.
 
 
 
 ## What to read next
 
-* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
-* [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
-* [How pipelines work]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
+* [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)
+* [Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)
+* [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)
+* [How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)
 

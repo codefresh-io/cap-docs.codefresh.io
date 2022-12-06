@@ -2,6 +2,7 @@
 title: "Build an Image with Build Arguments"
 description: "Use docker argument in Codefresh pipelines"
 group: example-catalog
+sub_group: ci-examples
 redirect_from:
   - /docs/build-an-image-with-build-arguments/
 toc: true
@@ -9,9 +10,9 @@ toc: true
 
 Building a Docker image that requires build arguments is very easy with Codefresh pipelines.
 
->The source code of the repository is located at [https://github.com/codefreshdemo/cf-example-build-arguments](https://github.com/codefreshdemo/cf-example-build-arguments). Feel free to fork it if you want to follow along.
+>The source code of the repository is located at [https://github.com/codefreshdemo/cf-example-build-arguments](https://github.com/codefreshdemo/cf-example-build-arguments){:target="\_blank"}. Feel free to fork it if you want to follow along.
 
-If you don't already have a Codefresh account, you can easily create a free one from the [sign-up page]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/).
+If you don't already have a Codefresh account, you can easily create a free one from the [sign-up page]({{site.baseurl}}/docs/administration/create-a-codefresh-account/).
 
 ## Using Docker build arguments
 
@@ -40,7 +41,7 @@ CMD [ "npm", "start" ]
 {% endraw %}
 {% endhighlight %}
 
-This Dockerfile expects two [build arguments](https://docs.docker.com/engine/reference/builder/#/arg):
+This Dockerfile expects two [build arguments](https://docs.docker.com/engine/reference/builder/#/arg){:target="\_blank"}:
 
 * `NODE_VERSION` is the version of Node image to use as base 
 * `APP_DIR` is the source directory to be used inside the container
@@ -93,7 +94,7 @@ max-width="100%"
 
 ## Using Codefresh variables as build arguments
 
-In the previous pipeline the docker build arguments are defined in the pipeline itself, but you could also use [pipeline variables]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#creating-new-pipelines), [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/) or any other standard mechanism you already have in place.
+In the previous pipeline the docker build arguments are defined in the pipeline itself, but you could also use [pipeline variables]({{site.baseurl}}/docs/pipelines/pipelines/#creating-new-pipelines), [shared configuration]({{site.baseurl}}/docs/pipelines/shared-configuration/) or any other standard mechanism you already have in place.
 
   `codefresh.yml`
 {% highlight yaml %}
@@ -119,14 +120,13 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-In this case you can also use any of the built-in [Codefresh variables]({{site.baseurl}}/docs/codefresh-yaml/variables/).
+In this case you can also use any of the built-in [Codefresh variables]({{site.baseurl}}/docs/pipelines/variables/).
 
 
-## What to read next
 
-- [Pipeline Build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)
-- [Build an Image with the Dockerfile in Root Directory]({{site.baseurl}}/docs/yaml-examples/examples/build-an-image-dockerfile-in-root-directory/)
-- [Build an Image by Specifying the Dockerfile Location]({{site.baseurl}}/docs/yaml-examples/examples/build-an-image-specify-dockerfile-location)
-- [Build an Image from a Different Git Repository]({{site.baseurl}}/docs/yaml-examples/examples/build-an-image-from-a-different-git-repository)
-- [Build and Push an Image]({{site.baseurl}}/docs/yaml-examples/examples/build-and-push-an-image)
-
+## Related articles
+[Pipeline Build step]({{site.baseurl}}/docs/pipelines/steps/build/)  
+[Build an Image with the Dockerfile in Root Directory]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-dockerfile-in-root-directory/)  
+[Build an Image by specifying the Dockerfile location]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-specify-dockerfile-location)  
+[Build an Image from a different Git repository]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-from-a-different-git-repository)  
+[Build and push an Image]({{site.baseurl}}/docs/yaml-examples/example-catalog/ci-examples/build-and-push-an-image)  

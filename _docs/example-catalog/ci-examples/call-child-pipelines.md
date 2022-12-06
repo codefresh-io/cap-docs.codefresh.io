@@ -2,11 +2,11 @@
 title: "Calling a CD pipeline from a CI pipeline"
 description: "Learn how to call children pipelines from a parent pipeline"
 group: example-catalog
-sub_group: examples
+sub_group: ci-examples
 toc: true
 ---
 
-In Codefresh you can easily create nested pipelines by calling other pipelines from within an existing pipeline. This is easily accomplished with the [codefresh-run plugin](https://codefresh.io/steps/step/codefresh-run) that allows you to launch another pipeline and optionally wait for its completion.
+In Codefresh you can easily create nested pipelines by calling other pipelines from within an existing pipeline. This is easily accomplished with the [codefresh-run plugin](https://codefresh.io/steps/step/codefresh-run){:target="\_blank"} that allows you to launch another pipeline and optionally wait for its completion.
 
 {% include image.html
 lightbox="true"
@@ -21,7 +21,7 @@ A very common pattern in Codefresh is to have a parent pipeline responsible for 
 
 ## The example Project
 
-You can see the example project at [https://github.com/codefresh-contrib/call-child-pipeline-sample-app](https://github.com/codefresh-contrib/call-child-pipeline-sample-app). The repository contains a NodeJs app as well as 3 pipelines (one parent and two children).
+You can see the example project at [https://github.com/codefresh-contrib/call-child-pipeline-sample-app](https://github.com/codefresh-contrib/call-child-pipeline-sample-app){:target="\_blank"}. The repository contains a NodeJs app as well as 3 pipelines (one parent and two children).
 
 ## Create a pipeline that calls other pipelines
 
@@ -92,17 +92,16 @@ steps:
 
 This pipeline does the following:
 
-1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
-1. Uses [cf_export]({{site.baseurl}}/docs/codefresh-yaml/variables/#exporting-environment-variables-from-a-freestyle-step) to create a variable that contains the Application version as specified in `package.json`.
-1. Builds a docker image tagged with the Application version using a [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)
+1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
+1. Uses [cf_export]({{site.baseurl}}/docs/pipelines/variables/#exporting-environment-variables-from-a-freestyle-step) to create a variable that contains the Application version as specified in `package.json`.
+1. Builds a docker image tagged with the Application version using a [build step]({{site.baseurl}}/docs/pipelines/steps/build/)
 1. Optionally runs the downstream QA pipeline if the branch is named `develop`. It also passes several environment variables to the child pipeline (including the Application version)
 1. Optionally runs the downstream Prod pipeline if the branch name starts with `release`. It also passes several environment variables to the child pipeline (including the Application version)
 
-The last two steps use [pipeline conditionals]({{site.baseurl}}/docs/codefresh-yaml/conditional-execution-of-steps/) to decide if they will run or not.
+The last two steps use [pipeline conditionals]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) to decide if they will run or not.
 
-## What to read next
-
-* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
-* [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
-* [Pipeline plugins](https://codefresh.io/steps/)
+## Related articles
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
+[Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
+[Pipeline plugins](https://codefresh.io/steps/){:target="\_blank"}

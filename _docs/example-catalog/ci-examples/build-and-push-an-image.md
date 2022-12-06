@@ -2,7 +2,7 @@
 title: "Build and Push an Image"
 description: "How to build Docker images and push them to registries with Codefresh"
 group: example-catalog
-sub_group: examples
+sub_group: ci-examples
 redirect_from:
   - /docs/build-and-push-an-image/
   - /docs/docker-registries/push-image-to-a-docker-registry/ 
@@ -12,14 +12,14 @@ toc: true
 Building a Docker image and then pushing it to a registry is one of the most basic scenarios for creating a Pipeline.
 In this example we will use a demo Node.js application that will be packaged in a Docker image.
 
->The source code of the repository is located at [https://github.com/codefreshdemo/cf-example-build-and-push](https://github.com/codefreshdemo/cf-example-build-and-push). Feel free to fork it if you want to follow along.
+>The source code of the repository is located at [https://github.com/codefreshdemo/cf-example-build-and-push](https://github.com/codefreshdemo/cf-example-build-and-push){:target="\_blank"}. Feel free to fork it if you want to follow along.
 
-If you don't already have a Codefresh account, you can easily create a free one from the [sign-up page]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/).
+If you don't already have a Codefresh account, you can easily create a free one from the [sign-up page]({{site.baseurl}}/docs/administration/create-a-codefresh-account/).
 
 
 ## Building a Docker image and pushing to your default registry
 
-Building a Docker image with Codefresh is easy, and only requires a simple step. In addition, all successful pipelines in Codefresh automatically push to [your default Docker registry](https://codefresh.io/docs/docs/docker-registries/external-docker-registries/#the-default-registry) without any other configuration, as long as you have that.
+Building a Docker image with Codefresh is easy, and only requires a simple step. In addition, all successful pipelines in Codefresh automatically push to [your default Docker registry](https://codefresh.io/docs/docs/docker-registries/external-docker-registries/#the-default-registry){:target="\_blank"} without any other configuration, as long as you have that.
 
 Here is the most basic pipeline that clones a repo and builds an image:
 
@@ -51,16 +51,16 @@ steps:
 
 ## Building a Docker image and pushing it to any registry.
 
-You can push your image to any [Registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/). First you need to connect your external registry in the integrations page. Here are the instructions for:
+<!---check link-->You can push your image to any [Registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/). First you need to connect your external registry in the integrations page. Here are the instructions for:
 
-  * [Docker Hub]({{site.baseurl}}/docs/docker-registries/external-docker-registries/docker-hub/)
-  * [Google Container Registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/google-container-registry/)
-  * [Amazon EC2 Container Registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/amazon-ec2-container-registry/)
-  * [Bintray.io]({{site.baseurl}}/docs/docker-registries/external-docker-registries/bintray-io/)
-  * [Quay.io]({{site.baseurl}}/docs/docker-registries/external-docker-registries/quay-io/)
-  * [Other Registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/other-registries/)
+  * [Docker Hub]({{site.baseurl}}/docs/integrations/docker-registries/docker-hub/)
+  * [Google Container Registry]({{site.baseurl}}/docs/integrations/docker-registries/google-container-registry/)
+  * [Amazon EC2 Container Registry]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/)
+  * [Bintray.io]({{site.baseurl}}/docs/integrations/docker-registries/bintray-io/)
+  * [Quay.io]({{site.baseurl}}/docs/integrations/docker-registries/quay-io/)
+  * [Other Registries]({{site.baseurl}}/docs/integrations/docker-registries/other-registries/)
 
-Once that is done, you only need to add a [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) in your pipeline and use the registry name of your integration.
+Once that is done, you only need to add a [push step]({{site.baseurl}}/docs/pipelines/steps/push/) in your pipeline and use the registry name of your integration.
 
 Here is the full example:
 
@@ -100,7 +100,7 @@ steps:
 {% endhighlight %}
 
 Here we use a specific tag - `v1.0.0` but 
-Codefresh has several other variables that can be used for tagging images. Common examples that you can use are `CF_BRANCH_TAG_NORMALIZED`, `CF_SHORT_REVISION` or `CF_BUILD_ID`. See the [variables page]({{site.baseurl}}/docs/codefresh-yaml/variables/) for more information.
+Codefresh has several other variables that can be used for tagging images. Common examples that you can use are `CF_BRANCH_TAG_NORMALIZED`, `CF_SHORT_REVISION` or `CF_BUILD_ID`. See the [variables page]({{site.baseurl}}/docs/pipelines/variables/) for more information.
 
 {% include image.html
   lightbox="true"
@@ -123,13 +123,12 @@ Codefresh has several more options when it comes to pushing:
 * You can use directly ECR registries
 * You can embed credentials in the push steps
 
-See the [push step documentation]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) for more details.
+See the [push step documentation]({{site.baseurl}}/docs/pipelines/steps/push/) for more details.
 
-## What to read next
 
-- [Pipeline Build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)
-- [Pipeline Push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)
-- [Build an Image with the Dockerfile in Root Directory]({{site.baseurl}}/docs/yaml-examples/examples/build-an-image-dockerfile-in-root-directory/)
-- [Build an Image by Specifying the Dockerfile Location]({{site.baseurl}}/docs/yaml-examples/examples/build-an-image-specify-dockerfile-location)
-- [Build an Image from a Different Git Repository]({{site.baseurl}}/docs/yaml-examples/examples/build-an-image-from-a-different-git-repository)
-- [Build an Image With Build Arguments]({{site.baseurl}}/docs/yaml-examples/examples/build-an-image-with-build-arguments)
+## Related articles
+[Pipeline Build step]({{site.baseurl}}/docs/pipelines/steps/build/)  
+[Build an Image with the Dockerfile in Root Directory]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-dockerfile-in-root-directory/)  
+[Build an Image by specifying the Dockerfile location]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-specify-dockerfile-location)  
+[Build an Image from a different Git repository]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-from-a-different-git-repository)  
+[Build an Image With Build arguments]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-with-build-arguments)

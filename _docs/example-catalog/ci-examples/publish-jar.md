@@ -40,7 +40,7 @@ If you then visit Nexus you should see your JAR file in the snapshots repository
 
 ## Create a CI pipeline for publishing a JAR file
 
-[Create a new pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/) in Codefresh and define as parameters your Nexus credentials. You could also use [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/) or any other credential mechanism you already use in your other pipelines.
+[Create a new pipeline]({{site.baseurl}}/docs/pipelines/pipelines/) in Codefresh and define as parameters your Nexus credentials. You could also use [shared configuration]({{site.baseurl}}/docs/pipelines/shared-configuration/) or any other credential mechanism you already use in your other pipelines.
 
 {% include image.html 
 lightbox="true" 
@@ -73,11 +73,11 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-The pipeline starts by checking out the code using a [git clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/). The next step is  a [freestyle]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) one and packages the jar file. We also use the [Codefresh volume for caching]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/#traditional-build-caching).
+The pipeline starts by checking out the code using a [git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/). The next step is  a [freestyle]({{site.baseurl}}/docs/pipelines/steps/freestyle/) one and packages the jar file. We also use the [Codefresh volume for caching]({{site.baseurl}}/docs/pipelines/pipeline-caching/#traditional-build-caching).
 
 You can define the version of Maven/JDK you want to use by picking the appropriate image from Dockerhub, or using any of your own images (even from [external registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/)).
 
-Note the use of the two user-defined environment variables passed to `server.password` and `server.username`.  You will need to define those yourself.  See the documentation on [User Procided Variables]({{site.baseurl}}/docs/codefresh-yaml/variables/#user-provided-variables).
+Note the use of the two user-defined environment variables passed to `server.password` and `server.username`.  You will need to define those yourself.  See the documentation on [User Procided Variables]({{site.baseurl}}/docs/pipelines/variables/#user-provided-variables).
 {% include image.html 
 lightbox="true" 
 file="/images/learn-by-example/java/publish-jar-pipeline.png" 
@@ -108,10 +108,10 @@ You can use the same pipeline for Artifactory or any other compliant Java packag
 
 * [Gradle example]({{site.baseurl}}/docs/learn-by-example/java/gradle/)
 * [Spring boot example]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/)
-* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
-* [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
-* [How pipelines work]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
+* [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)
+* [Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)
+* [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)
+* [How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)
 
 
 

@@ -80,16 +80,16 @@ steps:
 
 This pipeline does the following:
 
-1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/).
-1. Runs the tests while launching a [service container]({{site.baseurl}}/docs/codefresh-yaml/service-containers/) for an active PostgreSQL instance passing the required environment variables (that match what the test is expecting).
+1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/).
+1. Runs the tests while launching a [service container]({{site.baseurl}}/docs/pipelines/service-containers/) for an active PostgreSQL instance passing the required environment variables (that match what the test is expecting).
 
-Notice that both the DB as well as the tests share a set of variables (`POSTGRES_USER`, `POSTGRES_PASSWORD` etc.) and thus we use [YAML anchors]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/#using-yaml-anchors-to-avoid-repetition) to avoid duplication.
+Notice that both the DB as well as the tests share a set of variables (`POSTGRES_USER`, `POSTGRES_PASSWORD` etc.) and thus we use [YAML anchors]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#using-yaml-anchors-to-avoid-repetition) to avoid duplication.
 
 Notice that we also use the `readiness` property in the testing phase so that we can verify PostgreSQL is ready and listening, before running the tests.
 
 ## What to read next
 
-- [Service Containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/)
+- [Service Containers]({{site.baseurl}}/docs/pipelines/service-containers/)
 - [Integration test example]({{site.baseurl}}/docs/yaml-examples/examples/run-integration-tests/)
 - [Integration Tests with MySQL]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mysql/)
 - [Integration Tests with Redis]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-redis/)

@@ -2,10 +2,11 @@
 title: "Codecov Coverage Reports"
 description: "How to forward coverage reports to Codecov"
 group: example-catalog
+sub_group: ci-examples
 toc: true
 ---
 
-[Codecov account](https://codecov.io/) is a code analysis tool with which users can group, merge, archive, and compare coverage reports. Code coverage describes which lines of code were executed by the test suite and which ones were not. However, this is not to be confused with a testing tool.
+[Codecov account](https://codecov.io/){:target="\_blank"} is a code analysis tool with which users can group, merge, archive, and compare coverage reports. Code coverage describes which lines of code were executed by the test suite and which ones were not. However, this is not to be confused with a testing tool.
 
 Analysis reports displayed within the Codecov dashboard:
 {% include image.html 
@@ -19,12 +20,12 @@ max-width="50%"
 ## Prerequisites for using Codecov
 
 * A simple [Codefresh pipeline up and running](https://codefresh.io/docs/docs/getting-started/create-a-codefresh-account/)
-* A [Codecov account](https://codecov.io/) (free or enterprise)
+* A [Codecov account](https://codecov.io/){:target="\_blank"} (free or enterprise)
 * A testing tool added to your project that produces coverage reports
 
-Note that reports should ideally be written in .json, .xml, or txt. To be sure, please double check that your coverage [report format](https://docs.codecov.io/docs/supported-report-formats) is supported. You can find a variety of examples for different programming languages and suggestions for respective testing tools in the [Codecov docs](https://docs.codecov.io/docs/supported-languages).
+Note that reports should ideally be written in .json, .xml, or txt. To be sure, please double check that your coverage [report format](https://docs.codecov.io/docs/supported-report-formats){:target="\_blank"} is supported. You can find a variety of examples for different programming languages and suggestions for respective testing tools in the [Codecov docs](https://docs.codecov.io/docs/supported-languages){:target="\_blank"}.
 
-To test Codecov and follow along with the next section, you can clone our [Codecov sample app](https://github.com/codefresh-contrib/codecov-sample-app).
+To test Codecov and follow along with the next section, you can clone our [Codecov sample app](https://github.com/codefresh-contrib/codecov-sample-app){:target="\_blank"}.
 
 ## Create a Codecov Account
 
@@ -43,7 +44,7 @@ max-width="50%"
 In this case, we have divided the testing and connecting Codefresh to Codecov into two different steps. If they can be run within the same image, you could also connect them. 
 
 **Testing step**
-Will run the command(s) for our testing tool. This will generate the code coverage report upon running the pipeline. Please refer to the Codecov documentation for [supported testing frameworks](https://docs.codecov.io/docs/supported-report-formats). The [README of each example](https://docs.codecov.io/docs/supported-languages) refers to possible frameworks that can be used.
+Will run the command(s) for our testing tool. This will generate the code coverage report upon running the pipeline. Please refer to the Codecov documentation for [supported testing frameworks](https://docs.codecov.io/docs/supported-report-formats){:target="\_blank"}. The [README of each example](https://docs.codecov.io/docs/supported-languages){:target="\_blank"} refers to possible frameworks that can be used.
 
 In general, ensure that the framework you use for testing and generating code coverage reports:
 * Produce code coverage reports in the supported file format
@@ -117,10 +118,10 @@ alt="Codecov report details"
 max-width="50%" 
 %}
 
-## What to read next
+## Related articles
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
+[Unit tests]({{site.baseurl}}/docs/testing/unit-tests/)  
+[Integration tests]({{site.baseurl}}/docs/testing/integration-tests/)  
+[Sonarqube Integration]({{site.baseurl}}/docs/testing/sonarqube-integration/) 
 
-* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
-* [Unit tests]({{site.baseurl}}/docs/testing/unit-tests/)
-* [Integration tests]({{site.baseurl}}/docs/testing/integration-tests/)
-* [Sonarqube Integration]({{site.baseurl}}/docs/testing/sonarqube-integration/) 

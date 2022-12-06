@@ -93,10 +93,10 @@ steps:
 
 This pipeline does the following:
 
-1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
-1. [Builds a Docker image]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) with the application itself
+1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
+1. [Builds a Docker image]({{site.baseurl}}/docs/pipelines/steps/build/) with the application itself
 1. Builds a helper image that contains `nc` and `curl` that will be used for the integration tests
-1. Runs the test script while launching two [service containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/) (one for the app and one for Redis)
+1. Runs the test script while launching two [service containers]({{site.baseurl}}/docs/pipelines/service-containers/) (one for the app and one for Redis)
 
 Notice that we also use the `readiness` property in the testing phase so that we can verify that both the application
 as well as Redis are up, before running the tests.
@@ -122,7 +122,7 @@ Notice that we use the helper image both for running the test (because of `curl`
 
 ## What to read next
 
-- [Service Containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/)
+- [Service Containers]({{site.baseurl}}/docs/pipelines/service-containers/)
 - [Integration test example]({{site.baseurl}}/docs/yaml-examples/examples/run-integration-tests/)
 - [Integration Tests with Postgres]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-postgres/)
 - [Integration Tests with MySQL]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mysql/)

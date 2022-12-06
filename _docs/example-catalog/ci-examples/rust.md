@@ -72,12 +72,12 @@ steps:
 
 This pipeline clones the source code, compiles the code and runs unit tests. In all cases we use the public Docker image of Rust that also contains `cargo`.
 
-We also pass the `CARGO_HOME` environment variable to place the Cargo cache on the [shared Codefresh volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps). See the [Caching documentation]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/#traditional-build-caching) for more details.
+We also pass the `CARGO_HOME` environment variable to place the Cargo cache on the [shared Codefresh volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps). See the [Caching documentation]({{site.baseurl}}/docs/pipelines/pipeline-caching/#traditional-build-caching) for more details.
 
 
 ## What to read next
 
-* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
-* [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
-* [How pipelines work]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
+* [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)
+* [Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)
+* [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)
+* [How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)

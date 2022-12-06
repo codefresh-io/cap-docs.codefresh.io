@@ -85,17 +85,17 @@ steps:
 
 This pipeline does the following:
 
-1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
-1. [Builds a Docker image]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) with only Tomcat and the application WAR
+1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
+1. [Builds a Docker image]({{site.baseurl}}/docs/pipelines/steps/build/) with only Tomcat and the application WAR
 1. Builds a helper image that contains the source code and Maven so that it can run integration tests.
-1. Runs the `mvn verify` command in the helper image while launching a [service container]({{site.baseurl}}/docs/codefresh-yaml/service-containers/) with the Tomcat/Java image
+1. Runs the `mvn verify` command in the helper image while launching a [service container]({{site.baseurl}}/docs/pipelines/service-containers/) with the Tomcat/Java image
 
 Notice that we also use the `readiness` property in the testing phase so that we can verify that the application
 is actually up, before running the tests.
 
 ## What to read next
 
-- [Service Containers]({{site.baseurl}}/docs/codefresh-yaml/service-containers/)
+- [Service Containers]({{site.baseurl}}/docs/pipelines/service-containers/)
 - [Integration Tests with Postgres]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-postgres/)
 - [Integration Tests with MySQL]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mysql/)
 - [Integration Tests with Mongo]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mongo/)

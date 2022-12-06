@@ -18,7 +18,7 @@ max-width="70%"
 
 You can add new integration for any cloud provider or even [on-premises]({{site.baseurl}}/docs/enterprise/behind-the-firewall/) ones. By default you will also have a provider setup if you used one for Codefresh signup (GitHub, GitLab or Bitbucket).
 
-For each Git Integration, make sure that you note down its name, as you will use in your pipeline inside a [git-clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step.
+For each Git Integration, make sure that you note down its name, as you will use in your pipeline inside a [git-clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/) step.
 
 
 ## Cloning a specific repository
@@ -52,9 +52,9 @@ the pipeline impossible to re-use among different micro-services (that are built
 
 ## Cloning the triggered repository (recommended)
 
-The proper way to use git-clone steps is to make them trigger specific. Instead of hard-coding the git repository that is checked-out, it is best to checkout the same one that [triggered the pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/). This is what you want in most scenarios anyway.
+The proper way to use git-clone steps is to make them trigger specific. Instead of hard-coding the git repository that is checked-out, it is best to checkout the same one that [triggered the pipeline]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/). This is what you want in most scenarios anyway.
 
-This can be achieved by using Codefresh [variables]({{site.baseurl}}/docs/codefresh-yaml/variables/) to refer to the trigger.
+This can be achieved by using Codefresh [variables]({{site.baseurl}}/docs/pipelines/variables/) to refer to the trigger.
 Here is the same pipeline as before, written in a generic way:
 
 `codefresh.yml`
@@ -88,7 +88,7 @@ caption="Reusing a pipeline between microservices"
 max-width="50%"
 %}
 
-Thus you can have a single pipeline and when you want to enable it for a new micro-service you can simply add a new [git trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/) for it.
+Thus you can have a single pipeline and when you want to enable it for a new micro-service you can simply add a new [git trigger]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) for it.
 
 You still run the pipeline manually if you wish. In this case you will be asked which trigger you want to "simulate" so that the variable pipelines are correctly replaced by Codefresh.
 
@@ -132,9 +132,9 @@ More details can be found in the [private Git instructions page]({{site.baseurl}
 
 ## Working inside the cloned directory
 
-Normally each [pipeline step]({{site.baseurl}}/docs/codefresh-yaml/steps/) in Codefresh can be named as you want. Specifically, for the git-clone step however the name `main_clone` is special.
+Normally each [pipeline step]({{site.baseurl}}/docs/pipelines/steps/) in Codefresh can be named as you want. Specifically, for the git-clone step however the name `main_clone` is special.
 
-If you name your clone step as `main_clone` the Codefresh will automatically change the working directory for all the next (non git-clone) pipeline steps, to be the same as the project that was just checked out. This only applies to [built-in]({{site.baseurl}}/docs/codefresh-yaml/steps/#built-in-steps) Codefresh steps and not [custom plugins]({{site.baseurl}}/docs/codefresh-yaml/steps/#creating-a-typed-codefresh-plugin).
+If you name your clone step as `main_clone` the Codefresh will automatically change the working directory for all the next (non git-clone) pipeline steps, to be the same as the project that was just checked out. This only applies to [built-in]({{site.baseurl}}/docs/pipelines/steps/#built-in-steps) Codefresh steps and not [custom plugins]({{site.baseurl}}/docs/pipelines/steps/#creating-a-typed-codefresh-plugin).
 
 {% include 
 image.html 
@@ -146,7 +146,7 @@ caption="Checkout structure"
 max-width="50%" 
 %}
 
-This is probably what you want anyway, so make sure that you name your git-clone steps as `main_clone`. If you use any other name, then the working folder will be the parent of the checked-out project which is the [shared Codefresh volume]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) at `/codefresh/volume`.
+This is probably what you want anyway, so make sure that you name your git-clone steps as `main_clone`. If you use any other name, then the working folder will be the parent of the checked-out project which is the [shared Codefresh volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) at `/codefresh/volume`.
 
 If you have more then one clone steps in a pipeline it is recommended to define the working directory explicitly (see next example), instead
 of depending on the `main_clone` naming convention, which is best used in pipelines with a single clone step.
@@ -197,7 +197,7 @@ Notice that in this case the git-clone steps are **not** named `main_clone` and 
 ## What to read next
 
 * [Git integrations]({{site.baseurl}}/docs/integrations/git-providers/)
-* [Git triggers]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/git-triggers/)
-* [Git Clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
-* [Build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/)
+* [Git triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/)
+* [Git Clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
+* [Build step]({{site.baseurl}}/docs/pipelines/steps/build/)
 * [Custom git commands]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout-custom/)

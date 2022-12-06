@@ -22,7 +22,7 @@ Let's see these workflows in order.
 
 ## Simple Docker image pipeline
 
-The most [simple pipeline](https://github.com/codefresh-contrib/golang-sample-app/blob/master/codefresh.yml) that you can create is just two [steps]({{site.baseurl}}/docs/codefresh-yaml/steps/). A [clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) to fetch the code and a [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) to create a Docker image.
+The most [simple pipeline](https://github.com/codefresh-contrib/golang-sample-app/blob/master/codefresh.yml) that you can create is just two [steps]({{site.baseurl}}/docs/pipelines/steps/). A [clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/) to fetch the code and a [build step]({{site.baseurl}}/docs/pipelines/steps/build/) to create a Docker image.
 
  `codefresh.yml`
 {% highlight yaml %}
@@ -88,7 +88,7 @@ CMD ["go-sample-app"]
 
 ## Run unit tests as part of the pipeline
 
-If you want to run Go specific steps in your pipeline, you can use [freestyle]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) steps with any GO image that you want. If your GO application is using GO modules, this is even easier as you don't need to place the application into a specific GOPATH compliant directory first.
+If you want to run Go specific steps in your pipeline, you can use [freestyle]({{site.baseurl}}/docs/pipelines/steps/freestyle/) steps with any GO image that you want. If your GO application is using GO modules, this is even easier as you don't need to place the application into a specific GOPATH compliant directory first.
 
 This [pipeline](https://github.com/codefresh-contrib/golang-sample-app/blob/master/codefresh-gomod.yml) is running unit tests as a separate step and then builds the docker image.
 
@@ -261,8 +261,8 @@ We recommend using Go modules and multi-stage builds in your Go projects.
 
 ## What to read next
 
-* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
-* [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
-* [How pipelines work]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
+* [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)
+* [Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)
+* [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)
+* [How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)
 
