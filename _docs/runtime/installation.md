@@ -229,11 +229,8 @@ You can define any of the following Git providers:
 Codefresh tries to identify the Git provider from the repository URL.  
 * CLI wizard: If not GitHub, you are prompted to select the Git provider from the list
 * Silent install: Pass the flags required per provider, as described in the sections below.
-{::nomarkdown}
-</br>
-{:/}
 
-
+<br />
 
 ##### GitHub
 GitHub is the default Git provider for hybrid runtimes. Being the default provider, for both the CLI wizard and Silent install, you need to provide only the repository URL and the Git runtime token.
