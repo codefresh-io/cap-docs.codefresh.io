@@ -2,7 +2,7 @@
 title: "Transferring Applications via FTP"
 description: "Deploying a Php Application to a VM using FTP"
 group: example-catalog
-sub_group: examples
+sub_group: cd-examples
 toc: true
 redirect_from:
   - /docs//learn-by-example/java/spring-mvc-jdbc-template/
@@ -10,14 +10,14 @@ redirect_from:
 
 ## Prerequisites
 
-- A [free Codefresh account](https://codefresh.io/docs/docs/getting-started/create-a-codefresh-account/)
+- A [free Codefresh account](https://codefresh.io/docs/docs/getting-started/create-a-codefresh-account/){:target="\_blank"}
 - A remote machine with an ftp server and ssh setup (ensure that your ftp directory, I.e., `/srv/ftp/pub` has the proper write permissions for the ftp user) 
 
 >Note that as you may already know, FTP is extremely insecure as it relies on plain-text passwords and usernames, making data very vulnerable to sniffing.  A more secure solution would be to use SFTP or SCP.
 
 ## The Example Php Project
 
-The example project can be found on [GitHub](https://github.com/codefresh-contrib/ftp-php-app).  The application is a simple Php application that displays an example timer.
+The example project can be found on [GitHub](https://github.com/codefresh-contrib/ftp-php-app){:target="\_blank"}.  The application is a simple Php application that displays an example timer.
 
 {% include image.html 
 lightbox="true" 
@@ -28,7 +28,7 @@ caption="Example Php Application"
 max-width="90%"
 %}
 
-## Create the Pipeline
+## Create the pipeline
 
 Our pipeline will contain four stages:
 
@@ -51,7 +51,7 @@ Here is the entire pipeline:
 {% highlight yaml %}
 {% raw %}
 # More examples of Codefresh YAML can be found at
-# https://codefresh.io/docs/docs/yaml-examples/examples/
+# https://codefresh.io/docs/docs/example-catalog/
 
 version: "1.0"
 # Stages can help you organize your steps in stages
@@ -96,8 +96,8 @@ steps:
 
 This pipeline does the following:
 
-1. A [git-clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step that clones the main repository
-2. A [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that installs the necessary Php dependencies for our application
+1. A [git-clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/) step that clones the main repository
+2. A [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) that installs the necessary Php dependencies for our application
 3. A freestyle step that transfers our application via ftp.  Note that you will need to change the environment variables to your respective values, either in the YAML itself (above), or through the pipeline settings:
 
 {% include image.html 
@@ -109,10 +109,9 @@ caption="Codefresh Enbironment Variables"
 max-width="90%"
 %}
 
-## What to Read Next
-
-- [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-- [Git-clone Step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
-- [Freestyle Step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)
+## Related articles
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
+[How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)
 
 

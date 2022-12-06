@@ -1,8 +1,8 @@
 ---
 title: "Docker SWARM"
 description: "How to deploy to Docker Swarm with Codefresh"
-group: example-catalogog
-sub_group: examples
+group: example-catalog
+sub_group: cd-examples
 redirect_from:
   - /docs/docker-swarm/
   - /docs/deploy-to-docker-swarm/
@@ -10,7 +10,7 @@ redirect_from:
 toc: true
 ---
 
-Codefresh can easily deploy your application to [Docker Swarm](https://docs.docker.com/engine/swarm/) using [Codefresh pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/).
+Codefresh can easily deploy your application to [Docker Swarm](https://docs.docker.com/engine/swarm/){:target="\_blank"} using [Codefresh pipelines]({{site.baseurl}}/docs/pipelines/pipelines/).
 
 You will need to provide:
 
@@ -24,9 +24,9 @@ All this information will be passed to the pipeline in the form of build paramet
 
 ## Example application
 
-An example Docker Swarm application can be found at [https://github.com/codefreshdemo/example-voting-app](https://github.com/codefreshdemo/example-voting-app)
+An example Docker Swarm application can be found at [https://github.com/codefreshdemo/example-voting-app](https://github.com/codefreshdemo/example-voting-app){:target="\_blank"}
 
-To launch it locally you need to download [Docker](https://www.docker.com/products/overview). If you are on Mac or Windows, [Docker Compose](https://docs.docker.com/compose) will be automatically installed. On Linux, make sure you have the latest version of [Compose](https://docs.docker.com/compose/install/).
+To launch it locally you need to download [Docker](https://www.docker.com/products/overview){:target="\_blank"}. If you are on Mac or Windows, [Docker Compose](https://docs.docker.com/compose){:target="\_blank"} will be automatically installed. On Linux, make sure you have the latest version of [Compose](https://docs.docker.com/compose/install/){:target="\_blank"}.
 
 
 Run in this root directory:
@@ -75,7 +75,7 @@ First you need to setup the following environment variables in your Codefresh pi
 | `SSH_KEY`            | private SSH key, used to access Docker swarm master machine                                                    |
 | `SPLIT_CHAR`         | split character, you've used to replace `newline` in SSH key. Recommendation: use `,` (`comma` character).     |
 
-The `SSH_KEY` variable has the contents of the [SSH key](https://www.ssh.com/ssh/public-key-authentication) that can access the Docker swarm host. Currently in order to pass SSH key through Codefresh UI, you need to convert it to single line string (replacing `newline` with `comma`), like this:
+The `SSH_KEY` variable has the contents of the [SSH key](https://www.ssh.com/ssh/public-key-authentication){:target="\_blank"} that can access the Docker swarm host. Currently, in order to pass SSH key through Codefresh UI, you need to convert it to single line string (replacing `newline` with `comma`), like this:
 
 {% highlight bash %}
 {% raw %}
@@ -97,7 +97,7 @@ max-width="70%"
 
 ## Deploy to Docker Swarm with a YML step
 
-Once all the variables are set you can use the following [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) to deploy to your cluster.
+Once all the variables are set you can use the following [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) to deploy to your cluster.
 
   `codefresh.yml`
 {% highlight yaml %}
@@ -212,16 +212,9 @@ steps:
 
 The values of `MY_REGISTRY`, `MY_REGISTRY_USER` and `MY_REGISTRY_PASSWORD` depend upon the type of [your connected registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/).
 
-## What to read next
-
-* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
-* [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
-* [How pipelines work]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
-
-
-     
-
-
-
+## Related articles
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
+[Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
+[How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  
 

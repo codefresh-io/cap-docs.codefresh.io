@@ -1,8 +1,8 @@
 ---
 title: "Deploy to Kubernetes with Kustomize"
 description: "Deploy your services to Kubernetes using Kustomize"
-group: example-catalogog
-sub_group: examples
+group: example-catalog
+sub_group: cd-examples
 toc: true
 ---
 
@@ -10,11 +10,11 @@ toc: true
 
 Kustomize is more of an overlay engine, as opposed to a templating engine.  You create a base configuration and overlays.  Your overlays contain a *kustomization.yaml* file, and any variants/changes are applied over top of the base configuration.  Kustomize does not use templates at all.  
 
-While it is good for simple scenarios, we suggest that you use Helm for managing your Kubernetes applications.  Helm is a full package manager for Kubernetes manifests that also provides templating capabilities.  See [this example]({{site.baseurl}}/docs/yaml-examples/examples/helm/) for more information.
+While it is good for simple scenarios, we suggest that you use Helm for managing your Kubernetes applications.  Helm is a full package manager for Kubernetes manifests that also provides templating capabilities.  See [this example]({{site.baseurl}}/docs/yaml-examples/examples/helm/){:target="\_blank"} for more information.
 
 ## The Example Application
 
-You can find the example project on [GitHub](https://github.com/codefresh-contrib/kustomize-sample-app).
+You can find the example project on [GitHub](https://github.com/codefresh-contrib/kustomize-sample-app){:target="\_blank"}.
 
 The sample application is a simple Spring Boot web app, that displays an environment variable, `MY_MYSQL_DB` on the page:
 
@@ -29,7 +29,7 @@ public class HelloController {
 	}
 ```
 
-The project contains a [base](https://github.com/kubernetes-sigs/kustomize/blob/master/docs/glossary.md#base) and two [overlays](https://github.com/kubernetes-sigs/kustomize/blob/master/docs/glossary.md#overlay), one for a staging environment and one for production.
+The project contains a [base](https://github.com/kubernetes-sigs/kustomize/blob/master/docs/glossary.md#base){:target="\_blank"} and two [overlays](https://github.com/kubernetes-sigs/kustomize/blob/master/docs/glossary.md#overlay){:target="\_blank"}, one for a staging environment and one for production.
 
 The base manifest holds a dummy variable for `MY_MYSQL_DB` which will be overlayed once we call the kustomize command in our pipeline.
 
@@ -66,7 +66,7 @@ data:
   mysqlDB: "prod-mysql.example.com:3306"
 ```
 
-In addition, for the production environment, the number of replicas will be overlayed to 3 instead of 1 (as [defined in the base deployment](https://github.com/codefresh-contrib/kustomize-sample-app/blob/32e683f82940de0bf2de2da40fa6b150e2b24b23/base/deployment.yaml#L8)).
+In addition, for the production environment, the number of replicas will be overlayed to 3 instead of 1 (as [defined in the base deployment](https://github.com/codefresh-contrib/kustomize-sample-app/blob/32e683f82940de0bf2de2da40fa6b150e2b24b23/base/deployment.yaml#L8)){:target="\_blank"}.
 
 `overlays/production/deployment.yaml`
 ```yaml
@@ -80,7 +80,8 @@ spec:
 
 ## Prerequisites
 
-- A [free Codefresh account](https://codefresh.io/docs/docs/getting-started/create-a-codefresh-account/)
+- A [free Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account)
+<!--change once moved-->
 - A Kubernetes cluster [connected to your Codefresh account](https://codefresh.io/docs/docs/deploy-to-kubernetes/add-kubernetes-cluster/)
 
 ## Create the Staging Environment Pipeline 
@@ -102,7 +103,7 @@ You should be able to copy and paste this YAML in the in-line pipeline editor of
 {% highlight yaml %}
 {% raw %}
 # More examples of Codefresh YAML can be found at
-# https://codefresh.io/docs/docs/yaml-examples/examples/
+# https://codefresh.io/docs/docs/example-catalog/
 
 version: "1.0"
 # Stages can help you organize your steps in stages
@@ -136,15 +137,15 @@ steps:
 
 The above pipeline does the following:
 
-1. A [git-clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step that clones the main repository
-2. A [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that:
+1. A [git-clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/) step that clones the main repository
+2. A [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) that:
   - Uses kubectl to connect to our Kubernetes cluster we have integrated with Codefresh
   - Using Kustomize (the -k flag), deploys the application as a staging environment with the appropriate value for `MY_MYSQL_DB` as defined in our configMap
 
 >Note that if you are using kubectl prior to 1.14, you can use the following command to deploy with Kustomize: 
 >`kustomize build overlays/production | kubectl apply -f`
 
-## Create the Production Environment Pipeline 
+## Create the production environment pipeline 
 
 Likewise, this pipeline will have two stages: clone and deploy.
 
@@ -163,7 +164,7 @@ You should be able to copy and paste this YAML in the in-line editor of the Code
 {% highlight yaml %}
 {% raw %}
 # More examples of Codefresh YAML can be found at
-# https://codefresh.io/docs/docs/yaml-examples/examples/
+# https://codefresh.io/docs/docs/example-catalog/
 
 version: "1.0"
 # Stages can help you organize your steps in stages
@@ -197,8 +198,8 @@ steps:
 
 The above pipeline does the following:
 
-1. A [git-clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step that clones the main repository
-2. A [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that:
+1. A [git-clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/) step that clones the main repository
+2. A [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) that:
   - Uses kubectl to connect to our Kubernetes cluster we have integrated with Codefresh
   - Using Kustomize (the -k flag), deploys the application as a production environment with the appropriate value for `MY_MYSQL_DB` as defined in our configMap
 
@@ -239,10 +240,8 @@ max-width="100%"
 %}
 
 
-## What to Read Next
+## Related articles
+[Deployment options to Kubernetes]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes)  
+[Running custom kubectl commands]({{site.baseurl}}/docs/deploy-to-kubernetes/custom-kubectl-commands/)  
+[Deploy with Helm]({{site.baseurl}}/docs/yaml-examples/examples/helm/)  
 
-- [Git-clone Step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
-- [Freestyle Step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)
-- [Deployment options to Kubernetes]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes)
-- [Running custom kubectl commands]({{site.baseurl}}/docs/deploy-to-kubernetes/custom-kubectl-commands/)
-- [Deploy with Helm]({{site.baseurl}}/docs/yaml-examples/examples/helm/)

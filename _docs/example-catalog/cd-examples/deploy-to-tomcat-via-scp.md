@@ -1,21 +1,21 @@
 ---
 title: "Deploy to a VM via SCP"
 description: "Deploying your application to Tomcat using SCP"
-group: example-catalogog
-sub_group: examples
+group: example-catalog
+sub_group: cd-examples
 toc: true
 ---
 
 ## Prerequisites
 
-- A [free Codefresh account](https://codefresh.io/docs/docs/getting-started/create-a-codefresh-account/)
-- A distribution of [Tomcat](https://tomcat.apache.org/download-90.cgi) setup on a remote server (running with port 8080 exposed)
+- A [free Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account)
+- A distribution of [Tomcat](https://tomcat.apache.org/download-90.cgi){:target="\_blank"} setup on a remote server (running with port 8080 exposed)
 
 ## The Example Java Application
 
-You can find the example project on [GitHub](https://github.com/codefresh-contrib/scp-war-app).
+You can find the example project on [GitHub](https://github.com/codefresh-contrib/scp-war-app){:target="\_blank"}.
 
-The example application is a simple Hello World Java application using the [Spark Java framework](http://sparkjava.com/):
+The example application is a simple Hello World Java application using the [Spark Java framework](http://sparkjava.com/){:target="\_blank"}:
 
 {% include image.html 
 lightbox="true" 
@@ -55,7 +55,7 @@ Note that you need to change the environment variables under the `transfer` step
 {% highlight yaml %}
 {% raw %}
 # More examples of Codefresh YAML can be found at
-# https://codefresh.io/docs/docs/yaml-examples/examples/
+# https://codefresh.io/docs/docs/example-catalog/
 
 version: "1.0"
 # Stages can help you organize your steps in stages
@@ -103,8 +103,8 @@ steps:
 
 The above pipeline does the following:
 
-1. A [git-clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step that clones the main repository
-2. A [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that installs the dependencies via Maven and packages our war file
+1. A [git-clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/) step that clones the main repository
+2. A [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) that installs the dependencies via Maven and packages our war file
 3. A freestyle step that transfers our application via scp to a Tomcat server.  Note that you will need to change the listed environment variables accordingly, either through the YAML itself, or through your pipeline settings:
 
 {% include image.html 
@@ -116,8 +116,5 @@ caption="Pipeline variables"
 max-width="100%" 
 %}
   
-## What to Read Next
-
-- [Git-clone Step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
-- [Freestyle Step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)
-- [Deploying to a VM using FTP]({{site.baseurl}}/docs/yaml-examples/examples/transferring-php-ftp/)
+## Related articles
+[Deploying to a VM using FTP]({{site.baseurl}}/docs/yaml-examples/examples/transferring-php-ftp/)  

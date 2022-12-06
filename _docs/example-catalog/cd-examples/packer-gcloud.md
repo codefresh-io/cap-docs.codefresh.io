@@ -2,17 +2,17 @@
 title: "Deploy to a Virtual Machine"
 description: "Deploy to Google Cloud in a Codefresh pipeline with Packer"
 group: example-catalog
-sub_group: examples
+sub_group: cd-examples
 toc: true
 ---
 
 Even though Codefresh is Kubernetes-native and designed for containers, it can still deploy traditional applications in the form of Virtual Machines to any Cloud provider.
 
 In this example we will use 
-[Packer](http://www.packer.io/) to package an application into a VM disk image that will then be launched in Google Cloud.
-Because Packer itself is already offered [in a Docker container](https://hub.docker.com/r/hashicorp/packer/), it is very easy to run Packer in a Codefresh pipeline.
+[Packer](http://www.packer.io/){:target="\_blank"} to package an application into a VM disk image that will then be launched in Google Cloud.
+Because Packer itself is already offered [in a Docker container](https://hub.docker.com/r/hashicorp/packer/){:target="\_blank"}, it is very easy to run Packer in a Codefresh pipeline.
 
-Google also offers a [Docker image for GCloud](https://hub.docker.com/r/google/cloud-sdk/) making the launching of the VM straightforward in a Codefresh pipeline.
+Google also offers a [Docker image for GCloud](https://hub.docker.com/r/google/cloud-sdk/){:target="\_blank"} making the launching of the VM straightforward in a Codefresh pipeline.
 
  
 {% include image.html 
@@ -29,13 +29,13 @@ This Codefresh pipeline creates a VM image and then uses it to launch a Google C
 
 ## The example Packer/Gcloud project
 
-You can see the example project at [https://github.com/codefresh-contrib/vm-packer-sample-app](https://github.com/codefresh-contrib/vm-packer-sample-app). The repository contains a simple Go application as well as a packer template.
+You can see the example project at [https://github.com/codefresh-contrib/vm-packer-sample-app](https://github.com/codefresh-contrib/vm-packer-sample-app){:target="\_blank"}. The repository contains a simple Go application as well as a packer template.
 
 You can play with it locally after installing the `packer` and `gcloud` executables. 
 
 ## Prerequisites
 
-You need to create a Codefresh account and a Google account first. Then you need to create a [Service account Key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) which will allow `packer` and `gcloud` to communicate with Google cloud.
+You need to create a Codefresh account and a Google account first. Then you need to create a [Service account Key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys){:target="\_blank"} which will allow `packer` and `gcloud` to communicate with Google cloud.
 
 
 Add your service account json as a pipeline variable called `SERVICE_ACCOUNT`. The content of this variable will be used
@@ -103,14 +103,14 @@ steps:
 
 This pipeline does the following:
 
-1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
+1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
 1. Saves the content of the variable that holds the Google account as a file called `account.json`
-1. Compiles the Go application with a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)
+1. Compiles the Go application with a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/)
 1. Runs `packer` to create a VM image based on Ubuntu that also contains the simple Go application
 1. Runs `gcloud` to launch a VM with the image that was just created
 
 
-Run the pipeline and see your deployment succeed. You can customize the image by editing the [Packer template](https://github.com/codefresh-contrib/vm-packer-sample-app/blob/master/my-google-cloud-example.json).
+Run the pipeline and see your deployment succeed. You can customize the image by editing the [Packer template](https://github.com/codefresh-contrib/vm-packer-sample-app/blob/master/my-google-cloud-example.json){:target="\_blank"}.
 
 Once the VM has finished launching you can access it with your web browser.
 
@@ -126,9 +126,7 @@ max-width="70%"
 
 You can follow the same procedure for any other cloud that has an API/CLI (such as AWS, Azure, Digital Ocean etc).
 
-## What to read next
-
-* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
-* [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
-* [How pipelines work]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
+## Related articles
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
+[How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)

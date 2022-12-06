@@ -2,7 +2,7 @@
 title: "Web terminal"
 description: ""
 group: example-catalog
-sub_group: examples
+sub_group: cd-examples
 redirect_from:
   - /docs/web-terminal/
   - /docs/on-demand-test-environment/example-compositions/web-terminal/
@@ -40,3 +40,8 @@ volumes:
 
 Just head over to the example [__repository__](https://github.com/codefreshdemo/cf-example-web-termial){:target="_blank"} in GitHub and follow the instructions there.
 {{site.data.callout.end}}
+
+## Related articles
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
+[How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)

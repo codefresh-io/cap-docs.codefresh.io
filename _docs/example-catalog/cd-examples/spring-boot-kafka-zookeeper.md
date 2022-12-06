@@ -1,8 +1,8 @@
 ---
 title: "Spring Boot + Kafka + Zookeeper"
 description: ""
-group: example-catalogogog
-sub_group: examples
+group: example-catalog
+sub_group: cd-examples
 redirect_from:
   - /docs/spring-boot-kafka-zookeeper/
   - /docs/on-demand-test-environment/example-compositions/spring-boot-kafka-zookeeper/  
@@ -196,3 +196,7 @@ Tests run: 3, Failures: 0, Errors: 0, Skipped: 0
 {% endraw %}
 {% endhighlight %}
 
+## Related articles
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
+[How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)

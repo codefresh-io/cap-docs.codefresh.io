@@ -2,7 +2,7 @@
 title: "Elastic Beanstalk"
 description: ""
 group: example-catalog
-sub_group: examples
+sub_group: cd-examples
 redirect_from:
   - /docs/elastic-beanstalk/
   - /docs/deploy-your-containers/elastic-beanstalk/

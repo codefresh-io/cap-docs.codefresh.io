@@ -2,6 +2,7 @@
 title: "Amazon ECS/Fargate"
 description: "How to use Codefresh to deploy Docker containers to ECS/Fargate"
 group: example-catalog
+sub_group: cd-examples
 redirect_from:
   - /docs/amazon-ecs/
   - /docs/deploy-your-containers/
@@ -105,13 +106,13 @@ steps:
 
 This pipeline does the following:
 
-1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
-1. Uses a [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) to create a Docker image
-1. Uses a [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) to push the docker image to ECR. The registry was previously [connected in Codefresh]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) with the `ecr` identifier.
+1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
+1. Uses a [build step]({{site.baseurl}}/docs/pipelines/steps/build/) to create a Docker image
+1. Uses a [push step]({{site.baseurl}}/docs/cpipelines/steps/push/) to push the docker image to ECR. The registry was previously [connected in Codefresh]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) with the `ecr` identifier.
 1. Runs `codefreshplugins/cf-deploy-ecs` to perform the actual deployment
 
 
-The pipeline needs [environment variables]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings) that hold all the required parameters
+The pipeline needs [environment variables]({{site.baseurl}}/docs/pipelines/pipelines/#pipeline-settings) that hold all the required parameters
 
 {% include image.html 
 lightbox="true" 
@@ -144,11 +145,10 @@ The `codefreshplugins/cf-deploy-ecs` step performs the following:
 
 You can also find the same step in the form of a [Codefresh plugin](https://codefresh.io/steps/step/ecs-deploy).
 
-## What to read next
-
-* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
-* [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
-* [External Registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/)
+## Related articles
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
+[Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
+[External Registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/)
 
 

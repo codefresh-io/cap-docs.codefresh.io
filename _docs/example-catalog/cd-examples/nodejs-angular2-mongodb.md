@@ -2,7 +2,7 @@
 title: "NodeJS + Angular2 + MongoDB"
 description: ""
 group: example-catalog
-sub_group: examples
+sub_group: cd-examples
 redirect_from:
   - /docs/nodejs-angular2-mongodb/
   - /docs/on-demand-test-environment/example-compositions/nodejs-angular2-mongodb/  

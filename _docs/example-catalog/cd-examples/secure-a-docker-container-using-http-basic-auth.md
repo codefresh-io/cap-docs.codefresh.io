@@ -2,7 +2,7 @@
 title: "Secure a Docker Container Using HTTP Basic Auth"
 description: ""
 group: example-catalogog
-sub_group: examples
+sub_group: cd-examples
 redirect_from:
   - /docs/securing-docker-container-with-http-basic-auth/
   - /docs/on-demand-test-environment/examples-compositions/securing-docker-container-with-http-basic-auth/
@@ -84,3 +84,8 @@ max-width="40%"
 
 Just head over to the example [__repository__](https://github.com/codefreshdemo/cf-example-basic-auth-container){:target="_blank"} in GitHub and follow the instructions there.
 {{site.data.callout.end}}
+
+## Related articles
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
+[How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)

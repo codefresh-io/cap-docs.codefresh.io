@@ -3,7 +3,7 @@
 title: "Import data to MongoDB"
 description: ""
 group: example-catalog
-sub_group: examples
+sub_group: cd-examples
 redirect_from:
   - /docs/import-data-to-mongodb-in-composition/
   - /docs/on-demand-test-environment/example-compositions/import-data-to-mongodb/   

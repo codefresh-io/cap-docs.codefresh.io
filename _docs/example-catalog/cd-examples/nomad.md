@@ -2,14 +2,14 @@
 title: "Deploy to Nomad"
 description: "Deploy Docker images to a Nomad cluster with Codefresh"
 group: example-catalog
-sub_group: examples
+sub_group: cd-examples
 toc: true
 ---
 
 Even though Codefresh has great support for Kubernetes and Helm deployments, there is no lock-in on using just Kubernetes. Codefresh can deploy on any infrastructure.
 
 
-[Nomad](https://www.nomadproject.io/) is an alternative scheduling platform from Hashicorp. It supports docker containers (like Kubernetes) but you can also use Nomad to schedule VMs, Java apps, Go apps or any other standalone executable. 
+[Nomad](https://www.nomadproject.io/){:target=\_blank"} is an alternative scheduling platform from Hashicorp. It supports docker containers (like Kubernetes) but you can also use Nomad to schedule VMs, Java apps, Go apps or any other standalone executable. 
 
 There are several public Docker Images with Nomad, so it is very easy to use Codefresh pipelines to deploy to a Nomad cluster.
 
@@ -23,11 +23,11 @@ caption="Deploying to Nomad with Codefresh"
 max-width="80%" 
 %}
 
-In this example we are going to use the image at [https://hub.docker.com/r/djenriquez/nomad](https://hub.docker.com/r/djenriquez/nomad).
+In this example we are going to use the image at [https://hub.docker.com/r/djenriquez/nomad](https://hub.docker.com/r/djenriquez/nomad){:target=\_blank"}.
 
 ## The example Nomad project
 
-You can see the example project at [https://github.com/codefresh-contrib/nomad-sample-app](https://github.com/codefresh-contrib/nomad-sample-app). The repository contains a simple job specification that deploys a docker container on nomad cluster.
+You can see the example project at [https://github.com/codefresh-contrib/nomad-sample-app](https://github.com/codefresh-contrib/nomad-sample-app){:target=\_blank"}. The repository contains a simple job specification that deploys a docker container on nomad cluster.
 
 
 Here is the whole job file:
@@ -122,18 +122,18 @@ job "example-job" {
 {% endraw %}
 {% endhighlight %}
 
-Notice that the job specification has several [Codefresh variables]({{site.baseurl}}/docs/codefresh-yaml/variables/) embedded. We will use [envsubst](https://www.gnu.org/software/gettext/manual/html_node/envsubst-Invocation.html) in our pipeline to replace
+Notice that the job specification has several [Codefresh variables]({{site.baseurl}}/docs/pipelines/variables/) embedded. We will use [envsubst](https://www.gnu.org/software/gettext/manual/html_node/envsubst-Invocation.html){:target=\_blank"} in our pipeline to replace
 them with the correct values.
 
 ## Prerequisites
 
 You need to create a Codefresh account and have a Nomad cluster running. You need to decide on how Codefresh will communicate
-with the nomad cluster. In this simple example we just use the `NOMAD_ADDR` variable to point the nomad client to our cluster. In a production environment you should use proper [ACL](https://www.nomadproject.io/guides/security/acl.html) and [certificate](https://www.nomadproject.io/guides/security/securing-nomad.html) variables as well.
+with the nomad cluster. In this simple example we just use the `NOMAD_ADDR` variable to point the nomad client to our cluster. In a production environment you should use proper [ACL](https://www.nomadproject.io/guides/security/acl.html){:target=\_blank"} and [certificate](https://www.nomadproject.io/guides/security/securing-nomad.html){:target=\_blank"} variables as well.
 
 
 In this example the Nomad cluster is already setup on a VM at Google cloud. 
 
-You also need to create a [token for the Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/) so that Nomad can pull your private images on the cluster. 
+You also need to create a [token for the Docker registry]({{site.baseurl}}/docs/integrations/docker-registries/) so that Nomad can pull your private images on the cluster. 
 
 ## Create a CI/CD pipeline for Nomad deployments
 
@@ -179,12 +179,12 @@ steps:
 
 This pipeline does the following:
 
-1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
-1. Uses a [build step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) to create a Docker image for a simple Go application. The image is automatically pushed to the default Docker registry
+1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
+1. Uses a [build step]({{site.baseurl}}/docs/pipelines/steps/build/) to create a Docker image for a simple Go application. The image is automatically pushed to the default Docker registry
 1. Runs `envsubst` to replace all variables in the job spec. These include:
    * the Registry token so that Nomad can access the default Docker registry
    * The docker image name and tag to be deployed
-1. Runs the job with another [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) (i.e. Deploys the image to Nomad)
+1. Runs the job with another [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) (i.e. deploys the image to Nomad)
 
 
 Run the pipeline and see your deployment succeed.
@@ -216,11 +216,9 @@ caption="Nomad UI deployment"
 max-width="80%" 
 %}
 
-You can also use [Terraform]({{site.baseurl}}/docs/yaml-examples/examples/terraform/) in Codefresh pipelines.
+You can also use [Terraform]({{site.baseurl}}/docs/example-catalog/cd-examples/terraform/) in Codefresh pipelines.
 
-## What to read next
-
-* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
-* [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
-* [How pipelines work]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
+## Related articles
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
+[How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  

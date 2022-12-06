@@ -2,7 +2,7 @@
 title: "Deploy to Heroku"
 description: "Deploying your application or image to Heroku"
 group: example-catalog
-sub_group: examples
+sub_group: cd-examples
 toc: true
 ---
 
@@ -26,8 +26,8 @@ Once launched the application presents the Django starter page at localhost:8000
 
 ### Prerequisites
 
-- A [free Codefresh account](https://codefresh.io/docs/docs/getting-started/create-a-codefresh-account/)
-- A [free Heroku account](https://signup.heroku.com)
+- A [free Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/#create-a-codefresh-account/)
+- A [free Heroku account](https://signup.heroku.com){:target="\_blank"}
 - A Heroku API token (you can find this under **Account Settings** and then scrolling down, you will find the API Key)
 
 ### Create the Pipeline 
@@ -96,8 +96,8 @@ steps:
 
 The above pipeline does the following:
 
-1. A [git-clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step that clones the main repository
-2. A [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that installs dependencies and runs the unit tests
+1. A [git-clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/) step that clones the main repository
+2. A [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) that installs dependencies and runs the unit tests
 3. A freestyle step that deploys the application to Heroku using the heroku-deployer plugin from the [Step Marketplace](https://codefresh.io/steps/step/heroku-deployer)
 
 ## Pipeline Example #2: Deploy a Docker Image to Heroku
@@ -117,8 +117,8 @@ max-width="100%"
 
 ## Prerequisites
 
-- A [free Codefresh account](https://codefresh.io/docs/docs/getting-started/create-a-codefresh-account/)
-- A [free Heroku account](https://signup.heroku.com)
+- A [free Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/#create-a-codefresh-account/)
+- A [free Heroku account](https://signup.heroku.com){:target="\_blank"}
 - An empty repository already created in Heroku using the `heroku create <IMAGE_NAME>` command
 - A Heroku registry [connected to Codefresh]({{site.baseurl}}/docs/docker-registries/external-docker-registries/other-registries/#heroku-registries)
 - A Heroku API token (you can find this under **Account Settings** and then scrolling down, you will find the API Key)
@@ -199,15 +199,12 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-1. A [git-clone]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) step that clones the main repository
-2. A [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/) that builds our Docker image
+1. A [git-clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/) step that clones the main repository
+2. A [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) that builds our Docker image
 3. A freestyle step that runs unit tests on our Docker image
-3. A [push]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) step that pushes to the Heroku registry
+3. A [push]({{site.baseurl}}/docs/pipelines/steps/push/) step that pushes to the Heroku registry
 4. A freestyle step that releases the Docker image
 
 
-## What to Read Next
+<!--## Related articles-->
 
-- [Git-clone Step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
-- [Freestyle Step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/)
-- [Push Step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/)

@@ -2,13 +2,13 @@
 title: "Deploy with Terraform"
 description: "Use Terraform in a Codefresh pipeline with Docker"
 group: example-catalog
-sub_group: examples
+sub_group: cd-examples
 toc: true
 ---
 
-[Terraform](https://www.terraform.io/) is a platform for *Infrastructure as Code*. It allows you to describe your cloud infrastructure in a declarative manner.
+[Terraform](https://www.terraform.io/){:target="\_blank"} is a platform for *Infrastructure as Code*. It allows you to describe your cloud infrastructure in a declarative manner.
 
-You can use Terraform to deploy to Kubernetes or any other supported cloud platform. Because Terraform itself is already offered [in a Docker container](https://hub.docker.com/r/hashicorp/terraform/), it is very easy to run Terraform in a Codefresh pipeline.
+You can use Terraform to deploy to Kubernetes or any other supported cloud platform. Because Terraform itself is already offered [in a Docker container](https://hub.docker.com/r/hashicorp/terraform/){:target="\_blank"}, it is very easy to run Terraform in a Codefresh pipeline.
 
  
 {% include image.html 
@@ -22,13 +22,13 @@ max-width="80%"
 
 ## The example Terraform project
 
-You can see the example project at [https://github.com/codefresh-contrib/terraform-sample-app](https://github.com/codefresh-contrib/terraform-sample-app). The repository contains a simple Terraform definition that creates a VM on Google cloud.
+You can see the example project at [https://github.com/codefresh-contrib/terraform-sample-app](https://github.com/codefresh-contrib/terraform-sample-app){:target="\_blank"}. The repository contains a simple Terraform definition that creates a VM on Google cloud.
 
 You can play with it locally after installing the `terraform` executable. 
 
 ## Prerequisites
 
-You need to [create a Codefresh account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/) and a Google account first. Then you need to create a [Service account Key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) which will allow terraform to communicate with Google cloud.
+You need to [create a Codefresh account]({{site.baseurl}}/docs/administration/create-a-codefresh-account/) and a Google account first. Then you need to create a [Service account Key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys){:target="\_blank"} which will allow terraform to communicate with Google cloud.
 
 
 Add your service account json as a pipeline variable called `ACCOUNT_JSON_CONTENT`. The content of this variable will be used
@@ -74,13 +74,13 @@ steps:
 
 This pipeline does the following:
 
-1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/)
-1. Runs [cf_export]({{site.baseurl}}/docs/codefresh-yaml/variables/#exporting-environment-variables-from-a-freestyle-step) to create a pipeline variable with the path of the google service account
+1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
+1. Runs [cf_export]({{site.baseurl}}/docs/pipelines/variables/#exporting-environment-variables-from-a-freestyle-step) to create a pipeline variable with the path of the google service account
 1. Runs `terraform init/apply` to create the VM on Google cloud
 
->For simplicity, we auto-approve the terraform plan in the example pipeline. In a production pipeline you would instead use an [approval step ]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/) to inspect the plan, before actually applying it.
+>For simplicity, we auto-approve the terraform plan in the example pipeline. In a production pipeline you would instead use an [approval step ]({{site.baseurl}}/docs/pipelines/steps/approval/) to inspect the plan, before actually applying it.
 
-The pipeline needs a [single environment variable]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-settings) that holds the content of the service account.
+The pipeline needs a [single environment variable]({{site.baseurl}}/docs/pipelines/pipelines/#pipeline-settings) that holds the content of the service account.
 
 
 {% include image.html 
@@ -96,19 +96,17 @@ max-width="60%"
 Run the pipeline and see your deployment succeed.
 
 
-Note that in a production pipeline you should also handle the [Terraform state](https://www.terraform.io/docs/state/) in a proper manner. The example provided is using a file for [state storage](https://www.terraform.io/docs/backends/index.html) which is not appropriate when using Terraform in a team environment. Instead you should use one of the [storage backends](https://www.terraform.io/docs/backends/types/index.html) that support High Availability and Locking.
+Note that in a production pipeline you should also handle the [Terraform state](https://www.terraform.io/docs/state/){:target="\_blank"} in a proper manner. The example provided is using a file for [state storage](https://www.terraform.io/docs/backends/index.html){:target="\_blank"} which is not appropriate when using Terraform in a team environment. Instead you should use one of the [storage backends](https://www.terraform.io/docs/backends/types/index.html){:target="\_blank"} that support High Availability and Locking.
 
 
 
 
 ## Handling Pull requests
 
-You can easily use the same pipeline or a different one for pull requests. In this case replace the `terraform apply` command with `terraform plan`. Even better, you can add an [approval step]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/) to allow humans to inspect the pipeline first.
+You can easily use the same pipeline or a different one for pull requests. In this case replace the `terraform apply` command with `terraform plan`. Even better, you can add an [approval step]({{site.baseurl}}/docs/pipelines/steps/approval/) to allow humans to inspect the pipeline first.
 
 
-## What to read next
-
-* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)
-* [Creating pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/)
-* [How pipelines work]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
+## Related articles
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
+[How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)
