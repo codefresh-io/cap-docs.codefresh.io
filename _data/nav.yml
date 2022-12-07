@@ -199,7 +199,7 @@
 - title: Example catalog
   url: "/example-catalog"
   pages:
-    - title: "Examples"
+    - title: "CI/CD examples for pipelines"
       url: "/examples"
     - title: "CI examples"
       url: "/ci-examples"
@@ -214,43 +214,43 @@
           url: "/get-short-sha-id-and-use-it-in-a-ci-process"
         - title: Build an Image with the Dockerfile in Root Directory
           url: "/build-an-image-with-the-dockerfile-in-root-directory"
-        - title: Build an Image - Specify Dockerfile Location
+        - title: Build an Images specifying Dockerfile Location
           url: "/build-an-image-specify-dockerfile-location"
-        - title: Build an Image from a Different Git Repository
+        - title: Build an Image from a different Git repository
           url: "/build-an-image-from-a-different-git-repository"
-        - title: Build and Push an Image
+        - title: Build and push an Image
           url: "/build-and-push-an-image"
-        - title: Build an Image with Build Arguments
+        - title: Build an Image with build arguments
           url: "/build-an-image-with-build-arguments"
-        - title: Sharing data between steps
+        - title: Share data between steps
           url: "/shared-volumes-between-builds"
-        - title: Uploading/downloading from Google Storage buckets
+        - title: Upload/download from Google Storage buckets
           url: "/uploading-or-downloading-from-gs"
-        - title: Calling other pipelines
+        - title: Call other pipelines
           url: "/call-child-pipelines"
-        - title: Run Unit Tests
+        - title: Run unit tests
           url: "/run-unit-tests"
-        - title: Run Integration Tests
+        - title: Run integration tests
           url: "/run-integration-tests"
-        - title: Fan-in/Fan-out Example with Unit Tests
+        - title: fan-in/fan-out example with unit tests
           url: "/fan-in-fan-out"
-        - title: Codecov Coverage Reports
+        - title: Codecov coverage reports
           url: "/codecov-testing"
-        - title: Coveralls Coverage Reports
+        - title: Coveralls coverage reports
           url: "/coveralls-testing"
-        - title: Codacy Coverage Reports
+        - title: Codacy coverage reports
           url: "/codacy-testing"
-        - title: Run Integration Tests with Mongo
+        - title: Run integration tests with Mongo
           url: "/integration-tests-with-mongo"
-        - title: Run Integration Tests with MySQL
+        - title: Run integration tests with MySQL
           url: "/integration-tests-with-mysql"
-        - title: Run Integration Tests with PostgreSQL
+        - title: Run integration tests with PostgreSQL
           url: "/integration-tests-with-postgres"
-        - title: Run Integration Tests with Redis
+        - title: Run integration tests with Redis
           url: "/integration-tests-with-redis"
         - title: Populate a database with existing data
           url: "/populate-a-database-with-existing-data"
-        - title: Shared volumes for composition
+        - title: Share volumes for composition
           url: "/shared-volumes-of-service-from-composition-step-for-other-yml-steps"          
         - title: Import data to MongoDB
           url: "/import-data-to-mongodb"
@@ -264,9 +264,9 @@
           url: "/launch-composition"
         - title: Use Docker compose
           url: "/launching-a-composition-and-defining-a-service-environment-variables-using-a-file"
-        - title: Sending the notification to Slack
+        - title: Send notification to Slack
           url: "/sending-the-notification-to-slack"
-        - title: Sending the notification to Jira
+        - title: Send notification to Jira
           url: "/sending-the-notification-to-jira"
     - title: "CD examples"
       url: "/cd-examples"
