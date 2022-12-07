@@ -2,10 +2,11 @@
 title: "Checking out Git repositories"
 description: "Using the Codefresh native GIT integration"
 group: example-catalog
+sub_group: ci-examples
 toc: true
 ---
 
-Codefresh has native support for GIT repositories and Git triggers. First you need to setup a [GIT integration]({{site.baseurl}}/docs/integrations/git-providers/) (Your administrator might also have done this for you already).
+Codefresh has native support for GIT repositories and Git triggers. First you need to setup a [Git integration]({{site.baseurl}}/docs/integrations/git-providers/) (Your administrator might also have done this for you already).
 
 {% include image.html 
 lightbox="true" 
@@ -16,7 +17,7 @@ caption="GIT integrations"
 max-width="70%"
 %}
 
-You can add new integration for any cloud provider or even [on-premises]({{site.baseurl}}/docs/enterprise/behind-the-firewall/) ones. By default you will also have a provider setup if you used one for Codefresh signup (GitHub, GitLab or Bitbucket).
+You can add a new integration for any cloud provider or even [on-premises]({{site.baseurl}}/docs/enterprise/behind-the-firewall/) ones. By default you will also have a provider setup if you used one for Codefresh signup (GitHub, GitLab or Bitbucket).
 
 For each Git Integration, make sure that you note down its name, as you will use in your pipeline inside a [git-clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/) step.
 
@@ -104,8 +105,8 @@ max-width="50%"
 This is the recommended way of creating re-usable pipelines in Codefresh.
 
 ## Cloning a repository using the Codefresh runner
-
-If you are using the [Hybrid version]({{site.baseurl}}/docs/enterprise/installation-security/#hybrid-installation) of Codefresh and a have a [Codefresh runner]({{site.baseurl}}/docs/enterprise/codefresh-runner/) installed, you need to use
+<!---change the first x-ref after update -->
+If you are using the [Hybrid version]({{site.baseurl}}/docs/installation/#hybrid-installation) of Codefresh and a have a [Codefresh runner]({{site.baseurl}}/docs/installation/codefresh-runner/) installed, you need to use
 the fully qualified path of the git repository:
 
 `codefresh.yml`
@@ -127,7 +128,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-More details can be found in the [private Git instructions page]({{site.baseurl}}/docs/enterprise/behind-the-firewall/#checking-out-code-from-a-private-git-repository).
+More details can be found in the [private Git instructions page]({{site.baseurl}}/docs/reference/behind-the-firewall/#checking-out-code-from-a-private-git-repository).
 
 
 ## Working inside the cloned directory
@@ -194,10 +195,9 @@ steps:
 Notice that in this case the git-clone steps are **not** named `main_clone` and therefore we specify exactly what is the working directory for each one.
 
 
-## What to read next
-
-* [Git integrations]({{site.baseurl}}/docs/integrations/git-providers/)
-* [Git triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/)
-* [Git Clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
-* [Build step]({{site.baseurl}}/docs/pipelines/steps/build/)
-* [Custom git commands]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout-custom/)
+## Related articles
+[Git integrations]({{site.baseurl}}/docs/integrations/git-providers/)  
+[Git triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/)  
+[Git Clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)  
+[Build step]({{site.baseurl}}/docs/pipelines/steps/build/)  
+[Custom git commands]({{site.baseurl}}/docs/example-catalog/ci-examples/git-checkout-custom/)  

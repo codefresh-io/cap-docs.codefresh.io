@@ -2,6 +2,7 @@
 title: "Go"
 description: "How to build Golang applications with Codefresh CI/CD pipelines"
 group: example-catalog
+sub_group: ci-examples
 redirect_from:
   - /docs/go/
   - /docs/golang/

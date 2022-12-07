@@ -1,8 +1,8 @@
 ---
 title: "Using Custom Git commands"
 description: "Clone manually git repositories"
-group: example-catalogogog
-sub_group: git
+group: example-catalog
+sub_group: ci-examples
 redirect_from:
   - /docs/git-clone-private-repository-using-freestyle-step/
   - /docs/yaml-examples/examples/git-clone-private-repository-using-freestyle-step/
@@ -75,7 +75,7 @@ If there are any errors with the merge the pipeline will automatically fail. Cod
 
 ## Other forms of cloning
 
-There is nothing special about running GIT it in a freestyle step. In fact, you can checkout code with any other command that you would run locally in your terminal.
+There is nothing special about running GIT it in a freestyle step. In fact, you can check out code with any other command that you would run locally in your terminal.
 
 Here is an example with Golang.
 
@@ -97,9 +97,9 @@ If you run this pipeline you will see git used as part of the `go get` mechanism
 More examples such as using SSH keys and working with GIT submodules can be found in the [clone step documentation]({{site.baseurl}}/docs/pipelines/steps/git-clone/).
 
 
-## What to read next
+## Related articles
+[Native Git checkout]({{site.baseurl}}/docs/example-catalog/ci-examples/git-checkout/)  
+[Native Git integration]({{site.baseurl}}/docs/integrations/git-providers/)  
+[Freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/)  
+[Git Clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)  
 
-* [Native Git checkout]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout/)
-* [Native Git integration]({{site.baseurl}}/docs/integrations/git-providers/)
-* [Freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/)
-* [Git Clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)

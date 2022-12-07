@@ -3,17 +3,17 @@ title: "Java Example with Gradle and Docker"
 description: "Create Docker images for Spring/Gradle"
 excerpt: ""
 group: example-catalog
-sub_group: java
+sub_group: ci-examples
 redirect_from:
   - /docs/java/gradle/
 toc: true
 ---
 
-Codefresh can work with Gradle builds in a similar manner as with [Maven builds]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/).
+Codefresh can work with Gradle builds in a similar manner as with [Maven builds]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/){:target="\_blank"}.
 
 ## The example Gradle project
 
-You can see the example project at [https://github.com/codefresh-contrib/gradle-sample-app](https://github.com/codefresh-contrib/gradle-sample-app). The repository contains a Spring Boot 2 project built with Gradle with the following tasks:
+You can see the example project at [https://github.com/codefresh-contrib/gradle-sample-app](https://github.com/codefresh-contrib/gradle-sample-app){:target="\_blank"}. The repository contains a Spring Boot 2 project built with Gradle with the following tasks:
 
 * `gradle test` runs unit tests.
 * `gradle build` creates a self-contained jar file (using Spring boot).
@@ -22,7 +22,7 @@ Once launched the application presents a simple message at localhost:8080 and al
 
 ## Gradle and Docker (multi-stage builds)
 
-The easiest way to use Gradle is with [multi-stage builds](https://blog.docker.com/2017/07/multi-stage-builds/). With multi-stage builds a Docker build can use one base image for compilation/packaging/unit tests and a different one that will hold the runtime of the application. This makes the final image more secure and smaller in size (as it does not contain any development/debugging tools).
+The easiest way to use Gradle is with [multi-stage builds](https://blog.docker.com/2017/07/multi-stage-builds/){:target="\_blank"}. With multi-stage builds a Docker build can use one base image for compilation/packaging/unit tests and a different one that will hold the runtime of the application. This makes the final image more secure and smaller in size (as it does not contain any development/debugging tools).
 
 In the case of Gradle, you can use a base image that has the full JDK and Gradle itself, while the final image has the JRE and nothing else.
 
@@ -62,7 +62,7 @@ We start Gradle without the long-running daemon, as the deamon is best used duri
 
 ### Create a CI pipeline for Gradle (multi-stage Docker builds)
 
-Because in multi-stage builds Docker itself handles most of the build process, moving the project to Codefresh is straightforward. We just need [a single step](https://github.com/codefresh-contrib/gradle-sample-app/blob/master/codefresh.yml) that creates the Docker image after checking out the code.
+Because in multi-stage builds Docker itself handles most of the build process, moving the project to Codefresh is straightforward. We just need [a single step](https://github.com/codefresh-contrib/gradle-sample-app/blob/master/codefresh.yml){:target="\_blank"} that creates the Docker image after checking out the code.
 
  `codefresh.yml`
 {% highlight yaml %}
@@ -111,7 +111,7 @@ much faster after the first one finishes.
 
 It also possible to have a simpler Dockerfile that only packages the final jar which was already created in the CI/CD pipeline (i.e. outside of Docker).
 
-A [simpler Dockerfile](https://github.com/codefresh-contrib/gradle-sample-app/blob/master/Dockerfile.only-package) is also provided at the same repository. It uses the base JRE image and just copies the JAR file inside the container.
+A [simpler Dockerfile](https://github.com/codefresh-contrib/gradle-sample-app/blob/master/Dockerfile.only-package){:target="\_blank"} is also provided at the same repository. It uses the base JRE image and just copies the JAR file inside the container.
 
  `Dockerfile.only-package`
 {% highlight docker %}
@@ -133,7 +133,7 @@ one should create the Docker image.
 
 ### Create a CI pipeline for a Gradle JAR 
 
-The repository also contains a premade [Codefresh YAML file](https://github.com/codefresh-contrib/gradle-sample-app/blob/master/codefresh-package-only.yml) that creates a JAR file first and then packages it in a Docker image.
+The repository also contains a premade [Codefresh YAML file](https://github.com/codefresh-contrib/gradle-sample-app/blob/master/codefresh-package-only.yml){:target="\_blank"} that creates a JAR file first and then packages it in a Docker image.
 
 Here are the full contents of the file.
 
@@ -199,10 +199,9 @@ The next step is similar to the previous one, but this time we actually build th
 The last step is a Docker build. We name our image **gradle-sample-app** and tag it with a string `non-multi-stage` but of course you can use any other tag name that you wish.
 Once the pipeline is finished you will see the Spring Boot 2 Docker image your [Docker image dashboard]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#viewing-docker-images).
 
-## What to read next
-
-* [Spring Maven example]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/)
-* [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)
-* [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)
-* [How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)
+## Related articles
+[Spring Maven example]({{site.baseurl}}/docs/example-catalog/ci-examples/spring-boot-2/)  
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
+[Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
+[How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  

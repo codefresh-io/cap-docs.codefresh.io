@@ -2,7 +2,7 @@
 title: "Using secrets with GitOps"
 description: "Store secrets in Git with Bitnami sealed secrets"
 group: example-catalog
-sub_group: examples
+sub_group: ci-examples
 toc: true
 ---
 
@@ -14,7 +14,7 @@ toc: true
 
 ## Using the Bitnami Sealed secrets controller
 
-If you follow [GitOps](https://codefresh.io/gitops/), then you should already know that everything should be placed under source control, and Git is to be used as the single source of truth.
+If you follow [GitOps](https://codefresh.io/gitops/){:target="\_blank"}, then you should already know that everything should be placed under source control, and Git is to be used as the single source of truth.
 
 This presents a challenge with secrets that are needed by the application, as they must never be stored in Git in clear text under any circumstance.
 
@@ -23,10 +23,10 @@ that can be used to encrypt/decrypt your application secrets in a secure way.
 
 The order of events is the following:
 
-1. You install the Bitnami Sealed secrets controller in the cluster. It generates a public and private key. The private key stays in the cluster and never gets out
+1. You install the Bitnami Sealed secrets controller in the cluster. It generates a public and private key. The private key stays in the cluster and is never revealed.
 1. You take a raw secret and use the `kubeseal` utility to encrypt it. Encryption happens with the public key of the cluster that you can give to anybody.
 1. The encrypted secrets are stored in Git. There are safe to be committed and nobody can decrypt them without direct access to the cluster
-1. During runtime you deploy the sealed secret like any other Kubernetes manifest. The controller converts them to [plain Kubernetes secrets](https://kubernetes.io/docs/concepts/configuration/secret/) on the fly using the private key of the cluster
+1. During runtime you deploy the sealed secret like any other Kubernetes manifest. The controller converts them to [plain Kubernetes secrets](https://kubernetes.io/docs/concepts/configuration/secret/){:target="\_blank"} on the fly using the private key of the cluster
 1. Your application reads the secrets like any other Kubernetes secret. Your application doesn't need to know anything about the sealed secrets controller or how the encryption decryption works.
 
 
@@ -39,8 +39,8 @@ helm install sealed-secrets-controller sealed-secrets/sealed-secrets
 ```
 
 By default the controller will be installed at the `kube-system` namespace. The namespace
-and release name are important, since if you change the defaults, you need to set them up
-with `kubeseal` as well as you work with secrets
+and release names are important, since if you change the defaults, you need to set them up
+with `kubeseal` as well, as you work with secrets.
 
 Download the `kubeseal` CLI.
 
@@ -51,9 +51,9 @@ sudo install -m 755 kubeseal /usr/local/bin/kubeseal
 
 ## The example application
 
-You can find the example project at [https://github.com/codefresh-contrib/gitops-secrets-sample-app](https://github.com/codefresh-contrib/gitops-secrets-sample-app).
+You can find the example project at [https://github.com/codefresh-contrib/gitops-secrets-sample-app](https://github.com/codefresh-contrib/gitops-secrets-sample-app){:target="\_blank"}.
 
-It is a web application that prints out several secrets which are [read from the filesystem](https://github.com/codefresh-contrib/gitops-secrets-sample-app/blob/main/settings.ini):
+It is a web application that prints out several secrets which are [read from the filesystem](https://github.com/codefresh-contrib/gitops-secrets-sample-app/blob/main/settings.ini){:target="\_blank"}:
 
 `settings.ini`
 ```ini
@@ -74,7 +74,7 @@ db_password = /secrets/mysql/password
 
 The application itself knows nothing about Kubernetes secrets, mounted volumes or any other cluster resource. It only reads its own filesystem at `/secrets`
 
-This folder is populated inside the pod with [secret mounting](https://github.com/codefresh-contrib/gitops-secrets-sample-app/blob/main/manifests/deployment.yml):
+This folder is populated inside the pod with [secret mounting](https://github.com/codefresh-contrib/gitops-secrets-sample-app/blob/main/manifests/deployment.yml){:target="\_blank"}:
 
 ```yaml
 ---
@@ -137,7 +137,7 @@ This way there is a clear separation of concerns.
 
 
 
-You can find the secrets themselves at [https://github.com/codefresh-contrib/gitops-secrets-sample-app/tree/main/never-commit-to-git/unsealed_secrets](https://github.com/codefresh-contrib/gitops-secrets-sample-app/tree/main/never-commit-to-git/unsealed_secrets). There are encoded with base64 so they are **NOT** safe to commit in Git.
+You can find the secrets themselves at [https://github.com/codefresh-contrib/gitops-secrets-sample-app/tree/main/never-commit-to-git/unsealed_secrets](https://github.com/codefresh-contrib/gitops-secrets-sample-app/tree/main/never-commit-to-git/unsealed_secrets){:target="\_blank"}. There are encoded with base64 so they are **NOT** safe to commit in Git.
 
 >Note that for demonstration reasons the Git repository contains raw secrets so that you can encrypt them yourself. In a production application the Git repository must only contain sealed/encrypted secrets
 
@@ -160,7 +160,7 @@ kubectl apply -f . -n git-secrets
 ```
 
 You now have encrypted your plain secrets. These files are safe to commit to Git.
-You can see that they have been converted automatically to plain secrets with the command
+You can see that they have been converted automatically to plain secrets with the command:
 
 ```
 kubectl get secrets -n git-secrets
@@ -223,10 +223,9 @@ max-width="90%"
 manifests. In a real application you should have two Git repositories (one of the source code only and one of the manifests).
 
 
-## What to Read Next
-
-- [Codefresh GitOps]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/)
-- [Using secrets]({{site.baseurl}}/docs/pipelines/secrets-store/)
-- [Secrets with Mozilla Sops]({{site.baseurl}}/docs/yaml-examples/examples/decryption-with-mozilla-sops/)
-- [Vault Secrets in the Pipeline]({{site.baseurl}}/docs/yaml-examples/examples/vault-secrets-in-the-pipeline/)
+## Related articles
+[Codefresh GitOps]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/)  
+[Using secrets]({{site.baseurl}}/docs/pipelines/secrets-store/)  
+[Secrets with Mozilla Sops]({{site.baseurl}}/docs/example-catalog/ci-examples/decryption-with-mozilla-sops/)  
+[Vault Secrets in the Pipeline]({{site.baseurl}}/docs/example-catalog/ci-examples/vault-secrets-in-the-pipeline/)  
 

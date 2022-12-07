@@ -3,7 +3,7 @@ title: "Python Django example"
 description: "Create Docker images for Python applications"
 excerpt: ""
 group: example-catalog
-sub_group: python
+sub_group: ci-examples
 redirect_from:
   - /docs/django/
   - /docs/python/django/
@@ -13,7 +13,7 @@ Codefresh can work with Python projects using any of the popular frameworks. In 
 
 ## The example Django project
 
-You can see the example project at [https://github.com/codefreshdemo/cf-example-python-django](https://github.com/codefreshdemo/cf-example-python-django). The repository contains a Django starter project with the following commands:
+You can see the example project at [https://github.com/codefreshdemo/cf-example-python-django](https://github.com/codefreshdemo/cf-example-python-django){:target="\_blank"}. The repository contains a Django starter project with the following commands:
 
 * `pip install -r requirements.txt` install dependencies.
 * `python -m unittest composeexample.utils` runs unit tests.
@@ -74,7 +74,7 @@ caption="Creating a Docker image for Python"
 max-width="80%" 
 %}
 
-Here is the [full pipeline](https://github.com/codefresh-contrib/gradle-sample-app/blob/master/codefresh.yml) that creates the Docker image after checking out the code.
+Here is the [full pipeline](https://github.com/codefresh-contrib/gradle-sample-app/blob/master/codefresh.yml){:target="\_blank"} that creates the Docker image after checking out the code.
 
  `codefresh.yml`
 {% highlight yaml %}
@@ -128,7 +128,7 @@ caption="Building the image after tests have run"
 max-width="80%" 
 %}
 
-Here is the [full pipeline](https://github.com/codefreshdemo/cf-example-python-django/blob/master/codefresh-build-after-test.yml) builds the docker image after tests have already executed.
+Here is the [full pipeline](https://github.com/codefreshdemo/cf-example-python-django/blob/master/codefresh-build-after-test.yml){:target="\_blank"} builds the docker image after tests have already executed.
 
  `codefresh.yml`
 {% highlight yaml %}
@@ -166,10 +166,9 @@ steps:
 
 Codefresh is smart enough that [caches automatically]({{site.baseurl}}/docs/pipelines/pipeline-caching/) for us the workspace of a build (`/codefresh/volume`). This works great for build tools that keep their cache in the project folder, but not for pip which keeps its cache externally (e.g. `~/.cache/pip`). By changing the location of the Pip cache on the project folder (the `pip-cache` name is arbitrary) we make sure that Codefresh will cache automatically the Pip libraries resulting in much faster builds.
 
-## What to read next
-
-* [Python examples]({{site.baseurl}}/docs/learn-by-example/python/)
-* [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)
-* [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)
-* [How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)
+## Related articles
+[Python examples]({{site.baseurl}}/docs/example-catalog/ci-examples/python/)  
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
+[Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
+[How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  

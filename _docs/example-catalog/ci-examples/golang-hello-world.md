@@ -2,7 +2,7 @@
 title: "Create a Docker image for GO"
 description: "Using Codefresh pipelines"
 group: example-catalog
-sub_group: golang
+sub_group: ci-examples
 redirect_from:
   - /docs/go/cf-example-golang-hello-world/
 toc: true
@@ -12,17 +12,19 @@ Codefresh can work with Go projects of any version using built-in modules or any
 
 ## The example golang project
 
-You can see the example project at [https://github.com/codefresh-contrib/golang-sample-app](https://github.com/codefresh-contrib/golang-sample-app). The repository contains a simple Golang web application including unit tests. There are 3 Dockerfiles available:
+You can see the example project at [https://github.com/codefresh-contrib/golang-sample-app](https://github.com/codefresh-contrib/golang-sample-app){:target="\_blank"}. The repository contains a simple Golang web application including unit tests. There are 3 Dockerfiles available:
 
-* [Simple Dockerfile](https://github.com/codefresh-contrib/golang-sample-app/blob/master/Dockerfile) (with old Go version that requires `GOPATH` building)
-* [Dockerfile with Go modules](https://github.com/codefresh-contrib/golang-sample-app/blob/master/Dockerfile.mod) (optimized for Docker caching)
-* [Multi-stage Dockerfile](https://github.com/codefresh-contrib/golang-sample-app/blob/master/Dockerfile.multistage) (with Go modules and unit tests)
+* [Simple Dockerfile](https://github.com/codefresh-contrib/golang-sample-app/blob/master/Dockerfile){:target="\_blank"} (with old Go version that requires `GOPATH` building)
+* [Dockerfile with Go modules](https://github.com/codefresh-contrib/golang-sample-app/blob/master/Dockerfile.mod){:target="\_blank"} (optimized for Docker caching)
+* [Multi-stage Dockerfile](https://github.com/codefresh-contrib/golang-sample-app/blob/master/Dockerfile.multistage){:target="\_blank"} (with Go modules and unit tests)
 
 Let's see these workflows in order.
 
 ## Simple Docker image pipeline
 
-The most [simple pipeline](https://github.com/codefresh-contrib/golang-sample-app/blob/master/codefresh.yml) that you can create is just two [steps]({{site.baseurl}}/docs/pipelines/steps/). A [clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/) to fetch the code and a [build step]({{site.baseurl}}/docs/pipelines/steps/build/) to create a Docker image.
+The most [simple pipeline](https://github.com/codefresh-contrib/golang-sample-app/blob/master/codefresh.yml){:target="\_blank"} that you can create is just two steps:  
+* A [clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/) to fetch the code
+* A [build step]({{site.baseurl}}/docs/pipelines/steps/build/) to create a Docker image
 
  `codefresh.yml`
 {% highlight yaml %}
@@ -90,7 +92,7 @@ CMD ["go-sample-app"]
 
 If you want to run Go specific steps in your pipeline, you can use [freestyle]({{site.baseurl}}/docs/pipelines/steps/freestyle/) steps with any GO image that you want. If your GO application is using GO modules, this is even easier as you don't need to place the application into a specific GOPATH compliant directory first.
 
-This [pipeline](https://github.com/codefresh-contrib/golang-sample-app/blob/master/codefresh-gomod.yml) is running unit tests as a separate step and then builds the docker image.
+This [pipeline](https://github.com/codefresh-contrib/golang-sample-app/blob/master/codefresh-gomod.yml){:target="\_blank"} is running unit tests as a separate step and then builds the docker image.
 
  `codefresh.yml`
 {% highlight yaml %}
@@ -174,7 +176,7 @@ The Dockerfile will also automatically take advantage of the Codefresh distribut
 
 ## Create a multi-stage Docker image for GO
 
-Especially with Go applications, the recommended way to create Docker images is with [multi-stage builds](https://docs.docker.com/develop/develop-images/multistage-build/). This makes the resulting Docker image as compact as possible.
+Especially with Go applications, the recommended way to create Docker images is with [multi-stage builds](https://docs.docker.com/develop/develop-images/multistage-build/){:target="\_blank"}. This makes the resulting Docker image as compact as possible.
 
 You can also embed unit tests in the Docker creation process, which guarantee the correctness of image (integration tests are best kept in the pipeline).
 
@@ -218,7 +220,7 @@ CMD ["/app/go-sample-app"]
 {% endraw %}
 {% endhighlight %}
 
-Codefresh has native support for multi-stage builds. The [pipeline](https://github.com/codefresh-contrib/golang-sample-app/blob/master/codefresh-multi-stage.yml) is the same as the first one with just two steps.
+Codefresh has native support for multi-stage builds. The [pipeline](https://github.com/codefresh-contrib/golang-sample-app/blob/master/codefresh-multi-stage.yml){:target="\_blank"} is the same as the first one with just two steps.
 
  `codefresh.yml`
 {% highlight yaml %}
@@ -259,10 +261,9 @@ max-width="80%"
 
 We recommend using Go modules and multi-stage builds in your Go projects.
 
-## What to read next
-
-* [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)
-* [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)
-* [How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)
+## Related articles
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
+[Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
+[How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  
 

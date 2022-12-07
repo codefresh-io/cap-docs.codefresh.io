@@ -2,11 +2,11 @@
 title: "Compile and release a Go application"
 description: "Using Codefresh pipelines"
 group: example-catalog
-sub_group: golang
+sub_group: ci-examples
 toc: true
 ---
 
-[Goreleaser](https://github.com/goreleaser/goreleaser) is a helper utility that allows you to easily create:
+[Goreleaser](https://github.com/goreleaser/goreleaser){:target="\_blank"} is a helper utility that allows you to easily create the following for Go applications:
 
 * Binary packages for each OS/arch
 * Archives
@@ -14,17 +14,16 @@ toc: true
 * Docker images
 * Snap/RPM/deb/Homebrew
 
-for Go applications.
 
 Codefresh can also create Docker images on its own, but Goreleaser is still useful for the binary artifact creation capability.
 
 
 ## Run Goreleaser with docker
 
-You can see the example project at [https://github.com/codefresh-contrib/goreleaser-sample-app](https://github.com/codefresh-contrib/goreleaser-sample-app). The repository contains a simple Golang web application with a [goreleaser configuration](https://github.com/codefresh-contrib/goreleaser-sample-app/blob/master/.goreleaser.yml)
+You can see the example project at [https://github.com/codefresh-contrib/goreleaser-sample-app](https://github.com/codefresh-contrib/goreleaser-sample-app){:target="\_blank"}. The repository contains a simple Golang web application with a [goreleaser configuration](https://github.com/codefresh-contrib/goreleaser-sample-app/blob/master/.goreleaser.yml){:target="\_blank"}.
 
 
-There is already a [Docker image for Goreleaser](https://hub.docker.com/r/goreleaser/goreleaser/) so it is very easy to use it in Codefresh pipeline.
+There is already a [Docker image for Goreleaser](https://hub.docker.com/r/goreleaser/goreleaser/){:target="\_blank"} so it is very easy to use it in Codefresh pipeline.
 In the most simple case you case run goreleaser in a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/).
 
  `YAML`
@@ -45,7 +44,7 @@ More typically however you also need to provide a GitHub token so that GitHub re
 ## Create a CI pipeline that compiles/releases Go
 
 In most cases you want to just reuse the Git integration already defined in Codefresh.
-This [pipeline](https://github.com/codefresh-contrib/goreleaser-sample-app/blob/master/codefresh.yml) is using the GitHub token from [Git integration]({{site.baseurl}}/docs/integrations/git-providers/) in order to allow github access.
+This [pipeline](https://github.com/codefresh-contrib/goreleaser-sample-app/blob/master/codefresh.yml){:target="\_blank"} is using the GitHub token from [Git integration]({{site.baseurl}}/docs/integrations/git-providers/) in order to allow GitHub access.
 
  `codefresh.yml`
 {% highlight yaml %}
@@ -83,8 +82,8 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-Note that GoReleaser [requires a GitHub API token](https://goreleaser.com/environment/) (`GITHUB_TOKEN`) with the `repo` scope to deploy artifacts to GitHub.
-Here we use [cf_export]({{site.baseurl}}/docs/pipelines/variables/#exporting-environment-variables-from-a-freestyle-step) and the [codefresh CLI](https://codefresh-io.github.io/cli/) in order to ask Codefresh about the existing token (that was used in git integrations). In your case you need to change `github-1` with the name of your [GitHub integration]({{site.baseurl}}/docs/integrations/git-providers/).
+Note that GoReleaser [requires a GitHub API token](https://goreleaser.com/environment/){:target="\_blank"} (`GITHUB_TOKEN`) with the `repo` scope to deploy artifacts to GitHub.
+Here we use [cf_export]({{site.baseurl}}/docs/pipelines/variables/#exporting-environment-variables-from-a-freestyle-step) and the [codefresh CLI](https://codefresh-io.github.io/cli/){:target="\_blank"} in order to ask Codefresh about the existing token (that was used in git integrations). In your case you need to change `github-1` with the name of your [GitHub integration]({{site.baseurl}}/docs/integrations/git-providers/).
 
 It also possible to pass a GITHUB_TOKEN directly in the pipeline, if you don't want to re-use the existing one. This is an alternative way of allowing Goreleaser to create GitHub releases.
 
@@ -112,10 +111,8 @@ max-width="80%"
 
 This means that this pipeline will not run on normal commits. It is also possible to use [step conditionals]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) for more complex cases.
 
-## What to read next
-
-* [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)
-* [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)
-* [How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)
-
+## Related articles
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
+[Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
+[How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  

@@ -1,8 +1,8 @@
 ---
 title: "Get Short SHA ID and Use it in a CI Process"
 description: ""
-group: example-catalogog
-sub_group: examples
+group: example-catalog
+sub_group: ci-examples
 redirect_from:
   - /docs/how-to-guides/
   - /docs/how-get-first-8-digits-of-sha/
@@ -67,3 +67,9 @@ url="/images/de17013-2016-10-18_17-49-22.png"
 alt="2016-10-18_17-49-22.png"
 max-width="40%"
 %}
+
+
+## Related articles 
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)    
+[Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
+[How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  

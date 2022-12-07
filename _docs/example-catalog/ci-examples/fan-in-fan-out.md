@@ -2,7 +2,7 @@
 title: "Fan-out-fan-in Pipeline"
 description: "Use parallel mode to fan-in and fan-out your step dependencies"
 group: example-catalog
-sub_group: examples
+sub_group: ci-examples
 toc: true
 ---
 
@@ -27,11 +27,11 @@ You can achieve parallelism in your Codefresh pipelines by using the following:
 
 ## Prerequisites
 
-- A [free Codefresh account](https://codefresh.io/docs/docs/getting-started/create-a-codefresh-account/)
+- A [free Codefresh account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/)
 
 ## The Example Project
 
-You can find the example Spring boot application on [GitHub](https://github.com/codefresh-contrib/fan-out-fan-in-sample-app.git).  It is a simple Hello World application that has several different types of tests we will be using to run using Codefresh's parallel mode.
+You can find the example Spring boot application on [GitHub](https://github.com/codefresh-contrib/fan-out-fan-in-sample-app.git){:target="\_blank"}.  It is a simple Hello World application that has several different types of tests we will be using to run using Codefresh's parallel mode.
 
 ## Create the Pipeline
 
@@ -198,9 +198,6 @@ This pipeline consists of the following:
   - Runs unit tests according to their respective @Tags
   - Uses the image built in the second step as a [Service container]({{site.baseurl}}/docs/pipelines/service-containers/)
  
-## What to Read Next
- 
- - [Git-clone Step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
- - [Freestyle Step]({{site.baseurl}}/docs/pipelines/steps/freestyle/)
- - [Service Containers]({{site.baseurl}}//docs/pipelines/service-containers/) 
- - [Parallel Mode]({{site.baseurl}}/docs/pipelines/advanced-workflows/#parallel-pipeline-mode)
+## Related articles
+[Parallel Mode]({{site.baseurl}}/docs/pipelines/advanced-workflows/#parallel-pipeline-mode)  
+

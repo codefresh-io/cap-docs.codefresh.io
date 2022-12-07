@@ -1,20 +1,20 @@
 ---
 title: "Decryption with Mozilla SOPS"
 description: "Store secrets in your repository and decrypt them using Mozilla SOPS"
-group: example-catalogog
-sub_group: examples
+group: example-catalog
+sub_group: ci-examples
 toc: true
 ---
 
 ## Prerequisites
 
-- A [free Codefresh account](https://codefresh.io/docs/docs/getting-started/create-a-codefresh-account/)
+- A [free Codefresh account]({{site.baseurl}}/docs/administration/create-a-codefresh-account/)
 - A public and private GnuGP key pair
 - A credentials yaml, that is encrypted using Mozilla SOPS, and stored in your repository
 
 ## The Example Java Application
 
-You can find the example project on [GitHub](https://github.com/codefresh-contrib/mozilla-sops-app).
+You can find the example project on [GitHub](https://github.com/codefresh-contrib/mozilla-sops-app){:target="\_blank"}.
 
 The example application retrieves the system variable "password," from the pipeline and uses it to authenticate to a Redis database, but you are free to use any type of database of your choosing.
 
@@ -100,7 +100,7 @@ Here is the entire pipeline:
 {% highlight yaml %}
 {% raw %}
 # More examples of Codefresh YAML can be found at
-# https://codefresh.io/docs/docs/yaml-examples/examples/
+# https://codefresh.io/docs/docs/example-catalog/ci-examples/
 
 version: "1.0"
 # Stages can help you organize your steps in stages
@@ -167,13 +167,12 @@ This pipeline does the following:
 3. A freestyle step that decrypts the credentials file.  At this step, SOPS is looking for the .gnupg directory (where the keyring is stored) under /root.  We need to copy it from the [Codefresh Volume]({{site.baseurl}}/docs/pipelines/steps/freestyle/#custom-volumes), as /root is not saved between containers.
 4. The last step, `package_jar`, does a few special things to take note of:
    - Spins up a [Service Container]({{site.baseurl}}/docs/pipelines/service-containers/) running Redis on port 6379 , and sets the password to the database using our exported environment variable
-   - Sets `maven.repo.local` to cache Maven dependencies into the local codefresh volume to [speed up builds]({{site.baseurl}}/docs/example-catalog/java/spring-boot-2/#caching-the-maven-dependencies)
+   - Sets `maven.repo.local` to cache Maven dependencies into the local codefresh volume to [speed up builds]({{site.baseurl}}/docs/example-catalog/ci-examples/spring-boot-2/#caching-the-maven-dependencies)
    - Runs unit tests and packages the jar.  Note how you can directly refer to the service container's name (`my-redis-db-host`) when we set `server.host`
 
-## What to Read Next
-
-- [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)
-- [Git-clone Step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
-- [Freestyle Step]({{site.baseurl}}/docs/pipelines/steps/freestyle/)
-- [Vault Secrets in the Pipeline]({{site.baseurl}}/docs/yaml-examples/examples/vault-secrets-in-the-pipeline/)
+## Related articles
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Git-clone Step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)  
+[Freestyle Step]({{site.baseurl}}/docs/pipelines/steps/freestyle/)  
+[Vault Secrets in the Pipeline]({{site.baseurl}}/docs/example-catalog/ci-examples/vault-secrets-in-the-pipeline/)  
 

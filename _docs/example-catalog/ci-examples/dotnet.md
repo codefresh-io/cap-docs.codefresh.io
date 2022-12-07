@@ -2,20 +2,21 @@
 title: "C# on .NET Core"
 description: "How to build a C# project in Codefresh"
 group: example-catalog
+sub_group: ci-examples
 toc: true
 ---
 
-Codefresh can work with any .NET core application very easily as there are official [Docker images from Microsoft](https://hub.docker.com/_/microsoft-dotnet-core).
+Codefresh can work with any .NET core application very easily as there are official [Docker images from Microsoft](https://hub.docker.com/_/microsoft-dotnet-core){:target="\_blank"}.
 
 ## The example C# project
 
-You can see the example project at [https://github.com/dotnet-architecture/eShopOnWeb](https://github.com/dotnet-architecture/eShopOnWeb). The repository contains a C# Web project with 3 kinds of tests. It has different tags for each version of .NET Core and has 
+You can see the example project at [https://github.com/dotnet-architecture/eShopOnWeb](https://github.com/dotnet-architecture/eShopOnWeb){:target="\_blank"}. The repository contains a C# Web project with 3 kinds of tests. It has different tags for each version of .NET Core and has 
 
 * a `docker-compose.yml` file for local development
 * a `tests` directory with all types of tests
 * a Dockerfile at `/src/Web`
 
-There are also previous releases at [https://github.com/dotnet-architecture/eShopOnWeb/releases](https://github.com/dotnet-architecture/eShopOnWeb/releases).
+There are also previous releases at [https://github.com/dotnet-architecture/eShopOnWeb/releases](https://github.com/dotnet-architecture/eShopOnWeb/releases){:target="\_blank"}.
 
 ### Create a CI pipeline for C# applications
 
@@ -86,7 +87,7 @@ This pipeline:
 1. Uses the official `mcr.microsoft.com/dotnet/core/sdk:3.0` image to run unit/integration/functional tests in 3 different folders
 1. Builds the application docker image using the root folder as Docker context but with the Dockerfile located at `./src/Web`
 
-You can see the resulting image in the [image dashboard]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#viewing-docker-images):
+<!--You can see the resulting image in the [image dashboard]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#viewing-docker-images):
 
 {% include image.html 
 lightbox="true" 
@@ -96,17 +97,16 @@ alt="Building a .NET core docker image"
 caption="Building a .NET core docker image"
 max-width="80%" 
 %}
+-->
 
 
 
-
-## What to read next
-
-* [C/C++ examples]({{site.baseurl}}/docs/learn-by-example/cc/)
-* [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)
-* [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)
-* [How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)
+## Related articles
+[C/C++ examples]({{site.baseurl}}/docs/learn-by-example/cc/)  
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
+[Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
+[How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  
 
 
 
