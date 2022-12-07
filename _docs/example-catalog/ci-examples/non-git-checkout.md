@@ -1,8 +1,8 @@
 ---
 title: "Checking out from other Source Control systems"
 description: "Work with non-git repositories"
-group: example-catalogog
-sub_group: examples
+group: example-catalog
+sub_group: ci-examples
 toc: true
 ---
 
@@ -13,7 +13,7 @@ The only requirement is that you find or create a Docker image that contains the
 
 ## Checking out Subversion code
 
-There is already a public [Docker image with the svn client](https://hub.docker.com/r/jgsqware/svn-client/), so it is very easy to run it in a Codefresh pipeline.
+There is already a public [Docker image with the svn client](https://hub.docker.com/r/jgsqware/svn-client/){:target="\_blank"}, so it is very easy to run it in a Codefresh pipeline.
 
 {% highlight yaml %}
 {% raw %}
@@ -68,7 +68,7 @@ A much faster way is to create your own Dockerfile that includes the client you 
 
 ## Checking out Perforce code
 
-Codefresh has created a [Perforce plugin](https://hub.docker.com/r/codefresh/cf-p4-plugin/tags) which packs the p4 client into a Docker image in order to be used from Codefresh pipelines:
+Codefresh has created a [Perforce plugin](https://hub.docker.com/r/codefresh/cf-p4-plugin/tags){:target="\_blank"} which packs the p4 client into a Docker image in order to be used from Codefresh pipelines:
 
 {% highlight yaml %}
 {% raw %}
@@ -93,9 +93,7 @@ steps:
 The environments variables should be defined in [Codefresh shared configuration]({{site.baseurl}}/docs/pipelines/shared-configuration/).
 
 
-## What to read next
-
-* [Native Git checkout]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout/)
-* [Running custom git commands]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout-custom/)
-* [Freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/)
-* [Git Clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
+## Related articles
+[Native Git checkout]({{site.baseurl}}/docs/example-catalog/ci-examples/git-checkout/)  
+[Running custom git commands]({{site.baseurl}}/docs/example-catalog/ci-examples/git-checkout-custom/)
+[Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)

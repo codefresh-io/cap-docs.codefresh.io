@@ -2,17 +2,18 @@
 title: "Ruby"
 description: "How to build a Ruby On Rails project in Codefresh"
 group: example-catalog
+sub_group: ci-examples
 toc: true
 ---
 Ruby on Rails is a very popular development framework that combines ease of use and a great amount of programming languages. In Codefresh, ROR projects behave like any other web application. You can easily build them, run [integration tests]({{site.baseurl}}/docs/testing/integration-tests/) and launch them on [demo environments]({{site.baseurl}}/docs/getting-started/on-demand-environments/).
 
-The example application is located at [https://github.com/codefresh-contrib/ruby-on-rails-sample-app](https://github.com/codefresh-contrib/ruby-on-rails-sample-app).
+The example application is located at [https://github.com/codefresh-contrib/ruby-on-rails-sample-app](https://github.com/codefresh-contrib/ruby-on-rails-sample-app){:target:"\_blank"}.
 
 
  
 ## Dockerize your Ruby on Rails project
 
-The first step should be to write a [Dockerfile](https://github.com/codefresh-contrib/ruby-on-rails-sample-app/blob/master/Dockerfile) for your Rails project. As an example we will use the following:
+The first step should be to write a [Dockerfile](https://github.com/codefresh-contrib/ruby-on-rails-sample-app/blob/master/Dockerfile){:target:"\_blank"} for your Rails project. As an example we will use the following:
 
 
 
@@ -65,7 +66,7 @@ A very simple pipeline is one that has only two steps:
 1. Build the docker image 
 1. Run the tests inside the docker image that was just build
 
-Here is the example [codefresh.yml](https://github.com/codefresh-contrib/ruby-on-rails-sample-app/blob/master/codefresh.yml) file.
+Here is the example [codefresh.yml](https://github.com/codefresh-contrib/ruby-on-rails-sample-app/blob/master/codefresh.yml){:target:"\_blank"} file.
 
 
 `codefresh.yml`
@@ -172,11 +173,11 @@ You can share this link with other people in your team.
 
 
 
-## What to read next
+## Related articles
+[Introduction to Pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[On demand environments]({{site.baseurl}}/docs/getting-started/on-demand-environments/)  
+[Integration tests]({{site.baseurl}}/docs/testing/integration-tests/)  
 
-* [Introduction to Pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)
-* [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)
-* [On demand environments]({{site.baseurl}}/docs/getting-started/on-demand-environments/)
-* [Integration tests]({{site.baseurl}}/docs/testing/integration-tests/)
 
 

@@ -2,7 +2,7 @@
 title: "Shared volumes of service from composition step for other yml steps"
 description: "How to share data in compositions"
 group: example-catalog
-sub_group: examples
+sub_group: ci-examples
 redirect_from:
   - /docs/shared-volumes-of-service-from-composition-step-for-other-yml-steps/
 toc: true
@@ -50,3 +50,5 @@ Just head over to the example [**repository**](https://github.com/codefreshdemo/
 The way the volume is shared between builds is that upon build completion we create an image of the volume state to be used in the next builds. If you run 2 builds in parallel from the same pipeline and at the same time, each will use the same last volume image, but it’ll run separately on both. The volume image you’ll get upon completion is the state of the build that finished last.
 {{site.data.callout.end}}
 
+## Related articles
+[Example catalog]({{site.baseurl}}/docs/example-catalog/ci-examples/)  

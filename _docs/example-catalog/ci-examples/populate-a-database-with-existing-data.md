@@ -2,14 +2,14 @@
 title: "Populate a database with existing data"
 description: "Preloading test data before integration tests"
 group: example-catalog
-sub_group: examples
+sub_group: ci-examples
 redirect_from:
   - /docs/populate-a-database-with-existing-data-copied/
 toc: true
 old_url: /docs/populate-a-database-with-existing-data-copied
 was_hidden: true
 ---
-In an another example we have seen how you can run [integration tests with a database]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-postgres/) such as PostgreSQL. Sometimes however, the integration tests require the database to already have some test data beforehand. With Codefresh you can use the [setup block]({{site.baseurl}}/docs/pipelines/service-containers/#preloading-data-to-databases) in service containers to preload data to a db.
+In an another example we have seen how you can run [integration tests with a database]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-postgres/) such as PostgreSQL. Sometimes however, the integration tests require the database to already have some test data beforehand. With Codefresh you can use the [setup block]({{site.baseurl}}/docs/pipelines/service-containers/#preloading-data-to-databases) in service containers to preload data to a db.
 
 
 {% include image.html 
@@ -25,7 +25,7 @@ In this pipeline the database is populated with data from an SQL file.
 
 ## The example PostgreSQL project
 
-You can see the example project at [https://github.com/codefresh-contrib/preload-db-integration-tests](https://github.com/codefresh-contrib/preload-db-integration-tests). The repository contains a simple integration test and an SQL file that inserts test data.
+You can see the example project at [https://github.com/codefresh-contrib/preload-db-integration-tests](https://github.com/codefresh-contrib/preload-db-integration-tests){:target="\_blank"}. The repository contains a simple integration test and an SQL file that inserts test data.
 
 The SQL file creates a single table in the db:
 
@@ -130,7 +130,7 @@ This pipeline does the following:
 1. Runs the tests while launching a [service container]({{site.baseurl}}/docs/pipelines/service-containers/) for an active PostgreSQL instance. Before tests are run we launch another container with the `psql` executable to load db data
 
 
-> In this simple example we use `psql` to preload the database. In a production application you might also use dedicated db tools such as [liquibase](https://hub.docker.com/r/liquibase/liquibase) or [flyway](https://hub.docker.com/r/flyway/flyway) or other command line tools that communicate with your database.
+> In this simple example we use `psql` to preload the database. In a production application you might also use dedicated db tools such as [liquibase](https://hub.docker.com/r/liquibase/liquibase){:target="\_blank"} or [flyway](https://hub.docker.com/r/flyway/flyway){:target="\_blank"} or other command line tools that communicate with your database.
 
 Notice that we also use the `readiness` property in the testing phase so that we can verify PostgreSQL is ready and listening, before running the tests. The exact order of events is:
 
@@ -141,13 +141,12 @@ Notice that we also use the `readiness` property in the testing phase so that we
 
 All containers are discarded after the pipeline has finished.
 
-## What to read next
+## Related articles
+[Integration test example]({{site.baseurl}}/docs/example-catalog/ci-examples/run-integration-tests/)  
+[Integration Tests with Postgres]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-postgres/)  
+[Integration Tests with MySQL]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-mysql/)  
+[Integration Tests with Mongo]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-mongo/)  
+[Integration Tests with Redis]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-redis/)  
 
-- [Service Containers]({{site.baseurl}}/docs/pipelines/service-containers/)
-- [Integration Tests with Postgres]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-postgres/)
-- [Integration Tests with MySQL]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mysql/)
-- [Integration Tests with Redis]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-redis/)
-- [Integration Tests with Mongo]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mongo/)
-- [Integration test example]({{site.baseurl}}/docs/yaml-examples/examples/run-integration-tests/)
 
 

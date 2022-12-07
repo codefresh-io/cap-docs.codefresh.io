@@ -2,6 +2,7 @@
 title: "Node.js"
 description: ""
 group: example-catalog
+sub_group: ci-examples
 redirect_from:
   - /docs/nodejs/
 toc: true

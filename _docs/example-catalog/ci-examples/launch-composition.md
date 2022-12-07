@@ -1,8 +1,8 @@
 ---
 title: "Launch Composition"
 description: "Create a dynamic environment to preview your feature"
-group: example-catalogogog
-sub_group: examples
+group: example-catalog
+sub_group: ci-examples
 redirect_from:
   - /docs/launch-composition-1/
 toc: true
@@ -66,7 +66,7 @@ Be aware that the number of environments you can run is limited. When using the 
 {{site.data.callout.callout_info}}
 ##### Example
 
-Just head over to the example [**repository**](https://github.com/codefreshdemo/cf-example-launch-composition) in GitHub and follow the instructions there.
+Just head over to the example [**repository**](https://github.com/codefreshdemo/cf-example-launch-composition){:target=\_blank"} in GitHub and follow the instructions there.
 {{site.data.callout.end}}
 
 Here is the end result:
@@ -80,8 +80,7 @@ caption="Launch composition example"
 max-width="90%"
 %}
 
-## What to read next
-
-* [Unit tests]({{site.baseurl}}/docs/yaml-examples/examples/run-integration-tests/)
-* [Integration tests]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-database/)
-* [Preview environments]({{site.baseurl}}/docs/getting-started/on-demand-environments/)
+## Related articles
+[Unit tests]({{site.baseurl}}/docs/examples/example-catalog/ci-examples/run-integration-tests/)  
+[Integration tests]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-database/)  
+[Preview environments]({{site.baseurl}}/docs/getting-started/on-demand-environments/)  

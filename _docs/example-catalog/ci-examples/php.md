@@ -2,6 +2,7 @@
 title: "Create a Docker image for Php"
 description: "Using Codefresh pipelines"
 group: example-catalog
+sub_group: ci-examples
 toc: true
 ---
 
@@ -9,9 +10,9 @@ Codefresh can work with Php projects using any of the popular frameworks (Larave
 
 ## The example php project
 
-You can see the example project at [https://github.com/codefresh-contrib/php-composer-sample-app](https://github.com/codefresh-contrib/php-composer-sample-app). The repository contains a simple Php project that uses [composer](https://getcomposer.org/) as a package manager.
+You can see the example project at [https://github.com/codefresh-contrib/php-composer-sample-app](https://github.com/codefresh-contrib/php-composer-sample-app){:target="\_blank"}. The repository contains a simple Php project that uses [composer](https://getcomposer.org/) as a package manager.
 
-The dockerfile uses [multi-stage builds](https://docs.docker.com/develop/develop-images/multistage-build/) to minimize the size of the docker image.
+The dockerfile uses [multi-stage builds](https://docs.docker.com/develop/develop-images/multistage-build/){:target="\_blank"} to minimize the size of the docker image.
 
 `Dockerfile`
 {% highlight docker %}
@@ -41,8 +42,11 @@ COPY --from=vendor /tmp/vendor/ /var/www/html/vendor/
 
 ## Create a Docker image for Php project
 
-An [example pipeline](https://github.com/codefresh-contrib/php-composer-sample-app/blob/master/codefresh.yml) is also offered in the git repository.
-It contains just two [steps]({{site.baseurl}}/docs/pipelines/steps/). A [clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/) to fetch the code and a [build step]({{site.baseurl}}/docs/pipelines/steps/build/) to create a Docker image.
+An [example pipeline](https://github.com/codefresh-contrib/php-composer-sample-app/blob/master/codefresh.yml){:target="\_blank"} is also offered in the git repository.
+It contains just two [steps]({{site.baseurl}}/docs/pipelines/steps/):  
+
+* A [clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/) to fetch the code
+* A [build step]({{site.baseurl}}/docs/pipelines/steps/build/) to create a Docker image
 
  `codefresh.yml`
 {% highlight yaml %}
@@ -123,10 +127,9 @@ Notice that these environments are only for testing and previewing your applicat
 
 
 
-## What to read next
+## Related articles
 
-* [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)
-* [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)
-* [How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)
-
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
+[Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
+[How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  

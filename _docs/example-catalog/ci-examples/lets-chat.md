@@ -2,7 +2,7 @@
 title: "Let's Chat example"
 description: "Create Docker images for Node/Express.js applications"
 group: example-catalog
-sub_group: nodejs
+sub_group: ci-examples
 redirect_from:
   - /docs/lets-chat/
 toc: true
@@ -12,7 +12,7 @@ Let’s Chat is self-hosted chat app for small to big teams.
 
 ## The example Node.JS project
 
-You can see the example project at [https://github.com/codefreshdemo/demochat](https://github.com/codefreshdemo/demochat). The repository contains the source code of the project along with two Dockerfiles (one for unit tests) and various docker-compose configurations
+You can see the example project at [https://github.com/codefreshdemo/demochat](https://github.com/codefreshdemo/demochat){:target="\_blank"}. The repository contains the source code of the project along with two Dockerfiles (one for unit tests) and various docker-compose configurations
 
 The project requires a Mongo Database to work and by default it uses port 5000 for its web interface.
 
@@ -29,7 +29,7 @@ caption="Building and testing a Node.js application"
 max-width="100%" 
 %}
 
-Here is the [full pipeline](https://github.com/codefreshdemo/demochat/blob/master/codefresh.yml) that creates the Docker image after checking out the code.
+Here is the [full pipeline](https://github.com/codefreshdemo/demochat/blob/master/codefresh.yml){:target="\_blank"} that creates the Docker image after checking out the code.
 
  `codefresh.yml`
 {% highlight yaml %}
@@ -102,7 +102,7 @@ steps:
 
 This pipeline has 4 [stages]({{site.baseurl}}/docs/pipelines/stages/) and performs the following:
 
- 1. clones the source code using the [git-clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/) step
+ 1. Clones the source code using the [git-clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/) step
  1. Builds a Docker image for unit tests with the [build step]({{site.baseurl}}/docs/pipelines/steps/build/)
  1. Runs [unit tests]({{site.baseurl}}/docs/testing/unit-tests/) in the Docker image that was just created with a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/)
  1. Building a Docker image for the final application
@@ -110,10 +110,12 @@ This pipeline has 4 [stages]({{site.baseurl}}/docs/pipelines/stages/) and perfor
 
 If you run the pipeline multiple times, you will also see the [Codefresh caching mechanisms]({{site.baseurl}}/docs/pipelines/pipeline-caching/) in action for faster build times.
 
-## What to read next
+## Related articles
+[Voting app example]({{site.baseurl}}/docs/example-catalog/ci-examples/voting-app/)  
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
+[Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
+[How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  
 
-* [Voting app example]({{site.baseurl}}/docs/learn-by-example/nodejs/voting-app/)
-* [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)
-* [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)
-* [How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)
+
+

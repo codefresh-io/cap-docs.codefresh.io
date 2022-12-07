@@ -188,7 +188,7 @@ caption="Gradle pipeline"
 max-width="80%" 
 %}
 
-After checking out the code we use the standard [Gradle Docker image](https://hub.docker.com/_/gradle/) to run unit tests. We also pass parameters that disable the Gradle daemon, enable the build cache and also change the cache folder to reside in the Codefresh volume.
+After checking out the code we use the standard [Gradle Docker image](https://hub.docker.com/_/gradle/){:target="\_blank"} to run unit tests. We also pass parameters that disable the Gradle daemon, enable the build cache and also change the cache folder to reside in the Codefresh volume.
 
 ### Using the Gradle cache in Codefresh
 

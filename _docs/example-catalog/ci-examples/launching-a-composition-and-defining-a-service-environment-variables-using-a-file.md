@@ -2,7 +2,7 @@
 title: "Launching a composition and defining a service environment variable using a file"
 description: ""
 group: example-catalog
-sub_group: examples
+sub_group: ci-examples
 redirect_from:
   - /docs/launching-a-composition-and-passing-a-service-environment-variable-using-a-file/
 toc: true

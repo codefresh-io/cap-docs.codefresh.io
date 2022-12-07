@@ -2,7 +2,7 @@
 title: "Integration Tests with MySQL"
 description: "Launching a MySQL service container"
 group: example-catalog
-sub_group: examples
+sub_group: ci-examples
 redirect_from:
   - /docs/nodejsmysql/
   - /docs/testing/unit-tests/unit-tests-with-mysql/
@@ -30,7 +30,7 @@ The Integration tests are looking for a MySQL connection at `test_mysql_db:3306`
 
 ## The example NodeJS project
 
-You can see the example project at [https://github.com/codefreshdemo/cf-example-unit-tests-with-composition](https://github.com/codefreshdemo/cf-example-unit-tests-with-composition). The repository contains the NodeJS source code and the simple integration test.
+You can see the example project at [https://github.com/codefreshdemo/cf-example-unit-tests-with-composition](https://github.com/codefreshdemo/cf-example-unit-tests-with-composition){:target=\_blank"}. The repository contains the NodeJS source code and the simple integration test.
 
 You can play with it locally by using Docker compose to launch both the application and the MySQL Database. 
 
@@ -102,12 +102,8 @@ Notice that both the DB as well as the tests share a set of variables (`MYSQL_PA
 
 Notice that we also use the `readiness` property in the testing phase so that we can verify MySQL is ready and listening, before running the tests.
 
-## What to read next
-
-- [Service Containers]({{site.baseurl}}/docs/pipelines/service-containers/)
-- [Integration test example]({{site.baseurl}}/docs/yaml-examples/examples/run-integration-tests/)
-- [Integration Tests with Postgres]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-postgres/)
-- [Integration Tests with Redis]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-redis/)
-- [Integration Tests with Mongo]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mongo/)
-
-
+## Related articles
+[Integration test example]({{site.baseurl}}/docs/example-catalog/ci-examples/run-integration-tests/)  
+[Integration Tests with Postgres]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-postgres/)  
+[Integration Tests with Redis]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-redis/)  
+[Integration Tests with Mongo]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-mongo/)

@@ -2,7 +2,7 @@
 title: "Integration Tests Example"
 description: "Launching separate App and test containers"
 group: example-catalog
-sub_group: examples
+sub_group: ci-examples
 redirect_from:
   - /docs/run-integration-tests/
 toc: true
@@ -22,7 +22,7 @@ The integration tests will look at the application instance at `app:8080`.
 
 ## The example Java/Tomcat/Spring project
 
-You can see the example project at [https://github.com/codefreshdemo/cf-example-integration-tests](https://github.com/codefreshdemo/cf-example-integration-tests). The repository contains the Java source code and some integration tests.
+You can see the example project at [https://github.com/codefreshdemo/cf-example-integration-tests](https://github.com/codefreshdemo/cf-example-integration-tests){:target:"\_blank"}. The repository contains the Java source code and some integration tests.
 
 You can play with it locally by using Docker compose to launch both the application and the tests. 
 
@@ -93,10 +93,9 @@ This pipeline does the following:
 Notice that we also use the `readiness` property in the testing phase so that we can verify that the application
 is actually up, before running the tests.
 
-## What to read next
-
-- [Service Containers]({{site.baseurl}}/docs/pipelines/service-containers/)
-- [Integration Tests with Postgres]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-postgres/)
-- [Integration Tests with MySQL]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mysql/)
-- [Integration Tests with Mongo]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mongo/)
-- [Integration Tests with Redis]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-redis/)
+## Related articles
+[Service Containers]({{site.baseurl}}/docs/pipelines/service-containers/)  
+[Integration Tests with Postgres]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-postgres/)  
+[Integration Tests with MySQL]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-mysql/)  
+[Integration Tests with Mongo]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-mongo/)  
+[Integration Tests with Redis]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-redis/)  

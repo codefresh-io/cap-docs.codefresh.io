@@ -1,8 +1,8 @@
 ---
-title: "Run Unit Tests"
+title: "Run unit tests"
 description: "Running unit tests in Codefresh pipelines"
-group: example-catalogog
-sub_group: examples
+group: example-catalog
+sub_group: ci-examples
 redirect_from:
   - /docs/run-unit-tests/
 toc: true
@@ -26,7 +26,7 @@ In the first case we will run unit tests *before* creating the application docke
 
 ## The example Python/Go project
 
-You can see the example project at [https://github.com/codefreshdemo/cf-example-unit-test](https://github.com/codefreshdemo/cf-example-unit-test). The repository contains two applications (Python and Go) with their respective unit tests.
+You can see the example project at [https://github.com/codefreshdemo/cf-example-unit-test](https://github.com/codefreshdemo/cf-example-unit-test){:target="\_blank"}. The repository contains two applications (Python and Go) with their respective unit tests.
 
 You can play with it locally by using Docker commands to package the applications.
 
@@ -96,10 +96,10 @@ Notice that in the second case the tests run in the context of `build_before_my_
 
 We generally recommend the first approach, so that your production Docker image does not contain any unit testing libraries or frameworks, but there is no right or wrong choice regarding the way you run unit tests. 
 
-## What to read next
+## Related articles
+[Unit tests]({{site.baseurl}}/docs/testing/unit-tests/)  
+[Integration test example]({{site.baseurl}}/docs/example-catalog/ci-examples/run-integration-tests/)  
+[Service Containers]({{site.baseurl}}/docs/pipelines/service-containers/)  
+[Freestyle step]({{site.baseurl}}/docs/pipelines/steps/)  
 
-- [Unit tests]({{site.baseurl}}/docs/testing/unit-tests/)
-- [Integration test example]({{site.baseurl}}/docs/yaml-examples/examples/run-integration-tests/)
-- [Service Containers]({{site.baseurl}}/docs/pipelines/service-containers/)
-- [Freestyle step]({{site.baseurl}}/docs/pipelines/steps/)
 

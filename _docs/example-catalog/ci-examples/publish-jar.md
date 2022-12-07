@@ -3,13 +3,13 @@ title: "Publish Jar"
 description: "How to upload a JAR file to Nexus or artifactory"
 excerpt: ""
 group: example-catalog
-sub_group: java
+sub_group: ci-examples
 toc: true
 ---
 
 Even though Codefresh has great support for containers, it can still be used for traditional JAR uploads of libraries or applications that are not dockerized yet. In this example we will compile a JAR and upload it to Nexus. The process is the same for Artifactory or any other package manager.
 
-For a Java application with Docker, see the [Gradle]({{site.baseurl}}/docs/learn-by-example/java/gradle/) or 
+For a Java application with Docker, see the [Gradle]({{site.baseurl}}/docs/learn-by-example/java/gradle/){} or 
  [Maven example]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/).
 
 ## The example Java library project
@@ -101,17 +101,16 @@ max-width="70%"
 You can use the same pipeline for Artifactory or any other compliant Java package registry.
 
 
+## Related articles
+[Gradle example]({{site.baseurl}}/docs/example-catalog/ci-examples/java/gradle/)  
+[Spring boot example]({{site.baseurl}}/docs//example-catalog/ci-examples/spring-boot-2/)  
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
+[Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
+[How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  
 
 
 
-## What to read next
-
-* [Gradle example]({{site.baseurl}}/docs/learn-by-example/java/gradle/)
-* [Spring boot example]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/)
-* [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)
-* [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)
-* [How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)
 
 
 

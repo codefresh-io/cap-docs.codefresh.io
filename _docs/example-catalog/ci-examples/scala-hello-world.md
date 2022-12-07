@@ -3,7 +3,7 @@ title: "Scala: Hello World"
 description: "Use Scala and Codefresh to clone, package, and build a Docker image"
 excerpt: ""
 group: example-catalog
-sub_group: scala
+sub_group: ci-examples
 redirect_from:
   - /docs/scala-hello-world/
 toc: true
@@ -21,7 +21,7 @@ We’ll help you get up to speed with basic functionality such as: compiling, bu
 
 This project uses `Scala` to build an application which will eventually become a distributable Docker image.
 
-You can find the example application on [GitHub](https://github.com/codefresh-contrib/scala-hello-world-app). 
+You can find the example application on [GitHub](https://github.com/codefresh-contrib/scala-hello-world-app){:target="\_blank"}. 
 
 There are two pipeline examples provided in this tutorial:
 
@@ -101,7 +101,7 @@ steps:
 The above pipeline does the following:
 
 1. A [git-clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/) step that clones the main repository
-2. A [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) that uses an SBT image that packages the application (note how `sbt.ivy.home` is set to an arbitrarily named directory that is part of the codefresh volume).  This ensures we cache dependencies to [speed up builds]({{site.baseurl}}/docs/learn-by-example/java/spring-boot-2/#caching-the-maven-dependencies), similar to Maven.
+2. A [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) that uses an SBT image that packages the application (note how `sbt.ivy.home` is set to an arbitrarily named directory that is part of the codefresh volume).  This ensures we cache dependencies to [speed up builds]({{site.baseurl}}/docs/example-catalog/ci-examples/spring-boot-2/#caching-the-maven-dependencies), similar to Maven.
 3. The last step, `build_image`, is a [build step]({{site.baseurl}}/docs/pipelines/steps/build/) that builds a Docker image using the Dockerfile provided in the repository.
 
 ## Example Pipeline #2: Multi-stage Docker Build
@@ -178,8 +178,7 @@ steps:
 2. A [build step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) that builds our code into a Docker image using the Dockerfile present in the repository
 
 
-## What to Read Next
+## Related articles
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Freestyle Step]({{site.baseurl}}/docs/pipelines/steps/freestyle/)  
 
-- [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)
-- [Git-clone Step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
-- [Freestyle Step]({{site.baseurl}}/docs/pipelines/steps/freestyle/)

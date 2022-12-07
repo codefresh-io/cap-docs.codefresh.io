@@ -104,14 +104,12 @@ If you also run the pipeline a second time, you will see the dummy file in all s
 
 ## Caching build dependencies and Docker layers
 
-More information about caching build dependencies can be found in the [caching documentation page]({{site.baseurl}}/docs/pipelines/pipeline-caching/) as well as [in this blog post](https://codefresh.io/blog/caching-build-dependencies-codefresh-volumes/).
+More information about caching build dependencies can be found in the [caching documentation page]({{site.baseurl}}/docs/pipelines/pipeline-caching/){:target:"\_blank"} as well as [in this blog post](https://codefresh.io/blog/caching-build-dependencies-codefresh-volumes/){:target:"\_blank"}.
 
 
-## What to read next
 
-* [Introduction to Codefresh pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)
-* [Pipeline caching]({{site.baseurl}}/docs/pipelines/pipeline-caching/)
-* [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)
-* [Freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/)
-
-
+## Related articles
+[Introduction to Codefresh pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/) 
+[Pipeline caching]({{site.baseurl}}/docs/pipelines/pipeline-caching/)  
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Freestyle steps]({{site.baseurl}}/docs/pipelines/steps/freestyle)  

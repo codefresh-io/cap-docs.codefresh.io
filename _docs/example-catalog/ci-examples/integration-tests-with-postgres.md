@@ -1,8 +1,8 @@
 ---
 title: "Integration Tests with Postgres"
 description: "Launching a PostgreSQL service container"
-group: example-catalogog
-sub_group: examples
+group: example-catalog
+sub_group: ci-examples
 redirect_from:
   - /docs/unit-tests-with-postgres/
   - /docs/testing/unit-tests/unit-tests-with-postgres/   
@@ -24,7 +24,7 @@ The Integration tests are looking for a PostgreSQL connection at `postgres:5432`
 
 ## The example NodeJS project
 
-You can see the example project at [https://github.com/codefreshdemo/example_nodejs_postgres](https://github.com/codefreshdemo/example_nodejs_postgres). The repository contains the NodeJS source code and the simple integration test.
+You can see the example project at [https://github.com/codefreshdemo/example_nodejs_postgres](https://github.com/codefreshdemo/example_nodejs_postgres){:target="\_blank"}. The repository contains the NodeJS source code and the simple integration test.
 
 You can play with it locally by using Docker compose to launch both the application and the PostgreSQL Database. 
 
@@ -87,13 +87,12 @@ Notice that both the DB as well as the tests share a set of variables (`POSTGRES
 
 Notice that we also use the `readiness` property in the testing phase so that we can verify PostgreSQL is ready and listening, before running the tests.
 
-## What to read next
 
-- [Service Containers]({{site.baseurl}}/docs/pipelines/service-containers/)
-- [Integration test example]({{site.baseurl}}/docs/yaml-examples/examples/run-integration-tests/)
-- [Integration Tests with MySQL]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mysql/)
-- [Integration Tests with Redis]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-redis/)
-- [Integration Tests with Mongo]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mongo/)
-- [Preload a DB with tests data]({{site.baseurl}}/docs/yaml-examples/examples/populate-a-database-with-existing-data/)
+## Related articles
+[Integration test example]({{site.baseurl}}/docs/example-catalog/ci-examples/run-integration-tests/)  
+[Integration Tests with MySQL]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-mysql/)  
+[Integration Tests with Redis]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-redis/)  
+[Integration Tests with Mongo]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-mongo/)  
+[Preload a DB with tests data]({{site.baseurl}}/docs/example-catalog/ci-examples/populate-a-database-with-existing-data/)
 
 

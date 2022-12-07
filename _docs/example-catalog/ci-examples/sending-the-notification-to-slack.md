@@ -11,7 +11,7 @@ toc: true
 There are many ways to integrate slack with Codefresh
 
 1. You can use the [global slack integration]({{site.baseurl}}/docs/integrations/notifications/slack-integration/)
-1. You can use individual pipeline plugins such [slack-message-sender](https://codefresh.io/steps/step/slack-message-sender) and [slack-notifier](https://codefresh.io/steps/step/slack-notifier)
+1. You can use individual pipeline plugins such [slack-message-sender](https://codefresh.io/steps/step/slack-message-sender){:target:"\_blank"} and [slack-notifier](https://codefresh.io/steps/step/slack-notifier){:target:"\_blank"}
 1. You use can simple POST requests with Curl (explained in this page)
 
 ## Custom webhook to Slack
@@ -37,9 +37,9 @@ slack_notify:
 {% endhighlight %}
 
 
-## What to read next
+## Related articles
+[Global Slack Integration]({{site.baseurl}}/docs/integrations/notifications/slack-integration/)  
+[Advanced Workflows]({{site.baseurl}}/docs/pipelines/advanced-workflows/)  
+[Hooks in pipelines]({{site.baseurl}}/docs/pipelines/hooks/)  
+[Shared Configuration]({{site.baseurl}}/docs/pipelines/shared-configuration/)  
 
-* [Global Slack Integration]({{site.baseurl}}/docs/integrations/notifications/slack-integration/)
-* [Advanced Workflows]({{site.baseurl}}/docs/pipelines/advanced-workflows/)
-* [Pipeline Hooks]({{site.baseurl}}/docs/pipelines/hooks/)
-* [Shared Configuration]({{site.baseurl}}/docs/pipelines/shared-configuration/)

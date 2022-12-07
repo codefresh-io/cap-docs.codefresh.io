@@ -3,21 +3,21 @@ title: "Spring Boot 2/Maven"
 description: "Create Docker images for Spring/Maven"
 excerpt: ""
 group: example-catalog
-sub_group: java
+sub_group: ci-examples
 redirect_from:
   - /docs/spring-boot-2/
   - /docs/java/spring-boot-2/
 toc: true
 ---
 
-Spring Boot is quickly becoming a very popular choice for building Java back-end applications, and is a bit different compared to traditional application servers, since it includes a servlet container in the final JAR file allowing
+Spring Boot is quickly becoming a very popular choice for building Java back-end applications. Compared to traditional application servers,it is a bit different since it includes a servlet container in the final JAR file allowing
 for self-contained Java Archives (JAR files).
 
 Codefresh can easily handle Spring Boot applications that are dockerized either in the traditional way or using multi-stage builds.
 
 ## The example Java project
 
-You can see the example project at [https://github.com/codefresh-contrib/spring-boot-2-sample-app](https://github.com/codefresh-contrib/spring-boot-2-sample-app). The repository contains a Spring Boot 2 project built with Maven with the following goals:
+You can see the example project at [https://github.com/codefresh-contrib/spring-boot-2-sample-app](https://github.com/codefresh-contrib/spring-boot-2-sample-app){:target="\_blank"}. The repository contains a Spring Boot 2 project built with Maven with the following goals:
 
 * `mvn package` creates a jar file that can be run on its own (exposes port 8080). It also runs unit tests.
 * `mvn verify` runs integration tests as well. The application is launched locally as part of the Maven lifecycle.
@@ -118,7 +118,7 @@ caption="Spring boot pipeline"
 max-width="80%" 
 %}
 
-After checking out the code we use the standard [Maven Docker image](https://hub.docker.com/_/maven/) to compile the Spring Boot source code and create a JAR file. We also pass a parameter that changes the Maven cache location folder. The reason for this parameter is that the default Maven location is `/root/.m2` which is defined as a volume (and thus discarded after each build).
+After checking out the code we use the standard [Maven Docker image](https://hub.docker.com/_/maven/){:target="\_blank"} to compile the Spring Boot source code and create a JAR file. We also pass a parameter that changes the Maven cache location folder. The reason for this parameter is that the default Maven location is `/root/.m2` which is defined as a volume (and thus discarded after each build).
 
 ### Caching the Maven dependencies
 
@@ -139,12 +139,12 @@ Once the pipeline is finished you will see the Spring Boot 2 Docker image your [
 
 The last step is similar to the unit tests, but this time we run integration tests. We define again a custom cache folder so when you run the build you will see that Maven will automatically pick the cache from the previous step. All Codefresh steps in a pipeline [run on the same workspace]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps), so the build results from one step are visible to the next.
 
->Notice that because the [Maven lifecycle](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html) also executes the previous steps in a build, the `mvn verify` command essentially will run `mvn package` as well. In theory we could just have the _Integration_ step in this pipeline on its own. That step would build the code, run unit and integration tests all in one stage. For demonstration purposes however, we include two steps so that you can see the correct usage of Maven cache.
+>Notice that because the [Maven lifecycle](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html){:target="\_blank"} also executes the previous steps in a build, the `mvn verify` command essentially will run `mvn package` as well. In theory we could just have the _Integration_ step in this pipeline on its own. That step would build the code, run unit and integration tests all in one stage. For demonstration purposes however, we include two steps so that you can see the correct usage of Maven cache.
 
 
 ## Spring Boot 2 and Docker (multi-stage builds)
 
-Docker added [multi-stage builds](https://blog.docker.com/2017/07/multi-stage-builds/) at version 17.05. With multi-stage builds a Docker build can use one base image for compilation/packaging/unit tests and a different one that will hold the runtime of the application. This makes the final image more secure and smaller in size (as it does not contain any development/debugging tools).
+Docker added [multi-stage builds](https://blog.docker.com/2017/07/multi-stage-builds/){:target="\_blank"} at version 17.05. With multi-stage builds a Docker build can use one base image for compilation/packaging/unit tests and a different one that will hold the runtime of the application. This makes the final image more secure and smaller in size (as it does not contain any development/debugging tools).
 
 In the case of Java, multistage builds allow for the compilation itself to happen during the build process, even though the final Docker image will not contain a full JDK.
 
@@ -187,11 +187,11 @@ The order of the steps is tuned so that it takes advantage of the layer caching 
 If you change something in the source code Docker already has a layer with Maven dependencies so they
 will not be re-downloaded again. Only if you change the `pom.xml` file itself, Docker will start again from the lowest layer.
 
-Again, we define a custom location for the Maven cache (using the `settings-docker.xml` file). This way the Maven dependencies are placed inside the container and they will be cached automatically with the respective layer (Read more about this technique [at the official documentation](https://github.com/carlossg/docker-maven#packaging-a-local-repository-with-the-image)).
+Again, we define a custom location for the Maven cache (using the `settings-docker.xml` file). This way the Maven dependencies are placed inside the container and they will be cached automatically with the respective layer (Read more about this technique [at the official documentation](https://github.com/carlossg/docker-maven#packaging-a-local-repository-with-the-image){:target="\_blank"}.
 
 ### Create a CI pipeline for Spring (multi-stage Docker builds)
 
-Because in multi-stage builds Docker itself handles most of the build process, moving the project to Codefresh is straightforward. We just need [a single step](https://github.com/codefresh-contrib/spring-boot-2-sample-app/blob/master/codefresh.yml) that creates the Docker image after checking out the code. The integration test step is the same as before.
+Because in multi-stage builds Docker itself handles most of the build process, moving the project to Codefresh is straightforward. We just need [a single step](https://github.com/codefresh-contrib/spring-boot-2-sample-app/blob/master/codefresh.yml){:target="\_blank"} that creates the Docker image after checking out the code. The integration test step is the same as before.
 
  `codefresh.yml`
 {% highlight yaml %}
@@ -244,13 +244,9 @@ Docker layers (it uses the Docker image of a previous build as a cache for the n
 much faster after the first one finishes.
 
 
-## What to read next
-
-* [Gradle example]({{site.baseurl}}/docs/learn-by-example/java/gradle/)
-* [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)
-* [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)
-* [How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)
-
-
-
+## Related articles
+[Gradle example]({{site.baseurl}}/docs/example-catalog/ci-examples/gradle/)  
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
+[Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
+[Introduction to Codefresh pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  

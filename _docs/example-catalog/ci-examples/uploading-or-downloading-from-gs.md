@@ -2,23 +2,23 @@
 title: "Uploading/Downloading Files to/from Google Storage"
 description: "Upload and download a jar from Google Storage from within a pipeline"
 group: example-catalog
-sub_group: examples
+sub_group: ci-examples
 toc: true
 ---
 
 ## Prerequisites
 
 - A [free Codefresh account](https://codefresh.io/docs/docs/getting-started/create-a-codefresh-account/)
-- A [Google Storage Bucket](https://cloud.google.com/storage/docs/creating-buckets) with public read access
-- A private key [downloaded](https://cloud.google.com/storage/docs/authentication#gsutilauth) for the existing service account associated with your bucket (for this example, we base64 encoded the key for ease of use in a pipeline variable using `base64 key_file.json > key_file.b64`)
+- A [Google Storage Bucket](https://cloud.google.com/storage/docs/creating-buckets){:target="\_blank"} with public read access
+- A private key [downloaded](https://cloud.google.com/storage/docs/authentication#gsutilauth){:target="\_blank"} for the existing service account associated with your bucket (for this example, we base64 encoded the key for ease of use in a pipeline variable using `base64 key_file.json > key_file.b64`)
 
 ## The Example Project
 
-The example project can be found on [GitHub](https://github.com/codefresh-contrib/gcloud-storage-sample-app.git).  The application is a simple Scala Hello World application contained in a jar, with a dependency on a scala-library jar which we will download from the bucket and package into a Docker image.
+The example project can be found on [GitHub](https://github.com/codefresh-contrib/gcloud-storage-sample-app.git){:target="\_blank"}.  The application is a simple Scala Hello World application contained in a jar, with a dependency on a scala-library jar which we will download from the bucket and package into a Docker image.
 
 Our project will contain two pipelines, one for uploading the dependency jar to our bucket, and the other for downloading the jar from the bucket.
 
-## Create the First Pipeline
+## Create the first pipeline
 
 The first pipeline will contain one stage/step, a step for uploading the jar to the Google Storage Bucket.
 
@@ -70,7 +70,7 @@ This pipeline does the following:
 
 1. A [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) that uploads a jar from Maven into our Google Storage bucket.
 
-## Create the Second Pipeline
+## Create the second pipeline
 
 Our second pipeline will have four stages:
 
@@ -143,11 +143,10 @@ This pipeline does the following:
 1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/).
 2. A [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) that downloads the dependency jar from our publicly-accessible Google Storage bucket.
 3. Builds a docker image using a [build step]({{site.baseurl}}/docs/pipelines/steps/build/).
-4. Pushes the Docker image using a [Push step](https://codefresh.io/docs/docs/pipelines/steps/push/) to the DockerHub registry you have integrated with Codefresh.
+4. Pushes the Docker image using a [push step](https://codefresh.io/docs/docs/pipelines/steps/push/) to the DockerHub registry you have integrated with Codefresh.
 
-## What to Read Next
+## Related articles
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)   
+[Example catalog]({{site.baseurl}}/docs/example-catalog/ci-examples/)  
 
-- [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)
-- [Git-clone Step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
-- [Freestyle Step]({{site.baseurl}}/docs/pipelines/steps/freestyle/)
-- [Build step]({{site.baseurl}}/docs/pipelines/steps/build/)
+

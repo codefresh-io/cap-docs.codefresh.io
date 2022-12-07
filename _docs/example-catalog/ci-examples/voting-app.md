@@ -3,7 +3,7 @@ title: "Voting app"
 description: ""
 excerpt: ""
 group: example-catalog
-sub_group: python
+sub_group: ci-examples
 redirect_from:
   - /docs/voting-app-1/
   - /docs/python/voting-app/
@@ -88,3 +88,6 @@ steps:
 
 Just head over to the example [__repository__](https://github.com/containers101/cf-example-result){:target="_blank"} in GitHub and follow the instructions there. 
 {{site.data.callout.end}}
+
+## Related articles
+[Example catalog]({{site.baseurl}}/docs/example-catalog/ci-examples/)  

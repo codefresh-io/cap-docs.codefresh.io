@@ -9,7 +9,7 @@ redirect_from:
 toc: true
 ---
 
-In this example we will see a NodeJS project that is using MongoDB for data storage. For the integration test phase we will launch an instance of MongoDB in order to run a set of [Mocha tests](https://mochajs.org/).
+In this example we will see a NodeJS project that is using MongoDB for data storage. For the integration test phase we will launch an instance of MongoDB in order to run a set of [Mocha tests](https://mochajs.org/){:target="\_blank"}.
 
 {% include image.html 
 lightbox="true" 
@@ -24,7 +24,7 @@ The Mocha tests are looking for a MongoDB connection at `mongo:27017`.
 
 ## The example NodeJS project
 
-You can see the example project at [https://github.com/codefreshdemo/example_nodejs_mongo](https://github.com/codefreshdemo/example_nodejs_mongo). The repository contains the NodeJS source code and the Mocha tests.
+You can see the example project at [https://github.com/codefreshdemo/example_nodejs_mongo](https://github.com/codefreshdemo/example_nodejs_mongo){:target="\_blank"}. The repository contains the NodeJS source code and the Mocha tests.
 
 You can play with it locally by using Docker compose to launch both the application and the MongoDB datastore. 
 
@@ -89,13 +89,12 @@ This pipeline does the following:
 
 Notice that we also use the `readiness` property in the testing phase so that we can verify MongoDB is ready and listening, before running the tests.
 
-## What to read next
+## Related articles
+[Integration test example]({{site.baseurl}}/docs/example-catalog/ci-examples/run-integration-tests/)  
+[Integration Tests with Postgres]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-postgres/)  
+[Integration Tests with MySQL]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-mysql/)  
+[Integration Tests with Redis]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-redis/)  
 
-- [Service Containers]({{site.baseurl}}/docs/pipelines/service-containers/)
-- [Integration test example]({{site.baseurl}}/docs/yaml-examples/examples/run-integration-tests/)
-- [Integration Tests with Postgres]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-postgres/)
-- [Integration Tests with MySQL]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-mysql/)
-- [Integration Tests with Redis]({{site.baseurl}}/docs/yaml-examples/examples/integration-tests-with-redis/)
 
 
 

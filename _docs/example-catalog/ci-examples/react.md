@@ -5,12 +5,12 @@ group: example-catalog
 sub_group: nodejs
 toc: true
 ---
-
+<!-- ask Kostis what to do with this x-ref as there is no subcategory for node.js -->
 Codefresh can work with React projects as with any [Node.js project]({{site.baseurl}}/docs/learn-by-example/nodejs/).
 
 ## The example React project
 
-You can see the example project at [https://github.com/codefresh-contrib/react-sample-app](https://github.com/codefresh-contrib/react-sample-app). The repository contains a React starter project with the following tasks:
+You can see the example project at [https://github.com/codefresh-contrib/react-sample-app](https://github.com/codefresh-contrib/react-sample-app){:target:"\_blank"}. The repository contains a React starter project with the following tasks:
 
 * `yarn test` runs unit tests.
 * `yarn start` to start the application locally.
@@ -20,7 +20,7 @@ Once launched the application presents a simple page at localhost:3000.
 
 ## React and Docker (multi-stage builds)
 
-The easiest way to build a React.JS application is with [multi-stage builds](https://blog.docker.com/2017/07/multi-stage-builds/). With multi-stage builds a Docker build can use one base image for packaging/unit tests and a different one that will hold the runtime of the application. This makes the final image more secure and smaller in size (as it does not contain any development/debugging tools).
+The easiest way to build a React.JS application is with [multi-stage builds](https://blog.docker.com/2017/07/multi-stage-builds/){:target:"\_blank"}. With multi-stage builds a Docker build can use one base image for packaging/unit tests and a different one that will hold the runtime of the application. This makes the final image more secure and smaller in size (as it does not contain any development/debugging tools).
 
 In the case of React, you can use a base image that has Node and all testing utilities, while the final image has your server (e.g. nginx) with the static content and nothing else.
 
@@ -57,7 +57,7 @@ The resulting is very small, as it contains only packaged/minified files.
 
 ## Create a CI pipeline for React.js (Docker build)
 
-Creating a CI/CD pipeline for React is very easy, because Codefresh can run any [node image](https://hub.docker.com/_/node/) that you wish. 
+Creating a CI/CD pipeline for React is very easy, because Codefresh can run any [node image](https://hub.docker.com/_/node/){:target:"\_blank"} that you wish. 
 
 {% include image.html 
 lightbox="true" 
@@ -68,7 +68,7 @@ caption="Creating a Docker image for react.js"
 max-width="80%" 
 %}
 
-Here is the [full pipeline](https://github.com/codefresh-contrib/gradle-sample-app/blob/master/codefresh.yml) that creates the Docker image after checking out the code.
+Here is the [full pipeline](https://github.com/codefresh-contrib/gradle-sample-app/blob/master/codefresh.yml){:target:"\_blank"} that creates the Docker image after checking out the code.
 
  `codefresh.yml`
 {% highlight yaml %}
@@ -125,7 +125,7 @@ caption="Building a Reach.js application"
 max-width="80%" 
 %}
 
-Here is the [full pipeline](https://github.com/codefresh-contrib/react-sample-app/blob/master/codefresh-only-build.yml) that creates a production deployment of all files.
+Here is the [full pipeline](https://github.com/codefresh-contrib/react-sample-app/blob/master/codefresh-only-build.yml){:target:"\_blank"} that creates a production deployment of all files.
 
  `codefresh.yml`
 {% highlight yaml %}
@@ -165,10 +165,8 @@ Notice that for demonstration purposes we uses node 11 for the tests, and node 8
 
 Even when you don't create a Docker image, Codefresh still caches your workspace volume. This means that `node_modules` are downloaded only once. All subsequent builds will be much faster.
 
-## What to read next
-
-* [Node examples]({{site.baseurl}}/docs/learn-by-example/nodejs/)
-* [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)
-* [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)
-* [How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)
+## Related articles
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
+[Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
+[How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  
