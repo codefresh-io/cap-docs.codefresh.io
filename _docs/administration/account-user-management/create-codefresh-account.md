@@ -210,6 +210,6 @@ We can establish a VPN / tunnel to your network or discuss options for an on-pre
 * [Create a Basic pipeline]({{site.baseurl}}/docs/getting-started/create-a-basic-pipeline/)
 * [Deploy to Kubernetes]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)
 * [Introduction to Codefresh pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
-* [Pipeline examples]({{site.baseurl}}/docs/yaml-examples/examples/)
+* [Pipeline examples]({{site.baseurl}}/docs/example-catalog/cd-examples/)
 
 

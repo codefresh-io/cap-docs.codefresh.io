@@ -47,7 +47,7 @@ The table below lists the functionality available for role-based access.
 |Inspect text reports    | `User` and `Admin`|
 |[Git Integrations]({{site.baseurl}}/docs/integrations/git-providers/)      | `Admin`|
 |[External docker registry settings]({{site.baseurl}}/docs/docker-registries/external-docker-registries/)      | `Admin`|
-|[External Helm repositories]({{site.baseurl}}/docs/new-helm/add-helm-repository/)      | `Admin`|
+|[External Helm repositories]({{site.baseurl}}/docs/deployments/helm/add-helm-repository/)      | `Admin`|
 |[Cloud provider settings]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/)      | `Admin`|
 |[Cloud storage settings]({{site.baseurl}}/docs/testing/test-reports/#connecting-your-storage-account)      | `Admin`|
 |[Shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/)      | `Admin`|
