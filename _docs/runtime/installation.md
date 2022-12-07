@@ -125,10 +125,6 @@ The cluster defined as the default for `kubectl`. If you have more than one Kube
 * CLI wizard: Select the Kube context from the list displayed.
 * Silent install: Explicitly specify the Kube context with the `--context` flag.
 
-**Shared configuration repository**  
-The Git repository per runtime account with shared configuration manifests.  
-* CLI wizard and Silent install: Add the `--shared-config-repo` flag and define the path to the shared repo.  
-
 **Access mode**  
 The access mode for the runtime, which can be one of the following:
 * [Tunnel-based]({{site.baseurl}}/docs/getting-started/architecture/#tunnel-based-hybrid-runtime-architecture), for runtimes without ingress controllers. This is the default.
@@ -140,7 +136,13 @@ The access mode for the runtime, which can be one of the following:
   * For tunnel-based, see [Tunnel-based (ingress-less) runtime flags](#tunnel-based-ingress-less-runtime-flags)
   * For ingress-based, add the [Ingress controller flags](#ingress-controller-flags)
 
-  >If you don't specify any flags, tunnel-based access is automatically selected.
+  >If you don't specify any flags, tunnel-based access is automatically selected.  
+
+
+**Shared configuration repository**  
+The Git repository per runtime account with shared configuration manifests.  
+* CLI wizard and Silent install: Add the `--shared-config-repo` flag and define the path to the shared repo.  
+
 
 {::nomarkdown}
 </br>
