@@ -131,7 +131,7 @@ The Git repository per runtime account with shared configuration manifests.
 
 **Access mode**  
 The access mode for the runtime, which can be one of the following:
-* [Tunnel-based] (the default) ({{site.baseurl}}/docs/getting-started/architecture/#tunnel-based-hybrid-runtime-architecture), for runtimes without ingress controllers. 
+* [Tunnel-based]({{site.baseurl}}/docs/getting-started/architecture/#tunnel-based-hybrid-runtime-architecture), for runtimes without ingress controllers. This is the default.
 * [Ingress-based]({{site.baseurl}}/docs/getting-started/architecture/#ingress-based-hybrid-runtime-architecture) for runtimes with ingress contollers. 
 
 
