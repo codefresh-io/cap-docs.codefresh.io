@@ -97,7 +97,7 @@ steps:
 This pipeline does the following:
 
 1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
-1. Builds a docker image using a [Build step]({{site.baseurl}}/docs/pipelines/steps/build/)
+1. Builds a docker image using a [Build step in pipelines]({{site.baseurl}}/docs/pipelines/steps/build/)
 1. Deploys the Helm chart to a cluster named `my-demo-k8s-cluster` using the Helm step [from the Step Marketplace](https://codefresh.io/steps/step/helm){:target=\_blank"}.
 
 Note that in this example `charts/helm-example` refers to the [filesystem location in the code](https://github.com/codefresh-contrib/helm-sample-app/tree/master/charts/helm-example){:target=\_blank"} that was just checked out.
@@ -218,7 +218,7 @@ It is also possible to [run your own Helm commands]({{site.baseurl}}/docs/new-he
 
 ## Related articles
 [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
-[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
+[Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
-[How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  
+[How Codefresh pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  
 [Using Helm in Codefresh pipelines]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/)  

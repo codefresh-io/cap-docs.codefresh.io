@@ -102,6 +102,6 @@ The last two steps use [pipeline conditionals]({{site.baseurl}}/docs/pipelines/c
 
 ## Related articles
 [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
-[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
+[Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 [Pipeline plugins](https://codefresh.io/steps/){:target="\_blank"}

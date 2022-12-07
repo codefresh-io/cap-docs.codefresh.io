@@ -111,5 +111,5 @@ You will see that the variable was correctly exported to the pipeline by running
   
 ## Related articles
 [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
-[Example catalog]({{site.baseurl}}/docs/example-catalog/ci-examples/)  
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/ci-examples/)  
 

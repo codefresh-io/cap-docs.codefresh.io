@@ -6,7 +6,7 @@ sub_group: ci-examples
 toc: true
 ---
 
-Codefresh has [Native Git support]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout/) but you can still use any other version control system such as SVN, CVS, hg, etc.
+Codefresh has [Native Git support]({{site.baseurl}}/docs/example-catalog/ci-examples/git-checkout/) but you can still use any other version control system such as SVN, CVS, hg, etc.
 
 The only requirement is that you find or create a Docker image that contains the client for that source control system and then use a 
 [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) to run it.

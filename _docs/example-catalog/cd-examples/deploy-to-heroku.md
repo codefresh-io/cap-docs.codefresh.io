@@ -1,6 +1,6 @@
 ---
 title: "Deploy to Heroku"
-description: "Deploying your application or image to Heroku"
+description: "Deploy your application or image to Heroku"
 group: example-catalog
 sub_group: cd-examples
 toc: true
@@ -30,7 +30,7 @@ Once launched the application presents the Django starter page at localhost:8000
 - A [free Heroku account](https://signup.heroku.com){:target="\_blank"}
 - A Heroku API token (you can find this under **Account Settings** and then scrolling down, you will find the API Key)
 
-### Create the Pipeline 
+### Create the pipeline 
 
 This pipeline will have three stages: clone, test, and deploy.
 
@@ -123,7 +123,7 @@ max-width="100%"
 - A Heroku registry [connected to Codefresh]({{site.baseurl}}/docs/docker-registries/external-docker-registries/other-registries/#heroku-registries)
 - A Heroku API token (you can find this under **Account Settings** and then scrolling down, you will find the API Key)
 
-### Create the Pipeline 
+### Create the pipeline 
 
 This pipeline will have five stages: clone, build, test, push, and release.
 

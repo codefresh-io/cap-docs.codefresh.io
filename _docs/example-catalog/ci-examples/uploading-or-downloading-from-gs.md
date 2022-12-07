@@ -147,6 +147,6 @@ This pipeline does the following:
 
 ## Related articles
 [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)   
-[Example catalog]({{site.baseurl}}/docs/example-catalog/ci-examples/)  
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/ci-examples/)  
 
 

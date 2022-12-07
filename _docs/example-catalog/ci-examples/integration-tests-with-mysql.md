@@ -11,7 +11,7 @@ redirect_from:
   - /docs/run-unit-tests-with-composition/
   - /docs/unit-tests-with-database/
   - /docs/testing/unit-tests/unit-tests-with-database/
-  - /docs/yaml-examples/examples/integration-tests-with-database/             
+  - /docs/example-catalog/ci-examples/integration-tests-with-database/             
 toc: true
 ---
 

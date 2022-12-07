@@ -90,4 +90,4 @@ Just head over to the example [__repository__](https://github.com/containers101/
 {{site.data.callout.end}}
 
 ## Related articles
-[Example catalog]({{site.baseurl}}/docs/example-catalog/ci-examples/)  
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/ci-examples/)  

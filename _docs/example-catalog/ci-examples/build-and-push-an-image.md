@@ -1,6 +1,6 @@
 ---
 title: "Build and Push an Image"
-description: "How to build Docker images and push them to registries with Codefresh"
+description: "Build Docker images and push them to registries with Codefresh"
 group: example-catalog
 sub_group: ci-examples
 redirect_from:
@@ -9,7 +9,7 @@ redirect_from:
 toc: true
 ---
 
-Building a Docker image and then pushing it to a registry is one of the most basic scenarios for creating a Pipeline.
+Building a Docker image and then pushing it to a registry is one of the most basic scenarios for creating a pipeline.
 In this example we will use a demo Node.js application that will be packaged in a Docker image.
 
 >The source code of the repository is located at [https://github.com/codefreshdemo/cf-example-build-and-push](https://github.com/codefreshdemo/cf-example-build-and-push){:target="\_blank"}. Feel free to fork it if you want to follow along.
@@ -112,23 +112,23 @@ Codefresh has several other variables that can be used for tagging images. Commo
     %}
 
 
-If you run the pipeline the Docker image will be pushed *both* to the private Docker regisry (by the build step) *and* the external docker registry (by the push step)
+If you run the pipeline, the Docker image is pushed *both* to the private Docker regisry (by the build step) *and* the external docker registry (by the push step).
 
 
-## More options for push
+## More options for pushing images
 
-Codefresh has several more options when it comes to pushing:
+Codefresh has several more options when it comes to pushing images:
  
 * You can specify multiple tags to be pushed
 * You can use directly ECR registries
 * You can embed credentials in the push steps
 
-See the [push step documentation]({{site.baseurl}}/docs/pipelines/steps/push/) for more details.
+See the [Push steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/push/) for more details.
 
 
 ## Related articles
-[Pipeline Build step]({{site.baseurl}}/docs/pipelines/steps/build/)  
-[Build an Image with the Dockerfile in Root Directory]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-dockerfile-in-root-directory/)  
+[Build step in pipelines]({{site.baseurl}}/docs/pipelines/steps/build/)  
+[Build an Image with the Dockerfile in root directory]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-dockerfile-in-root-directory/)  
 [Build an Image by specifying the Dockerfile location]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-specify-dockerfile-location)  
 [Build an Image from a different Git repository]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-from-a-different-git-repository)  
 [Build an Image With Build arguments]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-with-build-arguments)

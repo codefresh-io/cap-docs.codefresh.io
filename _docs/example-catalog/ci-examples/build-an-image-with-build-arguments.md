@@ -48,7 +48,7 @@ This Dockerfile expects two [build arguments](https://docs.docker.com/engine/ref
 
 ## Building a Dockerfile passing values for build arguments
 
-When you build an image locally on your workstation you can define build arguments with the `--build-arg` syntax:
+When you build an image locally on your workstation, you can define build arguments with the `--build-arg` syntax:
 
 ```
 docker build . -t my-node-app --build-arg NODE_VERSION=8 --build-arg APP_DIR=/usr/src/app
@@ -94,7 +94,7 @@ max-width="100%"
 
 ## Using Codefresh variables as build arguments
 
-In the previous pipeline the docker build arguments are defined in the pipeline itself, but you could also use [pipeline variables]({{site.baseurl}}/docs/pipelines/pipelines/#creating-new-pipelines), [shared configuration]({{site.baseurl}}/docs/pipelines/shared-configuration/) or any other standard mechanism you already have in place.
+In the previous pipeline, the Docker build arguments are defined in the pipeline itself, but you could also use [pipeline variables]({{site.baseurl}}/docs/pipelines/pipelines/#creating-new-pipelines), [shared configuration]({{site.baseurl}}/docs/pipelines/shared-configuration/), or any other standard mechanism you already have in place.
 
   `codefresh.yml`
 {% highlight yaml %}
@@ -125,8 +125,8 @@ In this case you can also use any of the built-in [Codefresh variables]({{site.b
 
 
 ## Related articles
-[Pipeline Build step]({{site.baseurl}}/docs/pipelines/steps/build/)  
-[Build an Image with the Dockerfile in Root Directory]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-dockerfile-in-root-directory/)  
+[Build step in pipelines]({{site.baseurl}}/docs/pipelines/steps/build/)  
+[Build an Image with the Dockerfile in root directory]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-dockerfile-in-root-directory/)  
 [Build an Image by specifying the Dockerfile location]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-specify-dockerfile-location)  
 [Build an Image from a different Git repository]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-from-a-different-git-repository)  
 [Build and push an Image]({{site.baseurl}}/docs/yaml-examples/example-catalog/ci-examples/build-and-push-an-image)  

@@ -48,3 +48,5 @@ services:
 Just head over to the example [__repository__](https://github.com/codefreshdemo/nodejs-angular2-mongo){:target="_blank"} in GitHub and follow the instructions there.
 {{site.data.callout.end}}
 
+## Related articles
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/ci-examples/)  

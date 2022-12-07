@@ -1,9 +1,9 @@
 ---
-title: "Build an Image with the Dockerfile in Root Directory"
+title: "Build an Image with the Dockerfile in root directory"
 description: "Get started quickly with building Docker images"
 group: example-catalog
 sub_group: examples
-permalink: /:collection/yaml-examples/examples/build-an-image-dockerfile-in-root-directory/
+permalink: /:collection/example-catalog/ci-examples/build-an-image-dockerfile-in-root-directory/
 redirect_from:
   - /docs/build-an-image-dockerfile-in-root-directory/
   - /docs/deploy-to-kubernetes/get-ready-to-deploy/build-an-image/
@@ -59,12 +59,12 @@ caption="Building a Docker image with a default Dockerfile"
 max-width="100%" 
 %}
 
-You could also change the Docker build context by editing the `working_directory` property. By default it is looking at the root folder of the project, but any subfolder path is also valid.
+You can also change the Docker build context by editing the `working_directory` property. By default, it looks at the root folder of the project, but any subfolder path is also valid.
 
 
 ## Related articles
-[Pipeline Build step]({{site.baseurl}}/docs/pipelines/steps/build/)  
+[Build step in pipelines]({{site.baseurl}}/docs/pipelines/steps/build/)  
 [Build an Image by specifying the Dockerfile location]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-specify-dockerfile-location)  
 [Build an Image from a different Git repository]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-from-a-different-git-repository)  
 [Build and push an Image]({{site.baseurl}}/docs/yaml-examples/example-catalog/ci-examples/build-and-push-an-image)  
-[Build an Image With build arguments]({{site.baseurl}}/docs/yaml-examples/examples/build-an-image-with-build-arguments)
+[Build an Image With build arguments]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-with-build-arguments)

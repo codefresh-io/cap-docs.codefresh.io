@@ -1,5 +1,5 @@
 ---
-title: "Build an Image - Specify Dockerfile Location"
+title: "Build an Image by specifying a Dockerfile location"
 description: "How to choose a Dockerfile to build with Codefresh pipelines"
 group: example-catalog
 sub_group: ci-examples
@@ -8,7 +8,7 @@ redirect_from:
 toc: true
 ---
 
-Sometimes you have a project where the Dockerfile is **not** in the root folder of the project. Maybe the repository has multiple projects inside (each with its own Dockerfile) or you simply want to use a different folder for the Docker context
+Sometimes you have a project where the Dockerfile is **not** in the root folder of the project. Maybe the repository has multiple projects inside, each with its own Dockerfile, or you simply want to use a different folder for the Docker context.
 
 >The source code of the repository is located at [https://github.com/codefreshdemo/cf-example-dockerfile-other-location](https://github.com/codefreshdemo/cf-example-dockerfile-other-location){:target="\_blank"}. Feel free to fork it if you want to follow along.
 
@@ -66,8 +66,8 @@ max-width="100%"
 You could also change the Docker build context by editing the `working_directory` property. By default it is looking at the root folder of the project, but any subfolder path is also valid.
 
 ## Related articles
-[Pipeline Build step]({{site.baseurl}}/docs/pipelines/steps/build/)  
-[Build an Image with the Dockerfile in Root Directory]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-dockerfile-in-root-directory/)  
+[Build step in pipelines]({{site.baseurl}}/docs/pipelines/steps/build/)  
+[Build an Image with the Dockerfile in root directory]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-dockerfile-in-root-directory/)  
 [Build an Image from a different Git repository]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-from-a-different-git-repository)  
 [Build and push an Image]({{site.baseurl}}/docs/yaml-examples/example-catalog/ci-examples/build-and-push-an-image)  
 [Build an Image With build arguments]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-with-build-arguments)  

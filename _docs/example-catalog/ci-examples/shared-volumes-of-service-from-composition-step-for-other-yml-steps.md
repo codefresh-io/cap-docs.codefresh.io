@@ -51,4 +51,4 @@ The way the volume is shared between builds is that upon build completion we cre
 {{site.data.callout.end}}
 
 ## Related articles
-[Example catalog]({{site.baseurl}}/docs/example-catalog/ci-examples/)  
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/ci-examples/)  

@@ -135,3 +135,6 @@ max-width="40%"
 
 * [cf-example-deploy-elasticbeanstalk](https://github.com/codefreshdemo/cf-example-deploy-elasticbeanstalk){:target="_blank"}
 
+
+## Related articles
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/ci-examples/)  

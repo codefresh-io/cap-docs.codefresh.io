@@ -1,6 +1,6 @@
 ---
 title: "Amazon ECS/Fargate"
-description: "How to use Codefresh to deploy Docker containers to ECS/Fargate"
+description: "Use Codefresh to deploy Docker containers to ECS/Fargate"
 group: example-catalog
 sub_group: cd-examples
 redirect_from:
@@ -147,7 +147,7 @@ You can also find the same step in the form of a [Codefresh plugin](https://code
 
 ## Related articles
 [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
-[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
+[Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 [External Registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/)
 

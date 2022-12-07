@@ -1,5 +1,5 @@
 ---
-title: "Coveralls Coverage Reports"
+title: "Coveralls coverage reports"
 description: "How to forward coverage reports to Coveralls"
 group: example-catalog
 sub_group: ci-examples
@@ -27,7 +27,7 @@ Coveralls supports [22 different language integrations](https://docs.coveralls.i
 
 You could try it out by cloning our [node example application](https://github.com/codefresh-contrib/coveralls-sample-app){:target="\_blank"} that utilises [jest](https://jestjs.io/){:target="\_blank"}.
 
-## Prepare your Repository
+## Prepare your repository
 
 If you are using your own application as an example, you have to make a few modifications to the repository. Please have a look at the Coveralls example section for other languages.
 
@@ -69,7 +69,7 @@ process.stdin.on('end', () => {
 {% endraw %}
 {% endhighlight %}
 
-## Create an Account with Coveralls
+## Create a Coveralls account
 
 Once you sign-up to Coveralls, you can add a new repository. The UI will then provide you with an access token to the repository. Take note of the token since it will be required in the next sections.
 
@@ -81,7 +81,7 @@ alt="Coveralls repository"
 max-width="80%" 
 %}
 
-## Codefresh Pipeline
+## Codefresh pipeline
 
 <!--change the x-ref after final update-->
 In case the project that you want to use Coveralls in does not have a pipeline, [create a new pipeline]({{site.baseurl}}/docs/getting-started/create-a-basic-pipeline/).
@@ -182,7 +182,7 @@ max-width="80%"
 
 ## View reports
 
-This will allow you to view the updated coverage reports within Coveralls UI every time you make a commit and/or run the Codefresh pipeline directly.
+You can view the updated coverage reports within Coveralls UI every time you make a commit and/or run the Codefresh pipeline directly.
 
 {% include image.html 
 lightbox="true" 
@@ -214,7 +214,7 @@ max-width="80%"
 
 ## Related articles
 [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
-[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
+[Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Unit tests]({{site.baseurl}}/docs/testing/unit-tests/)  
 [Integration tests]({{site.baseurl}}/docs/testing/integration-tests/)  
 [Sonarqube Integration]({{site.baseurl}}/docs/testing/sonarqube-integration/) 

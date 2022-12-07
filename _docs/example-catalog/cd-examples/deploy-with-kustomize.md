@@ -10,7 +10,7 @@ toc: true
 
 Kustomize is more of an overlay engine, as opposed to a templating engine.  You create a base configuration and overlays.  Your overlays contain a *kustomization.yaml* file, and any variants/changes are applied over top of the base configuration.  Kustomize does not use templates at all.  
 
-While it is good for simple scenarios, we suggest that you use Helm for managing your Kubernetes applications.  Helm is a full package manager for Kubernetes manifests that also provides templating capabilities.  See [this example]({{site.baseurl}}/docs/yaml-examples/examples/helm/){:target="\_blank"} for more information.
+While it is good for simple scenarios, we suggest that you use Helm for managing your Kubernetes applications.  Helm is a full package manager for Kubernetes manifests that also provides templating capabilities.  See [this example]({{site.baseurl}}/docs/example-catalog/cd-examples/helm/){:target="\_blank"} for more information.
 
 ## The Example Application
 
@@ -243,5 +243,5 @@ max-width="100%"
 ## Related articles
 [Deployment options to Kubernetes]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes)  
 [Running custom kubectl commands]({{site.baseurl}}/docs/deploy-to-kubernetes/custom-kubectl-commands/)  
-[Deploy with Helm]({{site.baseurl}}/docs/yaml-examples/examples/helm/)  
+[Deploy with Helm]({{site.baseurl}}/docs/example-catalog/cd-examples/helm/)  
 

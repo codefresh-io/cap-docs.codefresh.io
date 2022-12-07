@@ -9,7 +9,7 @@ toc: true
 Even though Codefresh has great support for Kubernetes and Helm deployments, there is no lock-in on using just Kubernetes. Codefresh can deploy on any infrastructure.
 
 
-[Nomad](https://www.nomadproject.io/){:target=\_blank"} is an alternative scheduling platform from Hashicorp. It supports docker containers (like Kubernetes) but you can also use Nomad to schedule VMs, Java apps, Go apps or any other standalone executable. 
+[Nomad](https://www.nomadproject.io/){:target=\_blank"} is an alternative scheduling platform from Hashicorp. It supports docker containers (like Kubernetes), but you can also use Nomad to schedule VMs, Java apps, Go apps or any other standalone executable. 
 
 There are several public Docker Images with Nomad, so it is very easy to use Codefresh pipelines to deploy to a Nomad cluster.
 
@@ -23,7 +23,7 @@ caption="Deploying to Nomad with Codefresh"
 max-width="80%" 
 %}
 
-In this example we are going to use the image at [https://hub.docker.com/r/djenriquez/nomad](https://hub.docker.com/r/djenriquez/nomad){:target=\_blank"}.
+In this example, we will use the image at [https://hub.docker.com/r/djenriquez/nomad](https://hub.docker.com/r/djenriquez/nomad){:target=\_blank"}.
 
 ## The example Nomad project
 
@@ -221,4 +221,4 @@ You can also use [Terraform]({{site.baseurl}}/docs/example-catalog/cd-examples/t
 ## Related articles
 [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
-[How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  
+[How Codefresh pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  

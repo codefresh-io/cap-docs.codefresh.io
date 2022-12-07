@@ -1,6 +1,6 @@
 ---
 title: "Deploy to a VM via SCP"
-description: "Deploying your application to Tomcat using SCP"
+description: "Deploy your application to Tomcat using SCP"
 group: example-catalog
 sub_group: cd-examples
 toc: true
@@ -34,7 +34,7 @@ max-width="100%"
 	}
 ```
 
-## Create the Pipeline
+## Create the pipeline
 
 Our pipeline will have three stages: clone, package, and transfer.
 
@@ -55,7 +55,7 @@ Note that you need to change the environment variables under the `transfer` step
 {% highlight yaml %}
 {% raw %}
 # More examples of Codefresh YAML can be found at
-# https://codefresh.io/docs/docs/example-catalog/
+# https://codefresh.io/docs/docs/example-catalog/example
 
 version: "1.0"
 # Stages can help you organize your steps in stages
@@ -117,4 +117,4 @@ max-width="100%"
 %}
   
 ## Related articles
-[Deploying to a VM using FTP]({{site.baseurl}}/docs/yaml-examples/examples/transferring-php-ftp/)  
+[Deploy to a VM using FTP]({{site.baseurl}}/docs/example-catalog/cd-examples/transferring-php-ftp/)  

@@ -1,5 +1,5 @@
 ---
-title: "Codecov Coverage Reports"
+title: "Codecov coverage reports"
 description: "How to forward coverage reports to Codecov"
 group: example-catalog
 sub_group: ci-examples
@@ -27,7 +27,7 @@ Note that reports should ideally be written in .json, .xml, or txt. To be sure, 
 
 To test Codecov and follow along with the next section, you can clone our [Codecov sample app](https://github.com/codefresh-contrib/codecov-sample-app){:target="\_blank"}.
 
-## Create a Codecov Account
+## Create a Codecov account
 
 Once you sign-up to Codecov, you can add a new repository. The UI will then provide you with an access token to the repository. While it is recommended that you take note of the token, you will still be able to access it within the **Settings** tap.
 
@@ -39,7 +39,7 @@ alt="Codecov Project Repository UI"
 max-width="50%" 
 %}
 
-## Codefresh Pipeline
+## Codefresh pipeline
 
 In this case, we have divided the testing and connecting Codefresh to Codecov into two different steps. If they can be run within the same image, you could also connect them. 
 
@@ -86,7 +86,7 @@ The commands run inside of the node Docker image:
 * `npm install codecov -g` -- This installs the odecov CLI
 * `codecov -t ${{CODECOV_TOKEN}} -f ./coverage/clover.xml` -- Here we set the Codevoc access token provided in the UI when we connect to a new git repository and point to the file that contains our coverage report.
 
-Once you run the pipeline the steps will create the coverage report and forward it to Codecov.
+Once you run the pipeline, the steps will create the coverage report and forward it to Codecov.
 
 {% include image.html 
 lightbox="true" 
@@ -98,7 +98,7 @@ max-width="50%"
 
 ## View reports
 
-This will allow you to view the updated coverage reports within the Codecov UI every time you make a commit and/or run the Codefresh pipeline directly.
+You can view the updated coverage reports within the Codecov UI every time you make a commit and/or run the Codefresh pipeline directly.
 
 {% include image.html 
 lightbox="true" 
@@ -120,7 +120,7 @@ max-width="50%"
 
 ## Related articles
 [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
-[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
+[Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Unit tests]({{site.baseurl}}/docs/testing/unit-tests/)  
 [Integration tests]({{site.baseurl}}/docs/testing/integration-tests/)  
 [Sonarqube Integration]({{site.baseurl}}/docs/testing/sonarqube-integration/) 

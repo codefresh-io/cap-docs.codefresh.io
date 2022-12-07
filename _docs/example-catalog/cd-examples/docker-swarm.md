@@ -1,6 +1,6 @@
 ---
 title: "Docker SWARM"
-description: "How to deploy to Docker Swarm with Codefresh"
+description: "Deploy to Docker Swarm with Codefresh"
 group: example-catalog
 sub_group: cd-examples
 redirect_from:
@@ -140,9 +140,6 @@ deploy_to_swarm:
 
 
 
-
-
-
 ## Create a CI/CD pipeine for Docker swarm
 
 Here is the full pipeline:
@@ -214,7 +211,7 @@ The values of `MY_REGISTRY`, `MY_REGISTRY_USER` and `MY_REGISTRY_PASSWORD` depen
 
 ## Related articles
 [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
-[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
+[Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
-[How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  
+[How Codefresh pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  
 

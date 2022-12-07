@@ -1,16 +1,16 @@
 ---
-title: "Build an Image from a Different Git Repository"
+title: "Build an Image from a different Git repository"
 description: "Build microservices from other repositories"
 group: example-catalog
-sub_group: 
+sub_group: ci-examples
 redirect_from:
   - /docs/build-an-image-from-a-different-git-repository/
 toc: true
 ---
 
-In most cases, your Codefresh pipeline will check out a single Git repository. Codefresh also has great support for [Monorepos]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#using-the-modified-files-field-to-constrain-triggers-to-specific-folderfiles) if you have placed all your applications in a single repository.
+In most cases, your Codefresh pipeline will check out a single Git repository. Codefresh also has great support for [monorepos]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#using-the-modified-files-field-to-constrain-triggers-to-specific-folderfiles) if you have placed all your applications in a single repository.
 
-A Codefresh pipeline is not really tied to a specific Git repository, which means that by [checking out multiple git repositories]({{site.baseurl}}/docs/example-catalog/git-checkout/#cloning-multiple-repositories) you can build docker images from other unrelated repositories in a single pipeline if you wish to do so.
+A Codefresh pipeline is not really tied to a specific Git repository, which means that by [checking out multiple git repositories]({{site.baseurl}}/docs/example-catalog/git-checkout/#cloning-multiple-repositories) you can build Docker images from other unrelated repositories in a single pipeline if you wish to do so.
 
 ## Building Docker images from other Git repositories
 
@@ -87,7 +87,7 @@ Notice that there are no explicit push steps in the pipeline, as all successful 
 
 
 ## Related articles
-[Git Clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)  
-[Build step]({{site.baseurl}}/docs/pipelines/steps/build/)  
+[Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)  
+[Build step in pipelines in pipelines]({{site.baseurl}}/docs/pipelines/steps/build/)  
 [Build and Push an image]({{site.baseurl}}/docs/pipelines/examples/build-and-push-an-image/)  
 [Parallel pipelines]({{site.baseurl}}/docs/pipelines/advanced-workflows/)  

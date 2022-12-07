@@ -5,11 +5,11 @@ group: example-catalog
 sub_group: ci-examples
 redirect_from:
   - /docs/git-clone-private-repository-using-freestyle-step/
-  - /docs/yaml-examples/examples/git-clone-private-repository-using-freestyle-step/
+  - /docs/example-catalog/ci-examples/git-clone-private-repository-using-freestyle-step/
 toc: true
 ---
 
->Notice that running git commands manually is an advanced technique. For most use cases you should use the [Native Git checkout]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout/) offered by Codefresh.
+>Notice that running git commands manually is an advanced technique. For most use cases you should use the [Native Git checkout]({{site.baseurl}}/docs/example-catalog/ci-examples/git-checkout/) offered by Codefresh.
 
 If you want to do complex cloning, you can still use custom clone commands in a freestyle step. Notice however that in this case
 you lose the native Codefresh integration such as git authentication and automatic workdir setup. Use custom clone commands only as a last resort.

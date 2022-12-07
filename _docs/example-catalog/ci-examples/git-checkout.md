@@ -1,12 +1,12 @@
 ---
-title: "Checking out Git repositories"
-description: "Using the Codefresh native GIT integration"
+title: "Check out Git repositories"
+description: "Use the Codefresh native GIT integration"
 group: example-catalog
 sub_group: ci-examples
 toc: true
 ---
 
-Codefresh has native support for GIT repositories and Git triggers. First you need to setup a [Git integration]({{site.baseurl}}/docs/integrations/git-providers/) (Your administrator might also have done this for you already).
+Codefresh has native support for Git repositories and Git triggers. First you need to setup a [Git integration]({{site.baseurl}}/docs/integrations/git-providers/) (your administrator might also have done this for you already).
 
 {% include image.html 
 lightbox="true" 
@@ -197,7 +197,7 @@ Notice that in this case the git-clone steps are **not** named `main_clone` and 
 
 ## Related articles
 [Git integrations]({{site.baseurl}}/docs/integrations/git-providers/)  
-[Git triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/)  
-[Git Clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)  
-[Build step]({{site.baseurl}}/docs/pipelines/steps/build/)  
+[Git triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/)  
+[Clone step in pipelines]({{site.baseurl}}/docs/pipelines/steps/git-clone/)  
+[Build step in pipelines]({{site.baseurl}}/docs/pipelines/steps/build/)  
 [Custom git commands]({{site.baseurl}}/docs/example-catalog/ci-examples/git-checkout-custom/)  

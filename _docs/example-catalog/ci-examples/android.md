@@ -6,14 +6,14 @@ sub_group: ci-examples
 toc: true
 ---
 
-Android applications are using Java/Gradle for their build system. Because Codefresh already supports [Gradle]({{site.baseurl}}/docs/learn-by-example/java/gradle/) it is also very easy to build Android projects.
+Android applications use Java/Gradle for their build system. Because Codefresh already supports [Gradle]({{site.baseurl}}/docs/example-catalog/ci-examples/gradle/), it is also very easy to build Android projects.
 
-Any Gradle command can run inside a Docker image that contains the Android SDK. As an example, we will use a [Nextcloud](https://hub.docker.com/r/nextcloudci/android) image from Dockerhub.
+Any Gradle command can run inside a Docker image that contains the Android SDK. As an example, we will use a [Nextcloud](https://hub.docker.com/r/nextcloudci/android){:target="\_blank"} image from Dockerhub.
 
 
 ## The example project
 
-You can see the example project at [https://github.com/codefresh-contrib/android-sample-app](https://github.com/codefresh-contrib/android-sample-app). The repository contains a Hello World Android project with the following tasks:
+You can see the example project at [https://github.com/codefresh-contrib/android-sample-app](https://github.com/codefresh-contrib/android-sample-app){:target="\_blank"}. The repository contains a Hello World Android project with the following tasks:
 
 * `./gradlew test` runs unit tests
 * `./gradlew build` builds the application
@@ -32,7 +32,7 @@ caption="Building and Testing an Android app"
 max-width="80%" 
 %}
 
-Here is the [full pipeline](https://github.com/codefresh-contrib/android-sample-app/blob/master/codefresh.yml) that uses a Docker image with the Android SDK in order to run Gradle.
+Here is the [full pipeline](https://github.com/codefresh-contrib/android-sample-app/blob/master/codefresh.yml){:target="\_blank"} that uses a Docker image with the Android SDK in order to run Gradle.
 
  `codefresh.yml`
 {% highlight yaml %}
@@ -72,10 +72,9 @@ Codefresh is smart enough that [caches automatically]({{site.baseurl}}/docs/pipe
 
 
 
-## What to read next
-
-* [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)
-* [Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)
-* [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)
-* [How pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)
+## Related articles
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
+[Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
+[How Codefresh pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  
 

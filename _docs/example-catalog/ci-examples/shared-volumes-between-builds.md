@@ -109,7 +109,7 @@ More information about caching build dependencies can be found in the [caching d
 
 
 ## Related articles
-[Introduction to Codefresh pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/) 
+[How Codefresh pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/) 
 [Pipeline caching]({{site.baseurl}}/docs/pipelines/pipeline-caching/)  
 [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Freestyle steps]({{site.baseurl}}/docs/pipelines/steps/freestyle)  
