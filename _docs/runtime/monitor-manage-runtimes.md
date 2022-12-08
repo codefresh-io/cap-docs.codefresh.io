@@ -117,13 +117,13 @@ You can upgrade to a specific version if you so require, or download the latest 
 
 
 * Do any of the following:
-  * To upgrade to the latest version, run:
+  * To upgrade to the latest version, run:  
     `cf upgrade`
   * To upgrade to a specific version, even an older version, run:  
     `cf upgrade --version v<version-number>`  
     where:  
     `<version-number>` is the version you want to upgrade to.
-  * To download the latest version to an output file, run:
+  * To download the latest version to an output file, run:  
     `cf upgrade --version v<version-number> -o <output-file>`  
     where:   
     * `<output-file>` is the path to the destination file, for example, `/cli-download`.
