@@ -126,7 +126,7 @@ You can upgrade to a specific version if you so require, or download the latest 
   * To download the latest version to an output file, run:  
     `cf upgrade --version v<version-number> -o <output-file>`  
     where:   
-    * `<output-file>` is the path to the destination file, for example, `/cli-download`.
+    `<output-file>` is the path to the destination file, for example, `/cli-download`.
   
 
 ### (Hybrid) Upgrade provisioned runtimes
