@@ -1,5 +1,5 @@
 ---
-title: "Hosted GitOps Runtime installation"
+title: "Hosted GitOps Runtime setup"
 description: "Provision Hosted GitOps environment"
 group: installation
 toc: true
