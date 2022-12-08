@@ -81,6 +81,20 @@ In the hosted environment, the Codefresh Runtime is installed on a K8s cluster m
   max-width="100%"
 %}
 
+#### Tunnel-based hybrid runtime architecture
+Tunnel-based hybrid runtimes use tunneling instead of ingress controllers to control communication between the Codefresh Runtime in the customer cluster and the Codefresh Platform. Tunnel-based, ingress-less, runtimes are optimal when the cluster with the Codefresh Runtime is not exposed to the internet. 
+
+{% include
+   image.html
+   lightbox="true"
+   file="/images/getting-started/architecture/arch-hybrid-ingressless.png"
+ url="/images/getting-started/architecture/arch-hybrid-ingressless.png"
+  alt="Tunnel-based hybrid runtime architecture"
+  caption="Tunnel-based hybrid runtime architecture"
+  max-width="100%"
+%}
+
+
 #### Ingress-based hybrid runtime architecture
 Ingress-based runtimes use ingress controllers to control communication between the Codefresh Runtime in the customer cluster and the Codefresh Platform. Ingress-based runtimes are optimal when the cluster with the Codefresh Runtime is exposed to the internet.  
 
@@ -95,20 +109,6 @@ Ingress-based runtimes use ingress controllers to control communication between 
   caption="Ingress-based hybrid runtime architecture"
   max-width="100%"
 %}
-
-#### Tunnel-based hybrid runtime architecture
-Tunnel-based hybrid runtimes use tunneling instead of ingress controllers to control communication between the Codefresh Runtime in the customer cluster and the Codefresh Platform. Tunnel-based, ingress-less, runtimes are optimal when the cluster with the Codefresh Runtime is not exposed to the internet. 
-
-{% include
-   image.html
-   lightbox="true"
-   file="/images/getting-started/architecture/arch-hybrid-ingressless.png"
- url="/images/getting-started/architecture/arch-hybrid-ingressless.png"
-  alt="Tunnel-based hybrid runtime architecture"
-  caption="Tunnel-based hybrid runtime architecture"
-  max-width="100%"
-%}
-
 
 
 #### Codefresh Application Proxy

@@ -21,8 +21,8 @@ If Bitbucker Server is your Git provider, you must also select the specific serv
 
 There are two parts to installing a hybrid runtime:
 
-1. Installing the Codefresh CLI
-2. Installing the hybrid runtime from the CLI, either through the CLI wizard or via silent installation through the installation flags.  
+1. [Installing the Codefresh CLI](#install-the-codefresh-cli)
+2. [Installing the hybrid runtime](#install-the-hybrid-runtime) from the CLI, either through the CLI wizard, or via silent installation through the installation flags.  
   The hybrid runtime is installed in a specific namespace on your cluster. You can install more runtimes on different clusters in your deployment.  
   Every hybrid runtime installation makes commits to three Git repos:
   * Runtime install repo: The installation repo that manages the hybrid runtime itself with Argo CD. If the repo URL does not exist, it is automatically created during runtime installation.
@@ -31,6 +31,62 @@ There are two parts to installing a hybrid runtime:
 
 
 See also [Codefresh architecture]({{site.baseurl}}/docs/getting-started/architecture).
+
+
+
+### Install the Codefresh CLI
+
+Install the Codefresh CLI using the option that best suits you: `curl`, `brew`, or standard download.  
+If you are not sure which OS to select for `curl`, simply select one, and Codefresh automatically identifies and selects the right OS for CLI installation.
+
+{::nomarkdown}
+</br>
+
+{:/}
+
+### Install the hybrid runtime  
+
+{::nomarkdown}
+</br>
+{:/}
+
+**Before you begin**  
+ 
+* Make sure you meet the [minimum requirements]({{site.baseurl}}/docs/runtime/requirements/#minimum-requirements) for runtime installation
+* Make sure you have [runtime token with the required scopes from your Git provider]({{site.baseurl}}/docs/reference/git-tokens)
+* [Download or upgrade to the latest version of the CLI]({{site.baseurl}}/docs/clients/csdp-cli/#upgrade-codefresh-cli)
+* Review [Hybrid runtime installation flags](#hybrid-runtime-installation-flags)
+* For ingress-based runtimes, make sure your ingress controller is configured correctly:
+  * [Ambasador ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#ambassador-ingress-configuration)
+  * [AWS ALB ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#alb-aws-ingress-configuration)
+  * [Istio ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#istio-ingress-configuration)
+  * [NGINX Enterprise ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#nginx-enterprise-ingress-configuration)
+  * [NGINX Community ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#nginx-community-version-ingress-configuration)
+  * [Traefik ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#traefik-ingress-configuration)
+
+
+{::nomarkdown}
+</br>
+{:/}
+ 
+**How to** 
+
+1. Do one of the following:  
+  * If this is your first hybrid runtime installation, in the Welcome page, select **+ Install Runtime**.
+  * If you have provisioned a hybrid runtime, to provision additional runtimes, in the Codefresh UI, go to [**Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+1. Click **+ Add Runtimes**, and then select **Hybrid Runtimes**.
+1. Do one of the following:  
+  * CLI wizard: Run `cf runtime install`, and follow the prompts to enter the required values.  
+  * Silent install: Pass the required flags in the install command:  
+    `cf runtime install <runtime-name> --repo <git-repo> --git-token <git-token> --silent`  
+  For the list of flags, see [Hybrid runtime installation flags](#hybrid-runtime-installation-flags).
+1. If relevant, complete the configuration for these ingress controllers:
+  * [ALB AWS: Alias DNS record in route53 to load balancer]({{site.baseurl}}/docs/runtime/requirements/#alias-dns-record-in-route53-to-load-balancer)
+  * [Istio: Configure cluster routing service]({{site.baseurl}}/docs/runtime/requirements/#cluster-routing-service)
+  * [NGINX Enterprise ingress controller: Patch certificate secret]({{site.baseurl}}/docs/runtime/requirements/#patch-certificate-secret)  
+1. If you bypassed installing ingress resources with the `--skip-ingress` flag for ingress controllers not in the supported list, create and register Git integrations using these commands:  
+  `cf integration git add default --runtime <RUNTIME-NAME> --api-url <API-URL>`  
+  `cf integration git register default --runtime <RUNTIME-NAME> --token <RUNTIME-AUTHENTICATION-TOKEN>`  
 
 {::nomarkdown}
 </br>
@@ -69,26 +125,31 @@ The cluster defined as the default for `kubectl`. If you have more than one Kube
 * CLI wizard: Select the Kube context from the list displayed.
 * Silent install: Explicitly specify the Kube context with the `--context` flag.
 
+**Access mode**  
+The access mode for the runtime, which can be one of the following:
+* [Tunnel-based]({{site.baseurl}}/docs/getting-started/architecture/#tunnel-based-hybrid-runtime-architecture), for runtimes without ingress controllers. This is the default.
+* [Ingress-based]({{site.baseurl}}/docs/getting-started/architecture/#ingress-based-hybrid-runtime-architecture) for runtimes with ingress contollers. 
+
+
+* CLI wizard: Select the access mode from the list displayed.
+* Silent install:  
+  * For tunnel-based, see [Tunnel-based (ingress-less) runtime flags](#tunnel-based-ingress-less-runtime-flags)
+  * For ingress-based, add the [Ingress controller flags](#ingress-controller-flags)
+
+  >If you don't specify any flags, tunnel-based access is automatically selected.  
+
+
 **Shared configuration repository**  
 The Git repository per runtime account with shared configuration manifests.  
 * CLI wizard and Silent install: Add the `--shared-config-repo` flag and define the path to the shared repo.  
+
 
 {::nomarkdown}
 </br>
 {:/}
 
 #### Tunnel-based (ingress-less) runtime flags
-These flags are required to install the runtime without an ingress controller. 
-
-**Access mode**  
-Required.  
-
-The access mode for tunnel-based runtimes, the tunnel mode. 
  
-
-* CLI wizard and Silent install: Add the flag, `--access-mode`, and define `tunnel` as the value. 
-
-
 **IP allowlist**
 
 Optional.  
@@ -104,7 +165,7 @@ When omitted, all incoming requests are authenticated regardless of the IPs from
 {:/}
 
 #### Ingress controller flags
-
+Ingress controller flags are required for ingress-based runtimes. For 
 
 **Skip ingress**  
 Required, if you are using an unsupported ingress controller.  
@@ -126,6 +187,7 @@ The IP address or host name of the ingress controller component.
   > Important: For AWS ALB, the ingress host is created post-installation. However, when prompted, add the domain name you will create in `Route 53` as the ingress host.  
 
 **Insecure ingress hosts**  
+Optional.  
 TLS certificates for the ingress host:  
 If the ingress host does not have a valid TLS certificate, you can continue with the installation in insecure mode, which disables certificate validation.  
 
@@ -148,9 +210,8 @@ For both CLI wizard and Silent install:
 
 
 #### Git provider and repo flags
-The Git provider defined for the runtime. 
-
->Because Codefresh creates a [shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration) for the runtimes in your account, the Git provider defined for the first runtime you install in your account is used for all the other runtimes in the same account.  
+The Git provider defined for the runtime.  
+>Because Codefresh creates a [shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration) for the runtimes in your account, the Git provider defined for the first runtime you install in your account is also used for all the other runtimes in the same account.  
 
 You can define any of the following Git providers:
 * GitHub:
@@ -163,11 +224,15 @@ You can define any of the following Git providers:
   * [Bitbucket Cloud](#bitbucket-cloud)
   * [Bitbucket Server](#bitbucket-server)
 
-{::nomarkdown}
-</br>
-{:/}
+
+<br />
 
 
+Codefresh tries to identify the Git provider from the repository URL you provide.  
+* CLI wizard: If not GitHub, you are prompted to select the Git provider from the list.
+* Silent install: Pass the flags required per provider, as described in the sections below.
+
+<br />
 
 ##### GitHub
 GitHub is the default Git provider for hybrid runtimes. Being the default provider, for both the CLI wizard and Silent install, you need to provide only the repository URL and the Git runtime token.
@@ -197,13 +262,14 @@ where:
 
 ##### GitHub Enterprise 
 
+* CLI Wizard: Select the Git provider from the list provided
+
 > For the required scopes, see [GitHub and GitHub Enterprise runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#github-and-github-enterprise-runtime-token-scopes).
 
 
-`--enable-git-providers --provider github --repo <repo_url> --git-token <git-runtime-token>`  
+`--provider github --repo <repo_url> --git-token <git-runtime-token>`  
 
 where:  
-* `--enable-git-providers` (required), indicates that you are not using the default Git provider for the runtime.
 * `--provider github` (required), defines GitHub Enterprise as the Git provider for the runtime and the account.
 * `--repo <repo_url>` (required), is the `HTTPS` clone URL of the Git repository for the runtime installation, including the `.git` suffix. Copy the clone URL for HTTPS from your GitHub Enterprise website (see [Cloning with HTTPS URLs](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls){:target="\_blank"}).  
   If the repo doesn't exist, copy an existing clone URL and change the name of the repo. Codefresh creates the repository during runtime installation. 
@@ -228,10 +294,9 @@ where:
 > For the required scopes, see [GitLab Cloud and GitLab Server runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#gitlab-cloud-and-gitlab-server-runtime-token-scopes).
 
 
-`--enable-git-providers --provider gitlab --repo <https_project_url> --git-token <git_runtime_token>`  
+`--provider gitlab --repo <https_project_url> --git-token <git_runtime_token>`  
 
 where:  
-* `--enable-git-providers`(required), indicates that you are not using the default Git provider for the runtime.
 * `--provider gitlab` (required), defines GitLab Cloud as the Git provider for the runtime and the account.
 * `--repo <repo_url>` (required), is the `HTTPS` clone URL of the Git project for the runtime installation, including the `.git` suffix. Copy the clone URL for HTTPS from your GitLab website.   
   If the repo doesn't exist, copy an existing clone URL and change the name of the repo. Codefresh creates the repository during runtime installation. 
@@ -265,10 +330,9 @@ where:
 
 > For the required scopes, see [GitLab Cloud and GitLab Server runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#gitlab-cloud-and-gitlab-server-runtime-token-scopes).
 
-`--enable-git-providers --provider gitlab --repo <https_project_url> --git-token <git_runtime_token>`  
+`--provider gitlab --repo <https_project_url> --git-token <git_runtime_token>`  
 
 where:  
-* `--enable-git-providers` (required), indicates that you are not using the default Git provider for the runtime.
 * `--provider gitlab` (required), defines GitLab Server as the Git provider for the runtime and the account.
 * `--repo <repo_url>` (required), is the `HTTPS` clone URL of the Git repository for the runtime installation, including the `.git` suffix.  
   If the project doesn't exist, copy an existing clone URL and change the name of the project. Codefresh creates the project during runtime installation.  
@@ -299,10 +363,9 @@ where:
 > For the required scopes, see [Bitbucket runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#bitbucket-cloud-and-bitbucket-server-runtime-token-scopes).
 
 
-`--enable-git-providers --provider bitbucket --repo <https_repo_url> --git-user <git_username> --git-token <git_runtime_token>`    
+`--provider bitbucket --repo <https_repo_url> --git-user <git_username> --git-token <git_runtime_token>`    
 
 where:  
-* `--enable-git-providers` (required), indicates that you are not using the default Git provider for the runtime.  
 * `--provider gitlab` (required), defines Bitbucket Cloud as the Git provider for the runtime and the account.
 * `--repo <repo_url>` (required), is the `HTTPS` clone URL of the Git repository for the runtime installation, including the `.git` suffix.  
   If the project doesn't exist, copy an existing clone URL and change the name of the project. Codefresh creates the project during runtime installation.  
@@ -332,10 +395,9 @@ where:
 > For the required scopes, see [Bitbucket runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#bitbucket-cloud-and-bitbucket-server-runtime-token-scopes).
 
 
-`--enable-git-providers --provider bitbucket-server --repo <repo_url> --git-user <git_username> --git-token <git_runtime_token>`  
+`--provider bitbucket-server --repo <repo_url> --git-user <git_username> --git-token <git_runtime_token>`  
 
 where:  
-* `--enable-git-providers` (required), indicates that you are not using the default Git provider for the runtime.
 * `--provider gitlab` (required), defines Bitbucket Cloud as the Git provider for the runtime and the account.
 * `--repo <repo_url>` (required), is the `HTTPS` clone URL of the Git repository for the runtime installation, including the `.git` suffix.  
   If the project doesn't exist, copy an existing clone URL and change the name of the project. Codefresh then creates the project during runtime installation.  
@@ -374,53 +436,7 @@ For _on-premises installations_, if the Ingress controller does not have a valid
 {:/}
 
 
-### Install the Codefresh CLI
 
-Install the Codefresh CLI using the option that best suits you: `curl`, `brew`, or standard download.  
-If you are not sure which OS to select for `curl`, simply select one, and Codefresh automatically identifies and selects the right OS for CLI installation.
-
-{::nomarkdown}
-</br></br>
-{:/}
-
-### Install the hybrid runtime  
-
-**Before you begin**
-* Make sure you meet the [minimum requirements]({{site.baseurl}}/docs/runtime/requirements/#minimum-requirements) for runtime installation
-* Make sure you have [runtime token with the required scopes from your Git provider]({{site.baseurl}}/docs/reference/git-tokens)
-* [Download or upgrade to the latest version of the CLI]({{site.baseurl}}/docs/clients/csdp-cli/#upgrade-codefresh-cli)
-* Review [Hybrid runtime installation flags](#hybrid-runtime-installation-flags)
-* Make sure your ingress controller is configured correctly:
-  * [Ambasador ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#ambassador-ingress-configuration)
-  * [AWS ALB ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#alb-aws-ingress-configuration)
-  * [Istio ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#istio-ingress-configuration)
-  * [NGINX Enterprise ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#nginx-enterprise-ingress-configuration)
-  * [NGINX Community ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#nginx-community-version-ingress-configuration)
-  * [Traefik ingress configuration]({{site.baseurl}}/docs/runtime/requirements/#traefik-ingress-configuration)
-
-
-{::nomarkdown}
-</br>
-{:/}
- 
-**How to** 
-
-1. Do one of the following:  
-  * If this is your first hybrid runtime installation, in the Welcome page, select **+ Install Runtime**.
-  * If you have provisioned a hybrid runtime, to provision additional runtimes, in the Codefresh UI, go to [**Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
-1. Click **+ Add Runtimes**, and then select **Hybrid Runtimes**.
-1. Do one of the following:  
-  * CLI wizard: Run `cf runtime install`, and follow the prompts to enter the required values.  
-  * Silent install: Pass the required flags in the install command:  
-    `cf runtime install <runtime-name> --repo <git-repo> --git-token <git-token> --silent`  
-  For the list of flags, see [Hybrid runtime installation flags](#hybrid-runtime-installation-flags).
-1. If relevant, complete the configuration for these ingress controllers:
-  * [ALB AWS: Alias DNS record in route53 to load balancer]({{site.baseurl}}/docs/runtime/requirements/#alias-dns-record-in-route53-to-load-balancer)
-  * [Istio: Configure cluster routing service]({{site.baseurl}}/docs/runtime/requirements/#cluster-routing-service)
-  * [NGINX Enterprise ingress controller: Patch certificate secret]({{site.baseurl}}/docs/runtime/requirements/#patch-certificate-secret)  
-1. If you bypassed installing ingress resources with the `--skip-ingress` flag for ingress controllers not in the supported list, create and register Git integrations using these commands:  
-  `cf integration git add default --runtime <RUNTIME-NAME> --api-url <API-URL>`  
-  `cf integration git register default --runtime <RUNTIME-NAME> --token <RUNTIME-AUTHENTICATION-TOKEN>`  
 
 
 {::nomarkdown}

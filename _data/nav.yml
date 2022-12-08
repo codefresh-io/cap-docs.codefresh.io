@@ -38,7 +38,7 @@
 - title: Clients
   url: "/clients"
   pages:
-    - title: Download CLI
+    - title: Download/upgrade Codefresh CLI
       url: "/csdp-cli"
 
 
