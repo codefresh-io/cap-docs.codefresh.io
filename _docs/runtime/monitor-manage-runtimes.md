@@ -33,7 +33,7 @@ Manage provisioned runtimes:
 * [Upgrade Codefresh CLI](#upgrade-codefresh-cli)
 * [Uninstall provisioned runtimes](#uninstall-provisioned-runtimes)
 * [Update Git tokens for runtimes](#update-git-tokens-for-runtimes)
-<!--* [Migrate ingress-less hybrid runtimes](#hybrid-migrate-ingress-less-runtimes) -->
+<!--* [Migrate access mode for hybrid runtimes](#hybrid-migrate-runtimes) -->
 
 > Unless specified otherwise, management options are common to both hybrid and hosted runtimes. If an option is valid only for hybrid runtimes, it is indicated as such. 
 
