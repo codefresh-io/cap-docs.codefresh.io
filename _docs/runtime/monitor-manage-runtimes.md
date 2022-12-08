@@ -103,7 +103,7 @@ Here is a description of the information in the Topology view.
 ### Upgrade Codefresh CLI
 The Codefresh CLI automatically self-checks its version against the online version, and if a newer version is available, prints a banner with the details.  
 
-You can upgrade to a specific version, an older version, if you so require, or download the latest version to an output folder to upgrade at your convenience.
+You can upgrade to a specific version (currently to the previous version only), if you so require, or download the latest version to an output folder to upgrade at your convenience.
 
 
 * Do any of the following:
