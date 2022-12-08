@@ -101,7 +101,7 @@ Here is a description of the information in the Topology view.
 
 
 ### Upgrade Codefresh CLI
-The Codefresh CLI automatically self-checks its version against the online version, and if a newer version is available, prints a banner with the details.  
+The Codefresh CLI automatically self-checks its version, and if a newer version is available, prints a banner with the notification.  
 
  {% include
     image.html
@@ -113,7 +113,7 @@ The Codefresh CLI automatically self-checks its version against the online versi
   max-width="40%"
   %}
 
-You can upgrade to a specific version (currently to the previous version only), if you so require, or download the latest version to an output folder to upgrade at your convenience.
+You can upgrade to a specific version if you so require, or download the latest version to an output folder to upgrade at your convenience.
 
 
 * Do any of the following:
@@ -122,11 +122,10 @@ You can upgrade to a specific version (currently to the previous version only), 
   * To upgrade to a specific version, even an older version, run:  
     `cf upgrade --version v<version-number>`  
     where:  
-    `<version-number>` is the version you want to upgrade to in the format `x.x.xx`, for example, `v0.0.13`.
+    `<version-number>` is the version you want to upgrade to.
   * To download the latest version to an output file, run:
     `cf upgrade --version v<version-number> -o <output-file>`  
-    where:  
-    * `<version-number>` is the version you want to upgrade to in the format `x.x.xx`, for example, `v0.0.13`.  
+    where:   
     * `<output-file>` is the path to the destination file, for example, `/cli-download`.
   
 

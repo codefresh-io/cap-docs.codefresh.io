@@ -21,7 +21,7 @@
   icon: images/home-icons/client.svg
   url: ''
   links:
-    - title: Codefresh CLI
+    - title: Download/upgrade Codefresh CLI
       localurl: /docs/clients/csdp-cli/
 
 

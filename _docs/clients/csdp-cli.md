@@ -1,13 +1,12 @@
 ---
-title: "Download CLI"
+title: "Download/upgrade Codefresh CLI"
 description: ""
 group: clients
 toc: true
 ---
 
-You need the Codefresh CLI to install Codefresh runtimes.  
-* For the initial download, you also need to generate the API key and create the API authentication context, all from the UI.  
-* Subsequent downloads for upgrade purposes require you to only run the download command, using existing API credentials. 
+You need the Codefresh CLI to install Codefresh runtimes. For the initial download, you also need to generate the API key and create the API authentication context, all from the UI.  
+If upgrades are needed, the CLI notifies you through a banner, and you can use the existing API credentials. 
 
 ### Download Codefresh CLI
 Downloading the Codefresh CLI requires you to select the download mode and OS, generate an API key, and authentication context.
@@ -28,20 +27,33 @@ Downloading the Codefresh CLI requires you to select the download mode and OS, g
    %} 
 
 ### Upgrade Codefresh CLI
-Upgrade the CLI to the latest version to prevent installation errors.
-1. Check the version of the CLI you have installed:  
-  `cf version`  
-1. Compare with the [latest version](https://github.com/codefresh-io/cli-v2/releases){:target="\_blank"} released by Codefresh.
-1. Select and run the appropriate command:
+The Codefresh CLI automatically self-checks its version, and if a newer version is available, prints a banner with the notification.  
 
-{: .table .table-bordered .table-hover}
-| Download mode | OS       | Commands |
-| -------------- | ----------| ----------|  
-| `curl`         | MacOS-x64 |  `curl -L --output - https://github.com/codefresh-io/cli-v2/releases/latest/download/cf-darwin-amd64.tar.gz | tar zx && mv ./cf-darwin-amd64 /usr/local/bin/cf && cf version`|
-|             | MacOS-m1 |`curl -L --output - https://github.com/codefresh-io/cli-v2/releases/latest/download/cf-darwin-arm64.tar.gz | tar zx && mv ./cf-darwin-arm64 /usr/local/bin/cf && cf version` |          
-|             | Linux - X64 |`curl -L --output - https://github.com/codefresh-io/cli-v2/releases/latest/download/cf-linux-amd64.tar.gz | tar zx && mv ./cf-linux-amd64 /usr/local/bin/cf && cf version` |       
-|              | Linux - ARM  |  `curl -L --output - https://github.com/codefresh-io/cli-v2/releases/latest/download/cf-linux-arm64.tar.gz | tar zx && mv ./cf-linux-arm64 /usr/local/bin/cf && cf version`|     
-| `brew` | N/A| `brew tap codefresh-io/cli && brew install cf2`|
+ {% include
+    image.html
+  lightbox="true"
+  file="/images/runtime/cli-upgrade-banner.png"
+  url="/images/runtime/cli-upgrade-banner.png"
+  alt="Upgrade banner for Codefresh CLI"
+  caption="Upgrade banner for Codefresh CLI"
+  max-width="40%"
+  %}
+
+You can upgrade to a specific version if you so require, or download the latest version to an output folder to upgrade at your convenience.
+
+
+* Do any of the following:
+  * To upgrade to the latest version, run:
+    `cf upgrade`
+  * To upgrade to a specific version, even an older version, run:  
+    `cf upgrade --version v<version-number>`  
+    where:  
+    `<version-number>` is the version you want to upgrade to.
+  * To download the latest version to an output file, run:
+    `cf upgrade --version v<version-number> -o <output-file>`  
+    where:   
+    * `<output-file>` is the path to the destination file, for example, `/cli-download`.
+
 
 ### Related articles
 [Set up hosted (Hosted GitOps) environment]({{site.baseurl}}/docs/runtime/hosted-runtime)  
