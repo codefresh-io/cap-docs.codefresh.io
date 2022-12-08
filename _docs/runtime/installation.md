@@ -133,7 +133,7 @@ The access mode for the runtime, which can be one of the following:
 
 * CLI wizard: Select the access mode from the list displayed.
 * Silent install:  
-  * For tunnel-based, see [Tunnel-based (ingress-less) runtime flags](#tunnel-based-ingress-less-runtime-flags)
+  * For tunnel-based, see [Tunnel-based runtime flags](#tunnel-based-runtime-flags)
   * For ingress-based, add the [Ingress controller flags](#ingress-controller-flags)
 
   >If you don't specify any flags, tunnel-based access is automatically selected.  
@@ -148,7 +148,7 @@ The Git repository per runtime account with shared configuration manifests.
 </br>
 {:/}
 
-#### Tunnel-based (ingress-less) runtime flags
+#### Tunnel-based runtime flags
  
 **IP allowlist**
 

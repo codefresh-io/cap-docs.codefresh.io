@@ -19,9 +19,9 @@ Built on Argo, the world’s most popular and fastest-growing open source softwa
 #### Tunnel-based hybrid runtimes
 Simplify installation without compromising on security with our tunnel-based installation option for hybrid runtimes.  
 
-Tunnel-based runtimes use tunneling for communication between the customer cluster and the Codefresh platform, with the customer cluster initiating the  tunneling request.   Simply add  the flag `--access-mode` with `tunnel` as the value and you have your tunnel-based, ingress-less runtime. 
+Tunnel-based runtimes use tunneling for communication between the customer cluster and the Codefresh platform, with the customer cluster initiating the  tunneling request.   Simply add  the flag `--access-mode` with `tunnel` as the value and you have your tunnel-based runtime without an ingress controller. 
 
-See [Tunnel-based runtime architecture]({{site.baseurl}}/docs/getting-started/architecture/#tunnel-based-hybrid-runtime-architecture) and [Tunnel-based runtime flags]({{site.baseurl}}/docs/runtime/installation/#tunnel-based-ingress-less-runtime-flags).
+See [Tunnel-based runtime architecture]({{site.baseurl}}/docs/getting-started/architecture/#tunnel-based-hybrid-runtime-architecture) and [Tunnel-based runtime flags]({{site.baseurl}}/docs/runtime/installation/#tunnel-based-runtime-flags).
 
 {::nomarkdown}
 <br>
