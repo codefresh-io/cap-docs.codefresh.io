@@ -228,8 +228,8 @@ You can define any of the following Git providers:
 <br />
 
 
-Codefresh tries to identify the Git provider from the repository URL.  
-* CLI wizard: If not GitHub, you are prompted to select the Git provider from the list
+Codefresh tries to identify the Git provider from the repository URL you provide.  
+* CLI wizard: If not GitHub, you are prompted to select the Git provider from the list.
 * Silent install: Pass the flags required per provider, as described in the sections below.
 
 <br />

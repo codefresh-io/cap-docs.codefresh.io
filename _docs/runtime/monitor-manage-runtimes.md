@@ -30,6 +30,7 @@ Manage provisioned runtimes:
 * [Add managed clusters to hybrid or hosted runtimes]({{site.baseurl}}/docs/runtime/managed-cluster/))
 * [Add and manage Git Sources associated with hybrid or hosted runtimes]({{site.baseurl}}/docs/runtime/git-sources/))
 * [Upgrade provisioned hybrid runtimes](#hybrid-upgrade-provisioned-runtimes)
+* [Upgrade Codefresh CLI](#upgrade-codefresh-cli)
 * [Uninstall provisioned runtimes](#uninstall-provisioned-runtimes)
 * [Update Git tokens for runtimes](#update-git-tokens-for-runtimes)
 <!--* [Migrate ingress-less hybrid runtimes](#hybrid-migrate-ingress-less-runtimes) -->
@@ -99,6 +100,25 @@ Here is a description of the information in the Topology view.
 |**Search and View options** | {::nomarkdown}<ul><li>Find a runtime or its clusters by typing part of the runtime/cluster name, and then navigate to the entries found. </li> <li>Topology view options: Resize to window, zoom in, zoom out, full screen view.</li></ul> {:/}|
 
 
+### Upgrade Codefresh CLI
+The Codefresh CLI automatically self-checks its version against the online version, and if a newer version is available, prints a banner with the details.  
+
+You can upgrade to a specific version, an older version, if you so require, or download the latest version to an output folder to upgrade at your convenience.
+
+
+* Do any of the following:
+  * To upgrade to the latest version, run:
+    `cf upgrade`
+  * To upgrade to a specific version, even an older version, run:  
+    `cf upgrade --version v<version-number>`  
+    where:  
+    `<version-number>` is the version you want to upgrade to in the format `x.x.xx`, for example, `v0.0.13`.
+  * To download the latest version to an output file, run:
+    `cf upgrade --version v<version-number> -o <output-file>`  
+    where:  
+    * `<version-number>` is the version you want to upgrade to in the format `x.x.xx`, for example, `v0.0.13`.  
+    * `<output-file>` is the path to the destination file, for example, `/cli-download`.
+  
 
 ### (Hybrid) Upgrade provisioned runtimes
 
@@ -113,8 +133,8 @@ If you have managed clusters for the hybrid runtime, upgrading the runtime autom
 **Before you begin**  
 For both silent or CLI-wizard based upgrades, make sure you have:  
 
-* The latest version of the Codefresh CLI  
-  Run `cf version` to see your version and [click here](https://github.com/codefresh-io/cli-v2/releases){:target="\_blank"} to compare with the latest CLI version.  
+* The [latest version of the Codefresh CLI](#upgrade-codefresh-cli)  
+  <!--Run `cf version` to see your version and [click here](https://github.com/codefresh-io/cli-v2/releases){:target="\_blank"} to compare with the latest CLI version. --> 
 * A valid Git token with [the required scopes]({{site.baseurl}}/docs/reference/git-tokens) 
 
 **Silent upgrade**  
@@ -178,9 +198,9 @@ For both silent or CLI-wizard based upgrades, make sure you have:
 
 
 
-<!---### (Hybrid) Migrate ingress-less runtimes
-To migrate an ingress-less runtime to an ingress-based one, you must uninstall the ingress-less runtime and then install a runtime with an ingress controller. 
-You can retain the installation repo used to install the ingress-less runtime. Though empty after uninstalling the ingress-less The new installation creates the new manifests in this re
+<!---### (Hybrid) Migrate runtimes
+To migrate a tunnel-based runtime to an ingress-based one or vice-versa, you must uninstall the existing runtime and then install a a new tunnel- or ingress-based runtime. 
+You can retain the installation repo used to install the current runtime. Though empty after uninstalling the ingress-less The new installation creates the new manifests in this re
 
 
 >Before uninstalling the ingress-less runtime, you can save specific patches in a temporary location or retrieve the same from the Git history, and re-apply them after installing the ingress-based runtime.
