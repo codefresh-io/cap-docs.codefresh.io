@@ -5,7 +5,7 @@ group: deployments
 sub_group: helm
 toc: true
 ---
-Apart from the [basic Helm board]({{site.baseurl}}/docs/deployments/helm/helm-releases-management) that shows your Kubernetes clusters at the application level, Codefresh also comes with a special environment board that allows you to track one or more applications as they move within your infrastructure (e.g., Dev, QA, Prod). 
+Apart from the [Helm Releases]({{site.baseurl}}/docs/deployments/helm/helm-releases-management) that shows your Kubernetes clusters at the application level, Codefresh also comes with a special environment board that allows you to track one or more applications as they move within your infrastructure (e.g., Dev, QA, Prod). 
 
 The environment board can function both as an overview of the whole lifecycle of the application as well as a tool to shift-left/right Helm releases between environments.
 
@@ -24,7 +24,7 @@ max-width="80%"
 This board has three environments that correspond to Kubernetes clusters:
  * A Load-testing environment where applications are stress-tested
  * A Staging environment where smoke tests are performed
- * The production environment where applications go live
+ * The Production environment where applications go live
 
 You can see that a Python example app at version 0.2.0 is already in production. Version 0.3.0 is awaiting in the staging environment for smoke tests. Once it is tested it can be dragged to the production column therefore *promoting* it to production status.
 
@@ -52,10 +52,12 @@ You can use different clusters for each column or different namespaces from the 
 
 Once you have your columns in place, you can move Helm releases between clusters/namespaces by drag-n-drop. Each Helm release can be dragged to any other column either promoting it (e.g., QA to Production) or shifting it left (e.g. prod to qa)
 
-## Creating Your Own Helm Board
+## Creating a custom Helm Board
 
-To create your own boards, select *Helm -> Boards* from the left sidebar. You can have as many boards as you want. Each board can deal with a single or multiple Helm applications.
+Create your own Helm board. You can create as many boards as you want. Each board can deal with a single or multiple Helm applications.
 
+1. In the Codefresh UI, from the DevOps Insights section in the sidebar, select [**Helm  Boards**](https://g.codefresh.io/helm/helm-kanban/){:target="\_blank"}. 
+ 
 {% include 
 image.html 
 lightbox="true" 
@@ -66,17 +68,15 @@ caption="Helm board selection"
 max-width="80%"
 %}
 
-To create a new board click the *Add board* button from the top right corner.
-There are two fields in the dialog that will appear
-
-* *board name* - the title of your board
-* *release name regex* - if present, this board will automatically filter all its environments to show only Helm releases that match this regular expression
-
-The second option is very helpful if you want your environment board to only focus on a single Helm application (or set of applications that match). For the most usual case leave it empty, so that you can see all Helm releases of your clusters.
+1. On the top-right, click **Add board**.
+1. Enter the title of your board as the **Board Name**.
+1. Optional. In the **Release name regex expression** field, enter the Regex expression for this board to filter all its environments to show only Helm releases that match this regular expression.  
+  Regex expressions are very helpful if you want your environment board to only focus on a single Helm application, or set of applications that match. 
+  To see all Helm releases of your clusters, leave empty.
 
 You can edit both options for an existing board if you change your mind later.
 
-### Defining Clusters/Namespaces for each Environment
+### Define Clusters/Namespaces for each Environment
 
 Once your Helm environment board is created, you are ready to define its columns. To add a column click the *Add environment* button on the top right corner. You will see the environment details dialog:
 
@@ -110,7 +110,7 @@ You don't have to define the environments in order. You can drag-n-drop columns 
 
 ### Installing Helm Releases on each Environment
 
-If you already have [pipelines that deploy Helm releases]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/), you should see your columns get populated automatically with information.
+If you already have [pipelines that deploy Helm releases]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/), your columns are populated automatically with information.
 
 For each Helm release you will get some basic details such as the chart version and the name of the release. You can expand a release by clicking on the arrow button to get additional information such as the docker images and the replicas of each pod that are contained in the release.
 
@@ -133,7 +133,7 @@ You will be able to select the target cluster and namespace as well as the chart
 
 A Helm environment board can be used by different stakeholders in order to get the detailed status of all defined environments. In that aspect it can act as a read-only tool that simply shows the results of Codefresh pipelines that deploy Helm applications.
 
-### Promoting Helm Releases with the GUI
+### Promoting Helm Releases with the UI
 
 You can also use the board as an action tool in order to promote/demote a Helm release between individual environments. To move a Helm release between environments just drag-n-drop it to a different column.
 
@@ -276,10 +276,8 @@ max-width="50%"
 
 The filters are especially helpful in Helm boards with large numbers of environments and/or releases.
 
-## What to read next
-
-* [Using Helm in a Codefresh pipeline]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/)
-* [Helm Charts and repositories]({{site.baseurl}}/docs/deployments/helm/add-helm-repository/)
-* [Codefresh Managed Helm Repositories]({{site.baseurl}}/docs/deployments/helm/managed-helm-repository/)
-* [Helm Dashboard]({{site.baseurl}}/docs/deployments/helm/helm-releases-management)
-* [Environment Dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/)
+## Related articles
+[Using Helm in a Codefresh pipeline]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/)  
+[Using external Helml repos in Codefresh pipelines]({{site.baseurl}}/docs/deployments/helm/helm-charts-and-repositories/#add-helm-repository)
+[Managing Helm releases]({{site.baseurl}}/docs/deployments/helm/helm-releases-management)  
+[Environment Dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/)  
