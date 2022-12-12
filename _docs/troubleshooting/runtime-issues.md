@@ -1,5 +1,5 @@
 ---
-title: "Runtimes"
+title: "GitOps runtime issues"
 description: ""
 group: troubleshooting
 toc: true
