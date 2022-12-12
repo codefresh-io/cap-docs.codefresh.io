@@ -113,7 +113,7 @@ Selecting **more details** for an image tag.
 | **5**             | The log information for the build image step in the relevant workflow. Select to view Logs panel. |
 
 ### Related articles
-[Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/)
+[Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/)  
 [Monitoring applications]({{site.baseurl}}/docs/deployment/applications-dashboard)  
 [Managing applications]({{site.baseurl}}/docs/deployment/manage-application)  
 [Home dashboard]({{site.baseurl}}/docs/integrations/home-dashboard)  
