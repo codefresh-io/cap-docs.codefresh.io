@@ -5,12 +5,7 @@ group: terms-and-privacy-policy
 toc: true
 ---
 
-This Service Level Agreement (“**SLA**”) sets forth the terms and conditions under which Codefresh will provide service levels to Licensee and Users pursuant to the applicable Terms of Service in effect between Codefresh and Licensee and/or Users (the “**Terms**”).  
-
-{::nomarkdown}
-<a href="#sla_response_times">SLA Response Times</a>
-</br></br>
-{:/}
+This Service Level Agreement (“**SLA**”) sets forth the terms and conditions under which Codefresh will provide service levels to Licensee and Users pursuant to the applicable Terms of Service in effect between Codefresh and Licensee and/or Users (the “**Terms**”).
 
 **1. DEFINITIONS**. The following definitions will apply to this SLA. All capitalized terms not defined in
 this SLA will have the meaning given them in the Terms.  
@@ -53,10 +48,7 @@ Percentage”).
 Issues with the Codefresh Platform are classified based on severity of the issues and the required resources needed to resolve them. Codefresh will designate the severity and impact of the reported
 issue as defined below and will use commercially reasonable efforts to respond and commence working on the applicable issue in accordance with the time periods below.
 
-{::nomarkdown}
-<a id="sla_response_times"><b>3.1. SLA Response Times</b></a>.
-</br></br>
-{:/}
+**3.1. SLA Response Times**.
 
 | Priority         | Silver*                    | Gold*            | Platinum** |
 | -------------- | ---------------------------- | -----------------| -----------------| 

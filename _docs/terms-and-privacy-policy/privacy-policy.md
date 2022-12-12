@@ -2,6 +2,8 @@
 title: "Privacy Policy"
 description: ""
 group: terms-and-privacy-policy
+redirect_from:
+  - /docs/privacy-policy/
 toc: true
 ---
 **CODEFRESH PRIVACY POLICY (&quot;PRIVACY POLICY&quot;)**
@@ -53,4 +55,3 @@ You may exercise the above rights by sending a request to [privacy@codefresh.io]
 **12. Questions**.If you have any questions about this Privacy Policy or concerns about the way we process your PII, please contact us at [privacy@codefresh.io](mailto:privacy@codefresh.io). If you wish to delete all information regarding your use of the Solution, please contact us at: [ ](mailto:support@codefresh.io)[privacy @codefresh.io](mailto:support@codefresh.io).
 
 Last Date Updated: June 3, 2019
-
