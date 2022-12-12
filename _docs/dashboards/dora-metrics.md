@@ -35,7 +35,7 @@ max-width="100%"
 
 ## Filters
 
-Use filters to define the exact subset of applications you are interested in. All filters support auto-complete and multi-select. 
+Use filters to define the exact subset of applications you are interested in. All filters support auto-complete and multiselect. 
 More than one option within the same filter type has an OR relationship. More than one filter type when defined share an AND relationship. 
 
 * Runtimes: Show metrics for applications from selected runtimes 
@@ -46,7 +46,7 @@ More than one option within the same filter type has an OR relationship. More th
 > When no filters are defined, all metrics are shown for the last 90 days. 
 
 ## Metrics for favorite applications
-If you have [starred applications as favorites]({{site.baseurl}}/docs/deployment/applications-dashboard/#applications-dashboard-information) in the Applications dashboard, clicking {::nomarkdown}<img src="../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/} in DORA metrics, displays metrics only for those applications.    
+If you have [starred applications as favorites]({{site.baseurl}}/docs/deployment/applications-dashboard/#applications-dashboard-information) in the Applications dashboard, clicking {::nomarkdown}<img src="../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/} in DORA metrics, displays DORA metrics only for those applications.    
 
 
 ## Metric totals
@@ -58,7 +58,7 @@ As the title indicates, the Totals bar shows the total numbers, based on the fil
 * Failure Rate: The number of failed deployments divided by the total number of deployments
 
 ## Metric graphs
-The metric graphs show performance for the DORA metrics, again based on the filters defined, or for the last 90 days, if there are no filters. 
+The metric graphs are key to performance insights with DORA metrics. The metrics are again based on the filters defined, or for the last 90 days if there are no filters. 
 
 In addition, you can select the granularity for each graph:
 
@@ -66,19 +66,25 @@ In addition, you can select the granularity for each graph:
 * Weekly
 * Monthly
 
-
+>Tip:  
+  Remember that the graphs for the DORA metrics reflect metrics of application deployments, not workflows. 
 
 **Deployment Frequency**  
-  The frequency of deployments of any kind, successful or failed. Deployment is considered an Argo CD sync where there was a change. The X-axis charts the time based on the granularity, and the Y-axis charts the number of deployments. The number shown on the top right is the average deployment frequency based on granularity.  
-
-**Change failure rate**  
-  The failure or rollback rate in percentage for deployments. Derived by dividing the failed/rollback deployments by the total number of deployments. Failed deployments are those Argo CD deployments that lead to a sync state of Degraded. The X-axis charts the time based on the granularity, and the Y-axis charts the failure rate. The number shown on the top right is the average failure rate based on granularity, and therefore may not be equal to the Total Failure Rate.  
+  The frequency at which applications are deployed to production, including both successful (Healthy) and failed (Degraded), deployments. A deployment is considered an Argo CD sync where there was a change in the application source code that resulted in a new deployment of the application to production.  
+  The X-axis charts the time based on the granularity selected, and the Y-axis charts the number of deployments. The number shown on the top right is the average deployment frequency based on granularity.  
 
 **Lead Time for Changes**  
-  The average number of days from the first commit for a pull request until the deployment date for the same pull request. The X-axis charts the time based on the granularity, and the Y-axis charts the time in minutes until the deployment. The number shown on the top right is the average number of days for a commit to reach production.  
+  The average number of days from the first commit for a PR (pull request) until the deployment date for the same PR. Only those changes to workflows that result in a deployment are included when calculating Lead Time for Changes. Making a change to a repo may not necessarily be considered as a change if it does not result in a deployment, and is therefore not included when calculating Lead Time for Changes. 
+   The X-axis charts the time based on the granularity selected, and the Y-axis charts the time in minutes until the deployment. The number shown on the top right is the average number of days for a commit to reach production.  
+
+**Change Failure Rate**  
+  The failure or rollback rate in percentage for applications whose health status changed to Degraded on deployment. For example, bumping an image tag with one that doesn't exist, results in the application being Degraded on deployment, and is designated as a failure.   The Change Failure Rate is derived by dividing the number of Degraded (failed/rollback) deployments with the total number of deployments. 
+  The X-axis charts the time based on the granularity selected, and the Y-axis charts the failure rate. The number shown on the top right is the average failure rate based on granularity, and therefore may not be equal to the Total Failure Rate.  
 
 **Time to Restore Service**  
-  The average number of hours taken for the status to return to Healthy after changing to Degraded or Unhealthy. The X-axis charts the time based on the granularity, and the Y-axis charts the time in hours. The number shown on the top right is the average number of hours between the previous deployment and rollback for the same application.
+  The average number of hours taken for the status of Degraded deployments to return to Healthy. Again, similar to the Change Failure Rate, Time to Restore Service includes only Degraded deployments. It is derived by dividing the total number of hours for all Degraded
+  deployments that turned 
+  The X-axis charts the time based on the granularity, and the Y-axis charts the time in hours. The number shown on the top right is the average number of hours between the previous deployment and rollback for the same application.
 
 ## Related articles    
 [Global analytics dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard)  
