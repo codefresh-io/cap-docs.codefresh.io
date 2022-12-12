@@ -1,7 +1,8 @@
 ---
 title: "Creating and uploading Helm packages"
 description: "Create and upload Helm packages manually"
-group: new-helm
+group: deployments
+sub_group: helm
 redirect_from:
   - /docs/create-helm-artifacts-using-codefresh-pipeline/
 toc: true

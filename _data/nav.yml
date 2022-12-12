@@ -78,19 +78,46 @@
       url: "/nested-workflows"
     
 
-- title: Deployment
+- title: Deployments
   url: "/deployment"
   pages:
-    - title: Creating applications
-      url: "/create-application"
-    - title: Monitoring applications
-      url: "/applications-dashboard"
-    - title: Managing applications
-      url: "/manage-application"
-    - title: Images in Codefresh
-      url: "/images"
-    - title: Install Argo Rollouts
-      url: "/install-argo-rollouts"  
+    - title: Kubernetes deployments
+      url: "/kubernetes"
+      sub-pages:
+        - title: Deployment options for Kubernetes
+          url: "/deployment-options-to-kubernetes"
+        - title: Managing a Kubernetes cluster
+          url: "/add-kubernetes-cluster" 
+        - title: Running custom kubectl commands
+          url: "/custom-kubectl-commands" 
+    - title: Helm deployments
+      url: "/helm"
+      sub-pages:
+        - title: Using Helm in Codefresh pipelines
+          url: "/using-helm-in-codefresh-pipeline"
+        - title: Using external Helml repos in Codefresh pipelines
+          url: "/helm-charts-and-repositories"
+        - title: Using the Codefresh-managed Helm repository
+          url: "/managed-helm-repository"
+        - title: Creating and uploading Helm packages
+          url: "/custom-helm-uploads" 
+        - title: Managing Helm releases
+          url: "/helm-releases-management"  
+        - title: Promoting Helm environments
+          url: "/helm-environment-promotion"
+    - title: GitOps deployments
+      url: "/gitops"
+      sub-pages:
+        - title: Creating GitOps applications
+          url: "/create-application"
+        - title: Monitoring GitOps applications
+          url: "/applications-dashboard"
+        - title: Managing GitOps applications
+          url: "/manage-application"
+        - title: Images in GitOps
+          url: "/images"
+        - title: Progressive delivery with GitOps
+          url: "/install-argo-rollouts"  
 
 - title: Reports & Insights
   url: "/reporting"

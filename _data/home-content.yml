@@ -60,20 +60,27 @@
       localurl: /docs/pipelines/sharing-file-system/  
        
 
-- title: Deployment
+- title: Deployments
   icon: images/home-icons/deployment.svg
   url: ''
   links:
-    - title: Creating applications
+    - title: Deployment options for Kubernetes
+      localurl: /docs/deployments/kubernetes/deployment-options-to-kubernetes/
+    - title: Managing Kubernetes clusters
+      localurl: /docs/deployments/kubernetes/manage-kubernetes/
+    - title: Using Helm in Codefresh pipelines
+      localurl: /docs/deployments/helm/using-helm-in-codefresh-pipeline/
+    - title: Managing Helm releases
+      localurl: /docs/deployments/helm/helm-releases-management/
+    - title: Promoting Helm environments
+      localurl: /docs/deployments/helm/helm-environment-promotion/
+    - title: Creating GitOps applications
       localurl: /docs/deployment/create-application/
     - title: Monitoring applications
       localurl: /docs/deployment/applications-dashboard/
     - title: Managing applications
       localurl: /docs/deployment/manage-application/
-    - title: Images in Codefresh
-      localurl: /docs/deployment/images/ 
-    - title: Install Argo Rollouts
-      localurl: /docs/deployment/install-argo-rollouts/ 
+
 
 
 - title: Reports & Insights

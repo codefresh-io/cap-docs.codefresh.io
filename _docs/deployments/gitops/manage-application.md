@@ -1,7 +1,8 @@
 ---
-title: "Managing applications"
+title: "Managing GitOps applications"
 description: ""
-group: deployment
+group: deployments
+sub_group: gitops
 toc: true
 ---
 
@@ -49,8 +50,8 @@ Update General or Advanced configuration settings for a deployed application thr
 
 {:start="3"}
 1. Update the **General** or **Advanced** configuration settings as needed:  
-  [General configuration]({{site.baseurl}}/docs/deployment/create-application/#application-general-configuration-settings)  
-  [Advanced configuration]({{site.baseurl}}/docs/deployment/create-application/#application-advanced-configuration-settings)  
+  [General configuration]({{site.baseurl}}/docs/deployments/gitops/create-application/#application-general-configuration-settings)  
+  [Advanced configuration]({{site.baseurl}}/docs/deployments/gitops/create-application/#application-advanced-configuration-settings)  
   When you change a setting, the Commit and Discard Changes buttons are displayed.
 
   {% include 
@@ -218,7 +219,7 @@ For example, if you made changes to `api` resources or `audit` resources, type `
 Delete an application from Codefresh. Deleting an application deletes the manifest from the Git repository, and then from the cluster where it is deployed. When deleted from the cluster, the application is removed from the Applications dashboard in Codefresh.
  
 >**Prune resources** in the application's General settings determines the scope of the delete action.  
-When selected, both the application and its resources are deleted. When cleared, only the application is deleted. For more information, review [Sync settings]({{site.baseurl}}/docs/deployment/create-application/#sync-settings).  
+When selected, both the application and its resources are deleted. When cleared, only the application is deleted. For more information, review [Sync settings]({{site.baseurl}}/docs/deployments/gitops/create-application/#sync-settings).  
 Codefresh warns you of the implication of deleting the selected application in the Delete form. 
 
 1. In the Codefresh UI, go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
@@ -351,10 +352,9 @@ The table describes the options for the `Rollout` resource.
 
 
 ### Related articles
-[Creating applications]({{site.baseurl}}/docs/deployment/create-application)  
+[Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application)  
 [Home dashboard]({{site.baseurl}}/docs/reporting/home-dashboard)  
-[DORA metrics]({{site.baseurl}}/docs/reporting/dora-metrics)
-
+[DORA metrics]({{site.baseurl}}/docs/reporting/dora-metrics)  
 
 
 

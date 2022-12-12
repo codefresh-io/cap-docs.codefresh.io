@@ -1,7 +1,8 @@
 ---
 title: "Images in Codefresh"
 description: ""
-group: deployment
+group: deployments
+sub_group: gitops
 toc: true
 ---
 
@@ -18,7 +19,7 @@ Complete the mandatory steps to see your Images in the Codefresh UI. Each step h
 1. (Mandatory) Report image information to Codefresh.  
   See the [report-image-info](https://github.com/codefresh-io/argo-hub/blob/main/workflows/codefresh-csdp/versions/0.0.6/docs/report-image-info.md){:target="\_blank"} example.
   
-> If you are using an external GitHub Actions-based pipeline, we have a new template that combines image reporting and enrichment. See [Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/).
+> If you are using an external GitHub Actions-based pipeline, we have a new template that combines image reporting and enrichment. See [Image enrichment with integrations]({{site.baseurl}}/docs/integrations/gitops/image-enrichment-overview/).
 
 ### Image views in Codefresh 
 * In the Codefresh UI, go to [Images](https://g.codefresh.io/2.0/images){:target="\_blank"}.
@@ -111,3 +112,9 @@ Selecting **more details** for an image tag.
 | **3**            | The Git details for this image tag, such as the Git hash, the Jira issue number, Git Pull Request, commit information, the name of the user who performed the commit. |       
 | **4**            | The workflow for the image step. Select to go to the Workflow.| 
 | **5**             | The log information for the build image step in the relevant workflow. Select to view Logs panel. |
+
+## Related articles
+[Creating GitOps applications]({{site.baseurl}})/docs/deployments/gitops/create-application)  
+[Managing GitOps applications]({{site.baseurl}})/docs/deployments/gitops/manage-applications)  
+[Image enrichment with integrations]({{site.baseurl}}/integrations/image-enrichment-overview)  
+[Home dashboard]({{site.baseurl}}/docs/reporting/home-dashboard)  

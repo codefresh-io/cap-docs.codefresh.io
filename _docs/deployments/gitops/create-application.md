@@ -1,7 +1,8 @@
 ---
-title: "Creating applications"
+title: "Creating GitOps applications"
 description: ""
-group: deployment
+group: deployments
+sub_group: gitops
 toc: true
 ---
 
@@ -19,7 +20,7 @@ Codefresh provides all the options and functionality to create and manage Argo C
 
 * Edit and delete applications
   Once the application is created and synced to the cluster, it is displayed in the Applications dashboard. Here, you can select an application to update the application's configuration settings, or delete it.  
-  To monitor the health and sync status, deployments, and resources for the application, see [Monitoring applications]({{site.baseurl}}/docs/deployment/applications-dashboard/).  
+  To monitor the health and sync status, deployments, and resources for the application, see [Monitoring GitOps applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/).  
 
 ### Application: Definitions
 Application definitions include the name, runtime, and the name of the YAML manifest. By default, the YAML manifest has the same name as that of the application. 
@@ -225,7 +226,7 @@ Track the application in the [Applications dashboard](https://g.codefresh.io/2.0
 
 
 ### Related articles
-[Monitoring applications]({{site.baseurl}})/docs/deployment/applications-dashboard)  
-[Managing applications]({{site.baseurl}})/docs/deployment/manage-applications)  
-[Home dashboard]({{site.baseurl}})docs/reporting/home-dashboard)
-[DORA metrics]({{site.baseurl}}/docs/reporting/dora-metrics/)
+[Monitoring GitOps applications]({{site.baseurl}})/docs/deployments/gitops/applications-dashboard)  
+[Managing GitOps applications]({{site.baseurl}})/docs/deployments/gitops/manage-applications)  
+[Home dashboard]({{site.baseurl}}/docs/reporting/home-dashboard)  
+[DORA metrics]({{site.baseurl}}/docs/reporting/dora-metrics/)  

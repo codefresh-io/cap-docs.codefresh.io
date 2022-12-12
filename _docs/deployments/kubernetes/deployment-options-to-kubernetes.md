@@ -1,7 +1,8 @@
 ---
-title: "Deployment Options for Kubernetes"
-description: "Learn how to deploy to Kubernetes with the declarative deploy step"
-group: deploy-to-kubernetes
+title: "Deployment options for Kubernetes"
+description: "Deploy to Kubernetes with the declarative deploy step"
+group: deployments
+sub_group: kubernetes
 redirect_from:
   - /docs/deploy-to-kubernetes/
   - /docs/deployment-to-kubernetes-quick-start-guide/

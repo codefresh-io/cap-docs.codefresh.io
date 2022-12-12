@@ -1,14 +1,15 @@
 ---
 title: "Manage your Kubernetes cluster"
-description: "Using the graphical Kubernetes Dashboard in Codefresh"
-group: deploy-to-kubernetes
+description: "Use the graphical Kubernetes dashboard in Codefresh"
+group: deployments
+sub_group: kubernetes
 redirect_from:
   - /docs/deploy-to-kubernetes/codefresh-kubernetes-integration-beta/
   - /docs/codefresh-kubernetes-integration-beta/
 toc: true
 ---
 
-Codefresh includes a built-in Kubernetes Dashboard that allows you to see the state of your cluster(s) and even make changes if you have the appropriate access privileges.
+Codefresh includes a built-in Kubernetes Dashboard that allows you to see the state of your clusters, and even make changes if you have the appropriate access privileges.
 
 ## Accessing the Kubernetes Dashboard
 
@@ -95,6 +96,7 @@ caption="Deploying from the private Codefresh registry"
 max-width="60%" 
 %}
 
+<!-- change the xref when content is ported -->
 From this screen you can also [create Kubernetes image secrets]({{site.baseurl}}/docs/deploy-to-kubernetes/access-docker-registry-from-kubernetes/) without actually deploying anything.
 
 
@@ -153,16 +155,15 @@ After your service is deployed to your Kubernetes cluster, you can automate imag
 
 Some of the possible options are:
 
-1. The dedicated [deploy step]({{site.baseurl}}/docs/codefresh-yaml/steps/deploy/) in a pipeline. 
-1. The [cf-deploy-kubernetes step]({{site.baseurl}}/docs/deploy-to-kubernetes/kubernetes-templating/) in a pipeline. This can also perform simple templating on Kubernetes manifests.
+1. The dedicated [deploy step]({{site.baseurl}}/docs/pipelines/steps/deploy/) in a pipeline. 
+1. The [cf-deploy-kubernetes step]({{site.baseurl}}/docs/deployments/kubernetes/kubernetes-templating/) in a pipeline. This can also perform simple templating on Kubernetes manifests.
 
-See more choices in the [Deployment options page]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/).
+See more choices in the [Deployment options page]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes/).
+<!-- will need to change xrefs after porting content -->
+## Related articles
+[Environment dashboard]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/)
+[Add Config Maps]({{site.baseurl}}/docs/deployments/kubernetes/add-config-maps-to-your-namespaces/)  
+[Kubernetes deployment quick start]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)  
 
-## What to read next
-
-- [Environment dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/)
-- [Add Config Maps]({{site.baseurl}}/docs/deploy-to-kubernetes/add-config-maps-to-your-namespaces/)
-- [Manage your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/)
-- [Deploy to Kubernetes - quick start]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/)
 
 
