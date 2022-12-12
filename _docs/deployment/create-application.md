@@ -225,7 +225,7 @@ Track the application in the [Applications dashboard](https://g.codefresh.io/2.0
 
 
 ### Related articles
-[Monitoring applications]({{site.baseurl}})/docs/deployment/applications-dashboard)  
-[Managing applications]({{site.baseurl}})/docs/deployment/manage-applications)  
-[Home dashboard]({{site.baseurl}})docs/reporting/home-dashboard)
+[Monitoring applications]({{site.baseurl}}/docs/deployment/applications-dashboard)  
+[Managing applications]({{site.baseurl}}/docs/deployment/manage-application)  
+[Home dashboard]({{site.baseurl}}/docs/reporting/home-dashboard)  
 [DORA metrics]({{site.baseurl}}/docs/reporting/dora-metrics/)
