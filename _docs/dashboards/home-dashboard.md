@@ -1,7 +1,7 @@
 ---
-title: "Home dashboard"
+title: "Global analytics dashboard"
 description: ""
-group: reporting
+group: dashboards
 toc: true
 ---
 
@@ -135,8 +135,8 @@ Analytics are derived by comparing the selected date range to the corresponding 
 |**Longest Delivery Pipelines**      | Up to ten pipelines with the longest duration. The same KPIs are displayed, and compared to those in the reference period.  |
 
 ### Related articles
-[DORA metrics]({{site.baseurl}}/docs/reporting/dora-metrics/)  
-[Monitoring applications]({{site.baseurl}}/docs/deployment/applications-dashboard/)  
-[Images in Codefresh]({{site.baseurl}}/docs/deployment/images/)  
+[DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  
+[Monitoring applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)  
+[Images in Codefresh]({{site.baseurl}}/docs/deployments/gitops/images/)  
 
 

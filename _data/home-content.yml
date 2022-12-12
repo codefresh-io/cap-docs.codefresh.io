@@ -76,14 +76,14 @@
       localurl: /docs/deployment/install-argo-rollouts/ 
 
 
-- title: Reports & Insights
+- title: Dashboards & insights
   icon: images/home-icons/guides.png
   url: ''
   links:
     - title: Home dashboard
-      localurl: /docs/reporting/home-dashboard/
+      localurl: /docs/dashboards/home-dashboard/
     - title: DORA metrics
-      localurl: /docs/reporting/dora-metrics/
+      localurl: /docs/dashboards/dora-metrics/
     
 
 - title: Image enrichment

@@ -1,7 +1,7 @@
 ---
 title: "DORA metrics"
 description: "Get insights into your deployments"
-group: reporting
+group: dashboards
 toc: true
 ---
 
@@ -16,9 +16,9 @@ DORA measures these metrics:
 
 [Read more on DORA](https://cloud.google.com/blog/products/devops-sre/using-the-four-keys-to-measure-your-devops-performance){:target="\_blank"}. 
 
-### DORA metrics in Codefresh
+## DORA metrics in Codefresh
 
-Monitoring DORA metrics can help identify delivery issues in your organization by detecting bottlenecks among teams, and help to optimize your workflows, at technical or organizational levels.  
+Monitoring DORA metrics can help identify delivery issues in your organization by detecting bottlenecks among teams and optimize your workflows at technical or organizational levels.  
 Codefresh offers support for DORA metrics out of the box.  
 
 * In the Codefresh UI, go to [DORA metrics](https://g.codefresh.io/2.0/dora-dashboard/dora){:target="\_blank"}. 
@@ -33,7 +33,7 @@ caption="DORA metrics report"
 max-width="100%"
 %}
 
-### Filters
+## Filters
 
 Use filters to define the exact subset of applications you are interested in. All filters support auto-complete and multi-select. 
 More than one option within the same filter type has an OR relationship. More than one filter type when defined share an AND relationship. 
@@ -45,11 +45,11 @@ More than one option within the same filter type has an OR relationship. More th
 
 > When no filters are defined, all metrics are shown for the last 90 days. 
 
-### Metrics for favorite applications
+## Metrics for favorite applications
 If you have [starred applications as favorites]({{site.baseurl}}/docs/deployment/applications-dashboard/#applications-dashboard-information) in the Applications dashboard, clicking {::nomarkdown}<img src="../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/} in DORA metrics, displays metrics only for those applications.    
 
 
-### Metric totals
+## Metric totals
 As the title indicates, the Totals bar shows the total numbers, based on the filters defined, or for the last 90 days, if there are no filters:
 
 * Deployments
@@ -57,7 +57,7 @@ As the title indicates, the Totals bar shows the total numbers, based on the fil
 * Commits/Pull Requests
 * Failure Rate: The number of failed deployments divided by the total number of deployments
 
-### Metric graphs
+## Metric graphs
 The metric graphs show performance for the DORA metrics, again based on the filters defined, or for the last 90 days, if there are no filters. 
 
 In addition, you can select the granularity for each graph:
@@ -80,7 +80,7 @@ In addition, you can select the granularity for each graph:
 **Time to Restore Service**  
   The average number of hours taken for the status to return to Healthy after changing to Degraded or Unhealthy. The X-axis charts the time based on the granularity, and the Y-axis charts the time in hours. The number shown on the top right is the average number of hours between the previous deployment and rollback for the same application.
 
-## What to read next  
-[Codefresh architecture]({{site.baseurl}}/docs/getting-started/architecture/)  
-[Monitoring applications]({{site.baseurl}}/docs/deployment/applications-dashboard/)
+## Related articles    
+[Global analytics dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard)  
+[Monitoring applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)  
 

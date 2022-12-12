@@ -92,8 +92,8 @@
     - title: Install Argo Rollouts
       url: "/install-argo-rollouts"  
 
-- title: Reports & Insights
-  url: "/reporting"
+- title: Dashboards & Insights
+  url: "/dashboards"
   pages:
     - title: Home dashboard
       url: "/home-dashboard"
