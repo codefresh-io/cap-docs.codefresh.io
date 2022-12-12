@@ -111,3 +111,10 @@ Selecting **more details** for an image tag.
 | **3**            | The Git details for this image tag, such as the Git hash, the Jira issue number, Git Pull Request, commit information, the name of the user who performed the commit. |       
 | **4**            | The workflow for the image step. Select to go to the Workflow.| 
 | **5**             | The log information for the build image step in the relevant workflow. Select to view Logs panel. |
+
+### Related articles
+[Image enrichment with integrations]({{site.baseurl}}/docs/integrations/image-enrichment-overview/)
+[Monitoring applications]({{site.baseurl}}/docs/deployment/applications-dashboard)  
+[Managing applications]({{site.baseurl}}/docs/deployment/manage-application)  
+[Home dashboard]({{site.baseurl}}/docs/integrations/home-dashboard)  
+

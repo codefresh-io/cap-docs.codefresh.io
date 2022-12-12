@@ -765,6 +765,10 @@ caption="Applications Dashboard: Services tab"
 max-width="50%"
 %}
 
-
+### Related articles
+[Creating applications]({{site.baseurl}}/docs/deployment/create-application)  
+[Managing applications]({{site.baseurl}}/docs/deployment/manage-application)  
+[Home dashboard]({{site.baseurl}}/docs/reporting/home-dashboard)  
+[DORA metrics]({{site.baseurl}}/docs/reporting/dora-metrics/)
 
 
