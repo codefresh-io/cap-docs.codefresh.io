@@ -92,6 +92,24 @@
     - title: Install Argo Rollouts
       url: "/install-argo-rollouts"  
 
+- title: Testing
+  url: "/testing"
+  pages:
+    - title: Unit testing
+      url: "/unit-tests"
+    - title: Integration testing
+      url: "/integration-tests"
+    - title: Creating test reports"
+      url: "/test-reports"
+    - title: Creating compositions
+      url: "/create-composition"
+    - title: Dynamic preview environments
+      url: "/automatic-preview-environments"
+    - title: Security scanning
+      url: "/security-scanning"
+    - title: SonarQube scanning
+      url: "/sonarqube-integration"
+
 - title: Reports & Insights
   url: "/reporting"
   pages:

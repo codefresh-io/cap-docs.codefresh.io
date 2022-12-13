@@ -8,7 +8,7 @@ The site is automatically deployed when commits are merged/pushed in `master`, h
 
 ### Preview documentation locally with Docker (Recommended)
 
-1. Install [docker-compose](https://docs.docker.com/compose/)
+1. Install [Docker Compose](https://docs.docker.com/compose/)
 2. Run `docker-compose up`
 3. Open `http://localhost:3131` in your browser, and voila!
 
