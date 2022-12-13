@@ -1,12 +1,12 @@
 ---
-title: "Production and Staging deployments"
-description: "Learn how to deploy to different environments from Codefresh pipelines"
+title: "Production and staging deployments"
+description: "Deploy to different environments from Codefresh pipelines"
 group: ci-cd-guides
 toc: true
 ---
 
-With Codefresh you can deploy a single application to multiple environments (e.g. qa/staging/prod) and manage all of them with a single or multiple pipelines.
-In this guide we will see how an example application can be deployed with different configurations and various workflows for handling environment deployment.
+With Codefresh, you can deploy a single application to multiple environments (e.g. qa/staging/prod), and manage all of them with a single or multiple pipelines.
+This guide describes how an example application can be deployed with different configurations and various workflows for handling environment deployment.
 
 {% include image.html 
 lightbox="true" 
@@ -19,17 +19,17 @@ max-width="80%"
 
 ## Prerequisites
 
-Before starting you will need to: 
-
- 1. [create a Codefresh account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/)
+Before starting, you will need to: 
+<!--- xrefs -->
+ 1. [Create a Codefresh account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/)
  1. Get access to a Kubernetes cluster on any cloud provider
- 1. [connect the Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/) to your account
- 1. install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) and [helm](https://helm.sh/docs/intro/install/) and point them to your cluster
- 1. have [Docker](https://docs.docker.com/get-docker/) installed locally (optional)
+ 1. [Connect the Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/) to your account
+ 1. Install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/){:target="\_blank"} and [helm](https://helm.sh/docs/intro/install/):target="\_blank"} and point them to your cluster
+ 1. Have [Docker](https://docs.docker.com/get-docker/){:target="\_blank"} installed locally (optional)
 
 ## The example application
 
-As a running example we will use a simple application with a Helm chart. [Helm is the package manager]({{site.baseurl}}/docs/new-helm/helm-best-practices/) for Kubernetes and has built-in support for passing different
+As a running example, we will use a simple application with a Helm chart. [Helm is the package manager]({{site.baseurl}}/docs/deployments/helm/helm-best-practices/) for Kubernetes and has built-in support for passing different
 configuration settings for each environment.
 
 You can find the example Helm application at [https://github.com/codefresh-contrib/helm-promotion-sample-app](https://github.com/codefresh-contrib/helm-promotion-sample-app). If you want to follow along feel free to fork it on your own account.
