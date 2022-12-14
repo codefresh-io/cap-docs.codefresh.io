@@ -103,7 +103,7 @@ Here is a description of the information in the Topology view.
 ### Reset shared configuration repository
 Codefresh creates the [shared configuration repository]({{site.baseurl}}/docs/reference/shared-configuration) when you install first hybrid or hosted GitOps runtime for your account, and uses it for all runtimes you add to the same account.
 
-If needed, you can reset the location of the shared configuration repository in your account to re-initialize it for a different runtime environment. For example, when moving from evaluation to production.  
+If needed, you can reset the location of the shared configuration repository in your account and re-initialize it. For example, when moving from evaluation to production.  
 Uninstall all the existing runtimes in your account, and then run the reset command. On the next installation, Codefresh re-initializes the shared configuration repo.
  
 
