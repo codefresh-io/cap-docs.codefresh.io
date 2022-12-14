@@ -101,7 +101,7 @@ Here is a description of the information in the Topology view.
 |**Search and View options** | {::nomarkdown}<ul><li>Find a runtime or its clusters by typing part of the runtime/cluster name, and then navigate to the entries found. </li> <li>Topology view options: Resize to window, zoom in, zoom out, full screen view.</li></ul> {:/}|
 
 ### Reset shared configuration repository
-Codefresh creates the [shared configuration repository]({{site.baseurl}}/docs/reference/shared-configuration) when you install first hybrid or hosted GitOps runtime for your account, and uses it for all runtimes you add to the same account.
+Codefresh creates the [shared configuration repository]({{site.baseurl}}/docs/reference/shared-configuration) when you install the first hybrid or hosted GitOps runtime for your account, and uses it for all runtimes you add to the same account.
 
 If needed, you can reset the location of the shared configuration repository in your account and re-initialize it. For example, when moving from evaluation to production.  
 Uninstall all the existing runtimes in your account, and then run the reset command. On the next installation, Codefresh re-initializes the shared configuration repo.
