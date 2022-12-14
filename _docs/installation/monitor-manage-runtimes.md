@@ -33,7 +33,8 @@ Monitor provisioned GitOps Runtimes for security, health, and sync errors:
 
 Manage provisioned GitOps Runtimes: 
 * [Add managed clusters to GitOps Runtimes]({{site.baseurl}}/docs/installation/managed-cluster/)
-* [Add and manage Git Sources for GitOps Runtimes]({{site.baseurl}}/docs/installation/git-sources/))
+* [Add and manage Git Sources for GitOps Runtimes]({{site.baseurl}}/docs/installation/git-sources/)
+* 
 * Upgrade GitOps CLI
 * Upgrade Hybrid GitOps Runtimes
 * Uninstall GitOps Runtimes
@@ -104,11 +105,24 @@ Here is a description of the information in the Topology view.
 |**Search and View options** | {::nomarkdown}<ul><li>Find a Runtime or its clusters by typing part of the Runtime/cluster name, and then navigate to the entries found. </li> <li>Topology view options: Resize to window, zoom in, zoom out, full screen view.</li></ul> {:/}|
 
 ## Managing provisioned GitOps Runtimes
+* [Reset shared configuration repository for GitOps Runtimes](#reset-shared-configuration-repository-for-gitpps-runtimes)
 * [(Hybrid GitOps) Upgrade GitOps CLI](#hybrid-gitops-upgrade-gitops-cli)
 * [(Hybrid GitOps) Upgrade provisioned Runtimes](#hybrid-gitops-upgrade-provisioned-runtimes)
-* [Uninstall provisioned Runtimes](#uninstall-provisioned-runtimes)
+* [Uninstall provisioned GitOps Runtimes](#uninstall-provisioned-gitops-runtimes)
 * [Update Git tokens for Runtimes](#update-git-tokens-for-runtimes)
 
+### Reset shared configuration repository for GitOps Runtimes
+Codefresh creates the [shared configuration repository]({{site.baseurl}}/docs/reference/shared-configuration) when you install the first hybrid or hosted GitOps runtime for your account, and uses it for all runtimes you add to the same account.
+
+If needed, you can reset the location of the shared configuration repository in your account and re-initialize it. For example, when moving from evaluation to production.  
+Uninstall all the existing runtimes in your account, and then run the reset command. On the next installation, Codefresh re-initializes the shared configuration repo.
+
+**Before you begin**   
+[Uninstall every runtime in the account](#uninstall-provisioned-gitops-runtimes)
+
+**How to**  
+* Run:  
+  `cf config --reset-shared-config-repo`
 
 ### (Hybrid GitOps) Upgrade GitOps CLI
 Upgrade the CLI to the latest version to prevent Runtime installation errors.
@@ -222,9 +236,9 @@ You can retain the installation repo used to install the ingress-less runtime. T
 2. Install the new ingress-based runtime, as described in [Install hybrid runtimes]({{site.baseurl}}/docs/runtime/installation/).
 
 --->
-### Uninstall provisioned Runtimes
+### Uninstall provisioned GitOps Runtimes
 
-Uninstall provisioned GitOps Runtimes that are not in use.  Uninstall a Runtime by running a silent uninstall, or through the CLI wizard.  
+Uninstall provisioned GitOps Runtimes that are not in use.  Uninstall a Runtime through a silent uninstall or through the CLI wizard.  
 > Uninstalling a Runtime removes the Git Sources and managed clusters associated with it.
 
 **Before you begin**  
@@ -622,8 +636,8 @@ Here is an example of health errors for a Runtime.
 
 
 ### Related articles
-[Add Git Sources to runtimes]({{site.baseurl}}/docs/installation/git-sources/)  
-[Add external clusters to Hybrid and Hosted Runtimes]({{site.baseurl}}/docs/installation/managed-cluster/)  
-[Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration)  
+[Add Git Sources to GitOps Runtimes]({{site.baseurl}}/docs/installation/git-sources/)  
+[Add external clusters to GitOps Runtimes]({{site.baseurl}}/docs/installation/managed-cluster/)  
+[Shared configuration repo for GitOps Runtimes]({{site.baseurl}}/docs/reference/shared-configuration)  
 
 
