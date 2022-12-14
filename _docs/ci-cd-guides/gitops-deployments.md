@@ -1,6 +1,6 @@
 ---
-title: "GitOps Deployments"
-description: "Learn how to deploy with Codefresh and ArgoCD"
+title: "GitOps deployments"
+description: "Deploy with Codefresh and ArgoCD"
 group: ci-cd-guides
 toc: true
 ---
