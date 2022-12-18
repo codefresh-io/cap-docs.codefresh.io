@@ -1,5 +1,6 @@
 
 
+
 - title: Clients
   url: "/clients"
   pages:
@@ -32,13 +33,64 @@
       url: "/git-sources"
 
 
+- title: Administration
+  url: "/administration"
+  pages:
+    - title: Account & user management
+      sub-pages:  
+        - title: Create a Codefresh account
+          url: "/create-codefresh-account"
+        - title: Adding users and teams
+          url: "/add-users"
+        - title: Configuring access Control
+          url: "/access-control"
+        - title: Setting up OAuth2 authentication for Git providers
+          url: "/oauth-setup"
+        - title: Authorize access to organizations/projects
+          url: "/hosted-authorize-orgs" 
+        - title: Audit in Codefresh
+          url: "/audit"
+        - title: Codefresh IP addresses
+          url: "/platform-ip-addresses"
+    - title: User self-management
+      sub-pages:  
+        - title: User settings
+          url: "/user-settings"
+        - title: Configuring Git authentication
+          url: "/manage-pats"
 
+- title: Single Sign-On
+  url: /single-sign-on
+  pages:
+    - title: OpenID Connect
+      url: /oidc
+      sub-pages:
+        - title: Auth0
+          url: /oidc-auth0
+        - title: Azure
+          url: /oidc-azure
+        - title: Google
+          url: /oidc-google
+        - title: Okta
+          url: /oidc-okta
+        - title: OneLogin
+          url: /oidc-onelogin
+    - title: SAML
+      url: /saml
 
-
-
- 
-    
-
+      sub-pages:
+        - title: JumpCloud
+          url: /saml-jumpcloud
+        - title: Okta
+          url: /saml-okta
+        - title: OneLogin
+          url: /saml-onelogin
+        - title: PingID SSO
+          url: /saml-pingid
+    - title: LDAP
+      url: /ldap
+    - title: Common configuration
+      url: /team-sync
 
 
 - title: Reference
@@ -53,6 +105,7 @@
   
 
 
+
 - title: Terms and Privacy Policy
   url: "/terms-and-privacy-policy"
   pages:
@@ -62,3 +115,4 @@
       url: "/privacy-policy"
     - title: Service Commitment
       url: "/sla"
+

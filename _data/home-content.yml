@@ -1,5 +1,6 @@
 
 
+
 - title: Clients
   icon: images/home-icons/client.svg
   url: ''
@@ -31,7 +32,28 @@
     - title:  Adding Git Sources to GitOps Runtimes
       localurl: /docs/installation/git-sources/
 
-
+- title: Administration
+  icon: images/home-icons/administration.svg
+  url: ''
+  links:
+  - title: Create a Codefresh account
+    localurl: /docs/administration/account-user-management/create-codefresh-account/
+  - title: Adding users and teams  
+    localurl: /docs/administration/account-user-management/add-users/
+  - title: Single Sign-On
+    localurl: /docs/single-sign-on/
+  - title: Set up OAuth2 authentication for Git providers
+    localurl: /docs/administration/account-user-management/oauth-setup/  
+  - title: Access Control
+    localurl: /docs/administration/account-user-management/access-control/
+  - title: Audit
+    localurl: /docs/administration/account-user-management/audit/
+  - title: Codefresh IP addresses
+    localurl: /docs/administration/account-user-management/platform-ip-addresses/
+  - title: User settings
+    localurl: /docs/administration/user-self-management/user-settings/
+  - title: Manage PATs
+    localurl: /docs/administration/user-self-management/manage-pats/
 
 
 - title: Reference
