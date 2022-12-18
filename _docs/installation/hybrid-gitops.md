@@ -833,13 +833,6 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
 {:/}
 
 
-<!--## Hybrid Runtime architecture
-
-### Tunnel-based
-
-### Ingress-based
-
-### Components-->
 
 ## Hybrid GitOps Runtime installation flags
 This section describes the required and optional flags to install a Hybrid GitOps Runtime.
@@ -875,6 +868,19 @@ The cluster defined as the default for `kubectl`. If you have more than one Kube
 * CLI wizard: Select the Kube context from the list displayed.
 * Silent install: Explicitly specify the Kube context with the `--context` flag.
 
+**Access mode**  
+The access mode for the runtime, which can be one of the following:
+* [Tunnel-based]({{site.baseurl}}/docs/installation/runtime-architecture/#tunnel-based-hybrid-gitops-runtime-architecture), for runtimes without ingress controllers. This is the default.
+* [Ingress-based]({{site.baseurl}}/docs/getting-started/architecture/#ingress-based-hybrid-gitops-runtime-architecture) for runtimes with ingress contollers. 
+
+
+* CLI wizard: Select the access mode from the list displayed.
+* Silent install:  
+  * For tunnel-based, see [Tunnel-based runtime flags](#tunnel-based-runtime-flags)
+  * For ingress-based, add the [Ingress controller flags](#ingress-controller-flags)
+
+  >If you don't specify any flags, tunnel-based access is automatically selected. 
+
 **Shared configuration repository**  
 The Git repository per Runtime account with shared configuration manifests.  
 * CLI wizard and Silent install: Add the `--shared-config-repo` flag and define the path to the shared repo.  
@@ -883,17 +889,8 @@ The Git repository per Runtime account with shared configuration manifests.
 </br>
 {:/}
 
-### Ingress-less flags
+### Tunnel-based runtime flags
 These flags are required to install tunnel-based Hybrid Runtimes, without an ingress controller. 
-
-**Access mode**  
-Required.  
-
-The access mode for ingress-less runtimes, the tunnel mode. 
- 
-
-* CLI wizard and Silent install: Add the flag, `--access-mode`, and define `tunnel` as the value. 
-
 
 **IP allowlist**
 

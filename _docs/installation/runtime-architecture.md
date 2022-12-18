@@ -5,6 +5,8 @@ group: installation
 toc: true
 ---
 
+Overview TBD
+
 ## Codefresh CI/CD architecture
 
 The most important components are the following:
@@ -52,23 +54,23 @@ If we zoom into Codefresh Services for CI/CD, we will see the following:
 
 ## Codefresh GitOps Platform architecture
 
-The diagram shows a high-level view of the Codefresh GitOps installation environment and its core components, the Codefresh Control Plane, the Codefresh Runtime, and the Codefresh Clients. 
+The diagram shows a high-level view of the Codefresh GitOps installation environment, and its core components, the Codefresh Control Plane, the Codefresh Runtime, and the Codefresh Clients. 
 
 {% include
-   image.html
-   lightbox="true"
-   file="/images/getting-started/architecture/arch-codefresh-simple.png"
- url="/images/getting-started/architecture/arch-codefresh-simple.png"
-  alt="Codefresh GitOps Platform architecture"
-  caption="Codefresh GitOps Platform architecture"
-  max-width="100%"
+image.html
+lightbox="true"
+file="/images/getting-started/architecture/arch-codefresh-simple.png"
+url="/images/getting-started/architecture/arch-codefresh-simple.png"
+alt="Codefresh GitOps Platform architecture"
+caption="Codefresh GitOps Platform architecture"
+max-width="100%"
 %}
 
 {::nomarkdown}
 <br>
 {:/}
 
-#### Codefresh GitOps Control Plane
+### Codefresh GitOps Control Plane
 The Codefresh Control Plane is the SaaS component in the platform. External to the enterprise firewall, it does not have direct communication with the Codefresh Runtime, Codefresh Clients, or the customer's organizational systems. The Codefresh Runtime and the Codefresh Clients communicate with the Codefresh Control Plane to retrieve the required information.  
 
 
@@ -76,16 +78,16 @@ The Codefresh Control Plane is the SaaS component in the platform. External to t
 <br>
 {:/}
 
-#### Codefresh GitOps Runtime
+### Codefresh GitOps Runtime
 The Codefresh Runtime is installed on a Kubernetes cluster, and houses the enterprise distribution of the Codefresh Application Proxy and the Argo Project.  
-Depending on the type of GitOps installation, the Codefresh Runtime is installed either in the Codefresh platform (Hosted GitOps), or in the customer environment (Hybrid GitOps). Read more in [Codefresh runtime architecture](#codefresh-runtime-architecture).
+Depending on the type of GitOps installation, the Codefresh Runtime is installed either in the Codefresh platform (Hosted GitOps), or in the customer environment (Hybrid GitOps). Read more in [Codefresh GitOps Runtime architecture](#codefresh-gitops-runtime-architecture).
 
 
 {::nomarkdown}
 <br>
 {:/}
 
-#### Codefresh GitOps Clients
+### Codefresh GitOps Clients
 
 Codefresh Clients include the Codefresh UI and the Codefresh CLI.   
 The Codefresh UI provides a unified, enterprise-wide view of deployments (runtimes and clusters), and CI/CD operations (Delivery Pipelines, workflows, and deployments) in the same location.  
@@ -98,14 +100,14 @@ The sections that follow show detailed views of the GitOps Runtime architecture 
   For Hosted GitOps, the GitOps Runtime is installed on a _Codefresh-managed cluster_ in the Codefresh platform.  
 * Hybrid GitOps runtime architecture:
   For Hybrid GitOps, the GitOps Runtime is installed on a _customer-managed cluster_ in the customer environment. The Hybrid GitOps Runtime can be tunnel- or ingress-based:  
-  * [Tunnel-based](#tunnel-based-hybrid-runtime-architecture)  
-  * [Ingress-based](#ingress-based-hybrid-runtime-architecture)  
+  * [Tunnel-based](#tunnel-based-hybrid-gitops-runtime-architecture)  
+  * [Ingress-based](#ingress-based-hybrid-gitops-runtime-architecture)  
 * GitOps Runtime components
-  * [GitOps Application Proxy](#codefresh-application-proxy)
-  * [GitOps Argo Project](#argo-project)
+  * [Application Proxy](#application-proxy)
+  * [Argo Project](#argo-project)
   * [Request Routing Service](#request-routing-service)
-  * [Tunnel Server](#codefresh-tunnel-server)
-  * [Tunnel Client](#codefresh-tunnel-client)
+  * [Tunnel Server](#tunnel-server)
+  * [Tunnel Client](#tunnel-client)
 
 
 #### Hosted GitOps runtime architecture
@@ -151,7 +153,7 @@ Ingress-based runtimes use ingress controllers to control communication between 
 %}
 
 
-#### GitOps Application Proxy
+#### Application Proxy
 The GitOps Application Proxy (App-Proxy) functions as the Codefresh agent, and is deployed as a service in the GitOps Runtime.  
 
 For tunnel-based Hybrid GitOps Runtimes, the Tunnel Client forwards the incoming traffic from the Tunnel Server using the Request Routing Service to the GitOps App-Proxy. 

@@ -1,6 +1,6 @@
 ---
 title: "Runner installation behind firewalls"
-description: "How to run Codefresh Pipelines in your own secure Infrastructure"
+description: "Run Codefresh Pipelines in your own secure infrastructure"
 group: installation
 redirect_from:
   - /docs/enterprise/behind-the-firewall/
@@ -8,16 +8,16 @@ toc: true
 
 ---
 
-As explained in the [installation page]({{site.baseurl}}/docs/administration/installation-security/) Codefresh offers three installation options; pure cloud, on-premise and Hybrid.
-In this document, we will describe the Hybrid option and all the advantages it offers.
+As described in [installation options]({{site.baseurl}}/docs/installation/installation-options/) Codefresh offers CI/CD and GitOps installation environments, each with its own installation options.
+This articles focuses on the CI/CD Hybrid installation option with the Codefresh Runner and its advantages.
 
-## Running Codefresh in secure environments
+## Running Codefresh CI/CD in secure environments
 
-Codefresh has an on-premise installation where the whole platform is installed on the customer premises. While
+Codefresh CI/CD has an on-premises installation in which the Codefresh CI/CD platform is installed on the customer's premises. While
 this solution is very effective as far as security is concerned, it places a lot of overhead on the customer, as all updates
 and improvements done in the platform must also be transferred to the customer premises.
 
-This Hybrid approach places a Codefresh runner within customer premises while the UI (and management platform) stays in the Codefresh SaaS.
+Hybrid CI/CD places a Codefresh Runner within the customer premises, and the UI (and management platform) stays in the Codefresh SaaS.
 
 Here is the overall architecture:
 
@@ -25,17 +25,19 @@ Here is the overall architecture:
   lightbox="true"
   file="/images/administration/behind-the-firewall/architecture.png"
   url="/images/administration/behind-the-firewall/architecture.png"
-  alt="Codefresh behind the firewall"
-  caption="Codefresh behind the firewall"
+  alt="Codefresh Hybrid CD/CD behind the firewall"
+  caption="Codefresh Hybrid CD/CD behind the firewall"
   max-width="100%"
     %}   
 
-The advantages for this scenario are multi-fold. Regarding platform maintenance:
+The advantages for this scenario are multi-fold. 
 
- 1. The heavy lifting for platform maintenance is still happening by Codefresh instead of the customer.
- 1. Updates to the UI, build engine, integrations etc., are happening automatically without any customer involvement.
- 1. Actual builds are happening in the customer premises under fully controlled conditions.
- 1. The Codefresh runner is fully automated. It handles volume claims and build scheduling on its own within the Kubernetes cluster it is placed.
+Regarding platform maintenance:
+
+ 1. Codefresh is responsible for the heavy lifting for platform maintenance, instead of the customer.
+ 1. Updates to the UI, build engine, integrations etc., happen automatically, without any customer involvement.
+ 1. Actual builds run in the customer premises under fully controlled conditions.
+ 1. Codefresh Runner is fully automated. It handles volume claims and build scheduling on its own within the Kubernetes cluster it is placed.
 
 Regarding security of services:
 
@@ -45,36 +47,35 @@ Regarding security of services:
 
 Regarding firewall security:
 
- 1. Communication between the Codefresh runner and Codefresh SaaS is uni-directional. The runner is polling the Codefresh platform for jobs. 
- 1. Communication between the Codefresh runner and Codefresh SaaS is only outgoing. The Codefresh SaaS never connects to the customer network. No ports need to be open in the customer firewall for the runner to work.
- 1. The Codefresh runner is fully open-sourced, so its code can by scrutinized by any stakeholder.
+ 1. Uni-directional, outgoing communication between the Codefresh Runner and Codefresh CI/CD Platform. The Runner polls the Codefresh platform for jobs. 
+ 1. Codefresh SaaS never connects to the customer network. No ports need to be open in the customer firewall for the runner to work.
+ 1. The Codefresh Runner is fully open-sourced, so its code can be scrutinized by any stakeholder.
 
 
 
-## Using Secure services in your pipelines
+## Using secure services in your CI pipelines
 
-First make sure that you have installed the [Codefresh runner]({{site.baseurl}}/docs/administration/codefresh-runner/) on your own infrastructure (i.e., your private Kubernetes cluster).
+After installing the [Codefresh Runner]({{site.baseurl}}/docs/installation/codefresh-runner/) on your private Kubernetes cluster in your infrastructure, all CI pipelines in the private Kubernetes cluster have access to all other internal services that are network reachable. 
 
-All pipelines that are executed in the private Kubernetes cluster have access to all other internal services that are network reachable. It is therefore very easy to create pipelines that:
+You can easily create CI pipelines that:
 
  * Use databases internal to the company
  * Run integration tests against services internal to the company
- * Launch [compositions]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/) that communicate with other secure services
+ * Launch [compositions]({{site.baseurl}}/docs/pipelines/steps/composition/) that communicate with other secure services
  * Upload and download artifacts from a private artifact repository (e.g., Nexus or Artifactory)
  * Deploy to any other cluster accessible in the secure network
  * Create infrastructure such as machines, load balancers, auto-scaling groups etc.
 
- Any of these pipelines will work out the box and no extra configuration is needed. In all cases,
- all data will stay with the private local network and will never exit the firewall.
+ Any of these CI pipelines will work out the box without extra configuration. In all cases,
+ all data stays witin the private local network and does not exit the firewall.
 
- >Notice that [long running compositions]({{site.baseurl}}/docs/codefresh-yaml/steps/composition/) (preview test environments) are not yet available via the Codefresh
- build runner.
+ >Notice that [long-running compositions]({{site.baseurl}}/docs/pipelines/steps/composition/) (preview test environments) are not yet available via the Codefresh build runner.
 
 
 
 ### Checking out code from a private GIT repository
 
-To check-out code from your private GIT repository, you need to connect first to Codefresh via the [GIT integrations]({{site.baseurl}}/docs/integrations/git-providers/). However, once you define your GIT provider as *on premise* you also
+To check out code from your private Git repository, you need to connect first to Codefresh via  [GIT integrations]({{site.baseurl}}/docs/integrations/git-providers/). However, once you define your GIT provider as *on premise* you also
 need to mark it as *behind the firewall* as well:
 
 {% include image.html
@@ -98,8 +99,8 @@ the Codefresh SAAS doesn't have access to your on-premises GIT repository.
   max-width="100%"
     %} 
 
-To check out code just use a [clone step]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/) like any other clone operation.
-The only thing to remember is that the GIT URL must be fully qualified. You need to [create a pipeline]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#pipeline-creation-modes) on it its own from the *Pipelines* section of the left sidebar (instead of one adding a git repository to Codefresh)
+To check out code just use a [clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/) like any other clone operation.
+The only thing to remember is that the GIT URL must be fully qualified. You need to [create a pipeline]({{site.baseurl}}/docs/pipelines/pipelines/#pipeline-creation-modes) on it its own from the *Pipelines* section of the left sidebar (instead of one adding a git repository to Codefresh)
 
 
 
@@ -122,23 +123,23 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-Once you trigger the pipeline, the Codefresh builder will communicate with your private GIT instance and checkout code.
+Once you trigger the CI pipeline, the Codefresh builder will communicate with your private GIT instance and checks out code.
 
->Note that currently there is a limitation in regards to the location of the `codefresh.yml` file. Only the [inline mode]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipelines/#writing-codefresh-yml-in-the-gui) is supported. Soon we will allow the loading of the pipeline from the git repository itself.
+>Note that currently there is a limitation on the location of the `codefresh.yml` file. Only the [inline mode]({{site.baseurl}}/docs/pipelines/pipelines/#writing-codefresh-yml-in-the-gui) is supported. Soon we will allow the loading of the pipeline from the Git repository itself.
 
-You can also use a [network proxy]({{site.baseurl}}/docs/codefresh-yaml/steps/git-clone/#using-git-behind-a-proxy) for the Git clone step.
+You can also use a [network proxy]({{site.baseurl}}/docs/pipelines/steps/git-clone/#using-git-behind-a-proxy) for the Git clone step.
 
 #### Adding triggers from private GIT repositories
 
 
-In the previous section we have seen how a pipeline can check out code from the internal git repository. We also need to setup a trigger
-so that every time a commit happens (or any other supported event), the Codefresh pipeline will be triggered automatically.
+In the previous section we have seen how a CI pipeline can check out code from an internal Git repository. We also need to set up a trigger,
+so that every time a commit or any other supported event occurs, the Codefresh CI pipeline is triggered automatically.
 
-If you have installed the [optional app-proxy]({{site.baseurl}}/docs/administration/codefresh-runner/#optional-installation-of-the-app-proxy), adding a trigger can be done exactly like the SAAS version of Codefresh, using only the Codefresh UI.
+If you have installed the [optional app-proxy]({{site.baseurl}}/docs/installation/codefresh-runner/#optional-installation-of-the-app-proxy), adding a trigger can be done exactly like the SAAS version of Codefresh, using only the Codefresh UI.
 
 If you haven't installed the app-proxy, then adding a Git trigger is a two-step process:
 
-1. First we setup a webhook endpoint in Codefresh.
+1. First we set up a webhook endpoint in Codefresh.
 1. Then we create the webhook call in the side of the the GIT provider.
 
 > To support triggers based on  PR (Pull Request) events, it is mandatory to install `app-proxy`.
@@ -241,8 +242,7 @@ The cluster where the runner works on should have network connectivity with the 
 
 Once your cluster is connected you can use any of the familiar deployment methods such as the [dedicated deploy step]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/) or [custom kubectl commands]({{site.baseurl}}/docs/deploy-to-kubernetes/custom-kubectl-commands/).
 
-## What to read next
-
-* [Codefresh installation options]({{site.baseurl}}/docs/administration/installation-security/)
-* [Google marketplace integration]({{site.baseurl}}/docs/integrations/google-marketplace/)
-* [Managing your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/)
+## Related articles
+[Codefresh installation options]({{site.baseurl}}/docs/installation/installation-options/)  
+[Google marketplace integration]({{site.baseurl}}/docs/integrations/ci-integrations/google-marketplace/)  
+[Managing your Kubernetes cluster]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  

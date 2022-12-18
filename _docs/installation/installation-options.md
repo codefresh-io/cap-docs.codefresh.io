@@ -7,22 +7,21 @@ toc: true
 To be changed and updated for ProjectOne
 
 The Codefresh platform supports two different installation environments, each with different installation options.
-CI/CD installation environment
-The CI installation environment is optimized for Continuous Integration/Delivery with Codefresh pipelines. Pipelines created in Codefresh fetche code from your Git repository, packages/compiles the code, and deploys the final artifact to a target environment.
 
-The CI/CD installation environment supports the standard installation options: 
+* CI/CD installation environment  
+  The CI/CD installation environment is optimized for Continuous Integration/Delivery with Codefresh pipelines. CI pipelines created in Codefresh fetch code from your Git repository, packages/compiles the code, and deploys the final artifact to a target environment.
 
-* Hybrid, where the Codefresh CI/CD UI runs in the Codefresh cloud, and the builds run on customer premises
-* SaaS, a full cloud version that is fully managed by Codefresh
-* On-premises, where Codefresh CI/CD runs within the customer datacenter/cloud
+  The CI/CD installation environment supports these installation options:  
+  * Hybrid, where the Codefresh CI/CD UI runs in the Codefresh cloud, and the builds run on customer premises
+  * SaaS, a full cloud version that is fully managed by Codefresh
+  * On-premises, where Codefresh CI/CD runs within the customer datacenter/cloud
 
-On-premises and Hybrid versions are available to Enterprise customers that are looking for a "behind-the-firewall" solution.
+  On-premises and Hybrid CI/CD options are available to Enterprise customers looking for a "behind-the-firewall" solution.
 
+* GitOps installation environment  
+  The GitOps installation environment is a full-featured solution for application deployments and releases. Powered by the Argo Project, Codefresh uses Argo CD, Argo Workflows, Argo Events, and Argo Rollouts, extended with unique functionality and features essential for enterprise deployments.
 
-GitOps installation environment
-The GitOps installation environment is a full-featured solution for application deployments and releases. Powered by the Argo Project, Codefresh uses Argo CD, Argo Workflows, Argo Events, and Argo Rollouts, extended with unique functionality and features essential for enterprise deployments.
-
-GitOps installations support hosted and hybrid options. 
+  GitOps installations support Hosted and Hybrid options. 
 
 ##  Comparison
 Both environments can co-exist giving you the best of both worlds. For 
@@ -40,7 +39,7 @@ TBD
 
 
 
-### Codefresh CI/CD Cloud - likely to be removed
+### Codefresh Cloud CI/CD - likely to be removed
 
 The Codefresh CI/CD Cloud version is the easiest way to start using Codefresh as it is fully managed and runs 100% on the cloud. Codefresh DevOps handles the maintenance and updates.
 
@@ -70,9 +69,9 @@ Codefresh Cloud is also compliant with [SOC2 - Type2](https://www.aicpa.org/SOC)
 The Cloud version has multi-account support with most git providers (GitLab, GitHub, Bitbucket) as well as Azure and Google.
 
 
-### Codefresh CI/CD Hybrid
+### Codefresh Hybrid CI/CD 
 
-The Codefresh CI/CD Hybrid is for organizations who want their source code to live within their premises, or have other security constraints. For more about the theory and implementation, see [CI/CD behind the firewall installation]({{site.baseurl}}/docs/administration/behind-the-firewall/).
+The Hybrid CI/CD  installation option is for organizations who want their source code to live within their premises, or have other security constraints. For more about the theory and implementation, see [CI/CD behind the firewall installation]({{site.baseurl}}/docs/administration/behind-the-firewall/).
 
 The UI runs on Codefresh infrastructure, while the builds happen in a Kubernetes cluster in the customer's premises.
 
@@ -85,13 +84,13 @@ The UI runs on Codefresh infrastructure, while the builds happen in a Kubernetes
     %}    
 
 
-The hybrid installation strikes the perfect balance between security, flexibility and ease of use. Codefresh still does the heavy lifting for maintaining most of the platform parts. The sensitive data (such as source code and internal services) never leave the premises of the customers.
+CI/CD Hybrid  installation strikes the perfect balance between security, flexibility, and ease of use. Codefresh still does the heavy lifting for maintaining most of the platform parts. The sensitive data (such as source code and internal services) never leave the premises of the customers.
 
-With CI/CD Hybrid installation, Codefresh can easily connect to internal [secure services]({{site.baseurl}}/docs/reference/behind-the-firewall/#using-secure-services-in-your-pipelines) that have no public presence.
+With Hybrid CI/CD installation, Codefresh can easily connect to internal [secure services]({{site.baseurl}}/docs/reference/behind-the-firewall/#using-secure-services-in-your-pipelines) that have no public presence.
 The UI part is still compliant with Soc2.
   
 
-Here are the security implications of the hybrid solution:
+Here are the security implications of CI/CD Hybrid installation:
 
 {: .table .table-bordered .table-hover}
 | Company Asset          | Flow/Storage of data                 | Comments                  |
@@ -123,13 +122,13 @@ Here are the security implications of the hybrid solution:
 
 
 
-### Codefresh CI/CD On-premises    
+### Codefresh On-premises CI/CD    
 
-For customers who want full control, Codefresh also offers an on-premises option for CI/CD module. Both the UI and builds run on  a Kubernetes cluster fully managed by the customer.
+For customers who want full control, Codefresh also offers an on-premises option for CI/CD installation. Both the UI and builds run on a Kubernetes cluster fully managed by the customer.
 
-While Codefresh can still help with maintenance of the CI/CD On-premises, we would recommend trying the CI/CD Hybrid module first as it offers the most flexibility while maintaining high security.
+While Codefresh can still help with maintenance of the CI/CD On-premises, we would recommend the Hybrid CI/CD option first as it offers the most flexibility while maintaining high security.
 
-### Compare installation options for Codefresh CI/CD 
+### CI/CD installation comparison 
 
 {: .table .table-bordered .table-hover}
 | Characteristic      | Cloud | Hybrid | On Premise                   |
@@ -145,14 +144,14 @@ While Codefresh can still help with maintenance of the CI/CD On-premises, we wou
 
 ## Codefresh GitOps installation options 
 
-Similar to CI/CD installation options, Codefresh GitOps offers two installation options: 
+Similar to CI/CD installation options, Codefresh GitOps also supports SaaS and hybrid installation options: 
 
 
 ### Hosted GitOps
- with Argo CD installed in the Codefresh cluster.
-  The runtime is installed and provisioned in a Codefresh cluster, and managed by Codefresh.  
-  Hosted enviroments are full-cloud environments, where all updates and improvements are managed by Codefresh, with zero-maintenance overhead for you as the customer. Currently, you can add one hosted runtime per account.
-  For the architecture illustration, see [Hosted runtime architecture]({{site.baseurl}}/docs/installation/architecture/#hosted-runtime-architecture).
+The SaaS version of GitOps, has Argo CD installed in the Codefresh cluster.
+Hosted GitOps Runtime is installed and provisioned in a Codefresh cluster, and managed by Codefresh.  
+Hosted enviroments are full-cloud environments, where all updates and improvements are managed by Codefresh, with zero-maintenance overhead for you as the customer. Currently, you can add one Hosted GitOps Runtime per account.
+For the architecture, see [Hosted GitOps Runtime architecture]({{site.baseurl}}/docs/installation/architecture/#hosted-gitops-runtime-architecture).
 
   
 {% include
@@ -167,9 +166,10 @@ Similar to CI/CD installation options, Codefresh GitOps offers two installation 
 
   For more information on how to set up the hosted environment, including provisioning hosted runtimes, see [Set up Hosted GitOps]({{site.baseurl}}/docs/installation/hosted-runtime/).  
 
-* **Hybrid GitOps** environments, with Argo CD installed in the customer's cluster.    
-  The runtime is installed in the customer's cluster, and managed by the customer.  
-  Hybrid environments are optimal for organizations that want to manage CI/CD operations within their premises, or have other security constraints. Hybrid installations strike the perfect balance between security, flexibility, and ease of use. Codefresh maintains and manages most aspects of the platform, apart from installing and upgrading runtimes which are managed by the customer.  
+### Hybrid GitOps
+The hybrid version of GitOps, has Argo CD installed in the customer's cluster.    
+Hybrid GitOps is installed in the customer's cluster, and managed by the customer.  
+The Hybrid GitOps Runtime is optimal for organizations with security constraints, wanting to manage CI/CD operations within their premises. Hybrid GitOps strikes the perfect balance between security, flexibility, and ease of use. Codefresh maintains and manages most aspects of the platform, apart from installing and upgrading Hybrid GitOps Runtimes which are managed by the customer.  
 
  
 {% include
@@ -182,7 +182,7 @@ Similar to CI/CD installation options, Codefresh GitOps offers two installation 
   max-width="70%"
 %}
 
-  For more information on hybrid environments, see [Hybrid runtime requirements]({{site.baseurl}}/docs/runtime/requirements/) and [Installling hybrid runtimes]({{site.baseurl}}/docs/installation/hybrid-gitops/).  
+  For more information on hybrid environments, see [Hybrid GitOps runtime requirements]({{site.baseurl}}/docs/installation/hybrid-gitops/#minimum-system-requirements) and [Installling Hybrid GitOps Runtimes]({{site.baseurl}}/docs/installation/hybrid-gitops/).  
 
 
 
@@ -204,7 +204,7 @@ The runtime:
 The table below highlights the main differences between Hosted and Hybrid GitOps.
 
 {: .table .table-bordered .table-hover}
-| Functionality           |Feature             |  Hosted                    | Hybrid |
+| GitOps Functionality           |Feature             |  Hosted                    | Hybrid |
 | --------------          | --------------     |---------------             | --------------- |
 | Runtime                 | Installation       | Provisioned by Codefresh   | Provisioned by customer       |
 |                         | Runtime cluster    | Managed by Codefresh       | Managed by customer       |
