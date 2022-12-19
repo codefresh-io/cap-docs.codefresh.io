@@ -1,5 +1,5 @@
 ---
-title: "Creating pipelines"
+title: "Creating CI pipelines"
 description: "How to define pipelines in Codefresh"
 group: pipelines
 redirect_from:
