@@ -1,11 +1,11 @@
 ---
-title: "Codecov integration for pipelines"
+title: "Codecov integration for CI pipelines"
 description: "Create Code Coverage Reports with Codefresh and Codecov"
 group: integrations
 toc: true
 ---
 
-Codefresh has native integration for [Codecov analysis](https://about.codecov.io/).
+Codefresh has native integration for [Codecov analysis](https://about.codecov.io/){:target="\_blank"}.
 
 To enable the analysis sign up for a free account with Codecov and add a new project.
 
@@ -20,7 +20,7 @@ alt="Getting a Token from Codecov"
  
 From this screen make sure you note down the Token as you will use it in Codefresh.
 
-Next, go into your Codefresh account settings and choose CodeCov from [integrations](https://g.codefresh.io/account-admin/account-conf/integration). Click the add integration button:
+Next, go into your Codefresh account settings and choose CodeCov from [integrations](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. Click the add integration button:
 
 {% include image.html 
 lightbox="true" 
@@ -37,9 +37,9 @@ Enter the following:
 * **Url**: The base URL for this integration. Do not add the trailing slash to the URL definition. For more information, see the [official Codecov documentation](https://docs.codecov.com/docs/configuration#codecov-url){:target="\_blank"}. 
 
 
-Using Codecov in a Codefresh Pipeline:
+Using Codecov in a CI pipeline:
 
-With the integration in place, you can use it by name in any Codefresh pipeline by using the [Codecov reporter step](https://codefresh.io/steps/step/codecov-reporter).
+With the integration in place, you can use it by name in any Codefresh pipeline by using the [Codecov reporter step](https://codefresh.io/steps/step/codecov-reporter){:target="\_blank"}.
 
 `codefresh.yml`
 ```yaml
@@ -56,6 +56,6 @@ For more details see our [Codecov example](https://codefresh.io/docs/docs/yaml-e
 ## Related articles
 [Integration Tests]({{site.baseurl}}/docs/testing/integration-tests/)  
 [Service Containers]({{site.baseurl}}/docs/pipelines/service-containers/)  
-[Coveralls Example]({{site.baseurl}}/docs/yaml-examples/examples/coveralls-testing/)  
-[Codacy Example]({{site.baseurl}}/docs/yaml-examples/examples/codacy-testing/)  
+[Coveralls Example]({{site.baseurl}}/docs/example-catalog/ci-examples/coveralls-testing/)  
+[Codacy Example]({{site.baseurl}}/docs/example-catalog/ci-examples/codacy-testing/)  
 [Test Reports]({{site.baseurl}}/docs/testing/test-reports/)

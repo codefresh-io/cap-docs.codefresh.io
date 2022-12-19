@@ -1,104 +1,4 @@
-- title: Getting started
-  url: "/getting-started"
-  pages:
-  - title: Introducing Codefresh
-    url: "/csdp-introduction"
-  - title: Quick start
-    url: "/quick-start"
-    sub-pages:
-      - title: Provision a hosted runtime
-        url:  "/install-hosted"
-      - title: Prepare for hybrid runtime installation
-        url:  "/verify-requirements"
-      - title: Install a hybrid runtime
-        url: "/runtime"
-      - title: Create an application
-        url: "/create-app-ui"     
-      - title: Create and commit resources for application
-        url: "/create-app-specs"
-      - title: Update the image tag for application
-        url: "/create-rollout"
-      - title: Trigger the Hello World example pipeline
-        url: "/hello-world"
-      - title: Create a basic CI delivery pipeline
-        url: "/create-ci-pipeline"
 
-        
-  - title: Main concepts
-    url: "/main-concepts"
-  - title: Entity model
-    url: "/entity-model"
-  - title: Architecture
-    url: "/architecture"
-  - title: GitOps approach
-    url: "/gitops"
-  - title: Frequently asked questions
-    url: "/faq"
-
-- title: Clients
-  url: "/clients"
-  pages:
-    - title: Download CLI
-      url: "/csdp-cli"
-
-
-- title: Installation
-  url: "/runtime"
-  pages:
-    - title: Installation environments
-      url: "/installation-options"
-    - title: Set up a hosted runtime environment
-      url: "/hosted-runtime"
-    - title: Hybrid runtime requirements
-      url: "/requirements"
-    - title: Install hybrid runtimes
-      url: "/installation"
-    - title: Manage provisioned runtimes
-      url: "/monitor-manage-runtimes"
-    - title: Monitor provisioned hybrid runtimes
-      url: "/monitoring-troubleshooting" 
-    - title: Add external clusters to runtimes
-      url: "/managed-cluster" 
-    - title: Add Git Sources to runtimes
-      url: "/git-sources"
-
-
-- title: Pipelines
-  url: "/pipelines"
-  pages:
-    - title: Creation
-      url: "/create-pipeline"
-    - title: Configure artifact repository
-      url: "/configure-artifact-repository"
-    - title: Selectors for concurrency synchronization
-      url: "/concurrency-limit"
-    - title: Sharing file systems
-      url: "/sharing-file-system"
-    - title: Nested workflows
-      url: "/nested-workflows"
-    
-
-- title: Deployment
-  url: "/deployment"
-  pages:
-    - title: Creating applications
-      url: "/create-application"
-    - title: Monitoring applications
-      url: "/applications-dashboard"
-    - title: Managing applications
-      url: "/manage-application"
-    - title: Images in Codefresh
-      url: "/images"
-    - title: Install Argo Rollouts
-      url: "/install-argo-rollouts"  
-
-- title: Reports & Insights
-  url: "/reporting"
-  pages:
-    - title: Home dashboard
-      url: "/home-dashboard"
-    - title: DORA metrics
-      url: "/dora-metrics"
     
 - title: Pipeline integrations
   url: "/integrations"
@@ -115,28 +15,28 @@
       url: "/microsoft-azure"            
     - title: Google Cloud
       url: "/google-cloud"   
-    - title: "Docker Registries"
+    - title: Docker registries
       url: "/docker-registries"
       sub-pages:
-        - title: "Docker Hub"
+        - title: Docker Hub
           url: "/docker-hub"
-        - title: "Azure Docker Registry"
+        - title: Azure Docker Registry
           url: "/azure-docker-registry"
-        - title: "Amazon EC2 Container Registry"
+        - title: Amazon EC2 Container Registry
           url: "/amazon-ec2-container-registry"
-        - title: "Google Container Registry"
+        - title: Google Container Registry
           url: "/google-container-registry"
-        - title: "Google Artifact Registry"
+        - title: Google Artifact Registry
           url: "/google-artifact-registry"
-        - title: "JFrog Bintray.io/Artifactory"
+        - title: JFrog Bintray.io/Artifactory
           url: "/bintray-io"
-        - title: "Quay.io"
+        - title: Quay.io
           url: "/quay-io"
-        - title: "GitHub Container Registry"
+        - title: GitHub Container Registry
           url: "/github-container-registry"
-        - title: "DigitalOcean Container Registry"
+        - title: DigitalOcean Container Registry
           url: "/digital-ocean-container-registry"
-        - title: "Other Registries"
+        - title: Other Registries
           url: "/other-registries"  
     - title: Secret Storage
       url: "/secret-storage"
@@ -188,90 +88,21 @@
     - title: GitOps issue tracking integrations
       url: "/issue-tracking"
       sub-pages:  
-      - title: Jira 
-        url: "/jira"
+        - title: Jira 
+          url: "/jira"
     - title: GitOps container registry integrations
       url: "/container-registries"
       sub-pages:  
-      - title: Amazon ECR
-        url: "/amazon-ecr"      
-      - title: Docker Hub Registry
-        url: "/dockerhub"
-      - title: GitHub Container Registry
-        url: "/github-cr"
-      - title: JFrog Artifactory
-        url: "/jfrog" 
-      - title: Quay Registry
-        url: "/quay"
+        - title: Amazon ECR
+          url: "/amazon-ecr"      
+        - title: Docker Hub Registry
+          url: "/dockerhub"
+        - title: GitHub Container Registry
+          url: "/github-cr"
+        - title: JFrog Artifactory
+          url: "/jfrog" 
+        - title: Quay Registry
+          url: "/quay"
 
 
 
-- title: Administration
-  url: "/administration"
-  pages:
-    - title: Manage users
-      url: "/add-users"
-    - title: User settings
-      url: "/user-settings"
-    - title: Set up OAuth2 authentication for Git providers
-      url: "/oauth-setup"
-    - title: Authorize access to organizations/projects
-      url: "/hosted-authorize-orgs"  
-    - title: Single Sign-On
-      url: "/single-sign-on"
-      sub-pages:
-        - title: SAML2
-          url: "/sso-setup-saml2"
-        - title: OpenID Connect
-          url: "/sso-setup-oauth2"
-        - title: Auth0
-          url: "/sso-auth0"
-        - title: Azure
-          url: "/sso-azure"
-        - title: Google
-          url: "/sso-google"
-        - title: LDAP
-          url: "/sso-ldap"
-        - title: Okta
-          url: "/sso-okta"
-        - title: OneLogin
-          url: "/sso-onelogin"
-    - title: Access Control
-      url: "/access-control"
-    - title: Audit
-      url: "/audit"
-    - title: Codefresh IP addresses
-      url: "/platform-ip-addresses"
-
-- title: Reference
-  url: "/reference"
-  pages:
-    - title: Git tokens
-      url: "/git-tokens"
-    - title: Secrets
-      url: "/secrets"   
-    - title: Shared configuration repo
-      url: "/shared-configuration"
-  
-- title: What's New?
-  url: "/whats-new"
-  pages:
-    - title: What's new in Codefresh?
-      url: "/whats-new"
-
-- title: Troubleshooting
-  url: "/troubleshooting"
-  pages:
-    - title: Runtimes
-      url: "/runtime-issues"
-      
-
-- title: Terms and Privacy Policy
-  url: "/terms-and-privacy-policy"
-  pages:
-    - title: Terms of Service
-      url: "/terms-of-service"
-    - title: Privacy Policy
-      url: "/privacy-policy"
-    - title: Service Commitment
-      url: "/sla"

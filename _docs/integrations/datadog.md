@@ -127,3 +127,6 @@ max-width="30%"
 caption="Pipelines Dashboards page in Datadog"
 alt="Pipelines Dashboards in Datadog"
 %}
+
+## Related articles
+[Integration Tests]({{site.baseurl}}/docs/testing/integration-tests/)  

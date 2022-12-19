@@ -79,7 +79,7 @@ max-width="60%"
 Manage the application lifecycle in the Codefresh UI, from creating, editing, and deleting applications, to quick manual sync when needed.  
 
 
-### Third-party integrations
+### Third-party integrations for image enrichment
 Add integrations to issue-tracking tools such as Jira, and container-registries such as Docker Hub, JFrog and more, to enrich images. 
 
 {% include 
