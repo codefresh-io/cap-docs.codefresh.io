@@ -75,7 +75,7 @@ You can use [Codefresh CLI](https://cli.codefresh.io/) to setup a Codefresh trig
 
 First, create a `trigger-event` for every DockerHub image, you would like to setup a Codefresh trigger.
 
-```sh
+```
 # create DockerHub trigger event for codefresh/fortune
 codefresh create trigger-event --type registry --kind dockerhub --value namespace=codefresh --value name=fortune --value action=push
 
@@ -87,7 +87,7 @@ Trigger event: registry:dockerhub:codefresh:fortune:push:107e9db97062 was succes
 
 Currently, an additional manual action is required to bind DockerHub `push` image event to the Codefresh `trigger-event`.
 
-```sh
+```
 # get trigger-event details for previously created trigger-event
 codefresh get trigger-event -o yaml registry:dockerhub:codefresh:fortune:push:107e9db97062
 ```
@@ -126,7 +126,7 @@ help: >-
 
 Now, lets set up a new pipeline trigger, linking previously defined DockerHub push `codefresh/fortune` `trigger-event` to one or more Codefresh pipelines.
 
-```sh
+```
 # create trigger, linking trigger-event UID to the pipeline UID
 codefresh create trigger "registry:dockerhub:codefresh:fortune:push:107e9db97062" 7a5622e4b1ad5ba0018a3c9c
 

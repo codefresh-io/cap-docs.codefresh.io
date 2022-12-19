@@ -20,7 +20,7 @@ Before creating a pipeline, make sure you are familiar with the theory behind [C
 
 The aim of Codefresh pipelines is to have re-usable sequences of steps that can be used for different applications (or micro-services) via the use of Git triggers.
 
-All the main concepts are shown below:
+The main concepts are shown below:
 
 {% include 
 image.html 
@@ -32,13 +32,14 @@ caption="Pipeline concepts"
 max-width="60%"
 %}
 
-* **Projects**: The top-level concept in Codefresh. Projects are used to group related pipelines. In most cases a single project will be a single application (that itself contains many micro-services). You are free to use projects as you see fit. For example, you could create a project for a specific Kubernetes cluster or a specific team/department.
+* **Projects**: The top-level concept in Codefresh CI/CD. Projects are used to group related CI pipelines. In most cases, a single project will be a single application that itself contains many microservices. You are free to use projects as you see fit. For example, you could create a project for a specific Kubernetes cluster or for a specific team/department.
 
 * **Pipelines**: Each project can have multiple pipelines.  Pipelines that belong to a single project can be managed as a unit. You can also create a new pipeline by copying an existing pipeline. Notice that unlike other CI solutions, a pipeline in Codefresh is **NOT** tied to a specific Git repository. You should try to make your pipelines generic enough so that they can be reused for similar applications even when they exist in different Git repositories (a fairly typical setup for microservices).
 
-* **Pipeline steps**: Each pipeline has a definition that defines the [pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/) that are executed each time this pipeline is triggered. The definition of a pipeline is described in a special [codefresh.yml]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) file. The `codefresh.yml` file can be fetched from the same repository as that of the source code, from a completely different repository, or even defined in-place in the Codefresh pipeline editor. Again, notice you can have a pipeline that checks out its source code from Git repository A, but actually defines its steps in a `codefresh.yml` file that is fetched from Git repository B.
+* **Pipeline steps**: Each pipeline has a definition that defines the [pipeline steps]({{site.baseurl}}/docs/pipelines/steps/) that are executed each time the pipeline is triggered. The definition of a pipeline is described in a special [codefresh.yml]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/) file. The `codefresh.yml` file can be fetched from the same repository as that of the source code, from a completely different repository, or even defined in-place in the Codefresh pipeline editor. Again, notice you can have a pipeline that checks out its source code from Git repository A, but actually defines its steps in a `codefresh.yml` file that is fetched from Git repository B.
 
-* **Triggers**: A pipeline can have zero, one, or more [triggers]({{site.baseurl}}/docs/pipeline/triggers/). Codefresh supports several kinds of triggers such as Git, Cron, and Docker push triggers. Triggers that happen with Git webhooks can come from the same Git repository that contains the git code, **OR**, a completely different repository. Triggers are the linking medium between a pipeline and a Git repository. You can have a pipeline with multiple triggers to be executed when a code change happens to any of them.
+* **Triggers**: A pipeline can have zero, one, or many [triggers]({{site.baseurl}}/docs/pipelines/triggers/). Triggers are the linking medium between a pipeline and a Git repository. Codefresh supports several kinds of triggers such as Git, Cron, and Docker push triggers.  
+Triggers that happen with Git webhooks can come from the same Git repository that contains the git code, **OR**, a completely different repository.  You can have a pipeline with multiple triggers to be executed when a code change happens to any of them.
 
 With these basic building blocks, you can define many complex workflows. In particular, it is very easy in Codefresh to create a scenario where:
 
@@ -46,7 +47,7 @@ With these basic building blocks, you can define many complex workflows. In part
 1. The pipeline reads its `codefresh.yml` file from Git repository B
 1. The pipeline clones source code from Git repository C (and starts packaging/compiling it)
 
-Of course, it also possible to have a simpler scenario where the trigger, the pipeline steps and the source code of the application are all defined for the same GIT repository.
+Of course, you can also have a simpler scenario where the trigger, the pipeline steps and the source code of the application are all defined for the same Git repository.
 
 
 ## Creating a pipeline
@@ -75,14 +76,14 @@ or by copying an existing one from the same project or a completely different pr
 
 1. The main window shows the definition of the current pipeline. The screenshot shows the inline editor but pipelines can also be defined from external files (checked into source control) as explained later.
 
-1. The right part of the window shows extra settings for this pipeline such as [premade steps]({{site.baseurl}}/docs/codefresh-yaml/steps/), [triggers]({{site.baseurl}}/docs/pipelines/triggers/) and launch variables/parameters.
+1. The right part of the window shows extra settings for this pipeline such as [predefined steps]({{site.baseurl}}/docs/codefresh-yaml/steps/), [triggers]({{site.baseurl}}/docs/pipelines/triggers/) and launch variables/parameters.
 
 
 
 
-### Using the Inline Pipeline Editor
+### Using the Inline pipeline editor
 
-When first creating a pipeline you will see an inline editor that allows you to define the [pipeline yml]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) right there in the Codefresh UI. This is great when you are starting a new project because it offers you really quick feedback. You can edit the yml steps, run a build, edit again, run a build and so on. 
+When first creating a pipeline you will see an inline editor that allows you to define the [pipeline yml]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/) right there in the Codefresh UI. This is great when you are starting a new project because it offers you really quick feedback. You can edit the yml steps, run a build, edit again, run a build and so on. 
 
 
 {% include 
@@ -106,12 +107,12 @@ On the top right of the panel you have additional controls:
 
 Notice that in the editor you can expand/collapse individual yaml blocks using the arrow triangles on the left of each blocks. The initial pipeline presented in the editor is suggested by Codefresh according to the contents of your Git repository.
 
-> You can also see the suggested Codefresh pipeline for any public git repository by using the [analyze option](https://codefresh-io.github.io/cli/analyzer/) of the Codefresh CLI.
+> You can also see the suggested Codefresh pipeline for any public git repository by using the [analyze option](https://codefresh-io.github.io/cli/analyzer/){:target="\_blank"} of the Codefresh CLI.
 
 
 ## Loading codefresh.yml from Version Control
 
-Working with the inline editor is very convenient in the beginning, but it makes your pipeline definition only exist within the Codefresh UI and therefore goes against the basic principles of [infrastructure as code](https://en.wikipedia.org/wiki/Infrastructure_as_Code). Once you are happy with how your pipeline works you should commit it to a Git repository (which can be the same one that has the source code of the application or a completely different one).
+Working with the inline editor is very convenient in the beginning, but it makes your pipeline definition only exist within the Codefresh UI and therefore goes against the basic principles of [infrastructure as code](https://en.wikipedia.org/wiki/Infrastructure_as_Code){:target="\_blank"}. Once you are happy with how your pipeline works you should commit it to a Git repository (which can be the same one that has the source code of the application or a completely different one).
 
 You can click on the *Inline YAML* header and switch it to *Use YAML from URL* or *Use YAML from Repository*.
 
@@ -135,8 +136,8 @@ Once you create your pipeline you can also click on the top tab called *Settings
 
 ### General 
 
-- **Pipeline Name**: The name of your pipeline (useful for working with the [Codefresh CLI](https://codefresh-io.github.io/cli/))
-- **Pipeline ID**: The ID of your pipeline (useful for working with the [Codefresh CLI](https://codefresh-io.github.io/cli/))
+- **Pipeline Name**: The name of your pipeline (useful for working with the [Codefresh CLI](https://codefresh-io.github.io/cli/){:target="\_blank"})
+- **Pipeline ID**: The ID of your pipeline (useful for working with the [Codefresh CLI](https://codefresh-io.github.io/cli/){:target="\_blank"})
   > When working with the Codefresh CLI, the Pipeline Name and ID are interchangeable.
 - **Pipeline Description**: Freetext pdescription of the pipeline. 
 - **Pipeline Tags**: One or more tags used for [access control]({{site.baseurl}}/docs/administration/access-control/)
@@ -155,18 +156,18 @@ Once you create your pipeline you can also click on the top tab called *Settings
   - Once a build is created terminate previous builds only from a specific branch (name matches a regular expression)
   - Once a build is created, terminate all other running builds
   - Once a build is terminated, terminate all child builds initiated from it
-- **Pending approval volume**: Choose what happens with the [pipeline volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) when a pipeline is waiting for [approval]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/#keeping-the-shared-volume-after-an-approval)
+- **Pending approval volume**: Choose what happens with the [pipeline volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) when a pipeline is waiting for [approval]({{site.baseurl}}/docs/pipelines/steps/approval/#keeping-the-shared-volume-after-an-approval)
   - Keep the volume available
   - Discard the volume
   - Honor the option defined globally in your Codefresh account
-- **Pending approval concurrency limit effect**: Determines if a build that is pending approval [counts against]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/#define-concurrency-limits) the concurrency limits or not
+- **Pending approval concurrency limit effect**: Determines if a build that is pending approval [counts against]({{site.baseurl}}/docs/pipelines/steps/approval/#define-concurrency-limits) the concurrency limits or not
   - Builds in pending approval will **not** be counted when determining the concurrency limit for a pipeline
   - Builds in pending approval will **be** counted when determining the concurrency limit for a pipeline
   - Honor the option defined globally in your Codefresh account  
 
 The **Pipeline and Trigger Concurrency** limits are very important as they allow you to define how many instances of a pipeline can run in parallel when multiple commits or multiple pull requests take place. 
 
-> Notice that these limits are *unrelated* to [parallelism within a single pipeline]({{site.baseurl}}/docs/codefresh-yaml/advanced-workflows/). 
+> Notice that these limits are *unrelated* to [parallelism within a single pipeline]({{site.baseurl}}/docs/pipelines/advanced-workflows/). 
 
 Some common scenarios are:
 
@@ -182,7 +183,7 @@ Some common scenarios are:
 * You are interested only on the latest commit of a branch. If pipelines from earlier commits are still running you want to terminate them.
 * You don't want to wait for children pipelines to finish (i.e. when a pipeline calls another pipeline) or when a new build starts for a parent pipeline.
 
-For the volume behavior during approvals, notice that if [you keep the volume available]({{site.baseurl}}/docs/codefresh-yaml/steps/approval/#keeping-the-shared-volume-after-an-approval) on the pipeline while it is waiting for approval it will still count as "running" against your pricing tier limit.
+For the volume behavior during approvals, notice that if [you keep the volume available]({{site.baseurl}}/docs/pipelines/steps/approval/#keeping-the-shared-volume-after-an-approval) on the pipeline while it is waiting for approval it will still count as "running" against your pricing tier limit.
 
 ### External resources
 
@@ -242,7 +243,7 @@ max-width="60%"
 ## Using Pipeline Templates
 
 Codefresh also supports the creation of pipeline "templates", which are blueprints for creating new pipelines.  
-To enable the creation of pipelines from templates first visit the global pipeline configuration at [https://g.codefresh.io/account-admin/account-conf/pipeline-settings](https://g.codefresh.io/account-admin/account-conf/pipeline-settings) and toggle the *Enable Pipeline Templates* button.
+To enable the creation of pipelines from templates first visit the global pipeline configuration at [https://g.codefresh.io/account-admin/account-conf/pipeline-settings](https://g.codefresh.io/account-admin/account-conf/pipeline-settings){:target="\_blank"} and toggle the *Enable Pipeline Templates* button.
 
 The easiest way to create a new template is by clicking the "3 dots menu" on the pipeline name:
 
@@ -251,8 +252,8 @@ image.html
 lightbox="true" 
 file="/images/pipeline/create/create-template-menu.png" 
 url="/images/pipeline/create/create-template-menu.png"
-alt="The template menu" 
-caption="The template menu"
+alt="Create template from pipeline" 
+caption="Create template from pipeline"
 max-width="30%"
 %}
 
@@ -318,8 +319,8 @@ Pipelines that belong to a project will mention it below their name so it is ver
 
 
 ## Related articles
-[Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)  
-[Pipeline steps]({{site.baseurl}}/docs/codefresh-yaml/steps/)  
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+[Pipeline steps]({{site.baseurl}}/docs/pipelines/steps/)  
 [External Docker Registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/)  
 [YAML Examples]({{site.baseurl}}/docs/yaml-examples/examples/)
 
