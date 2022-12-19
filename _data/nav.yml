@@ -1,5 +1,6 @@
 
 
+
 - title: CI pipelines
   url: "/pipelines"
   pages:
@@ -100,5 +101,120 @@
     - title: Sharing file systems
       url: "/sharing-file-system"
 
+
+
+- title: Clients
+  url: "/clients"
+  pages:
+    - title: Download CLI
+      url: "/csdp-cli"
+
+
+- title: Installation
+  url: "/installation"
+  pages:
+    - title: Installation environments
+      url: "/installation-options"
+    - title: Runtime architectures
+      url: "/runtime-architecture"
+    - title: Codefresh Runner installation
+      url: "/codefresh-runner"
+    - title: Hosted GitOps Runtime installation
+      url: "/hosted-runtime" 
+    - title: Hybrid GitOps Runtime installation
+      url: "/hybrid-gitops"  
+    - title: On-Premises installation
+      url: "/codefresh-on-prem"
+    - title: On-Premises upgrade
+      url: "/codefresh-on-prem-upgrade"
+    - title: Monitoring & managing GitOps Runtimes
+      url: "/monitor-manage-runtimes"
+    - title: Add external clusters to GitOps Runtimes
+      url: "/managed-cluster" 
+    - title: Add Git Sources to to GitOps Runtimes
+      url: "/git-sources"
+
+
+- title: Administration
+  url: "/administration"
+  pages:
+    - title: Account & user management
+      sub-pages:  
+        - title: Create a Codefresh account
+          url: "/create-codefresh-account"
+        - title: Adding users and teams
+          url: "/add-users"
+        - title: Configuring access control
+          url: "/access-control"
+        - title: Setting up OAuth2 for Git providers
+          url: "/oauth-setup"
+        - title: Authorize access to organizations/projects
+          url: "/hosted-authorize-orgs" 
+        - title: Auditing actions in Codefresh
+          url: "/audit"
+        - title: Codefresh IP addresses
+          url: "/platform-ip-addresses"
+    - title: User self-management
+      sub-pages:  
+        - title: Managing personal settings
+          url: "/user-settings"
+        - title: Managing Git PATs
+          url: "/manage-pats"
+
+- title: Single Sign-On
+  url: /single-sign-on
+  pages:
+    - title: OpenID Connect
+      url: /oidc
+      sub-pages:
+        - title: Auth0
+          url: /oidc-auth0
+        - title: Azure
+          url: /oidc-azure
+        - title: Google
+          url: /oidc-google
+        - title: Okta
+          url: /oidc-okta
+        - title: OneLogin
+          url: /oidc-onelogin
+    - title: SAML
+      url: /saml
+      sub-pages:
+        - title: JumpCloud
+          url: /saml-jumpcloud
+        - title: Okta
+          url: /saml-okta
+        - title: OneLogin
+          url: /saml-onelogin
+        - title: PingID SSO
+          url: /saml-pingid
+    - title: LDAP
+      url: /ldap
+    - title: Common configuration
+      url: /team-sync
+
+
+- title: Reference
+  url: "/reference"
+  pages:
+    - title: Git tokens
+      url: "/git-tokens"
+    - title: Secrets
+      url: "/secrets"   
+    - title: Shared configuration repo
+      url: "/shared-configuration"
+  
+
+
+
+- title: Terms and Privacy Policy
+  url: "/terms-and-privacy-policy"
+  pages:
+    - title: Terms of Service
+      url: "/terms-of-service"
+    - title: Privacy Policy
+      url: "/privacy-policy"
+    - title: Service Commitment
+      url: "/sla"
 
 
