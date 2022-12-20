@@ -1,8 +1,4 @@
 
-
-
-
-
 - title: Pipelines
   icon: images/home-icons/pipeline.svg
   url: ''
@@ -59,9 +55,9 @@
   links:
     - title: Installation environments
       localurl: /docs/installation/installation-options/
-    - title: Codefresh Runner CI/CD installation
+    - title: Runner installation
       localurl: /docs/installation/codefresh-runner/ 
-    - title: On-Premises CI/CD installation
+    - title: On-Premises installation
       localurl: /docs/installation/codefresh-on-prem/
     - title: On-Premises CI/CD upgrade
       localurl: /docs/installation/codefresh-on-prem-upgrade/

@@ -7,7 +7,7 @@ toc: true
 
 Overview TBD
 
-## Codefresh CI/CD architecture
+## Codefresh Runner architecture
 
 The most important components are the following:
 
@@ -17,7 +17,7 @@ The most important components are the following:
 
 **External actors**. Codefresh offers a [public API]({{site.baseurl}}/docs/integrations/ci-integrations/codefresh-api/) that is consumed both by the Web user interface and the <!--should i differentiate between the CI Cli and GitOps CLI -->[Codefresh CLI](https://codefresh-io.github.io/cli/){:target="\_blank"}. The API is also available for any custom integration with external tools or services.
 
-### CI/CD topology
+### Runner topology
 
 If we zoom into Codefresh Services for CI/CD, we will see the following:
 
@@ -30,7 +30,7 @@ If we zoom into Codefresh Services for CI/CD, we will see the following:
   max-width="100%"
     %}  
 
-### CI/CD core components
+### Runner core components
 
 {: .table .table-bordered .table-hover}
 |Category | Component | Function      | 
@@ -52,9 +52,9 @@ If we zoom into Codefresh Services for CI/CD, we will see the following:
 |   | **tasker-kubernetes** | Provides cache storage for Kubernetes dashboards.  See [Kubernetes dashboards]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/). |   
 
 
-## Codefresh GitOps Platform architecture
+## Codefresh GitOps architecture
 
-The diagram shows a high-level view of the Codefresh GitOps installation environment, and its core components, the Codefresh Control Plane, the Codefresh Runtime, and the Codefresh Clients. 
+The diagram shows a high-level view of the Codefresh GitOps installation environment, and its core components, the Codefresh Control Plane, the Codefresh GitOps Runtime, and the Codefresh Clients. 
 
 {% include
 image.html

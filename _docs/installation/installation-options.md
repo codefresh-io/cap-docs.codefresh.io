@@ -4,11 +4,13 @@ description: ""
 group: installation
 toc: true
 ---
-To be changed and updated for ProjectOne
+TBD 
 
-The Codefresh platform supports two different installation environments, each with different installation options.
+The Codefresh platform supports two  environments, each with different installation options.
 
-* CI/CD installation environment  
+<!-- 
+
+CI/CD installation environment  
   The CI/CD installation environment is optimized for Continuous Integration/Delivery with Codefresh pipelines. CI pipelines created in Codefresh fetch code from your Git repository, packages/compiles the code, and deploys the final artifact to a target environment.
 
   The CI/CD installation environment supports these installation options:  
@@ -21,7 +23,7 @@ The Codefresh platform supports two different installation environments, each wi
 * GitOps installation environment  
   The GitOps installation environment is a full-featured solution for application deployments and releases. Powered by the Argo Project, Codefresh uses Argo CD, Argo Workflows, Argo Events, and Argo Rollouts, extended with unique functionality and features essential for enterprise deployments.
 
-  GitOps installations support Hosted and Hybrid options. 
+  GitOps installations support Hosted and Hybrid options. -->
 
 ##  Comparison
 Both environments can co-exist giving you the best of both worlds. For 
@@ -29,7 +31,6 @@ Both environments can co-exist giving you the best of both worlds. For
 TBD
 
 
-## Codefresh CI/CD installation options
 
 
 
@@ -39,9 +40,10 @@ TBD
 
 
 
-### Codefresh Cloud CI/CD - likely to be removed
 
-The Codefresh CI/CD Cloud version is the easiest way to start using Codefresh as it is fully managed and runs 100% on the cloud. Codefresh DevOps handles the maintenance and updates.
+## Codefresh SaaS - likely to be removed
+
+The Codefresh Cloud version is the easiest way to start using Codefresh as it is fully managed and runs 100% on the cloud. Codefresh DevOps handles the maintenance and updates.
 
 You can also create a [free account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/) on the SAAS version right away. The account is forever free with some limitations
 on number of builds.
@@ -69,9 +71,9 @@ Codefresh Cloud is also compliant with [SOC2 - Type2](https://www.aicpa.org/SOC)
 The Cloud version has multi-account support with most git providers (GitLab, GitHub, Bitbucket) as well as Azure and Google.
 
 
-### Codefresh Hybrid CI/CD 
+## Codefresh Runner 
 
-The Hybrid CI/CD  installation option is for organizations who want their source code to live within their premises, or have other security constraints. For more about the theory and implementation, see [CI/CD behind the firewall installation]({{site.baseurl}}/docs/administration/behind-the-firewall/).
+The Codefresh Runner  installation option is for organizations who want their source code to live within their premises, or have other security constraints. For more about the theory and implementation, see [CI/CD behind the firewall installation]({{site.baseurl}}/docs/administration/behind-the-firewall/).
 
 The UI runs on Codefresh infrastructure, while the builds happen in a Kubernetes cluster in the customer's premises.
 
@@ -84,13 +86,13 @@ The UI runs on Codefresh infrastructure, while the builds happen in a Kubernetes
     %}    
 
 
-CI/CD Hybrid  installation strikes the perfect balance between security, flexibility, and ease of use. Codefresh still does the heavy lifting for maintaining most of the platform parts. The sensitive data (such as source code and internal services) never leave the premises of the customers.
+Hybrid  installation strikes the perfect balance between security, flexibility, and ease of use. Codefresh still does the heavy lifting for maintaining most of the platform parts. The sensitive data (such as source code and internal services) never leave the premises of the customers.
 
 With Hybrid CI/CD installation, Codefresh can easily connect to internal [secure services]({{site.baseurl}}/docs/reference/behind-the-firewall/#using-secure-services-in-your-pipelines) that have no public presence.
 The UI part is still compliant with Soc2.
   
 
-Here are the security implications of CI/CD Hybrid installation:
+Here are the security implications of Hybrid installation:
 
 {: .table .table-bordered .table-hover}
 | Company Asset          | Flow/Storage of data                 | Comments                  |
@@ -122,13 +124,13 @@ Here are the security implications of CI/CD Hybrid installation:
 
 
 
-### Codefresh On-premises CI/CD    
+## Codefresh On-premises 
 
 For customers who want full control, Codefresh also offers an on-premises option for CI/CD installation. Both the UI and builds run on a Kubernetes cluster fully managed by the customer.
 
 While Codefresh can still help with maintenance of the CI/CD On-premises, we would recommend the Hybrid CI/CD option first as it offers the most flexibility while maintaining high security.
 
-### CI/CD installation comparison 
+## Installation comparison 
 
 {: .table .table-bordered .table-hover}
 | Characteristic      | Cloud | Hybrid | On Premise                   |
@@ -144,7 +146,7 @@ While Codefresh can still help with maintenance of the CI/CD On-premises, we wou
 
 ## Codefresh GitOps installation options 
 
-Similar to CI/CD installation options, Codefresh GitOps also supports SaaS and hybrid installation options: 
+Codefresh GitOps also supports hosted and hybrid installation options: 
 
 
 ### Hosted GitOps
