@@ -1,5 +1,5 @@
 ---
-title: "Amazon Web Services (AWS)"
+title: "Amazon Web Services (AWS) pipeline integration"
 description: "How to use Codefresh with AWS"
 group: integrations
 toc: true

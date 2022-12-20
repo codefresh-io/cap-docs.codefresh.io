@@ -1,5 +1,5 @@
 ---
-title: "Docker Registries"
+title: "Docker Registries for pipeline integrations"
 description: "Connect your Docker Registry to Codefresh CI pipelines"
 group: integrations
 redirect_from:
@@ -27,7 +27,9 @@ The registries can either be public or private.
 
 ## General Configuration
 
-To configure your registries go to your Account Configuration, by clicking on *Account Settings* on the left sidebar. On the first section called *Integrations* click the *Configure* button next to *Docker Registry*.
+
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
+1. Select **Docker Registries** and then click **Configure**.
 
 {% include image.html
   lightbox="true"
@@ -36,7 +38,8 @@ To configure your registries go to your Account Configuration, by clicking on *A
   alt="Codefresh Account Integration"
   max-width="80%" %}
 
-Add a new registry configuration from the drop down.
+{:start="4"}
+1. Click **Add registry**, and then select the regsitry type to add.
 
 {% include image.html
   lightbox="true"
@@ -45,7 +48,8 @@ Add a new registry configuration from the drop down.
   alt="Add Docker Registry"
   max-width="45%" %}
 
-Each configuration must be given a unique name, which you can later reference in a codefresh.yml file.
+{:start="5"}
+1. Each configuration must be given a unique name, which you can later reference in a codefresh.yml file.
 
 {% include image.html
   lightbox="true"
@@ -66,7 +70,7 @@ Codefresh has a feature that allows users to designate a fallback registry for D
 
 ## Using an optional repository prefix
 
-Codefresh allows you to setup globally for each supported Registry a prefix string for your Docker images.
+For each supported Registry, define a prefix string for your Docker images to be used globally.
 
 This is handy for registries that require a prefix (usually the name of an organization or repository) as you can set it once, instead of having each pipeline using the prefix by itself.
 
@@ -79,7 +83,7 @@ This is handy for registries that require a prefix (usually the name of an organ
   max-width="60%"
   %}
 
-See more details at [pushing Docker images]({{site.baseurl}}/docs/docker-registries/#pushing-docker-images).
+See more details at [pushing Docker images]({{site.baseurl}}/docs/#pushing-docker-images).
 
 ## Pushing an image
 
@@ -123,7 +127,7 @@ Therefore, in most cases you should make your main registry your caching registr
 
 ## Default registry
 
-If you define more than one registry, you can select a registry as the default one. The default registry is used in both [build]({{site.baseurl}}/docs/pipelines/steps/build/) and [push]({{site.baseurl}}/docs/pipelines/steps/push/) steps if they don't already include a `registry` property.  
+If you define more than one registry, you can select a registry as the default one. Codefresh uses the default registry in both [build]({{site.baseurl}}/docs/pipelines/steps/build/) and [push]({{site.baseurl}}/docs/pipelines/steps/push/) steps if they don't already include a `registry` property.  
 
 > Successful build steps always push to the default Codefresh registry, unless you also define the `disable_push` property.
 
