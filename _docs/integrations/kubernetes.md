@@ -5,15 +5,15 @@ group: integrations
 toc: true
 ---
 
-Codefresh is one of the few CI/CD solutions that has native support for Kubernetes clusters, not only for deploying applications to them, but also running pipelines on Kubernetes.
+Codefresh is one of the few CI/CD solutions that has native support for Kubernetes clusters, not only for deploying applications to Kubernetes, but also for running pipelines on Kubernetes.
 
 Codefresh has native support for Kubernetes in the following areas:
 
-- [Connecting a cluster globally]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/)
-- [Viewing the cluster status]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/)
-- [Viewing the environment dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/)
-- [Deploying to a cluster with the GUI]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/#deploying-a-new-service)
-- [Deploying to a cluster with a pipeline]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/)
+- [Connecting a cluster globally](#connect-a-kubernetes-cluster/)
+- [Viewing the cluster status]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)
+- [Viewing the environment dashboard]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/)
+- [Deploying to a cluster with the GUI]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/#deploying-a-new-service)
+- [Deploying to a cluster with a pipeline]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes/)
 - [Running pipelines on a cluster]({{site.baseurl}}/docs/installation/codefresh-runner/)
 
 
@@ -26,15 +26,17 @@ in your cluster. To activate this dashboard, you need to connect your cluster to
 
 ### Prerequisites
 
-Codefresh SAAS needs network connectivity to connect to your cluster. If your cluster is behind a restrictive firewall
-make sure that you allow the [following IPs]({{site.baseurl}}/docs/administration/platform-ip-addresses/) to come through.
-
-Notice that you only need to deal with this process if you use the SAAS version of Codefresh. For On-premises and [Hybrid installations]({{site.baseurl}}/docs/administration/behind-the-firewall/), there is no need to tamper with your firewall.
-
-### Visit the cluster integration screen
+Codefresh SaaS needs network connectivity to connect to your cluster.  
+If your cluster is behind a firewall, make sure that you allow access to the [required IPs]({{site.baseurl}}/docs/administration/platform-ip-addresses/).  
 
 
-Start by going into your Account Configuration, by clicking on *Account Settings* on the left sidebar. On the first section called *Integrations* click the *Configure* button next to *Kubernetes*.
+For On-premises and [Hybrid installations]({{site.baseurl}}/docs/administration/behind-the-firewall/), there is no need to tamper with your firewall.
+
+### Set up Kubernetes integration
+
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
+1. Select **Kubernetes** and then click **Configure**.
+1. From the **Add Provider** list, select the Kubernetes provider.   
 
 {% include image.html
   lightbox="true"
@@ -45,10 +47,9 @@ Start by going into your Account Configuration, by clicking on *Account Settings
   max-width="70%"
     %}
 
-In the Kubernetes integration window, you will be able to add a cluster from known providers such as Google, Azure, Amazon etc. You can also add any generic Kubernetes cluster by manually entering your cluster settings.
 
-{:.text-secondary}
-#### Adding GKE Cluster
+
+#### Adding a GKE Cluster
 Adding a cluster in GKE can be done by clicking the **Add cluster** button under **Google Cloud Provider** and selecting the desired project and cluster.
 
 If this is your first time, you'll be prompted to authenticate using your Google credentials, make sure you're doing so with a user that have access to your GKE projects.
@@ -65,7 +66,7 @@ Follow the link in the email to fill in an application for the free credits. Onc
 
 {:.text-secondary}
 
-#### Adding AKS cluster
+#### Adding an AKS cluster
 
 To add an Azure cluster, select *Azure AKS* from the drop-down menu instead of *Azure AKS SP*. Click the *Authenticate button* and enter your Azure credentials. You will see a description of all permissions that Codefresh needs
 in order to access your cluster. Accept them and Codefresh will connect to Azure to get the cluster information.
@@ -78,8 +79,8 @@ cluster name that you wish to use.
 
 {% include image.html
 lightbox="true"
-file="/images/kubernetes/add-cluster/select-aks-cluster.png"
-url="/images/kubernetes/add-cluster/select-aks-cluster.png"
+file="/images/integrations/kubernetes/add-cluster/select-aks-cluster.png"
+url="/images//integrations/kubernetes/add-cluster/select-aks-cluster.png"
 alt="Selecting the Azure cluster"
 caption="Selecting the Azure cluster"
 max-width="60%"
@@ -91,24 +92,33 @@ Codefresh will query the cluster and show its nodes. You are now ready to [deplo
 
 #### Adding an AKS cluster with a service principal
 
-An alternative method of adding an Azure cluster is by using a service principal (*Azure AKS SP*). First follow the [instructions for creating a service principal in the Azure portal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal).
+An alternative method of adding an Azure cluster is by using a service principal (*Azure AKS SP*). 
 
-Then from the drop-down menu select *Azure AKS SP*. Click the *Authenticate button* and enter the following details:
 
-* `Client ID`
-* `Tenant`
-* `Client secret`
+**Before you begin**
+* Follow the [instructions for creating a service principal in the Azure portal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal){:target="\_blank"}.
+
+**How to**
+
+1. From the **Add Provider** list, select the **Azure AKS SP**.  
+1. Click the arrow on the right, and then click **Add Cluster**.
+1. Enter the following:
+  * `Client ID`
+  * `Tenant`
+  * `Client secret`
+
+1. Click **Authenticate**. 
 
 {% include image.html
 lightbox="true"
-file="/images/kubernetes/add-cluster/connect-azure-spn.png"
-url="/images/kubernetes/add-cluster/connect-azure-spn.png"
+file="/images/kubernetes/integrations/add-cluster/connect-azure-spn.png"
+url="/images/kubernetes/integrations/add-cluster/connect-azure-spn.png"
 alt="Azure Service principal details"
 caption="Azure Service principal details"
 max-width="60%"
   %}
 
-Click the *Save* button once finished. Assuming that the authentication is successful click the *Add cluster* button and you will be able to select any of your available Azure clusters.
+
 
 Codefresh will query the cluster and show its nodes. You are now ready to [deploy to Azure kubernetes]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/).
 
@@ -116,25 +126,25 @@ Codefresh will query the cluster and show its nodes. You are now ready to [deplo
 #### Adding EKS Cluster
 
 To add an Amazon EKS cluster, you must first obtain `kubectl` access to it. Follow the instructions for using the
-[AWS CLI](https://aws.amazon.com/premiumsupport/knowledge-center/eks-cluster-connection/) in order to obtain your kubeconfig locally.
+[AWS CLI](https://aws.amazon.com/premiumsupport/knowledge-center/eks-cluster-connection/){:target="\_blank"} in order to obtain your kubeconfig locally.
 
 ```
 aws eks --region region update-kubeconfig --name cluster_name
 ```
 
-Once you have access via `kubectl` then follow the [instructions]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/#get-cluster-configuration-manually) to obtain all the cluster details.
+Once you have access via `kubectl` then follow the [instructions](#get-cluster-configuration-manually) to obtain all the cluster details.
 To add the Amazon cluster, select *Amazon AWS* from the *ADD PROVIDER* drop-down menu and enter all details in the respective field in the Codefresh UI.
 
 #### Adding a DigitalOcean cluster
 
-DigitalOcean is also offering a hosted solution for Kubernetes. 
+DigitalOcean also offers a hosted solution for Kubernetes. 
 
 To add a DO cluster select *DigitalOcean* from the *Add provider* menu in your [integration settings](https://g.codefresh.io/account-admin/account-conf/integration/kubernetes). Click the authenticate button and enter your DO account credentials:
 
 {% include image.html
 lightbox="true"
-file="/images/kubernetes/add-cluster/authorize-do.png"
-url="/images/kubernetes/add-cluster/authorize-do.png"
+file="/images/kubernetes/integrations/add-cluster/authorize-do.png"
+url="/images/kubernetes/integrations/add-cluster/authorize-do.png"
 alt="Authorizing DigitalOcean Integration"
 caption="Authorizing DigitalOcean Integration"
 max-width="35%"
@@ -144,8 +154,8 @@ Click on the checkbox next to your account name and select the *Authorize applic
 
 {% include image.html
 lightbox="true"
-file="/images/kubernetes/add-cluster/do-authorized.png"
-url="/images/kubernetes/add-cluster/do-authorized.png"
+file="/images/kubernetes/integrations/add-cluster/do-authorized.png"
+url="/images/kubernetes/integrations/add-cluster/do-authorized.png"
 alt="DigitalOcean is now authorized"
 caption="DigitalOcean is now authorized"
 max-width="70%"
@@ -162,56 +172,57 @@ caption="Selecing the DigitalOcean cluster"
 max-width="40%"
   %}
 
-Your cluster is now connected. You should be able to see it your [Kubernetes dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/) and start [deploying]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/) on it. 
+Your cluster is now connected. You should be able to see it your [Kubernetes dashboard]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/) and start [deploying]({{site.baseurl}}/docs/getting-started/deployment-to-kubernetes-quick-start-guide/) on it. 
 
 Note that you can als add a DigitalOcean cluster as a generic  cluster as well (explained below).
 
 
 #### Adding any other cluster type (not dependent on any provider)
  
-Go to your Account Configuration, by clicking on *Account Settings* on the left sidebar. On the first section called *Integrations* click the *Configure* button next to *Kubernetes*.
+
  
-In order to add any other type of cluster, outside of GKE, use **Custom Providers**
+1. To add any other type of cluster, outside of GKE, from the **Add Provider** list, select the **Custom Providers**.  
+
 
 
 {% include image.html
 lightbox="true"
-file="/images/kubernetes/add-cluster/add-cluster-button.png"
-url="/images/kubernetes/add-cluster/add-cluster-button.png"
-alt="Adding a custom cluster in Codefresh"
+file="/images/integrations/kubernetes/add-cluster/add-cluster-button.png"
+url="/images/integrations/kubernetes/add-cluster/add-cluster-button.png"
+alt="Adding a custom K8s cluster in Codefresh"
 caption="Adding a custom K8s cluster in Codefresh"
 max-width="60%"
   %}
   
-The integration between Codefresh and your Kubernetes cluster is API based and relies on a Kubernetes service account of your choosing that will be used to manage the integration.
+The integration between Codefresh and your Kubernetes cluster is API based, and relies on a Kubernetes service account of your choosing that will be used to manage the integration.
 
 The configurations you'll be required to add are:
 
 
-1. Name - Any name of your choosing, that will represent your cluster context in Codefresh. Do not use spaces, dots or other strange characters in the name. 
-1. Host - The full URL of the Kubernetes API endpoints including protocol and port.
-1. Certificate - The Kubernetes service account certificate used for the integration with Codefresh (base64 encoded).
-1. Token - The Kubernetes service account token used for the integration with Codefresh (base64 encoded)
-1. (Optional) Namespace - Restrict Codefresh [access to a specific namespace](#restrict-codefresh-access-to-a-specific-namespace)
+1. Name: Any name of your choosing, that will represent your cluster context in Codefresh. Do not use spaces, dots or other strange characters in the name. 
+1. Host: The full URL of the Kubernetes API endpoints including protocol and port.
+1. Certificate: The Kubernetes service account certificate used for the integration with Codefresh (base64 encoded).
+1. Token: The Kubernetes service account token used for the integration with Codefresh (base64 encoded)
+1. (Optional) Namespace: Restrict Codefresh [access to a specific namespace](#restrict-codefresh-access-to-a-specific-namespace)
 
 
 {% include image.html
   lightbox="true"
-  file="/images/kubernetes/add-cluster/add-cluster-fields.png"
-  url="/images/kubernetes/add-cluster/add-cluster-fields.png"
-  alt="Adding a custom cluster in Codefresh - details"
-  caption="Adding a custom cluster in Codefresh - details"
+  file="/images/integrations/kubernetes/add-cluster/add-cluster-fields.png"
+  url="/images/integrations/kubernetes/add-cluster/add-cluster-fields.png"
+  alt="Adding a custom cluster in Codefresh"
+  caption="Adding a custom cluster in Codefresh"
   max-width="80%"
     %}
 
-There is also a toggle for [private clusters behind a firewall]({{site.baseurl}}/docs/enterprise/behind-the-firewall/).
+There is also a toggle for [private clusters behind a firewall]({{site.baseurl}}/docs/reference/behind-the-firewall/).
     
- In the section below we'll provide you with easy instructions how to get all your cluster configurations in order to add it to Codefresh.   
+ In the section below, we'll provide you with easy instructions how to get all your cluster configurations in order to add it to Codefresh.   
 
 ### Get cluster configuration manually
 
-Codefresh accesses any custom cluster using a [service account](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/). You can define the privileges Codefresh has on your cluster
-using the standard authorization methods (i.e. [RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)) supported by your Kubernetes infrastructure. 
+Codefresh accesses any custom cluster using a [service account](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/){:target="\_blank"}. You can define the privileges Codefresh has on your cluster
+using the standard authorization methods (i.e. [RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/){:target="\_blank"}) supported by your Kubernetes infrastructure. 
 
 You need a terminal with `kubectl` access on your cluster. You can even use the "cloud shell" of your
 cloud provider for this purpose.
@@ -285,7 +296,7 @@ rules:
 {% endraw %}
 {% endhighlight %}
 
-Note that these permissions will only allow Codefresh to read the cluster resources and populate the respective dashboards. You need to give more privileges for actual deployments. For more information see the [Kubernetes RBAC documentation page](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
+Note that these permissions will only allow Codefresh to read the cluster resources and populate the respective dashboards. You need to give more privileges for actual deployments. For more information see the [Kubernetes RBAC documentation page](https://kubernetes.io/docs/reference/access-authn-authz/rbac/){:target="\_blank"}.
 
 Here is an example with role + service account + binding.
 
@@ -366,14 +377,14 @@ echo $(kubectl get secret -n kube-system -o go-template='{{index .data "token" }
 #### Restrict Codefresh access to a specific namespace
 
 In most cases, you want to allow Codefresh to access all namespaces inside the cluster. This is the most convenient option as it will make
-the [services dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/) (and other GUI dashboards) the central way to manage your clusters.
+the [services dashboard]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/) (and other GUI dashboards) the central way to manage your clusters.
 
 You can also restrict Codefresh only to an specific namespace of your choosing. To achieve this, use the details of service account in the previous section that has access only to that specific namespace, and also fill the *namespace* field in the cluster details form.
 
 {% include image.html
   lightbox="true"
-  file="/images/kubernetes/add-cluster/restrict-namespace.png"
-  url="/images/kubernetes/add-cluster/restrict-namespace.png"
+  file="/images/integrations/kubernetes/add-cluster/restrict-namespace.png"
+  url="/images/integrations/kubernetes/add-cluster/restrict-namespace.png"
   alt="Allows Codefresh access to a single namespace only"
   caption="Allows Codefresh access to a single namespace only"
   max-width="80%"
@@ -385,7 +396,7 @@ Notice that if you follow this approach several built-in Codefresh capabilities 
 
 ### Adding a Rancher cluster
 
-Rancher clusters are currently supported as generic clusters. Rancher clusters have a specific authentication configuration (the details are here: [https://rancher.com/kubernetes-authentication-in-rancher-and-rbac](https://rancher.com/kubernetes-authentication-in-rancher-and-rbac) for Rancher 1.x and at [https://rancher.com/blog/2018/2018-05-04-authentication-authorization-rancher2/](https://rancher.com/blog/2018/2018-05-04-authentication-authorization-rancher2/) for Rancher 2.x). 
+Rancher clusters are currently supported as generic clusters. Rancher clusters have a specific authentication configuration (the details are here: [https://rancher.com/kubernetes-authentication-in-rancher-and-rbac](https://rancher.com/kubernetes-authentication-in-rancher-and-rbac){:target="\_blank"} for Rancher 1.x and at [https://rancher.com/blog/2018/2018-05-04-authentication-authorization-rancher2/](https://rancher.com/blog/2018/2018-05-04-authentication-authorization-rancher2/){:target="\_blank"} for Rancher 2.x). 
 
 Authentication using a token of a Kubernetes Service Account, which is usually used by Codefresh, doesn't work with Rancher clusters. Also, Rancher doesn't do proper TLS termination out-of-the-box for Kubernetes clusters hosted on it, so one needs to configure a load balancer for that purpose.
 
@@ -399,8 +410,8 @@ In summary, the following conditions should be met in order to add the cluster, 
 
 {% include image.html
   lightbox="true"
-  file="/images/kubernetes/add-cluster/rancher-token.png"
-  url="/images/kubernetes/add-cluster/rancher-token.png"
+  file="/images/integrations/kubernetes/add-cluster/rancher-token.png"
+  url="/images/integrations/kubernetes/add-cluster/rancher-token.png"
   alt="Getting the Rancher token"
   caption="Getting the Rancher token"
   max-width="40%"
@@ -415,8 +426,8 @@ In summary, the following conditions should be met in order to add the cluster, 
 
 {% include image.html
   lightbox="true"
-  file="/images/kubernetes/add-cluster/rancher-2.png"
-  url="/images/kubernetes/add-cluster/rancher-2.png"
+  file="/images/integrations/kubernetes/add-cluster/rancher-2.png"
+  url="/images/integrations/kubernetes/add-cluster/rancher-2.png"
   alt="Rancher 2.x cluster details"
   caption="Rancher 2.x cluster details"
   max-width="40%"
@@ -432,9 +443,10 @@ After adding your cluster configurations and in case the test fails, click "Save
 
 {% include image.html
   lightbox="true"
-  file="/images/42382c7-click-save.png"
-  url="/images/42382c7-click-save.png"
-  alt="click-save.png"
+  file="/images/integrations/kubernetes/add-cluster/click-save-error-message.png"
+  url="/images/integrations/kubernetes/add-cluster/click-save-error-message.png"
+  alt="Get error message for troubleshooting"
+  caption="Get error message for troubleshooting"
   max-width="40%"
     %}
 
@@ -507,7 +519,7 @@ Please make sure the certs are in order Root -> Intermediate -> Server.
 
 
 
-## Connecting a Kubernetes cluster to Codefresh
+<!--- ## Connecting a Kubernetes cluster to Codefresh
 
 Like all other Codefresh integrations, Kubernetes clusters are [connected once]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/) on an Account level. You can add a cluster from a specific cloud provider
 or a "generic" cluster for any compliant cluster:
@@ -520,14 +532,14 @@ url="/images/integrations/kubernetes/kubernetes-integration.png"
 alt="Global Kubernetes integrations" 
 caption="Global Kubernetes integrations" 
 max-width="100%" 
-%}
+%}-->
 
 Once you connect a cluster it gets a unique name inside your account that is important when it comes to using this cluster inside a pipeline. From the same screen you can also connect [internal clusters that are behind your firewall]({{site.baseurl}}/docs/reference/behind-the-firewall/#deploying-to-an-internal-kubernetes-cluster/).
 .
 
 ## Viewing the Codefresh cluster dashboard
 
-After you connect a cluster, several graphical dashboards are automatically populated. The first one is the [Codefresh Kubernetes dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/).
+After you connect a cluster, several graphical dashboards are automatically populated. The first one is the [Codefresh Kubernetes dashboard]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/).
 
 {% 
   include image.html 
@@ -539,7 +551,7 @@ caption="Integrated Kubernetes Dashboard"
 max-width="100%" 
 %}
 
-You can use this Dashboard to get basic information for your cluster such such as services, pods, deployments etc.
+You can use this Dashboard to get basic information for your cluster such as services, pods, deployments etc.
 
 {% 
   include image.html 
@@ -557,39 +569,39 @@ From the same dashboard you can also add/change configmaps and even edit directl
 
 ## Viewing the environment dashboard
 
-The second dashboard that is enabled after you connect a cluster (but not automatically populated) is the [environment dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/).
+The second dashboard that is enabled after you connect a cluster (but not automatically populated), is the [environment dashboard]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/).
 
 {% include
 image.html
 lightbox="true"
-file="/images/codefresh-yaml/environments/environments.png"
-url="/images/codefresh-yaml/environments/environments.png"
+file="/images/integrations/kubernetes/environments.png"
+url="/images/integrations/kubernetes/environments.png"
 alt="Codefresh Environment Dashboard"
 caption="Codefresh Environment Dashboard"
 max-width="100%"
 %}
 
-This dashboard shows a live view of a Kubernetes application along with the status of the latest builds that affected this environment. You can define such environments either directly from the GUI or [programmatically in a pipeline]({{site.baseurl}}/docs/codefresh-yaml/deployment-environments/).
+This dashboard shows a live view of a Kubernetes application along with the status of the latest builds that affected this environment. You can define such environments either directly from the GUI or [programmatically in a pipeline]({{site.baseurl}}/docs/pipelines/deployment-environments/).
 
-## Ad-hoc deployments with the Codefresh GUI
+## Ad-hoc deployments with the Codefresh UI
 
-One of the [easiest ways to deploy to Kubernetes]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/) is to use the Codefresh GUI and [manually deploy a docker image]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/#deploying-a-new-service):
+One of the [easiest ways to deploy to Kubernetes]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes/) is to use the Codefresh UI and [manually deploy a docker image]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/#deploying-a-new-service):
 
 {% include image.html 
 lightbox="true" 
-file="/images/d07104d-Screen_Shot_2017-07-23_at_6.46.17_PM.png" 
-url="/images/d07104d-Screen_Shot_2017-07-23_at_6.46.17_PM.png" 
-alt="Deploying with the quick GUI dialog"
-caption="Deploying with the quick GUI dialog"
+file="/images/integrations/kubernetes/deploy-with-ui.png" 
+url="/images/integrations/kubernetes/deploy-with-ui.png" 
+alt="Deploying with the quick UI dialog"
+caption="Deploying with the quick UI dialog"
 max-width="80%" 
 %}
 
-You can also [create a Pull Secret]({{site.baseurl}}/docs/deploy-to-kubernetes/access-docker-registry-from-kubernetes/) from the GUI.
+You can also [create a pull Secret]({{site.baseurl}}/docs/deployments/kubernetes/access-docker-registry-from-kubernetes/) from the GUI.
 
 
 ## Automated deployments with Codefresh pipelines
 
-You can also deploy to a cluster in a pipeline. Codefresh offers [several ways for Kubernetes deployments]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/). The important point here is that all connected clusters are automatically available to all pipelines with their unique name as a `kubectl` context.
+You can also deploy to a cluster in a pipeline. Codefresh offers [several ways for Kubernetes deployments]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes/). The important point here is that all connected clusters are automatically available to all pipelines with their unique name as a `kubectl` context.
 
  {% include 
 image.html 
@@ -602,9 +614,9 @@ max-width="100%"
 %}
 
 
-You can use the [integrated Codefresh deployment methods]({{site.baseurl}}/docs/pipelines/steps/deploy/) or even run [custom kubectl commands directly on your cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/custom-kubectl-commands/).
+You can use the [integrated Codefresh deployment methods]({{site.baseurl}}/docs/pipelines/steps/deploy/) or even run [custom kubectl commands directly on your cluster]({{site.baseurl}}/docs/deployments/kubernetes/custom-kubectl-commands/).
 
-Codefresh also offers a simple solution for [templating]({{site.baseurl}}/docs/deploy-to-kubernetes/kubernetes-templating/) but you can use another templating methods such as [kustomize]({{site.baseurl}}/docs/yaml-examples/examples/deploy-with-kustomize/).
+Codefresh also offers a simple solution for [templating]({{site.baseurl}}/docs/deployments/kubernetes/kubernetes-templating/) but you can use another templating methods such as [kustomize]({{site.baseurl}}/docs/example-catalog/cd-examples/deploy-with-kustomize/).
 
 
 
@@ -615,7 +627,6 @@ Finally you can also use the [Codefresh Runner]({{site.baseurl}}/docs/installati
 
 
 ## Related articles
-[Add your cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/)  
-[Manage your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/)  
-[Cloning Git repositories]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout/)  
+[Manage your Kubernetes cluster]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  
+[Cloning Git repositories]({{site.baseurl}}/docs/example-catalog/ci-examples/git-checkout/)  
 

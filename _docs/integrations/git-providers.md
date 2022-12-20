@@ -1,6 +1,6 @@
 ---
 title: "Git Providers"
-description: "Easily check out code in Codefresh pipelines"
+description: "Easily check out code in Codefresh CI pipelines"
 group: integrations
 redirect_from:
   - /docs/git-provider/
@@ -19,10 +19,10 @@ You can even add multiple accounts from each Git provider (if you have more than
 Currently Codefresh supports:
 
 * GitHub Cloud
-* GitHub On premises
+* GitHub On-premises
 * Bitbucket
 * GitLab Cloud
-* GitLab On premises
+* GitLab On-premises
 * Azure DevOps Git
 * Atlassian Stash (old version of Bibucket Server)
 * Bitbucket Server (new version of Stash)
@@ -33,11 +33,14 @@ Atlassian Stash/Bitbucket server as well as the on-premises version of GitLab an
 
 By default, you have direct access to Git repositories that exist in the Git provider that you used while signing up for Codefresh. You can easily create Codefresh projects that checkout code from that Git provider without any extra configurations.
 
-To add additional Git providers, go to your Account Configuration, by clicking on *Account Settings* on the left sidebar. On the first section called *Integrations* click the *Configure* button next to *Git providers*.
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
+1. Select **Git** and then click **Configure**.
+1. From the **Add Git Provider** drop-down, select the Git provider to add. 
+1. Define the settings as required. 
+
 
 {% include image.html lightbox="true" file="/images/integrations/codefresh-integrations.png" url="/images/integrations/codefresh-integrations.png" alt="Codefresh Account Integration" max-width="80%" %}
 
-You can add a new Git provider using the *Add Git provider* drop-down.
 
 {% include image.html
 lightbox="true"
@@ -48,30 +51,34 @@ caption="Add Git provider"
 alt="Add Git provider"
 %}
 
-For each Git provider you need to setup authentication, so Codefresh can get access to the public and private repositories of the respective platform.
+For each Git provider you need to set up authentication, for Codefresh to get access to the public and private repositories of the respective provider.
 
-The easiest way to setup authentication is with OAuth2 if supported by the Git provider. You only need to name your integration
+The easiest way to set up authentication is with OAuth2 if supported by the Git provider. You only need to name your integration
 and Codefresh will automatically set it up once you accept the permissions required. If you have problems with OAuth2
 or the provider does not support it, you need to manually create credentials by yourself in your git account and then enter them into Codefresh.
 
-In the case of an on-premises GIT provider you also need to fill in the URL where the provider is installed.
+In the case of an on-premises Git provider you also need to fill in the URL where the provider is installed.
 
 ## SSH Keys
 
 > Please contact support to enable this feature.
 
-You have the ability to specify whether you want to clone via HTTPS or SSH.  In the git integration under Advance Options, toggle to your desired option.
+You have the ability to specify whether you want to clone via HTTPS or SSH.  
+
+1. Select the required Git integration, and click **Edit**.
+1. Expand **Advanced Options** and toggle to **HTTPS** or **SSH**.
+1. For SSH, paste your **raw**, private key into the SSH Key text box and click **Save**.
+
 
 {% include image.html
 lightbox="true"
 file="/images/integrations/git/github-ssh.png"
 url="/images/integrations/git/github-ssh.png"
 max-width="40%"
-caption="Git SSH Options"
-alt="Git SSH Options"
+caption="Git clone via SSH"
+alt="Git clone via SSH"
 %}
 
-For SSH, paste your **raw**, private key into the SSH Key text box and click save.
 
 For more information on generating SSH keys and adding your public key to your VCS provider, see its official documentation:
 
@@ -123,7 +130,7 @@ with the same syntax [shown in pipelines]({{site.baseurl}}/docs/pipelines/secret
 
 For example if you already have a `token` on a resource call `git-credentials` you can put in the token field the expression {% raw %}`${{secrets.git-credentials.token}}`{% endraw %}.
 
-### Level of Access
+### Level of access
 
 When the admin clicks off "Allow access to all users" another toggle appears; “Allow these credentials to be shared within a pipeline for cloning a repository“
 
@@ -141,19 +148,17 @@ An alternative way to authenticate with Github is via the App mechanism.
 
 > Note: The Codefresh App has READ permissions to issues, metadata, and pull requests, and READ and WRITE permissions to code, commit statuses, and repository hooks. If you need additional permission for your integration, use the Manual Creation steps.
 
-**Step 1** - Visit [https://g.codefresh.io/account-admin/account-conf/integration/git](https://g.codefresh.io/account-admin/account-conf/integration/git){:target="\_blank"} in Codefresh, add a new Git provider, and choose *Codefresh Github App* from the drop-down menu
+1. In the Codefresh UI, follow the steps to [add a new Git provider](#adding-more-git-providers-to-your-codefresh-account). 
+1. From the list of Git providers, select **Codefresh Github App**.
+1. Select Setup GitHub App integration via [**GitHub Marketplace**](https://github.com/apps/codefresh-githubapp){:target=\_blank"}.
+1. Follow the instructions on GitHub to install the application.
+   Once completed, the fields are automatically populated with the information.
+1. To verify your integration, click **Test connection**.
+1. To apply your changes, click **Save**.
 
-**Step 2** - Select the text [Github Marketplace](https://github.com/apps/codefresh-githubapp) in the text above the Installation ID field
+### Manual creation
 
-**Step 3** - Follow the instructions on GitHub to install the application.
-
-**Step 4** - Once done, the fields will be populated with the information automatically.
-
-**Step 5** - Click *Test connection* to verify your integration and apply your changes with the *Save* button.
-
-### Manual Creation
-
-**Step 1** - Log in your Github account and visit [https://github.com/settings/apps](https://github.com/settings/apps){:target="\_blank"}. Click the *New GitHub App* button.
+**Step 1** - Log in your GitHub account and visit [https://github.com/settings/apps](https://github.com/settings/apps){:target="\_blank"}. Click the *New GitHub App* button.
 
 **Step 2** - On the New app screen
 
@@ -391,5 +396,5 @@ You will get an error of Permission Denied or Forbidden to a Git Context that yo
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 [Git triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/)  
 [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)  
-[Checking out source code]({{site.baseurl}}/docs/yaml-examples/examples/git-checkout/)  
+[Checking out source code]({{site.baseurl}}/docs/example-catalog/ci-examples/git-checkout/)  
 

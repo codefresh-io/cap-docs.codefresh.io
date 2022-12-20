@@ -1,6 +1,6 @@
 ---
-title: "Codefresh Hosted GitOps Integration"
-description: "Connect with Codefresh Hosted GitOps to leverage Managed Argo CD"
+title: "Hosted GitOps integration"
+description: "Connect with our Hosted GitOps to leverage Managed Argo CD"
 group: integrations
 toc: true
 ---
@@ -12,7 +12,7 @@ Codefresh Hosted GitOps includes a dedicated report image step that both reports
 
 For a brief overview of what you get with Codefresh Hosted GitOps, read the next section.  
 
-For information on how to connect Codefresh Classic to Codefresh Hosted GitOps, see [CI integration with Codefresh Classic](https://codefresh.io/csdp-docs/docs/gitops-integrations/ci-integrations/codefresh-classic/){:target="\_blank"}.
+For information on how to connect Codefresh Classic to Codefresh Hosted GitOps, see [CI integration with Codefresh Classic](https://codefresh.io/docs/gitops-integrations/ci-integrations/codefresh-classic/){:target="\_blank"}.
 
 ## Codefresh Hosted GitOps features
 
@@ -91,3 +91,6 @@ caption="Integrations in Hosted GitOps"
 alt="Integrations in Hosted GitOps" 
 max-width="60%" 
 %}
+
+## Related articles
+[CI integrations with GitOps]({{site.baseurl}}/docs/gitops-integrations/ci-integrations)  

@@ -1,6 +1,6 @@
 ---
 title: "Docker Registries"
-description: "Connect your Docker Registry to Codefresh pipelines"
+description: "Connect your Docker Registry to Codefresh CI pipelines"
 group: integrations
 redirect_from:
   - /docs/docker-registry/
@@ -49,16 +49,20 @@ Each configuration must be given a unique name, which you can later reference in
 
 {% include image.html
   lightbox="true"
-  file="/images/2924d81-registry-name.png"
-  url="/images/2924d81-registry-name.png"
-  alt="Specify Docker Registry Name"
+  file="/images/integrations/docker-registries/registry-name.png"
+  url="/images/integrations/docker-registries/registry-name.png"
+  alt="Specify Docker registry name"
   max-width="40%" %}
 
-## Fallback Registry
+## Define fallback registry
 
-Codefresh has a feature that allows users to designate a Fallback Registry for docker integrations. If a Codefresh pipeline attempts to pull an image and that image fails for any reason (authorization issue, the registry server is down, etc.), a retry mechanism will attempt to pull it successfully. If this mechanism fails, the Fallback Registry feature provides the opportunity to pull the image from a different registry you have specified.
+Codefresh has a feature that allows users to designate a fallback registry for Docker integrations. If a Codefresh pipeline attempts to pull an image and that image fails for any reason (authorization issue, the registry server is down, etc.), a retry mechanism will attempt to pull it successfully. If this mechanism fails, the fallback registry feature provides the opportunity to pull the image from a different registry you have specified.
 
-To define the Fallback Registry, go to Account Settings, Integrations, and select configure for Docker Registries. In the list of registries, edit the integration. Under Advanced Options, you will see a field labeled as Fallback Registry. Select the integration name you’d like to use as your Fallback Registry and then save the integration.  You can also specify a Fallback Registry when creating a new integration as long as another integration exists.
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
+1. Select **Docker Registries** and then click **Configure**.
+1. In the list of registries, select the registry to configure as the fallback registry, and click **Edit**.
+1. Expand **Advanced Options**, and select the registry from the **Fallback Registry** list.   
+  You can also specify a fallback registry when creating a new integration as long as another integration exists.
 
 ## Using an optional repository prefix
 
@@ -75,13 +79,13 @@ This is handy for registries that require a prefix (usually the name of an organ
   max-width="60%"
   %}
 
-See more details at [pushing Docker images]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#pushing-docker-images)
+See more details at [pushing Docker images]({{site.baseurl}}/docs/docker-registries/#pushing-docker-images).
 
 ## Pushing an image
 
 Once your registry configuration is all set up you can start pushing your images to it.
 
-In a [push step]({{site.baseurl}}/docs/pipelines/steps/push/)  you can place your registry configuration name in the `registry` field
+Within a [push step]({{site.baseurl}}/docs/pipelines/steps/push/), add your registry configuration name in the `registry` field
 
   `codefresh.yml`
 {% highlight yaml %}
@@ -93,7 +97,7 @@ push_step:
   registry: your-registry-configuration-name
 {% endhighlight %}
 
-For more details see the [the image pushing example]({{site.baseurl}}/docs/yaml-examples/examples/build-and-push-an-image/).
+For more details, see the [example for image push]({{site.baseurl}}/docs/example-catalog/ci-examples/build-and-push-an-image/).
 
 ## Internal caching registry
 
@@ -101,30 +105,33 @@ You can also select a single registry that will serve as your [caching registry]
 
 > You cannot select Dockerhub as a caching registry, because it has very strict requirements for naming images, and our caching mechanism needs capabilities which are not possible with Dockerhub.
 
-Codefresh will efficiently use that registry to perform advanced caching logic for your builds
+Codefresh uses that registry efficiently to perform advanced caching logic for your builds by automatically:
 
-* Codefresh will automatically examine the stored metadata to decide which past image is most relevant for caching purposes
-* Codefresh will automatically pull images from this registry for cache purposes
-* Codefresh will automatically use that registry for distributed Docker layer caching to make your Docker builds faster
+* Checking the stored metadata to decide which past image is most relevant for caching purposes
+* Pulling images from this registry for caching purposes
+* Using that registry for distributed Docker layer caching to make your Docker builds faster
 
-We give you the ability to define a separate registry for caching purposes for the following scenarios
+We give you the ability to define a separate registry for caching purposes for the following scenarios:
 
 1. You don't want extra traffic to be sent to your main deployment registry.  Maybe you want to avoid bandwidth/storage limits in your production registry
 1. You have lots of build steps in pipelines with intermediate docker images that you are certain you don't need outside of the pipeline itself. In that case you can use the `disable_push` property in those pipelines.
 1. You have speed concerns regarding image pulling/pushing. For example your development team is in Europe, but your production servers are in the USA. You would probably choose a caching registry in a European region (so that developers get the best experience), where your main registry is in the USA (close to your production servers)
 
-Therefore in most cases you should make your main registry your caching registry as well. For extra control you can either define a different caching registry or disable selectively automatic pushes with the `disable_push` property.
+Therefore, in most cases you should make your main registry your caching registry as well. For extra control, you can either define a different caching registry or disable selectively automatic pushes with the `disable_push` property.
 
 >Notice that the dynamic image feature of Codefresh (creating docker images on demand in the same pipeline that is using them) will always work regardless of a caching registry.
 
-## The default registry
+## Default registry
 
-If you define more than one registries you can also click the *default* button in the UI to define the registry that will be used in both [build]({{site.baseurl}}/docs/pipelines/steps/build/) and [push steps]({{site.baseurl}}/docs/pipelines/steps/push/) if they don't already contain a `registry` property.
+If you define more than one registry, you can select a registry as the default one. The default registry is used in both [build]({{site.baseurl}}/docs/pipelines/steps/build/) and [push]({{site.baseurl}}/docs/pipelines/steps/push/) steps if they don't already include a `registry` property.  
 
-Notice that successful build steps will always push to the default Codefresh registry unless you also define the `disable_push` property.
+> Successful build steps always push to the default Codefresh registry, unless you also define the `disable_push` property.
 
-## Related articles
-[Working with Docker registries]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/)  
-[Push pipeline step]({{site.baseurl}}/docs/pipelines/steps/push/)  
-[Pushing docker images with the UI]({{site.baseurl}}/docs/docker-registries/push-image-to-a-docker-registry/)  
-[Examples of pushing Docker images]({{site.baseurl}}/docs/yaml-examples/examples/build-and-push-an-image/)  
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
+1. Select **Docker Registries** and then click **Configure**.
+1. From the context menu of the Docker registry integration to be used as the default registry, select **Set as default**. 
+ 
+
+
+## Related articles 
+[Examples of pushing Docker images]({{site.baseurl}}/docs/example-catalog/ci-examples/build-and-push-an-image/)  
