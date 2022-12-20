@@ -7,7 +7,7 @@ toc: true
 
 Codefresh has native support for AWS in the following areas:
 
-- [Connecting to Amazon registries]({{site.baseurl}}/docs/integrations/docker-registries/external-docker-registries/amazon-ec2-container-registry/)
+- [Connecting to Amazon registries]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/)
 - [Deploying to Amazon EKS]({{site.baseurl}}/docs/integrations/kubernetes/#adding-eks-cluster)
 - [Using Amazon S3 for Test reports]({{site.baseurl}}/docs/testing/test-reports/#connecting-an-s3-bucket)
 - [Using Amazon S3 for Helm charts]({{site.baseurl}}/docs/deployments/helm/add-helm-repository/#private-repository---s3)
@@ -65,7 +65,7 @@ caption="Using Amazon for Helm charts"
 max-width="80%"
 %}
 
-Once you connect your Helm repository you can use it any [Codefresh pipeline with the Helm step]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/). 
+Once you connect your Helm repository you can use it any [Codefresh pipeline with the Helm step]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/). 
 
 
 ## Traditional Amazon deployments
