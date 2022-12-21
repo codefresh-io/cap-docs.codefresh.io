@@ -33,10 +33,10 @@ max-width="80%"
 1. Select **Docker Registries** and then click **Configure**.
 1. From the **Add Registry Provider** dropdown, select **Other Registries**.
 1. Define the following: 
-  * Registry Name: Unique name for this configuration.
-  * Username: Your Azure Registry username.
-  * Password: Your Azure Registry password.
-  * Domain: `<registry_name>.azurecr.io`.
+  * **Registry Name**: Unique name for this configuration.
+  * **Username**: Your Azure Registry username.
+  * **Password**: Your Azure Registry password.
+  * **Domain**: `<registry_name>.azurecr.io`.
 
 {% include image.html 
 	lightbox="true" 
