@@ -108,7 +108,7 @@ caption="Inspecting an image from Google Cloud build"
 alt="Inspecting an image from Google Cloud build"
 %}
 
-After you run the pipeline you will see your Docker image in the [Image dashboard]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/).
+After you run the pipeline you will see your Docker image in the [Image dashboard]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/).
 
 The docker image will also be visible in the Google Cloud Console view of your registry.
 

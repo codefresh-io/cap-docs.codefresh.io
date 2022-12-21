@@ -36,7 +36,7 @@ You can find the complete guide [here](https://support.google.com/cloud/answer/6
 If you have more than one repositories/projects in Google cloud, you can connect multiple GCR registries and define one as the "primary" for the gcr.io domain.
 
 This means that every time Codefresh needs to pull an image it will use that integration. If you wish to use another project for pulling images,
-you can use the `registry_context` property as described in [working with multiple registries]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#working-with-multiple-registries-with-the-same-domain).
+you can use the `registry_context` property as described in [working with multiple registries]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/#working-with-multiple-registries-with-the-same-domain).
 
 
 ## Related articles
