@@ -46,7 +46,6 @@ Copy and paste the token somewhere secure and where you will find it again.
 
 ## Set up DigitalOcean Container Registry integration
 
-Within your Codefresh Account go to:
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
 1. Select **Docker Registries** and then click **Configure**.
@@ -55,7 +54,7 @@ Within your Codefresh Account go to:
   * **Registry name**: A unique name for this configuration.
   * **Username**: The DigitalOcean access token you created.
   * **Password**: The DigitalOcean access token you created.
-  * **Domain**: ``registry.digitalocean.com``.  
+  * **Domain**: `registry.digitalocean.com`.  
 
   Optional, you can add your registry name to the advanced settings section. For instance, if you named it in Digital Ocean "anais-codefresh", you can ensure that every time the registry is used, it is automatically referenced in the build step of your pipeline.
 

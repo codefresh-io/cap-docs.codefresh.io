@@ -5,24 +5,28 @@ group: integrations
 toc: true
 ---
 
-Codefresh has added the additional ability to resolve variables storing secrets from remote sources.
+Codefresh can resolve variables storing secrets from remote sources. This allows you to keep sensitive data on your cluster, and for Codefresh to request it during pipeline execution on-demand.  
 
-This allows you to keep sensitive data on your cluster, and for Codefresh to request it during pipeline execution on user's demand.
+Secret-Store is an additional context in Codefresh. Codefresh supports two types of secret storage: 
+* Kubernetes secrets for SaaS versions
+* Runtime-Kubernetes for hybrid deployments with Codefresh Runner
 
-Secret-Store is an additional context in Codefresh, which can be created, updated, deleted, etc, using the Codefresh CLI: `codefresh create context secret-store --help`. 
+You can set up both types either in the Codefresh UI or via the CLI (`codefresh create context secret-store --help`).
 
-At the moment, we support two types of secret storage: Kubernetes (SAAS version) and Runtime-Kubernetes (hybrid deployments).
+> This feature is for Enterprise accounts only.
 
-> Note: This feature is for Enterprise accounts only.
+## Kubernetes secret store setup
+Kubernetes  the native secrets supported by a cluster.
 
-## Prerequisites (for Kubernetes secret store)
+### Prerequisites
 
-You need to have your Kubernetes cluster [connected to Codefresh]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/).
-(this is only for the Kubernetes type secret store, for runtime-kubernetes [hybrid installation]({{site.baseurl}}/docs/reference/behind-the-firewall/), this is not required)
+* For the Kubernetes secret store, [connect your Kubernetes cluster to Codefresh]({{site.baseurl}}/docs/integrations/kubernetes/connect-a-kubernetes-cluster/).  
+* Create a Kubernetes secret:
+
 
 ### Create a Kubernetes Secret
 
-Create your secret in Kubernetes, i.e.
+Create your secret in Kubernetes:
 
 ```
 kubectl create secret generic my-secret --from-literal=key1=supersecret
@@ -32,17 +36,21 @@ kubectl create secret generic my-secret --from-literal=key1=supersecret
 kubectl create configmap my-config-map --from-literal=key1=config1
 ```
 
-## Kubernetes Secret Store (SAAS Version)
 
-Kubernetes secrets the native secrets supported by a cluster.
+### Set up Kubernetes secret integration in Codefresh UI
 
-### Using the Codefresh UI
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
+1. Select **Secret Store** and then click **Configure**.
+1. From the **Add Provider** dropdown, select **Kubernetes**.
+1. Do the following:  
+  * **Name**: A unique name given to your context, which will be referenced in `codefresh.yaml`.
+  * **Resource Type**: Select **Secret** and the data is base64 decoded during resolution.
+  * **Cluster**: The name of the cluster as it is configured in Codefresh.
+  * **Namespace**: The namespace where the secret is stored.
+  * **Resource Name**: Optional. The name of the secret.
+  * To allow all users in the account access to the secret, enable **Allow access to all users**.
 
-On the left-hand panel, navigate to **Account Settings** > **Integrations** > **Secret Store** and select **Configure**.
 
-Click on **Add Provider** and select **Kubernetes secret store**.
-
-For **Kubernetes** secret store, you will need to define out the following fields:
 
 {% include 
 image.html 
@@ -54,49 +62,49 @@ caption="Kubernetes Secret Store"
 max-width="80%" 
 %}
 
-- Name: a unique name given to your context, which will be referenced in `codefresh.yaml` later.
-- Cluster: the name of the cluster as it is configured in Codefresh
-- Namespace: the namespace where the secret exists
-- Resource name: the name of the secret
+{:start="5"}
+1. To apply the changes, click **Save**.
 
-You can toggle between ConfigMap or Secret, and also toggle the accessibility for users on this account.
 
-### Using the Codefresh CLI
+### Set up Kubernetes secret integration via Codefresh CLI
 
-To create a secret store context for **Kubernetes**, run: 
-
+* To create a secret store context for **Kubernetes**, run: 
 ```
 codefresh create context secret-store kubernetes "$NAME_IN_CODEFRESH" --cluster "$CLUSTER" --namespace "$NAMESPACE" --resource-type "$TYPE" --resource-name ”$NAME”
 ```
-
-or, for our example:
+OR, for our example:
 
 ```
 codefresh create context secret-store kubernetes "test" --cluster "anna-demo@FirstKubernetes" --namespace "default" --resource-type secret --resource-name "my-secret"
 ```
 
-Where:
+where:
 
 - `$NAME_IN_CODEFRESH` is a unique name given to your context, which will be referenced in `codefresh.yaml` later.
-- `$CLUSTER` is the name of the cluster as it is configured in Codefresh
-- `$NAMESPACE` is the Kubernetes namespace 
+- `$CLUSTER` is the name of the cluster as it is configured in Codefresh.
+- `$NAMESPACE` is the Kubernetes namespace where the secret is stored. 
 - `$TYPE` is of either `secret` or `configmap`
   - if `secret`, data will be base64 decoded during resolution
   - if `configmap`, data will be replaced as is
-- `$RESOURCE_NAME` is the name of the secret (optional)
+- `$RESOURCE_NAME` is optional and is the name of the secret 
 
-## Runtime Secret Store (Codefresh Runner installation)
+## Runtime secret store setup for Codefresh Runner installation
 
 
-For hybrid installation with Codefresh [Runner]({{site.baseurl}}/docs/installation/codefresh-runner/), you can also store secrets on your own runtime.
+For [Codefresh Runner]({{site.baseurl}}/docs/installation/codefresh-runner/) installations, you can also store secrets in your own runtime.
 
-### Using the Codefresh UI
+### Set up runtime secret store in Codefresh UI
 
-On the left-hand panel, navigate to **Account Settings** > **Integrations** > **Secret Store** and select **Configure**.
-
-Click on **Add Provider** and select **Runtime secret store**.
-
-For **Runtime** secret store, you need to define the following fields:
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
+1. Select **Secret Store** and then click **Configure**.
+1. From the **Add Provider** dropdown, select **Runtime secret**.
+1. Do the following:  
+  * **Name**: A unique name given to your context, which will be referenced in `codefresh.yaml`.
+  * **Resource Name**: The name of the secret.
+  * **Resource Type**: Select the type of secret .  - if `secret`, data will be base64 decoded during resolution
+  - if `configmap`, data will be replaced as is
+  * **Runtime Environment**: Select the runtime environment with the secret.
+  * To allow all users in the account access to the secret, enable **Allow access to all users**.
 
 {% include 
 image.html 
@@ -108,13 +116,13 @@ caption="Runtime Secret Store"
 max-width="80%" 
 %}
 
-- Name: a unique name given to your context, which will be referenced in `codefresh.yaml` later.
-- Resource name: the name of the secret
-- Runtime environment: select from the dropdown any [runtime environments you have installed]({{site.baseurl}}/docs/installation/codefresh-runner/).
+{:start="5"}
 
-You can toggle between ConfigMap or Secret, and also toggle the accessibility for users on this account.
+1. To apply the changes, click **Save**.
 
-### Using the Codefresh CLI
+
+
+### Set up runtime secret store with Codefresh CLI
 
 To create a secret store context for **Runtime-Kubernetes** environments ([behind the firewall]({{site.baseurl}}/docs/reference/codefresh-runner/)), run:
 
@@ -128,7 +136,7 @@ or, for our example:
 codefresh create context secret-store kubernetes-runtime "test" --runtime "gke_firstkubernetes-176201_us-central1-a_anna-demo" --resource-type secret --resource-name "my-secret"
 ```
 
-Where:
+where:
 
 - `$NAME_IN_CODEFRESH` is a unique name given to your context, which will be referenced in `codefresh.yaml` later.
 - `$CLUSTER` is the name of the cluster as it is configured in Codefresh
@@ -141,7 +149,7 @@ Where:
 
 ## Using the secrets
 
-Once Codefresh is linked to your secrets you can use them either in pipelines or any relevant section in the Codefresh GUI. See [Using secrets]({{site.baseurl}}/docs/pipelines/secrets-store/) for the details.
+Once Codefresh is linked to your secrets, you can use them either in pipelines or any relevant section in the Codefresh UI. For details, see [Using secrets]({{site.baseurl}}/docs/pipelines/secrets-store/) for the details.
 
 ## Related articles
 [Shared Configuration]({{site.baseurl}}/docs/pipelines/shared-configuration/)  
