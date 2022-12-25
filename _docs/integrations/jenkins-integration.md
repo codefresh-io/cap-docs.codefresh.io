@@ -1,5 +1,5 @@
 ---
-title: "Jenkins Integration/Migration"
+title: "Jenkins integration/migration"
 description: "Migration from Jenkins to Codefresh pipelines"
 group: integrations
 redirect_from:
@@ -9,11 +9,11 @@ toc: true
 
 Codefresh offers a superset of the capabilities offered by Jenkins, and therefore you can fully replace a Jenkins solution using only Codefresh on its own.
 
-During that migration period, it is very easy to make both solutions work together. This allows you to move gradually new CI/CD tasks to Codefresh and still keep the existing functionality in Jenkins jobs.
+During the migration period, it is very easy to make both solutions work together. This allows you to move gradually new CI/CD tasks to Codefresh and still keep the existing functionality in Jenkins jobs.
 
 ## Calling Codefresh pipelines from Jenkins Jobs
 
-This is the most common scenario for the migration period. The CI part (i.e. code packaging) is still in Jenkins, where actual deployments happen with Codefresh (the CD part).
+This is the most common scenario during the migration period. The CI part (code packaging) is still in Jenkins, while the CD part (actual deployments) happen with Codefresh.
 
 {% include image.html 
 lightbox="true" 
@@ -24,9 +24,8 @@ caption="Calling a Codefresh pipeline from a Jenkins Job"
 max-width="100%" 
 %}
 
-First, you need to create [a Codefresh API token]({{site.baseurl}}/docs/integrations/codefresh-api/#authentication-instructions) so that Jenkins can connect to your Codefresh account.
-
-Once you have the token, enter it in Jenkins [as a global Credential](https://jenkins.io/doc/book/using/using-credentials/){:target="\_blank"}.
+1. For Jenkins to connect to your Codefresh account, create [a Codefresh API token]({{site.baseurl}}/docs/integrations/codefresh-api/#authentication-instructions).
+1. Enter the token in Jenkins [as a global Credential](https://jenkins.io/doc/book/using/using-credentials/){:target="\_blank"}.
 
 {% include image.html 
 lightbox="true" 
@@ -66,7 +65,7 @@ pipeline {
 {% endraw %}
 {% endhighlight %}
 
-Run the Jenkins job and it will also trigger a Codefresh pipeline:
+Run the Jenkins job, and it also triggers a Codefresh pipeline:
 
 {% include image.html 
 lightbox="true" 
@@ -88,12 +87,12 @@ caption="Viewing Codefresh logs from Jenkins"
 max-width="60%" 
 %}
 
-Of course, if you visit the Codefresh Web UI you will also see the [running pipeline]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/).
-With this kind of integration, it is very easy to create Jenkins Jobs that compile/package code and add a step onto them
+Of course, if you visit the Codefresh UI you will also see the [running pipeline]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/).
+With this kind of integration, it is very easy to create Jenkins Jobs that compile/package code and add a step in the jobs
 that calls Codefresh for deployment.
 
 
-## Calling Jenkins jobs from Codefresh pipelines.
+## Calling Jenkins jobs from Codefresh pipelines
 
 This is the opposite scenario. As you move more functionality into Codefresh, it might make sense to have a Codefresh pipeline that actually calls Jenkins jobs for tasks that are not migrated yet.
 
@@ -106,8 +105,8 @@ caption="Calling a Jenkins Job from a Codefresh pipeline"
 max-width="100%" 
 %}
 
-First, you need to create a [Jenkins API token](https://jenkins.io/blog/2018/07/02/new-api-token-system/){:target="\_blank"} so that Codefresh can authenticate to your Jenkins instance.
-This is done from your *User Settings* in the Jenkins UI. Give your token any name that reminds you of its purpose. The name itself is arbitrary.
+* For Codefresh to authenticate to your Jenkins instance, from **User Settings** in the Jenkins UI, create a [Jenkins API token](https://jenkins.io/blog/2018/07/02/new-api-token-system/){:target="\_blank"}.  
+  Give your token any name that reminds you of its purpose. The name itself is arbitrary.
 
 {% include image.html 
 lightbox="true" 
@@ -149,7 +148,7 @@ caption="Jenkins Jobs variables"
 max-width="40%" 
 %}
 
-Then when you launch the Codefresh pipeline the remote Jenkins Job will be triggered as well.
+Launching the Codefresh pipeline also triggers the remote Jenkins Job.
 
 
 {% include image.html 
@@ -172,7 +171,7 @@ Now that you know how to mix pipelines from both platforms, it is helpful to und
 | -------------- | ---------------------------- |-------------------------|
 | Architecture       | VM based | [container-based]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)|
 | Pipeline definition  | Groovy | [YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  |
-| Tool installation        | installed on build node | dynamically launched |
+| Tool installation        | Installed on build node | dynamically launched |
 | Plugin mechanism   | Java/Groovy using Jenkins API | [Docker image](https://codefresh.io/steps/){:target="\_blank"} (any programming language)|
 | Plugin installation | Central (requires admin access) | Per pipeline (no admin access needed) |
 | Docker agent builds   | Extra plugin | Built-in |
@@ -185,28 +184,29 @@ It is important to understand that when you are switching to Codefresh you get a
 
 * Unlike Jenkins, Codefresh automatically has a distributed fleet of build nodes and manages all builds on its own.
 * With Codefresh you don't need to install anything on the build nodes (in fact you don't even have SSH access on them). All build tools are automatically launched in pipelines as Docker images.
-* It is possible in Codefresh to use the same tools in the same pipeline with a different version without any special configuration (e.g. use Java 5 and Java 8 in the same pipeline).
-* Codefresh plugins are used per pipeline by simply mentioning them. There is nothing to install centrally (such as Jenkins plugins or shared libraries). Different teams can use different tools on their pipeline without affecting each other.
+* In Codefresh, you can use the same tools with different versions in the same pipeline, without any special configuration (for example, use Java 5 and Java 8 in the same pipeline).
+* Codefresh plugins are used per pipeline by simply defining them. There is nothing to install centrally (such as Jenkins plugins or shared libraries). Different teams can use different tools on their pipeline without affecting each other.
 * Codefresh plugins are just Docker images with predefined inputs/outputs. They can be programmed in any programming language (not just Java/Groovy) and are not tied to Codefresh in any way (i.e. there is no need to know the Codefresh API for writing a Codefresh plugin).
 * Jenkins pipelines can be free-style (VM based), scripted (VM/container-based) or declarative (VM/container based) meaning that there are at least 5 ways on how you can write your pipeline. In Codefresh there is only way (declarative/container-based).
 * Jenkins pipelines are connected to a single git repository. Codefresh pipelines can be connected to multiple [git triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) which
 themselves are connected to git repositories. Therefore a Codefresh pipeline can be reused for multiple projects.
-* Specifically for building Docker images, Codefresh can automatically  connect to any [external Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/).
-* Specifically for Kubernetes deployments, Codefresh automatically sets up `kubectl` access in pipelines [from connected clusters]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/). There is no configuration needed to achieve this behavior. Codefresh also has several [built-in ways for Kubernetes deployments]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/) and a [dedicated UI dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/) to see what your cluster is doing.
-* Specifically for Helm deployments, Codefresh includes a private Helm repository and several [Helm dashboards]({{site.baseurl}}/docs/yaml-examples/examples/helm/).
+* Specifically for building Docker images, Codefresh can automatically  connect to any [external Docker registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/).<!--- check link -->
+* Specifically for Kubernetes deployments, Codefresh automatically sets up `kubectl` access in pipelines [from connected clusters]({{site.baseurl}}/docs/integrations/kubernetes/#add-kubernetes-cluster/). There is no configuration needed to achieve this behavior. Codefresh also has several [built-in ways for Kubernetes deployments]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes/) and a [dedicated UI dashboard]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/) to see what your cluster is doing.
+* Specifically for Helm deployments, Codefresh includes a private Helm repository and several [Helm dashboards]({{site.baseurl}}/docs/example-catalog/cd-examples/helm/).
 
 
 ### Migrating Jenkins freestyle jobs
 
-If you have freestyle Jenkins Jobs (or are still using Jenkins 1.x), it is very easy to migrate your builds to Codefresh. In Jenkins you are accustomed to:
+If you have freestyle Jenkins Jobs (or are still using Jenkins 1.x), it is very easy to migrate your builds to Codefresh.  
+In Jenkins, you are accustomed to:
 
-1. Install a programming tool on the Jenkins node. 
-1. call it directly in a build step.
+1. Installing a programming tool on the Jenkins node. 
+1. Calling it directly in a build step.
 
-For Codefresh a similar process would be the following:
+In Codefresh, a similar process would be the following:
 
-1. Find a Docker image in Dockerhub or create one by yourself that has the tools that you need
-1. Use [a freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) and run the exact same command in a Codefresh pipeline
+1. Find a Docker image in Docker Hub or create one by yourself that has the tools that you need.
+1. Use [a freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/), and run the exact same command in a Codefresh pipeline.
 
 For example this Jenkins job...
 
@@ -249,8 +249,10 @@ caption="Jenkins Tool installation - not needed with Codefresh"
 max-width="40%" 
 %}
 
-In Codefresh you can just use one or more Docker images in your pipeline. The tool versions will be launched only while the pipeline is active. Once the pipeline finished all Docker images that took part in it are discarded. The Codefresh build node has only Docker installed and nothing else.
-This means that you can easily mix and match tool versions. Here is a Codefresh pipeline that uses multiple versions of Java and Node.
+In Codefresh, you can just use one or more Docker images in your pipeline. The tool versions will be launched only while the pipeline is active. Once the pipeline is finished, all Docker images that took part in it are discarded. The Codefresh build node has only Docker installed and nothing else.
+This means that you can easily mix and match tool versions.  
+
+Here is a Codefresh pipeline that uses multiple versions of Java and Node.
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -290,9 +292,9 @@ steps:
      - mvn package -Dmaven.test.skip
 {% endhighlight %}
 
-Meanwhile, another team might have a different pipeline that is using different versions of Maven and/or Java. Each team can decide on the exact version needed just by changing the [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/).
+Meanwhile, another team might have a different pipeline using different versions of Maven and/or Java. Each team can decide on the exact version needed just by changing the [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/).
 
-It should be easy to see now that by migrating from Jenkins to Codefresh, a lot of Jenkins problems are simply eliminated:
+It should be easy to see now that by migrating from Jenkins to Codefresh, several problems in Jenkins are simply eliminated:
 
 * You do not need to be an admin to install programming tools anymore,
 * Tools are defined per pipeline instead of being preloaded centrally,
@@ -322,7 +324,8 @@ Of course, you can create your own Docker image with the exact tools that you wa
 
 ### Migrating Jenkins pipelines
 
-In the case of Jenkins pipelines, things are a bit more complicated because there is not a single way anymore on how to structure your pipelines. First of all, the best-case scenario is when you have *declarative* Jenkins pipelines that already use Docker images for stage execution.
+In the case of Jenkins pipelines, things are a bit more complicated because there is not a single way anymore on how to structure your pipelines.  
+First of all, the best-case scenario is when you have *declarative* Jenkins pipelines that already use Docker images for stage execution.
 
 
   `Jenkinsfile`
@@ -350,7 +353,9 @@ pipeline {
 {% endraw %}
 {% endhighlight %}
 
-In this case, there is a 1-1 mapping between Jenkins stages and Codefresh steps as you can simply convert each stage into a Codefresh step using the respective Docker image. The Jenkins pipeline above can be converted to a Codefresh pipeline with a series of freestyle steps:
+In this case, there is a 1-1 mapping between Jenkins stages and Codefresh steps as you can simply convert each stage into a Codefresh step using the respective Docker image.  
+
+The Jenkins pipeline above can be converted to a Codefresh pipeline with a series of freestyle steps:
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -579,7 +584,7 @@ Creating a Jenkins shared library has a lot of challenges:
 
 Codefresh plugins, on the other hand, are just Docker images written in any programming language. 
 
-First of all, look at [Dockerhub](https://hub.docker.com/){:target="\_blank"} and see if there is already a utility or CLI that has the same functionality with your 
+First of all, look at [Docker Hub](https://hub.docker.com/){:target="\_blank"} and see if there is already a utility or CLI that has the same functionality with your 
 shared library. Codefresh also has a [free marketplace](https://codefresh.io/steps/){:target="\_blank"} for pipeline steps (which are Docker images essentially).
 
 As a last resort, you need to rewrite your shared library and convert it to a Docker image. The process is the following:
@@ -848,7 +853,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-As with Docker registries (described in the previous section), Codefresh makes all [added Kubernetes clusters]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/) available to all pipelines. You don't need any special plugin or directive (such as `withKubeConfig`) to work with Kubernetes clusters in Codefresh. You can see that the Codefresh pipeline simply mentions Kubernetes clusters and registries without any credential information.
+As with Docker registries (described in the previous section), Codefresh makes all [added Kubernetes clusters]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster) available to all pipelines. You don't need any special plugin or directive (such as `withKubeConfig`) to work with Kubernetes clusters in Codefresh. You can see that the Codefresh pipeline simply mentions Kubernetes clusters and registries without any credential information.
 
 Of course, it is also very easy to convert any existing Jenkins pipeline by just using any image that contains the `kubectl` executable.
 
@@ -884,13 +889,13 @@ steps:
 
 Once you use Codefresh for your deployments you also get access to:
 
-* The [Kubernetes Dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/)
-* A free [built-in Helm repository]({{site.baseurl}}/docs/new-helm/managed-helm-repository/) with each Codefresh account
-* The [Helm chart dashboard]({{site.baseurl}}/docs/new-helm/add-helm-repository/)
-* The [Helm Release dashboard]({{site.baseurl}}/docs/new-helm/helm-releases-management/)
-* The [Helm environment dashboard]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/)
+* The [Kubernetes Dashboard]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)
+* A free [built-in Helm repository]({{site.baseurl}}/docs/deployments/helm/managed-helm-repository/) with each Codefresh account
+* The [Helm chart dashboard]({{site.baseurl}}/docs/deployments/helm/add-helm-repository/)
+* The [Helm Release dashboard]({{site.baseurl}}/docs/deployments/helm/helm-releases-management/)
+* The [Helm environment dashboard]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion/)
 
-For some easy templating see also the [cf-deploy]({{site.baseurl}}/docs/deploy-to-kubernetes/kubernetes-templating/) plugin.
+For some easy templating see also the [cf-deploy]({{site.baseurl}}/docs/deployments/ci-cd-guides/kubernetes-templating/) plugin.
 
 ## Related articles
 [Codefresh API]({{site.baseurl}}/docs/integrations/codefresh-api/)  

@@ -14,7 +14,7 @@ Codefresh has native support for Google Cloud in the following areas:
 - [Using Google Storage for Test reports]({{site.baseurl}}/docs/testing/test-reports/#connecting-a-google-bucket)
 - [Using Google Storage for Helm charts]({{site.baseurl}}/docs/deployments/helm/add-helm-repository/#private-repository---gcs)
 - [Using Cloud Build]({{site.baseurl}}/docs/integrations/gcloud-builder/)
-- [Installing the runner via the marketplace]({{site.baseurl}}/docs/integrations/google-marketplace/)
+- [Installing the Runner via the Marketplace]({{site.baseurl}}/docs/integrations/google-marketplace/)
 
 
 ## Using Google Container Registries
@@ -47,7 +47,8 @@ caption="Connecting a GKE cluster"
 max-width="40%" 
 %}
 
-Once the cluster is connected you can use any of the [available deployment options]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes/) for Kubernetes clusters. You also get access to all other Kubernetes dashboards such as the [cluster dashboard]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  or the [environment dashboard]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/).
+Once the cluster is connected, you can use any of the [available deployment options]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes/) for Kubernetes clusters.  
+You also get access to all other Kubernetes dashboards such as the [cluster dashboard]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  or the [environment dashboard]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/).
 
 ## Storing test reports in Google Cloud storage
 
@@ -67,7 +68,7 @@ See the full documentation for [test reports]({{site.baseurl}}/docs/testing/test
 
 ## Using Google Storage for storing Helm charts
 
-You can connect Google storage as a Helm repository in the [integrations screen]({{site.baseurl}}/docs/deployments/helm/add-helm-repository/).
+You can connect Google storage as a Helm repository by setting up a [Helm integration]({{site.baseurl}}/docs/integrations/helm/#$add-helm-repository/) in Codefresh.
 
 {% include
 image.html

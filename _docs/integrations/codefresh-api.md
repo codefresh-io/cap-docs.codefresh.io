@@ -1,5 +1,5 @@
 ---
-title: "Codefresh API"
+title: "Codefresh API pipeline integration"
 description: "Integrate Codefresh CI pipelines with other systems"
 group: integrations
 redirect_from:
@@ -22,14 +22,14 @@ max-width="70%"
 
 You can use the API in various ways:
 
-* From your local workstation with any tool that speaks HTTP (such as [postman](https://github.com/postmanlabs){:target="\_blank"}, [httpie](https://httpie.org/){:target="\_blank"}, [curl](https://curl.haxx.se/){:target="\_blank"} etc.).
-* From another HTTP-enabled system such as Jenkins. For example, you can trigger [Codefresh pipelines from Jenkins jobs]({{site.baseurl}}/docs/integrations/jenkins-integration/#calling-codefresh-pipelines-from-jenkins-jobs).
-* Using the [Codefresh command line interface](https://codefresh-io.github.io/cli/){:target="\_blank"} which itself uses the API .
+* From your local workstation, with any tool that speaks HTTP (such as [postman](https://github.com/postmanlabs){:target="\_blank"}, [httpie](https://httpie.org/){:target="\_blank"}, [curl](https://curl.haxx.se/){:target="\_blank"} etc.).
+* From another HTTP-enabled tool such as Jenkins. For example, you can trigger [Codefresh pipelines from Jenkins jobs]({{site.baseurl}}/docs/integrations/jenkins-integration/#calling-codefresh-pipelines-from-jenkins-jobs).
+* Using the [Codefresh command line interface](https://codefresh-io.github.io/cli/){:target="\_blank"} which itself uses the API.
 * Calling it programmatically from any other system. You can use your favorite programming language to make HTTP calls to Codefresh.
 
 
 The Codefresh API is updated when new features are added in the Codefresh platform so you can expect any new functionality
-to appear to the API as well.
+to appear in the API as well.
 
 ## Ways to use the Codefresh API
 
@@ -38,8 +38,7 @@ There are several ways to use the API. Some of the most popular ones are:
 
 1. Triggering builds from another system. You can start a Codefresh pipeline from any other internal system that you already have in your organization.
 1. Getting the status of builds in another system. 
-1. Creating pipelines externally. You don't have to use the Codefresh GUI to create pipelines. You can create them programmatically using your favorite template mechanism. You can reuse pipelines using your own custom implementation
-if you have special needs in your organization.
+1. Creating pipelines externally. You don't have to use the Codefresh UI to create pipelines. You can create them programmatically using your favorite template mechanism. You can reuse pipelines using your own custom implementation if you have special needs in your organization.
 
 You can browse the current API at [https://g.codefresh.io/api/](https://g.codefresh.io/api/){:target="\_blank"}.
 
@@ -56,10 +55,14 @@ For each call you will also see an example with `curl`.
 
 ## Authentication instructions
 
-Before you can use the API from your application you need an authentication key that will give programmatic access to Codefresh from an external application.
 
-In order to create your own API key, click *User Settings* on the left sidebar and scroll down until you find the *API Keys* section.
-Click the *generate* button and copy your key.
+1. Log in to your Codefresh account, and from your avatar dropdown, select [**User Settings**](https://g.codefresh.io/user/settings){:target="\_blank"}.
+1. Scroll down to  **API Keys**.
+1. To create a new API key, click **Generate**, and do the following:
+  * **Key Name**: Enter the name of the key, preferable one that will help you remember its purpose. The token is tied to your Codefresh account and should be considered sensitive information.
+  * **Scopes**: Select the required [access scopes](#access-scopes).
+1. Copy the token to your clipboard. 
+1. Click **Create**.
 
 {% include image.html
 lightbox="true"
@@ -70,13 +73,14 @@ caption="Generating a key for the API"
 max-width="70%"
 %}
 
+
 From the same screen you can also revoke keys if you don't need them anymore.
 
 ### Access scopes
 
 The following resources can be targeted with the API:
 
-* *Agent* - Used for [Codefresh Hybrid installation]({{site.baseurl}}/docs/reference/behind-the-firewall/)
+* *Agent* - Used for [Codefresh Runner installation]({{site.baseurl}}/docs/reference/behind-the-firewall/)
 * *Audit* - Read [Audit logs]({{site.baseurl}}/docs/administration/audit-logs/)
 * *Build* - Get/change [build status]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/)
 * *Cluster* - [Access control]({{site.baseurl}}/docs/administration/access-control/) for [Kubernetes clusters]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)
@@ -87,27 +91,26 @@ The following resources can be targeted with the API:
 * *Step Type* - Refers to [custom pipeline steps]({{site.baseurl}}/docs/pipelines/steps/#creating-a-typed-codefresh-plugin)
 
 
+The scopes available for each resource differ according to the type of resource.
 
-The scopes available for each resource, are different depending on the type of the resource.
-Check the ones that you wish to use with this key.
 
 ## Using the API Key with the Codefresh CLI
 
-Once you have the key use it in the Codefresh Cli like this
+Once you have the key, use it in the Codefresh CLI:
 
 {% highlight bash %}
 codefresh auth create-context <context-name> --api-key <your_key_here>
 {% endhighlight %}
 
 Now the Codefresh CLI is fully authenticated. The key is stored in `~/.cfconfig` so you only need to run this command once. The CLI
-can also work with [multiple authentication contexts](https://codefresh-io.github.io/cli/authentication/){:target="\_blank"} so it is possible to manage multiple Codefresh accounts at the same time.
+can also work with [multiple authentication contexts](https://codefresh-io.github.io/cli/authentication/){:target="\_blank"} so you can manage multiple Codefresh accounts at the same time.
 
-## Example - Triggering pipelines
+## Example: Triggering pipelines
 
 You can trigger any pipeline in Codefresh and even pass extra environment variables (even if they are not
-declared in the UI)
+declared in the UI).
 
-Triggering a pipeline via the Codefresh CLI
+Triggering a pipeline via the Codefresh CLI:
 
 {% highlight bash %}
 codefresh run kostis-codefresh/nestjs-example/ci-build -b master -t nestjs-example-trigger-name
@@ -118,7 +121,7 @@ You can pass extra environment variables as well:
 codefresh run kostis-codefresh/nestjs-example/ci-build -b master -t nestjs-example-trigger-name -v sample-var1=sample1 -v SAMPLE_VAR2=SAMPLE2
 {% endhighlight %}
 
-For the API you can trigger a pipeline by finding its serviceId from the UI
+For the API, you can trigger a pipeline by finding its `serviceId` from the UI
 
 {% highlight bash %}
 curl 'https://g.codefresh.io/api/builds/5b1a78d1bdbf074c8a9b3458' --compressed -H 'content-type:application/json; charset=utf-8' -H 'Authorization: <your_key_here>' --data-binary '{"serviceId":"5b1a78d1bdbf074c8a9b3458","type":"build","repoOwner":"kostis-codefresh","branch":"master","repoName":"nestjs-example"}'
@@ -130,29 +133,29 @@ You can also pass extra environment variables using an array
 curl 'https://g.codefresh.io/api/builds/5b1a78d1bdbf074c8a9b3458' --compressed -H 'content-type:application/json; charset=utf-8' -H 'Authorization: <your_key_here>' --data-binary '{"serviceId":"5b1a78d1bdbf074c8a9b3458","type":"build","repoOwner":"kostis-codefresh","branch":"master","repoName":"nestjs-example","variables":{"sample-var1":"sample1","SAMPLE_VAR2":"SAMPLE2"}}'
 {% endhighlight %}
 
-## Example - getting status from builds
+## Example: Getting status from builds
 
-You can get the status of a build from the cli by using its ID:
+You can get the status of a build from the CLI by using the build ID:
 
 {% highlight bash %}
 codefresh get builds 5b4f927dc70d080001536fe3
 {% endhighlight %}
 
-Same thing with the API
+Same thing with the API:
 
 {% highlight bash %}
 curl -X GET --header "Accept: application/json" --header "Authorization: <your_key_here>" "https://g.codefresh.io/api/builds/5b4f927dc70d080001536fe3"
 {% endhighlight %}
 
-## Example - creating Codefresh pipelines externally
+## Example: Creating Codefresh pipelines externally
 
 Codefresh has a great UI for creating pipelines for each of your projects. If you wish, you can also create pipelines
 programmatically in an external manner. This allows you to use your own templating solution for re-using pipelines
 and creating them from an external system.
 
-First you need a yaml file that defines the pipeline. This is a pipeline [specification](#full-pipeline-specification).
+First you need a YAML file that defines the pipeline. This is a pipeline [specification](#full-pipeline-specification).
 
->It is also very to create a a dummy pipeline in the Codefresh Web UI and then get its specification by running `codefresh get pipeline my-project/my-pipeline -o yaml > my-pipeline-spec.yml`
+>It is also very easy to create a a dummy pipeline in the Codefresh UI and then get its specification by running `codefresh get pipeline my-project/my-pipeline -o yaml > my-pipeline-spec.yml`
 
 Here is an example
 
@@ -231,7 +234,9 @@ visible in the GUI under the correct project.
 
 ## Full pipeline specification
 
-If you don't want to create a pipeline from an existing one, you can also create your own yaml from scratch. The following sections contain an explanation of the fields. Notice that that there are additional fields that are autogenerated by Codefresh (that usually hold dates and internal ID numbers). You can view them if you export the pipeline but you cannot directly edit them (their values will be overridden by Codefresh if you try to save/apply them)
+If you don't want to create a pipeline from an existing one, you can also create your own YAML from scratch.  
+The following sections contain an explanation of the fields. 
+> Codefresh automatically generates additional fields, usually fields with dates and internal ID numbers. While you cannot edit these fields, you can view them by exporting the pipeline.
 
 ### Top level fields
 
@@ -486,8 +491,8 @@ triggers:
 
 ## Using Codefresh from within Codefresh
 
-The Codefresh CLI is also packaged in a [Docker image on its own](https://hub.docker.com/r/codefresh/cli/){:target="\_blank"}. This makes it
-very easy to use it from within Codefresh in a [free style step]({{site.baseurl}}/docs/pipelines/steps/freestyle/).
+The Codefresh CLI is also packaged as a [Docker image on its own](https://hub.docker.com/r/codefresh/cli/){:target="\_blank"}. This makes it
+very easy to use it from within Codefresh in a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/).
 
 For example, you can easily call pipeline B from pipeline A  
 with the following step:
@@ -512,7 +517,7 @@ steps:
 
 This step only calls pipeline B when a pull request is opened for the branch named `production`.
 
-Note that when you use the Codefresh CLI in a pipeline step, it is already configured, authenticated and ready for use.
+Note that when you use the Codefresh CLI in a pipeline step, it is already configured, authenticated, and ready for use.
 No additional authentication is required.
 
 ## Related articles

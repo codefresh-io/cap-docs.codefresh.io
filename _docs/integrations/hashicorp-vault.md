@@ -34,7 +34,7 @@ Codefresh can use secrets from your HashiCorp Vault installation. This way you h
 1. Do the following:  
   * **Name**: A unique name for the integration which is referenced in `codefresh.yaml`.
   * If your Vault instance is behind a firewall, toggle **Vault is behind a firewall** to ON.  
-  * To allow  only Codefresh admins to change the Vault configuration, toggle **Allow access to all users** to OFF.
+  * To allow only Codefresh admins to change the Vault configuration, toggle **Allow access to all users** to OFF.
   > The other settings are specific to your [Vault authentication](https://www.vaultproject.io/docs/auth){:target="\_blank"} method. Refer to the  Vault documentation on how to get the required values.
 
 {% include image.html

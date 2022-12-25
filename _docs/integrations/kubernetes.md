@@ -9,7 +9,7 @@ Codefresh is one of the few CI/CD solutions that has native support for Kubernet
 
 Codefresh has native support for Kubernetes in the following areas:
 
-- [Connecting a cluster globally](#connect-a-kubernetes-cluster/)
+- [Connecting a cluster globally](#connect-a-kubernetes-cluster)
 - [Viewing the cluster status]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)
 - [Viewing the environment dashboard]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/)
 - [Deploying to a cluster with the GUI]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/#deploying-a-new-service)
