@@ -6,9 +6,9 @@ sub_group: kubernetes
 toc: true
 ---
 
-As explained in the [deployment options page]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes/), Codefresh has built-in functionality for deploying to Kubernetes clusters.
+As explained in [Kubernetes deployment options]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes/), Codefresh has built-in functionality for deploying to Kubernetes clusters.
 
-For example, for maximum flexibility with cluster deployments, you can run your own custom `kubectl` commands in a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/).  
+For maximum flexibility with cluster deployments, you can run your own custom `kubectl` commands in a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/).  
 [Kubectl](https://kubernetes.io/docs/reference/kubectl/overview/){:target="\_blank"} is the command line interface for managing kubernetes clusters.
 
 Codefresh automatically sets up your [config context](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/){:target="\_blank"} with your connected clusters.
@@ -16,7 +16,7 @@ Codefresh automatically sets up your [config context](https://kubernetes.io/docs
 The config context is automatically placed for you at the path of the [variable]({{site.baseurl}}/docs/pipelines/variables/) `$CF_KUBECONFIG_PATH`.
 In the current Codefresh implementation, this expands to `/codefresh/volume/sensitive/.kube/config`, within the [shared step volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps).
 
-When you use custom `kubectl` commands, it is your responsibility to template your manifests using any of the available options. To employ Codefresh for templating, it is better to use the dedicated [cf-deploy-kubernetes step]({{site.baseurl}}/docs/deployments/kubernetes/kubernetes-templating/) which provides simple templating capabilities.
+When you use custom `kubectl` commands, it is your responsibility to template your manifests using any of the available options. To employ Codefresh for templating, it is better to use the dedicated [cf-deploy-kubernetes step]({{site.baseurl}}/docs/deployments/ci-cd-guides/kubernetes-templating/), which provides simple templating capabilities.
 
 ## Using the Codefresh kubectl image
 
@@ -41,7 +41,7 @@ If you run the pipeline, you can see the help options for `kubectl`.
 ## Getting a config context
 
 The important thing to know when running custom `kubectl` commands is that Codefresh automatically sets up
-your [kubeconfig files](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/){:target="\_blank"} for you with the cluster information present in [integrations]({{site.baseurl}}/docs/integrations/add-kubernetes-cluster/).
+your [kubeconfig files](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/){:target="\_blank"} for you with the cluster information present in [integrations]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster).
 
 {% include image.html 
 lightbox="true" 
@@ -111,7 +111,7 @@ caption="Parallel kubectl deployment"
 max-width="100%"
 %}
 
-and here is the full `codefresh.yml`.
+And here is the complete `codefresh.yml`:
 
 `YAML`
 {% highlight yaml %}
@@ -169,9 +169,8 @@ steps:
 In the example above, we select one of the clusters in each deployment step, and then apply several Kubernetes manifests that constitute an application.
 
 ## Related articles
-[Connnecting to your cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/)  
 [Managing your cluster]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  
-[Accessing a docker registry]({{site.baseurl}}/docs/deployments/kubernetes/access-docker-registry-from-kubernetes/)  
+[Accessing a Docker registry]({{site.baseurl}}/docs/ci-cd-guides/access-docker-registry-from-kubernetes/)    
 
 
 
