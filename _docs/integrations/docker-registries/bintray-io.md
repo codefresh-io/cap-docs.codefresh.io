@@ -14,6 +14,8 @@ You need to get the API key for your profile, and the correct  registry domain.
 
 >Passing Codefresh metadata to Bintray is supported through Grafeas. More info is available [in this blogpost](https://codefresh.io/blog/write-this-down-grafeas/){:target="_blank"}.
 
+## Set up Bintray integration
+
 **Before you begin**  
 * [Get your API key](#find-your-api-key)
 * [Get your regsitry domain](#find-your-registry-domain)

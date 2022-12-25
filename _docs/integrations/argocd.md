@@ -1,5 +1,5 @@
 ---
-title: "ArgoCD integration for pipelines"
+title: "ArgoCD integration for CI pipelines"
 description: "Connect Codefresh to your ArgoCD endpoint"
 group: integrations
 toc: true
@@ -17,37 +17,33 @@ Before you can use Codefresh and ArgoCD together, you need to connect your ArgoC
   max-width="100%"
  %}
 
-## Creating your ArgoCD integration in Codefresh
+<!-->>Important:  
+  Codefresh has a  -->
 
-To configure the integration go to your Account Configuration, by clicking on *Account Settings* on the left sidebar. On the first section called *Integrations* click the *Configure* button next to *GitOps*.
+## Set up ArgoCD integration in Codefresh
 
-{% include image.html 
-  lightbox="true" 
-  file="/images/integrations/argocd/integrations.png" 
-  url="/images/integrations/argocd/integrations.png" 
-  alt="Codefresh Account Integrations"
-  caption="Codefresh Account Integrations"  
-  max-width="100%"
- %}
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
+1. Select **GitOps** and then click **Configure**.
+1. From the **Add GitOps Provider** dropdown, select **ArgoCD**.
+1. Follow the on-screen instructions to complete the integration.
 
-Click the *Add GitOps Provider* button from the drop-down menu and follow the on-screen instructions.
-
-To connect to an existing ArgoCD installation you need to use the [Codefresh CLI](https://codefresh-io.github.io/cli/). The Codefresh cli will install an agent in your cluster (in the same namespace that ArgoCD runs) that will handle all communication between ArgoCd and Codefresh.
-
-You can [install the CLI](https://codefresh-io.github.io/cli/installation/) by following its documentation. Once it is installed you need to authenticate it with your Codefresh account [by creating an API token]({{site.baseurl}}/docs/integrations/codefresh-api/#authentication-instructions). Make sure that you choose all scopes if this is the first time you authenticate your CLI with Codefresh.
-
-Once the CLI is authenticated, run the installation command:
+### Codefresh CLI 
+To connect to an existing ArgoCD installation:
+1. Install the [Codefresh CLI](https://codefresh-io.github.io/cli/){:target="\_blank"} by following the [documentation](https://codefresh-io.github.io/cli/installation/){:target="\_blank"}.
+  The Codefresh CLI installs an agent in your cluster, in the same namespace that ArgoCD runs in. The agent handles all communication between ArgoCD and Codefresh.  
+1. Authenticate the CLI with your Codefresh account [by creating an API token]({{site.baseurl}}/docs/integrations/codefresh-api/#authentication-instructions). Make sure that you choose all scopes if this is the first time you are authenticating your CLI with Codefresh.
+1. From a workstation that has a `kubeconfig` context pointing to the ArgoCD cluster, run the installation command:
 
 ```
 codefresh install gitops argocd-agent
 ```
 
->Please note that this command must be run from a workstation that has a kubeconfig context pointing to the ArgoCD cluster. You can also run it from your cloud console if you install codefresh CLI there.
+>You can also run it from your cloud console if you install codefresh CLI there.
 
-Answer the questions asked by the wizard. These include:
+1. Answer the questions asked by the wizard. These include:
 
  * The name of the integration (user-defined)
- * Your ArgoCD URL, username and password (you can also use [an auth token](https://argoproj.github.io/argo-cd/operator-manual/user-management/) instead of password)
+ * Your ArgoCD URL, username and password (you can also use [an auth token](https://argoproj.github.io/argo-cd/operator-manual/user-management/){:target="\_blank"} instead of password)
  * The context and namespace in the cluster where ArgoCD is installed
  * If you want to automatically import your ArgoCD applications to Codefresh
 
@@ -88,7 +84,7 @@ Gitops view: "https://g.codefresh.io/gitops"
 Documentation: "https://codefresh.io/docs/docs/ci-cd-guides/gitops-deployments/"
 ```
 
-Once the installation is complete, you should see the agent health status:
+Once the installation is complete, you should see the agent's health status:
 
 {% include image.html 
   lightbox="true" 
@@ -105,11 +101,11 @@ name for the integration.
 
 ## Creating ArgoCD applications
 
-In addition to the existing [Kubernetes/Helm environments]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/), you can now create ArgoCD applications via the Codefresh UI.
+In addition to the existing [Kubernetes/Helm environments]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/), you can now create ArgoCD applications via the Codefresh UI.
 
 Visit your GitOps dashboard by clicking on *GitOps* from the left sidebar. The click the *Add Application* button at the top right.
 
-If you already have an application setup in ArgoCD, you can enter its project and name and Codefresh will automatically retrieve all information from the ArgoCD instance.
+If you already have an application set up in ArgoCD, you can enter its project and name and Codefresh will automatically retrieve all information from the ArgoCD instance.
 
 {% include image.html 
   lightbox="true" 
@@ -174,8 +170,7 @@ Note this will only uninstall the Codefresh agent. Your Argo CD installation
 will remain unaffected.
 
 ## Related articles
-[Environment Dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/)  
-[Codefresh CLI](https://codefresh-io.github.io/cli/)  
+[Environment Dashboard]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/)  
 [Kubernetes integration]({{site.baseurl}}/docs/integrations/kubernetes/)  
 
 
