@@ -1,5 +1,5 @@
 ---
-title: "Codefresh Classic"
+title: "Codefresh CI pipeline GitOps integration"
 description: ""
 group: gitops-integrations
 sub_group: ci-integrations
@@ -7,10 +7,10 @@ toc: true
 ---
 
 
- Use Hosted GitOps with any popular Continuous Integration (CI) solution, not just with Codefresh CI. Codefresh Classic is one of the third-party CI platform/tools that you can connect to Codefresh for deployment with image enrichment and reporting.  
+ Use Hosted GitOps with any popular Continuous Integration (CI) solution, not just with Codefresh CI. If you have Hosted or Hybrid GitOps, you can connect your CI pipelines to Hosted GitOps for deployment with image enrichment and reporting.  
 
 
- Connecting Codefresh Classic, adds the CI information to images which are displayed in the Images dashboard, as in the example below.  
+ Connecting your CI pipeline, adds the CI information to images which are displayed in the Images dashboard, as in the example below.  
 
   {% include 
    image.html 
@@ -24,10 +24,10 @@ toc: true
 
 
 
-For information on how to use the image reporting action in your Codefresh Classic pipeline and how to configure the integration, see [CI Integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/). 
+For information on how to use the image reporting action in your Codefresh pipeline and how to configure the integration, see [CI Integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/). 
 
 
-### Example of Codefresh Classic pipeline with report image step
+## Example of Codefresh pipeline with report image step
 
 {% highlight yaml %}
 {% raw %}
@@ -77,12 +77,12 @@ steps:
 {% endraw %}
 {% endhighlight yaml %}
 
-### Codefresh Classic-Codefresh integration arguments
+## CI pipeline-GitOps integration settings
 The table describes the arguments required to connect Codefresh Classic to Codefresh. 
 
 >Except for Git branch and Git repo which are required, you can omit other Git provider arguments. Codefresh retrieves the required values from the runtime context selected for the integration.
 
-For the complete argument reference, see [CI integration argument reference]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/#ci-integration-argument-reference).
+For the complete argument reference, see [CI integration for GitOps argument reference]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/#ci-integration-argument-reference).
 
 
 {: .table .table-bordered .table-hover}
@@ -108,19 +108,19 @@ For the complete argument reference, see [CI integration argument reference]({{s
 | `CF_JIRA_MESSAGE`            | Relevant only when `CF_ISSUE_TRACKING_INTEGRATION` is defined. The Jira issue IDs matching the string to associate with the image.  | Required  |
 | `CF_JIRA_FAIL_ON_NOT_FOUND`            | Relevant only when `CF_ISSUE_TRACKING_INTEGRATION` is defined. The report image action when the `CF_JIRA_MESSAGE` is not found. When set to `true`, the report image action is failed.  | Required  |
 
-For how-to instructions, see [Connect a third-party CI platform/tool to Codefresh]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/#connect-a-third-party-ci-platformtool-to-codefresh/).  
+For how-to instructions, see [Connect a third-party CI platform/tool to Codefresh GitOps]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/#connect-a-third-party-ci-platformtool-to-codefresh/).  
 
-### Templatization examples for CF arguments
+## Templatization examples for CF arguments
 
-Arguments such as `CF_IMAGE`, `CF_GIT_BRANCH`, and `CF_JIRA_MESSAGE` are populated dynamically when the Codefresh Classic integration pipeline is triggered. You can templatize the values of these arguments to ensure that the required information is included in the reported image.
+Arguments such as `CF_IMAGE`, `CF_GIT_BRANCH`, and `CF_JIRA_MESSAGE` are populated dynamically when the Codefresh integration pipeline is triggered. You can templatize the values of these arguments to ensure that the required information is included in the reported image.
 
-Codefresh Classic offers [system variables](https://codefresh.io/docs/docs/pipelines/variables/#system-provided-variables) you can use to templatize argument values.
+Codefresh pipelines have [system variables]({{site.baseurl}}/docs/pipelines/variables/#system-provided-variables) you can use to templatize argument values.
 
 {::nomarkdown}
 <br>
 {:/}
 
-#### CF_IMAGE examples
+### CF_IMAGE examples
 **Example: Report full repo and branch information**  
 This example illustrates how to define the value for `CF_IMAGE` to report the repo owner, name, and branch, with the Git hash.
 
@@ -158,7 +158,7 @@ where:
 <br>
 {:/}
 
-#### CF_GIT_BRANCH examples
+### CF_GIT_BRANCH examples
 
 **Example: Report Git branch or tag with committer and commit message**  
 
@@ -207,14 +207,14 @@ Value:
 <br>
 {:/}
 
-#### CF_JIRA_MESSAGE examples
+### CF_JIRA_MESSAGE examples
 The Jira message represents an existing Jira issue, and must be a literal string.  
 
   Value:  
   `CR-1246`
 
-### Codefresh Classic integration logs
-View and analyze logs for Codefresh Classic workflows through the Logs tab. When a Codefresh Classic pipeline is run, it is added to the Logs tab.  
+## Codefresh pipeline integration logs
+View and analyze logs for Codefresh pipelines through the Logs tab. When a Codefresh pipeline is run, it is added to the Logs tab.  
 You can:  
 * Filter by status or by date range to view a subset of actions
 * Navigate to the build file in Codefresh Classic, and view the Codefresh report image step
@@ -228,7 +228,7 @@ caption="Codefresh Classic: Logs tab"
 max-width="50%"
 %}
 
-**Build in Codefresh Classic**  
+**Build in Codefresh**  
 
 The Run column includes the link to the pipeline in Codefresh Classic.  
 
@@ -252,8 +252,8 @@ caption="Logs for Codefresh report image step in Codefresh Classic build"
 max-width="50%"
 %}
 
-### Related articles
+## Related articles
 [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/)  
-[Image enrichment with integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/)  
-[Container registry integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/)  
-[Issue-tracking integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/)  
+[Image enrichment with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/)  
+[Container registry GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/)  
+[Issue-tracking GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/)  

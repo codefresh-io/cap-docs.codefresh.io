@@ -37,7 +37,7 @@ alt="Getting an API Key from your Datadog account"
 
 Configure the integration settings for Datadog within Codefresh.
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
 1. Select **Datadog**, and then **Configure**.
 1. Click **Add Integration**.
   

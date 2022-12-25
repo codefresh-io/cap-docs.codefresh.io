@@ -39,7 +39,7 @@ kubectl create configmap my-config-map --from-literal=key1=config1
 
 ### Set up Kubernetes secret integration in Codefresh UI
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
 1. Select **Secret Store** and then click **Configure**.
 1. From the **Add Provider** dropdown, select **Kubernetes**.
 1. Do the following:  
@@ -95,7 +95,7 @@ For [Codefresh Runner]({{site.baseurl}}/docs/installation/codefresh-runner/) ins
 
 ### Set up runtime secret store in Codefresh UI
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
 1. Select **Secret Store** and then click **Configure**.
 1. From the **Add Provider** dropdown, select **Runtime secret**.
 1. Do the following:  

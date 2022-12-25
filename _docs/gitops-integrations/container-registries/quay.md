@@ -1,5 +1,5 @@
 ---
-title: "Quay"
+title: "Quay GitOps integration"
 description: ""
 group: gitops-integrations
 sub_group: container-registries
@@ -7,17 +7,16 @@ toc: true
 ---
 
 Codefresh has native support for interacting with Quay registries, from where you can push, pull, and deploy images.  
-Adding a Quay integration allows you to reference the integration in external CI tools such as GitHub Actions by the name of the integration account, instead of adding explicit credentials. See [Image enrichment overview]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/) and [CI integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/).
+Adding a Quay integration allows you to reference the integration in external CI tools such as GitHub Actions by the name of the integration account, instead of adding explicit credentials. See [Image enrichment with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/) and [CI integrations for GitOps]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/).
 
 
-### Prerequisites
+## Prerequisites
 
 1. [Create a Redhat/Quay account at Quay](https://quay.io/){:target="\_blank"}.
 1. Optional. For Codefresh integration, [create a robot account](https://docs.quay.io/glossary/robot-accounts.html){:target="\_blank"}.
 
-### Quay integration settings in Codefresh
+## Quay-GitOps integration settings in Codefresh
 
-The table describes the arguments required to integrate Quay in Codefresh.  
 
 {: .table .table-bordered .table-hover}
 | Setting    | Description     | 
@@ -37,15 +36,15 @@ The table describes the arguments required to integrate Quay in Codefresh.
   max-width="50%"
   %}
 
-For how-to instructions, see [Configure container registry integrations in Codefresh]({{site.baseurl}}/docs/gitops-integrations/container-registries/#configure-container-registry-integrations-in-codefresh) and [Edit/delete container registry integrations in Codefresh]({{site.baseurl}}/docs/gitops-integrations/container-registries/#editdelete-container-registry-integrations).  
+For how-to instructions, see [Configure container registry integrations for GitOps in Codefresh]({{site.baseurl}}/docs/gitops-integrations/container-registries/#configure-container-registry-integrations-in-codefresh) and [Edit/delete container registry integrations for GitOps in Codefresh]({{site.baseurl}}/docs/gitops-integrations/container-registries/#editdelete-container-registry-integrations).  
 
 Make sure you have the:  
 * Quay domain username
 * Quay domain-encrypted password or that of the robot account
 
 
-### Related articles
+## Related articles
 [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/)  
-[Image enrichment with integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/)  
-[CI integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/)  
-[Issue-tracking integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/)  
+[Image enrichment with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/)  
+[CI GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/)  
+[Issue-tracking GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/)  

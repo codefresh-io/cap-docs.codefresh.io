@@ -71,7 +71,7 @@
       url: "/codefresh-api"
 
 
-- title: Image enrichment for GitOps
+- title: GitOps integrations
   url: "/gitops-integrations"
   pages:
     - title: Image enrichment with GitOps integrations

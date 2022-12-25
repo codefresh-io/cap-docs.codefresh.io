@@ -27,7 +27,7 @@ alt="Getting a Token from Codecov"
 ## Set up Codecov integration in Codefresh
 
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
 1. Select **Codecov** and then click **Configure**.
 1. Click **Add Codecov**.
 1. Define the following:  

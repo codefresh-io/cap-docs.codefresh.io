@@ -1,5 +1,5 @@
 ---
-title: "Jenkins"
+title: "Jenkins GitOps integration"
 description: ""
 group: gitops-integrations
 sub_group: ci-integrations
@@ -23,7 +23,7 @@ toc: true
 
 For information on how to use the image reporting action in your Jenkins pipeline and how to configure the integration, see [CI Integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/). 
 
-### Example of Jenkins pipeline with report image step
+## Example of Jenkins pipeline with report image step
 
 {% highlight yaml %}
 {% raw %}
@@ -110,7 +110,7 @@ pipeline {
 {% endraw %}
 {% endhighlight yaml %}
 
-### Jenkins-Codefresh integration arguments
+## Jenkins-GitOps integration settings
 The table describes the arguments to connect Codefresh Classic to Codefresh.  
 
 {: .table .table-bordered .table-hover}
@@ -138,7 +138,7 @@ The table describes the arguments to connect Codefresh Classic to Codefresh.
 
 For how-to instructions, see [Connect a third-party CI platform/tool to Codefresh]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/#connect-a-third-party-ci-platform-tool-to-codefresh).  
 
-### Templatization examples for CF arguments
+## Templatization examples for CF arguments
 
 Arguments such as `CF_IMAGE`, `CF_GIT_BRANCH`, and `CF_JIRA_MESSAGE` are populated dynamically when the Jenkins pipeline is triggered. You can templatize the values of these arguments in the pipeline to ensure that the required information is included in the reported image.
 
@@ -148,7 +148,7 @@ Jenkins offers a Git plugin with [environment variables](https://plugins.jenkins
 <br>
 {:/}
 
-#### CF_IMAGE
+### CF_IMAGE
 **Example: Report repo, branch with Git hash**  
 This example illustrates how to define the value for `CF_IMAGE` to report Git repo, branch, committer, and Git hash information.
 
@@ -188,7 +188,7 @@ This example illustrates how to define the value for `CF_IMAGE` value to report 
 <br>
 {:/}
 
-#### CF_GIT_BRANCH
+### CF_GIT_BRANCH
 
 **Example: Report the fully-formed Git branch**  
 This example illustrates how to define the value for `CF_GIT_BRANCH` value to report the fully-formed Git branch.   
@@ -215,13 +215,13 @@ This example illustrates how to define the value for `CF_GIT_BRANCH` value to re
 <br>
 {:/}
 
-#### CF_JIRA_MESSAGE
+### CF_JIRA_MESSAGE
 The Jira message represents an existing Jira issue, and must be a literal string.  
 
   Value:  
   `CR-1246`
 
-### Jenkins integration logs
+## Jenkins integration logs
 View and analyze logs for Jenkins through the Logs tab. When a Jenkins pipeline is run, it is added to the Logs tab.  
 You can:  
 * Filter by status or by date range to view a subset of actions
@@ -243,8 +243,8 @@ caption="Logs for Codefresh report image step in Jenkins build"
 max-width="50%"
 %}
 
-### Related articles
+## Related articles
 [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/)  
-[Image enrichment with integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/)  
-[Container registry integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/)  
-[Issue-tracking integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/)  
+[Image enrichment with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/)  
+[Container registry GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/)  
+[Issue-tracking GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/)  

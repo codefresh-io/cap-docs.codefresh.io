@@ -12,7 +12,7 @@ You can integrate Slack globally, or for specific pipelines and builds.
 
 ## Set up global Slack integration in Codefresh
 <!--- what about webhooks?  -->
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
 1. Select **Slack** and then click **Configure**.
 1. Select **Quick Setup**.
 1. Select the types of notifications you want to receive on Slack.

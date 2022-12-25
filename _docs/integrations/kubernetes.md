@@ -34,7 +34,7 @@ For On-premises and [Hybrid installations]({{site.baseurl}}/docs/administration/
 
 ### Set up Kubernetes integration
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
 1. Select **Kubernetes** and then click **Configure**.
 1. From the **Add Provider** list, select the Kubernetes provider.   
 

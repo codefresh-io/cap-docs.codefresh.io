@@ -16,38 +16,38 @@ Codefresh has new report images templates, optimized to work with third-party CI
 
 
 
-### CI integration flow for image enrichment
+## CI integration flow for image enrichment
  
 Integrate Codefresh with your CI platform/tool account with a unique name per integration account. 
 
-#### 1. Add/configure integration
+### 1. Add/configure integration
 
 Add/configure the integration account for the third-party tools. You can set up multiple integration accounts for the same tool.  
 When you add an integration, Codefresh creates a Sealed Secret with the integration credentials, and a ConfigMap that references the secret.  
 
 See:  
 * Issue tracking  
-  [JIRA]({{site.baseurl}}/docs/integrations/issue-tracking/jira/) 
+  [JIRA]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/jira/) 
  
 * Container registries  
-  [Amazon ECR]({{site.baseurl}}/docs/integrations/container-registries/amazon-ecr/)  
-  [DockerHub]({{site.baseurl}}/docs/integrations/container-registries/dockerhub/)  
-  [JFrog Artifactory]({{site.baseurl}}/docs/integrations/container-registries/jfrog/)  
-  [Quay]({{site.baseurl}}/docs/integrations/container-registries/quay/)  
+  [Amazon ECR]({{site.baseurl}}/docs/gitops-integrations/container-registries/amazon-ecr/)  
+  [DockerHub]({{site.baseurl}}/docs/gitops-integrations/container-registries/dockerhub/)  
+  [JFrog Artifactory]({{site.baseurl}}/docs/gitops-integrations/container-registries/jfrog/)  
+  [Quay]({{site.baseurl}}/docs/gitops-integrations/container-registries/quay/)  
 
 We are working on supporting integrations for more tools. Stay tuned for the release announcements.  
 For image enrichment with a tool that is as yet unsupported, you must define the explicit credentials. 
    
-#### 2. Connect CI platform/tool to Codefresh
+### 2. Connect CI platform/tool to GitOps
 
-Connect a CI platform/tool to Codefresh with an API token for the runtime cluster, the integration accounts, and image information for enrichment and reporting. 
+Connect a CI platform/tool to Codefresh GitOps with an API token for the runtime cluster, the integration accounts, and image information for enrichment and reporting. 
  
-[Codefresh Classic]({{site.baseurl}}/docs/integrations/ci-integrations/codefresh-classic/)  
-[GitHub Actions]({{site.baseurl}}/docs/integrations/ci-integrations/github-actions/)  
-[Jenkins]({{site.baseurl}}/docs/integrations/ci-integrations/jenkins/)
+[Codefresh Classic]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/codefresh-classic/)  
+[GitHub Actions]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/github-actions/)  
+[Jenkins]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/jenkins/)
 
 
-#### 3. Add the enrichment step for the CI platform/tool to your GitHub Actions pipeline 
+### 3. Add the enrichment step for the CI platform/tool to your GitHub Actions pipeline 
 
 Finally, add the enrichment step to your CI pipeline with the API token and integration information. Codefresh uses the integration name to get the corresponding Sealed Secret to securely access and retrieve the information for image enrichment.  
 
@@ -55,7 +55,7 @@ Finally, add the enrichment step to your CI pipeline with the API token and inte
  [Codefresh Classic Codefresh report image](https://codefresh.io/steps/step/codefresh-report-image){:target="\_blank"}. 
 
 
-#### 4. View enriched image information
+### 4. View enriched image information
 Once deployed, view enriched information in the Codefresh UI:  
 * Go to [Images](https://g.codefresh.io/2.0/images){:target="\_blank"}
 * Go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard){:target="\_blank"}  
@@ -69,7 +69,7 @@ View:
 * Jira issues, status and details for each deployment
 
 
-### Related articles
+## Related articles
 [Images]({{site.baseurl}}/docs/deployment/images/)  
-[Applications dashboard]({{site.baseurl}}/docs/deployment/applications-dashboard/)
+[Applications dashboard]({{site.baseurl}}/docs/gitops-deployment/applications-dashboard/)
 

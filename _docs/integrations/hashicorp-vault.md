@@ -28,7 +28,7 @@ Codefresh can use secrets from your HashiCorp Vault installation. This way you h
 
 ## Set up HashiCorp Vault integration in the Codefresh UI
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
 1. Select **Secret Store** and then click **Configure**.
 1. From the **Add Provider** dropdown, select **Hashicorp vault**.
 1. Do the following:  

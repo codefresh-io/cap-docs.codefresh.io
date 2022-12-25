@@ -1,18 +1,18 @@
 ---
-title: "CI integrations"
+title: "CI integrations for GitOps"
 description: ""
 group: gitops-integrations
 toc: true
 ---
 
-Use Codefresh's Hosted GitOps with any popular Continuous Integration (CI) solution, not just with Codefresh CI.
+Use Codefresh Hosted GitOps with any popular Continuous Integration (CI) solution, not just with Codefresh CI.
 
 You can connect a third-party CI solution to Codefresh, such as GitHub Actions for example, to take care of common CI tasks such as building/testing/scanning source code, and have Codefresh Hosted GitOps still responsible for the deployment, including image enrichment and reporting.  
 The integration brings in all the CI information to your images which you can see in the Images dashboard.   
 
-See [Image enrichment with integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/).
+See [Image enrichment with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/).
 
-### Codefresh image reporting and enrichment action
+## Codefresh image reporting and enrichment action
 To support the integration between Codefresh and third-party CI platforms and tools, we have created dedicated actions for supported CI tools in the Codefresh Marketplace. These actions combine image enrichment and reporting through integrations with issue tracking and container registry tools. 
 
 >You can also configure the integration directly in the Codefresh UI, as described in [Connect a third-party CI platform/tool to Codefresh](#connect-a-third-party-ci-platformtool-to-codefresh).
@@ -29,17 +29,17 @@ Use the action as follows:
 1. When the pipeline completes execution, Codefresh retrieves the information on the image that was built and its metadata through the integration names specified (essentially the same data that Codefresh CI would send automatically).
 1. View the image in Codefresh's [Images dashboard]({{site.baseurl}}/docs/deployment/images/), and in any [application]({{site.baseurl}}/docs/deployment/applications-dashboard/) in which it is used.
 
-### Connect a third-party CI platform/tool to Codefresh
-Connecting the CI platform/tool to Codefresh from the UI includes configuring the required arguments, and then generating and copying the YAML manifest for the report image to your pipeline.  
+## Connect a third-party CI platform/tool to GitOps
+Connecting the CI platform/tool to GitOps from the UI includes configuring the required arguments, and then generating and copying the YAML manifest for the report image to your pipeline.  
 
-1. In the Codefresh UI, go to [GitOps Integrations](https://g.codefresh.io/2.0/account-settings/integrations){:target="\_blank"}.
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**GitOps Integrations**](https://g.codefresh.io/2.0/account-settings/integrations){:target="\_blank"}. 
 1. Filter by **CI tools**, then select the CI tool and click **Add**.
 1. Define the arguments for the CI tool:  
   [Codefresh Classic]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/codefresh-classic/)  
   [GitHub Action]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/github-actions/)  
   [Jenkins]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/jenkins/)  
 
-  For the complete list of arguments you can use, see [CI integration argument reference](#ci-integration-argument-reference) in this article.
+  For the complete list of arguments you can use, see [CI integration for GitOps argument reference](#ci-integration-argument-reference) in this article.
 
 1. To generate a YAML snippet with the arguments, on the top-right, click **Generate Manifest**.  
    Codefresh validates the generated manifest, and alerts you to undefined arguments that are required, and other errors. 
@@ -96,9 +96,9 @@ The table describes _all_ the arguments required for CI integrations in general.
 | `CF_JIRA_MESSAGE`            | Relevant only when `CF_ISSUE_TRACKING_INTEGRATION` is defined. The Jira issue IDs matching the string to associate with the image.  | Required  |
 | `CF_JIRA_FAIL_ON_NOT_FOUND`            | Relevant only when `CF_ISSUE_TRACKING_INTEGRATION` is defined. The report image action when the `CF_JIRA_MESSAGE` is not found. When set to `true`, the report image action is failed.  | Required  |
 
-### Related articles
-[Container registry integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/)  
-[Issue tracking intergrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/)  
+## Related articles
+[Container registry GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/)  
+[Issue tracking GitOps intergrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/)  
 
 
 

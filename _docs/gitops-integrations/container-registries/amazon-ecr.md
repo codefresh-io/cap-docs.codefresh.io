@@ -1,5 +1,5 @@
 ---
-title: "Amazon ECR"
+title: "Amazon ECR GitOps integration"
 description: ""
 group: gitops-integrations
 sub_group: container-registries
@@ -7,11 +7,11 @@ toc: true
 ---
 
 Codefresh has native support for interacting with Amazon ECR (Elastic Container Registry), to push, pull, and deploy images.  
-For information on adding an Amazon ECR integration in Codefresh, see [Container registry integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/).
+For information on adding an Amazon ECR integration for GitOps in Codefresh, see [Container registry integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/).
 
->Amazon ECR integration is supported only in hybrid runtimes.
+>Amazon ECR integration is supported only for Hybrid GitOps.
 
-### Prerequisites
+## Prerequisites
 Before you configure settings in Codefresh to integrate Amazon ECR:  
 * [Create an IAM (Identity and Access Management) role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html){:target="\_blank"}  
 
@@ -29,8 +29,8 @@ For example:
 ```
 For detailed information, see [How Amazon Elastic Container Registry Works with IAM](https://docs.aws.amazon.com/AmazonECR/latest/userguide/security_iam_service-with-iam.html){:target="\_blank"} and the [AWS security blog](https://aws.amazon.com/blogs/security/how-to-use-trust-policies-with-iam-roles/){:target="\_blank"}.
 
-### Amazon ECR integration settings in Codefresh
-The table describes the arguments required to integrate Amazon ECR in  Codefresh.  
+## Amazon ECR-GitOps integration settings in Codefresh
+The table describes the arguments required for GitOps integrations with Amazon ECR in Codefresh.  
 
 {: .table .table-bordered .table-hover}
 | Setting    | Description     | 
@@ -52,10 +52,11 @@ The table describes the arguments required to integrate Amazon ECR in  Codefresh
    max-width="50%" 
    %}
    
-For how-to instructions, see [Configure container registry integrations in Codefresh]({{site.baseurl}}/docs/gitops-integrations/container-registries/#configure-container-registry-integrations-in-codefresh) and [Edit/delete container registry integrations in Codefresh]({{site.baseurl}}/docs/gitops-integrations/container-registries/#editdelete-container-registry-integrations).  
+For how-to instructions, see [Configure container registry integrations for GitOps in Codefresh]({{site.baseurl}}/docs/gitops-integrations/container-registries/#configure-container-registry-integrations-in-codefresh) and [Edit/delete container registry integrations for GitOps in Codefresh]({{site.baseurl}}/docs/gitops-integrations/container-registries/#editdelete-container-registry-integrations).  
 
-### Related articles
+
+## Related articles
 [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/)  
-[Image enrichment with integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/)
-[CI integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/)  
-[Issue-tracking]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/)  
+[Image enrichment with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/)  
+[CI GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/)  
+[Issue-tracking GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/)  

@@ -22,7 +22,7 @@ Before you can use Codefresh and ArgoCD together, you need to connect your ArgoC
 
 ## Set up ArgoCD integration in Codefresh
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
 1. Select **GitOps** and then click **Configure**.
 1. From the **Add GitOps Provider** dropdown, select **ArgoCD**.
 1. Follow the on-screen instructions to complete the integration.

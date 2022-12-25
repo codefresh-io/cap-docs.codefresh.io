@@ -22,7 +22,7 @@ For each Helm integration, you can toggle the level of access by [non-admin user
 
 ## Set up external Helm integration
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
 1. Select **Helm** and then click **Configure**.
 1. From the **Add Helm Repository** dropdown, select the type of external Helm repository:
   * [Azure Registry](#azure-registry-helm-repository-settings)

@@ -28,7 +28,7 @@ The registries can either be public or private.
 ## General Configuration
 
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
 1. Select **Docker Registries** and then click **Configure**.
 
 {% include image.html
@@ -39,7 +39,7 @@ The registries can either be public or private.
   max-width="80%" %}
 
 {:start="4"}
-1. Click **Add registry**, and then select the regsitry type to add.
+1. From the **Add Registry Provider** drop-down, select the regsitry type to add.
 
 {% include image.html
   lightbox="true"
@@ -62,7 +62,7 @@ The registries can either be public or private.
 
 Codefresh has a feature that allows users to designate a fallback registry for Docker integrations. If a Codefresh pipeline attempts to pull an image and that image fails for any reason (authorization issue, the registry server is down, etc.), a retry mechanism will attempt to pull it successfully. If this mechanism fails, the fallback registry feature provides the opportunity to pull the image from a different registry you have specified.
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
 1. Select **Docker Registries** and then click **Configure**.
 1. In the list of registries, select the registry to configure as the fallback registry, and click **Edit**.
 1. Expand **Advanced Options**, and select the registry from the **Fallback Registry** list.   
@@ -131,7 +131,7 @@ If you define more than one registry, you can select a registry as the default o
 
 > Successful build steps always push to the default Codefresh registry, unless you also define the `disable_push` property.
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
 1. Select **Docker Registries** and then click **Configure**.
 1. From the context menu of the Docker registry integration to be used as the default registry, select **Set as default**. 
  

@@ -6,8 +6,8 @@ sub_group: ci-integrations
 toc: true
 ---
 
-Use Codefresh Hosted GitOps with any popular Continuous Integration (CI) solution, not just with Codefresh CI.  
-GitHub Actions is one of the third-party CI solutions that you can connect to Codefresh for deployment with image reporting and enrichment.  
+Use Hosted GitOps with any popular Continuous Integration (CI) solution, not just with Codefresh CI.  
+GitHub Actions is one of the third-party CI solutions that you can connect to Hosted GitOps for deployment with image reporting and enrichment.  
 
  Connecting a GitHub Action, adds the CI information to images which are displayed in the Images dashboard, as in the example below.  
 
@@ -24,7 +24,7 @@ GitHub Actions is one of the third-party CI solutions that you can connect to Co
 For information on how to use the image reporting action in your GitHub Action pipeline and how to configure the integration, see [CI Integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/).
 
 
-### Example of GitHub Actions pipeline with Codefresh report image action
+## Example of GitHub Actions pipeline with Codefresh report image action
 
 
 Here is an example pipeline that uses GitHub Actions to build a container image, and the Codefresh action to enrich and report the resulting image to Codefresh.  
@@ -100,7 +100,7 @@ jobs:
 {% endraw %}
 {% endhighlight yaml %}
 
-### GitHub Action-Codefresh integration arguments
+## GitHub Action-GitOps integration settings
 The table describes the arguments required to connect a GitHub Action to Codefresh. 
 
 
@@ -111,7 +111,7 @@ The table describes the arguments required to connect a GitHub Action to Codefre
 | `CF_RUNTIME_NAME`       | The runtime to use for the integration. If you have more than one runtime, select the runtime from the list. | Required  |
 | `CF_PLATFORM_URL`       | The root URL of the Codefresh application. The default value is `https://g.codefresh.io`.  | Optional  |
 | `CF_API_KEY`                   | The API key to authenticate the GitHub Actions user to Codefresh. Generate the key for the GitHub Action. {::nomarkdown}<br>Enter this token in GitHub Actions <a href="https://docs.github.com/en/actions/security-guides/encrypted-secrets" target=”_blank”>as a secret</a> with the name <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">CF_API_KEY</span>. You can then reference it in all GitHub pipelines as you would any other secret.{:/}| Required  |
-| `CF_CONTAINER_REGISTRY_INTEGRATION` | The name of the container registry integration created in Codefresh where the image is stored. {::nomarkdown}<br><ul><li>For a GitHub Container registry, select <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">GHCR_GITHUB_TOKEN_AUTHENTICATION</span> even if you have not created an integration in Codefresh.<br>Codefresh retrieves and provides the explicit credentials for the container registry on generating the integration manifest.</li> <li>To create a container registry integration if you don't have one, click <b>Create Container Registry Integration</b>, and then configure the settings.<br>See <a href="https://codefresh.io/csdp-docs/docs/gitops-integrations/container-registries/">Container registry integrations</a>.</li></ul>{:/} | Optional  |
+| `CF_CONTAINER_REGISTRY_INTEGRATION` | The name of the container registry integration created in Codefresh where the image is stored. {::nomarkdown}<br><ul><li>For a GitHub Container registry, select <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">GHCR_GITHUB_TOKEN_AUTHENTICATION</span> even if you have not created an integration in Codefresh.<br>Codefresh retrieves and provides the explicit credentials for the container registry on generating the integration manifest.</li> <li>To create a container registry integration if you don't have one, click <b>Create Container Registry Integration</b>, and then configure the settings.<br>See <a href="https://codefresh.io/docs/gitops-integrations/container-registries/">Container registry integrations</a>.</li></ul>{:/} | Optional  |
 | `CF_GIT_REPO`                       | The Git repository with the configuration and code used to build the image. If not defined, Codefresh retrieves it from the repo defined for the GitHub Action. | Required  |
 | `CF_JIRA_INTEGRATION`               | Deprecated from version 0.0.565. Replaced by `CF_ISSUE_TRACKING_INTEGRATION`. |  _Deprecated_
 | `CF_ISSUE_TRACKING_INTEGRATION` | The name of the issue tracking integration created in Codefresh to use to enrich the image. Relevant only if Jira enrichment is required for the image. If you don't have a Jira integration, click **Create Atlassian Jira Integration** and configure settings. See [Jira integration]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/jira/).  | Optional  |
@@ -125,7 +125,8 @@ The table describes the arguments required to connect a GitHub Action to Codefre
 
 
 For how-to instructions, see [Connect a third-party CI platform/tool to Codefresh]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/#connect-a-third-party-ci-platformtool-to-codefresh).  
-### Templatization examples for CF arguments
+
+## Templatization examples for CF arguments
 
 Arguments such as `CF_IMAGE`, `CF_GIT_BRANCH`, and `CF_JIRA_MESSAGE` are populated dynamically when the GitHub Actions pipeline is triggered. You can templatize the values of these arguments to ensure that the required information is included in the reported image.
 
@@ -135,7 +136,7 @@ See GitHub Actions [environment variables](https://docs.github.com/en/actions/le
 <br>
 {:/}
 
-#### CF_IMAGE
+### CF_IMAGE
 
 **Example: Report full repo and branch information**  
 This example illustrates how to define the value for `CF_IMAGE` to report the repo owner, name, and short branch, with the Git hash.
@@ -176,7 +177,7 @@ where:
 <br>
 {:/}
 
-#### CF_GIT_BRANCH 
+### CF_GIT_BRANCH 
 
 **Example: Report fully-formed reference of the branch or tag**  
 This example illustrates how to define the value for `CF_GIT_BRANCH` to report the fully-formed reference of the branch or tag that triggered the workflow run.  
@@ -203,13 +204,13 @@ where:
 <br>
 {:/}
 
-#### CF_JIRA_MESSAGE
+### CF_JIRA_MESSAGE
 The Jira message represents an existing Jira issue, and must be a literal string.  
 
   Value:  
   `CR-1246`
 
-### GitHub Action logs
+## GitHub Action logs
 View and analyze logs for GitHub Action workflows through the Logs tab. When a GitHub Action is run, it is added to the Logs tab.  
 You can:  
 * Filter by status or by date range to view a subset of actions
@@ -249,10 +250,10 @@ max-width="50%"
 %}
 
 
-### Related articles
+## Related articles
 [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/)  
-[Image enrichment with integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/)  
-[Container registry integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/)  
-[Issue-tracking integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/)  
+[Image enrichment with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/)  
+[Container registry GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/)  
+[Issue-tracking GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/)  
 
 

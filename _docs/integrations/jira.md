@@ -13,13 +13,13 @@ Alternatively, you can connect to Jira:
 * By using your own [jira-cli]({{site.baseurl}}/docs/integrations/notifications/jira-integration/#using-your-own-jira-cli)
 
 ## Prerequisites
-* [Codefresh Account](https://codefresh.io/docs/docs/administration/create-a-codefresh-account/)
+* [Codefresh Account]({{site.baseurl}}/docs/administration/create-a-codefresh-account/)
 * [Jira Account](https://www.atlassian.com/software/jira){:target="\_blank"}
 
 ## Set up Jira integration in Codefresh
 <!---The goal of the Codefresh [GitOps Dashboard]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/) is to provide the highest observability into your deployments. The Codefresh GitOps Dashboard tags the Jira issues associated to deployments automatically through the Codefresh Jira Integration. This section will provide an overview of setting up the integration. -->
 
-When you add a new Jira integration in Codefresgh, you can authenticate either using the:  
+When you add a new Jira integration in Codefresh, you can authenticate either using the:  
 * [Codefresh Marketplace App]({{site.baseurl}}/docs/integrations/notifications/jira-integration/#authenticate-with-the-jira-client-key)  
   We recommended setting up your Jira integration through our Marketplace App.  
   > Note that Codefresh currently has to provide you with access to use the Jira Marketplace App. Please get in touch for more information.
@@ -35,7 +35,7 @@ When you add a new Jira integration in Codefresgh, you can authenticate either u
 
 **How to**  
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
 1. Select **Atlassian Jira** and then click **Configure**.
 1. Click **Add Jira**.
 1. In the **Integration Name** field, enter a name for the integration which is used to reference it in `codefresh.yaml`.

@@ -1,5 +1,5 @@
 ---
-title: "GitHub Container Registry (GHCR)"
+title: "GitHub Container Registry (GHCR) GitOps integration"
 description: ""
 group: gitops-integrations
 sub_group: container-registries
@@ -7,9 +7,9 @@ toc: true
 ---
 
 The GitHub Container registry allows you to host and manage your Docker container images in your personal or organisation account on GitHub. One of the benefits is that permissions can be defined for the Docker image independent from any repository. Thus, your repository could be private and your Docker image public.   
-For information on adding a GitHub Container registry integration in Codefresh, see [Container registry integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/).
+For information on adding a GitHub Container registry integration in Codefresh, see [Container registry GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/).
 
-### Prerequisites
+## Prerequisites
 Before you configure settings in Codefresh to integrate GitHub container registry:  
 * Make sure you have a personal access token with the correct scopes or create one.  
   You need at least the following scopes:  
@@ -21,7 +21,7 @@ Before you configure settings in Codefresh to integrate GitHub container registr
   For detailed information, see the [Authenticating to the Container registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-to-the-container-registry){:target="\_blank"}.
 
 
-### GitHub Container registry (GHCR) integration settings in Codefresh
+### GitHub Container registry (GHCR)-GitOps integration settings in Codefresh
 
 {: .table .table-bordered .table-hover}
 | Setting    | Description  |
@@ -44,10 +44,10 @@ Before you configure settings in Codefresh to integrate GitHub container registr
    max-width="50%" 
    %}
    
-For how-to instructions, see [Configure container registry integrations in Codefresh]({{site.baseurl}}/docs/gitops-integrations/container-registries/#configure-container-registry-integrations-in-codefresh) and [Edit/delete container registry integrations in Codefresh]({{site.baseurl}}/docs/gitops-integrations/container-registries/#editdelete-container-registry-integrations).  
+For how-to instructions, see [Configure container registry integrations for GitOps in Codefresh]({{site.baseurl}}/docs/gitops-integrations/container-registries/#configure-container-registry-integrations-in-codefresh) and [Edit/delete container registry integrations for GitOps in Codefresh]({{site.baseurl}}/docs/gitops-integrations/container-registries/#editdelete-container-registry-integrations).  
 
-### Related articles
+## Related articles
 [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/)  
-[Image enrichment with integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/)
-[CI integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/)  
-[Issue-tracking]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/)  
+[Image enrichment with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/)  
+[CI GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/)  
+[Issue-tracking GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/)  

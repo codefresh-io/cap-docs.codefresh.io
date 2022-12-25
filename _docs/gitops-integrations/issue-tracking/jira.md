@@ -9,10 +9,10 @@ toc: true
 
 Codefresh has native integration for Atlassian Jira, to enrich images with information from Jira. Codefresh can monitor a feature all the way from the ticket creation phase, up to when it is implemented and deployed to an environment.  
 
-For information on adding a Jira integration in Codefresh, see [Issue-tracking integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/).
+For information on adding a Jira integration in Codefresh, see [Issue-tracking GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/).
 
 
-### Prerequisites
+## Prerequisites
 
 1. Get your Jira instance credentials by following the [Atlassian documentation](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/){:target="\_blank"}.
 1. Note down the following as you will need them to complete the integration with Codefresh:  
@@ -21,9 +21,8 @@ For information on adding a Jira integration in Codefresh, see [Issue-tracking i
   * Jira password/token created for this user
 
 
-### Jira integration settings in Codefresh
+## Jira-GitOps integration settings in Codefresh
 
-The table describes the arguments required to integrate Jira in Codefresh.  
 
 {: .table .table-bordered .table-hover}
 | Setting    | Description     | 
@@ -45,14 +44,14 @@ The table describes the arguments required to integrate Jira in Codefresh.
   max-width="60%" 
 %}
  
-For information on adding a Jira integration in Codefresh, see [Issue-tracking integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/).
+For information on adding a Jira integration in Codefresh, see [Issue-tracking GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/).
 
-### Using Jira integration in pipelines
+## Using Jira integration in pipelines
 For pipelines based on GitHub Actions, configure the Jira integration in Codefresh, and then connect your GitHub Action to Codefresh, referencing the Jira integration by name.  
 Codefresh uses the Secret Key stored in the runtime cluster to securely access Jira and retrieve the information. 
 
-### Related articles
+## Related articles
 [Shared configuration repo]({{site.baseurl}}/docs/reference/shared-configuration/)  
-[Image enrichment with integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/)
+[Image enrichment with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/)
 [CI integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/)  
 [Container registry integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/)  

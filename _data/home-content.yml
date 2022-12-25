@@ -89,7 +89,7 @@
   icon: images/home-icons/cloud-integrations.png
   url: ''
   links:
-  - title: Codefresh Hosted GitOps
+  - title: Hosted GitOps
     new: true
     localurl: /docs/integrations/codefresh-hosted-gitops/   
   - title: Git Providers

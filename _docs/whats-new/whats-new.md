@@ -579,7 +579,7 @@ max-width="60%"
 | Item    | Description     | 
 | ----------  |  -------- | 
 | `CF_HOST`       | Deprecated from v 0.0.460 and higher in CI integrations. Recommend using `CF_RUNTIME_NAME` instead. See [CI integrations argument reference]({{site.baseurl}}/docs/integrations/ci-integrations/#ci-integration-argument-reference). | 
-| `GHCR_GITHUB_TOKEN_AUTHENTICATION`       | New value for `CF_CONTAINER_REGISTRY_INTEGRATION` argument. Can be selected for GitHub Container (GHCR) registries even when you don’t have a GHCR integration in Codefresh. See [GitHub Action-Codefresh integration arguments]({{site.baseurl}}/docs/integrations/ci-integrations/github-actions/#github-action-codefresh-integration-arguments).| 
+| `GHCR_GITHUB_TOKEN_AUTHENTICATION`       | New value for `CF_CONTAINER_REGISTRY_INTEGRATION` argument. Can be selected for GitHub Container (GHCR) registries even when you don’t have a GHCR integration in Codefresh. See [GitHub Action-Codefresh integration settings]({{site.baseurl}}/docs/integrations/ci-integrations/github-actions/#github-action-codefresh-integration-arguments).| 
 
 
 
