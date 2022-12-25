@@ -9,12 +9,104 @@ toc: true
 
 Built on Argo, the world’s most popular and fastest-growing open source software delivery, Codefresh unlocks the full enterprise potential of Argo Workflows, Argo CD, Argo Events, and Argo Rollouts, providing a control-plane for managing them at scale.  
 
-## November 2022
+## December 2022
 
 ### Features & enhancements
 {::nomarkdown}
 <br>
 {:/}
+
+#### GitOps CLI version validation and upgrade
+CLI upgrade is now very intuitive and simple. No need to constantly check the CLI and remember the package version, to keep up with and get access to new features that we are continually releasing. 
+The CLI automatically self-checks its version, and if a newer version is available, prints a banner with the notification that also includes the upgrade command.
+Upgrade is simple with the `cf upgrade` command.
+
+
+
+You can upgrade to a specific version, or download the latest version to an output folder to upgrade at your convenience.
+
+For details, see [Upgrade the Codefresh CLI]({{site.baseurl}}/docs/clients/csdp-cli/#upgrade-codefresh-cli)
+
+#### Tunnel-based as default runtime mode
+In the previous release, we introduced the Tunnel-based option for Hybrid GitOps runtimes.
+Now, we have configured it as the default runtime mode for Hybrid GitOps. When prompted to select the Access mode, select Tunnel-based. For silent installations, you don't need to specify an access mode.
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-dec22-cli-access-mode.png"
+ url="/images/whats-new/rel-notes-dec22-cli-access-mode.png"
+ alt="Access mode in CLI Wizard"
+ caption="Access mode in CLI Wizard"
+ max-width="60%"
+%}
+
+Access mode selection is relevant only for new runtime installations. Upgrading existing runtimes does not impact the access mode for those runtimes.
+
+For details, see [Access mode in Runtime flags]({{site.baseurl}}/docs/runtime/installation/#runtime-flags).
+
+<br />
+
+#### Git provider selection in CLI Wizard
+When installing the Hybrid GitOps runtime, Codefresh automatically detects the Git provider based on the repository URL provided during the installation.
+If Codefresh is unable to detect the Git provider, as for on-premises Git providers, you can select the Git provider.  
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-dec22-cli-git-provider-select.png"
+ url="/images/whats-new/rel-notes-dec22-cli-git-provider-select.png"
+ alt="Git provider selection CLI Wizard"
+ caption="Git provider selection CLI Wizard"
+ max-width="60%"
+%}
+
+<br />
+
+#### Reset shared configuration repo
+Codefresh creates the shared configuration repository when you install the first Hybrid or Hosted GitOps runtime for your account, and then uses it for all runtimes you add to the same account.
+You may want to reset the location of the shared configuration repository in your account and re-initialize it for a different runtime environment. For example, when moving from evaluation to production environments.
+You need to first uninstall all the existing runtimes in your account and then run the reset command. Codefresh re-initializes the shared configuration repo on the next runtime installation.
+
+>Reset shared configuration repo is supported from CLI v0.1.18 and higher.
+
+For details, see [Reset shared configuration repository]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/#reset-shared-configuration-repository).
+
+#### Rollout steps in Current State CR-15855
+today users can access the rollouts steps only from the timeline view. We want users to be able to see it from the current state view as well, when clicking on a rollout. 
+Add a tab to the rollout drawer with the "steps"
+
+### Bug fixes
+
+**Runtimes**  
+* App-proxy fails to connect with platform if cfHost ends with `/`. (CR-15547)
+* Missing Codefresh context generates segmentation violation error (CR-10278)
+* Unclear error message when upgrading CLI to version that does not exist - CR-15946
+* [Bitbucket] returns false in `isValid` field if runtime token is expired - CR-14873
+* SIGSEGV on installing runtime with CLI version 01.17. CR-16009
+
+**Applications**  
+* Image-applications of deleted application not removed from database. (CR-11306)
+* Incorrect time displayed in Lead Time For Changes in DORA Dashboard.[CR-15834]
+* Git Source not found error when trying to edit an application not based on a Git Source. (CR-14904)
+* Modified resource not displayed correctly in Application dashboard > Timeline tab. (CR-15658)
+
+**Others**  
+
+* Integrations page remains in loading state [CR-14814]
+* Filtering Workflow Templates by Git Source does not work [CR-13515]
+* Workflow Logs terminal flickers and self-refreshes constantly.CR-15956
+
+
+
+
+
+## November 2022
+
+### Features & enhancements
+
+<br />
+
 
 #### Tunnel-based hybrid runtimes
 Simplify installation without compromising on security with our tunnel-based installation option for hybrid runtimes.  
