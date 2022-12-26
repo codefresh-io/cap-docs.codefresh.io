@@ -36,7 +36,7 @@ For details, see [Upgrade the Codefresh CLI]({{site.baseurl}}/docs/clients/csdp-
 
 #### Tunnel-based as default runtime mode
 In the previous release, we introduced the Tunnel-based option for Hybrid GitOps runtimes.
-It is now configured as the default runtime mode for Hybrid GitOps. For silent installations, you don't need to specify an access mode. For Wizard-based insttall, when prompted to select the Access mode, select Tunnel-based. 
+It is now configured as the default runtime mode for Hybrid GitOps. For silent installations, you don't need to specify an access mode. For Wizard-based install, when prompted to select the Access mode, select Tunnel-based. 
 
 {% include
  image.html
@@ -88,23 +88,24 @@ Add a tab to the rollout drawer with the "steps"
 ### Bug fixes
 
 **Runtimes**  
-* App-proxy fails to connect with platform if cfHost ends with `/`. (CR-15547)
-* Missing Codefresh context generates segmentation violation error (CR-10278)
-* Unclear error message when upgrading CLI to version that does not exist - CR-15946
-* [Bitbucket] returns false in `isValid` field if runtime token is expired - CR-14873
-* SIGSEGV on installing runtime with CLI version 01.17. CR-16009
+* App-proxy fails to connect with platform if cfHost ends with `/`. 
+* Missing Codefresh context generates segmentation violation error.
+* Unclear error message when upgrading CLI to version that does not exist.
+* Bitbucket returns false in `isValid` field for expired runtime token.
+* SIGSEGV on installing runtime with CLI version 01.17. 
 
 **Applications**  
-* Image-applications of deleted application not removed from database. (CR-11306)
-* Incorrect time displayed in Lead Time For Changes in DORA Dashboard.[CR-15834]
-* Git Source not found error when trying to edit an application not based on a Git Source. (CR-14904)
-* Modified resource not displayed correctly in Application dashboard > Timeline tab. (CR-15658)
+* Image-applications of deleted application not removed from database. 
+* Incorrect results when filtering by Cluster in DORA dashboard.
+* Incorrect time displayed in Lead Time For Changes in DORA dashboard.
+* 'Git Source not found error' when trying to edit an application not based on a Git Source. 
+* Modified resource not displayed correctly in Application dashboard > Timeline tab.
 
 **Others**  
-
-* Integrations page remains in loading state [CR-14814]
-* Filtering Workflow Templates by Git Source does not work [CR-13515]
-* Workflow Logs terminal flickers and self-refreshes constantly.CR-15956
+* Integrations page remains idefinitley in loading state.
+* Resume button for Workflows is displayed after manually suspending the workflow.
+* Filtering Workflow Templates by Git Source does not work.
+* Workflow Logs terminal flickers and self-refreshes constantly.
 
 
 
