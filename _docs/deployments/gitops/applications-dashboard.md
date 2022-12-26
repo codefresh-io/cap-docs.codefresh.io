@@ -167,6 +167,7 @@ max-width="50%"
 
 
 ### Quick View: Summary
+
 Displays health, sync status, and source and destination definitions.
 
 {% include
@@ -179,7 +180,9 @@ caption="Application Quick View: Summary"
 max-width="30%"
 %}
 
+
 ### Quick View: Metadata
+
 Displays labels and annotations for the application.
 
 {% include
@@ -192,7 +195,9 @@ caption="Application Quick View: Metadata"
 max-width="30%"
 %}
 
+
 ### Quick View: Parameters
+
 Displays parameters configured for the application, based on the tool used to create the application's manifests.  
 The parameters displayed differ according to the tool:  `directory` (as in the screenshot below), `Helm` charts, or `Kustomize` manifests, or the specific plugin.  
 
@@ -207,6 +212,7 @@ max-width="30%"
 %}
 
 ### Quick View: Sync Options
+
 Displays sync options enabled for the application.
 
 {% include
@@ -220,6 +226,7 @@ max-width="30%"
 %}
 
 ### Quick View: Manifest 
+
 Displays the YAML version of the application manifest.
 
 {% include
@@ -233,6 +240,7 @@ max-width="30%"
 %}
 
 ### Quick View: Events
+
 Displays status and sync events for the application.
 
 {% include
@@ -459,12 +467,14 @@ Identify the health of an application resource through the color-coded border an
 {: .table .table-bordered .table-hover}
 | Health status   | Description | Display in Tree view  | 
 | --------------  | ------------| ------------------|  
+
 | **Healthy**     | Resource is functioning as required. | {::nomarkdown}<img src="../../../../images/icons/current-state-healthy.png" display=inline-block">{:/} | 
 | **Progressing** | Resource is not healthy but can become healthy before the timeout occurs.| {::nomarkdown}<img src="../../../../images/icons/current-state-progressing.png" display=inline-block">{:/} | 
 | **Suspended**   | Resource is not functioning, and is either suspended or paused. For example, Cron job or a canary rollout.| {::nomarkdown}<img src="../../../../images/icons/current-state-suspended.png" display=inline-block">{:/} | 
 | **Missing**     | Resource is not present on the cluster. |{::nomarkdown}<img src="../../../images/icons/current-state-missing.png" display=inline-block">{:/} |                        
 | **Degraded**    | Resource is not healthy, or a timeout occurred before it could reach a healthy status.| {::nomarkdown}<img src="../../../../images/icons/current-state-degraded.png" display=inline-block/>{:/} |
 | **Unknown**   | Resource does not have a health status, or the health status is not tracked in Argo CD. For example,`ConfigMaps` resource types.   | {::nomarkdown}<img src="../../../../images/icons/current-state-unknown.png" display=inline-block">{:/} | 
+
 
 See also [Argo CD's set of health checks](https://argo-cd.readthedocs.io/en/stable/operator-manual/health/){:target="\_blank"}.
 
@@ -480,10 +490,12 @@ The table describes the possible sync statuses for an application resource, and 
 {: .table .table-bordered .table-hover}
 | Sync state     | Description |Display in Tree view  |  
 | -------------- | ----------    | ----------     |  
+
 | **Synced**       | The live state of the resource on the cluster is identical to the desired state in Git.| {::nomarkdown}<img src="../../../../images/icons/current-state-synced.png" display=inline-block">{:/} |                            
 | **Syncing**      | The live state of the resource was not identical to the desired state, and is currently being synced.| {::nomarkdown}<img src="../../../../images/icons/current-state-syncing.png" display=inline-block/>{:/} |  
 | **Out-of-Sync**  | {::nomarkdown}The live state is not identical to the desired state.<br>To sync a resource, select the <b>Sync</b> option from the resource's context menu in Tree view. {:/}| {::nomarkdown}<img src="../../../../images/icons/current-state-out-of-sync.png" display=inline-block">{:/} |  
 | **Unknown**      | The sync status could not be determined. | {::nomarkdown}<img src="../../../../images/icons/current-state-sync-unknown.png" display=inline-block">{:/} |  
+
 
 > The application header displays the statuses of the current and previous sync operations. Clicking **More** opens the Sync panels with Sync Info, Sync Result and Commit Info.
   The Application Warnings/Errors panel surfaces sync errors on exceeding the maximum number of retries and when a sync operation extends beyond 30 minutes.
@@ -767,6 +779,7 @@ max-width="50%"
 %}
 
 ## Related articles
+
 [Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application)  
 [Managing GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-applications)  
 [Home dashboard]({{site.baseurl}}/docs/reporting/home-dashboard)  
