@@ -88,7 +88,7 @@ Add a tab to the rollout drawer with the "steps"
 ### Bug fixes
 
 **Runtimes**  
-* App-proxy fails to connect with platform if cfHost ends with `/`. 
+* App-proxy fails to connect if `cfHost` ends with `/`. 
 * Missing Codefresh context generates segmentation violation error.
 * Unclear error message when upgrading CLI to version that does not exist.
 * Bitbucket returns false in `isValid` field for expired runtime token.
