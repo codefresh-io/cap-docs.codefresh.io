@@ -7,7 +7,7 @@
       sub-pages:  
         - title: Deployment options for Kubernetes
           url: "/deployment-options-to-kubernetes"
-        - title: Managing Kubernetes deployments
+        - title: Managing Kubernetes clusters
           url: "/manage-kubernetes"
         - title: Custom kubectl commands
           url: "/custom-kubectl-commands"
@@ -16,7 +16,7 @@
       sub-pages:
         - title: Using Helm in a Codefresh pipeline
           url: "/using-helm-in-codefresh-pipeline"
-        - title: Helm Release management
+        - title: Managing Helm Releases
           url: "/helm-releases-management"
         - title: Using managed Helm repos
           url: "/managed-helm-repository"
@@ -24,7 +24,7 @@
           url: "/helm-charts-and-repositories"
         - title: Custom Helm uploads
           url: "/custom-helm-uploads"
-        - title: PHelm environment promotion
+        - title: Promoting Helm environments
           url: "/helm-environment-promotion"
     - title: GitOps
       url: "/gitops"
