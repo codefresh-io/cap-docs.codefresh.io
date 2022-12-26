@@ -16,11 +16,11 @@
     - title: Promoting Helm environments
       localurl: /docs/deployments/helm/helm-environment-promotion/
     - title: Creating GitOps applications
-      localurl: /docs/deployment/create-application/
+      localurl: /docs/deployment/gitops/create-application/
     - title: Monitoring applications
-      localurl: /docs/deployment/applications-dashboard/
+      localurl: /docs/deployment/gitops/applications-dashboard/
     - title: Managing applications
-      localurl: /docs/deployment/manage-application/
+      localurl: /docs/deployment/gitops/manage-application/
 
 - title: Pipelines
   icon: images/home-icons/pipeline.svg
