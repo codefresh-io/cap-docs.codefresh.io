@@ -11,7 +11,7 @@ toc: true
 - A [free Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account)
 - A distribution of [Tomcat](https://tomcat.apache.org/download-90.cgi){:target="\_blank"} setup on a remote server (running with port 8080 exposed)
 
-## The Example Java Application
+## The example Java Application
 
 You can find the example project on [GitHub](https://github.com/codefresh-contrib/scp-war-app){:target="\_blank"}.
 
@@ -36,7 +36,7 @@ max-width="100%"
 
 ## Create the pipeline
 
-Our pipeline will have three stages: clone, package, and transfer.
+Our pipeline has three stages: clone, package, and transfer.
 
 {% include image.html 
 lightbox="true" 
@@ -103,9 +103,11 @@ steps:
 
 The above pipeline does the following:
 
-1. A [git-clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/) step that clones the main repository
-2. A [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) that installs the dependencies via Maven and packages our war file
-3. A freestyle step that transfers our application via scp to a Tomcat server.  Note that you will need to change the listed environment variables accordingly, either through the YAML itself, or through your pipeline settings:
+1. Clones the main repository through the [git-clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/).
+2. Installs the dependencies via Maven and packages our `war` file through a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/).
+3. Transfers our application via scp to a Tomcat server through another freestyle step.  
+
+Note that you will need to change the listed environment variables accordingly, either through the YAML itself, or through your pipeline settings:
 
 {% include image.html 
 lightbox="true" 
@@ -117,4 +119,4 @@ max-width="100%"
 %}
   
 ## Related articles
-[Deploy to a VM using FTP]({{site.baseurl}}/docs/example-catalog/cd-examples/transferring-php-ftp/)  
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)

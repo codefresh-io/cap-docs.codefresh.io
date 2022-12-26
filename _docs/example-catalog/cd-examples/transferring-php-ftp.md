@@ -1,6 +1,6 @@
 ---
-title: "Transferring Applications via FTP"
-description: "Deploying a Php Application to a VM using FTP"
+title: "Deploy to VM via FTP"
+description: "Deploying a PHP application to a VM using FTP"
 group: example-catalog
 sub_group: cd-examples
 toc: true
@@ -10,27 +10,27 @@ redirect_from:
 
 ## Prerequisites
 
-- A [free Codefresh account](https://codefresh.io/docs/docs/getting-started/create-a-codefresh-account/){:target="\_blank"}
-- A remote machine with an ftp server and ssh setup (ensure that your ftp directory, I.e., `/srv/ftp/pub` has the proper write permissions for the ftp user) 
+- A [free Codefresh account]({{site.baseurl}}/docs/administration/account-management/create-a-codefresh-account/){:target="\_blank"}
+- A remote machine with an FTP server and SSH setup (ensure that your FTP directory, I.e., `/srv/ftp/pub` has the proper write permissions for the FTP user).
 
 >Note that as you may already know, FTP is extremely insecure as it relies on plain-text passwords and usernames, making data very vulnerable to sniffing.  A more secure solution would be to use SFTP or SCP.
 
-## The Example Php Project
+## Example PHP project
 
-The example project can be found on [GitHub](https://github.com/codefresh-contrib/ftp-php-app){:target="\_blank"}.  The application is a simple Php application that displays an example timer.
+The example project can be found on [GitHub](https://github.com/codefresh-contrib/ftp-php-app){:target="\_blank"}.  The application is a simple PHP application that displays an example timer.
 
 {% include image.html 
 lightbox="true" 
-file="/images/learn-by-example/php/test-environment.png"
-url="/images/learn-by-example/php/test-environment.png"
-alt="Example Php Application"
-caption="Example Php Application"
+file="/images/examples/php-file-transfer/test-environment.png"
+url="/images/examples/php-file-transfer/test-environment.png"
+alt="Example PHP Application"
+caption="Example PHP Application"
 max-width="90%"
 %}
 
 ## Create the pipeline
 
-Our pipeline will contain four stages:
+Our pipeline includes four stages:
 
 - A stage for cloning
 - A stage for packaging
@@ -96,20 +96,21 @@ steps:
 
 This pipeline does the following:
 
-1. A [git-clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/) step that clones the main repository
-2. A [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) that installs the necessary Php dependencies for our application
-3. A freestyle step that transfers our application via ftp.  Note that you will need to change the environment variables to your respective values, either in the YAML itself (above), or through the pipeline settings:
+1. Clones the main repository through a [Git-clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/).
+2. Installs the necessary PHP dependencies for our application through a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/).
+3. Transfers our application via FTP through another freestyle step. Note that you will need to change the environment variables to your respective values, either in the YAML itself (above), or through the pipeline settings:
 
 {% include image.html 
 lightbox="true" 
 file="/images/examples/php-file-transfer/variables.png"
 url="/images/examples/php-file-transfer/variables.png"
-alt="Codefresh Enbironment Variables"
-caption="Codefresh Enbironment Variables"
+alt="Codefresh Environment Variables"
+caption="Codefresh Environment Variables"
 max-width="90%"
 %}
 
 ## Related articles
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)  
 [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 [How Codefresh pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)

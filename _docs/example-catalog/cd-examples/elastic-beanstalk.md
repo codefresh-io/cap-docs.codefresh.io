@@ -1,5 +1,5 @@
 ---
-title: "Elastic Beanstalk"
+title: "Deploy to Elastic Beanstalk"
 description: ""
 group: example-catalog
 sub_group: cd-examples
@@ -9,16 +9,14 @@ redirect_from:
 toc: true
 ---
 
-## Deployment to Elastic Beanstalk
 
-{:.text-secondary}
-### Prerequisites
+## Prerequisites
 
 - Configured Application in Elastic Beanstalk service <br>
   See: [http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/GettingStarted.html](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/GettingStarted.html){:target="_blank"}
 
-{:.text-secondary}
-### Deployment with Codefresh
+
+## Deployment with Codefresh
 - Add encrypted environment variables for AWS credentials:
      * `AWS_ACCESS_KEY_ID`
      * `AWS_SECRET_ACCESS_KEY`
@@ -32,8 +30,8 @@ toc: true
 {% include 
 image.html 
 lightbox="true" 
-file="/images/bcf4a57-codefresh_eb_env_vars.png" 
-url="/images/bcf4a57-codefresh_eb_env_vars.png"
+file="/images/examples/elastic-beanstalk/codefresh_eb_env_vars.png" 
+url="/images/examples/elastic-beanstalk/codefresh_eb_env_vars.png"
 alt="codefresh_eb_env_vars.png" 
 max-width="40%"
 %}
@@ -47,8 +45,8 @@ The ``${{AWS_VERSION}}`` of application you can find in the Elastic Beanstalk se
 {% include 
 image.html 
 lightbox="true" 
-file="/images/c4e5ea2-codefresh_eb_version_label.png" 
-url="/images/c4e5ea2-codefresh_eb_version_label.png"
+file="/images/examples/elastic-beanstalk/codefresh_eb_version_label.png" 
+url="/images/examples/elastic-beanstalk/codefresh_eb_version_label.png"
 alt="codefresh_eb_version_label.png" 
 max-width="40%"
 %}
@@ -62,8 +60,8 @@ The ``${{AWS_ENV_NAME}}`` of application you can find in the Elastic Beanstalk s
 {% include 
 image.html 
 lightbox="true" 
-file="/images/f326437-codefresh_eb_environment.png" 
-url="/images/f326437-codefresh_eb_environment.png"
+file="/images/examples/elastic-beanstalk/codefresh_eb_environment.png" 
+url="/images/examples/elastic-beanstalk/codefresh_eb_environment.png"
 alt="codefresh_eb_environment.png" 
 max-width="40%"
 %}
@@ -86,15 +84,15 @@ deploy-elastic-beanstalk:
 {% endhighlight %}
 
 {:.text-secondary}
-### Deployment Flow
+## Deployment Flow
 - Go to the Elastic Beanstalk service and create an application and environment.
 
 
 {% include 
 image.html 
 lightbox="true" 
-file="/images/0cd9b90-codefresh_eb_environment.png" 
-url="/images/0cd9b90-codefresh_eb_environment.png"
+file="/images/examples/elastic-beanstalk/codefresh_eb_environment-deploy.png" 
+url="/images/examples/elastic-beanstalk/codefresh_eb_environment-deploy.png"
 alt="codefresh_eb_environment.png" 
 max-width="40%"
 %}
@@ -103,19 +101,17 @@ max-width="40%"
     * eb init
     * eb create {% raw %}`${{AWS_ENV_NAME}}`{% endraw %}
 
-{{site.data.callout.callout_info}}
-{% raw %}
-##### Note:
 
-If you don't have awsebcli - install EB CLI [http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html){:target="_blank"}.
-{% endraw %}
-{{site.data.callout.end}}
+
+>Note:  
+  If you don't have awsebcli - install EB CLI [http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html){:target="_blank"}.
+
 
 {% include 
 image.html 
 lightbox="true" 
-file="/images/c1335ec-codefresh_eb_health.png" 
-url="/images/c1335ec-codefresh_eb_health.png"
+file="/images/examples/elastic-beanstalk/codefresh_eb_health.png" 
+url="/images/examples/elastic-beanstalk/codefresh_eb_health.png"
 alt="codefresh_eb_health.png" 
 max-width="40%"
 %}
@@ -125,8 +121,8 @@ max-width="40%"
 {% include 
 image.html 
 lightbox="true" 
-file="/images/648e324-codefresh_eb_cf_step_deploy.png" 
-url="/images/648e324-codefresh_eb_cf_step_deploy.png"
+file="/images/examples/elastic-beanstalk/codefresh_eb_cf_step_deploy.png" 
+url="/images/examples/elastic-beanstalk/codefresh_eb_cf_step_deploy.png"
 alt="codefresh_eb_cf_step_deploy.png" 
 max-width="40%"
 %}
@@ -137,4 +133,4 @@ max-width="40%"
 
 
 ## Related articles
-[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/ci-examples/)  
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)

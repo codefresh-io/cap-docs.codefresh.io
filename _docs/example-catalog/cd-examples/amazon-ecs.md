@@ -60,7 +60,7 @@ max-width="100%"
 
 ## Create a CI/CD pipeline for ECS/Fargate
 
-Here is the whole pipeline:
+Here is the complete pipeline:
 
  `codefresh.yml`
 {% highlight yaml %}
@@ -112,7 +112,7 @@ This pipeline does the following:
 1. Runs `codefreshplugins/cf-deploy-ecs` to perform the actual deployment
 
 
-The pipeline needs [environment variables]({{site.baseurl}}/docs/pipelines/pipelines/#pipeline-settings) that hold all the required parameters
+The pipeline needs [environment variables]({{site.baseurl}}/docs/pipelines/pipelines/#pipeline-settings) that hold all the required parameters.
 
 {% include image.html 
 lightbox="true" 
@@ -149,6 +149,6 @@ You can also find the same step in the form of a [Codefresh plugin](https://code
 [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
-[External Registries]({{site.baseurl}}/docs/docker-registries/external-docker-registries/)
+[External Registries]({{site.baseurl}}/docs/integration/docker-registries/)
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Deploy to Kubernetes with Kustomize"
+title: "Deploy with Kustomize"
 description: "Deploy your services to Kubernetes using Kustomize"
 group: example-catalog
 sub_group: cd-examples
@@ -12,7 +12,7 @@ Kustomize is more of an overlay engine, as opposed to a templating engine.  You 
 
 While it is good for simple scenarios, we suggest that you use Helm for managing your Kubernetes applications.  Helm is a full package manager for Kubernetes manifests that also provides templating capabilities.  See [this example]({{site.baseurl}}/docs/example-catalog/cd-examples/helm/){:target="\_blank"} for more information.
 
-## The Example Application
+## The example application
 
 You can find the example project on [GitHub](https://github.com/codefresh-contrib/kustomize-sample-app){:target="\_blank"}.
 
@@ -82,9 +82,9 @@ spec:
 
 - A [free Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account)
 <!--change once moved-->
-- A Kubernetes cluster [connected to your Codefresh account](https://codefresh.io/docs/docs/deploy-to-kubernetes/add-kubernetes-cluster/)
+- A Kubernetes cluster [connected to your Codefresh account](https://codefresh.io/docs/docs/integrations/kubernetes/#connect-a-kubernetes-cluster)
 
-## Create the Staging Environment Pipeline 
+## Create the staging environment pipeline 
 
 This pipeline will have two stages: clone and deploy.
 
@@ -136,14 +136,11 @@ steps:
 {% endhighlight %}
 
 The above pipeline does the following:
+1. Clones the main repository through a [git-clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/).
+2. Connects to our Kubernetes cluster we have integrated with Codefresh using `kubectl`, and deploys the application as a staging environment with the appropriate value for `MY_MYSQL_DB` as defined in our configMap using Kustomize (the `-k` flag), through a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/).
 
-1. A [git-clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/) step that clones the main repository
-2. A [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) that:
-  - Uses kubectl to connect to our Kubernetes cluster we have integrated with Codefresh
-  - Using Kustomize (the -k flag), deploys the application as a staging environment with the appropriate value for `MY_MYSQL_DB` as defined in our configMap
-
->Note that if you are using kubectl prior to 1.14, you can use the following command to deploy with Kustomize: 
->`kustomize build overlays/production | kubectl apply -f`
+>If you are using `kubectl` prior to 1.14, you can use the following command to deploy with Kustomize:  
+  `kustomize build overlays/production | kubectl apply -f`
 
 ## Create the production environment pipeline 
 
@@ -198,17 +195,16 @@ steps:
 
 The above pipeline does the following:
 
-1. A [git-clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/) step that clones the main repository
-2. A [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) that:
-  - Uses kubectl to connect to our Kubernetes cluster we have integrated with Codefresh
-  - Using Kustomize (the -k flag), deploys the application as a production environment with the appropriate value for `MY_MYSQL_DB` as defined in our configMap
+1. Clones the main repository through a [git-clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/).
+1. Connects to our Kubernetes cluster we have integrated with Codefresh using `kubectl`, and deploys the application as a staging environment with the appropriate value for `MY_MYSQL_DB` as defined in our configMap using Kustomize (the `-k` flag), through a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/).
+
 
 >Note that if you are using kubectl prior to 1.14, you can use the following command to deploy with Kustomize: 
 >`kustomize build overlays/production | kubectl apply -f`
 
 ## Verification
 
-After you run these pipelines, your deployments will be visible from the [Kubernetes dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/#accessing-the-kubernetes-dashboard).
+After you run these pipelines, your deployments are displayed in the [Kubernetes dashboard]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/#accessing-the-kubernetes-dashboard).
 
 {% include image.html 
 lightbox="true" 
@@ -241,7 +237,8 @@ max-width="100%"
 
 
 ## Related articles
-[Deployment options to Kubernetes]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes)  
-[Running custom kubectl commands]({{site.baseurl}}/docs/deploy-to-kubernetes/custom-kubectl-commands/)  
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)  
+[Deployment options to Kubernetes]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes)  
+[Running custom kubectl commands]({{site.baseurl}}/docs/deployments/kubernetes/custom-kubectl-commands/)  
 [Deploy with Helm]({{site.baseurl}}/docs/example-catalog/cd-examples/helm/)  
 

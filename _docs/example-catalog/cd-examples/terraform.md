@@ -74,11 +74,11 @@ steps:
 
 This pipeline does the following:
 
-1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
-1. Runs [cf_export]({{site.baseurl}}/docs/pipelines/variables/#exporting-environment-variables-from-a-freestyle-step) to create a pipeline variable with the path of the google service account
-1. Runs `terraform init/apply` to create the VM on Google cloud
+1. Clones the source code through a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/).
+1. Creates a pipeline variable with the path of the Google service account by running [cf_export]({{site.baseurl}}/docs/pipelines/variables/#exporting-environment-variables-from-a-freestyle-step). 
+1. Creates the VM on Google cloud by running `terraform init/apply`.
 
->For simplicity, we auto-approve the terraform plan in the example pipeline. In a production pipeline you would instead use an [approval step ]({{site.baseurl}}/docs/pipelines/steps/approval/) to inspect the plan, before actually applying it.
+>For simplicity, we auto-approve the Terraform plan in the example pipeline. In a production pipeline, you would instead use an [approval step]({{site.baseurl}}/docs/pipelines/steps/approval/) to inspect the plan before actually applying it.
 
 The pipeline needs a [single environment variable]({{site.baseurl}}/docs/pipelines/pipelines/#pipeline-settings) that holds the content of the service account.
 
@@ -107,6 +107,7 @@ You can easily use the same pipeline or a different one for pull requests. In th
 
 
 ## Related articles
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)  
 [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 [How Codefresh pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)

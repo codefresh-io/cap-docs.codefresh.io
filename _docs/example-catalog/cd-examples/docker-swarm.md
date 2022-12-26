@@ -1,5 +1,5 @@
 ---
-title: "Docker SWARM"
+title: "Deploy to Docker SWARM"
 description: "Deploy to Docker Swarm with Codefresh"
 group: example-catalog
 sub_group: cd-examples
@@ -24,9 +24,11 @@ All this information will be passed to the pipeline in the form of build paramet
 
 ## Example application
 
-An example Docker Swarm application can be found at [https://github.com/codefreshdemo/example-voting-app](https://github.com/codefreshdemo/example-voting-app){:target="\_blank"}
+For an example Docker Swarm application, see [https://github.com/codefreshdemo/example-voting-app](https://github.com/codefreshdemo/example-voting-app){:target="\_blank"}
 
-To launch it locally you need to download [Docker](https://www.docker.com/products/overview){:target="\_blank"}. If you are on Mac or Windows, [Docker Compose](https://docs.docker.com/compose){:target="\_blank"} will be automatically installed. On Linux, make sure you have the latest version of [Compose](https://docs.docker.com/compose/install/){:target="\_blank"}.
+To launch it locally you need to download [Docker](https://www.docker.com/products/overview){:target="\_blank"}.  
+If you are on Mac or Windows, [Docker Compose](https://docs.docker.com/compose){:target="\_blank"} is automatically installed.  
+On Linux, make sure you have the latest version of [Compose](https://docs.docker.com/compose/install/){:target="\_blank"}.
 
 
 Run in this root directory:
@@ -39,9 +41,10 @@ docker-compose up
 {% endraw %}
 {% endhighlight %}
 
-The app will be running at [http://localhost:5000](http://localhost:5000), and the results will be at [http://localhost:5001](http://localhost:5001).
+The app runs at [http://localhost:5000](http://localhost:5000), and the results are at [http://localhost:5001](http://localhost:5001).
 
-Alternately, if you want to run it on a Docker Swarm, first make sure you have a swarm. If you don't, run:
+Alternately, if you want to run it on a Docker Swarm, first make sure you have a Swarm.  
+If you don't, run:
 
 {% highlight bash %}
 {% raw %}
@@ -67,15 +70,15 @@ The swarm master must have Python installed.
 
 ## Deploy to Remote Swarm with Codefresh
 
-First you need to setup the following environment variables in your Codefresh pipeline
+First you need to set up the following environment variables in your Codefresh pipeline:
 
 {: .table .table-bordered .table-hover}
-| `RDOCKER_HOST`       | remote Docker swarm master machine, accessible over SSH (for example, ubuntu@ec2-public-ip)                    |
+| `RDOCKER_HOST`       | remote Docker Swarm master machine, accessible over SSH (for example, ubuntu@ec2-public-ip)                    |
 | `STACK_NAME`         | is new Docker stack name (use \"vote\", for example)                                                           |
-| `SSH_KEY`            | private SSH key, used to access Docker swarm master machine                                                    |
+| `SSH_KEY`            | private SSH key, used to access Docker Swarm master machine                                                    |
 | `SPLIT_CHAR`         | split character, you've used to replace `newline` in SSH key. Recommendation: use `,` (`comma` character).     |
 
-The `SSH_KEY` variable has the contents of the [SSH key](https://www.ssh.com/ssh/public-key-authentication){:target="\_blank"} that can access the Docker swarm host. Currently, in order to pass SSH key through Codefresh UI, you need to convert it to single line string (replacing `newline` with `comma`), like this:
+The `SSH_KEY` variable has the contents of the [SSH key](https://www.ssh.com/ssh/public-key-authentication){:target="\_blank"} that can access the Docker Swarm host. Currently, in order to pass SSH key through Codefresh UI, you need to convert it to single line string (replacing `newline` with `comma`), like this:
 
 {% highlight bash %}
 {% raw %}
@@ -95,9 +98,9 @@ max-width="70%"
 %}
 
 
-## Deploy to Docker Swarm with a YML step
+## Deploy to Docker Swarm with a YAML step
 
-Once all the variables are set you can use the following [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) to deploy to your cluster.
+Once you have defined all the variables, deploy to your cluster using the following [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/).
 
   `codefresh.yml`
 {% highlight yaml %}
@@ -140,9 +143,9 @@ deploy_to_swarm:
 
 
 
-## Create a CI/CD pipeine for Docker swarm
+## Create a CI/CD pipeine for Docker Swarm
 
-Here is the full pipeline:
+Here is the complete pipeline:
 
 {% include 
 image.html 
@@ -207,9 +210,10 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-The values of `MY_REGISTRY`, `MY_REGISTRY_USER` and `MY_REGISTRY_PASSWORD` depend upon the type of [your connected registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/).
+The values of `MY_REGISTRY`, `MY_REGISTRY_USER` and `MY_REGISTRY_PASSWORD` depend upon the type of [your connected registry]({{site.baseurl}}/docs/integration/docker-registries/).
 
 ## Related articles
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)  
 [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  

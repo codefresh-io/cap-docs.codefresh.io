@@ -6,11 +6,11 @@ sub_group: cd-examples
 toc: true
 ---
 
-Heroku is a container-based cloud PaaS software that allows you to deploy, run, and manage your applications.  Built on top of AWS, it supports Ruby, Node.js, Java, Python, Clojure, Scala, Go and PHP.
+Heroku is a container-based cloud PaaS (Platform as a Service) software that allows you to deploy, run, and manage your applications.  Built on top of AWS, it supports Ruby, Node.js, Java, Python, Clojure, Scala, Go and PHP.
 
 This tutorial will cover two examples, depending on your use case. If you are not using containers, your use case is covered using the Codefresh heroku-deployer plugin ([Example #1](#pipeline-example-1-deploying-source-code-to-heroku-using-the-codefresh-heroku-plugin)). If you are using containers, you can achieve deployment by using a combination of build, push, and freestyle steps ([Example #2](#pipeline-example-2-deploy-a-docker-image-to-heroku)).
 
-## The Example Django Application
+## Example Django Application
 
 You can find the example project on [GitHub](https://github.com/codefresh-contrib/heroku-python-django-sample-app).
 
@@ -32,7 +32,7 @@ Once launched the application presents the Django starter page at localhost:8000
 
 ### Create the pipeline 
 
-This pipeline will have three stages: clone, test, and deploy.
+This pipeline has three stages: clone, test, and deploy.
 
 {% include image.html 
 lightbox="true" 
@@ -94,7 +94,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-The above pipeline does the following:
+The above pipeline has the following steps:
 
 1. A [git-clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/) step that clones the main repository
 2. A [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) that installs dependencies and runs the unit tests
@@ -102,7 +102,7 @@ The above pipeline does the following:
 
 ## Pipeline Example #2: Deploy a Docker Image to Heroku
 
-This example differs from the plugin usage, as it will deploy a built Docker image to Heroku.
+This example differs from the plugin usage, as it deploys a built Docker image to Heroku.
 
 Note that you need to change the environment variables to your respective values.  You can do this directly [in the YAML itself]({{site.baseurl}}/docs/how-to-guides/migrating-from-travis-ci/#environment-variables), or through the Codefresh UI.  Navigate to the in-line editor, and to the right you will find a tab lebeled **Variables**.
 
@@ -125,7 +125,7 @@ max-width="100%"
 
 ### Create the pipeline 
 
-This pipeline will have five stages: clone, build, test, push, and release.
+This pipeline has five stages: clone, build, test, push, and release.
 
 {% include image.html 
 lightbox="true" 
@@ -199,12 +199,14 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-1. A [git-clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/) step that clones the main repository
-2. A [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) that builds our Docker image
-3. A freestyle step that runs unit tests on our Docker image
-3. A [push]({{site.baseurl}}/docs/pipelines/steps/push/) step that pushes to the Heroku registry
-4. A freestyle step that releases the Docker image
+The pipeline does the following:  
+1. Clones the main repository through the [git-clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/).
+1. Builds our Docker image through a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/).
+1. Runs unit tests on our Docker image through another freestyle step.  
+1. Pushes to the Heroku registry through a [push step]({{site.baseurl}}/docs/pipelines/steps/push/).
+1. Releases the Docker image through another freestyle step. 
 
 
-<!--## Related articles-->
 
+## Related articles
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)

@@ -1,5 +1,5 @@
 ---
-title: "Use kubectl as part of Freestyle step"
+title: "Use kubectl as part of freestyle step"
 description: "How to run manually kubectl in a Codefresh pipeline"
 group: example-catalog
 sub_group: cd-examples
@@ -36,6 +36,7 @@ The context remains the same as it appears in the [Codefresh Kubernetes dashboar
 More complex examples can be found in the [custom kubectl commands]({{site.baseurl}}/docs/deploy-to-kubernetes/custom-kubectl-commands/) documentation page.
 
 ## Related articles
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)  
 [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 [How Codefresh pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)

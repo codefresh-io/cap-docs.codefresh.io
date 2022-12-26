@@ -6,14 +6,15 @@ sub_group: cd-examples
 toc: true
 ---
 
-[Helm](https://helm.sh/){:target=\_blank"} is the package manager for Kubernetes. Codefresh has comprehensive support for Helm:
+[Helm](https://helm.sh/){:target=\_blank"} is the package manager for Kubernetes.  
+Codefresh has comprehensive support for Helm:
 
-* You get a free [built-in Helm repository]({{site.baseurl}}/docs/new-helm/managed-helm-repository/) with each Codefresh account.
-* You can track your charts in the [Helm chart dashboard]({{site.baseurl}}/docs/new-helm/add-helm-repository/).
-* You can view your deployments in your [Helm Release dashboard]({{site.baseurl}}/docs/new-helm/helm-releases-management/).
-* You can view Helm releases in the [Environment dashsboard]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/).
-* You can promote Helm releases in your [Helm promotion dashboard]({{site.baseurl}}/docs/new-helm/helm-environment-promotion/).
-* You can add any external Helm repository on any other cloud provider.
+* Free [built-in Helm repository]({{site.baseurl}}/docs/deployments/helm/managed-helm-repository/) with each Codefresh account
+* [Helm chart dashboard]({{site.baseurl}}/docs/docs/deployments/add-helm-repository/) to track your charts
+* [Helm Release dashboard]({{site.baseurl}}/docs/docs/deployments/helm-releases-management/) to view your deployments
+* [Environment dashsboard]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/) to view Helm releases 
+* [Helm promotion dashboard]({{site.baseurl}}/docs/deployments/helm-environment-promotion/) to promote Helm releases
+* Add any external Helm repository on any other cloud provider
 
 Codefresh also provides a [pipeline step]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/) for deploying with Helm.
 
@@ -27,7 +28,7 @@ You can see the example project at [https://github.com/codefresh-contrib/helm-sa
 
 ## Prerequisites
 
-[At least one Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/add-kubernetes-cluster/) in your Codefresh account. 
+[At least one Kubernetes cluster]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster/) in your Codefresh account. 
 
 >Notice that if you still use Helm 2 you should also have installed the server side of Helm 2 (Tiller) using `helm init`. This command is best run from the cloud console of your cluster. The respective pipelines of this guide are in the [helm-2 branch](https://github.com/codefresh-contrib/helm-sample-app/tree/helm-2){:target=\_blank"}.
 
@@ -96,11 +97,11 @@ steps:
 
 This pipeline does the following:
 
-1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
-1. Builds a docker image using a [Build step in pipelines]({{site.baseurl}}/docs/pipelines/steps/build/)
+1. Clones the source code through a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
+1. Builds a docker image through a [build step]({{site.baseurl}}/docs/pipelines/steps/build/)
 1. Deploys the Helm chart to a cluster named `my-demo-k8s-cluster` using the Helm step [from the Step Marketplace](https://codefresh.io/steps/step/helm){:target=\_blank"}.
 
-Note that in this example `charts/helm-example` refers to the [filesystem location in the code](https://github.com/codefresh-contrib/helm-sample-app/tree/master/charts/helm-example){:target=\_blank"} that was just checked out.
+In this example, `charts/helm-example` refers to the [filesystem location in the code](https://github.com/codefresh-contrib/helm-sample-app/tree/master/charts/helm-example){:target=\_blank"} that was just checked out.
 
 The deployment will be visible in the [Helm releases dashboard]({{site.baseurl}}/docs/new-helm/helm-releases-management/).
 
@@ -213,12 +214,12 @@ caption="Stored Helm chart"
 max-width="80%" 
 %}
 
-It is also possible to [run your own Helm commands]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/#example-custom-helm-commands) in a Codefresh pipeline.
+It is also possible to [run your own Helm commands]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/#example-custom-helm-commands) in a Codefresh pipeline.
 
 
 ## Related articles
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)  
 [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 [How Codefresh pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  
-[Using Helm in Codefresh pipelines]({{site.baseurl}}/docs/new-helm/using-helm-in-codefresh-pipeline/)  

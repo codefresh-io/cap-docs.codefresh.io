@@ -13,7 +13,7 @@ toc: true
 ---
 Codefresh enables you to define the steps of your pipeline in a [YAML file]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/). By default, the file is named `codefresh.yml`, and is located in the root directory of the repository.
 
-### CI examples
+## CI examples
 
 ### Programming-language specific examples
 
@@ -91,6 +91,7 @@ Codefresh can automatically export secret key-value pairs using the Vault plugin
 
 - [Send notification to Slack]({{site.baseurl}}/docs/example-catalog/ci-examples/sending-the-notification-to-slack)
 - [Send notification to Jira]({{site.baseurl}}/docs/example-catalog/ci-examples/sending-the-notification-to-jira)
+
 
 ## CD examples
 

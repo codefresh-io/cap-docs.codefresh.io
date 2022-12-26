@@ -8,8 +8,7 @@ toc: true
 
 Even though Codefresh is Kubernetes-native and designed for containers, it can still deploy traditional applications in the form of Virtual Machines to any Cloud provider.
 
-In this example we will use 
-[Packer](http://www.packer.io/){:target="\_blank"} to package an application into a VM disk image that will then be launched in Google Cloud.
+In this example, we will use [Packer](http://www.packer.io/){:target="\_blank"} to package an application into a VM disk image that will then be launched in Google Cloud.
 Because Packer itself is already offered [in a Docker container](https://hub.docker.com/r/hashicorp/packer/){:target="\_blank"}, it is very easy to run Packer in a Codefresh pipeline.
 
 Google also offers a [Docker image for GCloud](https://hub.docker.com/r/google/cloud-sdk/){:target="\_blank"} making the launching of the VM straightforward in a Codefresh pipeline.
@@ -103,11 +102,11 @@ steps:
 
 This pipeline does the following:
 
-1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
-1. Saves the content of the variable that holds the Google account as a file called `account.json`
-1. Compiles the Go application with a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/)
-1. Runs `packer` to create a VM image based on Ubuntu that also contains the simple Go application
-1. Runs `gcloud` to launch a VM with the image that was just created
+1. Clones the source code through a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/).
+1. Saves the content of the variable that holds the Google account as a file called `account.json`.
+1. Compiles the Go application through a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/).
+1. Runs `packer` to create a VM image based on Ubuntu that also contains the simple Go application.
+1. Runs `gcloud` to launch a VM with the image that was just created.
 
 
 Run the pipeline and see your deployment succeed. You can customize the image by editing the [Packer template](https://github.com/codefresh-contrib/vm-packer-sample-app/blob/master/my-google-cloud-example.json){:target="\_blank"}.
@@ -127,6 +126,7 @@ max-width="70%"
 You can follow the same procedure for any other cloud that has an API/CLI (such as AWS, Azure, Digital Ocean etc).
 
 ## Related articles
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)  
 [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 [How Codefresh pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)

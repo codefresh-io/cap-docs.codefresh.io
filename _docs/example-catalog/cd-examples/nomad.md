@@ -179,12 +179,12 @@ steps:
 
 This pipeline does the following:
 
-1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
-1. Uses a [build step]({{site.baseurl}}/docs/pipelines/steps/build/) to create a Docker image for a simple Go application. The image is automatically pushed to the default Docker registry
-1. Runs `envsubst` to replace all variables in the job spec. These include:
-   * the Registry token so that Nomad can access the default Docker registry
+1. Clones the source code through a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/).
+1. Creates a Docker image for a simple Go application through a [build step]({{site.baseurl}}/docs/pipelines/steps/build/). The image is automatically pushed to the default Docker registry.
+1. Replaces all variables in the job spec by running `envsubst`. These include:
+   * The Registry token so that Nomad can access the default Docker registry
    * The docker image name and tag to be deployed
-1. Runs the job with another [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) (i.e. deploys the image to Nomad)
+1. Runs the job to deploy the image to Nomad through a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/).
 
 
 Run the pipeline and see your deployment succeed.
@@ -219,6 +219,7 @@ max-width="80%"
 You can also use [Terraform]({{site.baseurl}}/docs/example-catalog/cd-examples/terraform/) in Codefresh pipelines.
 
 ## Related articles
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)  
 [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 [How Codefresh pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  

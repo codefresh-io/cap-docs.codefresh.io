@@ -1,7 +1,7 @@
 ---
-title: "Secure a Docker Container Using HTTP Basic Auth"
+title: "Secure a Docker Container using HTTP Basic Auth"
 description: ""
-group: example-catalogog
+group: example-catalog
 sub_group: cd-examples
 redirect_from:
   - /docs/securing-docker-container-with-http-basic-auth/
@@ -36,8 +36,8 @@ The architecture for this step is displayed in the diagram below. In this step e
 {% include 
 image.html 
 lightbox="true" 
-file="/images/a65a871-codefresh_webapp_container.png" 
-url="/images/a65a871-codefresh_webapp_container.png"
+file="/images/examples/docker-https/codefresh_webapp_container.png" 
+url="/images/examples/docker-https/codefresh_webapp_container.png"
 alt="codefresh_webapp_container.png" 
 max-width="40%"
 %}
@@ -73,8 +73,8 @@ The architecture for the ```docker-compose.yml``` file is displayed in the diagr
 {% include 
 image.html 
 lightbox="true" 
-file="/images/72a8d7a-codefresh_nginx_container.png" 
-url="/images/72a8d7a-codefresh_nginx_container.png"
+file="/images/examples/docker-https/codefresh_nginx_container.png" 
+url="/images/examples/docker-https/codefresh_nginx_container.png"
 alt="codefresh_nginx_container.png" 
 max-width="40%"
 %}
@@ -86,6 +86,7 @@ Just head over to the example [__repository__](https://github.com/codefreshdemo/
 {{site.data.callout.end}}
 
 ## Related articles
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)  
 [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 [How Codefresh pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)
