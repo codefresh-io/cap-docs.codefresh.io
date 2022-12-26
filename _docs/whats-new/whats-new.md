@@ -12,24 +12,31 @@ Built on Argo, the world’s most popular and fastest-growing open source softwa
 ## December 2022
 
 ### Features & enhancements
-{::nomarkdown}
-<br>
-{:/}
+
+<br />
+
 
 #### GitOps CLI version validation and upgrade
-CLI upgrade is now very intuitive and simple. No need to constantly check the CLI and remember the package version, to keep up with and get access to new features that we are continually releasing. 
-The CLI automatically self-checks its version, and if a newer version is available, prints a banner with the notification that also includes the upgrade command.
-Upgrade is simple with the `cf upgrade` command.
+We have enhanced the user experience with CLI upgrades to make it intuitive and simple. No need to constantly check the CLI version to keep up with and get access to new features that we are continually releasing. 
+Now the CLI automatically self-checks its version, and if a newer version is available, prints a banner with the notification that also includes the upgrade command (`cf upgrade`).
 
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-dec22-cli-upgrade-banner.png"
+ url="/images/whats-new/rel-notes-dec22-cli-upgrade-banner.png"
+ alt="Upgrade banner for Codefresh CLI"
+ caption="Upgrade banner for Codefresh CLI"
+ max-width="60%"
+%}
 
+You can upgrade to a specific version, or download the latest version to an output folder to upgrade at your convenience.  
 
-You can upgrade to a specific version, or download the latest version to an output folder to upgrade at your convenience.
-
-For details, see [Upgrade the Codefresh CLI]({{site.baseurl}}/docs/clients/csdp-cli/#upgrade-codefresh-cli)
+For details, see [Upgrade the Codefresh CLI]({{site.baseurl}}/docs/clients/csdp-cli/#upgrade-codefresh-cli).
 
 #### Tunnel-based as default runtime mode
 In the previous release, we introduced the Tunnel-based option for Hybrid GitOps runtimes.
-Now, we have configured it as the default runtime mode for Hybrid GitOps. When prompted to select the Access mode, select Tunnel-based. For silent installations, you don't need to specify an access mode.
+It is now configured as the default runtime mode for Hybrid GitOps. For silent installations, you don't need to specify an access mode. For Wizard-based insttall, when prompted to select the Access mode, select Tunnel-based. 
 
 {% include
  image.html
@@ -41,7 +48,7 @@ Now, we have configured it as the default runtime mode for Hybrid GitOps. When p
  max-width="60%"
 %}
 
-Access mode selection is relevant only for new runtime installations. Upgrading existing runtimes does not impact the access mode for those runtimes.
+Access mode selection is relevant only for new runtime installations. Upgrading existing runtimes does not change the access mode for those runtimes.
 
 For details, see [Access mode in Runtime flags]({{site.baseurl}}/docs/runtime/installation/#runtime-flags).
 
@@ -49,7 +56,7 @@ For details, see [Access mode in Runtime flags]({{site.baseurl}}/docs/runtime/in
 
 #### Git provider selection in CLI Wizard
 When installing the Hybrid GitOps runtime, Codefresh automatically detects the Git provider based on the repository URL provided during the installation.
-If Codefresh is unable to detect the Git provider, as for on-premises Git providers, you can select the Git provider.  
+If Codefresh is unable to detect the Git provider, as for on-premises Git providers, you can select the Git provider from the list.  
 
 {% include
  image.html
@@ -65,8 +72,10 @@ If Codefresh is unable to detect the Git provider, as for on-premises Git provid
 
 #### Reset shared configuration repo
 Codefresh creates the shared configuration repository when you install the first Hybrid or Hosted GitOps runtime for your account, and then uses it for all runtimes you add to the same account.
-You may want to reset the location of the shared configuration repository in your account and re-initialize it for a different runtime environment. For example, when moving from evaluation to production environments.
-You need to first uninstall all the existing runtimes in your account and then run the reset command. Codefresh re-initializes the shared configuration repo on the next runtime installation.
+You may want to re-initialize the shared configuration repository for your account to point to a different runtime environment. For example, when moving from evaluation to production environments.  
+
+
+You can do so by first uninstalling existing runtimes in your account and then running the reset command. Codefresh re-initializes the shared configuration repo on the next runtime installation.
 
 >Reset shared configuration repo is supported from CLI v0.1.18 and higher.
 
