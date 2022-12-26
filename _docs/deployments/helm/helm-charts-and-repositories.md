@@ -1,5 +1,5 @@
 ---
-title: "Using external Helml repos in Codefresh pipelines "
+title: "Using external Helml repos in Codefresh pipelines"
 description: "Use external Helm Charts and repositories in Codefresh pipelines"
 group: deployments
 sub_group: helm
@@ -10,15 +10,16 @@ redirect_from:
 toc: true
 ---
 Codefresh allows you to integrate with external Helm repositories and Helm charts in the Helm Charts page.  
-Using external Helm repositories is optional as all Codefresh accounts already include a [built-in Helm repository]({{site.baseurl}}/docs/deployments/helm/managed-helm-repository/).
+It is optional to use external Helm repositories as all Codefresh accounts already include a [built-in Helm repository]({{site.baseurl}}/docs/deployments/helm/managed-helm-repository/).
 
 ## Add an external Helm repository
 
-Easily add your onwn Helm charts.  
+Easily add your own Helm charts.  
 By default, we show charts from the [official Helm repository](https://github.com/kubernetes/charts){:target="_blank"}. 
 
 1. In the Codefresh UI, from the Artifacts section in the sidebar, select [**Helm Charts**](https://g.codefresh.io/helm/releases/releasesNew/){:target="\_blank"}. 
 1. On the top right, click **Add Existing Helm Repository**.
+  You are taken to Pipeline Integrations.
 1. In the Integrations page, click **Add Helm Repository**, and then select the type of Helm repo to add from the list.
 1. Enter the **Helm repository name** and **URL**.  
   Do not include the specific path to `index.yaml` in the URL.
@@ -34,18 +35,18 @@ max-width="70%"
 
 1. If your repository doesn't require authentication, to complete the process, click **Save**. 
 
-For more details on adding Helm repositories, see the [Helm integration page]({{site.baseurl}}/docs/integrations/helm/).
+For more details on adding Helm repositories, see [Helm integrations]({{site.baseurl}}/docs/integrations/helm/).
 
 ## Use a Helm repository in a Codefresh pipeline
 
-Once connected, inject any Helm repository context into pipelines.
+Once connected, inject any Helm repository context into Codefresh pipelines.
 
 1. From the Pipelines page, select the pipeline into which to import the Helm configuation.
 1. In the Workflows tab, do one of the following: 
   * Click **Variables** on the right, and then click the **Settings** (gear) icon. 
   * Click the context menu next to the settings icon.
 1. Click on **Import from/Add shared configuration**, and select the name of the repository.  
-  The repository settings are injected as environment variables into the pipeline for usage. 
+  The repository settings are injected as environment variables into the pipeline. 
 
 {% include image.html 
 lightbox="true" 
@@ -61,7 +62,7 @@ max-width="70%"
 ## Install a chart from your Helm repository
 Install a chart from a Helm repository to your cluster. 
 
-* Values in the Chart Install wizard, values are provided in the following order:
+* Values in the Chart Install wizard are provided in the following order:
   1. Chart Default Values (implicitly part of the chart).
   2. Overridden default values (provided as values file, provided only if edited by the user).
   3. Supplied values files from Yaml Shared Configuration.
@@ -73,7 +74,7 @@ Install a chart from a Helm repository to your cluster.
   * `CF_HELM_INSTALLATION_NAMESPACE` - desired namespace for the release 
   * `CF_HELM_CHART_VERSION` - Chart Version,
   * `CF_HELM_CHART_NAME` - Chart Name
-  * `CF_HELM_CONTEXTS` - values from [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/#using-shared-helm-values)
+  * `CF_HELM_CONTEXTS` - values from [shared configuration]({{site.baseurl}}/docs/pipelines/shared-configuration/#using-shared-helm-values)
   * `CF_HELM_VALUES` - extra values
   * `CF_HELM_SET` - extra values,
   * `CF_HELM_CHART_REPO_URL` - URL of Chart repository
@@ -98,22 +99,17 @@ Install a chart from a Helm repository to your cluster.
   * Insert your values YAML, and click **Save**.
     The YAML is saved and added to the list of configuration files that you can import from.
 1. To override variable values, click **+Add variable**, and then enter the Key and Value.
-  > The order of value configurations matter for helm: values provided last override values provided earlier.  
-
-
-
-
-Finally click on Install. You can observe the newly installed release on the "Helm Releases" page.
+  > The order of value configurations matter for Helm: most recently provided values override earlier ones.  
+1. Click **Install**. You can observe the newly installed release in Helm Releases.
 
 You can also install Helm releases from [any Helm environment board]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion).
 
 
-## What to read next
-
-* [Using Helm in a Codefresh pipeline]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/)
-* [Helm Integration]({{site.baseurl}}/docs/integrations/helm/)
-* [Helm Dashboard]({{site.baseurl}}/docs/deployments/helm/helm-releases-management)
-* [Helm Promotion boards]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion)
-* [Helm best practices]({{site.baseurl}}/docs/new-helm/helm-best-practices/)
+## Related articles
+[Using Helm in a Codefresh pipeline]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/)  
+[Helm integrations]({{site.baseurl}}/docs/integrations/helm/)  
+[Helm Dashboard]({{site.baseurl}}/docs/deployments/helm/helm-releases-management)  
+[Helm Promotion boards]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion)  
+[Helm best practices]({{site.baseurl}}/docs/ci-cd-guides/helm-best-practices/)  
 
 

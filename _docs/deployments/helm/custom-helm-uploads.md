@@ -1,6 +1,6 @@
 ---
 title: "Creating and uploading Helm packages"
-description: "Create and upload Helm packages manually"
+description: "Manually create and upload Helm packages"
 group: deployments
 sub_group: helm
 redirect_from:
@@ -8,13 +8,14 @@ redirect_from:
 toc: true
 ---
 
-Helm packages are just TAR files. Helm repositories are simple file hierarchies with an extra [index.yaml](https://helm.sh/docs/developing_charts/#the-chart-repository-structure).
+Helm packages are just TAR files. Helm repositories are simple file hierarchies with an extra [index.yaml](https://helm.sh/docs/developing_charts/#the-chart-repository-structure){:target="\_blank"}.
 You can run custom commands and manually upload indexes and packages to a Helm repo.
 
->This page shows some non-standard Helm examples. For the basic use cases, (and if you are just getting started with Helm), see the [quick start guide]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/) and the [main documentation]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/) instead.
+>This articles shows some non-standard Helm examples.  
+  For the basic use cases, or if you are just getting started with Helm, see our [Helm quick start guide]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/) and [Using Helm in CI pipelines]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/).
 
 ## Package a Helm chart
-Below is an example of a freestyle step that packages the Helm chart and then extracts the chart name from the command output. It also saves that package name in an environment variable for later use.
+Below is an example of a freestyle step in a Codefresh pipeline that packages the Helm chart and then extracts the chart name from the command output. It also saves that package name in an environment variable for later use.
 
   `YAML`
 {% highlight yaml %}
@@ -26,16 +27,16 @@ helm_package:
 {% endraw %}
 {% endhighlight %}
 
-The `helm package` command expects a path to an unpacked chart, replace `<mychart>` in the example with the directory that holds your chart files. Note that this directory has have the same name as the chart name, as per Helm requirements.<br>
-See [helm package docs](https://github.com/kubernetes/helm/blob/master/docs/helm/helm_package.md){:target="_blank"} and [helm charts overview](https://github.com/kubernetes/helm/blob/master/docs/charts.md){:target="_blank"} for more information.
+The `helm package` command expects a path to an unpacked chart. Replace `<mychart>` in the example with the directory that holds your chart files. Note that this directory must have the same name as the chart name, as per Helm requirements.<br>
+See [Helm package docs](https://github.com/kubernetes/helm/blob/master/docs/helm/helm_package.md){:target="_blank"} and [Helm charts overview](https://github.com/kubernetes/helm/blob/master/docs/charts.md){:target="_blank"} for more information.
 
 {{site.data.callout.callout_info}}
-Note the usage of `cf_export` to make the variable available for other steps in the pipeline as described here: [Codefresh Yaml Variables]({{site.baseurl}}/docs/pipelines/variables). 
+To use `cf_export`and make the variable available to other steps in the pipeline, see [Variables in pipelines]({{site.baseurl}}/docs/pipelines/variables). 
 {{site.data.callout.end}}
 
 ## Example 1: Push the chart to GCS based Helm Repository
-The first example will push the packaged chart into a public cloud storage service, like AWS S3, Azure Storage, or Google Cloud Storage. We chose Google Cloud Storage (GCS) for this example.
-Our pipeline will have 3 steps:
+The first example pushes the packaged chart into a public cloud storage service, like AWS S3, Azure Storage, or Google Cloud Storage. We chose Google Cloud Storage (GCS) for this example.
+Our pipeline has three steps:
 
 {:start="1"}
 1. download_index: download the Helm `index.yaml` file from GCS, or create one of it's not there.
@@ -70,26 +71,29 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-{{site.data.callout.callout_info}}
-##### Environment setup
 
-Note that this pipeline references some pre-defined environment variables like `GOOGLE_BUCKET_NAME`, `GOOGLE_PROJECT_ID` and `GOOGLE_CREDENTIALS`. For this example, we created a service account with appropriate permissions in Google Cloud, and saved that credentials into GOOGLE_CREDENTIALS as a Codefresh Secret. <br>
-For more information on authenticating with Google services, see [here](https://cloud.google.com/storage/docs/authentication#service_accounts){:target="_blank"}. <br>
-For more information on Codefresh pipeline configuration and secrets, see [here](https://codefresh.io/docs/docs/codefresh-yaml/variables/#user-provided-variables){:target="_blank"}. <br> 
-{{site.data.callout.end}}
+### Environment setup
+
+This pipeline references some predefined environment variables such as `GOOGLE_BUCKET_NAME`, `GOOGLE_PROJECT_ID` and `GOOGLE_CREDENTIALS`.  
+For this example, we created a service account with appropriate permissions in Google Cloud, and saved the credentials into `GOOGLE_CREDENTIALS` as a Codefresh Secret. <br>
+For more information, see:
+[Authenticating with Google services](https://cloud.google.com/storage/docs/authentication#service_accounts){:target="_blank"}. <br>
+[Codefresh pipeline configuration and secrets](https://codefresh.io/docs/docs/codefresh-yaml/variables/#user-provided-variables){:target="_blank"}. 
 
 ## Example 2: Push the chart to Chart Museum
 Chart Museum is a Helm repository *server* that has an HTTP API, pluggable backends, authentication, and more. 
 Read more about [Chart Museum](https://github.com/kubernetes-helm/chartmuseum){:target="_blank"}.
 
-In this example, we already have a Chart Museum server running, so we'll push the packaged chart to it. The steps will be:
+In this example, we already have a Chart Museum server running, so we'll push the packaged chart to it.  
+
+The steps will be:
 
 {:start="1"}
 1. helm_package: package the chart as described earlier.
 
 {:start="2"}
 2. get_repo_url: In order to avoid hard-coding the repository URL into the pipeline, we will retrieve it from the Codefresh Helm integration. 
-In this case we have added our repository with Codefresh as described [here]({{site.baseurl}}/docs/add-helm-repository). 
+In this case, we have added our repository with Codefresh as described in [Using external Helml repos in Codefresh pipelines]({{site.baseurl}}/docs/deployments/helm/helm-charts-and-repositories). 
 Replace `<reponame>` in the example with the name you gave to your repository when you added it to Codefresh.
 
 {:start="3"}

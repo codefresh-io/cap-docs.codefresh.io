@@ -5,9 +5,9 @@ group: deployments
 sub_group: helm
 toc: true
 ---
-Apart from the [Helm Releases]({{site.baseurl}}/docs/deployments/helm/helm-releases-management) that shows your Kubernetes clusters at the application level, Codefresh also comes with a special environment board that allows you to track one or more applications as they move within your infrastructure (e.g., Dev, QA, Prod). 
+Apart from the [Helm Releases]({{site.baseurl}}/docs/deployments/helm/helm-releases-management) that show your Kubernetes clusters at the application level, Codefresh also comes with a special environment board that allows you to track one or more applications as they move within your infrastructure (example, Dev, QA, Prod). 
 
-The environment board can function both as an overview of the whole lifecycle of the application as well as a tool to shift-left/right Helm releases between environments.
+The environment board can function both as an overview of the whole lifecycle of the application, as well as a tool to shift-left/right Helm releases between environments.
 
 Here is an example board:
 
@@ -26,12 +26,13 @@ This board has three environments that correspond to Kubernetes clusters:
  * A Staging environment where smoke tests are performed
  * The Production environment where applications go live
 
-You can see that a Python example app at version 0.2.0 is already in production. Version 0.3.0 is awaiting in the staging environment for smoke tests. Once it is tested it can be dragged to the production column therefore *promoting* it to production status.
+You can see that a Python example app at version 0.2.0 is already in production. Version 0.3.0 is waiting in the staging environment for smoke tests. Once it is tested it can be dragged to the production column therefore *promoting* it to production status.
 
 
 ## Using the Helm Environment Board
 
-You can create and manage as many Helm promotion boards as you want. For each board you define how many columns it will contain, where each column is a Helm-enabled Kubernetes cluster.
+You can create and manage as many Helm promotion boards as you want.  
+For each board, you define how many columns it will contain, where each column is a Helm-enabled Kubernetes cluster.
 
 {% include 
 image.html 
@@ -43,18 +44,19 @@ caption="Helm environments column structure"
 max-width="80%"
 %}
 
-You can use different clusters for each column or different namespaces from the same cluster. You can even mix and match both approaches. As an example, you could create a Helm board with the following environments:
+You can use different clusters for each column or different namespaces from the same cluster. You can even mix and match both approaches.  
+As an example, you could create a Helm board with the following environments:
 
-* Column 1 - dev cluster showing all namespaces (DEV)
-* Column 2 - namespace qa from cluster staging (QA)
-* Column 3 - namespace staging from cluster staging (STAGING)
-* Column 4 - namespace production from cluster prod (PRODUCTION)
+* Column 1, dev cluster showing all namespaces (DEV)
+* Column 2, namespace qa from cluster staging (QA)
+* Column 3, namespace staging from cluster staging (STAGING)
+* Column 4, namespace production from cluster prod (PRODUCTION)
 
-Once you have your columns in place, you can move Helm releases between clusters/namespaces by drag-n-drop. Each Helm release can be dragged to any other column either promoting it (e.g., QA to Production) or shifting it left (e.g. prod to qa)
+Once you have your columns in place, you can move Helm releases between clusters/namespaces by drag-n-drop. Each Helm release can be dragged to any other column either promoting it, for example, from QA to Production, or shifting it left, for example, from  Production to QA.
 
 ## Creating a custom Helm Board
 
-Create your own Helm board. You can create as many boards as you want. Each board can deal with a single or multiple Helm applications.
+Create your own Helm board with a single or multiple Helm applications. You can create as many boards as you want. 
 
 1. In the Codefresh UI, from the DevOps Insights section in the sidebar, select [**Helm  Boards**](https://g.codefresh.io/helm/helm-kanban/){:target="\_blank"}. 
  
@@ -68,17 +70,21 @@ caption="Helm board selection"
 max-width="80%"
 %}
 
+{:start="2"}
 1. On the top-right, click **Add board**.
 1. Enter the title of your board as the **Board Name**.
 1. Optional. In the **Release name regex expression** field, enter the Regex expression for this board to filter all its environments to show only Helm releases that match this regular expression.  
-  Regex expressions are very helpful if you want your environment board to only focus on a single Helm application, or set of applications that match. 
+  Regex expressions are very helpful if you want your environment board to focus only on a single or set of Helm applications. 
   To see all Helm releases of your clusters, leave empty.
 
 You can edit both options for an existing board if you change your mind later.
 
 ### Define Clusters/Namespaces for each Environment
 
-Once your Helm environment board is created, you are ready to define its columns. To add a column click the *Add environment* button on the top right corner. You will see the environment details dialog:
+Once you create your Helm environment board, you are ready to define its columns. 
+
+* To add a column, on the top-right, click **Add environment***.  
+  You will see the environment details dialog:
 
 {% include 
 image.html 
@@ -90,17 +96,16 @@ caption="Edit Helm environment"
 max-width="50%"
 %}
 
-For each environment you can select
+  For each environment you can select:  
+  * A name for that column
+  * The Kubernetes cluster it corresponds to
+  * One or more namespaces that define this environment (You can even toggle the switch for a regex match)
+  * A custom pipeline that will be used when a Helm release is installed for the first time in this column
+  * A custom pipeline that will be used when a Helm release is dragged in this column (promoted from another column)
+  * Optional. One or more charts to use for the environment. Defining charts for the environment saves you from having to search through all the charts in your Helm repository. When you install an application from the install graphical dialog, only the selected chart(s) are displayed.
+  * A presentation color to easily identify the environment on the board (For example, a "production" environment should have a red color)
 
-* A name for that column
-* The Kubernetes cluster it corresponds to
-* One or more namespaces that define this environment (You can even toggle the switch for a regex match)
-* A custom pipeline that will be used when a Helm release is installed for the first time in this column
-* A custom pipeline that will be used when a Helm release is dragged in this column (promoted from another column)
-* Optional. One or more charts to use for the environment. Defining charts for the environment saves you from having to search through all the charts in your Helm repository. When you install an application from the install graphical dialog, only the selected chart(s) are displayed.
-* A presentation color to easily identify the environment on the board (For example, a "production" environment should have a red color)
-
-You can also select no namespace at all. In that case the column will show Helm releases for all namespaces in that cluster.
+You can also select no namespace at all. In that case, the column will show Helm releases for all namespaces in that cluster.
 You can change all these options after creation, so feel free to change your mind.
 
 Repeat the same process for additional environments. Remember that you can name your environment as you want and define any combination of cluster/namespace for any of the columns. This gives you a lot of power to define a Helm environment board that matches exactly your own process.
@@ -112,7 +117,7 @@ You don't have to define the environments in order. You can drag-n-drop columns 
 
 If you already have [pipelines that deploy Helm releases]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/), your columns are populated automatically with information.
 
-For each Helm release you will get some basic details such as the chart version and the name of the release. You can expand a release by clicking on the arrow button to get additional information such as the docker images and the replicas of each pod that are contained in the release.
+For each Helm release, you will get some basic details such as the chart version and the name of the release. You can expand a release by clicking on the arrow button to get additional information such as the docker images and the replicas of each pod that are contained in the release.
 
 {% include 
 image.html 
@@ -126,7 +131,7 @@ max-width="50%"
 
 You can even install manually a Helm release from any external repository by clicking on the *PLUS* button at the header of each column. In that case you will see a list of possible Helm applications to choose from.
 
-You will be able to select the target cluster and namespace as well as the chart values [as any other Helm release]({{site.baseurl}}/docs/deployments/helm/add-helm-repository/#install-chart-from-your-helm-repository).
+You will be able to select the target cluster and namespace as well as the chart values [as any other Helm release]({{site.baseurl}}/docs/deployments/helm/helm-charts-and-repositories/#install-chart-from-your-helm-repository).
 
 
 ## Moving Releases between Environments
@@ -197,11 +202,11 @@ Once you click the *update* button, a new build will run that will perform the d
 
 Note that you can move releases to any column both on the right and on the left of the current column. This is helpful if for example you find a bug in your production environment and you want to bring it back to a staging environment for debugging.
 
-### Promoting Helm Releases Programmatically
+### Promoting Helm releases programmatically
 
-You can also promote Helm releases with the [Codefresh CLI](https://codefresh-io.github.io/cli/predefined-pipelines/promote-helm-release/).
+You can also promote Helm releases with the [Codefresh CLI](https://codefresh-io.github.io/cli/predefined-pipelines/promote-helm-release/){:target="\_blank"}.
 
-Once you have [installed](https://codefresh-io.github.io/cli/getting-started/) the CLI you can use it from an external script or terminal with the `helm-promotion` parameter:
+Once you have [installed the CLI](https://codefresh-io.github.io/cli/getting-started/){:target="\_blank"}, you can use it from an external script or terminal with the `helm-promotion` parameter:
 
 {% highlight shell %}
 {% raw %}
@@ -211,7 +216,8 @@ codefresh helm-promotion --board MySampleBoard --source Staging --target Product
 
 Here we promote the Helm release `my-app` to the *Production* column overriding also the `myenv` value.
 
-Remember that the Codefresh CLI can also run in a Codefresh pipeline with a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/). Here is an example of a Helm promotion from within a Codefresh pipeline.
+Remember that the Codefresh CLI can also run in a Codefresh pipeline with a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/).  
+Here is an example of a Helm promotion from within a Codefresh pipeline.
 
 
 `codefresh.yml` 
@@ -227,7 +233,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-## Viewing the Promotion Pipeline
+## Viewing the promotion pipeline
 
 When you promote a Helm Release for a Board, you can view the pipeline for that release.
 

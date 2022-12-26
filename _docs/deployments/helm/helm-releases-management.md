@@ -8,7 +8,7 @@ redirect_from:
   - /docs/deployments/helm/helm3/
 toc: true
 ---
-Codefresh has built-in Helm integration that provides a unique view into your production Kubernetes cluster.  
+Codefresh has built-in integration for Helm that provides a unique view into your production Kubernetes cluster.  
 In Helm Releases, you can see the current status of your cluster, including the currently deployed releases, their previous revisions including change tracking, and even roll back to a previous release.
 
 Codefresh also offers [an environment view for Helm releases]({{site.baseurl}}/docs/deploy-to-kubernetes/environment-dashboard/) as well as [a promotion dashboard]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion).
@@ -18,7 +18,7 @@ Codefresh also offers [an environment view for Helm releases]({{site.baseurl}}/d
 
 View all the Helm releases in your cluster, and drill down into a specific release to see its services, deployed versions, manifests and more. 
 
-> Make sure you have [connected your Kubernetes cluster]({{site.baseurl}}/docs/deploy-to-kubernetes/adding-non-gke-kubernetes-cluster/) to Codefresh.
+> Make sure you have [connected your Kubernetes cluster]({{site.baseurl}}/docs/integrations/kubernetes/adding-non-gke-kubernetes-cluster/) to Codefresh.
 
 1. In the Codefresh UI, from the DevOps Insights section in the sidebar, select [**Helm Releases**](https://g.codefresh.io/helm/releases/releasesNew/){:target="\_blank"}. 
 
@@ -100,7 +100,7 @@ max-width="50%"
 
 ## Add labels to Kubernetes services
  
-For better visibility into services, add the [recommended labels](https://helm.sh/docs/topics/chart_best_practices/labels/){:target="\_blank"} in your Kubernetes service.
+For better visibility into services, add the [recommended labels](https://helm.sh/docs/topics/chart_best_practices/labels/){:target="\_blank"} to your Kubernetes service.
 
 {% highlight yaml %}
 {% raw %}
@@ -143,7 +143,7 @@ max-width="70%"
 
 You can set this message for your Helm release in three ways:
 
-1. When you manually install a Helm release from the [Helm charts screen]({{site.baseurl}}/docs/deployments/helm/add-helm-repository/#install-chart-from-your-helm-repository), there is a field for this message.
+1. When you manually install a Helm release from the [Helm charts screen]({{site.baseurl}}/docs/deployments/helm/helm-charts-and-repositories/#install-chart-from-your-helm-repository), there is a field for this message.
 1. Set the property `commit_message` inside the [notes.txt](https://helm.sh/docs/chart_template_guide/notes_files/){:target="\_blank"} file of your chart.
 1. By providing an environment variable called `COMMIT_MESSAGE` within your [pipeline Helm step]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/).
 
@@ -176,12 +176,12 @@ You can issue a [Helm test](https://github.com/kubernetes/helm/blob/master/docs/
 You can delete a release by clicking on the 'Delete' button on the desired chart row.
 For deletion options, see the [helm delete documentation](https://github.com/kubernetes/helm/blob/master/docs/helm/helm_delete.md){:target="\_blank"}, for example, *purge* will remove the revision from the release history.
 
-## Helm deployment badge <!--how to add badge -->
+## Helm deployment badge <!--how to add badge ask where is the badge icon-->
 
 Similar to a [build badge]({{site.baseurl}}/docs/pipelines/build-status/#using-the-build-badge), you can also get a deployment badge for a Helm release.  
 
-1. In the Codefresh UI, go to [**Helm Releases**](https://g.codefresh.io/helm/releases/releasesNew/){:target="\_blank"}. 
-1. In the row with the Helm release for which to a badge, click the **Settings** (gear) icon.
+1. In the Codefresh UI, from the DevOps Insights section in the sidebar, select [**Helm Releases**](https://g.codefresh.io/helm/releases/releasesNew/){:target="\_blank"}. 
+1. In the row with the Helm release for which to add a deployment badge, click the **Settings** (gear) icon.
 
 {% include 
 image.html 
@@ -193,9 +193,9 @@ caption="Helm Deployment badge"
 max-width="60%"
 %}
 
-
-Click on the *Badge* button, and Codefresh gives you a Markdown/HTML/Link segment that you can embed in README or other 
-documents to show deployment information.
+{:start="3"}
+1. To get deployment information, click **Badge**.  
+  Codefresh provides the Markdown/HTML/Link segment that you can embed in README or other documents to show deployment information.
 
 ## Overriding default Helm actions for releases
 
@@ -210,8 +210,8 @@ You can override these actions for a specific Helm release by defining custom pi
 
 >Only [Codefresh admin users]({{site.baseurl}}/docs/administration/access-control/#users-and-administrators) can override the default pipelines defined for a Helm release.
 
-1. In the Codefresh UI, go to [**Helm Releases**](https://g.codefresh.io/helm/releases/releasesNew/){:target="\_blank"}. 
-1. In the row with the Helm release for which to override default actions,  click the **Settings** (gear) icon.
+1. In the Codefresh UI, from the DevOps Insights section in the sidebar, select [**Helm Releases**](https://g.codefresh.io/helm/releases/releasesNew/){:target="\_blank"}. 
+1. In the row with the Helm release for which to override default actions, click the **Settings** (gear) icon.
 
 {% include 
 image.html 
@@ -223,43 +223,41 @@ caption="Changing default Helm actions"
 max-width="50%"
 %}
 
+{:start="3"}
 1. Select the pipeline to use for the respective actions.
 
-### Custom Helm commands with environment variables
+### Environment variables for custom Helm commands 
 If you do override any of these actions, the following [environment variables]({{site.baseurl}}/docs/codefresh-yaml/variables/) are available in the respective pipeline, so that you can use your own custom Helm command.
 
-**Helm Test pipeline**
-
-* `CF_HELM_RELEASE` - name of release
-* `CF_HELM_KUBE_CONTEXT` - kubectl context name of target cluster (cluster name from [dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/#work-with-your-services))
-* `CF_HELM_NAMESPACE` - namespace where release is stored  
-* `CF_HELM_TIMEOUT` - time in seconds to wait for any individual Kubernetes operation
-* `CF_HELM_CLEANUP` - delete test pods upon completion
-
+**Helm Test pipeline**  
+* `CF_HELM_RELEASE`: Name of release
+* `CF_HELM_KUBE_CONTEXT`: `kubectl` context name of target cluster (cluster name from [dashboard]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/#work-with-your-services))
+* `CF_HELM_NAMESPACE`: Namespace where release is stored  
+* `CF_HELM_TIMEOUT`: Time in seconds to wait for any individual Kubernetes operation
+* `CF_HELM_CLEANUP`: Delete test pods upon completion
 
 
-**Helm Rollback pipeline**
 
-* `CF_HELM_VERSION` - Helm version, ex.: 3.0.1, 2.7.0
-* `CF_HELM_RELEASE` - name of release on cluster
-* `CF_HELM_REVISION` - revision which will be used for rollback
-* `CF_HELM_KUBE_CONTEXT` - kubectl context name of target cluster (cluster name from [dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/#work-with-your-services))
-* `CF_HELM_NAMESPACE` - namespace where release is stored 
+**Helm Rollback pipeline**  
+* `CF_HELM_VERSION`: Helm version, ex.: 3.0.1, 2.7.0
+* `CF_HELM_RELEASE`: Name of release on cluster
+* `CF_HELM_REVISION`: Revision to use for rollback
+* `CF_HELM_KUBE_CONTEXT`: `kubectl` context name of target cluster (cluster name from [dashboard]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/#work-with-your-services))
+* `CF_HELM_NAMESPACE`: Namespace where release is stored 
 
 
-**Helm Delete pipeline**
-
-* `CF_HELM_PURGE` - boolean, delete release from store
-* `CF_HELM_RELEASE` - name of release
-* `CF_HELM_TIMEOUT` - time in seconds to wait for any individual Kubernetes operation
-* `CF_HELM_HOOKS` - prevent hooks from running during install
-* `CF_HELM_KUBE_CONTEXT` - kubectl context name of target cluster (cluster name from [dashboard]({{site.baseurl}}/docs/deploy-to-kubernetes/manage-kubernetes/#work-with-your-services))
-* `CF_HELM_VERSION` - Helm version, ex.: 3.0.1, 2.7.0
-* `CF_HELM_NAMESPACE` - namespace where release is stored
+**Helm Delete pipeline**    
+* `CF_HELM_PURGE`: Boolean, delete release from store
+* `CF_HELM_RELEASE`: Name of release
+* `CF_HELM_TIMEOUT`: Time in seconds to wait for any individual Kubernetes operation
+* `CF_HELM_HOOKS`: Prevent hooks from running during install
+* `CF_HELM_KUBE_CONTEXT`: `kubectl` context name of target cluster (cluster name from [dashboard]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/#work-with-your-services))
+* `CF_HELM_VERSION`: Helm version, ex.: 3.0.1, 2.7.0
+* `CF_HELM_NAMESPACE`: Namespace where release is stored
 
 
 ## Related articles
 [Using Helm in a Codefresh pipeline]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/)  
-[Helm Charts and repositories]({{site.baseurl}}/docs/deployments/helm/add-helm-repository/)  
-[Codefresh Managed Helm Repositories]({{site.baseurl}}/docs/deployments/helm/managed-helm-repository/)  
-[Helm Promotion boards]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion)  
+[Helm charts and repositories]({{site.baseurl}}/docs/deployments/helm/helm-charts-and-repositories/)  
+[Codefresh-managed Helm Repositories]({{site.baseurl}}/docs/deployments/helm/managed-helm-repository/)  
+[Helm promotion boards]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion)  

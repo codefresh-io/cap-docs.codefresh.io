@@ -342,5 +342,5 @@ You can see the source code in our [example section]({{site.baseurl}}/docs/examp
 
 ## Related articles  
 [Helm Charts and repositories]({{site.baseurl}}/docs/deployments/helm/add-helm-repository/)  
-[Codefresh Managed Helm Repositories]({{site.baseurl}}/docs/deployments/helm/managed-helm-repository/)  
+[Using managed Helm repositories]({{site.baseurl}}/docs/deployments/helm/managed-helm-repository/)  
 [Helm Promotion boards]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion)
