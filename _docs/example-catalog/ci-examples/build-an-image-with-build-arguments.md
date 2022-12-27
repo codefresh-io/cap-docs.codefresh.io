@@ -1,6 +1,6 @@
 ---
-title: "Build an Image with Build Arguments"
-description: "Use docker argument in Codefresh pipelines"
+title: "Build an Image with build arguments"
+description: "Use Docker arguments in Codefresh pipelines"
 group: example-catalog
 sub_group: ci-examples
 redirect_from:
@@ -10,13 +10,13 @@ toc: true
 
 Building a Docker image that requires build arguments is very easy with Codefresh pipelines.
 
->The source code of the repository is located at [https://github.com/codefreshdemo/cf-example-build-arguments](https://github.com/codefreshdemo/cf-example-build-arguments){:target="\_blank"}. Feel free to fork it if you want to follow along.
+The source code of the repository is at [https://github.com/codefreshdemo/cf-example-build-arguments](https://github.com/codefreshdemo/cf-example-build-arguments){:target="\_blank"}. Feel free to fork it if you want to follow along.
 
-If you don't already have a Codefresh account, you can easily create a free one from the [sign-up page]({{site.baseurl}}/docs/administration/create-a-codefresh-account/).
+If you don't have a Codefresh account already, you can easily create a free one from the [sign-up page]({{site.baseurl}}/docs/administration/create-a-codefresh-account/).
 
 ## Using Docker build arguments
 
-The example application is a very simple NodeJS application with the following dockerfile:
+The example application is a very simple NodeJS application with the following DYouockerfile:
 
 `Dockerfile`
 {% highlight docker %}
@@ -54,7 +54,7 @@ When you build an image locally on your workstation, you can define build argume
 docker build . -t my-node-app --build-arg NODE_VERSION=8 --build-arg APP_DIR=/usr/src/app
 ```
 
-The same thing can also be achieved within a Codefresh pipeline:
+You can get the same result within a Codefresh pipeline:
 
 
   `codefresh.yml`
@@ -94,7 +94,7 @@ max-width="100%"
 
 ## Using Codefresh variables as build arguments
 
-In the previous pipeline, the Docker build arguments are defined in the pipeline itself, but you could also use [pipeline variables]({{site.baseurl}}/docs/pipelines/pipelines/#creating-new-pipelines), [shared configuration]({{site.baseurl}}/docs/pipelines/shared-configuration/), or any other standard mechanism you already have in place.
+In the previous pipeline, the Docker build arguments are defined in the pipeline itself, but you can also use [pipeline variables]({{site.baseurl}}/docs/pipelines/pipelines/#creating-new-pipelines), [shared configuration]({{site.baseurl}}/docs/pipelines/shared-configuration/), or any other standard mechanism you already have in place.
 
   `codefresh.yml`
 {% highlight yaml %}
@@ -120,11 +120,12 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-In this case you can also use any of the built-in [Codefresh variables]({{site.baseurl}}/docs/pipelines/variables/).
+In this case, you can also use any of the built-in [Codefresh variables]({{site.baseurl}}/docs/pipelines/variables/).
 
 
 
 ## Related articles
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [Build step in pipelines]({{site.baseurl}}/docs/pipelines/steps/build/)  
 [Build an Image with the Dockerfile in root directory]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-dockerfile-in-root-directory/)  
 [Build an Image by specifying the Dockerfile location]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-specify-dockerfile-location)  

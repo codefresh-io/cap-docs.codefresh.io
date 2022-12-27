@@ -146,6 +146,7 @@ The `codefreshplugins/cf-deploy-ecs` step performs the following:
 You can also find the same step in the form of a [Codefresh plugin](https://codefresh.io/steps/step/ecs-deploy).
 
 ## Related articles
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)
 [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  

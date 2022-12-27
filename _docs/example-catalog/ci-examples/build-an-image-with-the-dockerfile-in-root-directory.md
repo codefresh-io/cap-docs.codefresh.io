@@ -2,29 +2,25 @@
 title: "Build an Image with the Dockerfile in root directory"
 description: "Get started quickly with building Docker images"
 group: example-catalog
-sub_group: examples
-permalink: /:collection/example-catalog/ci-examples/build-an-image-dockerfile-in-root-directory/
-redirect_from:
-  - /docs/build-an-image-dockerfile-in-root-directory/
-  - /docs/deploy-to-kubernetes/get-ready-to-deploy/build-an-image/
+sub_group: ci-examples
 toc: true
 ---
 Building a Docker image is one of the basic operations in Codefresh pipelines.
 
->The source code of the repository is located at [https://github.com/codefreshdemo/cf-yml-example-build-dockerfile-inroot](https://github.com/codefreshdemo/cf-yml-example-build-dockerfile-inroot){:target="\_blank"}. Feel free to fork it if you want to follow along.
+>The source code of the repository is at [https://github.com/codefreshdemo/cf-yml-example-build-dockerfile-inroot](https://github.com/codefreshdemo/cf-yml-example-build-dockerfile-inroot){:target="\_blank"}. Feel free to fork it if you want to follow along.
 
-If you don't already have a Codefresh account, you can easily create a free one from the [sign-up page]({{site.baseurl}}/docs/administration/create-a-codefresh-account/).
+If you don't have a Codefresh account already, you can easily create a free one from the [sign-up page]({{site.baseurl}}/docs/administration/create-a-codefresh-account/).
 
 
 ## Building a Dockerfile from the root folder
 
-By default docker uses the Dockerfile of the current folder if you run a single command like:
+By default, if you run a single command like the one below, Docker uses the Dockerfile of the current folder:
 
 ```
 docker build . -t my-web-app
 ```
 
-The same thing can also be achieved within a Codefresh pipeline:
+You can get the same result within a Codefresh pipeline:
 
 
   `codefresh.yml`
@@ -63,6 +59,7 @@ You can also change the Docker build context by editing the `working_directory` 
 
 
 ## Related articles
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [Build step in pipelines]({{site.baseurl}}/docs/pipelines/steps/build/)  
 [Build an Image by specifying the Dockerfile location]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-specify-dockerfile-location)  
 [Build an Image from a different Git repository]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-from-a-different-git-repository)  

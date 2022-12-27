@@ -6,7 +6,7 @@ sub_group: ci-examples
 toc: true
 ---
 
-Codefresh has native support for Git repositories and Git triggers. First you need to setup a [Git integration]({{site.baseurl}}/docs/integrations/git-providers/) (your administrator might also have done this for you already).
+Codefresh has native support for Git repositories and Git triggers. First you need to set up a [Git integration]({{site.baseurl}}/docs/integrations/git-providers/) (your administrator might also have done this for you already).
 
 {% include image.html 
 lightbox="true" 
@@ -17,7 +17,7 @@ caption="GIT integrations"
 max-width="70%"
 %}
 
-You can add a new integration for any cloud provider or even [on-premises]({{site.baseurl}}/docs/enterprise/behind-the-firewall/) ones. By default you will also have a provider setup if you used one for Codefresh signup (GitHub, GitLab or Bitbucket).
+You can add a new integration for any cloud provider or even [on-premises]({{site.baseurl}}/docs/reference/behind-the-firewall/) ones. By default you will also have a provider set up if you used one for Codefresh signup (GitHub, GitLab or Bitbucket).
 
 For each Git Integration, make sure that you note down its name, as you will use in your pipeline inside a [git-clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/) step.
 
@@ -104,10 +104,9 @@ max-width="50%"
 
 This is the recommended way of creating re-usable pipelines in Codefresh.
 
-## Cloning a repository using the Codefresh runner
-<!---change the first x-ref after update -->
-If you are using the [Hybrid version]({{site.baseurl}}/docs/installation/#hybrid-installation) of Codefresh and a have a [Codefresh runner]({{site.baseurl}}/docs/installation/codefresh-runner/) installed, you need to use
-the fully qualified path of the git repository:
+## Cloning a repository with Codefresh Runner
+If you have the [Codefresh Runner]({{site.baseurl}}/docs/installation/codefresh-runner/) installed, you need to use
+the fully qualified path of the Git repository:
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -133,9 +132,9 @@ More details can be found in the [private Git instructions page]({{site.baseurl}
 
 ## Working inside the cloned directory
 
-Normally each [pipeline step]({{site.baseurl}}/docs/pipelines/steps/) in Codefresh can be named as you want. Specifically, for the git-clone step however the name `main_clone` is special.
+Normally each [pipeline step]({{site.baseurl}}/docs/pipelines/steps/) in Codefresh can be named as you want. Specifically, for the Git-clone step however the name `main_clone` is special.
 
-If you name your clone step as `main_clone` the Codefresh will automatically change the working directory for all the next (non git-clone) pipeline steps, to be the same as the project that was just checked out. This only applies to [built-in]({{site.baseurl}}/docs/pipelines/steps/#built-in-steps) Codefresh steps and not [custom plugins]({{site.baseurl}}/docs/pipelines/steps/#creating-a-typed-codefresh-plugin).
+If you name your clone step as `main_clone`, Codefresh automatically changes the working directory for all the next (non Git-clone) pipeline steps, to be the same as the project that was just checked out. This only applies to [built-in]({{site.baseurl}}/docs/pipelines/steps/#built-in-steps) Codefresh steps and not [custom plugins]({{site.baseurl}}/docs/pipelines/steps/#creating-a-typed-codefresh-plugin).
 
 {% include 
 image.html 
@@ -147,14 +146,14 @@ caption="Checkout structure"
 max-width="50%" 
 %}
 
-This is probably what you want anyway, so make sure that you name your git-clone steps as `main_clone`. If you use any other name, then the working folder will be the parent of the checked-out project which is the [shared Codefresh volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) at `/codefresh/volume`.
+This is probably what you want anyway, so make sure that you name your Git-clone steps as `main_clone`. If you use any other name, then the working folder will be the parent of the checked-out project which is the [shared Codefresh volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) at `/codefresh/volume`.
 
-If you have more then one clone steps in a pipeline it is recommended to define the working directory explicitly (see next example), instead
+If you have more then one clone step in a pipeline, it is recommended to define the working directory explicitly (see next example), instead
 of depending on the `main_clone` naming convention, which is best used in pipelines with a single clone step.
 
 ## Cloning multiple repositories
 
-You can use as many clone steps as you want and at any position in the pipeline. They don't have to be the first step.
+You can use as many clone steps as you want and at any position in the pipeline. 
 
 Here is an example where two repositories are checked out and two docker images are then built. 
 
@@ -196,6 +195,7 @@ Notice that in this case the git-clone steps are **not** named `main_clone` and 
 
 
 ## Related articles
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [Git integrations]({{site.baseurl}}/docs/integrations/git-providers/)  
 [Git triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/)  
 [Clone step in pipelines]({{site.baseurl}}/docs/pipelines/steps/git-clone/)  

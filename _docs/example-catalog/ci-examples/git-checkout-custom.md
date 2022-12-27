@@ -1,6 +1,6 @@
 ---
-title: "Using Custom Git commands"
-description: "Clone manually git repositories"
+title: "Using custom Git commands"
+description: "Manually clone Git repositories"
 group: example-catalog
 sub_group: ci-examples
 redirect_from:
@@ -9,15 +9,15 @@ redirect_from:
 toc: true
 ---
 
->Notice that running git commands manually is an advanced technique. For most use cases you should use the [Native Git checkout]({{site.baseurl}}/docs/example-catalog/ci-examples/git-checkout/) offered by Codefresh.
+>Manually running Git commands is an advanced technique. For most use cases you should use the [native Git checkout]({{site.baseurl}}/docs/example-catalog/ci-examples/git-checkout/) offered by Codefresh.
 
-If you want to do complex cloning, you can still use custom clone commands in a freestyle step. Notice however that in this case
-you lose the native Codefresh integration such as git authentication and automatic workdir setup. Use custom clone commands only as a last resort.
+For complex cloning, you can still use custom clone commands in a freestyle step. In this case,
+you lose the native Codefresh integration such as Git authentication and automatic workdir setup. Use custom clone commands only as a last resort.
 
 
-## Cloning with the git executable
+## Cloning with the Git executable
 
-It is very easy to run custom git commands in a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/). Pass any parameters to the git clone step as you would pass them on your local workstation.
+It is very easy to run custom Git commands in a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/). Pass any parameters to the Git clone step as you would pass them on your local workstation.
 
 {% highlight yaml %}
 {% raw %}
@@ -38,13 +38,13 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-Notice the `rm` command before the clone step. This makes sure that every time the pipeline will run the `git clone` step will happen in an empty directory. Otherwise the `git clone` command will fail (git will refuse to clone on an existing directory).
+Notice the `rm` command before the clone step. This makes sure that every time the pipeline runs, the `git clone` step is implemented in an empty directory. Otherwise the `git clone` command will fail (Git will refuse to clone on an existing directory).
 
-You can enter your own git username/password or [reuse the credentials]({{site.baseurl}}/docs/pipelines/steps/git-clone/#reuse-a-git-token-from-codefresh-integrations) from the Codefresh integration.
+You can enter your own Git username/password or [reuse the credentials]({{site.baseurl}}/docs/pipelines/steps/git-clone/#reuse-a-git-token-from-codefresh-integrations) from the Codefresh integration.
 
-## Running Git commands manually
+## Manually running Git commands
 
-Once you understand that you can run manually git commands in Codefresh pipelines, it is easy to see that any git workflow is possible.
+Once you understand that you can manually run Git commands in Codefresh pipelines, it is easy to see that any Git workflow is possible.
 Here is an example where an application is packaged in a Docker container, after merging `master` to a specific branch. 
 
 {% highlight yaml %}
@@ -71,11 +71,11 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-If there are any errors with the merge the pipeline will automatically fail. Codefresh will automatically stop any pipeline that shows an error in a step.
+If there are any errors with the merge, the pipeline fails automatically. Codefresh automatically stops any pipeline that shows an error in a step.
 
 ## Other forms of cloning
 
-There is nothing special about running GIT it in a freestyle step. In fact, you can check out code with any other command that you would run locally in your terminal.
+There is nothing special about running Git it in a freestyle step. In fact, you can check out code with any other command that you would run locally in your terminal.
 
 Here is an example with Golang.
 
@@ -98,6 +98,7 @@ More examples such as using SSH keys and working with GIT submodules can be foun
 
 
 ## Related articles
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [Native Git checkout]({{site.baseurl}}/docs/example-catalog/ci-examples/git-checkout/)  
 [Native Git integration]({{site.baseurl}}/docs/integrations/git-providers/)  
 [Freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/)  

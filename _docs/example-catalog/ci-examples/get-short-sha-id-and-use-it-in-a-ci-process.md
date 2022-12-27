@@ -1,6 +1,6 @@
 ---
-title: "Get Short SHA ID and Use it in a CI Process"
-description: ""
+title: "Use Git Hash in CI"
+description: "Get short SHA ID and use it in a CI Process"
 group: example-catalog
 sub_group: ci-examples
 redirect_from:
@@ -11,25 +11,24 @@ old_url: /docs/how-get-first-8-digits-of-sha
 ---
 
 ## Get the short SHA ID
-Put the following variable in your script
+Add the following variable to your script:
 
-{{site.data.callout.callout_info}}
 {% highlight text %}
 {% raw %}
 ${{CF_SHORT_REVISION}} 
 {% endraw %}
 {% endhighlight %}
-{{site.data.callout.end}}
+
 
 ## Use the SHA ID in a tag
 
-{{site.data.callout.callout_info}}
+
 {% highlight text %}
 {% raw %}
 tag: ${{CF_SHORT_REVISION}} 
 {% endraw %}
 {% endhighlight %}
-{{site.data.callout.end}}
+
 
 ## YAML example
 
@@ -52,24 +51,27 @@ step-name:
 
 {% include image.html 
 lightbox="true" 
-file="/images/b694c19-2016-10-18_17-42-38.png" 
-url="/images/b694c19-2016-10-18_17-42-38.png"
-alt="2016-10-18_17-42-38.png"
-max-width="40%"
+file="/images/examples/git/sha-id-docker-hub.png" 
+url="/images/examples/git/sha-id-docker-hub.png"
+alt="SHA ID in Docker Hub"
+caption="SHA ID in Docker Hub"
+max-width="60%"
 %}
 
 ## Result in Codefresh
 
 {% include image.html 
 lightbox="true" 
-file="/images/de17013-2016-10-18_17-49-22.png" 
-url="/images/de17013-2016-10-18_17-49-22.png"
-alt="2016-10-18_17-49-22.png"
-max-width="40%"
+file="/images/examples/git/sha-id-codefresh.png" 
+url="/images/examples/git/sha-id-codefresh.png"
+caption="SHA ID in Codefresh"
+alt="SHA ID in Codefresh"
+max-width="60%"
 %}
 
 
 ## Related articles 
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)    
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 [How Codefresh pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  

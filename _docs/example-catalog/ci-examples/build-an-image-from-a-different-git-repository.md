@@ -8,14 +8,14 @@ redirect_from:
 toc: true
 ---
 
-In most cases, your Codefresh pipeline will check out a single Git repository. Codefresh also has great support for [monorepos]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#using-the-modified-files-field-to-constrain-triggers-to-specific-folderfiles) if you have placed all your applications in a single repository.
+In most cases, your Codefresh pipeline checks out a single Git repository. Codefresh has great support also for [monorepos]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#using-the-modified-files-field-to-constrain-triggers-to-specific-folderfiles) if you have placed all your applications in a single repository.
 
-A Codefresh pipeline is not really tied to a specific Git repository, which means that by [checking out multiple git repositories]({{site.baseurl}}/docs/example-catalog/git-checkout/#cloning-multiple-repositories) you can build Docker images from other unrelated repositories in a single pipeline if you wish to do so.
+A Codefresh pipeline is not really tied to a specific Git repository, which means that by [checking out multiple Git repositories]({{site.baseurl}}/docs/example-catalog/ci-examples/git-checkout/#cloning-multiple-repositories) you can build Docker images from other unrelated repositories in a single pipeline if you wish to do so.
 
 ## Building Docker images from other Git repositories
 
 
-Here is a Codefresh pipeline that checks out two micro-services from two separate Git repositories.
+Here is a Codefresh pipeline that checks out two microservices from two different Git repositories.
 
 {% include image.html 
 lightbox="true" 
@@ -69,9 +69,9 @@ steps:
 {% endraw %}      
 {% endhighlight %}
 
-The pipeline first checks out two different Git repositories (which themselves contain Dockerfiles). Then it creates a Docker image for each one using the respective Dockerfile.
+The pipeline first checks out two different Git repositories, which themselves contain Dockerfiles. Then it creates a Docker image for each one using the respective Dockerfile.
 
-<!--check if this topic exists-->You can see both images in the [Docker image dashboard]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/#viewing-docker-images) .
+<!--check if this topic exists-->You can see both images in the [Docker image dashboard]({{site.baseurl}}/docs/docker-registries/#viewing-docker-images) .
 
 {% include image.html 
 lightbox="true" 
@@ -87,6 +87,7 @@ Notice that there are no explicit push steps in the pipeline, as all successful 
 
 
 ## Related articles
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)  
 [Build step in pipelines in pipelines]({{site.baseurl}}/docs/pipelines/steps/build/)  
 [Build and Push an image]({{site.baseurl}}/docs/pipelines/examples/build-and-push-an-image/)  

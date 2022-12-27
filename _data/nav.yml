@@ -10,7 +10,7 @@
     - title: "CI examples"
       url: "/ci-examples"
       sub-pages:
-        - title: Checking out Git repositories
+        - title: Check out Git repositories
           url: "/git-checkout"
         - title: Custom Git commmands
           url: "/git-checkout-custom"
