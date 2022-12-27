@@ -1,6 +1,6 @@
 ---
-title: "Populate a database with existing data"
-description: "Preloading test data before integration tests"
+title: "Populate database with existing data"
+description: "Preload test data before integration tests"
 group: example-catalog
 sub_group: ci-examples
 redirect_from:
@@ -9,7 +9,7 @@ toc: true
 old_url: /docs/populate-a-database-with-existing-data-copied
 was_hidden: true
 ---
-In an another example we have seen how you can run [integration tests with a database]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-postgres/) such as PostgreSQL. Sometimes however, the integration tests require the database to already have some test data beforehand. With Codefresh you can use the [setup block]({{site.baseurl}}/docs/pipelines/service-containers/#preloading-data-to-databases) in service containers to preload data to a db.
+In another example we saw how to run [integration tests with a database]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-postgres/) such as PostgreSQL. Sometimes however, the integration tests require the database to already have some test data beforehand. With Codefresh you can use the [setup block]({{site.baseurl}}/docs/pipelines/service-containers/#preloading-data-to-databases) in service containers to preload data to a database.
 
 
 {% include image.html 
@@ -23,11 +23,11 @@ max-width="90%"
 
 In this pipeline the database is populated with data from an SQL file.
 
-## The example PostgreSQL project
+## Example PostgreSQL project
 
 You can see the example project at [https://github.com/codefresh-contrib/preload-db-integration-tests](https://github.com/codefresh-contrib/preload-db-integration-tests){:target="\_blank"}. The repository contains a simple integration test and an SQL file that inserts test data.
 
-The SQL file creates a single table in the db:
+The SQL file creates a single table in the database:
 
  `preload.sql`
 {% highlight sql %}
@@ -125,23 +125,24 @@ steps:
 
 This pipeline does the following:
 
-1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/).
-1. Compiles the code with a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) that runs `go build`
-1. Runs the tests while launching a [service container]({{site.baseurl}}/docs/pipelines/service-containers/) for an active PostgreSQL instance. Before tests are run we launch another container with the `psql` executable to load db data
+1. Clones the source code through a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/).
+1. Compiles the code that runs `go build` through a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/). 
+1. Runs the tests while launching a [service container]({{site.baseurl}}/docs/pipelines/service-containers/) for an active PostgreSQL instance. Before tests are run, we launch another container with the `psql` executable to load database data.
 
 
-> In this simple example we use `psql` to preload the database. In a production application you might also use dedicated db tools such as [liquibase](https://hub.docker.com/r/liquibase/liquibase){:target="\_blank"} or [flyway](https://hub.docker.com/r/flyway/flyway){:target="\_blank"} or other command line tools that communicate with your database.
+> In this simple example, we use `psql` to preload the database. In a production application you might also use dedicated db tools such as [liquibase](https://hub.docker.com/r/liquibase/liquibase){:target="\_blank"} or [flyway](https://hub.docker.com/r/flyway/flyway){:target="\_blank"} or other command line tools that communicate with your database.
 
 Notice that we also use the `readiness` property in the testing phase so that we can verify PostgreSQL is ready and listening, before running the tests. The exact order of events is:
 
 1. Codefresh launches `postgres:11.5` at port 5432. 
 1. It then launches another container in the same network with `pg_isready` in order to wait for the DB to be up. 
 1. Then it launches a third container with `psql` to preload data. 
-1. Finally it launches a container with `golang:1.13` to run the actual tests.
+1. Finally, it launches a container with `golang:1.13` to run the actual tests.
 
 All containers are discarded after the pipeline has finished.
 
 ## Related articles
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [Integration test example]({{site.baseurl}}/docs/example-catalog/ci-examples/run-integration-tests/)  
 [Integration Tests with Postgres]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-postgres/)  
 [Integration Tests with MySQL]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-mysql/)  

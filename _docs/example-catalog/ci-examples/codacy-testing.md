@@ -19,7 +19,7 @@ max-width="100%"
 
 ## Prerequisites for using Codacy
 <!--- check with Kostis -->
-* A simple [Codefresh pipeline, up and running]({{site.baseurl}}/docs/administration/create-a-codefresh-account/)
+* A simple [Codefresh pipeline, up and running]({{site.baseurl}}/docs/getting-started/create-a-basic-pipeline/)
 * A [Codacy account](https://www.codacy.com/){:target="\_blank"} (free, pro or enterprise)
 * A testing tool added to your project that produces coverage reports
 
@@ -133,7 +133,7 @@ steps:
 
 The last two steps, ’tests’ and ’codacy’, are used to run our tests, create our coverage reports and forward those to Codacy. If you are using your own project and existing pipeline, add those two steps to your pipeline. In case you are using your own application, make sure to adapt the commands within the test step to run the tests of your application. Additionally, ensure that both the ’repo’ and the ’image_name’ point to your integrations.
 
-Once you run the pipeline, the steps will create the coverage report and forward it to Codacy.
+Once you run the pipeline, the steps will create the coverage report and forwards it to Codacy.
 
 {% include image.html 
 lightbox="true" 
@@ -166,6 +166,7 @@ max-width="90%"
 %}
 
 ## Related articles
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Unit tests]({{site.baseurl}}/docs/testing/unit-tests/)  

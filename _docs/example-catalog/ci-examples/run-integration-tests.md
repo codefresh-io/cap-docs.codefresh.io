@@ -1,13 +1,13 @@
 ---
-title: "Integration Tests Example"
-description: "Launching separate App and test containers"
+title: "Run integration tests"
+description: "Launch separate App and test containers"
 group: example-catalog
 sub_group: ci-examples
 redirect_from:
   - /docs/run-integration-tests/
 toc: true
 ---
-In this example we will see a Java/Tomcat project that is using JUnit for unit tests and Spock for integration tests. For the integration test phase we will launch both the application and the tests in order to run the integration tests against a real web instance (i.e. without mocking).
+In this example, we will see a Java/Tomcat project using JUnit for unit tests and Spock for integration tests. For the integration test phase, we will launch both the application and the tests in order to run the integration tests against a real web instance (without mocking).
 
 {% include image.html 
 lightbox="true" 
@@ -20,7 +20,7 @@ max-width="90%"
 
 The integration tests will look at the application instance at `app:8080`.
 
-## The example Java/Tomcat/Spring project
+## Example Java/Tomcat/Spring project
 
 You can see the example project at [https://github.com/codefreshdemo/cf-example-integration-tests](https://github.com/codefreshdemo/cf-example-integration-tests){:target:"\_blank"}. The repository contains the Java source code and some integration tests.
 
@@ -85,15 +85,16 @@ steps:
 
 This pipeline does the following:
 
-1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
-1. [Builds a Docker image]({{site.baseurl}}/docs/pipelines/steps/build/) with only Tomcat and the application WAR
-1. Builds a helper image that contains the source code and Maven so that it can run integration tests.
-1. Runs the `mvn verify` command in the helper image while launching a [service container]({{site.baseurl}}/docs/pipelines/service-containers/) with the Tomcat/Java image
+1. Clones the source code through a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/).
+1. Builds a Docker image with only Tomcat and the application WAR through a [build step]({{site.baseurl}}/docs/pipelines/steps/build/). 
+1. Builds a helper image that contains the source code and Maven to run integration tests.
+1. Runs the `mvn verify` command in the helper image while launching a [service container]({{site.baseurl}}/docs/pipelines/service-containers/) with the Tomcat/Java image.
 
-Notice that we also use the `readiness` property in the testing phase so that we can verify that the application
+Notice that we also use the `readiness` property in the testing phase to verify that the application
 is actually up, before running the tests.
 
 ## Related articles
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [Service Containers]({{site.baseurl}}/docs/pipelines/service-containers/)  
 [Integration Tests with Postgres]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-postgres/)  
 [Integration Tests with MySQL]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-mysql/)  

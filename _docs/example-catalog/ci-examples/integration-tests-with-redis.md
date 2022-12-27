@@ -9,7 +9,7 @@ redirect_from:
 toc: true
 ---
 
-In this example we will see a Python project that is using Redis for storing a web counter. For the integration test phase we will launch both the application and an instance of Redis in order to run a simple integration test.
+In this example, we will see a Python project that is using Redis for storing a web counter. For the integration test phase we will launch both the application and an instance of Redis in order to run a simple integration test.
 
 {% include image.html 
 lightbox="true" 
@@ -22,7 +22,7 @@ max-width="90%"
 
 The application will be launched with a hostname `web` while Redis will be at `redis:6379`.
 
-## The example Python project
+## Example Python project
 
 You can see the example project at [https://github.com/codefreshdemo/example_python_redis](https://github.com/codefreshdemo/example_python_redis){:target="\_blank"}. The repository contains the Python source code and a test script.
 
@@ -93,15 +93,15 @@ steps:
 
 This pipeline does the following:
 
-1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
-1. [Builds a Docker image]({{site.baseurl}}/docs/pipelines/steps/build/) with the application itself
-1. Builds a helper image that contains `nc` and `curl` that will be used for the integration tests
-1. Runs the test script while launching two [service containers]({{site.baseurl}}/docs/pipelines/service-containers/) (one for the app and one for Redis)
+1. Clones the source code through a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/).
+1. Builds a Docker image with the application itself through a [build step]({{site.baseurl}}/docs/pipelines/steps/build/). 
+1. Builds a helper image that contains `nc` and `curl` that will be used for the integration tests.
+1. Runs the test script while launching two [service containers]({{site.baseurl}}/docs/pipelines/service-containers/) (one for the app and one for Redis).
 
 Notice that we also use the `readiness` property in the testing phase so that we can verify that both the application
 as well as Redis are up, before running the tests.
 
-## The integration test script
+## Integration test script
 
 The integration test is very simple. It just uses `curl` to hit the Python endpoint and `grep` to check for a well known string.
 
@@ -122,6 +122,7 @@ Notice that we use the helper image both for running the test (because of `curl`
 
 
 ## Related articles
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [Integration test example]({{site.baseurl}}/docs/example-catalog/ci-examples/run-integration-tests/)  
 [Integration Tests with Postgres]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-postgres/)  
 [Integration Tests with MySQL]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-mysql/)  

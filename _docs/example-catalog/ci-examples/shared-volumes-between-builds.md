@@ -1,14 +1,14 @@
 ---
-title: "Sharing data between pipeline steps"
+title: "Share data between pipeline steps"
 description: "How to cache folders between steps and builds"
 group: example-catalog
-sub_group: examples
+sub_group: ci-examples
 redirect_from:
   - /docs/shared-volumes-between-builds/
 toc: true
 ---
 
-Codefresh creates a [shared volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) in each pipeline that is automatically shared on all freestyle steps.
+Codefresh creates a [shared volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) in each pipeline that is automatically shared with all freestyle steps.
 
 {% include 
 image.html 
@@ -20,13 +20,13 @@ caption="All steps share the same volume"
 max-width="90%" 
 %}
 
-This volume exists at `/codefresh/volume` by default. You can simply copy files there to have them available in all Codefresh steps (as well as subsequent builds of the same pipeline)
+This volume exists at `/codefresh/volume` by default. Simply copy files there to have them available to all Codefresh steps (as well as subsequent builds of the same pipeline).
 
->Notice that the [git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/) will delete any files **not** mentioned in `.gitignore`. Therefore if you want to cache a folder that exists in your project directory (such as `node_modules`) you also need to add it to `.gitignore`
+>The [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/) deletes any files **not** specified in `.gitignore`. To cache a folder that exists in your project directory (such as `node_modules`), you must also add it to `.gitignore`
 
 ## Using the shared volume
 
-You can see the example project at [https://github.com/codefreshdemo/cf-example-shared-volumes-between-builds](https://github.com/codefreshdemo/cf-example-shared-volumes-between-builds). The repository contains a simple application, a Dockerfile and an example pipeline that saves/reads a dummy file to the Codefresh volume
+You can see the example project at [https://github.com/codefreshdemo/cf-example-shared-volumes-between-builds](https://github.com/codefreshdemo/cf-example-shared-volumes-between-builds){:target="\_blank"}. The repository contains a simple application, a Dockerfile, and an example pipeline that saves/reads a dummy file to the Codefresh volume.
 
 
 Here is the whole pipeline:
@@ -81,12 +81,12 @@ steps:
 
 This pipeline does the following:
 
-1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
-1. Builds a docker image using a [Build step]({{site.baseurl}}/docs/pipelines/steps/build/)
-1. Copies the file `artifact.example` to the volume with a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/)
-1. Reads the contents of the volume in a different [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/)
+1. Clones the source code through a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/).
+1. Builds a docker image through a [build step]({{site.baseurl}}/docs/pipelines/steps/build/).
+1. Copies the file `artifact.example` to the volume through a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/).
+1. Reads the contents of the volume through a different freestyle step.
 
-If you run the pipeline you will see the file contents in the fourth step:
+If you run the pipeline, you will see the file contents in the fourth step:
 
 {% include 
 image.html 
@@ -99,17 +99,17 @@ max-width="80%"
 %}
 
 
-If you also run the pipeline a second time, you will see the dummy file in all steps (as the volume is automatically cached for subsequent builds as well).
+If you run the pipeline a second time, you will see the dummy file in all steps, as the volume is automatically cached for subsequent builds as well.
 
 
 ## Caching build dependencies and Docker layers
 
-More information about caching build dependencies can be found in the [caching documentation page]({{site.baseurl}}/docs/pipelines/pipeline-caching/){:target:"\_blank"} as well as [in this blog post](https://codefresh.io/blog/caching-build-dependencies-codefresh-volumes/){:target:"\_blank"}.
+Read more about caching build dependencies in [caching in pipelines]({{site.baseurl}}/docs/pipelines/pipeline-caching/), and in this [blog post](https://codefresh.io/blog/caching-build-dependencies-codefresh-volumes/){:target:"\_blank"}.
 
 
 
 ## Related articles
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [How Codefresh pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/) 
-[Pipeline caching]({{site.baseurl}}/docs/pipelines/pipeline-caching/)  
 [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Freestyle steps]({{site.baseurl}}/docs/pipelines/steps/freestyle)  

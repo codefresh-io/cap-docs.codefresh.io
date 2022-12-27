@@ -15,7 +15,7 @@ redirect_from:
 toc: true
 ---
 
-In this example we will see a NodeJS project that is using MySQL for data storage. For the integration test phase we will launch an instance of MySQL in order to run a simple integration test.
+In this example, we will see a NodeJS project that is using MySQL for data storage. For the integration test phase we will launch an instance of MySQL in order to run a simple integration test.
 
 {% include image.html 
 lightbox="true" 
@@ -26,9 +26,9 @@ caption="MySQL integration tests with Codefresh"
 max-width="90%"
 %}
 
-The Integration tests are looking for a MySQL connection at `test_mysql_db:3306`.
+The integration tests look for a MySQL connection at `test_mysql_db:3306`.
 
-## The example NodeJS project
+## Example NodeJS project
 
 You can see the example project at [https://github.com/codefreshdemo/cf-example-unit-tests-with-composition](https://github.com/codefreshdemo/cf-example-unit-tests-with-composition){:target=\_blank"}. The repository contains the NodeJS source code and the simple integration test.
 
@@ -94,8 +94,8 @@ steps:
 
 This pipeline does the following:
 
-1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/).
-1. [Builds a Docker image]({{site.baseurl}}/docs/pipelines/steps/build/) with the integration test.
+1. Clones the source code through a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/).
+1. Builds a Docker image with the integration test through a [build step]({{site.baseurl}}/docs/pipelines/steps/build/).
 1. Runs the tests while launching a [service container]({{site.baseurl}}/docs/pipelines/service-containers/) for an active MySQL instance passing the required environment variables (that match what the test is expecting).
 
 Notice that both the DB as well as the tests share a set of variables (`MYSQL_PASSWORD`, `MYSQL_USER` etc.) and thus we use [YAML anchors]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#using-yaml-anchors-to-avoid-repetition) to avoid duplication.
@@ -103,6 +103,7 @@ Notice that both the DB as well as the tests share a set of variables (`MYSQL_PA
 Notice that we also use the `readiness` property in the testing phase so that we can verify MySQL is ready and listening, before running the tests.
 
 ## Related articles
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [Integration test example]({{site.baseurl}}/docs/example-catalog/ci-examples/run-integration-tests/)  
 [Integration Tests with Postgres]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-postgres/)  
 [Integration Tests with Redis]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-redis/)  

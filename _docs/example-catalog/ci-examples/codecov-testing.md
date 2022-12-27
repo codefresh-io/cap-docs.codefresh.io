@@ -29,7 +29,7 @@ To test Codecov and follow along with the next section, you can clone our [Codec
 
 ## Create a Codecov account
 
-Once you sign-up to Codecov, you can add a new repository. The UI will then provide you with an access token to the repository. While it is recommended that you take note of the token, you will still be able to access it within the **Settings** tap.
+Once you sign up to Codecov, you can add a new repository. The UI will then provide you with an access token to the repository. While it is recommended that you take note of the token, you will still be able to access it within the **Settings** tap.
 
 {% include image.html 
 lightbox="true" 
@@ -41,10 +41,10 @@ max-width="50%"
 
 ## Codefresh pipeline
 
-In this case, we have divided the testing and connecting Codefresh to Codecov into two different steps. If they can be run within the same image, you could also connect them. 
+In this case, we divided testing and connecting Codefresh to Codecov into two different steps. If they can be run within the same image, you could also connect them. 
 
 **Testing step**
-Will run the command(s) for our testing tool. This will generate the code coverage report upon running the pipeline. Please refer to the Codecov documentation for [supported testing frameworks](https://docs.codecov.io/docs/supported-report-formats){:target="\_blank"}. The [README of each example](https://docs.codecov.io/docs/supported-languages){:target="\_blank"} refers to possible frameworks that can be used.
+Runs the command(s) for our testing tool. This will generate the code coverage report upon running the pipeline. Please refer to the Codecov documentation for [supported testing frameworks](https://docs.codecov.io/docs/supported-report-formats){:target="\_blank"}. The [README of each example](https://docs.codecov.io/docs/supported-languages){:target="\_blank"} refers to possible frameworks that can be used.
 
 In general, ensure that the framework you use for testing and generating code coverage reports:
 * Produce code coverage reports in the supported file format
@@ -82,9 +82,9 @@ upload:
 {% endhighlight %}
 
 The commands run inside of the node Docker image:
-* `ci_env= curl -s https://codecov.io/env` -- Here we set the CI environment variable to take note that we are using Codefresh
-* `npm install codecov -g` -- This installs the odecov CLI
-* `codecov -t ${{CODECOV_TOKEN}} -f ./coverage/clover.xml` -- Here we set the Codevoc access token provided in the UI when we connect to a new git repository and point to the file that contains our coverage report.
+* `ci_env= curl -s https://codecov.io/env`: Sets the CI environment variable to take note that we are using Codefresh
+* `npm install codecov -g`: Installs the odecov CLI
+* `codecov -t ${{CODECOV_TOKEN}} -f ./coverage/clover.xml`: Sets the Codevoc access token provided in the UI when we connect to a new Git repository and point to the file that contains our coverage report.
 
 Once you run the pipeline, the steps will create the coverage report and forward it to Codecov.
 
@@ -119,6 +119,7 @@ max-width="50%"
 %}
 
 ## Related articles
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Unit tests]({{site.baseurl}}/docs/testing/unit-tests/)  

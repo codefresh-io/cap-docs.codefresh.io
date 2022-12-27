@@ -1,6 +1,6 @@
 ---
-title: "Uploading/Downloading Files to/from Google Storage"
-description: "Upload and download a jar from Google Storage from within a pipeline"
+title: "Upload/Download files to/from Google Storage"
+description: "Upload and download a JAR from Google Storage from within a pipeline"
 group: example-catalog
 sub_group: ci-examples
 toc: true
@@ -12,15 +12,15 @@ toc: true
 - A [Google Storage Bucket](https://cloud.google.com/storage/docs/creating-buckets){:target="\_blank"} with public read access
 - A private key [downloaded](https://cloud.google.com/storage/docs/authentication#gsutilauth){:target="\_blank"} for the existing service account associated with your bucket (for this example, we base64 encoded the key for ease of use in a pipeline variable using `base64 key_file.json > key_file.b64`)
 
-## The Example Project
+## Example Project
 
-The example project can be found on [GitHub](https://github.com/codefresh-contrib/gcloud-storage-sample-app.git){:target="\_blank"}.  The application is a simple Scala Hello World application contained in a jar, with a dependency on a scala-library jar which we will download from the bucket and package into a Docker image.
+The example project is at [GitHub](https://github.com/codefresh-contrib/gcloud-storage-sample-app.git){:target="\_blank"}.  The application is a simple Scala Hello World application contained in a jar, with a dependency on a scala-library jar which we will download from the bucket and package into a Docker image.
 
-Our project will contain two pipelines, one for uploading the dependency jar to our bucket, and the other for downloading the jar from the bucket.
+Our project contains two pipelines, one to upload the dependency JAR _to_ our bucket, and the other to download the JAR _from_ the bucket.
 
 ## Create the first pipeline
 
-The first pipeline will contain one stage/step, a step for uploading the jar to the Google Storage Bucket.
+The first pipeline contains one stage/step, to upload the JAR to the Google Storage Bucket.
 
 {% include image.html 
 lightbox="true" 
@@ -31,7 +31,7 @@ caption="Codefresh UI Pipeline View"
 max-width="90%"
 %}
 
-You will need to define a pipeline variable, KEY_FILE, in the pipeline settings:
+You need to define a pipeline variable, KEY_FILE, in the pipeline settings:
 
 {% include image.html 
 lightbox="true" 
@@ -39,7 +39,7 @@ file="/images/examples/gs/gs-pipeline-vars.png"
 url="/images/examples/gs/gs-pipeline-vars.png"
 alt="Codefresh UI Pipeline Variables"
 caption="Codefresh UI Pipeline Variables"
-max-width="90%"
+max-width="70%"
 %}
 
 Here is the first pipeline:
@@ -68,11 +68,11 @@ steps:
 
 This pipeline does the following:
 
-1. A [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) that uploads a jar from Maven into our Google Storage bucket.
+1. Uploads a JAR from Maven into our Google Storage bucket through a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/). 
 
 ## Create the second pipeline
 
-Our second pipeline will have four stages:
+Our second pipeline has four stages:
 
 - A stage for cloning the repository
 - A stage for downloading the jar from the bucket
@@ -140,13 +140,13 @@ steps:
 
 This pipeline does the following:
 
-1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/).
-2. A [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) that downloads the dependency jar from our publicly-accessible Google Storage bucket.
-3. Builds a docker image using a [build step]({{site.baseurl}}/docs/pipelines/steps/build/).
-4. Pushes the Docker image using a [push step](https://codefresh.io/docs/docs/pipelines/steps/push/) to the DockerHub registry you have integrated with Codefresh.
+1. Clones the source code through a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/).
+2. Downloads the dependency JAR from our publicly-accessible Google Storage bucket through a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/).
+3. Builds a docker image through a [build step]({{site.baseurl}}/docs/pipelines/steps/build/).
+4. Pushes the Docker image to the DockerHub registry you have integrated with Codefresh through a [push step](https://codefresh.io/docs/docs/pipelines/steps/push/).
 
 ## Related articles
-[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)   
 [CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/ci-examples/)  
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)   
 
 

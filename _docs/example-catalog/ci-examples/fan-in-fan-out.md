@@ -1,12 +1,12 @@
 ---
-title: "Fan-out-fan-in Pipeline"
+title: "Fan-out-fan-in pipeline"
 description: "Use parallel mode to fan-in and fan-out your step dependencies"
 group: example-catalog
 sub_group: ci-examples
 toc: true
 ---
 
-In pipelines, the concept of fan-in/fan-out is depicted in the diagram below.  This pipeline offers parallel sub-flows in a single pipeline.  Fan-out refers to spreading a task to multiple destinations in parallel, and fan-in is the opposite, where we spread multiple different tasks to the same destination.
+In pipelines, the concept of fan-in/fan-out is depicted in the diagram below.  This pipeline offers parallel sub-flows within the same pipeline.  Fan-out refers to spreading a task to multiple destinations in parallel, and fan-in is the opposite, where we spread multiple tasks to the same destination.
 
 {% include image.html 
 lightbox="true" 
@@ -17,23 +17,23 @@ caption="Parallel Mode Diagram"
 max-width="100%" 
 %}
 
-As you can see by the diagram, Step1 fans out to Step2 and Step4 (which run in parallel), while Step3 and Step4 fan-in to Step5.
+As you can see in the diagram, Step1 fans out to Step2 and Step4 (which run in parallel), while Step3 and Step4 fan-in to Step5.
 
 You can achieve parallelism in your Codefresh pipelines by using the following:
 
 - Simple parallel jobs ([inserting parallel steps into a sequential pipeline]({{site.baseurl}}/docs/pipelines/advanced-workflows/#inserting-parallel-steps-in-a-sequential-pipeline))
 - [Full parallel mode]({{site.baseurl}}/docs/pipelines/advanced-workflows/#parallel-pipeline-mode)
-- Fan-out/fan-in parallel pipelines, as covered here
+- Fan-out/fan-in parallel pipelines, as described in this article
 
 ## Prerequisites
 
 - A [free Codefresh account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/)
 
-## The Example Project
+## Example project
 
-You can find the example Spring boot application on [GitHub](https://github.com/codefresh-contrib/fan-out-fan-in-sample-app.git){:target="\_blank"}.  It is a simple Hello World application that has several different types of tests we will be using to run using Codefresh's parallel mode.
+You can find the example Spring boot application on [GitHub](https://github.com/codefresh-contrib/fan-out-fan-in-sample-app.git){:target="\_blank"}.  It is a simple Hello World application with several different types of tests we will use to run using Codefresh's parallel mode.
 
-## Create the Pipeline
+## Create the pipeline
 
 Our pipeline will have five stages: setup, start, web-tests, smoke, and end:
 
@@ -46,7 +46,7 @@ caption="Codefresh UI Pipeline View"
 max-width="100%" 
 %}
 
-You should be able to copy and paste this YAML in the in-line editor of the Codefresh UI.  It will automatically clone the project for you.
+You should be able to copy and paste this YAML in the in-line editor in the Codefresh UI.  It will automatically clone the project for you.
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -183,8 +183,8 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-Note the special use of `mode: parallel` declared at the root of our yaml.  This syntax makes the pipeline use the full parallel mode. 
-The order of your build steps doesn't matter in this case, each step is executed according to its [conditionals](https://codefresh.io/docs/docs/pipelines/conditional-execution-of-steps/).
+>Note the special use of `mode: parallel` declared at the root of our yaml.  This syntax makes the pipeline use the full parallel mode. 
+The order of your build steps doesn't matter in this case, each step is executed according to its [condition]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/).
 
 - Step1 (unit tests) fans out to Step2 and Step4 (web tests), which run in parallel
 - Step3 (smoke tests) does not execute until Step2 is completed
@@ -192,12 +192,13 @@ The order of your build steps doesn't matter in this case, each step is executed
 
 This pipeline consists of the following:
 
-1. A [git-clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/) step that clones the main repository
-2. A [build step]({{site.baseurl}}/docs/pipelines/steps/build/) that builds the cloned source code into a Docker image
-3. 5 [freestyle steps]({{site.baseurl}}/docs/pipelines/steps/freestyle/) that:
-  - Runs unit tests according to their respective @Tags
-  - Uses the image built in the second step as a [Service container]({{site.baseurl}}/docs/pipelines/service-containers/)
+1. Clones the main repository through a [Git-clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/).
+2. Builds the cloned source code into a Docker image through a [build step]({{site.baseurl}}/docs/pipelines/steps/build/).
+3. Runs [freestyle steps]({{site.baseurl}}/docs/pipelines/steps/freestyle/) that:
+  - Run unit tests according to their respective @Tags
+  - Use the image built in the second step as a [service container]({{site.baseurl}}/docs/pipelines/service-containers/)
  
 ## Related articles
-[Parallel Mode]({{site.baseurl}}/docs/pipelines/advanced-workflows/#parallel-pipeline-mode)  
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
+[Parallel pipeline mode]({{site.baseurl}}/docs/pipelines/advanced-workflows/#parallel-pipeline-mode)  
 

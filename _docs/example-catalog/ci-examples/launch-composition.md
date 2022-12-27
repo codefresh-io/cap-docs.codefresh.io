@@ -1,5 +1,5 @@
 ---
-title: "Launch Composition"
+title: "Launch Compositions"
 description: "Create a dynamic environment to preview your feature"
 group: example-catalog
 sub_group: ci-examples
@@ -12,7 +12,7 @@ This project uses `Node JS` to build an application which will eventually become
 
 ## Looking around
 
-In the root of this repository you'll find a file named `codefresh.yml`, this is our [pipeline definition]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/) and it describes the different steps that comprise our process. Let's quickly review the contents of this file:
+In the root of this repository you'll find a file named `codefresh.yml`. This is our [pipeline definition]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/) and it describes the different steps that comprise our process. Let's quickly review the contents of this file:
 
   `codefresh.yml`
 {% highlight yaml %}
@@ -58,16 +58,14 @@ The pipeline clones the source code, builds a docker image and then
  [creates a preview environment]({{site.baseurl}}/docs/pipelines/steps/launch-composition/) with that image.
 
 
-{{site.data.callout.callout_warning}}
-##### Your environments are limited 
-Be aware that the number of environments you can run is limited. When using the same environment name the old one would terminate before launching the new environment. That way you can control the number of environments running in your account. 
-{{site.data.callout.end}}
+>**Your environments are limited** 
+  Be aware that the number of environments you can run is limited. When using the same environment, define that the old one would terminate before launching the new environment. That way you can control the number of environments running in your account. 
 
-{{site.data.callout.callout_info}}
-##### Example
+
+### Example
 
 Just head over to the example [**repository**](https://github.com/codefreshdemo/cf-example-launch-composition){:target=\_blank"} in GitHub and follow the instructions there.
-{{site.data.callout.end}}
+
 
 Here is the end result:
 
@@ -81,6 +79,7 @@ max-width="90%"
 %}
 
 ## Related articles
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [Unit tests]({{site.baseurl}}/docs/examples/example-catalog/ci-examples/run-integration-tests/)  
 [Integration tests]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-database/)  
 [Preview environments]({{site.baseurl}}/docs/getting-started/on-demand-environments/)  

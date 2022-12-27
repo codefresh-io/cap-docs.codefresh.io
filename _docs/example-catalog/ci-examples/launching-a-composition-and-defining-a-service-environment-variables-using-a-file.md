@@ -1,6 +1,6 @@
 ---
-title: "Launching a composition and defining a service environment variable using a file"
-description: ""
+title: "Use Docker compose"
+description: "Launch a composition and define a service environment variable using a file"
 group: example-catalog
 sub_group: ci-examples
 redirect_from:
@@ -8,19 +8,18 @@ redirect_from:
 toc: true
 old_url: /docs/launching-a-composition-and-passing-a-service-environment-variable-using-a-file
 ---
-Sometimes when launching a composition there is a need to pass many environment variables to a specific service.
-In order to do that you can use docker-compose 'env_file' field on any service and use files from the current working directory from which the composition is being launched.
-This will work for both 'composition' and 'launch-composition' step types.
+At times when launching a composition, you need to pass many environment variables to a specific service.
+To do so, you can use `docker-compose 'env_file'` field on any service, and use files from the current working directory from which the composition is being launched.
+This works for both `composition` and `launch-composition` step types.
 
-{{site.data.callout.callout_info}}
-##### Using env_file will not work in case you are launching a composition directly from the Compositions view because it is being launched in an empty working directory.
+>**Note**:  
+  When launching a composition directly from the Compositions view, using `env_file` does not work as it is being launched in an empty working directory.  
+  Consider moving the composition launch as part of a usual pipeline which will give you ability to use files from your cloned repository. 
 
-Consider moving the composition launch as part of a usual pipeline which will give you ability to use files from your cloned repository. 
-{{site.data.callout.end}}
 
 ## Examples
-Compositions are being launch inside a working directory, which is the cloned repository by default.
-This means that you can always reference an 'env_file' exactly like you would reference a docker-compose file.
+Compositions are launched within a working directory, which is the cloned repository by default.
+This means that you can always reference an `env_file` just as would reference a `docker-compose` file.
 
   `Inline Composition`
 {% highlight yaml %}
@@ -55,3 +54,6 @@ steps:
     environment_name: 'environment name'
 {% endraw %}
 {% endhighlight %}
+
+## Related articles
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  

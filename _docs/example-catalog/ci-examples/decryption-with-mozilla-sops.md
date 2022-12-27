@@ -1,5 +1,5 @@
 ---
-title: "Decryption with Mozilla SOPS"
+title: "Decrypt with Mozilla SOPS"
 description: "Store secrets in your repository and decrypt them using Mozilla SOPS"
 group: example-catalog
 sub_group: ci-examples
@@ -12,7 +12,7 @@ toc: true
 - A public and private GnuGP key pair
 - A credentials yaml, that is encrypted using Mozilla SOPS, and stored in your repository
 
-## The Example Java Application
+## Example Java application
 
 You can find the example project on [GitHub](https://github.com/codefresh-contrib/mozilla-sops-app){:target="\_blank"}.
 
@@ -63,9 +63,9 @@ sops:
 ```
 You cannot run the application locally, as it needs to run in the pipeline in order to use our environment variables to connect.
 
-## Create the Pipeline
+## Create pipeline
 
-Our pipeline will contain four stages:
+The pipeline contains four stages:
 
 - A stage for cloning
 - A stage for importing the private/public keypair
@@ -81,7 +81,7 @@ caption="Codefresh UI Pipeline View"
 max-width="90%"
 %}
 
-First, you will need to add a pipeline variable, `PRIV_KEY`, for your private key.  You can do that in the UI by navigating to the in-line YAML editor and to the right-hand side, you will find the **Variables** tab:
+First, you need to add a pipeline variable, `PRIV_KEY`, for your private key.  You can do that in the UI by navigating to the in-line YAML editor and to the right-hand side, you will find the **Variables** tab:
 
 {% include image.html 
 lightbox="true" 
@@ -162,17 +162,16 @@ steps:
 
 This pipeline does the following:
 
-1. A [git-clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/) step that clones the main repository
-2. A [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) that uses a GPG image and imports the public and private key pair
-3. A freestyle step that decrypts the credentials file.  At this step, SOPS is looking for the .gnupg directory (where the keyring is stored) under /root.  We need to copy it from the [Codefresh Volume]({{site.baseurl}}/docs/pipelines/steps/freestyle/#custom-volumes), as /root is not saved between containers.
+1. Clones the main repository through a [git-clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/). 
+2. Uses a GPG image and imports the public and private key pair through a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/). 
+3. Decrypts the credentials file through a different freestyle step. At this step, SOPS looks for the .gnupg directory (where the keyring is stored) under /root.  We need to copy it from the [Codefresh Volume]({{site.baseurl}}/docs/pipelines/steps/freestyle/#custom-volumes), as /root is not saved between containers.
 4. The last step, `package_jar`, does a few special things to take note of:
    - Spins up a [Service Container]({{site.baseurl}}/docs/pipelines/service-containers/) running Redis on port 6379 , and sets the password to the database using our exported environment variable
    - Sets `maven.repo.local` to cache Maven dependencies into the local codefresh volume to [speed up builds]({{site.baseurl}}/docs/example-catalog/ci-examples/spring-boot-2/#caching-the-maven-dependencies)
    - Runs unit tests and packages the jar.  Note how you can directly refer to the service container's name (`my-redis-db-host`) when we set `server.host`
 
 ## Related articles
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
-[Git-clone Step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)  
-[Freestyle Step]({{site.baseurl}}/docs/pipelines/steps/freestyle/)  
-[Vault Secrets in the Pipeline]({{site.baseurl}}/docs/example-catalog/ci-examples/vault-secrets-in-the-pipeline/)  
+[Vault secrets in pipelines]({{site.baseurl}}/docs/example-catalog/ci-examples/vault-secrets-in-the-pipeline/)  
 

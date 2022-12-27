@@ -1,12 +1,12 @@
 ---
-title: "Calling a CD pipeline from a CI pipeline"
-description: "Learn how to call children pipelines from a parent pipeline"
+title: "Call a CD pipeline from a CI pipeline"
+description: "How to call child pipelines from a parent pipeline"
 group: example-catalog
 sub_group: ci-examples
 toc: true
 ---
 
-In Codefresh you can easily create nested pipelines by calling other pipelines from within an existing pipeline. This is easily accomplished with the [codefresh-run plugin](https://codefresh.io/steps/step/codefresh-run){:target="\_blank"} that allows you to launch another pipeline and optionally wait for its completion.
+In Codefresh you can easily create nested pipelines by calling other pipelines from within an existing pipeline. The [codefresh-run plugin](https://codefresh.io/steps/step/codefresh-run){:target="\_blank"} allows you to launch another pipeline, and optionally wait for its completion.
 
 {% include image.html
 lightbox="true"
@@ -17,11 +17,11 @@ caption="Parent and child pipelines"
 max-width="80%"
 %}
 
-A very common pattern in Codefresh is to have a parent pipeline responsible for Continuous Integration (packaging code) that calls a child pipeline for Continuous Delivery (taking care of deployment).
+A very common pattern in Codefresh is to have a parent pipeline responsible for Continuous Integration (packaging code), that calls a child pipeline for Continuous Delivery (taking care of deployment).
 
-## The example Project
+## Example project
 
-You can see the example project at [https://github.com/codefresh-contrib/call-child-pipeline-sample-app](https://github.com/codefresh-contrib/call-child-pipeline-sample-app){:target="\_blank"}. The repository contains a NodeJs app as well as 3 pipelines (one parent and two children).
+You can see the example project at [https://github.com/codefresh-contrib/call-child-pipeline-sample-app](https://github.com/codefresh-contrib/call-child-pipeline-sample-app){:target="\_blank"}. The repository contains a NodeJs app as well as three - one parent and two child pipelines.
 
 ## Create a pipeline that calls other pipelines
 
@@ -92,15 +92,16 @@ steps:
 
 This pipeline does the following:
 
-1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
-1. Uses [cf_export]({{site.baseurl}}/docs/pipelines/variables/#exporting-environment-variables-from-a-freestyle-step) to create a variable that contains the Application version as specified in `package.json`.
-1. Builds a docker image tagged with the Application version using a [build step]({{site.baseurl}}/docs/pipelines/steps/build/)
-1. Optionally runs the downstream QA pipeline if the branch is named `develop`. It also passes several environment variables to the child pipeline (including the Application version)
-1. Optionally runs the downstream Prod pipeline if the branch name starts with `release`. It also passes several environment variables to the child pipeline (including the Application version)
+1. Clones the source code through a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/).
+1. Creates a variable that contains the Application version as specified in `package.json` through [cf_export]({{site.baseurl}}/docs/pipelines/variables/#exporting-environment-variables-from-a-freestyle-step).
+1. Builds a docker image tagged with the Application version through a [build step]({{site.baseurl}}/docs/pipelines/steps/build/).
+1. Optionally runs the downstream QA pipeline if the branch is named `develop`. It also passes several environment variables to the child pipeline (including the Application version).
+1. Optionally runs the downstream Prod pipeline if the branch name starts with `release`. It also passes several environment variables to the child pipeline (including the Application version).
 
-The last two steps use [pipeline conditionals]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) to decide if they will run or not.
+The last two steps use [conditions]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) to decide if they will run or not.
 
 ## Related articles
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  

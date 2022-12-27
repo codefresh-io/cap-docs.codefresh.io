@@ -1,24 +1,25 @@
 ---
-title: "Vault Secrets in the Pipeline"
-description: "Accessing and Referring to Vault Secrets in the Pipeline"
+title: "Vault secrets in pipelines"
+description: "Access and refer to Vault secrets in pipelines"
 group: example-catalog
 sub_group: ci-examples
 toc: true
 ---
 
 Codefresh offers a Vault plugin you may use from the [Step Marketplace](https://codefresh.io/steps/step/vault){:target="\_blank"}.  The plugin imports key-value pairs from the Vault server, and exports them into the pipeline. 
+
 ## Prerequisites
 
 - A [free Codefresh account](https://codefresh.io/docs/docs/getting-started/create-a-codefresh-account/)
 - An existing Vault server [already setup](https://learn.hashicorp.com/vault/getting-started/install){:target="\_blank"}
-- A secret stored in said Vault server with a key of "password"
+- A secret stored in said Vault server with a key of `password`
 - A Vault [authorization token](https://learn.hashicorp.com/vault/getting-started/authentication#tokens){:target="\_blank"}
 
-## The Example Java Application
+## Example Java application
 
 You can find the example project on [GitHub](https://github.com/codefresh-contrib/vault-sample-app){:target="\_blank"}.
 
-The example application retrieves the system variable "password," from the pipeline and uses it to authenticate to a Redis database, but you are free to use any type of database of your choosing.
+The example application retrieves the system variable `password` from the pipeline, and uses it to authenticate to a Redis database, but you are free to use any type of database of your choosing.
 
 ```java
         String password = System.getenv("password");
@@ -33,9 +34,9 @@ Also in the example application is a simple unit test that ensures we are able t
 
 You cannot run the application locally, as it needs to run in the pipeline in order to use our environment variables to connect.
 
-## Create the Pipeline
+## Create the pipeline
 
-We will be running the following pipeline that contains three step types: a vault step, a [git-clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/) step, and a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/).
+The following pipeline contains three steps: a vault step, a [git-clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/) step, and a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/).
 
 {% include image.html 
 lightbox="true" 
@@ -46,9 +47,9 @@ caption="Vault Pipeline"
 max-width="100%" 
 %}
 
-You should be able to copy and paste this YAML in the in-line editor of the Codefresh UI.  It will automatically clone the project for you.
+You should be able to copy and paste this YAML into the in-line editor in the Codefresh UI.  It will automatically clone the project for you.
 
-Note that you need to change the `VAULT_ADDR`, `VAULT_AUTH`, and `VAULT_AUTH_TOKEN` arguments under the first step to your respective values.
+Note that you need to change the `VAULT_ADDR`, `VAULT_AUTH`, and `VAULT_AUTH_TOKEN` arguments within the first step to your respective values.
 
 `codefresh.yml`
 ```yaml
@@ -90,11 +91,11 @@ steps:
             - 6379
 ```
 
-The above pipeline does the following:
+The pipeline does the following:
 
 1. Imports the key-value pairs from the Vault server and exports them into the pipeline under `/meta/env_vars_to_export`.
 2. Clones the main repository (note the special use of naming the step `main_clone`).  This ensures that all subsequent commands are run [inside the project that was checked out]({{site.baseurl}}/docs/pipelines/steps/git-clone/#basic-clone-step-project-based-pipeline).
-3. The last step, `package_jar`, does a few special things to take note of:
+3. The `package_jar`, does a few special things to take note of:
    - Spins up a [Service Container]({{site.baseurl}}/docs/pipelines/service-containers/) running Redis on port 6379 , and sets the password to the database using our exported environment variable
    - Sets `maven.repo.local` to cache Maven dependencies into the local codefresh volume to [speed up builds]({{site.baseurl}}/docs/example-catalog/ci-examples/spring-boot-2/#caching-the-maven-dependencies)
    - Runs unit tests and packages the jar.  Note how you can directly refer to the service container's name (`my-redis-db-host`) when we set `server.host`
@@ -104,12 +105,12 @@ You will see that the variable was correctly exported to the pipeline by running
   lightbox="true" 
   file="/images/examples/secrets/vault-pipeline2.png" 
   url="/images/examples/secrets/vault-pipeline2.png" 
-  alt="Vault pipeline Variable"
-  caption="Vault Pipeline Variable"
+  alt="Vault pipeline variable"
+  caption="Vault pipeline variable"
   max-width="100%" 
   %}
   
 ## Related articles
-[Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/ci-examples/)  
+[Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 

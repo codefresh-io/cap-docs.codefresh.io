@@ -38,7 +38,7 @@
           url: "/run-unit-tests"
         - title: Run integration tests
           url: "/run-integration-tests"
-        - title: fan-in/fan-out example with unit tests
+        - title: Fan-in/fan-out with unit tests
           url: "/fan-in-fan-out"
         - title: Codecov coverage reports
           url: "/codecov-testing"
@@ -56,13 +56,13 @@
           url: "/integration-tests-with-redis"
         - title: Populate a database with existing data
           url: "/populate-a-database-with-existing-data"
-        - title: Share volumes for composition
+        - title: Share volumes in composition steps
           url: "/shared-volumes-of-service-from-composition-step-for-other-yml-steps"          
         - title: Import data to MongoDB
           url: "/import-data-to-mongodb"
         - title: Vault Secrets in the Pipeline
           url: "/vault-secrets-in-the-pipeline"
-        - title: Decryption with Mozilla SOPS
+        - title: Decrypt with Mozilla SOPS
           url: "/decryption-with-mozilla-sops"
         - title: GitOps secrets
           url: "/gitops-secrets" 

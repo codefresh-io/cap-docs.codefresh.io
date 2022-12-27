@@ -2,14 +2,14 @@
 title: "Integration Tests with Mongo"
 description: "Launching a MongoDB service container"
 group: example-catalog
-sub_group: examples
+sub_group: ci-examples
 redirect_from:
   - /docs/nodejsmongo/
   - /docs/testing/unit-tests/unit-tests-with-mongo/   
 toc: true
 ---
 
-In this example we will see a NodeJS project that is using MongoDB for data storage. For the integration test phase we will launch an instance of MongoDB in order to run a set of [Mocha tests](https://mochajs.org/){:target="\_blank"}.
+In this example, we will see a NodeJS project that uses MongoDB for data storage. For the integration test phase we will launch an instance of MongoDB in order to run a set of [Mocha tests](https://mochajs.org/){:target="\_blank"}.
 
 {% include image.html 
 lightbox="true" 
@@ -83,13 +83,14 @@ steps:
 
 This pipeline does the following:
 
-1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
-1. [Builds a Docker image]({{site.baseurl}}/docs/pipelines/steps/build/) with the application source code as well as the Mocha tests
-1. Runs mocha tests while launching a [service container]({{site.baseurl}}/docs/pipelines/service-containers/) for an active MongoDB instance
+1. Clones the source code through a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/).
+1. Builds a Docker image with the application source code as well as the Mocha tests through a [build step]({{site.baseurl}}/docs/pipelines/steps/build/).
+1. Runs Mocha tests while launching a [service container]({{site.baseurl}}/docs/pipelines/service-containers/) for an active MongoDB instance
 
 Notice that we also use the `readiness` property in the testing phase so that we can verify MongoDB is ready and listening, before running the tests.
 
 ## Related articles
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [Integration test example]({{site.baseurl}}/docs/example-catalog/ci-examples/run-integration-tests/)  
 [Integration Tests with Postgres]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-postgres/)  
 [Integration Tests with MySQL]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-mysql/)  

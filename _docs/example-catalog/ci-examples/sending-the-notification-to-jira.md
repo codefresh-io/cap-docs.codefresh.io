@@ -1,24 +1,25 @@
 ---
-title: "Sending the notification to Jira"
+title: "Send notification to Jira"
 description: ""
 group: example-catalog
 sub_group: ci-examples
 toc: true
 ---
 
-The plugin marketplace offers several freestyle steps that can be used in your Codefresh pipeline through steps.
+The plugin marketplace offers several freestyle steps for your Codefresh pipeline.
 
 One of those steps is the [Jira Issue Manager](https://codefresh.io/steps/step/jira-issue-manager){:target:"\_blank"}. 
 
-Prerequisites
-* [Have a Codefresh Pipeline]({{site.baseurl}}/docs/getting-started/create-a-basic-pipeline/) set-up
-* [Have a Jira Account](https://www.atlassian.com/software/jira){:target:"\_blank"}
+## Prerequisites
+* [Codefresh pipeline]({{site.baseurl}}/docs/getting-started/create-a-basic-pipeline/)
+* [Jira account](https://www.atlassian.com/software/jira){:target:"\_blank"}
 
-This documentation is using the following [example](https://github.com/codefresh-contrib/jira-demo-app){:target:"\_blank"}. You can either use the example provided to try out the Jira integration or follow along with your own application. 
+## Example
+This documentation uses the following [example](https://github.com/codefresh-contrib/jira-demo-app){:target:"\_blank"}. You can either use the example provided to try out the Jira integration or follow along with your own application. 
 
 1. You need an issue in your Jira account that you want to link to your Codefresh pipeline. If you do not have one yet, please create an issue. (Note that the project type and who is creating the issue etc. does not matter.) Alternatively, you can also create an issue first with the Jira step. However, this is not explained in this example.
 
-2. Next, add the following step to your Codefresh pipeline. In case that you are using the example, the  [codefresh.yml](https://github.com/codefresh-contrib/jira-demo-app/blob/master/codefresh.yml){:target:"\_blank"} file is already added. 
+2. Next, add the following step to your Codefresh pipeline. In case you are using the example, the  [codefresh.yml](https://github.com/codefresh-contrib/jira-demo-app/blob/master/codefresh.yml){:target:"\_blank"} file is already added. 
 
 {% highlight yaml %}
   JiraCommentCreate:
@@ -43,10 +44,10 @@ These arguments are required to use the step:
 - `JIRA_API_KEY`: Note that you will have to create this key. The official [Atlassian documentation](https://confluence.atlassian.com/cloud/api-tokens-938839638.html){:target:"\_blank"} details how it can be created.
 
 Then we added these arguments for our specific step:
-- `JIRA_ISSUE_SOURCE_FIELD`: This is the tag that identifies your issue e.g. MKTG-102
-- Within the comment, we are using a [Codefresh native variable]({{site.baseurl}}/docs/docs/pipelines/variables/) `CF_BUILD_URL`, which will reference your pipeline build and will allow you to search for your pipeline. 
+- `JIRA_ISSUE_SOURCE_FIELD`: This is the tag that identifies your issue, for example, `MKTG-102`
+- Within the comment, we use a [Codefresh native variable]({{site.baseurl}}/docs/docs/pipelines/variables/) `CF_BUILD_URL`, which  references your pipeline build and allows you to search for your pipeline. 
 
-All variables use the Codefresh specific variable notation ${% raw %}`{{MY_VARIABLE_EXAMPLE}}`{% endraw %}`.
+All variables use the Codefresh-specific variable notation ${% raw %}`{{MY_VARIABLE_EXAMPLE}}`{% endraw %}`.
 
 Since it is a new stage in your Codefresh pipeline, you want to add it at the top to your stages, e.g.:
 
@@ -61,7 +62,7 @@ Note that you can [provide the variables]({{site.baseurl}}/docs/pipelines/shared
 * You do not have to post sensitive information, such as the API key, directly in the codefresh.yml. 
 * If you use the same step across multiple pipelines, you don't have to copy-paste the same variables. 
 
-Once you run the pipeline, you should be able to see the following output or similar
+Once you run the pipeline, you should be able to see the following output or similar:
 
 {% include image.html
 lightbox="true"
@@ -82,6 +83,6 @@ max-width="80%"
 %}
 
 ## Related articles
-[Sending notifications to Slack]({{site.baseurl}}/docs/example-catalog/ci-examples/sending-the-notification-to-slack/)  
 [CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/ci-examples/)  
+[Sending notifications to Slack]({{site.baseurl}}/docs/example-catalog/ci-examples/sending-the-notification-to-slack/)  
 [Create a pipeline]({{site.baseurl}}/docs/pipelines/pipelines/)  

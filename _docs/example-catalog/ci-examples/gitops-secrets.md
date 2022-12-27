@@ -1,5 +1,5 @@
 ---
-title: "Using secrets with GitOps"
+title: "Secrets with GitOps"
 description: "Store secrets in Git with Bitnami sealed secrets"
 group: example-catalog
 sub_group: ci-examples
@@ -8,7 +8,7 @@ toc: true
 
 ## Prerequisites
 
-- A [free Codefresh account](https://codefresh.io/docs/docs/getting-started/create-a-codefresh-account/)
+- A [free Codefresh account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/)
 - A Kubernetes cluster
 - The [Codefresh GitOps agent]({{site.baseurl}}/docs/integrations/argocd/) installed on the cluster
 
@@ -18,8 +18,7 @@ If you follow [GitOps](https://codefresh.io/gitops/){:target="\_blank"}, then yo
 
 This presents a challenge with secrets that are needed by the application, as they must never be stored in Git in clear text under any circumstance.
 
-To solve this issue, we can use the [Bitnami Sealed secrets controller](https://github.com/bitnami-labs/sealed-secrets). This is a Kubernetes controller
-that can be used to encrypt/decrypt your application secrets in a secure way.
+To solve this issue, we can use the [Bitnami Sealed secrets controller](https://github.com/bitnami-labs/sealed-secrets){:target="\_blank"}. This is a Kubernetes controller that can be used to encrypt/decrypt your application secrets in a secure way.
 
 The order of events is the following:
 
@@ -30,7 +29,7 @@ The order of events is the following:
 1. Your application reads the secrets like any other Kubernetes secret. Your application doesn't need to know anything about the sealed secrets controller or how the encryption decryption works.
 
 
-To use the controller first install it in your cluster
+To use the controller first install it in your cluster:
 
 ```
 helm repo add sealed-secrets https://bitnami-labs.github.io/sealed-secrets
@@ -38,18 +37,17 @@ helm repo update
 helm install sealed-secrets-controller sealed-secrets/sealed-secrets
 ```
 
-By default the controller will be installed at the `kube-system` namespace. The namespace
+By default, the controller is installed at the `kube-system` namespace. The namespace
 and release names are important, since if you change the defaults, you need to set them up
 with `kubeseal` as well, as you work with secrets.
 
-Download the `kubeseal` CLI.
-
+Download the `kubeseal` CLI:
 ```
 wget https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.16.0/kubeseal-linux-amd64 -O kubeseal
 sudo install -m 755 kubeseal /usr/local/bin/kubeseal
 ```
 
-## The example application
+## Example application
 
 You can find the example project at [https://github.com/codefresh-contrib/gitops-secrets-sample-app](https://github.com/codefresh-contrib/gitops-secrets-sample-app){:target="\_blank"}.
 
@@ -139,12 +137,12 @@ This way there is a clear separation of concerns.
 
 You can find the secrets themselves at [https://github.com/codefresh-contrib/gitops-secrets-sample-app/tree/main/never-commit-to-git/unsealed_secrets](https://github.com/codefresh-contrib/gitops-secrets-sample-app/tree/main/never-commit-to-git/unsealed_secrets){:target="\_blank"}. There are encoded with base64 so they are **NOT** safe to commit in Git.
 
->Note that for demonstration reasons the Git repository contains raw secrets so that you can encrypt them yourself. In a production application the Git repository must only contain sealed/encrypted secrets
+>Note that for demonstration purposes, the Git repository contains raw secrets so that you can encrypt them yourself. In a production application, the Git repository must only contain sealed/encrypted secrets.
 
 ## Preparing the secrets
 
 The critical point of this application is to encrypt all the secrets and place them in Git.
-By default, the sealed secrets controller will encrypt a secret according to a specific namespace (this behavior is configurable) so you need to decide in advance what namespace wil host the application.
+By default, the sealed secrets controller encrypts a secret according to a specific namespace (this behavior is configurable), so you need to decide in advance which namespace wil host the application.
 
 Then encrypt all secrets as below:
 
@@ -166,7 +164,7 @@ You can see that they have been converted automatically to plain secrets with th
 kubectl get secrets -n git-secrets
 ```
 
-## Deploying manually the application
+## Manually deploying the application
 
 Note that the application requires all secrets to be present:
 
@@ -206,8 +204,7 @@ caption="GitOps dashboard"
 max-width="90%"
 %}
 
-If you visit its URL you will
-see the loading of secrets:
+If you visit its URL you will see the secrets being loaded:
 
 {% include image.html 
 lightbox="true" 
@@ -220,10 +217,11 @@ max-width="90%"
 
 
 >Note that for simplicity reasons the same Git repository holds both the application source code and its
-manifests. In a real application you should have two Git repositories (one of the source code only and one of the manifests).
+manifests. In an actual application, you should have two Git repositories (one of the source code only and one of the manifests).
 
 
 ## Related articles
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [Codefresh GitOps]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/)  
 [Using secrets]({{site.baseurl}}/docs/pipelines/secrets-store/)  
 [Secrets with Mozilla Sops]({{site.baseurl}}/docs/example-catalog/ci-examples/decryption-with-mozilla-sops/)  

@@ -8,9 +8,9 @@ redirect_from:
 toc: true
 ---
 
-As we have explained in the [Unit tests page]({{site.baseurl}}/docs/testing/unit-tests/) Codefresh supports several ways of running unit tests. The most usual scenarios are using an existing Docker Hub image (common with compiled languages such as Java and Go) or using the application image itself (common with languages such as JavaScript/Python/Ruby/PHP).
+As explained in [unit tests]({{site.baseurl}}/docs/testing/unit-tests/), Codefresh supports several ways of running unit tests. The most common scenarios use an existing Docker Hub image (common with compiled languages such as Java and Go), or the application image itself (common with languages such as JavaScript/Python/Ruby/PHP).
 
-In this example we will see both ways using two different applications in a single pipeline.
+In this example, we will see both ways using two different applications in a single pipeline.
 
 {% include image.html 
 lightbox="true" 
@@ -21,16 +21,16 @@ caption="Unit tests with Codefresh"
 max-width="90%"
 %}
 
-In the first case we will run unit tests *before* creating the application docker image, while in the second case we will run unit tests
+In the first case, we run unit tests *before* creating the application docker image. In the second case, we run the unit tests
 *inside* the application Docker image.
 
-## The example Python/Go project
+## Example Python/Go project
 
 You can see the example project at [https://github.com/codefreshdemo/cf-example-unit-test](https://github.com/codefreshdemo/cf-example-unit-test){:target="\_blank"}. The repository contains two applications (Python and Go) with their respective unit tests.
 
 You can play with it locally by using Docker commands to package the applications.
 
-## Create a pipeline with Unit tests
+## Create a pipeline with unit tests
 
 Here is the whole pipeline:
 
@@ -85,18 +85,19 @@ steps:
 
 This pipeline does the following:
 
-1. Clones the source code with a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
-1. Runs unit test for the GO application using the Dockerhub image `golang:1.12`
-1. [Builds the Docker image]({{site.baseurl}}/docs/pipelines/steps/build/) for the Go application
-1. Builds the Docker image for the Python application
+1. Clones the source code through a [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/).
+1. Runs unit test for the GO application using the Dockerhub image `golang:1.12`.
+1. Builds the Docker image for the Go application through a [build step]({{site.baseurl}}/docs/pipelines/steps/build/). 
+1. Builds the Docker image for the Python application.
 1. Runs unit tests for the Python application using as runtime context the application image that was just created.
 
 
-Notice that in the second case the tests run in the context of `build_before_my_tests` which is the name of the step that creates the Docker image for Python. See [context variables]({{site.baseurl}}/docs/pipelines/variables/#context-related-variables) for more information on this technique.
+In the second case, the tests run in the context of `build_before_my_tests` which is the name of the step that creates the Docker image for Python. Read more about [context variables]({{site.baseurl}}/docs/pipelines/variables/#context-related-variables).
 
 We generally recommend the first approach, so that your production Docker image does not contain any unit testing libraries or frameworks, but there is no right or wrong choice regarding the way you run unit tests. 
 
 ## Related articles
+[CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [Unit tests]({{site.baseurl}}/docs/testing/unit-tests/)  
 [Integration test example]({{site.baseurl}}/docs/example-catalog/ci-examples/run-integration-tests/)  
 [Service Containers]({{site.baseurl}}/docs/pipelines/service-containers/)  
