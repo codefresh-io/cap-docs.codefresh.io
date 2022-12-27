@@ -1,4 +1,260 @@
 
+    
+- title: Example catalog
+  url: "/example-catalog"
+  pages:
+    - title: "CI/CD examples for pipelines"
+      url: "/examples"
+    - title: "CI examples"
+      url: "/ci-examples"
+      sub-pages:
+        - title: Check out Git repositories
+          url: "/git-checkout"
+        - title: Custom Git commmands
+          url: "/git-checkout-custom"
+        - title: Non-Git checkouts
+          url: "/non-git-checkout"
+        - title: Use Git Hash in CI
+          url: "/get-short-sha-id-and-use-it-in-a-ci-process"
+        - title: Build an Image with the Dockerfile in root directory
+          url: "/build-an-image-with-the-dockerfile-in-root-directory"
+        - title: Build an Images specifying Dockerfile Location
+          url: "/build-an-image-specify-dockerfile-location"
+        - title: Build an Image from a different Git repository
+          url: "/build-an-image-from-a-different-git-repository"
+        - title: Build and push an Image
+          url: "/build-and-push-an-image"
+        - title: Build an Image with build arguments
+          url: "/build-an-image-with-build-arguments"
+        - title: Share data between steps
+          url: "/shared-volumes-between-builds"
+        - title: Upload/download from Google Storage buckets
+          url: "/uploading-or-downloading-from-gs"
+        - title: Call other pipelines
+          url: "/call-child-pipelines"
+        - title: Run unit tests
+          url: "/run-unit-tests"
+        - title: Run integration tests
+          url: "/run-integration-tests"
+        - title: Fan-in/fan-out with unit tests
+          url: "/fan-in-fan-out"
+        - title: Codecov coverage reports
+          url: "/codecov-testing"
+        - title: Coveralls coverage reports
+          url: "/coveralls-testing"
+        - title: Codacy coverage reports
+          url: "/codacy-testing"
+        - title: Run integration tests with Mongo
+          url: "/integration-tests-with-mongo"
+        - title: Run integration tests with MySQL
+          url: "/integration-tests-with-mysql"
+        - title: Run integration tests with PostgreSQL
+          url: "/integration-tests-with-postgres"
+        - title: Run integration tests with Redis
+          url: "/integration-tests-with-redis"
+        - title: Populate a database with existing data
+          url: "/populate-a-database-with-existing-data"
+        - title: Share volumes in composition steps
+          url: "/shared-volumes-of-service-from-composition-step-for-other-yml-steps"          
+        - title: Import data to MongoDB
+          url: "/import-data-to-mongodb"
+        - title: Vault Secrets in the Pipeline
+          url: "/vault-secrets-in-the-pipeline"
+        - title: Decrypt with Mozilla SOPS
+          url: "/decryption-with-mozilla-sops"
+        - title: GitOps secrets
+          url: "/gitops-secrets" 
+        - title: Launch Composition
+          url: "/launch-composition"
+        - title: Use Docker compose
+          url: "/launching-a-composition-and-defining-a-service-environment-variables-using-a-file"
+        - title: Send notification to Slack
+          url: "/sending-the-notification-to-slack"
+        - title: Send notification to Jira
+          url: "/sending-the-notification-to-jira"
+    - title: "CD examples"
+      url: "/cd-examples"
+      sub-pages:
+        - title: Import data to MongoDB
+          url: "/import-data-to-mongodb"
+        - title: NodeJS + Angular2 + MongoDB
+          url: "/nodejs-angular2-mongodb"
+        - title: Secure a Docker Container Using HTTP Basic Auth
+          url: "/secure-a-docker-container-using-http-basic-auth"
+        - title: Spring Boot + Kafka + Zookeeper
+          url: "/spring-boot-kafka-zookeeper"
+        - title: Web terminal
+          url: "/web-terminal"
+        - title: Trigger a K8s Deployment from a DockerHub Push Event
+          url: "/trigger-a-k8s-deployment-from-docker-registry"
+        - title: Deploy to VM
+          url: "/packer-gcloud"
+        - title: Deploy to a VM via FTP
+          url: "/transferring-php-ftp"
+        - title: Deploy to Tomcat using SCP
+          url: "/deploy-to-tomcat-via-scp"
+        - title: Deploy with Helm
+          url: "/helm"
+        - title: Deploy with Terraform
+          url: "/terraform"
+        - title: Deploy with Pulumi
+          url: "/pulumi"
+        - title: Deploy to Nomad
+          url: "/nomad"
+        - title: Deploy to Heroku
+          url: "/deploy-to-heroku"
+        - title: Use kubectl as part of Freestyle step
+          url: "/use-kubectl-as-part-of-freestyle-step"
+        - title: Deploy with Kustomize
+          url: "/deploy-with-kustomize"
+        - title: Deploy to Docker Swarm
+          url: "/docker-swarm"  
+        - title: Amazon ECS/Fargate
+          url: "/amazon-ecs"
+        - title: Elastic Beanstalk
+          url: "/elastic-beanstalk" 
+
+- title: Deployments
+  url: "/deployments"
+  pages:
+    - title: Kubernetes
+      url: "/kubernetes"
+      sub-pages:  
+        - title: Deployment options for Kubernetes
+          url: "/deployment-options-to-kubernetes"
+        - title: Managing Kubernetes clusters
+          url: "/manage-kubernetes"
+        - title: Custom kubectl commands
+          url: "/custom-kubectl-commands"
+    - title: Helm
+      url: "/helm"
+      sub-pages:
+        - title: Using Helm in a Codefresh pipeline
+          url: "/using-helm-in-codefresh-pipeline"
+        - title: Managing Helm Releases
+          url: "/helm-releases-management"
+        - title: Using managed Helm repos
+          url: "/managed-helm-repository"
+        - title: Helm Charts and repositories
+          url: "/helm-charts-and-repositories"
+        - title: Custom Helm uploads
+          url: "/custom-helm-uploads"
+        - title: Promoting Helm environments
+          url: "/helm-environment-promotion"
+    - title: GitOps
+      url: "/gitops"
+      sub-pages:
+        - title: Creating GitOps applications 
+          url: "/create-application"
+        - title: Monitoring GitOps applications
+          url: "/applications-dashboard"
+        - title: Managing GitOps applications
+          url: "/manage-application"
+        - title: Progressive delivery with GitOps
+          url: "/install-argo-rollouts"
+        - title: Images for GitOps
+          url: "/images"
+
+
+- title: CI pipelines
+  url: "/pipelines"
+  pages:
+    - title: Introduction to CI pipelines
+      url: "/introduction-to-codefresh-pipelines"
+    - title: Creating a CI pipeline
+      url: "/pipelines"
+    - title: Steps in CI pipelines
+      url: "/steps"
+      sub-pages:
+        - title: Git-clone
+          url: "/git-clone"
+        - title: Freestyle
+          url: "/freestyle"
+        - title: Build
+          url: "/build"
+        - title: Push
+          url: "/push"
+        - title: Composition
+          url: "/composition"
+        - title: Launch-composition
+          url: "/launch-composition"
+        - title: Deploy
+          url: "/deploy"
+        - title: Approval
+          url: "/approval"
+        - title: Conditional execution of steps
+          url: "/conditional-execution-of-steps"
+        - title: Post-step operations
+          url: "/post-step-operations"
+    - title: Triggers in CI pipelines
+      url: "/triggers"
+      sub-pages:
+        - title: Git triggers
+          url: "/git-triggers"
+        - title: DockerHub triggers
+          url: "/dockerhub-triggers"
+        - title: Azure triggers
+          url: "/azure-triggers"
+        - title: Quay triggers
+          url: "/quay-triggers"
+        - title: Helm triggers
+          url: "/helm-triggers"
+        - title: Artifactory triggers
+          url: "/jfrog-triggers"
+        - title: Timer (Cron) triggers
+          url: "/cron-triggers"
+    - title: Variables in CI pipelines
+      url: "/variables" 
+    - title: Hooks in CI pipelines
+      url: "/hooks"
+    - title: Annotations in CI pipelines
+      url: "/annotations"  
+    - title: Grouping steps into stages
+      url: "/stages"
+    - title: Caching for CI pipelines
+      url: "/pipeline-caching"    
+    - title: Debugging CI pipelines
+      url: "/debugging-pipelines"
+    - title: Monitoring CI pipelines
+      url: "/monitoring-pipelines"
+    - title: Advanced workflows
+      url: "/advanced-workflows"
+    - title: Running CI pipelines locally
+      url: "/running-pipelines-locally"
+    - title: Configuration for CI pipelines
+      url: "/configuration"
+      sub-pages:
+        - title: Global CI pipeline settings
+          url: "/pipeline-settings"          
+        - title: Shared configuration
+          url: "/shared-configuration"
+        - title: Secrets for CI pipelines
+          url: "/secrets-store"  
+        - title: Public logs and status badges
+          url: "/build-status"
+    - title: Service containers
+      url: "/service-containers"
+    - title: Deployment environments
+      url: "/deployment-environments"
+    - title: Docker image metadata
+      url: "/docker-image-metadata"  
+    - title: Pipeline definitions YAML
+      url: "/what-is-the-codefresh-yaml"    
+
+
+- title: Workflows
+  url: "/workflows"
+  pages:
+    - title: Creating workflows
+      url: "/create-pipeline"
+    - title: Nested workflows
+      url: "/nested-workflows"
+    - title: Configure artifact repository
+      url: "/configure-artifact-repository"
+    - title: Selectors for concurrency synchronization
+      url: "/concurrency-limit"
+    - title: Sharing file systems
+      url: "/sharing-file-system"
 
 - title: CI/CD testing
   url: "/testing"
@@ -17,5 +273,123 @@
       url: "/security-scanning"
     - title: SonarQube scanning
       url: "/sonarqube-integration"
+
+- title: Clients
+  url: "/clients"
+  pages:
+    - title: Download CLI
+      url: "/csdp-cli"
+
+
+- title: Installation
+  url: "/installation"
+  pages:
+    - title: Installation environments
+      url: "/installation-options"
+    - title: Runtime architectures
+      url: "/runtime-architecture"
+    - title: Codefresh Runner installation
+      url: "/codefresh-runner"
+    - title: Hosted GitOps Runtime installation
+      url: "/hosted-runtime" 
+    - title: Hybrid GitOps Runtime installation
+      url: "/hybrid-gitops"  
+    - title: On-Premises installation
+      url: "/codefresh-on-prem"
+    - title: On-Premises upgrade
+      url: "/codefresh-on-prem-upgrade"
+    - title: Monitoring & managing GitOps Runtimes
+      url: "/monitor-manage-runtimes"
+    - title: Add external clusters to GitOps Runtimes
+      url: "/managed-cluster" 
+    - title: Add Git Sources to to GitOps Runtimes
+      url: "/git-sources"
+
+
+- title: Administration
+  url: "/administration"
+  pages:
+    - title: Account & user management
+      url: /account-user-management
+      sub-pages:  
+        - title: Create a Codefresh account
+          url: "/create-codefresh-account"
+        - title: Adding users and teams
+          url: "/add-users"
+        - title: Configuring access control
+          url: "/access-control"
+        - title: Setting up OAuth2 for Git providers
+          url: "/oauth-setup"
+        - title: Authorize access to organizations/projects
+          url: "/hosted-authorize-orgs" 
+        - title: Auditing actions in Codefresh
+          url: "/audit"
+        - title: Codefresh IP addresses
+          url: "/platform-ip-addresses"
+    - title: User self-management
+      sub-pages:  
+        - title: Managing personal settings
+          url: "/user-settings"
+        - title: Managing Git PATs
+          url: "/manage-pats"
+
+- title: Single Sign-On
+  url: /single-sign-on
+  pages:
+    - title: SSO Overview
+      url: /sso-overview
+    - title: Common configuration
+      url: /team-sync
+    - title: OpenID Connect
+      url: /oidc
+      sub-pages:
+        - title: Auth0
+          url: /oidc-auth0
+        - title: Azure
+          url: /oidc-azure
+        - title: Google
+          url: /oidc-google
+        - title: Okta
+          url: /oidc-okta
+        - title: OneLogin
+          url: /oidc-onelogin
+    - title: SAML
+      url: /saml
+      sub-pages:
+        - title: JumpCloud
+          url: /saml-jumpcloud
+        - title: Okta
+          url: /saml-okta
+        - title: OneLogin
+          url: /saml-onelogin
+        - title: PingID SSO
+          url: /saml-pingid
+    - title: LDAP
+      url: /ldap
+
+
+
+- title: Reference
+  url: "/reference"
+  pages:
+    - title: Git tokens
+      url: "/git-tokens"
+    - title: Secrets
+      url: "/secrets"   
+    - title: Shared configuration repo
+      url: "/shared-configuration"
+  
+
+
+
+- title: Terms and Privacy Policy
+  url: "/terms-and-privacy-policy"
+  pages:
+    - title: Terms of Service
+      url: "/terms-of-service"
+    - title: Privacy Policy
+      url: "/privacy-policy"
+    - title: Service Commitment
+      url: "/sla"
 
 
