@@ -1,13 +1,13 @@
 
 
-- title: CI testing
+- title: CI/CD testing
   url: "/testing"
   pages:
-    - title: Unit testing
+    - title: Unit tests
       url: "/unit-tests"
-    - title: Integration testing
+    - title: Integration tests
       url: "/integration-tests"
-    - title: Creating test reports"
+    - title: Creating test reports
       url: "/test-reports"
     - title: Creating compositions
       url: "/create-composition"

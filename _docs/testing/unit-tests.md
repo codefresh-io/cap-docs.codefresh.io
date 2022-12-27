@@ -1,16 +1,16 @@
 ---
-title: "Unit testing"
+title: "Unit tests"
 description: "Run unit tests in Codefresh pipelines"
 group: testing
 redirect_from:
   - /docs/unit-tests/
 toc: true
 ---
-With Codefresh, you can easily run  unit tests for every commit or pull request.
+Easily run  unit tests for every commit or pull request.
 
 >For the purposes of this article, "unit tests" are the tests that use only the source code of the application and nothing else. If you are interested in running tests with external services (such as databases), then see [integration tests]({{site.baseurl}}/docs/testing/integration-tests/).
 
-Different companies have different types of unit tests, and in several cases, the type of programming language also affects when/what tests are run. Codefresh supports all test frameworks (including mocking frameworks) for all popular programming languages.
+Different companies have different types of unit tests, and in several cases, the type of programming language also affects when/what tests are run. Codefresh supports all testing frameworks (including mocking frameworks) for all popular programming languages.
 
 Here we will see four ways of running unit tests in Codefresh:
 
@@ -19,12 +19,12 @@ Here we will see four ways of running unit tests in Codefresh:
 1. Running unit tests in the application image (not recommended, but very popular)
 1. Running unit tests using a special testing image (the recommended solution for complex applications)
 
-For an example application for 2 and 3, see [unit test example]({{site.baseurl}}/docs/example-catelog/ci-examples/run-unit-tests/) 
+For an example application for 2 and 3, see [unit test examples]({{site.baseurl}}/docs/example-catelog/ci-examples/run-unit-tests/). 
 
-## Running Unit tests as part of a Docker build
+## Running unit tests as part of a Docker build
 
 A handy way to quickly test a Docker image is by placing one or more smoke tests in the Dockerfile itself. The unit
-tests execute when the image is built, and if they fail, the image is not even created.  
+tests are executed when the image is built, and if they fail, the image is not created.   
 
 Here is an example:
 
@@ -48,7 +48,7 @@ CMD [ "flask", "run", "--host=0.0.0.0" ]
 {% endraw %}
 {% endhighlight %}
 
-This kind of unit test is transparent to Codefresh. The unit tests just execute in a [build step]({{site.baseurl}}/docs/pipelines/steps/build/) in the same manner as if you would build the image on your workstation.
+This kind of unit test is transparent to Codefresh. The unit tests just execute in a [build step]({{site.baseurl}}/docs/pipelines/steps/build/) in the same manner as you would build the image on your workstation.
 
 {%
   include image.html
@@ -88,13 +88,13 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-This technique is best used for a very small subset of unit tests that check the overall well being of a Docker image. The bulk of the tests should be executed outside the Docker build process as we will see in the next sections.
+This technique is best used for a very small subset of unit tests that check the overall well-being of a Docker image. The bulk of the tests should be executed outside the Docker build process as we will see in the sections that follow.
 
 ## Running unit tests using an external Docker image
 
 The recommended way to run unit tests in Codefresh pipelines is to select a Docker image that has all the test tools that you need, and define an explicit testing step in your pipeline, usually a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/).
 
-Here is an example where a JDK/Maven image is used to run unit tests:
+Here is an example where unit tests are run using a JDK/Maven image:
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -129,7 +129,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-The main advantage of this approach is that you can easily replicate your test environment in the Codefresh pipeline by selecting the appropriate image for your tests. You also get a clear overview on the test results. If they fail, the pipeline will automatically stop. You can change this behavior with the [fail_fast]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#execution-flow) property.
+The main advantage of this approach is that you can easily replicate your test environment in the Codefresh pipeline by selecting the appropriate image for your tests. You also get a clear overview on the test results. If they fail, the pipeline automatically stops execution. You can change this behavior with the [fail_fast]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#execution-flow) property.
 
 {%
   include image.html
@@ -141,11 +141,11 @@ The main advantage of this approach is that you can easily replicate your test e
   max-width="80%"
 %}
 
-Notice that even if the example above eventually creates a Docker image, you can still use this way of running unit tests for traditional applications that are not dockerized yet (e.g. VM-based applications).
+Notice that even if the example above eventually creates a Docker image, you can still use this way of running unit tests for traditional applications that are not dockerized yet, such as VM-based applications.
 
-## Running unit tests with the Application Docker image
+## Running unit tests with the application Docker image
 
-In several cases, especially with dynamic language, the Docker image that holds the application can also be reused for unit tests. This is a very common technique for Node, Python, and Ruby applications.  
+In several cases, especially with dynamic languages, you can reuse the Docker image that holds the application also for unit tests. This is a very common technique for Node, Python, and Ruby applications.  
 In this case, you can use [context variables]({{site.baseurl}}/docs/pipelines/variables/#context-related-variables) in Codefresh to run a unit test step in the image that was created in a previous step:
 
 `codefresh.yml`
@@ -181,7 +181,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-Notice that here we use a [Codefresh variable]({{site.baseurl}}/docs/pipelines/variables/) as the value of the `image` property in the last step. This will make the unit test execute in the same Docker container that was created in the second step of the pipeline.
+We use a [Codefresh variable]({{site.baseurl}}/docs/pipelines/variables/) as the value of the `image` property in the last step. This will make the unit test execute in the same Docker container that was created in the second step of the pipeline.
 
 {%
   include image.html
@@ -198,9 +198,9 @@ This technique is certainly useful, but can be easily abused if you end up shipp
 
 ## Running unit tests with a dynamic Docker image
 
-The ultimate method of running unit tests in Codefresh is by creating a specific image dedicated to unit tests. If Docker Hub doesn't already contain an image that suits you, you should create your own.
+The ultimate method of running unit tests in Codefresh is by creating a specific image, dedicated to unit tests. If Docker Hub doesn't already contain an image that suits you, you should create your own.
 
-This means that your application has *two Dockerfiles*. The main one that holds the application as a deployment artifact, and a separate one that holds all the unit test libraries and tools that you need.  
+This means that your application has *two Dockerfiles*. The main one that holds the application as a deployment artifact, and another one that holds all the unit test libraries and tools that you need.  
 
 Here is an example:
 
@@ -246,11 +246,11 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-Notice that here we create two Docker images.
+Here we create two Docker images:
 
-1. The first docker image is created from `Dockerfile.dev`
-1. Unit tests run in the context of that image (`MyUnitTestDockerImage`)
-1. The production application uses another Dockerfile
+1. The first docker image is created from `Dockerfile.dev`.  
+  Unit tests run in the context of that image (`MyUnitTestDockerImage`).
+1. The production application uses another Dockerfile.
 
 {%
   include image.html
@@ -262,13 +262,13 @@ Notice that here we create two Docker images.
   max-width="80%"
 %}
 
-This is one of the best ways to run unit tests (as well as integration tests), as it allows you to fine tune the test environment while still shipping to production only what is needed.
+This is one of the best ways to run unit tests (as well as integration tests), as it allows you to fine-tune the test environment while still shipping only what is needed to production.
 
-In the example above, we used two different Dockerfiles, but you could also use a single Dockerfile with multi-stage builds. Use the `target` directive to stop the image build process at a previous layer (that has all the testing tools).
+In the example above, we used two different Dockerfiles, but you could also use a single Dockerfile with multi-stage builds. Use the `target` directive to stop the image build process at a previous layer that has all the testing tools.
 
 ## Creating test reports
 
-All the methods mentioned above for running unit tests, apart from the first method, can also be used for reporting. Read all about test results and graphs in the [test reports]({{site.baseurl}}/docs/testing/test-reports/).
+All the methods mentioned above for running unit tests, apart from the first method, can also be used for reporting. Read all about test results and graphs in [test reports]({{site.baseurl}}/docs/testing/test-reports/).
 
 {% include 
 image.html 
@@ -282,10 +282,9 @@ max-width="70%"
 
 
 
-
 ## Related articles
 [Unit test example]({{site.baseurl}}/docs/example-catalog/ci-examples/run-unit-tests/)  
-[Introduction to Pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  
+[Introduction to pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  
 [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [On demand environments]({{site.baseurl}}/docs/getting-started/on-demand-environments/)  
 [Integration tests]({{site.baseurl}}/docs/testing/integration-tests/)  
