@@ -6,22 +6,13 @@
   links:
     - title: CI/CD examples for pipelines
       localurl: /docs/example-catalog/examples/
-    - title: Go
-      localurl: /docs/example-catalog/ci-examples/golang/
-    - title: Java
-      localurl: /docs/example-catalog/java/
-    - title: Node.js
-      localurl: /docs/example-catalog/nodejs/
-    - title: Php
-      localurl: /docs/example-catalog/php/
-    - title: Python
-      localurl: /docs/example-catalog/python/
-    - title: Ruby On Rails
-      localurl: /docs/example-catalog/ruby/
-    - title: C/C++
-      localurl: /docs/example-catalog/cc/   
-    - title: C# (.NET core)
-      localurl: /docs/example-catalog/dotnet/
+    - title: CI examples
+      localurl: /docs/example-catalog/ci-examples
+    - title: CD examples
+      localurl: /docs/example-catalog/cd-examples
+    - title: GitOps examples
+      localurl: /docs/example-catalog/gitops-examples
+
 
 
 
