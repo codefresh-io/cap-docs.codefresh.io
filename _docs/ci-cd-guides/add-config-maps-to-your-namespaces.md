@@ -2,8 +2,6 @@
 title: "Adding config maps to namespaces"
 description: "Manage Kubernetes Config Maps with Codefresh"
 group: ci-cd-guides
-redirect_from:
-  - /docs/add-config-maps-to-your-namespaces/
 toc: true
 ---
 Many applications require configuration with files, environment variables, and command line arguments. It makes applications portable and easily manageable. While this makes for easy configuration, it can become very hard to support tons of config files for different environments and hundreds of microservices. 
@@ -20,8 +18,8 @@ You can manage all your cluster configuration using Codefresh.
 {% include 
 image.html 
 lightbox="true" 
-file="/images/kubernetes/config-maps/change-view.png" 
-url="/images/kubernetes/config-maps/change-view.png" 
+file="/images/guides/config-maps/change-view.png" 
+url="/images/guides/config-maps/change-view.png" 
 alt="Change View" 
 caption="Change View" 
 max-width="50%" 
@@ -40,7 +38,7 @@ max-width="50%"
 
 {% include image.html
 lightbox="true"
-file="/images/guides/config-maps/manage-maps-namespace.png.png"
+file="/images/guides/config-maps/manage-maps-namespace.png"
 url="/images/guides/config-maps/manage-maps-namespace.png"
 alt="Create a new config map in namespace" 
 caption="Create a new config map in namespace" 
@@ -52,8 +50,8 @@ max-width="40%"
 
 {% include image.html
 lightbox="true"
-file="/images/guides/config-maps/new-config-map-settings.png.png"
-url="/images/guides/config-maps/new-config-map-settings.png.png"
+file="/images/guides/config-maps/new-config-map-settings.png"
+url="/images/guides/config-maps/new-config-map-settings.png"
 alt="Define settings for new config map" 
 caption="Define settings for new config map" 
 max-width="40%"

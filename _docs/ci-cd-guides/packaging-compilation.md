@@ -5,29 +5,30 @@ group: ci-cd-guides
 toc: true
 ---
 
-When you use Codefresh for Continuous Integration (CI), one of the most basic tasks is compiling and packaging applications. Though Codefresh has native support for Docker artifacts, it still works great with traditional (non-dockerized) applications that don't use a Dockerfile for the actual build.
+When you use Codefresh for continuous integration (CI), one of the most basic tasks is compiling and packaging applications. Though Codefresh has native support for Docker artifacts, it still works great with traditional (non-Dockerized) applications that don't use a Dockerfile for the actual build.
 
 >If your application is deployed as a Docker image, see [building Docker images]({{site.baseurl}}/docs/ci-cd-guides/building-docker-images/) instead.
 
-## Using supporting Docker images in a CI/CD environment
+## Using supporting Docker images in CI/CD environment
 
-Unlike other CI solutions that you might be familiar with, Codefresh build nodes are very simple. They have only Docker installed and nothing else.  
-When you run a Codefresh pipeline, you choose the Docker images to be used as a CI/CD environment. Once the pipeline runs, the Docker images are automatically launched by Codefresh, and you have access to all the tools that they contain. Once the pipeline completes its run, all Docker images used for the pipeline are discarded, and the build machine reverts to the original state.
+Unlike other CI solutions that you might be familiar with, Codefresh build nodes are very simple. They have only Docker installed and nothing else. 
+
+When you run a Codefresh pipeline, you choose the Docker images to be used in the CI/CD environment. Once the pipeline runs, the Docker images are automatically launched by Codefresh, and you have access to all the tools the images contain. When the pipeline completes its run, all Docker images used for the pipeline are discarded, and the build machine reverts to its original state.
 
 Even if your application is not itself packaged as a Docker image, Codefresh pipelines are always "Docker-based" in the sense that Docker is used for the tools that take part in the pipeline.
 
 This approach has a lot of advantages:
 
- * There is no maintenance effort for build nodes. They only have Docker and nothing else.
- * You can use any tool in your pipeline that you want without actually installing it first
- * All public Docker images in Docker Hub are potential pipeline steps
- * You can use different versions of the same tool in the same pipeline
+ * No maintenance effort for build nodes, as they only have Docker and nothing else.
+ * You can use any tool in your pipeline that you want without actually installing it first.
+ * All public Docker images in Docker Hub are potential pipeline steps.
+ * You can use different versions of the same tool in the same pipeline.
  * It is very easy to upgrade a tool to a new version (just change the tag of the Docker container used)
 
 Notice also that unlike some other CI solutions:
 
-1. You can use multiple Docker images in the same pipeline (even if they contain the same tool) with no version conflicts
-1. As Docker images in Codefresh pipelines have no special requirements, you can use *any* private or public Docker image in your pipeline.
+1. You can use multiple Docker images in the same pipeline, even if they contain the same tool, with no version conflicts
+1. As Docker images in Codefresh pipelines have no special requirements, you can use *any* private or public Docker image.
 
 All [pipeline steps]({{site.baseurl}}/docs/pipelines/steps/) in Codefresh are in fact Docker images.
 
@@ -50,7 +51,7 @@ steps:
      - npm run test
 {% endhighlight %}
 
-This pipeline downloads the `node:11` image on the Codefresh build machine, launches it, and passes it to your source code. It then runs the commands `npm install` and `npm run test`. The result is that your source code can be packaged without actually installing Node.js on the build machine beforehand.
+This pipeline downloads the `node:11` image to the Codefresh build machine, launches it, and passes it to your source code. It then runs the commands `npm install` and `npm run test`. The result is that your source code can be packaged without actually installing Node.js on the build machine beforehand.
 
 You can mix and match different images in the same pipeline. Let's say for example that you have a single repository that contains a front-end in Node.js and a back-end in Java. You can easily create a pipeline that deals with both:
 
@@ -73,12 +74,12 @@ steps:
      - mvn -Dmaven.repo.local=/codefresh/volume/m2_repository package   
 {% endhighlight %}
 
-This pipeline compiles the Java code under the `back-end` folder, and the Javascript Web application found in the `front-end` folder. Both Docker images have access to the same workspace via [the automatic Codefresh volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps).
+This pipeline compiles the Java code under the `back-end` folder, and the Javascript Web application found in the `front-end` folder. Both Docker images have access to the same workspace via [the shared Codefresh volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps).
 
 To get up and running with Codefresh as quickly as possible, you can simply search DockerHub for an existing image that uses the tool you need. Top-level DockerHub images are curated by the Docker team and are considered safe. So most popular programming languages already have a Docker image that you can use in your pipeline.
 
-Of course, you can also [create your private Docker image or use any existing image]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/) from a private or public registry. In that case, you need to write the full name to the image used.  
-For example, if you use an image from GCR (Google Container Registry), or another private registry, you would specify it as in the example below. 
+Of course, you can also [create your private Docker image or use any existing image]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/) from a private or public registry. In that case, you need to write the full name of the image used.  
+If you use an image from GCR (Google Container Registry), or another private registry, you would specify it as in the example below. 
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -153,7 +154,7 @@ This pipeline does the following:
 1. Checks out source code
 1. Packages a Jar file (from the source code)
 1. Runs Sonar analysis (taking into account both source code and compiled classes)
-1. Creates a storage bucket in AWS (AmazON Web Services)
+1. Creates a storage bucket in AWS (Amazon Web Services)
 1. Uploads the JAR that was packaged in the bucket
 
 Notice how all Docker images use the same workspace without any extra configuration on your part.
@@ -161,7 +162,7 @@ Notice how all Docker images use the same workspace without any extra configurat
 ## Using different tool versions in the same pipeline 
 
 The corollary to Docker-based pipelines is that you can use the same tool but with a different version in the **same** pipeline.
-As an example here is a pipeline that runs both Python 2.x and Python 3.x in the same pipeline and it just works.
+As an example, here is a pipeline that runs both Python 2.x and Python 3.x, and it just works.
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -180,7 +181,10 @@ steps:
      - pytest
 {% endhighlight %}
 
-This means that you can easily choose the specific version that matches each of your projects.  
+You can easily choose the specific version that matches each of your projects.   
+
+<br />
+
 Here is another example where two different applications use Node.js 11 and Node.js 9 in the same pipeline.
 
 `codefresh.yml`
@@ -212,7 +216,7 @@ steps:
 
 > These versions are per pipeline. So each team can use the versions they need for their projects without affecting the other teams.
 
-So one team in your company might use terraform 0.10 in their pipelines:
+So one team in your company might use Terraform 0.10 in their pipelines:
 
 
 {% highlight yaml %}
@@ -224,7 +228,7 @@ So one team in your company might use terraform 0.10 in their pipelines:
       - terraform plan
 {% endhighlight %}
 
-Another team can use terraform 0.12 just by changing the YAML of their `codefresh.yml`:
+Another team can use Terraform 0.12 just by changing the YAML of their `codefresh.yml`:
 
 {% highlight yaml %}
   DeployWithTerraform:

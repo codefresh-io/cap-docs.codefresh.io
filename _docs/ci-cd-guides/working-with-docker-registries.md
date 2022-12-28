@@ -1,5 +1,5 @@
 ---
-title: "Working with Docker Registries"
+title: "Work with Docker Registries"
 description: "Push, pull, and tag Docker images in Codefresh pipelines"
 group: ci-cd-guides
 redirect_from:
@@ -9,11 +9,11 @@ redirect_from:
 toc: true
 ---
 
-Codefresh contains first-class Docker registry support. This means that you don't need to manually write `docker login` and `docker pull/push` commands inside pipelines. You can use instead declarative YAML and all credential configuration is configured centrally once.
+Codefresh contains first-class Docker registry support. This means that you don't need to manually write `docker login` and `docker pull/push` commands within pipelines. You can use declarative YAML, and all credentials are configured in a central location once.
 
 ## Viewing Docker images
 
-To see all images from [all your connected Registries]({{site.baseurl}}/docs/ci-cd-guides/external-docker-registries/):
+To see all images from [all connected registries]({{site.baseurl}}/docs/integrations/docker-registry/docker-registries/):
 
 * In the Codefresh UI, from the Artifacts section in the sidebar, select [**Images**](https://g.codefresh.io/images/){:target="\_blank"}.
 
@@ -27,11 +27,20 @@ To see all images from [all your connected Registries]({{site.baseurl}}/docs/ci-
   max-width="70%" 
 %}
 
-For each image, you get some basic details such as the Git branch, commit message and hash that created it, date of creation as well as all tags.
-You can click on any image and look at [its metadata]({{site.baseurl}}/docs/pipelines/docker-registries/metadata-annotations/).
+Each image displays basic details such as the Git branch, commit message, hash that created it, creation date, as well as all tags.
+* To view image metadata, click on the image. For details, see [Docker image metadata]({{site.baseurl}}/docs/pipelines/docker-image-metadata/).
 
 
-On the top left of the screen you can find several filters that allow you to search for a specific subset of Docker images:
+**Filters for Docker images**  
+The top left of the Images page has several filters that allow you to search for a specific subset of Docker images.  
+Filters include:  
+* Tagged/untagged images
+* Base image name
+* Git branch
+* Tag
+* Pipeline volumes
+
+Multiple filters work in an `AND` manner.
 
 {% 
   include image.html 
@@ -43,23 +52,14 @@ On the top left of the screen you can find several filters that allow you to sea
   max-width="40%" 
 %}
 
-Filters include:
 
-* Tagged/untagged images
-* Base image name
-* Git branch
-* Tag
-* Pipeline volumes
-
-Multiple filters work in an `AND` manner.
-
-On the right side of the screen, you also have a list of buttons for actions on each Docker image.
-These are:
-
-* Launching a Docker image as a [test environment]({{site.baseurl}}/docs/getting-started/on-demand-environments/)
-* Promoting a Docker image (explained in the following sections)
-* Looking at the Docker commands that allow you to pull the image locally on your workstation
-* Re-running the pipeline that created this image
+**Actions for Docker images**  
+On the right are the actions available foreach Docker image.  
+You can:  
+* Launch a Docker image as a [test environment]({{site.baseurl}}/docs/getting-started/on-demand-environments/)
+* Promote a Docker image (explained in the following sections)
+* Pull the image locally on your workstation with different commands
+* Re-run the pipeline that created the image
 
 
 ## Pulling Docker images
@@ -68,7 +68,11 @@ Pulling Docker images in Codefresh is completely automatic. You only need to men
 
 ### Pulling public images
 
-To pull a public image from Docker Hub or other public registries, simply specify the name of the image and tag that you want to use. For example:
+To pull a public image from Docker Hub or other public registries:
+
+*  Specify the name of the image and tag that you want to use.  
+  
+For example:
 
 ```yaml
 CollectAllMyDeps:
@@ -91,14 +95,14 @@ You can see the images that get pulled in the [Codefresh pipeline log]({{site.ba
 	max-width="70%" 
 %}
 
-The image is also cached in the [image cache]({{site.baseurl}}/docs/pipelines/pipeline-caching/#distributed-docker-image-caching) without any other configuration.
+The image is also automatically cached in the [image cache]({{site.baseurl}}/docs/pipelines/pipeline-caching/#distributed-docker-image-caching).
 
 Codefresh also automatically pull for you any images mentioned in Dockerfiles (i.e. the `FROM` directive) as well as [service containers]({{site.baseurl}}/docs/pipelines/service-containers/).
 
 
 ### Pulling private images
 
-To pull a private image from one of your connected registries, again you specify the image by name and tag. For Codefresh to understand that it is a private image, you need to prepend the appropriate prefix of the registry domain.
+To pull a private image from one of your connected registries, in addition to specifying the image by name and tag, you must also prepend the appropriate prefix of the registry domain. The registry domain prefix is required for Codefresh to understand that it is a private image.
 
 For example, in the case of ACR (Azure Container Registry):
 
@@ -106,7 +110,9 @@ For example, in the case of ACR (Azure Container Registry):
 registry-name.azurecr.io/my-docker-repo/my-image-name:tag
 ```
 
-You can find the full name of any Docker image by visiting the image dashboard and looking at the URL field of any tag:
+Get the full name of a Docker image:  
+* In the Codefresh UI, from the Artifacts section in the sidebar, select [**Images**](https://g.codefresh.io/images/){:target="\_blank"}.
+* Click on the image and copy the image name from the Activity column, **Image promoted** label.
 
 {% 
 	include image.html 
@@ -118,7 +124,7 @@ You can find the full name of any Docker image by visiting the image dashboard a
 	max-width="65%" 
 %}
 
-The exact format of the full image name depends on the type of registry you use. Codefresh uses the domain prefix of each image to understand which integration it will use, and then take care of all `docker login` and `docker pull` commands on its own behind the scenes.
+The exact format of the image name depends on the type of registry you use. Codefresh uses the domain prefix of each image to understand which integration to use, and then takes care of all `docker login` and `docker pull` commands on its own behind the scenes.
 
 For example, if you have connected [Azure]({{site.baseurl}}/docs/integrations/docker-registries/azure-docker-registry/){:target="\_blank"}, [AWS]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/){:target="\_blank"}, and [Google]({{site.baseurl}}/docs/integrations/docker-registries/google-container-registry/){:target="\_blank"} registries, you can pull three images for each in a pipeline like this:
 
@@ -146,14 +152,14 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-Codefresh automatically logs in to each registry using the credentials you have defined centrally and pull all the images. The same thing will happen with Dockerfiles that mention any valid Docker image in their `FROM` directive.
+Codefresh automatically logs in to each registry using the credentials you have defined centrally, and pulls all the images. The same thing will happen with Dockerfiles that mention any valid Docker image in their `FROM` directive.
 
 
 ### Pulling images created in the same pipeline
 
-Codefresh allows you to create a Docker image on demand and use it in the same pipeline that created it. In several scenarios (such as [unit tests]({{site.baseurl}}/docs/testing/unit-tests/)), it is very common to use a Docker image right after it was built.
+Codefresh allows you to create a Docker image on demand and use it in the same pipeline that created it. In several scenarios (such as [unit tests]({{site.baseurl}}/docs/testing/unit-tests/)), it is very common to use a Docker image right after it is built.
 
-In that case, as a shortcut, Codefresh allows you to simply [mention the name]({{site.baseurl}}/docs/pipelines/variables/#context-related-variables) of the respective [build step]({{site.baseurl}}/docs/pipelines/steps/build/).
+In that case, as a shortcut, Codefresh allows you to simply [specify the name]({{site.baseurl}}/docs/pipelines/variables/#context-related-variables) of the respective [build step]({{site.baseurl}}/docs/pipelines/steps/build/).
 
  `codefresh.yml`
 {% highlight yaml %}
@@ -182,11 +188,11 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-In this pipeline, Codefresh:
+In the above pipeline, Codefresh:
 
-1. Checks out source code with the [git-clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
-1. Builds a Docker image that gets named `my-app-image:master`. Notice the lack of `docker push` commands
-1. In the next step, automatically uses that image and runs `python setup.py test` inside it. Again notice the lack of `docker pull` commands
+1. Checks out source code through a [git-clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/).
+1. Builds a Docker image, named `my-app-image:master`. Notice the lack of `docker push` commands.
+1. In the next step, automatically uses that image and runs `python setup.py test` inside it. Again, notice the lack of `docker pull` commands.
 
 The important line here is the following:
 
@@ -210,14 +216,14 @@ You can see the automatic pull inside the Codefresh logs.
 	max-width="70%" 
 %}
 
-The image is still pushed to your default Docker registry. If you don't want this behavior, you can simply add the `disable_push` property in the build step.
+The image is still pushed to your default Docker registry. If you don't want this behavior, add the `disable_push` property in the build step.
 
 
 ## Pushing Docker images
 
 Pushing to your default Docker registry is completely automatic. All successful [build steps]({{site.baseurl}}/docs/pipelines/steps/build/) automatically push to the default Docker registry of your Codefresh account without any extra configuration.
 
-To push to another registry, you only need to know how this registry is [linked into Codefresh]({{site.baseurl}}/docs/docker-registries/external-docker-registries/), and more specifically what is the unique name of the integration. You can see that name by visiting your [integrations screen](https://g.codefresh.io/account-admin/account-conf/integration/registry){:target="\_blank"} or asking your Codefresh administrator.
+To push to another registry, you only need to know how this registry is [connected to Codefresh]({{site.baseurl}}/docs/docker-registries/external-docker-registries/), and more specifically, what is the unique name of the integration. You can see the name from  your [Docker Registry integrations](https://g.codefresh.io/account-admin/account-conf/integration/registryNew), or asking your Codefresh administrator.
 
 
 {% 
@@ -230,7 +236,7 @@ To push to another registry, you only need to know how this registry is [linked 
 	max-width="50%" 
 %}
 
-Once you know the registry identifier, you can use it in any [push step]({{site.baseurl}}/docs/pipelines/steps/push/) or [build step]({{site.baseurl}}/docs/pipelines/steps/build/) by mentioning the registry with that name:
+Once you know the registry identifier, you can use it in any [push step]({{site.baseurl}}/docs/pipelines/steps/push/) or [build step]({{site.baseurl}}/docs/pipelines/steps/build/) by specifying the registry with that name:
 
  `codefresh.yml`
 {% highlight yaml %}
@@ -253,8 +259,8 @@ Once you know the registry identifier, you can use it in any [push step]({{site.
 {% endhighlight %}
 
 Notice that
- * the `candidate` field of the push step mentions the name of the build step (`build_image`) that will be used for the image to be pushed
- * The registry is only identified by name (i.e. `azure-demo`). The domain and credentials are not part of the pipeline (they are already known to Codefresh by the Docker registry integration)
+ * the `candidate` field of the push step mentions the name of the build step (`build_image`) that will be used for the image to be pushed.
+ * The registry is only identified by name (`azure-demo` in the example). The domain and credentials are not part of the pipeline as they are already known to Codefresh through the Docker registry integration.
 
  You can also override the name of the image with any custom name. This way the push step can choose any image name regardless of what was used in the build step.
 
@@ -281,7 +287,7 @@ Notice that
 
 Here the build step creates an image named `my-app-image:master`,  but the push step actually pushes it as `my-company/web-app:1.2.3`.
 
-For more examples such as using multiple tags, or pushing in parallel, see the [push examples]({{site.baseurl}}/docs/pipelines/steps/push/#examples)
+For more examples, such as using multiple tags, or pushing in parallel, see the [push examples]({{site.baseurl}}/docs/pipelines/steps/push/#examples)
 
 ### Pushing images with an optional prefix
 
@@ -302,7 +308,9 @@ There are some registry providers that require a specific prefix for all your Do
 {% endraw %}
 {% endhighlight %}
 
-The example above will push the final Docker image as `kostisazureregistry.azurecr.io/acme-company/trivial-go-web:latest`. However, you can also set up the prefix globally once in the [Docker integration screen]({{site.baseurl}}/docs/integrations/docker-registries/). This way you can simplify your pipelines and have them mention only the final image name.
+The example above will push the final Docker image as `kostisazureregistry.azurecr.io/acme-company/trivial-go-web:latest`.  
+
+However, you can also set up the prefix globally once in the [Docker registry integrations]({{site.baseurl}}/docs/integrations/docker-registries/). This way you can simplify your pipelines and have them mention only the final image name.
 
 {% 
   include image.html 
@@ -314,7 +322,7 @@ The example above will push the final Docker image as `kostisazureregistry.azure
   max-width="70%" 
 %}
 
-The example above will automatically prefix all your Docker images with `acme-company`.
+Using the repository prefix in the example above, automatically prefixes all your Docker images with `acme-company`.
 
 Now you can simplify your build/push step as below:
 
@@ -337,7 +345,7 @@ The final Docker image will still be `kostisazureregistry.azurecr.io/acme-compan
 
 ## Working with multiple registries with the same domain
 
-With Codefresh you can [connect multiple registries on a global level]({{site.baseurl}}/docs/integrations/docker-registries/). This allows you to create pipelines that push/pull images to different registries without having to deal with Docker credentials inside the pipeline itself.
+With Codefresh, you can [connect multiple registries on a global level]({{site.baseurl}}/docs/integrations/docker-registries/). This allows you to create pipelines that push/pull images to different registries without having to deal with Docker credentials within the pipeline itself.
 
 However, there are several times where you have multiple registries that have the same domain. For example, you might have two Docker Hub accounts connected to Codefresh (so both of them can resolve images for the `docker.io` domain).
 
@@ -345,7 +353,7 @@ This means that when you reference an image by domain name, as in a freestyle st
 
 > This is not a Codefresh limitation, but a Docker one. Even with vanilla Docker you cannot log in to multiple registries at the same time if they share the same domain.
 
-To solve this problem, Codefresh will automatically detect connected registries that have the same domain and allow you to designate the primary one, that will be used for image resolution when pulling Docker images.
+To solve this problem, Codefresh automatically detects connected registries that have the same domain and allow you to designate the primary one. The primary registry is used for image resolution when pulling Docker images.
 
 {% 
   include image.html 
@@ -357,7 +365,7 @@ To solve this problem, Codefresh will automatically detect connected registries 
   max-width="90%" 
 %}
 
-In the example above, even though two Dockerhub integrations are connected to Codefresh, only the primary one will be used for pulling images from the `docker.io` domain (You can still use the second one in push/build steps using the `registry` property).
+In the example above, even though two Docker Hub integrations are connected to Codefresh, only the primary one is used to pull images from the `docker.io` domain. You can still use the second one in push/build steps using the `registry` property.
 
 You can override the default behavior in each pipeline, by adding the optional `registry_context` property to instruct Codefresh on how to use a specific registry for pulling Docker images (if you have more than one for the same domain).
 
@@ -458,7 +466,7 @@ Let's look at an example. We assume that we have two GCR integrations:
   max-width="90%" 
 %}
 
-The first integration is the "production" one and the second one is the "staging" one. The production one is designated as primary. This means that by default even though both integrations work for the `gcr.io` domain, only the primary one will be used in the Codefresh pipeline for pulling images.
+The first integration is the "production" one, and the second integration is the "staging" one. The production one is designated as primary. This means that by default even though both integrations work for the `gcr.io` domain, only the primary one is used in the Codefresh pipeline for pulling images.
 
 Let's say however that you want to build a Docker image that has a `FROM` statement from an image that exists in the staging registry. The image should be pushed to the production registry. You can use the `registry_context` property as shown below:
 
@@ -481,10 +489,10 @@ Let's say however that you want to build a Docker image that has a `FROM` statem
 
 Behind the scenes Codefresh will:
 
-1. First log in to the "staging" Docker registry using the "staging" credentials
-1. Build the Docker image, by resolving the `FROM` statements with "staging" images, pulling them as needed using the staging credentials
-1. Tag the Docker image
-1. Log in to the "production" Docker registry
+1. First log in to the "staging" Docker registry using the "staging" credentials.
+1. Build the Docker image, by resolving the `FROM` statements with "staging" images, pulling them as needed using the staging credentials.
+1. Tag the Docker image.
+1. Log in to the "production" Docker registry.
 1. Push the final Docker image to the "production" registry.
 
 If your primary Docker registry is also the one that is used in your pipelines, you don't need the `registry_context` property at all, as this is the default behavior. When searching for an image to pull Codefresh will look at all your Docker registries (if they manage only a single domain), plus your "primary" Docker registries in case you have multiple Docker registries for the same domain.
@@ -513,7 +521,7 @@ You have the capability to "promote" any image of your choosing and push it to a
   max-width="50%" 
 %}
 
-1. From the list of connected registries, select the target registry and define the tag that you want to push. 
+1. From the list of connected registries, select the target registry, and define the tag that you want to push. 
 1. To "copy" this image from the existing registry to the target registry, click **Promote**.
 
 ### Promoting images in pipelines
@@ -538,7 +546,7 @@ For example:
 
 In the example above, we promote an image from [GCR]({{site.baseurl}}/docs/integrations/docker-registries/google-container-registry/) to [ACR]({{site.baseurl}}/docs/integrations/docker-registries/azure-docker-registry/), which is already set up as `azure-demo`.
 
-You can even "promote" Docker images within the same registry by simply creating new tags. 
+You can even "promote" Docker images within the same registry by simply creating new tags.  
 For example:
 
   `codefresh.yml`
