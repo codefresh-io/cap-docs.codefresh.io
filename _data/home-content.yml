@@ -33,6 +33,156 @@
     localurl: /docs/ci-cd-guides/progressive-delivery/ 
     
 
+- title: Example catalog
+  icon: images/home-icons/tutorial.svg
+  url: ''
+  links:
+    - title: CI/CD examples for pipelines
+      localurl: /docs/example-catalog/examples/
+    - title: CI examples
+      localurl: /docs/example-catalog/ci-examples
+    - title: CD examples
+      localurl: /docs/example-catalog/cd-examples
+    - title: GitOps examples
+      localurl: /docs/example-catalog/gitops-examples
+
+
+
+
+
+- title: Deployments
+  icon: images/home-icons/deployment.svg
+  url: ''
+  links:
+    - title: Deployment options for Kubernetes
+      localurl: /docs/deployments/kubernetes/deployment-options-to-kubernetes/
+    - title: Managing Kubernetes clusters
+      localurl: /docs/deployments/kubernetes/manage-kubernetes/
+    - title: Using Helm in Codefresh pipelines
+      localurl: /docs/deployments/helm/using-helm-in-codefresh-pipeline/
+    - title: Managing Helm releases
+      localurl: /docs/deployments/helm/helm-releases-management/
+    - title: Promoting Helm environments
+      localurl: /docs/deployments/helm/helm-environment-promotion/
+    - title: Creating GitOps applications
+      localurl: /docs/deployment/gitops/create-application/
+    - title: Monitoring applications
+      localurl: /docs/deployment/gitops/applications-dashboard/
+    - title: Managing applications
+      localurl: /docs/deployment/gitops/manage-application/
+
+- title: Pipelines
+  icon: images/home-icons/pipeline.svg
+  url: ''
+  links:
+  - title: Introduction to Pipelines
+    localurl: /docs/pipelines/introduction-to-codefresh-pipelines/
+  - title: Creating Pipelines
+    localurl: /docs/pipelines/pipelines/   
+  - title: Pipeline triggers
+    localurl: /docs/pipelines/triggers/
+  - title: Monitoring pipelines
+    localurl: /docs/pipelines/monitoring-pipelines/
+  - title: Shared Configuration
+    localurl: /docs/pipelines/shared-configuration/
+  - title: Using secrets
+    localurl: /docs/pipelines/secrets-store/
+  - title: Pipeline caching
+    localurl: /docs/pipelines/pipeline-caching/
+  - title: Running pipelines locally
+    localurl: /docs/pipelines/running-pipelines-locally/
+  - title: Debugging pipelines
+    localurl: /docs/pipelines/debugging-pipelines/
+
+
+- title: Workflows
+  icon: images/home-icons/pipeline.svg
+  url: ''
+  links:
+    - title: Creating workflows
+      localurl: /docs/workflows/create-pipeline
+    - title: Nested workflows
+      localurl: /docs/workflows/nested-workflows/      
+    - title: Configure artifact repository
+      localurl: /docs/workflows/configure-artifact-repository/
+    - title: Selectors for concurrency synchronization
+      localurl: /docs/workflows/concurrency-limit/
+    - title: Sharing file systems
+      localurl: /docs/workflows/sharing-file-system/  
+       
+
+
+
+- title: Clients
+  icon: images/home-icons/client.svg
+  url: ''
+  links:
+    - title: Codefresh CLI
+      localurl: /docs/clients/csdp-cli/
+
+
+- title: Installation
+  icon: images/home-icons/runtimes.svg
+  url: ''
+  links:
+    - title: Installation environments
+      localurl: /docs/installation/installation-options/
+    - title: Codefresh Runner CI/CD installation
+      localurl: /docs/installation/codefresh-runner/ 
+    - title: On-Premises CI/CD installation
+      localurl: /docs/installation/codefresh-on-prem/
+    - title: On-Premises CI/CD upgrade
+      localurl: /docs/installation/codefresh-on-prem-upgrade/
+    - title: Hosted GitOps Runtime installation
+      localurl: /docs/installation/hosted-runtime/  
+    - title: Hybrid GitOps Runtime installation
+      localurl: /docs/installation/hybrid-gitops/  
+    - title: Monitoring & managing GitOps Runtimes
+      localurl: /docs/installation/monitor-manage-runtimes/
+    - title: Adding external clusters to GitOps Runtimes
+      localurl: /docs/installation/managed-cluster/
+    - title:  Adding Git Sources to GitOps Runtimes
+      localurl: /docs/installation/git-sources/
+
+
+- title: Administration
+  icon: images/home-icons/administration.svg
+  url: ''
+  links:
+  - title: Create a Codefresh account
+    localurl: /docs/administration/account-user-management/create-codefresh-account/
+  - title: Adding users and teams  
+    localurl: /docs/administration/account-user-management/add-users/
+  - title: Single Sign-On
+    localurl: /docs/single-sign-on/
+  - title: Set up OAuth2 authentication for Git providers
+    localurl: /docs/administration/account-user-management/oauth-setup/  
+  - title: Access control
+    localurl: /docs/administration/account-user-management/access-control/
+  - title: Audit
+    localurl: /docs/administration/account-user-management/audit/
+  - title: Codefresh IP addresses
+    localurl: /docs/administration/account-user-management/platform-ip-addresses/
+  - title: User settings
+    localurl: /docs/administration/user-self-management/user-settings/
+  - title: Manage Git PATs
+    localurl: /docs/administration/user-self-management/manage-pats/
+
+
+- title: Reference
+  icon: images/home-icons/guides.png
+  url: ''
+  links:
+    - title: Runner installation behind firewalls
+      url: /docs/behind-the-firewall/   
+    - title: Git tokens
+      localurl: /docs/reference/git-tokens/ 
+    - title: Secrets
+      localurl: /docs/reference/secrets   
+    - title: Shared configuration repo
+      localurl: /docs/reference/shared-configuration/
+
+
 
 
 
