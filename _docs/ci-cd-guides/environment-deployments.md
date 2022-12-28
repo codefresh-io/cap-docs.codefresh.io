@@ -5,7 +5,7 @@ group: ci-cd-guides
 toc: true
 ---
 
-With Codefresh, you can deploy a single application to multiple environments (e.g. qa/staging/prod), and manage all of them with a single or multiple pipelines.
+With Codefresh, you can deploy a single application to multiple environments, such as, qa, staging, prod, and manage all of them with single or multiple pipelines.
 This guide describes how an example application can be deployed with different configurations and various workflows for handling environment deployment.
 
 {% include image.html 
@@ -23,14 +23,13 @@ Before starting, you will need to:
 <!--- xrefs -->
  1. [Create a Codefresh account]({{site.baseurl}}/docs/getting-started/create-a-codefresh-account/)
  1. Get access to a Kubernetes cluster on any cloud provider
- 1. [Connect the Kubernetes cluster]({{site.baseurl}}/docs/deployments/kubernetes/add-kubernetes-cluster/) to your account
+ 1. [Connect the Kubernetes cluster]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster/) to your account
  1. Install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/){:target="\_blank"} and [helm](https://helm.sh/docs/intro/install/):target="\_blank"} and point them to your cluster
  1. Have [Docker](https://docs.docker.com/get-docker/){:target="\_blank"} installed locally (optional)
 
-## The example application
+## Example application
 
-As a running example, we will use a simple application with a Helm chart. [Helm is the package manager]({{site.baseurl}}/docs/deployments/helm/helm-best-practices/) for Kubernetes and has built-in support for passing different
-configuration settings for each environment.
+As a running example, we will use a simple application with a Helm chart. [Helm is the package manager]({{site.baseurl}}/docs/deployments/helm/helm-best-practices/) for Kubernetes and has built-in support for passing different configuration settings for each environment.
 
 You can find the example Helm application at [https://github.com/codefresh-contrib/helm-promotion-sample-app](https://github.com/codefresh-contrib/helm-promotion-sample-app){:target="\_blank"}. If you want to follow along feel free to fork it on your own account.
 
@@ -46,7 +45,7 @@ docker run -p 8080:8080 my-app
 
 and then visit `http://localhost:8080` in your browser.
 
-Notice that in this example, we use a settings file in the [INI format](https://en.wikipedia.org/wiki/INI_file){:target="\_blank"}, but the same things apply with other configuration methods such as env files, Java properties, YAML/JSON configurations etc. 
+In this example, we use a settings file in the [INI format](https://en.wikipedia.org/wiki/INI_file){:target="\_blank"}, but the same things apply with other configuration methods such as env files, Java properties, YAML/JSON configurations etc. 
 
 ### Different environment configurations
 
@@ -59,11 +58,11 @@ The application includes a [Helm chart](https://github.com/codefresh-contrib/hel
 The values contained in the files are both for the application (e.g. payment service URL), as well as the infrastructure level (number of replicas inside the cluster).
 Note that the values for the application are dummy values that are not actually used by the application (they are simply shown in the web page). The number of replicas will take real effect on the cluster (the production configuration defines 2 replicas instead of 1).
 
->For simplicity reasons, the chart of the application is hosted in the same Git repository as the source code. As an alternative you could also have a second Git repository with just the chart. Codefresh supports both ways.
+>For simplicity reasons, the chart of the application is hosted in the same Git repository as the source code. As an alternative, you could also have a second Git repository with just the chart. Codefresh supports both ways.
 
 ### Manual deployment to different environments
 
-First let's run the application manually in all 3 environments. Later we will automate the whole process with Codefresh pipelines. We wil create each environment as a namespace in the cluster:
+First let's run the application manually in all three environments. Later we will automate the whole process with Codefresh pipelines. We wil create each environment as a namespace in the cluster:
 
 ```
 kubectl create namespace qa
@@ -205,11 +204,11 @@ steps:
 
 To test the pipeline and see how it behaves with different environments:
 
-1. Fork [the Git repository](https://github.com/codefresh-contrib/helm-promotion-sample-app){:target="\_blank"} to your own Github account
-1. Commit a dummy change in the `master` branch and you will see a deployment to the production namespace
-1. Commit a dummy change to the `staging` branch or any other branch of your choosing and you will see a deployment to the staging namespace.
+1. Fork the [Git repository](https://github.com/codefresh-contrib/helm-promotion-sample-app){:target="\_blank"} to your own GitHub account
+1. Commit a dummy change in the `master` branch, and you will see a deployment to the production namespace
+1. Commit a dummy change to the `staging` branch or any other branch of your choosing, and you will see a deployment to the staging namespace.
 
-Here is how the pipeline looks when a commit happens to another branch (that is not `master`)
+Here is how the pipeline looks when a commit happens to a branch that is not `master`:
 
 {% include image.html 
 lightbox="true" 
@@ -224,17 +223,17 @@ As you can see the step that deploys to production is now skipped, and the step 
 
 This is a great starting point for your own workflows. Codefresh can handle more complicated scenarios as you will see in the later sections.
 
->Note that for brevity reasons, the pipeline deploys the Helm chart directly from the Git repo. In a real pipeline you [should also store the Helm chart
-in a Helm repository]({{site.baseurl}}/docs/deployments/helm/helm-best-practices/#packagepush-and-then-deploy).
+>Note that for brevity reasons, the pipeline deploys the Helm chart directly from the Git repo. In an actual pipeline, you [should also store the Helm chart
+in a Helm repository]({{site.baseurl}}/docs/ci-cd-guides/helm-best-practices/#packagepush-and-then-deploy).
 
 For more details on Helm deployments see our [dedicated Helm example]({{site.baseurl}}/docs/example-catalog/cd-examples/helm/). 
 
 ## Viewing your Helm Releases
 
-The previous pipeline works great as an automation mechanism. Wouldn't it be great if you could also *see* your deployments in a visual manner? 
-Codefresh include a [Helm release dashboard]({{site.baseurl}}/docs/deployments/helm/helm-releases-management/) that can help you understand better your deployments.
+The previous pipeline works great as an automation mechanism. Wouldn't it be great if you could also *visualize* your deployments? 
+Codefresh includes a [Helm release dashboard]({{site.baseurl}}/docs/deployments/helm/helm-releases-management/) to help you understand your deployments.
 
-Go to the [Helm Releases dashboard](https://g.codefresh.io/helm/releases/releasesNew/){:target="\_blank"} in the Codefresh UI.
+1. In the Codefresh UI, from the Ops section in the sidebar, select [Helm Releases](https://g.codefresh.io/helm/releases/releasesNew/){:target="\_blank"}.
 
 {% include image.html 
 lightbox="true" 
@@ -245,7 +244,8 @@ caption="Helm releases"
 max-width="80%" 
 %}
 
-By clicking on each release you can get extra information such as the services exposed and active replicas:
+{:start="2"}
+1. To get extra information such as the services exposed and active replicas for a release, click on the release.
 
 {% include image.html 
 lightbox="true" 
@@ -256,7 +256,7 @@ caption="Helm service information"
 max-width="80%" 
 %}
 
-..the history of deployments (and you can even [rollback]({{site.baseurl}}/docs/deployments/helm/helm-releases-management/#rolling-back-a-helm-release) to a previous release):
+  In the History tab, you can view the deployment history, and even [rollback]({{site.baseurl}}/docs/deployments/helm/helm-releases-management/#rolling-back-a-helm-release) to a previous release:
 
 {% include image.html 
 lightbox="true" 
@@ -267,7 +267,8 @@ caption="Helm deployment history"
 max-width="80%" 
 %}
 
-and most importantly the values applied for each release.
+  And most importantly in the Values tab, the values applied for each release.  
+  This way you can also verify that the correct values are applied to the respective environment.
 
 {% include image.html 
 lightbox="true" 
@@ -279,16 +280,16 @@ max-width="80%"
 %}
 
 
-This way you can also verify that the correct values are applied to the respective environment.
 
-## Using the Environment Dashboard
-Codefresh also includes [an optional environment dashboard]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/) that you can use to track down your environments and their current status. The dashboard is especially helpful if you have a large number of environments.
+
+## Using the Environment dashboard
+Codefresh also includes an optional [environment dashboard]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/) that you can use to track down your environments and their current status. The dashboard is especially helpful if you have a large number of environments.
 
 {% include
 image.html
 lightbox="true"
-file="/images/codefresh-yaml/environments/environments.png"
-url="/images/codefresh-yaml/environments/environments.png"
+file="/images/guides/environments/environments.png"
+url="/images/guides/environments/environments.png"
 alt="Codefresh Environment Dashboard"
 caption="Codefresh Environment Dashboard"
 max-width="70%"
@@ -387,7 +388,7 @@ steps:
 {% endhighlight %}
 
 
-Notice that we use the `CF_COMMIT_MESSAGE` [variable]({{site.baseurl}}/docs/pipelines/variables/) to annotate each environment with each build message. After your deploy at least once to each environment you should see the following in your [dashboard](https://g.codefresh.io/environments).
+Notice that we use the `CF_COMMIT_MESSAGE` [variable]({{site.baseurl}}/docs/pipelines/variables/) to annotate each environment with each build message. After you deploy at least once to each environment, you should see the following in your [Environment dashboard](https://g.codefresh.io/environments).
 
 {% include image.html 
 lightbox="true" 
@@ -399,13 +400,13 @@ max-width="80%"
 %}
 
 Just by looking at the builds of each environment, it is clear that the staging environment is one commit ahead (for feature 4689).
-If you click on each environment you will see several details such as active services, deployment history, rollback options, manifests rendered etc as in the Helm releases page.
+Clicking an environment shows several details such as active services, deployment history, rollback options, manifests rendered etc as in the Helm releases page.
 
 ## Using Approvals in a pipeline
 
 Deploying straight to production after a commit is a worthy goal, but not all organizations want to work like this. In several cases, a human must approve a production deployment with a manual step. 
 
-An alternative pipeline pattern is to have a single pipeline that automatically deploys to the "staging" environment but pauses before releasing in production. 
+An alternative pipeline pattern is to have a single pipeline that automatically deploys to the "staging" environment but pauses before releasing to production. 
 
 {% include image.html 
 lightbox="true" 
@@ -416,9 +417,9 @@ caption="Asking for approval before a production deployment"
 max-width="80%" 
 %}
 
-Once the pipeline is paused, all project stakeholders can examine the state of the application in the staging environment (either manually or by running automated tests) and if everything looks good, promote the application to production.
+Once the pipeline is paused, all project stakeholders can examine the state of the application in the staging environment (either manually or by running automated tests), and if everything looks good, promote the application to production.
 
-This is easily accomplished with the [Codefresh approval step]({{site.baseurl}}/docs/pipelines/steps/approval/). The pipeline is stopped and a yes/no button is shown in the GUI. Only if the approval choice is selected the pipeline can then continue.
+This is easily accomplished through the [Codefresh approval step]({{site.baseurl}}/docs/pipelines/steps/approval/). The pipeline is stopped, and a yes/no button is shown in the UI. The pipeline can continue only if approved by selecting `yes`.
 
 Here is the whole pipeline:
 
@@ -490,9 +491,9 @@ The approval step has many more options such as a timeout or even choosing a dif
 
 ## Using multiple pipelines for deployments
 
-Having a single pipeline that deals with all deployment environments can work great with a small team. As an organization grows, and the more steps are added to the pipeline, it becomes very hard to use conditions to enable/disable specific steps in pipelines.
+Having a single pipeline that deals with all deployment environments can work great with a small team. As an organization grows, and more steps are added to the pipeline, it becomes very hard to use conditions to enable/disable specific steps in pipelines.
 
-With Codefresh, you can create as many pipelines as you want for a single project. It is therefore very easy to employ different simple pipelines for specific purposes instead of working with a complex monolithic pipeline.
+With Codefresh, you can create as many pipelines as you want for a single project. It is therefore very easy to employ different simple pipelines for specific purposes, instead of working with a complex monolithic pipeline.
 
 In our example we will create two pipelines:
 
@@ -576,7 +577,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-The production pipeline assumes that the code is already scanned/validated and runs some integration tests as a final validation check before deploying the release to production:
+The production pipeline assumes that the code has been scanned/validated already, and runs some integration tests as a final validation check before deploying the release to production:
 
 {% include image.html 
 lightbox="true" 
@@ -656,8 +657,8 @@ Some common workflows are:
 
 1. Automate the staging pipeline when a commit lands in `master`, and only launch the production pipeline manually.
 1. Automate the staging pipeline when a commit lands in `master`, and use an [approval step]({{site.baseurl}}/docs/pipelines/steps/approval/) to call the production pipeline as a [child pipeline]({{site.baseurl}}/docs/example-catalog/ci-examples/call-child-pipelines/).
-1. Set the [trigger]({{site.baseurl}}/docs/pipeline/triggers/git-triggers/) of the production pipeline to [launch only]({{site.baseurl}}/docs/ci-cd-guides/pull-request-branches/#restricting-which-branches-to-build) on `master`, and the trigger of the staging pipeline to launch only for non-master branches.
-1. Set the production pipeline to launch only for commits on `master`, and the staging pipeline only for pull requests.
+1. Set the [trigger]({{site.baseurl}}/docs/pipeline/triggers/git-triggers/) of the production pipeline to [launch only]({{site.baseurl}}/docs/ci-cd-guides/pull-request-branches/#restricting-which-branches-to-build) on `master`, and the trigger of the staging pipeline to launch only for `non-master` branches.
+1. Set the production pipeline to launch only for commits on `master`, and the staging pipeline only for pull requests (PRs).
 
 The exact mechanism depends on the workflow of your team. For more information, see [the guide on branches and pull requests]({{site.baseurl}}/docs/ci-cd-guides/pull-request-branches/), especially [trunk based development]({{site.baseurl}}/docs/ci-cd-guides/pull-request-branches/#trunk-based-development), as a good starting point.
 
@@ -670,8 +671,8 @@ For more details, see [Helm promotion board]({{site.baseurl}}/docs/new-helm/helm
 {% include 
 image.html 
 lightbox="true" 
-file="/images/kubernetes-helm/promotion/board.png" 
-url="/images/kubernetes-helm/promotion/board.png"
+file="/images/guides/environments/board.png" 
+url="/images/guides/environments/board.png"
 alt="Helm Promotion Dashboard" 
 caption="Helm Promotion Dashboard" 
 max-width="80%"

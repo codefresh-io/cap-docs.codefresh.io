@@ -1,13 +1,12 @@
 ---
-title: "Previewing environments"
+title: "Previewing dynamic environments"
 description: "Deploy pull requests to cluster namespaces"
 group: ci-cd-guides
 toc: true
 ---
 
 
-In addition to deploying to [predefined environments]({{site.baseurl}}/docs/ci-cd-guides/environment-deployments/), you may also need to to deploy to dynamic environments, which are temporary, testing environments for each pull request (PR). For these types of environments,
-it is best to dynamically create an environment when a PR is created, and tear it down when the same PR is closed.
+In addition to deploying to [predefined environments]({{site.baseurl}}/docs/ci-cd-guides/environment-deployments/), for each pull request (PR), you may also need to deploy to dynamic environments, which are temporary, testing environments. For these types of environments, it is best to dynamically create an environment when a PR is created, and tear it down when the same PR is closed.
 
 
 {% include image.html
@@ -35,29 +34,28 @@ be handled in a transient way.
 
 ## Preview environments with Kubernetes
 
-There are many ways to create temporary environments with Kubernetes. 
+There are many options to create temporary environments with Kubernetes. 
 
 * Namespaces for each PR  
-  The simplest way is to use different namespaces, one for each PR. So, a PR with name `fix-db-query` will
-be deployed to a namespace called `fix-db-query`, and a PR with name `JIRA-1434`, will be deployed to a namespace called  
-`JIRA-1434` and so on.
+  The simplest option is to use different namespaces, one for each PR. So, a PR with name `fix-db-query` is deployed to a namespace called `fix-db-query`, and a PR with name `JIRA-1434`, is deployed to a namespace called `JIRA-1434` and so on.
 
 * Expose the environment URL  
-  The second aspect is to expose the environment URL so that developers and testers can actually preview the application
+  The second option is to expose the environment URL so that developers and testers can actually preview the application
 deployment either manually or via automated tests.  
-  The two major approaches here are with host-based URLs or path based URLs.
+  The two major approaches here are with host-based and path-based URLs:
   * For host-based URLs, the test environments are named `pr1.example.com`, `pr2.example.com` and so on
   * For path-based URLs, the test environments are named `example.com/pr1`, `example.com/pr2` and so on
 
   Both approaches have advantages and disadvantages. Path-based URLs are easier to set up, but may not work with all applications,  as they change the web context. Host-based URLs are more robust but need extra DNS configuration for the full effect. 
 
-  In Kubernetes clusters, both ways can be setup via [an Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/).
+  In Kubernetes clusters, you can set up types of URLs via [an Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/){:target="\_blank"}.
 
-## The example application
+## Example application
 
-The application we will use can be found at [https://github.com/codefresh-contrib/unlimited-test-environments-source-code](https://github.com/codefresh-contrib/unlimited-test-environments-source-code){:target="\_blank"}. It is a standard Java/Spring boot application with the following characteristics.
+You can find the application we will use at [https://github.com/codefresh-contrib/unlimited-test-environments-source-code](https://github.com/codefresh-contrib/unlimited-test-environments-source-code){:target="\_blank"}.  
+It is a standard Java/Spring boot application, that includes the following characteristics:
 
-* It has [integration tests]({{site.baseurl}}/docs/testing/integration-tests/), that can be targeted at any host/port. We will use those tests as smoke test that will verify the preview environment after it is deployed
+* It has [integration tests]({{site.baseurl}}/docs/testing/integration-tests/) that can be targeted at any host/port. We will use those tests as smoke test that will verify the preview environment after it is deployed
 * It comes bundled in [a Helm chart](https://github.com/codefresh-contrib/unlimited-test-environments-manifests){:target="\_blank"}
 * It has an ingress configuration ready for path-based URLs
 
@@ -93,8 +91,7 @@ Each time a PR is created, we want to perform the following tasks:
 
 1. Compile the application and run unit tests.
 1. Run security scans, quality checks, and everything else we need to decide if the PR is valid.
-1. Create a namespace with the same name as the PR branch. Deploy the pull Request and expose it as a URL
-that has the same name as the branch.
+1. Create a namespace with the same name as the PR branch. Deploy the PR and expose it as a URL that has the same name as the branch.
 
 Here is an example pipeline that does all these tasks:
 
@@ -107,7 +104,7 @@ caption="Pull Request preview pipeline"
 max-width="100%"
 %}
 
-This pipeline has the following steps
+This pipeline has the following steps:  
 
 1. A [clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/) to fetch the source code of the application.
 1. A [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) that runs Maven for compilation and unit tests.
@@ -234,7 +231,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-The end result of the pipeline is a deployment on the path that has the same name as the PR branch. For
+The end result of the pipeline is a deployment to the path that has the same name as the PR branch. For
 example, if my branch is named `demo`, then a `demo` namespace is created on the cluster and the application
 is exposed on the `/demo/` context:
 
@@ -258,8 +255,8 @@ caption="Pull Request comment"
 max-width="100%"
 %}
 
-As explained in [Pull Requests]({{site.baseurl}}/docs/ci-cd-guides/pull-request-branches/), we want to make this pipeline applicable only
-to a PR-open event, and PR-sync events that capture commits on an existing pull request).
+As explained in [pull Requests]({{site.baseurl}}/docs/ci-cd-guides/pull-request-branches/), we want to make this pipeline applicable only
+to a PR-open event and PR-sync events that capture commits on an existing pull request.
 
 {% include image.html 
 lightbox="true"
@@ -313,7 +310,7 @@ steps:
 
 The pipeline just uninstalls the Helm release for that namespace, and then deletes the namespace itself.
 
-To have this pipeline run only when a PR is closed, here is how your [triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) should look:
+To have this pipeline run only when a PR is closed, here are the [triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) to select:
 
 {% include image.html 
 lightbox="true"
@@ -326,7 +323,7 @@ max-width="100%"
 
 With this setup, the pipeline runs when the PR is closed, regardless of whether it was merged or not (which is exactly what you want as in both cases the test environment is not needed anymore).
 
-## Viewing all environments in the  Codefresh GUI
+## Viewing all environments in the  Codefresh UI
 
 You can combine the pipeline above with any Codefresh UI dashboard if you want to see all your temporary environments in a single view.
 

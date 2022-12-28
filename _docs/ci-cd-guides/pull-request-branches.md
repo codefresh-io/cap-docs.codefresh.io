@@ -7,7 +7,7 @@ toc: true
 
 Codefresh has native support for working with different branches and building pull requests. In particular, it has a very rich trigger model that allows you to handle specific events (such as opening a pull request or adding a comment).
 
-The possible actions can be seen on the trigger dialog of your pipeline:
+The possible actions can be seen in the trigger dialog of your pipeline:
 
 {% include image.html
 lightbox="true"
@@ -42,7 +42,7 @@ caption="Default GIT trigger"
 max-width="50%"
 %}
 
-If you create a new branch in your repository, Codefresh automatically builds it and also store the resulting Docker image.
+If you create a new branch in your repository, Codefresh automatically builds it and also stores the resulting Docker image.
 
 ```
 git checkout -b another-branch
@@ -76,7 +76,7 @@ max-width="50%"
 
 ## Building specific branches manually
 
-Sometimes you want to run an ad-hoc build on a specific branch without actually committing anything. You can do that in the [run dialog of a pipeline]({{site.baseurl}}/docs/pipelines/pipelines/#creating-new-pipelines) by selecting a branch from the drop down menu.
+Sometimes you want to run an ad-hoc build on a specific branch without actually committing anything. You can do that in the [run dialog of a pipeline]({{site.baseurl}}/docs/pipelines/pipelines/#creating-new-pipelines) by selecting a branch from the dropdown menu.
 
 {% include image.html
 lightbox="true"
@@ -87,13 +87,13 @@ caption="Building a specific branch"
 max-width="50%"
 %}
 
-From the same dialog, you can also choose a specific trigger to "emulate" for this branch if you have connected multiple triggers on the same pipeline.
+From the same dialog, you can also select a specific trigger to "emulate" for this branch if you have connected multiple triggers on the same pipeline.
 
 ## Restricting which branches to build
 
 The auto-build nature of Codefresh for all branches is what you want most times. For larger projects, you might wish to restrict pipelines running only on specific branches.
 
-This is performed by filling [the branch field]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#pull-request-target-branch-and-branch) in the trigger dialog with a regular expression.
+This is performed by defining [the branch field]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#pull-request-target-branch-and-branch) in the trigger dialog with a regular expression.
 
 {% include image.html
 lightbox="true"
@@ -104,7 +104,7 @@ caption="Restrict a pipeline to a single branch"
 max-width="50%"
 %}
 
-The trigger above will only be activated for the `production` branch, so if a developer creates another new branch this pipeline will not run for it. Remember also that this field is actually a regular expression, so you can restrict a pipeline to a specific naming pattern (i.e. a group of branch names).
+The trigger above will only be activated for the `production` branch, so if a developer creates a new branch this pipeline will not run for it. Remember also that this field is actually a regular expression, so you can restrict a pipeline to a specific naming pattern (i.e. a group of branch names).
 
 Another popular filtering mechanism is to keep the auto-build nature of Codefresh, but enable/disable specific pipeline steps according to the branch being built. This is performed by using [step conditions]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/).  
 Here is an example:
@@ -215,7 +215,7 @@ The most useful events are:
 
 There is also the shortcut checkbox for *any PR event* if you don't care about which specific event happened.
 
-## Trunk-based development
+## Trunk Based Development
 
 One of the most popular Git workflows is [Trunk Based development](https://trunkbaseddevelopment.com/){:target="\_blank"} with short-lived feature branches. 
 
@@ -223,7 +223,7 @@ One of the most popular Git workflows is [Trunk Based development](https://trunk
 lightbox="true"
 file="/images/guides/branches-pull-requests/trunk-based-development.png"
 url="/images/guides/branches-pull-requests/trunk-based-development.png"
-alt="Trunk Based development"
+alt="Trunk Based Development"
 caption="Trunk Based Development"
 max-width="100%"
 %}
@@ -271,7 +271,7 @@ For each feature branch:
 1. Build the Docker image
 1. Run some unit tests to verify the Docker image (possible with [service containers]({{site.baseurl}}/docs/pipelines/service-containers/))
 
-To implement trunk-based development, we create two triggers for these pipelines. For the production pipeline we just make sure that the trigger is only launched when commits land on master (and only there).
+To implement trunk-based development, we create two triggers for these pipelines. For the production pipeline, we just make sure that the trigger is only launched when commits land on master (and only there).
 
 {% include image.html
 lightbox="true"
@@ -282,7 +282,7 @@ caption="Trigger for production pipeline"
 max-width="50%"
 %}
 
-For the feature branch pipeline we check the events for:
+For the feature branch pipeline, we check the events for:
 
 * PR (pull request) Open
 * PR Sync (when a commit happens on the PR)
@@ -313,7 +313,7 @@ You can fine-tune this workflow according to your needs. For example, you might 
 
 [Git Flow](https://nvie.com/posts/a-successful-git-branching-model/){:target="\_blank"} is another popular management process for Git branches. For brevity reasons, we will not list all the details for all branch types, but it should be obvious that you can recreate all aspects of Git flow with Codefresh triggers.
 
-For example to run a pipeline only for pull requests from branches named `feature-XXX` that will be merged back to `develop` branch, you can create a trigger like this:
+For example, to run a pipeline only for pull requests from branches named `feature-XXX` that will be merged back to `develop` branch, you can create a trigger like this:
 
 {% include image.html
 lightbox="true"

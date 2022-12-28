@@ -20,7 +20,7 @@ caption="Monolithic pipelines"
 max-width="80%" 
 %}
 
-The complexity of each pipeline was detrimental to easy maintenance. Pipelines were typically controlled by a small team of gurus,  familiar with both the internals of the application as well as the deployment environment.
+The complexity of each pipeline was detrimental to easy maintenance. Pipelines were typically controlled by a small team of gurus, familiar with both the internals of the application as well as the deployment environment.
 
 For each software project, operators handle the pipeline structure, while developers only work with the source code (going against the DevOps paradigm where all teams should share responsibility for common infrastructure and collaborate on shared problems).
 
@@ -115,7 +115,7 @@ When working with microservices you need to remember that:
 
 1. In Codefresh a pipeline can stand on its own. It is **not** connected by default to any Git repository.
 1. You can write Codefresh pipelines in a generic manner so that they can work with multiple applications.
-1. If you connect multiple triggers to a single pipeline, all microservices will share that pipeline
+1. If you connect multiple triggers to a single pipeline, all microservices will share that pipeline.
 1. You can create multiple pipelines for each project if you have microservices with slightly different architecture.
 
 To create a reusable pipeline use the [generic form of the clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/):

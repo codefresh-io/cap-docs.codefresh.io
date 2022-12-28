@@ -13,16 +13,18 @@
       url: "/working-with-docker-registries"   
     - title: Adding config maps to namespaces
       url: "/add-config-maps-to-your-namespaces"     
-    - title: Pulling Requests and branches
+    - title: Pull Requests and branches
       url: "/pull-request-branches"
-    - title: Pipelines for microservices
+    - title: Building microservices
       url: "/microservices"
-    - title: Deploying to predefined environments"
+    - title: Deploying to predefined environments
       url: "/environment-deployments"   
-    - title: Preview environments"
+    - title: Previewing dynamic environments
       url: "/preview-environments"                 
     - title: Progressive delivery
       url: "/progressive-delivery" 
+    - title: GitOps deployments
+      url: "/gitops-deployments" 
     - title: Helm best practices
       url: "/helm-best-practices" 
     - title: Kubernetes templating

@@ -2,8 +2,6 @@
 title: "Progressive Delivery"
 description: "Perform zero downtime deployments with Argo Rollouts"
 group: ci-cd-guides
-redirect_from:
-  - /docs/how-to-guides/implementing-canary-release-with-kubernetes/
 toc: true
 ---
 
@@ -13,7 +11,7 @@ Codefresh can easily integrate with [Argo Rollouts](https://argoproj.github.io/a
 
 ## Installing the Argo Rollouts operator to your cluster
 
-To install Argo Rollouts, follow the [installation instructions](https://argoproj.github.io/argo-rollouts/installation/){:target="\_blank"}. Essentially you need a terminal with `kubectl` access to your cluster.
+To install Argo Rollouts, follow the [installation instructions](https://argoproj.github.io/argo-rollouts/installation/){:target="\_blank"}. Essentially, you need a terminal with `kubectl` access to your cluster.
 
 ```
 kubectl create namespace argo-rollouts
@@ -46,8 +44,6 @@ The major benefit of this pattern is that if at any point in time the new versio
 There are several variations of this pattern. In some cases, the old color is never destroyed but keeps running in the background. You can also retain even older versions online, maybe with a smaller footprint, allowing for easy switching to any previous application revision.
 
 ### Blue/Green Kubernetes Deployment with Argo Rollouts
-
-
 
 Even though Argo Rollouts supports the basic blue/green pattern described in the previous section, it also offers a wealth of [customization options](https://argoproj.github.io/argo-rollouts/features/bluegreen/){:target="\_blank"}.  
 One of the most important additions is the ability to "test" the upcoming color by introducing a "preview" [Kubernetes service](https://kubernetes.io/docs/concepts/services-networking/service/){:target="\_blank"}, in addition to the service used for live traffic.
@@ -107,11 +103,11 @@ caption="Old application version is discarded. Only new version remains."
 max-width="90%" 
 %}
 
-After the configured duration, as [defined in Argo Rollouts](https://argoproj.github.io/argo-rollouts/features/bluegreen/#scaledowndelayseconds){:target="\_blank"}, the old version is scaled down completely (to preserve resources). We are now back 
+After the configured duration, as [defined in Argo Rollouts](https://argoproj.github.io/argo-rollouts/features/bluegreen/#scaledowndelayseconds){:target="\_blank"}, the old version is scaled down completely to preserve resources. We are now back 
 to the same configuration as the initial state, and the next deployment will follow the same sequence of events.
 
 
-### The example application
+### Example application
 
 You can find an example application at [https://github.com/codefresh-contrib/argo-rollout-blue-green-sample-app](https://github.com/codefresh-contrib/argo-rollout-blue-green-sample-app){:target="\_blank"}, that also includes simple integration tests.
 
@@ -150,7 +146,7 @@ This pipeline does the following:
 
 1. [Clones]({{site.baseurl}}/docs/example-catalog/ci-examples/git-checkout/) the source code of the application.
 1. [Builds]({{site.baseurl}}/docs/ci-cd-guides/building-docker-images/) a Docker image.
-1. [Deploys]({{site.baseurl}}/docs/deployments/kubernetes/kubernetes-templating/) the application by updating the Kubernetes manifests. Argo Rollouts sees the new manifest and creates a new "color" for the next version
+1. [Deploys]({{site.baseurl}}/docs/deployments/kubernetes/kubernetes-templating/) the application by updating the Kubernetes manifests. Argo Rollouts sees the new manifest, and creates a new "color" for the next version
 1. The pipeline is paused and waits for an [approval/rejection]({{site.baseurl}}/docs/pipelines/steps/approval/#getting-the-approval-result) by a human user. 
 1. If the pipeline is approved, the new color is promoted, and becomes the new active version.
 1. If the pipeline is rejected, the new color is discarded, and all live users are not affected in any way.
@@ -248,13 +244,12 @@ Once the deployment is complete, the old pods are destroyed after 30 seconds (th
 
 ### Blue/Green deployment with smoke tests
 
-Using manual approval before promoting the new version is a great starting point. To truly achieve continuous deployment one should automate the testing process and eliminate the human approval.
+Using manual approval before promoting the new version is a great starting point. To truly achieve continuous deployment, one should automate the testing process and eliminate the human approval.
 
-There are many approaches on testing a release and each organization will have a different set of "tests" that verify the next version of the software. Argo Rollouts
+There are many approaches on testing a release, and each organization will have a different set of "tests" that verify the next version of the software. Argo Rollouts
 has [several integrations](https://argoproj.github.io/argo-rollouts/features/analysis/){:target="\_blank"} either with metric providers or [simple Kubernetes jobs](https://argoproj.github.io/argo-rollouts/analysis/job/){:target="\_blank"} that can run integration tests or collect metrics and decide if the next color should be promoted or not.
 
-Another alternative is to simply execute [integration tests]({{site.baseurl}}/docs/testing/integration-tests/) from within Codefresh. This is great if your integration tests need access to the source code or other
-external services that are accessible only to Codefresh.
+Another alternative is to simply execute [integration tests]({{site.baseurl}}/docs/testing/integration-tests/) from within Codefresh. This is great if your integration tests need access to the source code or other external services that are accessible only to Codefresh.
 
 We can modify the previous pipeline to include automated smoke tests that are already part of the [example application](https://github.com/codefresh-contrib/argo-rollout-blue-green-sample-app/blob/main/src/test/java/sample/actuator/HealthIT.java){:target="\_blank"}.
 
@@ -355,7 +350,7 @@ You can optionally execute the Argo Rollouts CLI to see what is happening behind
 kubectl argo rollouts get rollout spring-sample-app-deployment --watch -n blue-green
 ```
 
->For simplicity reasons. we have hardcoded the load balancer for the preview service at 13.86.102.74. In a real application, you would have a DNS name such as `preview.example.com`, or use another `kubectl command` to fetch the endpoint of the load balancer dynamically. Also, our integration tests assume that the application is already deployed, before they run. If your application takes too much time to deploy, you need to make sure that it is up before the tests actually run.
+>For the sake of simplicity, we have hardcoded the load balancer for the preview service at 13.86.102.74. For an actual application, you would have a DNS name such as `preview.example.com`, or use another `kubectl command` to fetch the endpoint of the load balancer dynamically. Also, our integration tests assume that the application is already deployed, before they run. If your application takes too much time to deploy, you need to make sure that it is up before the tests actually run.
 
 
 The end result is a continuous deployment pipeline, where all release candidates that don't pass tests never reach production.
@@ -388,7 +383,8 @@ There are several variations of this pattern. The amount of live traffic that yo
 
 ### Canary Deployment with Argo Rollouts
 
-Argo Rollouts supports the basic canary pattern described in the previous section, and also offers a wealth of [customization options](https://argoproj.github.io/argo-rollouts/features/canary/){:target="\_blank"}. One of the most important
+Argo Rollouts supports the basic canary pattern described in the previous section, and also offers a wealth of [customization options](https://argoproj.github.io/argo-rollouts/features/canary/){:target="\_blank"}.  
+One of the most important
 additions is the ability to "test" the upcoming version by introducing a "preview" [Kubernetes service](https://kubernetes.io/docs/concepts/services-networking/service/){:target="\_blank"}, in addition to the service used for live traffic.
 This preview service can be used by the team that performs the deployment to verify the new version as it gets used by the subset of live users.
 
@@ -459,7 +455,7 @@ max-width="90%"
 Two more pods are launched for the canary (for a total of four), and finally we can shift 100% of live traffic to it. After some time,the old version is scaled down completely to preserve resources. We are now back 
 to the same configuration as the initial state, and the next deployment will follow the same sequence of events.
 
-### The example application
+### Example application
 
 You can find an example application at [https://github.com/codefresh-contrib/argo-rollout-canary-sample-app](https://github.com/codefresh-contrib/argo-rollout-canary-sample-app){:target="\_blank"} that also includes simple metrics (we will use them in the second example with canaries).
 
@@ -953,7 +949,7 @@ See our [GitOps page]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/) fo
 
 ## Related articles
 [Deploying to predefined environments]({{site.baseurl}}/docs/ci-cd-guides/environment-deployments/)  
-<!---[GitOps Deployments]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/)  -->
+[GitOps Deployments]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/)  
 [Pipelines for microservices]({{site.baseurl}}/docs/ci-cd-guides/microservices/)  
 
 
