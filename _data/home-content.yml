@@ -22,14 +22,12 @@
   - title: Deploying to predefined environments
     localurl: /docs/ci-cd-guides/environment-deployments/ 
   - title: Preview environments
-    new: true
     localurl: /docs/ci-cd-guides/preview-environments/   
   - title: Helm best practices
     localurl: /docs/ci-cd-guides/helm-best-practices/  
   - title: Templating for Kubernetes
     localurl: /docs/ci-cd-guides/kubernetes-templating/     
   - title: Progressive Delivery
-    new: true
     localurl: /docs/ci-cd-guides/progressive-delivery/ 
     
 
