@@ -1,17 +1,17 @@
 ---
-title: "Deprecation of Personal Git integrations"
-description: "Moving git integrations to accounts instead of individual users"
+title: "Deprecation of personal Git integrations"
+description: "Moving Git integrations to accounts instead of individual users"
 group: troubleshooting
 toc: true
 ---
 
 
-Codefresh supports several git providers (GitHub, GitLab, Bitbucket etc.) via the [Git integration page]({{site.baseurl}}/docs/integrations/git-providers/) that allows you to define a connection to the respective git provider. Signing up with Codefresh typically requires you to use a Git provider for your basic information (and in the past, an automatic integration was created with the git provider that you used during initial sign-up).
+Codefresh supports all major Git providers, GitHub, GitLab, Bitbucket. Through [Git integrations]({{site.baseurl}}/docs/integrations/git-providers/) you can connect to the respective Git provider. Signing up with Codefresh typically requires you to use a Git provider for your basic information (and in the past, an automatic integration was created with the Git provider that you used during initial sign-up).
 
 
-At Codefresh, a single user can belong to multiple *Accounts* (think GitHub organizations). Typically a Codefresh user represents a single person while an *Account* represents a company or team.
+At Codefresh, a single user can belong to multiple *Accounts* (think GitHub organizations). Typically, a Codefresh user represents a single person, while an *Account* represents a company or team.
 
-Until July 2019 Codefresh allowed you to create a git integration either at the account level or at the user level. This has been problematic with several customer scenarios.
+Until July 2019, Codefresh allowed you to create a Git integration either at the account level or at the user level. This has been problematic with several customer scenarios.
 
 ## The problem of personal Git integrations
 
