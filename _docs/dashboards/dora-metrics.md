@@ -36,7 +36,7 @@ max-width="100%"
 ## Filters
 
 Use filters to define the exact subset of applications you are interested in. All filters support auto-complete and multiselect. 
-More than one option within the same filter type has an OR relationship. More than one filter type when defined share an AND relationship. 
+More than one option within the same filter type has an OR relationship. Multiple filter types when defined share an AND relationship. 
 
 * Runtimes: Show metrics for applications from selected runtimes 
 * Clusters: Show metrics for applications deployed to selected clusters
@@ -74,16 +74,16 @@ In addition, you can select the granularity for each graph:
   The X-axis charts the time based on the granularity selected, and the Y-axis charts the number of deployments. The number shown on the top right is the average deployment frequency based on granularity.  
 
 **Lead Time for Changes**  
-  The average number of days from the first commit for a PR (pull request) until the deployment date for the same PR. Only those changes to workflows that result in a deployment are included when calculating Lead Time for Changes. Making a change to a repo may not necessarily be considered as a change if it does not result in a deployment, and is therefore not included when calculating Lead Time for Changes. 
+  The average number of days from the first commit for a PR (pull request) until the deployment date for the same PR. The key term here is _deployment_. Lead Time for Changes considers only those changes to workflows that result in a deployment. Making a change to a repo that does not result in a deployment is not included when calculating Lead Time for Changes. 
    The X-axis charts the time based on the granularity selected, and the Y-axis charts the time in minutes until the deployment. The number shown on the top right is the average number of days for a commit to reach production.  
 
 **Change Failure Rate**  
-  The failure or rollback rate in percentage for applications whose health status changed to Degraded on deployment. For example, bumping an image tag with one that doesn't exist, results in the application being Degraded on deployment, and is designated as a failure.   The Change Failure Rate is derived by dividing the number of Degraded (failed/rollback) deployments with the total number of deployments. 
+  The failure or rollback rate in percentage for applications whose health status changed to Degraded on deployment. The key term here is _on deployment_. For example, bumping an image tag with one that does not exist, results in the application being Degraded on deployment, and designated as failed.  
+  The Change Failure Rate is derived by dividing the number of Degraded (failed/rollback) deployments with the total number of deployments. 
   The X-axis charts the time based on the granularity selected, and the Y-axis charts the failure rate. The number shown on the top right is the average failure rate based on granularity, and therefore may not be equal to the Total Failure Rate.  
 
 **Time to Restore Service**  
-  The average number of hours taken for the status of Degraded deployments to return to Healthy. Again, similar to the Change Failure Rate, Time to Restore Service includes only Degraded deployments. It is derived by dividing the total number of hours for all Degraded
-  deployments that turned 
+  The average number of hours taken for the status of Degraded deployments to return to Healthy. Again, similar to the Change Failure Rate, Time to Restore Service includes only deployments that became Degraded. It is derived by dividing the total number of hours for all Degraded deployments to return to Healthy by the total number of Degraded deployments.
   The X-axis charts the time based on the granularity, and the Y-axis charts the time in hours. The number shown on the top right is the average number of hours between the previous deployment and rollback for the same application.
 
 ## Related articles    
