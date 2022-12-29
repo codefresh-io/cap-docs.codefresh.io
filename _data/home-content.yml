@@ -14,6 +14,7 @@
 - title: CI/CD guides
   icon: images/home-icons/guides.png
   url: ''
+  links:
   - title: Building your app
     localurl: /docs/ci-cd-guides/packaging-compilation/
   - title: Building Docker images
