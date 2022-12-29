@@ -41,7 +41,7 @@ reportImage:
      CF_HOST: '[runtime-host-url]'
 
      # Codefresh API key !! Committing a plain text token is a security risk. We highly recommend using encrypted secrets !!
-     # Documentation - https://codefresh.io/docs/docs/configure-ci-cd-pipeline/secrets-store/
+     # Documentation - https://codefresh.io/docs/docs/pipelines/secrets-store/
      CF_API_KEY: ${{API_KEY}}
 
      # Image path to enrich
@@ -102,7 +102,7 @@ For how-to instructions, see [Connect a third-party CI platform/tool to Codefres
 
 Arguments such as `CF_IMAGE`, `CF_GIT_BRANCH`, and `CF_JIRA_MESSAGE` are populated dynamically when the Codefresh Classic integration pipeline is triggered. You can templatize the values of these arguments to ensure that the required information is included in the reported image.
 
-Codefresh Classic offers [system variables](https://codefresh.io/docs/docs/codefresh-yaml/variables/#system-provided-variables) you can use to templatize argument values.
+Codefresh Classic offers [system variables](https://codefresh.io/docs/docs/pipelines/variables/#system-provided-variables) you can use to templatize argument values.
 
 {::nomarkdown}
 <br>
