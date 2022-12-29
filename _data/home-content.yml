@@ -5,7 +5,7 @@
   icon: images/home-icons/guides.png
   url: ''
   links:
-  - title: Build your app
+  - title: Building your app
     localurl: /docs/ci-cd-guides/packaging-compilation/
   - title: Building Docker images
     localurl: /docs/ci-cd-guides/building-docker-images/
@@ -21,7 +21,7 @@
     localurl: /docs/ci-cd-guides/microservices/  
   - title: Deploying to predefined environments
     localurl: /docs/ci-cd-guides/environment-deployments/ 
-  - title: Preview environments
+  - title: Previewing dynamic environments
     localurl: /docs/ci-cd-guides/preview-environments/   
   - title: Helm best practices
     localurl: /docs/ci-cd-guides/helm-best-practices/  

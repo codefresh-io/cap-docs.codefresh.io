@@ -7,8 +7,8 @@ redirect_from:
 toc: true
 ---
 
-[Helm](https://helm.sh){:target="\_blank"} is a package manager for Kubernetes (think apt or yum). It works by combining several manifests into a single package called [a chart](https://helm.sh/docs/developing_charts/){:target="\_blank"}.  
-Helm also supports storing charts in remote or local Helm repositories that function like package registries such as Maven Central, Ruby Gems, NPM registry, etc.
+[Helm](https://helm.sh){:target="\_blank"} is a package manager for Kubernetes (think `apt` or `yum`). It works by combining several manifests into a single package called [a chart](https://helm.sh/docs/developing_charts/){:target="\_blank"}.  
+Helm also supports storing charts in remote or local Helm repositories that function as package registries, such as Maven Central, Ruby Gems, NPM registry, etc.
 
 Helm is currently the only solution that supports:
 
@@ -39,21 +39,21 @@ The table below focuses on some important points.
 Helm Concept|Description| Important point
 ---|--- | ---
 Chart (unpackaged) | A folder with files that follow the Helm chart guidelines. | Can be deployed directly to a cluster |
-Chart (packaged) | A `tar.gz` archive of the above | Can be deployed directly to a cluster |
+Chart (packaged) | A `tar.gz` archive of the above. | Can be deployed directly to a cluster |
 Chart name | Name of the package as defined in `Chart.yaml` | Part of package identification |
-Templates | A set of Kubernetes manifests that form an application | `Go` templates can be used |
-Values | Settings that can be parameterized in Kubernetes manifests | Used for templating of manifests |
-Chart version | The version of the package/chart | Part of package identification |
-App version | The version of the application contained in the chart | **Independent from chart version** |
-Release | A deployed package in a Kubernetes cluster | **Multiple releases of the same chart can be active**|
-Release name | An arbitrary name given to the release | **Independent from name of chart** |
-Release Revision | A number that gets incremented each time an application is deployed/upgraded | **Unrelated to chart version**|
-Repository | A file structure (HTTP server) with packages and an `index.yaml` file | Helm charts can be deployed **without** being fetched from a repository first |
-Installing | Creating a brand-new release from a Helm chart (either unpackaged, packaged or from a repo) | |
+Templates | A set of Kubernetes manifests that form an application. | `Go` templates can be used |
+Values | Settings that can be parameterized in Kubernetes manifests. | Used for templating of manifests |
+Chart version | The version of the package/chart. | Part of package identification |
+App version | The version of the application contained in the chart. | **Independent from chart version** |
+Release | A deployed package in a Kubernetes cluster. | **Multiple releases of the same chart can be active**|
+Release name | An arbitrary name given to the release. | **Independent from name of chart** |
+Release Revision | A number that gets incremented each time an application is deployed/upgraded.| **Unrelated to chart version**|
+Repository | A file structure (HTTP server) with packages and an `index.yaml` file. | Helm charts can be deployed **without** being first fetched from a repository |
+Installing | Creating a brand-new release from a Helm chart (either unpackaged, packaged or from a repo). | |
 Upgrading | Changing an existing release in a cluster | Can be upgraded to any version (even the same) | 
-Rolling back | Going back to a previous revision of a release | Helm handles the rollback, no need to rerun pipeline |
-Pushing | Storing a Helm package on a repository | Chart will be automatically packaged | 
-Fetching | Downloading a Helm package from a repository to the local filesystem | |
+Rolling back | Going back to a previous revision of a release. | Helm handles the rollback, no need to rerun pipeline |
+Pushing | Storing a Helm package on a repository. | Chart will be automatically packaged | 
+Fetching | Downloading a Helm package from a repository to the local filesystem. | |
 
 ## Common Helm misconceptions
 
@@ -63,7 +63,7 @@ Here is a list of important Helm points that are often controversial between tea
 
 ### Helm repositories are optional
 
-Using Helm repositories is a recommended practice, but completely optional. You can deploy a Helm chart to a Kubernetes cluster directly from the filesystem. The [quick start guide]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/) actually shows this scenario.
+Using Helm repositories is a recommended practice, but completely optional. You can deploy a Helm chart to a Kubernetes cluster directly from the filesystem. The [quick start guide]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/) describes this scenario.
 
 Helm can install a chart either in the package (`.tgz`) or unpackaged (tree of files) to a Kubernetes cluster right away. Thus, the most minimal Helm pipeline has only two steps:
 
