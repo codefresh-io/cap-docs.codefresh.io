@@ -8,14 +8,15 @@ redirect_from:
 toc: true
 ---
 ## Issue
- I want to add a private repository to Codefresh but can't find it in the repository list.
+I want to add a private repository to Codefresh but can't find it in the repository list.
 
 {% include 
 image.html 
 lightbox="true" 
-file="/images/user-settings/private-repos.png" 
-url="/images/user-settings/private-repos.png"
+file="/images/troubleshooting/private-repos.png" 
+url="/images/troubleshooting/private-repos.png"
 alt="Adding private repositories" 
+caption="Adding private repositories" 
 max-width="60%"
 %}
 
@@ -30,9 +31,10 @@ You can also enable the same thing from the user settings page:
 {% include 
 image.html 
 lightbox="true" 
-file="/images/user-settings/allow-private-repositories.png" 
-url="/images/user-settings/allow-private-repositories.png"
+file="/images/troubleshooting/allow-private-repositories.png" 
+url="/images/troubleshooting/allow-private-repositories.png"
 alt="Allow private repositories" 
+caption="Allow private repositories" 
 max-width="70%"
 %}
 

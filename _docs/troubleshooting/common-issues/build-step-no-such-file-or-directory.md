@@ -35,8 +35,8 @@ Recheck, and use the correct path to Dockerfile and Build context
 {% include 
 image.html 
 lightbox="true" 
-file="/images/cab7351-codefresh_no_such_file_directory.png" 
-url="/images/cab7351-codefresh_no_such_file_directory.png"
+file="/images/troubleshooting/no_such_file_directory.png" 
+url="/images/troubleshooting/no_such_file_directory.png"
 alt="codefresh_no_such_file_directory.png" 
 max-width="40%"
 %}

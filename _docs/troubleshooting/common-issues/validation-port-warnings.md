@@ -19,9 +19,10 @@ Launching a pipeline showed the following warning messages in the build log:
 {% include 
 image.html 
 lightbox="true" 
-file="/images/7ce9b1b-2016-09-29_13-19-16.png" 
-url="/images/7ce9b1b-2016-09-29_13-19-16.png"
-alt="2016-09-29_13-19-16.png" 
+file="/images/troubleshooting/validation-port-warning.png" 
+url="/images/troubleshooting/validation-port-warning.png"
+alt="Validation port warning" 
+caption="Validation port warning" 
 max-width="40%"
 %}
 
@@ -41,14 +42,15 @@ When launching a pipeline, Codefresh exposes the ports specified in the reposito
   * If you use a template, listen to one of the exposed ports in either the template, or in the ports list. (If you are not using a Dockerfile, you can find the ports list in the **Pipeline** view.
 
 {:start="2"}
-2. Navigate to **`Repositories`** &#8594; **_`Your Repository`_** &#8594; **`Launch Settings`**, and verify that the **`Application Port`** is the same one that your application exposes, and listen to it. This is the port on which Codefresh runs the **health check**.
+2. Navigate to **Repositories > Your Repository > Launch Settings**, and verify that the **Application Port** is the same one that your application exposes, and listen to it. This is the port on which Codefresh runs the **health check**.
 
 {% include 
 image.html 
 lightbox="true" 
-file="/images/e8a83e0-2016-09-29_13-28-13.png" 
-url="/images/e8a83e0-2016-09-29_13-28-13.png"
-alt="2016-09-29_13-28-13.png" 
+file="/images/troubleshooting/port-for-health-check.png" 
+url="/images/troubleshooting/port-for-health-check.png"
+alt="Port for health check" 
+caption="Port for health check" 
 max-width="40%"
 %}
 

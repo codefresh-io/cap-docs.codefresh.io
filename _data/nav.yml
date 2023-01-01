@@ -442,7 +442,7 @@
           url: "/workflow-terminated-by-system"
         - title: cf_export limitations
           url: "/cf-export-limitations"
-        - title: Validation Port warnings
+        - title: Validation port warnings
           url: "/validation-port-warnings"
         - title: Forbidden Cluster Resources
           url: "/forbidden-cluster-resources"

@@ -10,17 +10,18 @@ toc: true
 ---
 
 ## Issue
-When your workflow's process fails with the similar error message:  
+Workflow's process fails with similar error message:  
 
       [SYSTEM] Error: Failed to pull base image: OWNER/REPO:TAG; caused by Error: (HTTP code 404) no such image - no such image: OWNER/REPO:TAG: No such image: codefreshdemo/demochat:feature_test
 
 {% include 
 image.html 
 lightbox="true" 
-file="/images/6bf6f0c-codefresh_image_not_found.png" 
-url="/images/6bf6f0c-codefresh_image_not_found.png"
-alt="codefresh_image_not_found.png" 
-max-width="40%"
+file="/images/troubleshooting/codefresh_image_not_found.png" 
+url="/images/troubleshooting/codefresh_image_not_found.png"
+alt="Codefresh image not found error" 
+caption="Codefresh image not found error" 
+max-width="60%"
 %}
 
 ## Solution 
