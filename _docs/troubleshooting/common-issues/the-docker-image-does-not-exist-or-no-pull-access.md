@@ -1,5 +1,5 @@
 ---
-title: "The docker image does not exist or no pull access"
+title: "Docker image does not exist or no pull access"
 description: ""
 group: troubleshooting
 sub_group: common-issues

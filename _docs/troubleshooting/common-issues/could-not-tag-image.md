@@ -1,5 +1,5 @@
 ---
-title: "Failed to push"
+title: "Failed to tag image"
 description: "Failed to update your image with promote event, could not tag image"
 group: troubleshooting
 sub_group: common-issues

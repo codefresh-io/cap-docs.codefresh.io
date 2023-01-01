@@ -1,5 +1,5 @@
 ---
-title: "Issues with paging for builds and images"
+title: "Paging issues  for builds and images"
 description: "API and CLI operations for paging results do not work"
 group: troubleshooting
 sub_group: common-issues

@@ -1,5 +1,5 @@
 ---
-title: "Forbidden Kubernetes Resources"
+title: "Forbidden Kubernetes resources"
 description: "Cannot list namespaces or nodes in the Kubernetes dashboard"
 group: troubleshooting
 sub_group: common-issues
