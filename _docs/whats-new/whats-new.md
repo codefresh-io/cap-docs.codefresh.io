@@ -17,8 +17,8 @@ Built on Argo, the world’s most popular and fastest-growing open source softwa
 
 
 #### GitOps CLI version validation and upgrade
-We have enhanced the user experience with CLI upgrades to make it intuitive and simple. No need to constantly check the CLI version to keep up with and get access to new features that we are continually releasing. 
-Now the CLI automatically self-checks its version, and if a newer version is available, prints a banner with the notification that also includes the upgrade command (`cf upgrade`).
+We have enhanced the user experience for CLI upgrades to make it intuitive and simple. No need to constantly check the CLI version to keep up with and get access to new features we are releasing. 
+Now the CLI automatically self-checks its version, and if a newer version is available, prints a banner with the notification that a new version is available, also including the upgrade command (`cf upgrade`).
 
 {% include
  image.html
@@ -56,7 +56,7 @@ For details, see [Access mode in Runtime flags]({{site.baseurl}}/docs/runtime/in
 
 #### Git provider selection in CLI Wizard
 When installing the Hybrid GitOps runtime, Codefresh automatically detects the Git provider based on the repository URL provided during the installation.
-If Codefresh is unable to detect the Git provider, as for on-premises Git providers, you can select the Git provider from the list.  
+If Codefresh is unable to detect the Git provider, as for on-premises Git providers, you can now select the Git provider from the list.  
 
 {% include
  image.html
@@ -74,16 +74,15 @@ If Codefresh is unable to detect the Git provider, as for on-premises Git provid
 Codefresh creates the shared configuration repository when you install the first Hybrid or Hosted GitOps runtime for your account, and then uses it for all runtimes you add to the same account.
 You may want to re-initialize the shared configuration repository for your account to point to a different runtime environment. For example, when moving from evaluation to production environments.  
 
-
-You can do so by first uninstalling existing runtimes in your account and then running the reset command. Codefresh re-initializes the shared configuration repo on the next runtime installation.
+You can do so by first uninstalling existing runtimes in your account and then running the reset command. On the next runtime installation, Codefresh re-initializes the shared configuration repo to point to the new location.
 
 >Reset shared configuration repo is supported from CLI v0.1.18 and higher.
 
 For details, see [Reset shared configuration repository]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/#reset-shared-configuration-repository).
 
-#### Rollout steps in Current State CR-15855
+<!--#### Rollout steps in Current State CR-15855
 today users can access the rollouts steps only from the timeline view. We want users to be able to see it from the current state view as well, when clicking on a rollout. 
-Add a tab to the rollout drawer with the "steps"
+Add a tab to the rollout drawer with the "steps" -->
 
 ### Bug fixes
 
