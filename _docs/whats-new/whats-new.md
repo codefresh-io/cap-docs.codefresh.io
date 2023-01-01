@@ -34,6 +34,8 @@ You can upgrade to a specific version, or download the latest version to an outp
 
 For details, see [Upgrade the Codefresh CLI]({{site.baseurl}}/docs/clients/csdp-cli/#upgrade-codefresh-cli).
 
+<br />
+
 #### Tunnel-based as default runtime mode
 In the previous release, we introduced the Tunnel-based option for Hybrid GitOps runtimes.
 It is now configured as the default runtime mode for Hybrid GitOps. For silent installations, you don't need to specify an access mode. For Wizard-based install, when prompted to select the Access mode, select Tunnel-based. 
@@ -89,7 +91,7 @@ Add a tab to the rollout drawer with the "steps" -->
 **Runtimes**  
 * App-proxy fails to connect if `cfHost` ends with `/`. 
 * Missing Codefresh context generates segmentation violation error.
-* Unclear error message when upgrading CLI to version that does not exist.
+* Unclear error message when upgrading CLI to a version that does not exist.
 * Bitbucket returns false in `isValid` field for expired runtime token.
 * SIGSEGV on installing runtime with CLI version 01.17. 
 
@@ -101,8 +103,7 @@ Add a tab to the rollout drawer with the "steps" -->
 * Modified resource not displayed correctly in Application dashboard > Timeline tab.
 
 **Others**  
-* Integrations page remains idefinitley in loading state.
-* Resume button for Workflows is displayed after manually suspending the workflow.
+* Integrations page remains indefinitely in loading state.
 * Filtering Workflow Templates by Git Source does not work.
 * Workflow Logs terminal flickers and self-refreshes constantly.
 
