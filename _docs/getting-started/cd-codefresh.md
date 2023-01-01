@@ -19,25 +19,25 @@ Deploying Helm charts
 Dashboards
 
 
-## Connecting to Kubernetes
-As continuotus deployment starts with Kubernetes clusters, Codefresh integrates with any known cluster provider suG
-Connect your Kubernetes cluster to Codefresh through a simple integration steps. For those Kubernetes clusters that are not inKE the Kubernetes integration window, you will be able to add a cluster from known providers such as Google, Azure, Amazon etc. You can also add any generic Kubernetes cluster by manually entering your cluster settings.
+## Connecting to Kubernetes 
+Continuous deployment starts with Kubernetes clusters, and Codefresh integrates with any known cluster provider for Kubernetes through a few simple steps. Connect your Google, Azure, Amazon Kubernetes cluster to Codefresh through simple integration steps. 
+For those Kubernetes clusters that are not in our list of cluster providers, you can manually enter your cluster settings to add any generic Kubernetes cluster.
 
 ## Deploying to Kubernetes 
-Deploying to Kubernetes with Codefresh is easy because of the variety of deployment options you can choose from
-So we have Deploy from the Codefresh UI or programmatically through dedicated setos in pipelines
-No need for `kubectl` commands thrAs you may have guessed, we have dedicated step types for deployment 
+Codefresh offers a variety of options for you to choose from when deploying to Kubernetes.
+We have deployment from the Codefresh UI or programmatically through dedicated steps in pipelines, avoiding the need for `kubectl` commands thrAs you may have guessed, we have dedicated step types for deployment 
+
+On-demand deployment:  
 For quick and easy deployment, deploy on-demand from the Codefresh UI
-Ddicated steps in pipelines: `deploy` or the more advanced `cf-deploy-kubernetes`step that enables simple templating on Kubernetes manifests.   in a pipeline. Explained in detail in the present page.
-Kustomize and Helm as package manager through freestyle steps in pipelines.
-Using a freestyle step with Kustomize. Described in details in this page.
-Using a freestyle step with your own kubectl commands. This is very flexible, but assumes that you know how to work with kubectl. Described in details in this page.
-Using Helm as a package manager. See the Helm quick start guide for more details.
+Dedicated steps in pipelines: Use our `deploy` step, or the more advanced `cf-deploy-kubernetes`step that enables simple templating on Kubernetes manifests.   
+Kustomize through a freestyle step
+Helm as package manager, also through a freestyle step  
+
+Finally, if you are familair with and want to work with 'kubectl', use your own our freestyle step If you wish you can still run your own custom kubectl commands in a freestyle step for maximum flexibility on cluster deployments. 
 
 ## kubectl
-kubectl is the command 
-If you wish you can still run your own custom kubectl commands in a freestyle step for maximum flexibility on cluster deployments. Kubectl is the command line interface for managing kubernetes clusters.
-Codefresh helps you even in this scenario by automatically setting up your config context with your connected clusters.
+kubectl is the command line interface for managing kubernetes clusters.
+Codefresh automatically sets up your config context with your connected clusters.
 
 
 ## Helm and Codefresh
