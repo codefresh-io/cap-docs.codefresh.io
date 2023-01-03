@@ -5,9 +5,9 @@ group: getting-started
 toc: true
 ---
 
-TBD
+Work in progress TBD
 
-Focus on
+<!--Focus on
 
 Connecting K8s cluster
 Deploying K8s
@@ -16,7 +16,7 @@ Connecting to Helm registries
 Building Helm charts
 Pushing Helm charts
 Deploying Helm charts
-Dashboards
+Dashboards -->
 
 
 ## Connecting to Kubernetes 
@@ -33,7 +33,7 @@ Dedicated steps in pipelines: Use our `deploy` step, or the more advanced `cf-de
 Kustomize through a freestyle step
 Helm as package manager, also through a freestyle step  
 
-Finally, if you are familair with and want to work with 'kubectl', use your own our freestyle step If you wish you can still run your own custom kubectl commands in a freestyle step for maximum flexibility on cluster deployments. 
+Finally, if you are familair with and want to work with 'kubectl', run your own custom kubectl commands in a freestyle step for maximum flexibility on cluster deployments. 
 
 ## kubectl
 kubectl is the command line interface for managing kubernetes clusters.
