@@ -13,24 +13,25 @@ Running integration tests
 Security scans
 Code quality  -->
 
-Work in progress CI platform/ tools
+Work in progress 
 
 
 ## Docker images
 WBuilding a Docker image from the source code is probably the most common and  basic requirement for a CI pipeline. In Codefresh you can build, push, and promote Docker images, using declarative YAML and credentials that are defined once stored centrally.
 
-**Build and push image**
+**Build and push image**  
 Building a Dockerfile in a pipeline works in the same way as building the Dockerfile locally on your workstation. The `build` step in Codefresh enables you to build a Docker image in a completely declarative manner, and to automatically push it to your default Docker registry without any configuration.  
 
 See:    
 [Build and push Docker images]({{site.baseurl}}/docs/example-catalog/ci-examples/build-and-push-an-image/)  
 
 
-**View image**
+**View image**  
 The Images dashboard displays images from all registries connected to Codefresh. Every image is enriched with Git branch, Git hash and commit message, and any tags defined for the image. 
 
 See:    
 [Viewing Docker images]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/#viewing-docker-images)
+
 
 
 **Promote image**  
@@ -59,7 +60,7 @@ In Codefresh, you can launch these sidecar containers within the pipeline throug
 
 
 See:  
-[Run integration tests example]({{site.baseurl}}/docs/example-catalog/ci-examples/run-integrations-tests/).
+[Run integration tests example]({{site.baseurl}}/docs/example-catalog/ci-examples/run-integrations-tests/)
 
 ## Security scanning
 Security scans are critical to deploying quality code. With Codefresh, in addition you can control when to implement the security scan, and then view the scan results in the Codefresh UI, without having to go to the security platform.  
@@ -67,16 +68,16 @@ Security scans are critical to deploying quality code. With Codefresh, in additi
 **Security scan platforms**  
 Codefresh can integrate with any security scanning platform that scans source code or Docker images for vulnerabilities. We already have ready-to-use Docker images for several security platforms such as Anchore, Aqua Security, Clair, Twistlock and WhiteSource. For the full list, visit our [Plug-ins library](https://codefresh.io/steps/){:target="\_blank"}.
 
-**Scan timing in pipeline step**
+**Scan timing in pipeline step**  
 The security scan is implemented through a freestyle step, inserted anywhere in the pipeline. The fact that you can insert the step anywhere allows you to control when the scan is executed, for example, before the source code is packaged in a container, or before the container is stored in a registry or deployed to production, or any combination of these.
 
 **View scan results**  
 As with any scan, the final step is viewing the scan results. Make the scan results available in Codefresh release dashboards (Test Report button) by attaching analysis reports to the pipeline build. 
 
-**Security annotations**
+**Security annotations**  
 Correlate the Docker images in Codefresh with the results of the security scanning platform by adding annotations for custom metatdata. For example, you can add annotations such as the number of issues or the URL of the full report.
 
-
+See:  
 [Security scanning tests]({{site.baseurl}}/docs/testing/security-scanning/)  
 [Test reporting modes]({{site.baseurl}}/docs/testing/test-reports/)  
 [Metadata in Docker images]({{site.baseurl}}/docs/pipelines//docker-image-metadata/)  

@@ -4,12 +4,18 @@ description: "Understand terminology and nuances in Codefresh"
 group: getting-started
 toc: true
 ---
+Work in progress 
+
 
 ### Runtime
 A Runtime in Codefresh is a  GitOps installation in your Codefresh account, in either a Hosted or Hybrid installation environment. Hosted Runtimes are installed on a Codefresh cluster and managed by Codefresh. Hybrid Runtimes are installed on customer clusters, and managed by the customers.
-You can install a  single Hosted runtime, and multiple Hybrid Runtines in a Codefresh account. 
+You can install a  single Hosted runtime, and multiple Hybrid Runtines in a Codefresh account.  
+
+
 <!--add diagram -->
-A single Runtime can connect to and manage multiple remote clusters.
+A single Runtime can connect to and manage multiple remote clusters.  
+
+
 See:  
 [GitOps runtime architecture]({{site.baseurl}}/docs/installation/runtime-architecture)  
 [Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/hybrid-gitops)  
@@ -29,7 +35,7 @@ Every Runner installation creates a runtime enviroment in your account. Assign t
 
 You can have multiple Runner installations in the same Codefresh account. A Runner can also manage multiple remote clusters in your account. 
 
-See: 
+See:  
 [Codefresh Runner installation]({{site.baseurl}}/docs/installation/codefresh-runner)   
 [Runner installation behind firewalls]({{site.baseurl}}/docs/reference/behind-the-firewall)  
 
@@ -48,12 +54,12 @@ See:
 ### Pipeline
 The pipeline is the central component in Codefresh that implements CI/CD processes. Everything for CI/CD in Codefresh starts and ends with pipelines.  a pipeline can do only CI, only CD, both CI and CD, or run any custom action, such as unit and integration tests.
 
-A CI pipeline can compile and package code, build and push Docker images. A CD pipeline can deploy applications/artifacts to VMs, Kubernetes clusters, FTP sites, S3 buckets, and more. And a CI/CD pipeline can combine code compilation, integration, and deployment for full CI/CD.
+A CI pipeline can compile and package code, build and push Docker images. A CD pipeline can deploy applications/artifacts to VMs, Kubernetes clusters, FTP sites, S3 buckets, and more. And a CI/CD pipeline can combine code compilation, integration, and deployment for full CI/CD.  
 
+More to be added...
 
-
-### Workflow
-<!--A workflow is type of Kubernetes resource that lets you define and run automated workflows, and stores their state. 
+<!-- ### Workflow
+A workflow is type of Kubernetes resource that lets you define and run automated workflows, and stores their state. 
 Argo Workflows is an open source workflow engine that orchestrates parallel tasks on Kubernetes, implemented as a set of Kubernetes custom resource definitions (CRDs). 
 
 Argo Workflows is part of the Argo project, which provides Kubernetes-native software delivery tools including Argo CD, Argo Events and Argo Rollouts. 
@@ -77,7 +83,7 @@ Codefresh supports two types of applications:
 * Containerized applications packaged as Docker images or 
 * Argo CD applications 
 
-**Containerized applications**
+**Containerized applications**  
 Containerized applications are compiled, packaged, and deployed through Codefresh pipelines. Codefresh has native support for Docker artifacts, and also supports non-Dockerized applications that don’t use a Dockerfile for the actual build.
 
 Deploy an application directly to Kubernetes through the Codefresh UI, or use Helm as a package manager to deploy to Kubernetes, again from Codefresh. 
@@ -89,8 +95,9 @@ Codefresh offers several levels of visibility into your deployments :
 See: 
 
 
-**Agro CD applications**
-Argo CD applications conform to Argo CD's application definition CRD (Custom Resource Definition). Argo CD supports several types of Kubernetes manifests, including Jsonnet, Kustomize applications, Helm charts, and YAML/json files, and supports webhook notifications from Git.
+**Agro CD applications**  
+Argo CD applications conform to Argo CD's application definition CRD (Custom Resource Definition). Argo CD supports several types of Kubernetes manifests, including Jsonnet, Kustomize applications, Helm charts, and YAML/json files, and supports webhook notifications from Git. 
+
 Create Argo CD applications that are fully GitOps-compliant from the Codefresh UI. Work in form mode or directly in YAML in the Create Application wizard. Built-in validation makes it easy to identify and fix errors before commit. The application manifest is generated, committed to Git, and synced to your cluster. 
 After creation, you can edit and optimize the application, 
 
