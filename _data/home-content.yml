@@ -1,5 +1,6 @@
 
 
+
 - title: Getting started
   icon: images/home-icons/started.svg
   url: ''
@@ -15,13 +16,52 @@
     - title: Concepts in Codefresh
       localurl: /docs/getting-started/concepts/
 
+- title: Dashboards & insights
+  icon: images/home-icons/guides.png
+  url: ''
+  links:
+    - title: Home dashboard
+      localurl: /docs/dashboards/home-dashboard/
+    - title: DORA metrics
+      localurl: /docs/dashboards/dora-metrics/
+    
+
+
+- title: CI/CD guides
+  icon: images/home-icons/guides.png
+  url: ''
+  links:
+  - title: Building your app
+    localurl: /docs/ci-cd-guides/packaging-compilation/
+  - title: Building Docker images
+    localurl: /docs/ci-cd-guides/building-docker-images/
+  - title: Accessing a Docker registry from Kubernetes cluster
+    localurl: /docs/ci-cd-guides/access-docker-registry-from-kubernetes/  
+  - title: Working with Docker registries
+    localurl: /docs/ci-cd-guides/working-with-docker-registries/       
+  - title: Adding config maps to namespaces
+    localurl: /docs/ci-cd-guides/add-config-maps-to-your-namespaces/    
+  - title: Pull Requests and branches
+    localurl: /docs/ci-cd-guides/pull-request-branches/
+  - title: Pipelines for microservices
+    localurl: /docs/ci-cd-guides/microservices/  
+  - title: Deploying to predefined environments
+    localurl: /docs/ci-cd-guides/environment-deployments/ 
+  - title: Previewing dynamic environments
+    localurl: /docs/ci-cd-guides/preview-environments/   
+  - title: Helm best practices
+    localurl: /docs/ci-cd-guides/helm-best-practices/  
+  - title: Templating for Kubernetes
+    localurl: /docs/ci-cd-guides/kubernetes-templating/     
+  - title: Progressive Delivery
+    localurl: /docs/ci-cd-guides/progressive-delivery/ 
+    
+
 
 - title: Example catalog
   icon: images/home-icons/tutorial.svg
   url: ''
   links:
-    - title: CI/CD examples for pipelines
-      localurl: /docs/example-catalog/examples/
     - title: CI examples
       localurl: /docs/example-catalog/ci-examples
     - title: CD examples
@@ -58,24 +98,24 @@
   icon: images/home-icons/pipeline.svg
   url: ''
   links:
-  - title: Introduction to Pipelines
-    localurl: /docs/pipelines/introduction-to-codefresh-pipelines/
-  - title: Creating Pipelines
-    localurl: /docs/pipelines/pipelines/   
-  - title: Pipeline triggers
-    localurl: /docs/pipelines/triggers/
-  - title: Monitoring pipelines
-    localurl: /docs/pipelines/monitoring-pipelines/
-  - title: Shared Configuration
-    localurl: /docs/pipelines/shared-configuration/
-  - title: Using secrets
-    localurl: /docs/pipelines/secrets-store/
-  - title: Pipeline caching
-    localurl: /docs/pipelines/pipeline-caching/
-  - title: Running pipelines locally
-    localurl: /docs/pipelines/running-pipelines-locally/
-  - title: Debugging pipelines
-    localurl: /docs/pipelines/debugging-pipelines/
+    - title: Introduction to Pipelines
+      localurl: /docs/pipelines/introduction-to-codefresh-pipelines/
+    - title: Creating Pipelines
+      localurl: /docs/pipelines/pipelines/   
+    - title: Pipeline triggers
+      localurl: /docs/pipelines/triggers/
+    - title: Monitoring pipelines
+      localurl: /docs/pipelines/monitoring-pipelines/
+    - title: Shared Configuration
+      localurl: /docs/pipelines/shared-configuration/
+    - title: Using secrets
+      localurl: /docs/pipelines/secrets-store/
+    - title: Pipeline caching
+      localurl: /docs/pipelines/pipeline-caching/
+    - title: Running pipelines locally
+      localurl: /docs/pipelines/running-pipelines-locally/
+    - title: Debugging pipelines
+      localurl: /docs/pipelines/debugging-pipelines/
 
 
 - title: Workflows
@@ -110,11 +150,11 @@
   links:
     - title: Installation environments
       localurl: /docs/installation/installation-options/
-    - title: Codefresh Runner CI/CD installation
+    - title: Codefresh Runner installation
       localurl: /docs/installation/codefresh-runner/ 
-    - title: On-Premises CI/CD installation
+    - title: On-Premises installation
       localurl: /docs/installation/codefresh-on-prem/
-    - title: On-Premises CI/CD upgrade
+    - title: On-Premises upgrade
       localurl: /docs/installation/codefresh-on-prem-upgrade/
     - title: Hosted GitOps Runtime installation
       localurl: /docs/installation/hosted-runtime/  
