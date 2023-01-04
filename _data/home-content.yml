@@ -177,6 +177,7 @@
 - title: Workflows
   icon: images/home-icons/pipeline.svg
   url: ''
+  links:
     - title: Creating workflows
       localurl: /docs/workflows/create-pipeline
     - title: Nested workflows
