@@ -9,13 +9,13 @@ Connect you Docker regsitry to Codefresh to store the Docker image of the applic
 Codefresh supports all the popular Docker registries. 
 If you don't already have a registry, we recommend starting with the GitHub Registry for this quick start. 
 
-### Where are you
+## Where are you
 
-### Before you begin
+## Before you begin
 
-### How to
+## How to
 
-1. In the Codefresh UI, on the toolbar, click the Settings icon, and then from Configuration, select Pipeline Integrations.
+1. In the Codefresh UI, on the toolbar, click the Settings icon, and then from Configuration, select **Pipeline Integrations**.
 1. Select **Docker Registries** and then click **Configure**.
 1. From the **Add Registry Provider** dropdown, select **Other Registries**.
 1. Define the following:  
@@ -38,4 +38,4 @@ If you don't already have a registry, we recommend starting with the GitHub Regi
 1. To verify the connection details, click **Test Connection**.
 1. To apply the changes, click **Save**.
 
-### Continue with 
+## Continue with 
