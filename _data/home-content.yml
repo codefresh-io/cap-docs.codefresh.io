@@ -16,6 +16,18 @@
     - title: Concepts in Codefresh
       localurl: /docs/getting-started/concepts/
 
+- title: Quick starts
+  icon: images/home-icons/started.svg
+  url: ''
+  links:
+    - title: CI pipeline quick start
+      localurl: /docs/quick-start/ci-quickstart/create-ci-pipeline/
+    - title: Kubernetes deployment quick start  
+      localurl: /docs/quick-start/ci-quickstart/deploy-to-kubernetes/
+    - title: Helm quick start  
+      localurl: /docs/quick-start/ci-quickstart/deploy-with-helm/
+ 
+
 - title: Dashboards & insights
   icon: images/home-icons/guides.png
   url: ''
