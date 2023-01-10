@@ -1,3 +1,4 @@
+
 - title: Getting started
   url: "/getting-started"
   pages:
@@ -188,6 +189,7 @@
     - title: GitOps examples
       url: "/cd-examples"
 
+
 - title: Deployments
   url: "/deployments"
   pages:
@@ -230,14 +232,14 @@
           url: "/images"
 
 
-- title: CI pipelines
+- title: Pipelines
   url: "/pipelines"
   pages:
-    - title: Introduction to CI pipelines
+    - title: Introduction to Codefresh pipelines
       url: "/introduction-to-codefresh-pipelines"
     - title: Creating a CI pipeline
       url: "/pipelines"
-    - title: Steps in CI pipelines
+    - title: Steps in pipelines
       url: "/steps"
       sub-pages:
         - title: Git-clone
@@ -260,7 +262,7 @@
           url: "/conditional-execution-of-steps"
         - title: Post-step operations
           url: "/post-step-operations"
-    - title: Triggers in CI pipelines
+    - title: Triggers in pipelines
       url: "/triggers"
       sub-pages:
         - title: Git triggers
@@ -277,15 +279,15 @@
           url: "/jfrog-triggers"
         - title: Timer (Cron) triggers
           url: "/cron-triggers"
-    - title: Variables in CI pipelines
+    - title: Variables in pipelines
       url: "/variables" 
-    - title: Hooks in CI pipelines
+    - title: Hooks in pipelines
       url: "/hooks"
-    - title: Annotations in CI pipelines
+    - title: Annotations in pipelines
       url: "/annotations"  
     - title: Grouping steps into stages
       url: "/stages"
-    - title: Caching for CI pipelines
+    - title: Caching for pipelines
       url: "/pipeline-caching"    
     - title: Debugging CI pipelines
       url: "/debugging-pipelines"
@@ -293,16 +295,16 @@
       url: "/monitoring-pipelines"
     - title: Advanced workflows
       url: "/advanced-workflows"
-    - title: Running CI pipelines locally
+    - title: Running pipelines locally
       url: "/running-pipelines-locally"
-    - title: Configuration for CI pipelines
+    - title: Configuration for pipelines
       url: "/configuration"
       sub-pages:
-        - title: Global CI pipeline settings
+        - title: Global pipeline settings
           url: "/pipeline-settings"          
         - title: Shared configuration
           url: "/shared-configuration"
-        - title: Secrets for CI pipelines
+        - title: Secrets for pipelines
           url: "/secrets-store"  
         - title: Public logs and status badges
           url: "/build-status"
@@ -314,112 +316,6 @@
       url: "/docker-image-metadata"  
     - title: Pipeline definitions YAML
       url: "/what-is-the-codefresh-yaml"    
-
-
-- title: Pipeline integrations
-  url: "/integrations"
-  pages: 
-    - title: Codefresh Hosted GitOps
-      url: "/codefresh-hosted-gitops" 
-    - title: Git Providers
-      url: "/git-providers"
-    - title: Kubernetes
-      url: "/kubernetes"
-    - title: Amazon Services
-      url: "/amazon-web-services" 
-    - title: Microsoft Azure
-      url: "/microsoft-azure"            
-    - title: Google Cloud
-      url: "/google-cloud"   
-    - title: Docker registries
-      url: "/docker-registries"
-      sub-pages:
-        - title: Docker Hub
-          url: "/docker-hub"
-        - title: Azure Docker Registry
-          url: "/azure-docker-registry"
-        - title: Amazon EC2 Container Registry
-          url: "/amazon-ec2-container-registry"
-        - title: Google Container Registry
-          url: "/google-container-registry"
-        - title: Google Artifact Registry
-          url: "/google-artifact-registry"
-        - title: JFrog Bintray.io/Artifactory
-          url: "/bintray-io"
-        - title: Quay.io
-          url: "/quay-io"
-        - title: GitHub Container Registry
-          url: "/github-container-registry"
-        - title: DigitalOcean Container Registry
-          url: "/digital-ocean-container-registry"
-        - title: Other Registries
-          url: "/other-registries"  
-    - title: Secret Storage
-      url: "/secret-storage"
-    - title: Hashicorp Vault
-      url: "/hashicorp-vault"              
-    - title: Helm Integration
-      url: "/helm" 
-    - title: ArgoCD Integration
-      url: "/argocd" 
-    - title: Datadog Integration
-      url: "/datadog"         
-    - title: Jira Integration
-      url: "/jira"       
-    - title: Jenkins Integration
-      url: "/jenkins-integration"
-    - title: Codecov Integration
-      url: "/codecov-integration"                
-    - title: Google Cloud builder
-      url: "/gcloud-builder"
-    - title: Google Marketplace Installation
-      url: "/google-marketplace"
-    - title: GitHub Actions
-      url: "/github-actions"  
-    - title: Notifications
-      url: "/notifications"
-      sub-pages:
-        - title: Slack
-          url: "/slack-integration"
-        - title: Jira
-          url: "/jira-integration"          
-    - title: Codefresh API
-      url: "/codefresh-api"
-
-
-- title: GitOps integrations
-  url: "/gitops-integrations"
-  pages:
-    - title: Image enrichment with GitOps integrations
-      url: "/image-enrichment-overview"
-    - title: GitOps CI integrations
-      url: "/ci-integrations"
-      sub-pages:
-        - title: Codefresh Classic
-          url: "/codefresh-classic"
-        - title: GitHub Actions
-          url: "/github-actions"
-        - title: Jenkins
-          url: "/jenkins"   
-    - title: GitOps issue tracking integrations
-      url: "/issue-tracking"
-      sub-pages:  
-        - title: Jira 
-          url: "/jira"
-    - title: GitOps container registry integrations
-      url: "/container-registries"
-      sub-pages:  
-        - title: Amazon ECR
-          url: "/amazon-ecr"      
-        - title: Docker Hub Registry
-          url: "/dockerhub"
-        - title: GitHub Container Registry
-          url: "/github-cr"
-        - title: JFrog Artifactory
-          url: "/jfrog" 
-        - title: Quay Registry
-          url: "/quay"
-
 
 
 - title: Workflows
@@ -443,7 +339,6 @@
   pages:
     - title: Download CLI
       url: "/csdp-cli"
-
 
 
 - title: Installation
@@ -470,11 +365,11 @@
     - title: Add Git Sources to to GitOps Runtimes
       url: "/git-sources"
 
+
 - title: Administration
   url: "/administration"
   pages:
     - title: Account & user management
-      url: /account-user-management
       sub-pages:  
         - title: Create a Codefresh account
           url: "/create-codefresh-account"
@@ -500,10 +395,6 @@
 - title: Single Sign-On
   url: /single-sign-on
   pages:
-    - title: SSO Overview
-      url: /sso-overview
-    - title: Common configuration
-      url: /team-sync
     - title: OpenID Connect
       url: /oidc
       sub-pages:
@@ -530,7 +421,8 @@
           url: /saml-pingid
     - title: LDAP
       url: /ldap
-
+    - title: Common configuration
+      url: /team-sync
 
 
 - title: Reference
@@ -544,59 +436,7 @@
       url: "/shared-configuration"
   
 
-- title: Troubleshooting
-  url: "/troubleshooting"
-  pages:
-    - title: Common Issues
-      url: "/common-issues"
-      sub-pages:
-        - title: Can't find your organization repositories
-          url: "/cant-find-your-organization-repositories"
-        - title: Can’t find your private repositories
-          url: "/cant-find-your-private-repositories"
-        - title: 'Clone step failed: Command [git checkout $REVISION] exited with code [1]'
-          url: "/git-clone-step-issue"
-        - title: Handling commit messages with a quote character
-          url: "/handling-commit-messages-with-quotes"
-        - title: Docker image does not exist or no pull access
-          url: "/the-docker-image-does-not-exist-or-no-pull-access"
-        - title: 'Build step: No such file or directory'
-          url: "/build-step-no-such-file-or-directory"
-        - title: No Dockerfile found
-          url: "/no-dockerfile-found"
-        - title: Failed to tag image
-          url: "/could-not-tag-image"
-        - title: Error Code 137
-          url: "/error-code-137"
-        - title: Too many requests
-          url: "/dockerhub-rate-limit"
-        - title: Restoring data from pre-existing image hangs on
-          url: "/restoring-data-from-pre-existing-image-hangs-on"
-        - title: Disabling codefresh caching mechanisms
-          url: "/disabling-codefresh-caching-mechanisms"
-        - title: Pinning codefresh.yml for multi-git triggers
-          url: "/multi-git-triggers"
-        - title: Workflow terminated by the system
-          url: "/workflow-terminated-by-system"
-        - title: cf_export limitations
-          url: "/cf-export-limitations"
-        - title: Validation port warnings
-          url: "/validation-port-warnings"
-        - title: Forbidden Kubernetes resources
-          url: "/forbidden-cluster-resources"
-        - title: How to use SSH keys in freestyle steps
-          url: "using-ssh-keys"
-        - title: Failed to get accounts clusters during workflow
-          url: "/failed-to-get-accounts-clusters-during-workflow"
-        - title: Paging issues for builds and images
-          url: "/paging-issues-builds-images"
-    - title: Git step migration
-      url: "/git-step-migration"
-    - title: Personal Git Deprecation
-      url: "/personal-git-deprecation"
-    - title: GitOPs runtimes
-      url: "/runtime-issues"
-      
+
 
 - title: Terms and Privacy Policy
   url: "/terms-and-privacy-policy"
@@ -607,6 +447,5 @@
       url: "/privacy-policy"
     - title: Service Commitment
       url: "/sla"
-
 
 
