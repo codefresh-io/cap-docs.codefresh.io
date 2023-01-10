@@ -1,5 +1,58 @@
+- title: Getting started
+  url: "/getting-started"
+  pages:
+    - title: Introduction to Codefresh
+      url: "/intro-to-codefresh"
+    - title: Codefresh for CI
+      url: "/ci-codefresh"
+    - title: Codefresh for CD
+      url: "/cd-codefresh"
+    - title: Codefresh for GitOps 
+      url: "/gitops-codefresh"
+    - title: Concepts in Codefresh
+      url: "/concepts"
+
+- title: Quick starts
+  url: "/quick-start"
+  pages:
+    - title: Create Codefresh account
+      url: "/create-codefresh-account"  
+    - title: CI/CD quick starts
+      url: "/ci-quickstart"
+      sub-pages:
+      - title: CI pipeline quick start
+        url: "/create-ci-pipeline"
+      - title: Kubernetes deployment quick start  
+        url: "/deploy-to-kubernetes"
+      - title: Helm quick start  
+        localurl: "/deploy-to-helm"
 
 
+- title: Getting started
+  url: "/getting-started"
+  pages:
+    - title: Introduction to Codefresh
+      url: "/intro-to-codefresh"
+    - title: Codefresh for CI
+      url: "/ci-codefresh"
+    - title: Codefresh for CD
+      url: "/cd-codefresh"
+    - title: Codefresh for GitOps 
+      url: "/gitops-codefresh"
+    - title: Concepts in Codefresh
+      url: "/concepts"
+
+
+
+
+- title: Dashboards & Insights
+  url: "/dashboards"
+  pages:
+    - title: Home dashboard
+      url: "/home-dashboard"
+    - title: DORA metrics
+      url: "/dora-metrics"
+    
 
 - title: Dashboards & Insights
   url: "/dashboards"
@@ -46,9 +99,7 @@
 - title: Example catalog
   url: "/example-catalog"
   pages:
-    - title: "CI/CD examples for pipelines"
-      url: "/examples"
-    - title: "CI examples"
+    - title: CI examples
       url: "/ci-examples"
       sub-pages:
         - title: Check out Git repositories
@@ -115,7 +166,7 @@
           url: "/sending-the-notification-to-slack"
         - title: Send notification to Jira
           url: "/sending-the-notification-to-jira"
-    - title: "CD examples"
+    - title: CD examples
       url: "/cd-examples"
       sub-pages:
         - title: Import data to MongoDB
@@ -156,6 +207,9 @@
           url: "/amazon-ecs"
         - title: Elastic Beanstalk
           url: "/elastic-beanstalk" 
+    - title: GitOps examples
+      url: "/cd-examples"
+
 - title: Deployments
   url: "/deployments"
   pages:
@@ -284,6 +338,112 @@
       url: "/what-is-the-codefresh-yaml"    
 
 
+- title: Pipeline integrations
+  url: "/integrations"
+  pages: 
+    - title: Codefresh Hosted GitOps
+      url: "/codefresh-hosted-gitops" 
+    - title: Git Providers
+      url: "/git-providers"
+    - title: Kubernetes
+      url: "/kubernetes"
+    - title: Amazon Services
+      url: "/amazon-web-services" 
+    - title: Microsoft Azure
+      url: "/microsoft-azure"            
+    - title: Google Cloud
+      url: "/google-cloud"   
+    - title: Docker registries
+      url: "/docker-registries"
+      sub-pages:
+        - title: Docker Hub
+          url: "/docker-hub"
+        - title: Azure Docker Registry
+          url: "/azure-docker-registry"
+        - title: Amazon EC2 Container Registry
+          url: "/amazon-ec2-container-registry"
+        - title: Google Container Registry
+          url: "/google-container-registry"
+        - title: Google Artifact Registry
+          url: "/google-artifact-registry"
+        - title: JFrog Bintray.io/Artifactory
+          url: "/bintray-io"
+        - title: Quay.io
+          url: "/quay-io"
+        - title: GitHub Container Registry
+          url: "/github-container-registry"
+        - title: DigitalOcean Container Registry
+          url: "/digital-ocean-container-registry"
+        - title: Other Registries
+          url: "/other-registries"  
+    - title: Secret Storage
+      url: "/secret-storage"
+    - title: Hashicorp Vault
+      url: "/hashicorp-vault"              
+    - title: Helm Integration
+      url: "/helm" 
+    - title: ArgoCD Integration
+      url: "/argocd" 
+    - title: Datadog Integration
+      url: "/datadog"         
+    - title: Jira Integration
+      url: "/jira"       
+    - title: Jenkins Integration
+      url: "/jenkins-integration"
+    - title: Codecov Integration
+      url: "/codecov-integration"                
+    - title: Google Cloud builder
+      url: "/gcloud-builder"
+    - title: Google Marketplace Installation
+      url: "/google-marketplace"
+    - title: GitHub Actions
+      url: "/github-actions"  
+    - title: Notifications
+      url: "/notifications"
+      sub-pages:
+        - title: Slack
+          url: "/slack-integration"
+        - title: Jira
+          url: "/jira-integration"          
+    - title: Codefresh API
+      url: "/codefresh-api"
+
+
+- title: GitOps integrations
+  url: "/gitops-integrations"
+  pages:
+    - title: Image enrichment with GitOps integrations
+      url: "/image-enrichment-overview"
+    - title: GitOps CI integrations
+      url: "/ci-integrations"
+      sub-pages:
+        - title: Codefresh Classic
+          url: "/codefresh-classic"
+        - title: GitHub Actions
+          url: "/github-actions"
+        - title: Jenkins
+          url: "/jenkins"   
+    - title: GitOps issue tracking integrations
+      url: "/issue-tracking"
+      sub-pages:  
+        - title: Jira 
+          url: "/jira"
+    - title: GitOps container registry integrations
+      url: "/container-registries"
+      sub-pages:  
+        - title: Amazon ECR
+          url: "/amazon-ecr"      
+        - title: Docker Hub Registry
+          url: "/dockerhub"
+        - title: GitHub Container Registry
+          url: "/github-cr"
+        - title: JFrog Artifactory
+          url: "/jfrog" 
+        - title: Quay Registry
+          url: "/quay"
+
+
+
 - title: Workflows
   url: "/workflows"
   pages:
@@ -406,7 +566,59 @@
       url: "/shared-configuration"
   
 
-
+- title: Troubleshooting
+  url: "/troubleshooting"
+  pages:
+    - title: Common Issues
+      url: "/common-issues"
+      sub-pages:
+        - title: Can't find your organization repositories
+          url: "/cant-find-your-organization-repositories"
+        - title: Can’t find your private repositories
+          url: "/cant-find-your-private-repositories"
+        - title: 'Clone step failed: Command [git checkout $REVISION] exited with code [1]'
+          url: "/git-clone-step-issue"
+        - title: Handling commit messages with a quote character
+          url: "/handling-commit-messages-with-quotes"
+        - title: Docker image does not exist or no pull access
+          url: "/the-docker-image-does-not-exist-or-no-pull-access"
+        - title: 'Build step: No such file or directory'
+          url: "/build-step-no-such-file-or-directory"
+        - title: No Dockerfile found
+          url: "/no-dockerfile-found"
+        - title: Failed to tag image
+          url: "/could-not-tag-image"
+        - title: Error Code 137
+          url: "/error-code-137"
+        - title: Too many requests
+          url: "/dockerhub-rate-limit"
+        - title: Restoring data from pre-existing image hangs on
+          url: "/restoring-data-from-pre-existing-image-hangs-on"
+        - title: Disabling codefresh caching mechanisms
+          url: "/disabling-codefresh-caching-mechanisms"
+        - title: Pinning codefresh.yml for multi-git triggers
+          url: "/multi-git-triggers"
+        - title: Workflow terminated by the system
+          url: "/workflow-terminated-by-system"
+        - title: cf_export limitations
+          url: "/cf-export-limitations"
+        - title: Validation port warnings
+          url: "/validation-port-warnings"
+        - title: Forbidden Kubernetes resources
+          url: "/forbidden-cluster-resources"
+        - title: How to use SSH keys in freestyle steps
+          url: "using-ssh-keys"
+        - title: Failed to get accounts clusters during workflow
+          url: "/failed-to-get-accounts-clusters-during-workflow"
+        - title: Paging issues for builds and images
+          url: "/paging-issues-builds-images"
+    - title: Git step migration
+      url: "/git-step-migration"
+    - title: Personal Git Deprecation
+      url: "/personal-git-deprecation"
+    - title: GitOPs runtimes
+      url: "/runtime-issues"
+      
 
 - title: Terms and Privacy Policy
   url: "/terms-and-privacy-policy"
@@ -417,5 +629,6 @@
       url: "/privacy-policy"
     - title: Service Commitment
       url: "/sla"
+
 
 
