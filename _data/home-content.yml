@@ -88,21 +88,6 @@
 
 
 
-- title: Getting started
-  icon: images/home-icons/started.svg
-  url: ''
-  links:
-    - title: Introduction to Codefresh
-      localurl: /docs/getting-started/intro-to-codefresh/
-    - title: Codefresh for CI
-      localurl: /docs/getting-started/ci-codefresh/
-    - title: Codefresh for CD 
-      localurl: /docs/getting-started/cd-codefresh/
-    - title: Codefresh for GitOps 
-      localurl: /docs/getting-started/gitops-codefresh/
-    - title: Concepts in Codefresh
-      localurl: /docs/getting-started/concepts/
-
 - title: Dashboards & insights
   icon: images/home-icons/guides.png
   url: ''
@@ -113,16 +98,7 @@
       localurl: /docs/dashboards/dora-metrics/
     
 
-- title: Dashboards & insights
-  icon: images/home-icons/guides.png
-  url: ''
-  links:
-    - title: Home dashboard
-      localurl: /docs/dashboards/home-dashboard/
-    - title: DORA metrics
-      localurl: /docs/dashboards/dora-metrics/
-    
-
+  
 
 - title: CI/CD guides
   icon: images/home-icons/guides.png
@@ -167,7 +143,28 @@
       localurl: /docs/example-catalog/gitops-examples
 
 
-
+- title: Pipelines
+  icon: images/home-icons/pipeline.svg
+  url: ''
+  links:
+    - title: Introduction to Pipelines
+      localurl: /docs/pipelines/introduction-to-codefresh-pipelines/
+    - title: Creating Pipelines
+      localurl: /docs/pipelines/pipelines/   
+    - title: Pipeline triggers
+      localurl: /docs/pipelines/triggers/
+    - title: Monitoring pipelines
+      localurl: /docs/pipelines/monitoring-pipelines/
+    - title: Shared Configuration
+      localurl: /docs/pipelines/shared-configuration/
+    - title: Using secrets
+      localurl: /docs/pipelines/secrets-store/
+    - title: Pipeline caching
+      localurl: /docs/pipelines/pipeline-caching/
+    - title: Running pipelines locally
+      localurl: /docs/pipelines/running-pipelines-locally/
+    - title: Debugging pipelines
+      localurl: /docs/pipelines/debugging-pipelines/
 
 
 - title: Deployments
@@ -191,28 +188,7 @@
     - title: Managing applications
       localurl: /docs/deployment/gitops/manage-application/
 
-- title: Pipelines
-  icon: images/home-icons/pipeline.svg
-  url: ''
-  links:
-    - title: Introduction to Pipelines
-      localurl: /docs/pipelines/introduction-to-codefresh-pipelines/
-    - title: Creating Pipelines
-      localurl: /docs/pipelines/pipelines/   
-    - title: Pipeline triggers
-      localurl: /docs/pipelines/triggers/
-    - title: Monitoring pipelines
-      localurl: /docs/pipelines/monitoring-pipelines/
-    - title: Shared Configuration
-      localurl: /docs/pipelines/shared-configuration/
-    - title: Using secrets
-      localurl: /docs/pipelines/secrets-store/
-    - title: Pipeline caching
-      localurl: /docs/pipelines/pipeline-caching/
-    - title: Running pipelines locally
-      localurl: /docs/pipelines/running-pipelines-locally/
-    - title: Debugging pipelines
-      localurl: /docs/pipelines/debugging-pipelines/
+
 
 
 - title: Workflows

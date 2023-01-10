@@ -28,20 +28,6 @@
         localurl: "/deploy-to-helm"
 
 
-- title: Getting started
-  url: "/getting-started"
-  pages:
-    - title: Introduction to Codefresh
-      url: "/intro-to-codefresh"
-    - title: Codefresh for CI
-      url: "/ci-codefresh"
-    - title: Codefresh for CD
-      url: "/cd-codefresh"
-    - title: Codefresh for GitOps 
-      url: "/gitops-codefresh"
-    - title: Concepts in Codefresh
-      url: "/concepts"
-
 
 
 
@@ -53,14 +39,6 @@
     - title: DORA metrics
       url: "/dora-metrics"
     
-
-- title: Dashboards & Insights
-  url: "/dashboards"
-  pages:
-    - title: Home dashboard
-      url: "/home-dashboard"
-    - title: DORA metrics
-      url: "/dora-metrics"
     
 
 - title: CI/CD Guides
