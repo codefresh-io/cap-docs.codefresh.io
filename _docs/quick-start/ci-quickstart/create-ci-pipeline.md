@@ -7,28 +7,24 @@ toc: true
 
 This quick start guides you through setting up a CI (continuous integration) pipeline in Codefresh to create the Docker image of a sample application, run the pipeline, view results, and optionally upload the Docker image to a public registry.
 
-This quick start guides you through
+This quick start describes the following tasks:
 
-1. Connect your Docker registy to Codefresh  
-  Create an integration with any Docker registry. The DockerDocker registry is required by the pipeline to push the image created from
-1. Create a project for pipeline  
-  Create a project for this piple
-1. Create the CI pipeline
-1. Push the Docker image to the Docker registry
-1. Optional. Run unit tests for your application
-1. Publish the Docker image to Docker Hub
+1. [Create and run CI pipeline](#create-and-run-ci-pipeline)  
+1. [Run unit tests on the Docker image](#run-unit-tests-on-the-docker-image)
+1. [(Optional) Upload Docker images to Docker Hub](#optional-upload-docker-images-to-docker-hub)
+
 
 ## CI process overview
 
-The diagram illustrates the CI [(Continuous Integration)](https://en.wikipedia.org/wiki/Continuous_integration){:target="\_blank"}process.
+The diagram illustrates the CI [(Continuous Integration)](https://en.wikipedia.org/wiki/Continuous_integration){:target="\_blank"} process.
 
 {% include 
 image.html 
 lightbox="true" 
-file="/images/getting-started/quick-start-ci/pipeline-overview.jpg" 
-url="/images/getting-started/quick-start-ci/pipeline-overview.jpg" 
-alt="Pipeline Overview" 
-caption="Pipeline Overview" 
+file="/images/quick-start/quick-start-ci/pipeline-overview.jpg" 
+url="/images/quick-start/quick-start-ci/pipeline-overview.jpg" 
+alt="CI process overview" 
+caption="CI process overview" 
 max-width="100%" 
 %}
 
@@ -40,21 +36,20 @@ max-width="100%"
 1. (Optional) Pushes the Docker image to Docker Hub
 
 ### Note on the sample application
-We will use the [Python/Flask](https://www.palletsprojects.com/p/flask/){:target="\_blank"} project, that has:
+For the pipeline, we'll use a sample application, the [Python/Flask](https://www.palletsprojects.com/p/flask/){:target="\_blank"} project, that has:
 * Its own [Dockerfile](https://github.com/codefresh-contrib/python-flask-sample-app/blob/master/Dockerfile){:target="\_blank"} in the root of the repository.
 * Unit tests.
 
-You can either use the sample application to follow along, or create your own Docker based
-example (don't forget to write unit tests).
+You can either use the sample application to follow along, or create your own Docker based example (don't forget to write unit tests).
 
 
 With Codefresh you can create a Docker image from without any local Docker installation,  (Docker building as a service).
 
-For the pipeline, we'll use a sample application. 
 
 
 
-## Quick start prerequisites
+
+## CI pipeline quick start prerequisites
 
 * Codefresh account
 * Free [GitHub account](https://github.com/join){:target="\_blank"}
@@ -62,7 +57,7 @@ For the pipeline, we'll use a sample application.
 * Source code of the sample application
 * (Optional) Docker Hub account if you also want to make your image public
 
-#### Download source code of the sample application
+### Download source code of the sample application
 We use an example application located in GitHub. 
 
 >Codefresh supports GitLab, Bitbucket and Azure GIT repositories apart from GitHub. The
@@ -85,7 +80,13 @@ After a few minutes, you should see the repo in your Git account.
 
 ## Create and run CI pipeline
 
-We'll start by focusing on the first part of the CI pipeline, creating a Docker image.
+We'll start by focusing on the first part of the CI pipeline, creating a Docker image.  
+
+Docker images play a central role in Codefresh pipelines. They are the basic building blocks that serve as the link
+between what your source code generates and what gets deployed.  
+
+The example application already comes with its own Dockerfile. If your own application is not "dockerized" yet, you 
+need to create a Dockerfile for it first, before moving it into the Codefresh infrastructure. 
 
 {% include 
 image.html 
@@ -97,18 +98,16 @@ caption="Preparing a Docker image"
 max-width="60%" 
 %}
 
-Docker images play a central role in Codefresh pipelines. They are the basic building blocks that serve as the link
-between what your source code is producing and what gets deployed. If your own application is not "dockerized" yet, you 
-need to create a Dockerfile for it first, before moving it into the Codefresh infrastructure. 
+
 
 <!--Because all Codefresh capabilities are based on Docker images, Docker is also serving as an abstraction layer over any the implementation language of your source code. Codefresh can work with projects written in Ruby, Python, Java, Node or any other programming language as long as they produce a Docker image. Docker images are a first class citizen in Codefresh pipelines and not just an afterthought.-->
 
-The example application already comes with its own Dockerfile, making it easy to create a Codefresh pipeline.
-
-Create a project for the pipeline
-Create and run the pipeline to build the Docker image
-View and monitor the pipeline build
-View the Docker image in Codefresh
+Creating a Codefresh pipeline includes:
+1. [Connect a Docker registry to Codefresh](#connect-a-docker-registry-to-codefresh)
+1. [Create a project for CI pipeline](#create-a-project-for-ci-pipeline)
+1. [Create and run CI pipeline](#create-and-run-ci-pipeline)
+1. [View and monitor CI pipeline build](#view-and-monitor-ci-pipeline-build)
+1. [View the Docker image stored in Codefresh](#view-the-docker-image-stored-in-codefresh)
 
 ### Connect a Docker registry to Codefresh
 
@@ -117,7 +116,7 @@ Codefresh supports all the popular Docker registries.
 If you don't already have a registry, we recommend starting with the GitHub Registry for this quick start. 
 
 #### Before you begin
-Make sure you have completed all the [prerequsites](#quick-start-prerequisites) for the quick start 
+Make sure you have completed all the [prerequsites](#quick-start-prerequisites) for the CI pipeline quick start 
 
 #### How to
 
@@ -143,14 +142,14 @@ Make sure you have completed all the [prerequsites](#quick-start-prerequisites) 
 {:start="5"}
 1. To verify the connection details, click **Test Connection**.
 1. To apply the changes, click **Save**.
-1. Continue with [Create a project for pipeline](#create-a-project-for-pipeline)
+1. Continue with [Create a project for CI pipeline](#create-a-project-for-ci-pipeline)
 
-### Create a project for pipeline
+### Create a project for CI pipeline
 
 Codefresh pipelines are grouped under projects. Think of a project as a folder or directory that groups related pipelines. For example, all pipleines that package/deploy the different microservices for an application.
 You can define any name for the  project, the most common example being the name of the application that the pipelines build and deploy.
 
-#### Before you beigin
+#### Before you begin
 
 * [Connect a Docker registry to Codefresh]({{site.baseurl}}/docs/quick-start/create-docker-registry-integration)
 
@@ -166,17 +165,17 @@ You can define any name for the  project, the most common example being the name
 	lightbox="true" 
 	file="/images/quick-start/quick-start-ci/create-ci-project.png" 
 	url="/images/quick-start/quick-start-ci/create-ci-project.png" 
-	alt="Create project for pipeline"
-	caption="Create project for pipeline" 
+	alt="Create project for CI pipeline"
+	caption="Create project for CI pipeline" 
 	max-width="70%" 
 %}
 
-  You now have a new project and can create your first pipeline.
+  You now have a new project and can create your CI first pipeline.
 
 {:start="6"}
 1. Continue with [Create and run the CI pipeline](#create-and-run-the-ci-pipeline).
 
-### Create and run the CI pipeline
+### Create and run CI pipeline
 Create a CI pipeline to clone the Git repo and build the Docker image.   
 The pipeline includes just two steps:
   * A [`git-clone`]({{site.baseurl}}/docs/pipelines/steps/git-clone/) step to check out the code.
@@ -185,7 +184,7 @@ The pipeline includes just two steps:
     The build step uses a [Dockerfile](https://github.com/codefresh-contrib/python-flask-sample-app/blob/master/Dockerfile) that is located at the root folder of the project and creates a Docker image with tag `v1.0.0`.
 
 #### Before you begin
-* [Create a project for pipeline](#create-a-project-for-pipeline)
+* [Create a project for CI pipeline](#create-a-project-for-ci-pipeline)
 
 #### How to
 1. From the Project page, select the project you created. 
@@ -236,12 +235,11 @@ steps:
 
 {:start="6"}
 1. To apply your changes, click **Save**. 
-  You have completed 
 1. To start the pipeline, click **Run**.
 1. Retain the default settings, and click **Run** once again.
-1. Continue with [View and monitor pipeline build](#view-and-monitor-pipeline-build)
+1. Continue with [View and monitor CI pipeline build](#view-and-monitor-ci-pipeline-build)
 
-### View and monitor pipeline build 
+### View and monitor CI pipeline build 
 When you run the pipeline, Codefresh takes you to the Builds page where you can monitor the build progress of the sample application.
 
 {% include 
@@ -268,10 +266,10 @@ All <!-- is this correct? should it be - future? -->previous runs are displayed 
 {% include 
 image.html 
 lightbox="true" 
-file="/images/getting-started/quick-start-ci/finished-build.png" 
-url="/images/getting-started/quick-start-ci/finished-build.png" 
+file="/images/quick-start/quick-start-ci/finished-build.png" 
+url="/images/quick-start/quick-start-ci/finished-build.png" 
 alt="Build details" 
-caption="Build details (click image to enlarge)" 
+caption="Build details" 
 max-width="80%" 
 %}
 
@@ -294,10 +292,10 @@ max-width="80%"
 %}
 
 #### Before you begin
-[Create and run the CI pipeline](#create-and-run-the-ci-pipeline)
+[View and monitor CI pipeline build](#view-and-monitor-ci-pipeline-build)
 
 #### How to
-1. In the Codefresh UI, expand Artifacts in the sidebar, and click **Images**. 
+1. In the Codefresh UI, expand Artifacts in the sidebar, and click **Images**.  
   A list of Docker images are displayed, sorted by the most recent. This dashboard is populated in real-time with updates from your Docker registry.
 
 {% include 
@@ -349,9 +347,9 @@ The built-in Docker image storage is very helpful on its own, but it becomes eve
 ## Run unit tests on the Docker image
 Run unit tests to validate the Docker image and confirm that it satisfies the requested functionality. Unit tests must be an integral part of the build process.
 
-We will add a new [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) to the pipeline's YAML, that runs unit tests.  
+We will add a new [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) to the pipeline's YAML, that runs unit tests. Freestyle steps run custom commands within Docker containers.
 
-Freestyle steps run custom commands within Docker containers. In this case, we run the python command [within the docker image]({{site.baseurl}}/docs/pipelines/variables/#context-related-variables), created from the previous step`MyAppDockerImage` defined by the `image` property.
+For the quick start, we run the python command [within the docker image]({{site.baseurl}}/docs/pipelines/variables/#context-related-variables), created from the previous step `MyAppDockerImage` defined by the `image` property.
 
 
 {% include 
@@ -364,11 +362,11 @@ caption="Unit tests workflow"
 max-width="80%" 
 %}
 
-#### Before you begin
+### Before you begin
 
-* [View Docker image stored in Codefresh](#view-docker-image-stored-in-codefresh)
+* Verify you have a Docker image in Codefresh 
 
-#### How to
+### How to
 
 1. In the Builds page, click the **YAML** tab and then click **Edit Pipeline**.
   The Inline YAML editor in the Workflow tab is displayed. 
@@ -378,7 +376,6 @@ max-width="80%"
 ``` 
 pip install pytest && pytest
 ``` -->
-
 `codefresh.yml`
 {% highlight yaml %}
 {% raw %}
@@ -411,6 +408,7 @@ steps:
       - pytest   
 {% endraw %}      
 {% endhighlight %}
+{:start="3"}
 1. Click **Run** and then click **Run** again to relaunch the build.
 1. In the Builds page, you can see a new stage with the step labeled **Running unit tests**.
 1. Click the step name to see the test output of the application.
@@ -418,10 +416,10 @@ steps:
 {% include 
 image.html 
 lightbox="true" 
-file="/images/getting-started/quick-start-ci/unit-test-result.png" 
-url="/images/getting-started/quick-start-ci/unit-test-result.png" 
-alt="Unit tests results" 
-caption="Unit tests results (click image to enlarge)" 
+file="/images/quick-start/quick-start-ci/unit-test-result.png" 
+url="/images/quick-start/quick-start-ci/unit-test-result.png" 
+alt="Unit test results" 
+caption="Unit test results" 
 max-width="60%" 
 %}
 {:start="6"}
@@ -438,10 +436,10 @@ Codefresh offers extended functionality for pipelines. Read about it in the [YAM
 
 ## (Optional) Upload Docker images to Docker Hub
 
-As we saw, Codefresh automatically pushes the Docker image to the default Docker register. 
+As we saw, Codefresh automatically pushes the Docker image to the default Docker registry. 
 You can also upload the same Docker image to a different external registry or make it public in Docker Hub.
 
-The [push pipeline step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) just pushes an existing Docker image to the registry you define.
+The [push pipeline step]({{site.baseurl}}/docs/codefresh-yaml/steps/build/) does exactly that. It pushes an existing Docker image to the registry you define.
 
 
 {% include 
@@ -454,25 +452,25 @@ caption="Pushing a Docker image"
 max-width="80%" 
 %}
 
-As the last task in the quick start, we will push our sample application to [Docker Hub](https://cloud.docker.com/),  the free public hosting registry of Docker Inc.
+As the last task in the CI pipeline quick start, we will push our sample application to [Docker Hub](https://cloud.docker.com/){:target="\_blank"}, the free public hosting registry of Docker Inc.
 To do so, you will first need to create a free account in Docker Hub and then connect Docker Hub to Codefresh. 
-<!--Docker images are one of the central concepts in Codefresh pipelines as everything revolves around them. Powerful Codefresh pipelines can be created by using Docker images as build tools, so it is perfectly normal if you manage a large number of images which are not strictly packaged applications. You may create Docker images that contain building or deployment tools and are used as part of
-the build process instead of the build result. -->
-
-#### Before you begin
-* [Run unit tests on the Docker image](run-unit-tests-on-the-docker-image)
 
 
-#### How to
+### Before you begin
+* Verify you have a Docker image in Codefresh 
+
+
+### How to
 1. Create a free account in Docker Hub. 
 1. Note down your username and password. 
   In your own projects, you can use any other [external registry]({{site.baseurl}}/docs/integrations/docker-registries/) you wish.
 
   >Docker.io allows you to only push images tagged with your username. If you can do so, create
 a Docker Hub account with the same username that you have in Codefresh. If not, you need to change the Docker image
-created to match your username.
+created to match your username in your Docker Hub account.
 
-1. In the Codefresh UI, on the toolbar, click the Settings icon, and then from Configuration, select **Pipeline Integrations**.
+{:start="3"}
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from Configuration, select **Pipeline Integrations**.
 1. Select **Docker Registries** and then click **Configure**.
 1. From the **Add Registry Provider** dropdown, select **Docker Hub**.
 1. Define the following:  
@@ -495,9 +493,9 @@ max-width="60%"
 %}
 
 {:start="8"}
-1. Go back to the Builds page, and click the pipeline to return to the Inline editor. 
+1. Go back to the [Builds](https://g.codefresh.io/builds2){:target="\_blank"} page, and click the pipeline to return to the Inline editor. 
 1. Paste the following YAML to replace the existing content.
-  We now have added a [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) at the end of the pipeline. The image is tagged with the name of the branch.
+  We added a [push step]({{site.baseurl}}/docs/codefresh-yaml/steps/push/) at the end of the pipeline. The image is tagged with the name of the branch.
 {% highlight yaml %}
 {% raw %}
 version: '1.0'
@@ -568,4 +566,11 @@ max-width="60%"
 %}
 
 
-You have now completed the final task in the quick start, and the last step in creating a pipeline. Now that we have the basic functionality ready we can see how Codefresh handles [continuous integration](https://en.wikipedia.org/wiki/Continuous_integration) with Pull Requests (PRs) and automatic builds.
+You have now completed the final task in the CI pipeline quick start. Now that we have the basic functionality ready, we can see how Codefresh handles [continuous integration](https://en.wikipedia.org/wiki/Continuous_integration) with Pull Requests (PRs) and automatic builds.
+
+## Read more on CI pipelines
+[Introduction to Codefresh pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  
+[Working with Docker registries]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/)  
+[Codefresh pipeline definitions YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)   
+[On-demand environments]({{site.baseurl}}/docs/getting-started/on-demand-environments/)   
+[Kubernetes deployment quick start]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-to-kubernetes/)  

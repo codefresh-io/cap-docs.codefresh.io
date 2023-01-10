@@ -6,11 +6,10 @@ sub_group: ci-quickstart
 toc: true
 ---
 
-In this quick start, you'll learn how to deploy the Docker image you created to a Kubernetes cluster, both manually through the Codefresh UI, and automatically through a pipeline. Deplying the image through a pipeline automatically redeploy the image when there are changes in the source code.
+This quick start will guide you through deploying the Docker image you created to a Kubernetes cluster, both manually through the Codefresh UI, and automatically through a pipeline.  
+Deploying the image through a pipeline, automatically redeploys the image when there are changes in the source code.
 
-For the quick start, we will use the Codefresh UI to both create the Kubernetes service inside the cluster and also to create the CI/CD pipeline that keeps it up to date. In a real-world scenario, it is best if you use  [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) which is much more powerful and flexible.
-
-Codefresh also offers [several alternative ways]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes/) of deploying to Kubernetes.
+For the quick start, we will use the Codefresh UI to create both the Kubernetes service inside the cluster and the CI/CD pipeline that keeps it up to date. <!--- In a real-world scenario, it is best if you use  [Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/) which is much more powerful and flexible.  Do we need this? -->
 
 
 At the end of this quick start we will have a pipeline that: 
@@ -31,9 +30,9 @@ max-width="80%"
 
 
 
-## Prerequisites
+## Prerequisites for Kubernetes quick start
 
-* [Kubernetes cluster]({{site.baseurl}}/docs/integrations/kubernetes/add-kubernetes-cluster/) in Codefresh
+* [Kubernetes cluster]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster) in Codefresh
 * The Docker registry you connected to your Codefresh account in the CI pipeline quick start 
 * Either our sample application or your own application that has a Dockerfile. 
 
@@ -55,9 +54,10 @@ Deploy the Docker image to your Kubernetes cluster without writing any configura
 
 
 >Do not use `latest` for your deployments. This doesn't help you to understand which version is deployed. Use
-either branch names or even better git hashes so that you know exactly what is deployed on your Kubernetes cluster. Notice also that the YAML manifest that
-Codefresh creates has an image pull policy of `always`, so the cluster will always redeploy the latest image even if it has the same name as the previous one.
+either branch names or even better git hashes so that you know exactly what is deployed on your Kubernetes cluster.  
+  Notice also that the YAML manifest that Codefresh creates has an image pull policy of `always`, so the cluster will always redeploy the latest image even if it has the same name as the previous one.
 
+{:start="2"}
 1. In the Codefresh UI, expand Ops from the sidebar, and select **Kubernetes Services**.
   Codefresh displays the deployments (pods and namespaces) in your Kubernetes cluster.
 1. On the top-right, click **New**, and then select **Add Service**.
@@ -72,7 +72,7 @@ caption="Codefresh Kubernetes Dashboard"
 max-width="70%" 
 %}
 
-{:start="3"}
+{:start="4"}
 1. Create a Kubernetes deployment (and associated service):
   * **Cluster**: The cluster to which to deploy your image. If you have more than one cluster, select the cluster.
   * **Namespace**: The namespace in the cluster to which to deploy the application. For the quick start, retain **default**.
@@ -114,7 +114,7 @@ max-width="50%"
 
 You have completed manually deploying a Docker image to a Kubernetes cluster without writing any YAML files at all! 
 
-In the task, we will automate the deployment process, so that every time there is a commit in Git, the application is redeployed.
+In the following task, we will automate the deployment process, so that every time there is a commit in Git, the application is redeployed.
 
 ## Automatically deploy images to Kubernetes
 
@@ -127,7 +127,7 @@ To do this, we will add a new [deploy step]({{site.baseurl}}/docs/pipelines/step
 1. In the Codefresh UI, expand Pipelines in the sidebar, and select **Pipelines**.
 1. From the pipeline list, select the pipeline you created. 
 1. Switch to the **Workflows** tab.
-1. Replace the existing content in the Inline YAML editor with the example below. 
+1. Replace the existing content in the Inline YAML editor with the example below.  
 `codefresh.yml`
 {% highlight yaml %}
 {% raw %}
@@ -188,8 +188,8 @@ steps:
 {% endraw %}      
 {% endhighlight %}
 {:start="5"}
-1. Click **Save**. 
-  The deploy step updates an *existing* Kubernetes deployment, and optionally creates a [pull secret]({{site.baseurl}}/docs/ci-cd-guides/access-docker-registry-from-kubernetes/) for the image if needed, but it will not create any Kubernetes services. We already created a Kubernetes service in the previous procedure.
+1. Click **Save**.  
+  The deploy step updates the *existing* Kubernetes deployment. If needed, the step creates a [pull secret]({{site.baseurl}}/docs/ci-cd-guides/access-docker-registry-from-kubernetes/) for the image. It does not create any Kubernetes services, as we already created a Kubernetes service when we manually deployed the image.
 1. Modify the application in the production branch, and commit/push the change to Git.
 
  {% include 
@@ -209,10 +209,10 @@ max-width="70%"
  {% include 
 image.html 
 lightbox="true" 
-file="/images/getting-started/quick-start-k8s/deployment-build.png" 
-url="/images/getting-started/quick-start-k8s/deployment-build.png" 
+file="/images/quick-start/quick-start-k8s/deployment-build.png" 
+url="/images/quick-start/quick-start-k8s/deployment-build.png" 
 alt="Codefresh K8s deployment" 
-caption="Codefresh K8s deployment (click image to enlarge)" 
+caption="Codefresh K8s deployment" 
 max-width="90%" 
 %}
 
@@ -222,8 +222,8 @@ Once the build is complete, if you visit the URL, you will see your change appli
  {% include 
 image.html 
 lightbox="true" 
-file="/images/getting-started/quick-start-k8s/after-change.png" 
-url="/images/getting-started/quick-start-k8s/after-change.png" 
+file="/images/quick-start/quick-start-k8s/after-change.png" 
+url="/images/quick-start/quick-start-k8s/after-change.png" 
 alt="Example Python Application after change" 
 caption="Example Python Application after change" 
 max-width="50%" 
@@ -231,13 +231,14 @@ max-width="50%"
 
 You now have a complete CI/CD pipeline in Codefresh for fully automated builds to Kubernetes.
 
-<!--- ## Relate
+## Read more on Kubernetes deployments
+[Helm deployment to Kubernetes quick start]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-with-helm/)  
+[Deployment options for Kubernetes]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes/)  
+[Introduction to Codefresh pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  
+[Working with Docker registries]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/)  
+[Codefresh pipeline definitions YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 
-* [Deploying to Kubernetes with Helm]({{site.baseurl}}/docs/getting-started/helm-quick-start-guide/)
-* [Kubernetes deployment methods]({{site.baseurl}}/docs/deploy-to-kubernetes/deployment-options-to-kubernetes/)
-* [Introduction to Pipelines]({{site.baseurl}}/docs/configure-ci-cd-pipeline/introduction-to-codefresh-pipelines/)
-* [Working with Docker registries]({{site.baseurl}}/docs/docker-registries/working-with-docker-registries/)
-* [Codefresh YAML]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/)  -->
+
 
 
 
