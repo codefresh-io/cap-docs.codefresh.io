@@ -18,6 +18,8 @@
 - title: Quick starts
   url: "/quick-start"
   pages:
+    - title: Create Codefresh account
+      url: "/create-codefresh-account"  
     - title: CI/CD quick starts
       url: "/ci-quickstart"
       sub-pages:

@@ -20,6 +20,8 @@
   icon: images/home-icons/started.svg
   url: ''
   links:
+    - title: Create Codefresh account
+      localurl: /docs/quick-start/create-codefresh-account/  
     - title: CI pipeline quick start
       localurl: /docs/quick-start/ci-quickstart/create-ci-pipeline/
     - title: Kubernetes deployment quick start  
