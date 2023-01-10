@@ -6,7 +6,7 @@ sub_group: gitops
 toc: true
 ---
 
-Building Docker images is one of the most basic requirements for creating Delivery Pipelines. 
+Building Docker images is one of the most basic requirements for creating Codefresh pipelines and Argo Workflows. 
 Once you create an image, push the image to a registry, and report it to Codefresh, image information is continually updated in the Images page. 
 
 ### Requirements for Images in Codefresh
