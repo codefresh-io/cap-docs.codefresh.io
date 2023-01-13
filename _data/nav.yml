@@ -25,6 +25,9 @@
         sub-pages:
           - title: Test sub-page
             url: "/test-sub-page"
+            sub-pages:
+              - title: Test sub-sub-page
+                url: "/test-sub-sub-page"
           - title: Test sub-page2
             url: "/test-sub-page2"
 
