@@ -12,22 +12,6 @@
 
   {%- assign current_url = site.baseurl | append: page.url -%}
 
-  {% if page_url.size == 5 %}
-    {%- assign page_slug_index = page_url.size | minus: 2 -%}
-    {%- assign page_slug = page_url[page_slug_index] -%}
-    {%- assign sub_page_slug = page_url | last -%}
-  {% else %}
-    {%- assign page_slug = page_url | last -%}
-  {% endif %}
-
-  {% comment %}
-  <!--
-  page_slug_index: {{ page_slug_index }}
-  page_slug: {{ page_slug }}
-  sub_page_slug: {{ sub_page_slug }}
-  -->
-  {% endcomment %}
-
   <ul id="bd-docs-nav-list" class="list-unstyled">
   {%- for navItem in site.data.nav -%}
 
@@ -48,13 +32,6 @@
     {% assign group_url = site.baseurl | append: '/docs/' | append: group_slug | append: '/' %}
 
     {%- assign active = nil -%}
-
-    {% comment %}
-    <!--
-      page.group: {{ page.group }}
-      group_slug: {{ group_slug }}
-    -->
-    {% endcomment %}
 
     {%- if current_url contains group_url -%}
       {%- assign active = 'active' -%}
@@ -121,16 +98,6 @@
                   {%- assign sub_doc_url = doc_url | append: sub_doc_slug | append: '/' -%}
 
                   {%- assign sub_active = nil -%}
-
-                  {% comment %}
-                  <!--
-                    page.sub_group: {{ page.sub_group }}
-                    group_slug: {{ group_slug }}
-                    doc_slug: {{ doc_slug }}
-                    sub_page_slug: {{ sub_page_slug }}
-                    sub_doc_slug: {{ sub_doc_slug }}
-                   -->
-                  {% endcomment %}
 
                   {%- if current_url contains sub_doc_url -%}
                     {%- assign sub_active = 'active bd-sidenav-active' -%}
