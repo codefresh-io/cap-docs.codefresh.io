@@ -42,7 +42,7 @@ Codefresh brings the power of the Argo project to your Kubernetes deployments:
 * Argo Events for event-driven workflow automation framework
 
 Codefresh creates a conformed fork of the Argo project, providing an enterprise-supported version of the same, enhanced with unique functionality.
-
+> Our users rely on the Codefresh platform to deliver software reliably, and predictably without interruption. To maintain that high standard, we add several weeks of testing and bug fixes to new versions of Argo before making them available within Codefresh. Typically, new versions of Argo are available within 30 days of their release.
 
  
 ### Codefresh and GitOps
