@@ -1,47 +1,39 @@
 - title: Getting started
   url: "/getting-started"
   pages:
-  - title: Introducing Codefresh
-    url: "/csdp-introduction"
-  - title: Quick start
-    url: "/quick-start"
-    sub-pages:
-      - title: Provision a hosted runtime
-        url:  "/install-hosted"
-      - title: Prepare for hybrid runtime installation
-        url:  "/verify-requirements"
-      - title: Install a hybrid runtime
-        url: "/runtime"
-      - title: Create an application
-        url: "/create-app-ui"
-      - title: Create and commit resources for application
-        url: "/create-app-specs"
-      - title: Update the image tag for application
-        url: "/create-rollout"
-      - title: Trigger the Hello World example pipeline
-        url: "/hello-world"
-      - title: Create a basic CI delivery pipeline
-        url: "/create-ci-pipeline"
-        sub-pages:
-          - title: Test sub-page
-            url: "/test-sub-page"
-            sub-pages:
-              - title: Test sub-sub-page
-                url: "/test-sub-sub-page"
-          - title: Test sub-page2
-            url: "/test-sub-page2"
+    - title: Introducing Codefresh
+      url: "/csdp-introduction"
+    - title: Quick start
+      url: "/quick-start"
+      sub-pages:
+        - title: Provision a hosted runtime
+          url:  "/install-hosted"
+        - title: Prepare for hybrid runtime installation
+          url:  "/verify-requirements"
+        - title: Install a hybrid runtime
+          url: "/runtime"
+        - title: Create an application
+          url: "/create-app-ui"
+        - title: Create and commit resources for application
+          url: "/create-app-specs"
+        - title: Update the image tag for application
+          url: "/create-rollout"
+        - title: Trigger the Hello World example pipeline
+          url: "/hello-world"
+        - title: Create a basic CI delivery pipeline
+          url: "/create-ci-pipeline"
 
 
-  - title: Main concepts
-    url: "/main-concepts"
-  - title: Entity model
-    url: "/entity-model"
-  - title: Architecture
-    url: "/architecture"
-  - title: GitOps approach
-    url: "/gitops"
-  - title: Frequently asked questions
-    url: "/faq"
+    - title: Main concepts
+      url: "/main-concepts"
+    - title: Entity model
+      url: "/entity-model"
+    - title: Architecture
+      url: "/architecture"
+    - title: GitOps approach
+      url: "/gitops"
+    - title: Frequently asked questions
+      url: "/faq"
 
 - title: Clients
   url: "/clients"
@@ -126,21 +118,21 @@
     - title: Issue tracking
       url: "/issue-tracking"
       sub-pages:
-      - title: Jira
-        url: "/jira"
+        - title: Jira
+          url: "/jira"
     - title: Container registries
       url: "/container-registries"
       sub-pages:
-      - title: Amazon ECR
-        url: "/amazon-ecr"
-      - title: Docker Hub Registry
-        url: "/dockerhub"
-      - title: GitHub Container Registry
-        url: "/github-cr"
-      - title: JFrog Artifactory
-        url: "/jfrog"
-      - title: Quay Registry
-        url: "/quay"
+        - title: Amazon ECR
+          url: "/amazon-ecr"
+        - title: Docker Hub Registry
+          url: "/dockerhub"
+        - title: GitHub Container Registry
+          url: "/github-cr"
+        - title: JFrog Artifactory
+          url: "/jfrog"
+        - title: Quay Registry
+          url: "/quay"
 
 
 
