@@ -1,39 +1,39 @@
 - title: Getting started
   url: "/getting-started"
   pages:
-  - title: Introducing Codefresh
-    url: "/csdp-introduction"
-  - title: Quick start
-    url: "/quick-start"
-    sub-pages:
-      - title: Provision a hosted runtime
-        url:  "/install-hosted"
-      - title: Prepare for hybrid runtime installation
-        url:  "/verify-requirements"
-      - title: Install a hybrid runtime
-        url: "/runtime"
-      - title: Create an application
-        url: "/create-app-ui"     
-      - title: Create and commit resources for application
-        url: "/create-app-specs"
-      - title: Update the image tag for application
-        url: "/create-rollout"
-      - title: Trigger the Hello World example pipeline
-        url: "/hello-world"
-      - title: Create a basic CI delivery pipeline
-        url: "/create-ci-pipeline"
+    - title: Introducing Codefresh
+      url: "/csdp-introduction"
+    - title: Quick start
+      url: "/quick-start"
+      sub-pages:
+        - title: Provision a hosted runtime
+          url:  "/install-hosted"
+        - title: Prepare for hybrid runtime installation
+          url:  "/verify-requirements"
+        - title: Install a hybrid runtime
+          url: "/runtime"
+        - title: Create an application
+          url: "/create-app-ui"
+        - title: Create and commit resources for application
+          url: "/create-app-specs"
+        - title: Update the image tag for application
+          url: "/create-rollout"
+        - title: Trigger the Hello World example pipeline
+          url: "/hello-world"
+        - title: Create a basic CI delivery pipeline
+          url: "/create-ci-pipeline"
 
-        
-  - title: Main concepts
-    url: "/main-concepts"
-  - title: Entity model
-    url: "/entity-model"
-  - title: Architecture
-    url: "/architecture"
-  - title: GitOps approach
-    url: "/gitops"
-  - title: Frequently asked questions
-    url: "/faq"
+
+    - title: Main concepts
+      url: "/main-concepts"
+    - title: Entity model
+      url: "/entity-model"
+    - title: Architecture
+      url: "/architecture"
+    - title: GitOps approach
+      url: "/gitops"
+    - title: Frequently asked questions
+      url: "/faq"
 
 - title: Clients
   url: "/clients"
@@ -56,9 +56,9 @@
     - title: Manage provisioned runtimes
       url: "/monitor-manage-runtimes"
     - title: Monitor provisioned hybrid runtimes
-      url: "/monitoring-troubleshooting" 
+      url: "/monitoring-troubleshooting"
     - title: Add external clusters to runtimes
-      url: "/managed-cluster" 
+      url: "/managed-cluster"
     - title: Add Git Sources to runtimes
       url: "/git-sources"
 
@@ -76,7 +76,7 @@
       url: "/sharing-file-system"
     - title: Nested workflows
       url: "/nested-workflows"
-    
+
 
 - title: Deployment
   url: "/deployment"
@@ -90,7 +90,7 @@
     - title: Images in Codefresh
       url: "/images"
     - title: Install Argo Rollouts
-      url: "/install-argo-rollouts"  
+      url: "/install-argo-rollouts"
 
 - title: Reports & Insights
   url: "/reporting"
@@ -99,7 +99,7 @@
       url: "/home-dashboard"
     - title: DORA metrics
       url: "/dora-metrics"
-    
+
 
 - title: Image enrichment
   url: "/integrations"
@@ -114,25 +114,25 @@
         - title: GitHub Actions
           url: "/github-actions"
         - title: Jenkins
-          url: "/jenkins"   
+          url: "/jenkins"
     - title: Issue tracking
       url: "/issue-tracking"
-      sub-pages:  
-      - title: Jira 
-        url: "/jira"
+      sub-pages:
+        - title: Jira
+          url: "/jira"
     - title: Container registries
       url: "/container-registries"
-      sub-pages:  
-      - title: Amazon ECR
-        url: "/amazon-ecr"      
-      - title: Docker Hub Registry
-        url: "/dockerhub"
-      - title: GitHub Container Registry
-        url: "/github-cr"
-      - title: JFrog Artifactory
-        url: "/jfrog" 
-      - title: Quay Registry
-        url: "/quay"
+      sub-pages:
+        - title: Amazon ECR
+          url: "/amazon-ecr"
+        - title: Docker Hub Registry
+          url: "/dockerhub"
+        - title: GitHub Container Registry
+          url: "/github-cr"
+        - title: JFrog Artifactory
+          url: "/jfrog"
+        - title: Quay Registry
+          url: "/quay"
 
 
 
@@ -146,7 +146,7 @@
     - title: Set up OAuth2 authentication for Git providers
       url: "/oauth-setup"
     - title: Authorize access to organizations/projects
-      url: "/hosted-authorize-orgs"  
+      url: "/hosted-authorize-orgs"
     - title: Single Sign-On
       url: "/single-sign-on"
       sub-pages:
@@ -179,10 +179,10 @@
     - title: Git tokens
       url: "/git-tokens"
     - title: Secrets
-      url: "/secrets"   
+      url: "/secrets"
     - title: Shared configuration repo
       url: "/shared-configuration"
-  
+
 - title: What's New?
   url: "/whats-new"
   pages:
@@ -194,7 +194,7 @@
   pages:
     - title: Runtimes
       url: "/runtime-issues"
-      
+
 
 - title: Terms and Privacy Policy
   url: "/terms-and-privacy-policy"
