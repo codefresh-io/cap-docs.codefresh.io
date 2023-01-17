@@ -19,8 +19,8 @@ Containerized applications are compiled, packaged, and deployed through Codefres
 Deploy an application directly to Kubernetes through the Codefresh UI, or use Helm as a package manager to deploy to Kubernetes, again from Codefresh. 
 Codefresh offers several levels of visibility into your deployments :
 * The Kubernetes dashboard displays the status of pods and Docker images.
-* The Helm dashabord displays the applications deployed to the cluster through Helm packages.
-* The Environment dashbaord displays both Helm and Kubernetes releases, the status of the cluster, and most importantly that of the builds that affect it. 
+* The Helm dashboard displays the applications deployed to the cluster through Helm packages.
+* The Environment dashboard displays both Helm and Kubernetes releases, the status of the cluster, and most importantly that of the builds that affect it. 
 
 See:  
 Quick starts for [Kubernetes]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-to-kubernetes/) and [Helm]({{site.baseurl}}/docs/quick-start/ci-quickstart/deploy-with-helm/) deployments  
@@ -36,7 +36,7 @@ See:
 [Creating]({{site.baseurl}}/docs/deployments/gitops/create-application/) and [Managing]({{site.baseurl}}/docs/deployments/gitops/manage-application/) GitOps applications  
 
 
-Just as with Dockerized applications, you get full visibily into the applications and their deployment through the global Analytics, DORA metrics, and the Application dashboards. The Applications dashboard shows the current state of all the resources in the application, including information for each resource, and possible actions.  
+Just as with Dockerized applications, you get full visibility into the applications and their deployment through the global Analytics, DORA metrics, and the Application dashboards. The Applications dashboard shows the current state of all the resources in the application, including information for each resource, and possible actions.  
 See:
 [Monitoring applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/) 
 
@@ -46,7 +46,7 @@ The pipeline is the central component in Codefresh that implements CI/CD process
 
 A CI pipeline can compile and package code, build and push Docker images. A CD pipeline can deploy applications/artifacts to VMs, Kubernetes clusters, FTP sites, S3 buckets, and more. And a CI/CD pipeline can combine code compilation, integration, and deployment for full CI/CD. 
 
-Codefresh offers a rich set of capabilites for easy creation and maintenance of pipelines such as ready-to-use steps for common tasks, variable, shared configuration, and more.
+Codefresh offers a rich set of capabilities to easily create and maintain pipelines such as ready-to-use steps for common tasks, variable, shared configuration, and more.
 
 See:  
 [Introduction to Codefresh pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  
@@ -54,7 +54,7 @@ See:
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 
 ## Project
-A project is a top-level entity in Codefresh for grouping related pipelines. Projects can group pipelines according to any criteria that is relevant to your enterprise. The criteria can be logical and based on teams, departments, or location for example, or funtional, and based on microservices in applications. 
+A project is a top-level entity in Codefresh for grouping related pipelines. Projects can group pipelines according to any criteria that is relevant to your enterprise. The criteria can be logical and based on teams, departments, or location for example, or functional, and based on microservices in applications. 
 Projects centralize viewing and configuration settings for the pipelines that belong to them:
 * Selecting  a pipeline shows the other pipelines in the same project
 * Access control and user-defined variables for the project are inherited by all the pipelines assigned to the project
@@ -72,7 +72,7 @@ Codefresh Runner gives you:
 * The ability to use special resources in your Codefresh pipeline that are unique to your application, GPU nodes or other special hardware only present in your data center.
 * Complete control over the build environment in addition to resources for pipelines.
 
-Every Runner installation creates a runtime enviroment in your account. Assign the Runner to any pipeline to automatically run the pipeline in your own cluster. External integrations (such as Docker registry or Helm repositories) are also available to the Runner making pipelines exactly the same regardless of their runtime environment.
+Every Runner installation creates a runtime environment in your account. Assign the Runner to any pipeline to automatically run the pipeline in your own cluster. External integrations (such as Docker registry or Helm repositories) are also available to the Runner making pipelines exactly the same regardless of their runtime environment.
 
 You can have multiple Runner installations in the same Codefresh account. A Runner can also manage multiple remote clusters in your account. 
 
@@ -90,7 +90,7 @@ A single Runtime can connect to and manage multiple remote clusters.
 
 
 See:  
-[GitOps runtime architecture]({{site.baseurl}}/docs/installation/runtime-architecture)  
+[GitOps runtime architecture]({{site.baseurl}}/docs/installation/runtime-architecture/#gitops-architecture)  
 [Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops)  
 [Hosted GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hosted-runtime)
 
@@ -113,13 +113,13 @@ See:
 
 ## Argo Workflows
 
-A workflow is type of Kubernetes resource that lets you define and run automated workflows, and stores their state. 
+A workflow is a type of Kubernetes resource that lets you define and run automated workflows, and stores their state. 
 Argo Workflows is an open source workflow engine that orchestrates parallel tasks on Kubernetes, implemented as a set of Kubernetes custom resource definitions (CRDs). 
 
 Argo Workflows is part of the Argo project, which provides Kubernetes-native software delivery tools including Argo CD, Argo Events and Argo Rollouts. 
 
 
 ## Related articles
-[Codefresh for CI]({{site.baseurl}}/docs/getting-started/ci-codefresh/) 
-[Codefresh for CD]({{site.baseurl}}/docs/getting-started/cd-codefresh/)  
+[Codefresh for CI]({{site.baseurl}}/docs/getting-started/ci-codefresh/)  
+[Codefresh for CD]({{site.baseurl}}/docs/getting-started/cd-codefresh/)   
 [Codefresh for GitOps]({{site.baseurl}}/docs/getting-started/gitops-codefresh/)  
