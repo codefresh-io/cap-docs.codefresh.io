@@ -27,6 +27,8 @@ Select the view mode to view runtime components and information, and manage prov
 
 
 Manage provisioned runtimes: 
+* [Update Git tokens for runtimes](#update-git-tokens-for-runtimes)
+* [Configure SSH for runtimes](#configure-ssh-for-runtimes)
 * [Add managed clusters to hybrid or hosted runtimes]({{site.baseurl}}/docs/runtime/managed-cluster/)
 * [Add and manage Git Sources associated with hybrid or hosted runtimes]({{site.baseurl}}/docs/runtime/git-sources/)
 * [Reset shared configuration repository](#reset-shared-configuration-repository)
@@ -99,6 +101,113 @@ Here is a description of the information in the Topology view.
 |**Cluster**              | The local, and managed clusters if any, for the runtime. {::nomarkdown}<ul><li><img src="../../../images/icons/local-cluster.png" display=inline-block/> indicates the local cluster, always displayed as `in-cluster`. The in-cluster server URL is always set to `https://kubernetes.default.svc/`.</li><li><img src="../../../images/icons/managed-cluster.png" display=inline-block/> indicates a managed cluster.</li> <li> <img src="../../../images/icons/add-cluster.png" display=inline-block/> select to add a new managed cluster.</li></ul> {:/} To view cluster components, select the cluster. To add and work with managed clusters, see [Adding external clusters to runtimes]({{site.baseurl}}/docs/runtime/managed-cluster). |
 |**Health/Sync status** |The health and sync status of the runtime or cluster. {::nomarkdown}<ul><li><img src="../../../images/icons/error.png" display="inline-block"> indicates health or sync errors in the runtime, or a managed cluster if one was added to the runtime.</br> The runtime or cluster node is bordered in red and the name is colored red.</li> <li><img src="../../../images/icons/cf-sync-status.png" display=inline-block/> indicates that the runtime is being synced to the cluster on which it is provisioned.</li></ul> {:/} |
 |**Search and View options** | {::nomarkdown}<ul><li>Find a runtime or its clusters by typing part of the runtime/cluster name, and then navigate to the entries found. </li> <li>Topology view options: Resize to window, zoom in, zoom out, full screen view.</li></ul> {:/}|
+
+### Update Git tokens for runtimes
+
+Provisioned runtimes require valid Git tokens at all times to authenticate Git actions by you as a user.  
+>These tokens are specific to the user, and the same token can be used for multiple runtimes.
+
+There are two different situations when you need to update Git tokens:  
+* Update invalid, revoked, or expired tokens: Codefresh automatically flags runtimes with such tokens. It is mandatory to update the Git tokens to continue working with the platform. 
+* Update valid tokens: Optional. You may want to update Git tokens, even valid ones, by deleting the existing token and replacing it with a new token.
+
+The methods for updating any Git token are the same regardless of the reason for the update:  
+* OAuth2 authorization, if your admin has registered an OAuth Application for Codefresh
+* Git access token authentication, by generating a personal access token in your Git provider account with the correct scopes
+
+**Before you begin**  
+* To authenticate through a Git access token, make sure your token is valid and has [the required scopes]({{site.baseurl}}/docs/reference/git-tokens) 
+
+**How to**
+1. Do one of the following:
+  * If you see a notification in the Codefresh UI about invalid runtime tokens,  click **[Update Token]**.
+    The Runtimes page shows runtimes with invalid tokens prefixed by the key icon. Mouse over shows invalid token.
+  * To update an existing token, go to [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+1. From the List view, select the runtime for which to update the Git token.
+1. From the context menu with the additional actions at the top-right, select **Update Git Runtime Credentials**.
+
+  {% include
+ image.html
+ lightbox="true"
+ file="/images/runtime/update-git-runtime-token.png"
+ url="/images/runtime/update-git-runtime-token.png"
+ alt="Update Git runtime credentials"
+ caption="Update Git runtime credentials"
+  max-width="40%"
+%}
+
+{:start="4"}
+1. Do one of the following: 
+  * If your admin has set up OAuth access, click **Authorize Access to Git Provider**. Go to _step 5_.
+  * Alternatively, authenticate with an access token from your Git provider. Go to _step 6_.
+
+{:start="5"}  
+1. For OAuth2 authorization:
+  > If the application is not registered, you get an error. Contact your admin for help.  
+  * Enter your credentials, and select **Sign In**.
+  * If required, as for example if two-factor authentication is configured, complete the verification. 
+
+    {% include 
+      image.html 
+      lightbox="true" 
+      file="/images/administration/user-settings/oauth-user-authentication.png" 
+      url="/images/administration/user-settings/oauth-user-authentication.png" 
+      alt="Authorizing access with OAuth2" 
+      caption="Authorizing access with OAuth2"
+      max-width="30%" 
+   %}
+
+{:start="6"} 
+1. For Git token authentication, expand **Advanced authorization options**, and then paste the generated token in the **Git runtime token** field.
+
+1. Click **Update Credentials**.
+
+
+### Configure SSH for runtimes
+By default, Git repositories use the HTTPS protocol. You can also use SSH to connect Git repositories by entering the SSH private key.
+
+>When SSH is configured for a runtime, when creating/editing Git-Source applications, you can select HTTPS OR SSH as the protocol to connect to the Git repository. See [Repository URL in Application Source definitions]({{site.baseurl}}/docs/deployment/create-application/#source).
+
+**SSH keys**  
+For more information on generating SSH private keys, see the official documentation:
+* [GitHub](https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent){:target="\_blank"}
+* [GitLab](https://docs.gitlab.com/ee/ssh/#generating-a-new-ssh-key-pair){:target="\_blank"}
+* [Bitbucket](https://confluence.atlassian.com/bitbucket/set-up-an-ssh-key-728138079.html){:target="\_blank"}
+* [Azure](https://docs.microsoft.com/en-us/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops&tabs=current-page){:target="\_blank"}
+
+**Before you begin** 
+Copy the SSH private key for your Git provider
+
+**How to**  
+1. In the Codefresh UI, make sure you are in [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+1. From the **List View**, select the runtime for which to configure SSH.
+1. From the context menu with the additional actions at the top-right, select **Update Git Runtime Credentials**. 
+
+  {% include
+ image.html
+ lightbox="true"
+ file="/images/runtime/update-git-runtime-token.png"
+ url="/images/runtime/update-git-runtime-token.png"
+ alt="Update Git runtime credentials"
+ caption="Update Git runtime credentials"
+  max-width="40%"
+%}
+
+{:start="4"}
+1. Expand **Connect Repo using SSH**, and then paste the raw SSH private key into the field.
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/runtime/configure-ssh-for-runtimes.png"
+ url="/images/runtime/configure-ssh-for-runtimes.png"
+ alt="Update Git runtime credentials"
+ caption="Update Git runtime credentials"
+  max-width="40%"
+%}
+
+{:start="5"}
+1. Click **Update Credentials**.
 
 ### Reset shared configuration repository
 Codefresh creates the [shared configuration repository]({{site.baseurl}}/docs/reference/shared-configuration) when you install the first hybrid or hosted GitOps runtime for your account, and uses it for all runtimes you add to the same account.
@@ -306,67 +415,6 @@ Pass the mandatory flags in the uninstall command:
 1. Select the Kube context from which to uninstall the runtime, and then confirm the uninstall.
 1. If you get errors, run the uninstall command again, with the `--force` flag.
 
-
-
-### Update Git tokens for runtimes
-
-Provisioned runtimes require valid Git tokens at all times to authenticate Git actions by you as a user.  
->These tokens are specific to the user, and the same token can be used for multiple runtimes.
-
-There are two different situations when you need to update Git tokens:  
-* Update invalid, revoked, or expired tokens: Codefresh automatically flags runtimes with such tokens. It is mandatory to update the Git tokens to continue working with the platform. 
-* Update valid tokens: Optional. You may want to update Git tokens, even valid ones, by deleting the existing token and replacing it with a new token.
-
-The methods for updating any Git token are the same regardless of the reason for the update:  
-* OAuth2 authorization, if your admin has registered an OAuth Application for Codefresh
-* Git access token authentication, by generating a personal access token in your Git provider account with the correct scopes
-
-**Before you begin**  
-* To authenticate through a Git access token, make sure your token is valid and has [the required scopes]({{site.baseurl}}/docs/reference/git-tokens) 
-
-**How to**
-1. Do one of the following:
-  * If you see a notification in the Codefresh UI about invalid runtime tokens,  click **[Update Token]**.
-    The Runtimes page shows runtimes with invalid tokens prefixed by the key icon. Mouse over shows invalid token.
-  * To update an existing token, go to [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
-1. Select the runtime for which to update the Git token.
-1. From the context menu with the additional actions at the top-right, select **Update Git Runtime token**.
-
-  {% include
- image.html
- lightbox="true"
- file="/images/runtime/update-git-runtime-token.png"
- url="/images/runtime/update-git-runtime-token.png"
- alt="Update Git runtime token option"
- caption="Update Git runtime token option"
-  max-width="40%"
-%}
-
-{:start="4"}
-1. Do one of the following: 
-  * If your admin has set up OAuth access, click **Authorize Access to Git Provider**. Go to _step 5_.
-  * Alternatively, authenticate with an access token from your Git provider. Go to _step 6_.
-
-{:start="5"}  
-1. For OAuth2 authorization:
-  > If the application is not registered, you get an error. Contact your admin for help.  
-  * Enter your credentials, and select **Sign In**.
-  * If required, as for example if two-factor authentication is configured, complete the verification. 
-
-    {% include 
-      image.html 
-      lightbox="true" 
-      file="/images/administration/user-settings/oauth-user-authentication.png" 
-      url="/images/administration/user-settings/oauth-user-authentication.png" 
-      alt="Authorizing access with OAuth2" 
-      caption="Authorizing access with OAuth2"
-      max-width="30%" 
-   %}
-
-{:start="6"} 
-1. For Git token authentication, expand **Advanced authorization options**, and then paste the generated token in the **Git runtime token** field.
-
-1. Click **Update Token**.
 
 
 
