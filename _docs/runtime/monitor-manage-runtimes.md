@@ -133,7 +133,7 @@ The methods for updating any Git token are the same regardless of the reason for
  url="/images/runtime/update-git-runtime-token.png"
  alt="Update Git runtime credentials"
  caption="Update Git runtime credentials"
-  max-width="40%"
+  max-width="60%"
 %}
 
 {:start="4"}
@@ -175,8 +175,9 @@ For more information on generating SSH private keys, see the official documentat
 * [Bitbucket](https://confluence.atlassian.com/bitbucket/set-up-an-ssh-key-728138079.html){:target="\_blank"}
 * [Azure](https://docs.microsoft.com/en-us/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops&tabs=current-page){:target="\_blank"}
 
-**Before you begin** 
-Copy the SSH private key for your Git provider
+**Before you begin**  
+Copy the SSH private key for your Git provider  
+
 
 **How to**  
 1. In the Codefresh UI, make sure you are in [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
@@ -190,7 +191,7 @@ Copy the SSH private key for your Git provider
  url="/images/runtime/update-git-runtime-token.png"
  alt="Update Git runtime credentials"
  caption="Update Git runtime credentials"
-  max-width="40%"
+  max-width="60%"
 %}
 
 {:start="4"}
