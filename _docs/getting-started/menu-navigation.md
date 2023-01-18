@@ -8,8 +8,10 @@ toc: true
 ## Classic to New navigation
 Get up to speed with the changes in the navigation.
 
+
 We added a new **Settings** icon to the toolbar to simplify account-level management by Codefresh administrators.
 The Settings icon is always available, so you have _single-click access_ to account-level options and settings whenever you need.
+
 
 
 
