@@ -47,6 +47,8 @@ Configure the ingress controller to handle TCP requests.
 </br></br>
 {:/}
 
+>You need to configure ingress controllers only if your runtime uses an ingress controller. Codefresh offers tunnel-based runtimes which do not require ingress controllers. See [Tunnel-based runtime flags]({{site.baseurl}}/docs/runtime/installation/#tunnel-based-runtime-flags).
+
 ### Ambassador ingress configuration
 For detailed configuration information, see the [Ambassador ingress controller documentation](https://www.getambassador.io/docs/edge-stack/latest/topics/running/ingress-controller){:target="\_blank"}.  
 
