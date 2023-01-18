@@ -8,8 +8,8 @@ toc: true
 ## Classic to New navigation
 Get up to speed with the changes in the navigation.
 
-We added a new **Settings** icon to the toolbar to simplify access to account-level options, typically handled by Codefresh administrators.
-All account-level options and settings are in the same location. You now have _single-click access_ to these options whenever you need.
+We added a new **Settings** icon to the toolbar to simplify account-level management by Codefresh administrators.
+The Settings icon is always available, so you have _single-click access_ to account-level options and settings whenever you need.
 
 
 
@@ -24,10 +24,12 @@ All account-level options and settings are in the same location. You now have _s
 %}
 
 ### Avatar options
+
+{: .table .table-bordered .table-hover}
 |  CLASSIC             |                               |  |NEW              |             |
-|                      | Menu item                     |  |                 |             | 
+|  Bucket              | Menu item                     | | Bucket        |  Menu item           | 
 | -------------------  | -------------------           |  | ---------------- | ---------  | 
-|Avatar                 |                              |  |                  |            |     
+| **AVATAR**           |                              |  |                  |            |     
 |                       |Account Settings              |  |                  | Moved to Settings  |
 |                       |User Management               |  |                  | Moved to Settings  |               
 |                       |Billing                       |  |                  | Moved to Settings  |             
@@ -46,32 +48,32 @@ Access account-level options through the Settings icon:
 
 {: .table .table-bordered .table-hover}
 |  CLASSIC             |                               |&rarr; |NEW           |           |
-|  Bucket              | Menu item                     | |                    |             | 
+|  Bucket              | Menu item                     | |      Bucket        |  Menu item           | 
 | -------------------  | -------------------           |  | ----------------  | ---------     | 
-| **GENERAL**          |  -                            |  | No change         |                          |       
-|                      | **Account Information**       |  |                   | (Renamed) Organization Information |       
-|                      | **Users & Teams**             |  |                   | Now in Access & Collaboration |
+| **GENERAL**          |                               |  | No change         |                          |       
+|                      | **Account Information**       | &rarr; |                   | (Renamed) Organization Information |       
+|                      | **Users & Teams**             | &rarr; |                   | Now in Access & Collaboration |
 |                      | **Subscription & Billing**    |  |                   | No change                |
 |                      | **Usage**                     |  |                   | No change                |
 |                      |                               |  |                   |                          |       
 | **CONFIGURATION**    |                               |  | No change         |                          |       
-|                      | **Integrations**              |  |                   |(Renamed) Pipeline Integrations |       
-|                      |                               |  |                   | GitOps Integrations (NEW)|       
+|                      | **Integrations**              | &rarr; |                   |(Renamed) Pipeline Integrations |       
+|                      |                               |&rarr;  |                   |(New) GitOps Integrations |       
 |                      | **Pipeline Settings**         |  |                   | No change                |       
-|                      | **Codefresh Runner**          |  |                   | (Moved) Runtimes bucket |
-|                      | **Runtime Environments**      |  |                   | (Moved) Runtimes bucket |
+|                      | **Codefresh Runner**          |&rarr;  |                   | (Moved to Runtimes bucket |
+|                      | **Runtime Environments**      | &rarr; |                   | (Moved) Runtimes bucket |
 |                      | **GitOps Controller**         |  |                   |  ??                       |
 |                      | **Shared Configuration**      |  |                   | No change                |
 |                      | **Nodes**                     |  |                   | ??                       |
 |                      |                               |  |                   |                          |       
-| **SECURITY**         |                               |  | (Renamed) Access & Collaboration|            |       
-|                      | **Single Sign-On**            |  |                   | (Now in) Access & Collaboration |       
-|                      | **Permissions**               |  |                   | Now in Access & Collaboration|       
+| **SECURITY**         |                               |&rarr;  | (Renamed) ACCESS & COLLABORATION|            |       
+|                      | **Single Sign-On**            |  |                   |(Now in) Access & Collaboration |       
+|                      | **Permissions**               |  |                   | Now in Access & Collaboration  |       
 |                      | **Audit**                     |  |                   | Now in Access & Collaboration  |       
 |                      |                               |  |                   |                          |       
-|                      |                               |  | Runtimes          |                                |       
-|                      |                               |  |                   |  Build Runtimes (moved from Runtimes and renamed) |       
-|                      |                               |  |                   |  GitOps Runtimes (NEW) |       
+|                      |                               |&rarr;  | RUNTIMES    |                                |       
+|                      |                               |&rarr;  |                   | (Renamed) Build Runtimes  |       
+|                      |                               |&rarr;  |                   |  (New) GitOps Runtimes|       
 
 
 
