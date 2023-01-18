@@ -26,15 +26,15 @@ The Settings icon is always available, so you have _single-click access_ to acco
 ### Avatar options
 
 {: .table .table-bordered .table-hover}
-|  CLASSIC             |                               |  |NEW              |             |
+|  CLASSIC             |                               | &rarr; |NEW              |             |
 |  Bucket              | Menu item                     | | Bucket        |  Menu item           | 
 | -------------------  | -------------------           |  | ---------------- | ---------  | 
-| **AVATAR**           |                              |  |                  |            |     
-|                       |Account Settings              |  |                  | Moved to Settings  |
-|                       |User Management               |  |                  | Moved to Settings  |               
-|                       |Billing                       |  |                  | Moved to Settings  |             
+| **AVATAR**           |                               |  |                  |            |     
+|                       |Account Settings              |&rarr;  |                  | Moved to Settings  |
+|                       |User Management               |&rarr;  |                  | Moved to Settings  |               
+|                       |Billing                       |&rarr;  |                  | Moved to Settings  |             
 |                       |User Settings                 |  |                  | No change                 |
-|                       |                              |  |                  | Git Personal Access Token |
+|                       |                              | &rarr; |                  | Git Personal Access Token |
 
 ### Account-level options
 
@@ -81,35 +81,35 @@ Access account-level options through the Settings icon:
 We renamed buckets and moved items for more intuitive access. 
 
 {: .table .table-bordered .table-hover}
-|  CLASSIC             |                         | |&rarr;              |NEW          |    
+|  CLASSIC             |                         | &rarr;|              |NEW          |    
 |  Bucket              | Menu item               | |                    |            | 
 | -------------------  | -------------------     |  | ----------------  | ---------  | 
 |                       |                        | |                    |  Home      |
-|                       |                        | | Insights       |            |
+|                       |                        |&rarr; | INSIGHTS       |            |
 |                       |                        | |               | DORA Metrics |
-|**Build > Test > Deploy**|                      | |Pipelines      |
+|                       |                        | |               |            |
+|**BUILD > TEST > DEPLOY**|                      |&rarr; |PIPELINES  |          |
 |                       |**Projects**            | |               | No change  |
 |                       |**Pipelines**           | |               | No change  |
 |                       |**Builds**              | |              | No change  |
 |                       |**Steps**               | |               | No change  |
 |                       |                        | |               |            |
-|**DevOps Insights**    |                        | |Ops            |            |
-|                       |                        | |                | GitOps Apps | 
-|                       |**Kubernetes > Services** | |               | Kubernetes Services |
+|**DEVOPS INSIGHTS**    |                        |&rarr; |OPS            |            |
+|                       |                        | &rarr;|                | GitOps Apps | 
+|                       |**Kubernetes > Services** | &rarr;|               | Kubernetes Services |
 |                       |**Kubernetes > Monitor** | |               | ???
 |                       |**Helm Releases**        | |               | No change  |
 |                       |**Helm Boards**          | |               | No change  |
 |                       |**Environments**         | |               | No change |
-|                       |**Kubernetes > Monitor** | |               | No change
-|                       |**GitOps**               | |               | Deprecated  |
+|                       |**GitOps**               |&rarr; |               | Deprecated  |
 |                       |                         | |               |            |
-|**Artifacts**          |                         | | No change
+|**ARTIFACTS**          |                         | | No change
 |                       |**Images**               | |               |  No change |
 |                       |**Helm Charts**          | |               |  No change |
 |                       |**Compositions**         | |               |  No change |
 |                       |                         | |               |            |
-|**Settings**           |                         | |               |            |
-|                       |**Account Settings**     | |               |(Moved) Settings in toolbar|
-|                       |**User Settings**        | |               | Avatar     |
+|**SETTINGS**           |                         | |               |            |
+|                       |**Account Settings**     |&rarr; |               |(Moved) Settings in toolbar|
+|                       |**User Settings**        |&rarr; |               | Avatar     |
 
 
