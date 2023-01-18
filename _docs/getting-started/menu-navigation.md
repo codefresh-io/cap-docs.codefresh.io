@@ -5,35 +5,48 @@ group: getting-started
 toc: true
 ---
 
-## Classic version navigation
+## Classic to New navigation
+Get up to speed with the changes in the navigation.
+
+We added a new **Settings** icon to the toolbar to simplify access to account-level options, typically handled by Codefresh administrators.
+All account-level options and settings are in the same location. You now have _single-click access_ to these options whenever you need.
+
+
+
+{% include 
+  image.html 
+  lightbox="true" 
+  file="/images/getting-started/settings-icon.png" 
+  url="/images/getting-started/settings-icon.png" 
+  alt="Settings icon in toolbar" 
+  caption="Settings icon in toolbar"
+    max-width="70%" 
+%}
 
 ### Avatar options
 |  CLASSIC             |                               |  |NEW              |             |
-|                       | Menu item                    |  |                 |             | 
+|                      | Menu item                     |  |                 |             | 
 | -------------------  | -------------------           |  | ---------------- | ---------  | 
 |Avatar                 |                              |  |                  |            |     
 |                       |Account Settings              |  |                  | Moved to Settings  |
-|                       |User Management               |  | 
-|                       |Billing                       |
-|                       |User Settings                 |  |                 | No change                 |
-|                       |                              |  |                 | Git Personal Access Token |
+|                       |User Management               |  |                  | Moved to Settings  |               
+|                       |Billing                       |  |                  | Moved to Settings  |             
+|                       |User Settings                 |  |                  | No change                 |
+|                       |                              |  |                  | Git Personal Access Token |
 
 ### Account-level options
 
-We moved all account-level options and settings to a single centralized location.  
-You now have _single-click access_ to these options whenever you need:
+Access account-level options through the Settings icon: 
 * Account & user management
 * Integrations
 * Configurations
 * Runtimes
 
-Where:
-* Click on the **Settings** (gear) icon on the toolbar.
-SCREEN
+
 
 {: .table .table-bordered .table-hover}
-|  CLASSIC             |                               | |NEW              |           |
-|  Bucket              | Menu item                     | |                 |             | 
+|  CLASSIC             |                               |&rarr; |NEW           |           |
+|  Bucket              | Menu item                     | |                    |             | 
 | -------------------  | -------------------           |  | ----------------  | ---------     | 
 | **GENERAL**          |  -                            |  | No change         |                          |       
 |                      | **Account Information**       |  |                   | (Renamed) Organization Information |       
@@ -66,10 +79,10 @@ SCREEN
 We renamed buckets and moved items for more intuitive access. 
 
 {: .table .table-bordered .table-hover}
-| Menu Bucket          | Menu                   | |                   |           |
-| Classic              | Classic                 | |  New              |  New      | 
-| -------------------  | -------------------     | |  -----------------| --------- | 
-|                       |                        | |                  |  Home      |
+|  CLASSIC             |                         | |&rarr;              |NEW          |    
+|  Bucket              | Menu item               | |                    |            | 
+| -------------------  | -------------------     |  | ----------------  | ---------  | 
+|                       |                        | |                    |  Home      |
 |                       |                        | | Insights       |            |
 |                       |                        | |               | DORA Metrics |
 |**Build > Test > Deploy**|                      | |Pipelines      |
@@ -98,221 +111,3 @@ We renamed buckets and moved items for more intuitive access.
 |                       |**User Settings**        | |               | Avatar     |
 
 
-
-
-<table>
-    <tr>
-        <td>Menu Bucket</td>
-        <td>Menu</td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>Classic</td>
-        <td>Classic</td>
-        <td></td>
-        <td>New</td>
-        <td>New</td>
-    </tr>
-    <tr>
-        <td>-------------------</td>
-        <td>-------------------</td>
-        <td></td>
-        <td>-----------------</td>
-        <td>---------</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>Home</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>Insights</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>DORA Metrics</td>
-    </tr>
-    <tr>
-        <td>**Build &gt; Test &gt; Deploy**</td>
-        <td></td>
-        <td></td>
-        <td>Pipelines</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>**Projects**</td>
-        <td></td>
-        <td></td>
-        <td>No change</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>**Pipelines**</td>
-        <td></td>
-        <td></td>
-        <td>No change</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>**Builds**</td>
-        <td></td>
-        <td></td>
-        <td>No change</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>**Steps**</td>
-        <td></td>
-        <td></td>
-        <td>No change</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>**DevOps Insights**</td>
-        <td></td>
-        <td></td>
-        <td>Ops</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>GitOps Apps</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>**Kubernetes &gt; Services**</td>
-        <td></td>
-        <td></td>
-        <td>Kubernetes Services</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>**Kubernetes &gt; Monitor**</td>
-        <td></td>
-        <td></td>
-        <td>???</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>**Helm Releases**</td>
-        <td></td>
-        <td></td>
-        <td>No change</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>**Helm Boards**</td>
-        <td></td>
-        <td></td>
-        <td>No change</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>**Environments**</td>
-        <td></td>
-        <td></td>
-        <td>No change</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>**Kubernetes &gt; Monitor**</td>
-        <td></td>
-        <td></td>
-        <td>No change</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>**GitOps**</td>
-        <td></td>
-        <td></td>
-        <td>Deprecated</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>**Artifacts**</td>
-        <td></td>
-        <td></td>
-        <td>No change</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>**Images**</td>
-        <td></td>
-        <td></td>
-        <td>No change</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>**Helm Charts**</td>
-        <td></td>
-        <td></td>
-        <td>No change</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>**Compositions**</td>
-        <td></td>
-        <td></td>
-        <td>No change</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>**Settings**</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>**Account Settings**</td>
-        <td></td>
-        <td></td>
-        <td>(Moved) Settings in toolbar</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>**User Settings**</td>
-        <td></td>
-        <td></td>
-        <td>Avatar</td>
-    </tr>
-</table>
-
-
-
-Server version 1.18 and higher, without Argo Project components. {::nomarkdown}<br><b>Tip</b>:  To check the server version, run:<br> <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">kubectl version --short</span>.{:/}
