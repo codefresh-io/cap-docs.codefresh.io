@@ -13,7 +13,7 @@ Application creation and deployment is one part of the continuous deployment/del
 * [Synchronize applications](#manually-synchronize-an-application)   
   Sync applications on-demand by manually applying sync options or selecting the resources to sync.
 
-* [Delete applications](#delete-an-application)
+* [Delete applications](#delete-an-application)  
   Delete unused or legacy applications to avoid clutter and remove unnecessary resources.
 
 
