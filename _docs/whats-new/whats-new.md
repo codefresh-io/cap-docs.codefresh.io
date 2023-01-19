@@ -850,7 +850,7 @@ Codefresh warns you of the implication of deleting the selected application in t
 max-width="50%"
 %}
 
-See [Update application configuration]({{site.baseurl}}/docs/deployment/create-application/#update-application-configuration) and [Delete an application]({{site.baseurl}}/docs/deployment/create-application/#delete-an-application).
+See [Update application configuration]({{site.baseurl}}/docs/deployment/create-application/#update-application-configuration) and [Delete an application]({{site.baseurl}}/docs/deployment/manage-application/#delete-an-application).
 
 {::nomarkdown}
 <br>
