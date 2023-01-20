@@ -12,4 +12,5 @@ group :development, :test do
   gem 'jekyll-github-metadata', '~> 2.9.4'
   gem 'bootstrap', '~> 4.1.3'
   gem 'jemoji'
+  gem 'jekyll-seo-tag'
 end

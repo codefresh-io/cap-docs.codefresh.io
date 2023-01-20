@@ -1,5 +1,6 @@
 ---
 title: "Installation environments"
+canonical_url: 'https://example.com'
 description: ""
 group: runtime
 toc: true

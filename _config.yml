@@ -69,6 +69,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-github-metadata
   - jemoji
+  - jekyll-seo-tag
 
 repository: codefresh-io/docs.codefresh.io
 
