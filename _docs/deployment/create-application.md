@@ -1,6 +1,7 @@
 ---
 title: "Creating applications"
 description: ""
+canonical_url: 'https://codefresh.io/docs/docs/deployments/gitops/create-application/'
 group: deployment
 toc: true
 ---

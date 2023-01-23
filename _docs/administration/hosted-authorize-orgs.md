@@ -1,6 +1,7 @@
 ---
 title: "Authorize organizations/projects"
 description: ""
+canonical_url: 'https://codefresh.io/docs/docs/administration/account-user-management/hosted-authorize-orgs/'
 group: runtime
 toc: true
 ---

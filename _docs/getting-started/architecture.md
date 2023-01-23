@@ -1,6 +1,7 @@
 ---
 title: "Architecture"
 description: ""
+canonical_url: 'https://codefresh.io/docs/docs/installation/runtime-architecture/'
 group: getting-started
 toc: true
 ---

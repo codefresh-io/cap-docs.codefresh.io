@@ -1,6 +1,7 @@
 ---
 title: "Manage users"
 description: ""
+canonical_url: 'https://codefresh.io/docs/docs/administration/account-user-management/add-users/'
 group: administration
 toc: true
 ---
