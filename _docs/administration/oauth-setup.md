@@ -48,7 +48,7 @@ The Type column identifies the authentication for the provider account as either
    max-width="80%" 
    %}
  
-As the account administrator, you can change the authentication method for an account at any time to either Codefresh or Custom, or manual token entry. See [Select authentication mechanism for runtime](#select-authentication-mechanism-for-runtime).
+As the account administrator, you can change the authentication method for hybrid runtimes at any time to either Codefresh or Custom, or manual token entry. See [Select authentication mechanism for runtime](#select-authentication-mechanism-for-runtime).
 
 ### Create a custom OAuth2 Application for Git provider 
 Create a custom OAuth2 Application for Codefresh in your Git provider accounts with the correct scopes, and set up authentication for the same within Codefresh. Users in Codefresh can then authorize access to the Git provider using OAuth2, instead of a personal access token.  
@@ -211,7 +211,8 @@ Configure the settings for the Custom OAuth2 Application in Codefresh. Configuri
 You have completed the setup to authorize Codefresh as an OAuth App for your Git provider. 
 
 ### Select authentication mechanism for runtime
-For a Git provider and a runtime account, select the authentication mechanism: Codefresh account, Custom provider account if one exists, or token-based authentication.
+For a Git provider and a hybrid runtime, select the authentication mechanism: Codefresh account, Custom provider account if one exists, or token-based authentication.
+>Hosted runtimes can have either Codefresh or PAT token authentication mechanisms. Custom provider authentication is disabled for hosted runtimes.
 
 1. In the Codefresh UI, go to [Authentication](https://g.codefresh.io/2.0/account-settings/authentication?providerName=github){:target="\_blank"}.
 1. Select the runtime, and click ![](/images/administration/users/icon-Edit.png?display=inline-block) **Edit**. 
