@@ -1,6 +1,7 @@
 ---
 title: "Shared configuration repo"
 description: ""
+canonical_url: 'https://codefresh.io/docs/docs/reference/shared-configuration/'
 group: reference
 toc: true
 ---

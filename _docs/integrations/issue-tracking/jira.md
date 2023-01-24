@@ -1,6 +1,7 @@
 ---
 title: "Jira"
 description: " "
+canonical_url: 'https://codefresh.io/docs/docs/gitops-integrations/issue-tracking/jira/'
 group: integrations
 sub_group: issue-tracking
 toc: true

@@ -1,6 +1,7 @@
 ---
 title: "Docker Hub"
 description: ""
+canonical_url: 'https://codefresh.io/docs/docs/gitops-integrations/container-registries/dockerhub/'
 group: integrations
 sub_group: container-registries
 toc: true

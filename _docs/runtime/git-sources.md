@@ -1,6 +1,7 @@
 ---
 title: "Add Git Sources to runtimes"
 description: ""
+canonical_url: 'https://codefresh.io/docs/docs/installation/gitops/git-sources/'
 group: runtime
 toc: true
 ---

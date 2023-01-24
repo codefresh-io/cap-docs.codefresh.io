@@ -1,6 +1,7 @@
 ---
 title: "Quay"
 description: ""
+canonical_url: 'https://codefresh.io/docs/docs/gitops-integrations/container-registries/quay/'
 group: integrations
 sub_group: container-registries
 toc: true

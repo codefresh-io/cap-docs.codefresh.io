@@ -1,6 +1,7 @@
 ---
 title: "Configure artifact repository"
 description: ""
+canonical_url: 'https://codefresh.io/docs/docs/workflows/configure-artifact-repository/'
 group: pipelines
 toc: true
 ---

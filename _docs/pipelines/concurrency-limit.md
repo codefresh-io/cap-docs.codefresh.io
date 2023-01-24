@@ -1,6 +1,7 @@
 ---
 title: "Selectors for concurrency synchronization"
 description: ""
+canonical_url: 'https://codefresh.io/docs/docs/workflows/concurrency-limit/'
 group: pipelines
 toc: true
 ---

@@ -1,6 +1,7 @@
 ---
 title: "Git tokens"
 description: ""
+canonical_url: 'https://codefresh.io/docs/docs/reference/git-tokens/'
 group: reference
 redirect_from:
   - /docs/administration/git-tokens/ 

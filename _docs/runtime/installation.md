@@ -1,6 +1,7 @@
 ---
 title: "Install hybrid runtimes"
 description: ""
+canonical_url: 'https://codefresh.io/docs/docs/installation/gitops/hybrid-gitops/'
 group: runtime
 toc: true
 ---
