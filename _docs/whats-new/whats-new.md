@@ -7,7 +7,57 @@ redirect_from:
 toc: true
 ---
 
-Built on Argo, the world’s most popular and fastest-growing open source software delivery, Codefresh unlocks the full enterprise potential of Argo Workflows, Argo CD, Argo Events, and Argo Rollouts, providing a control-plane for managing them at scale.  
+Built on Argo, the world’s most popular and fastest-growing open source software delivery, Codefresh unlocks the full enterprise potential of Argo Workflows, Argo CD, Argo Events, and Argo Rollouts, providing a control-plane for managing them at scale.
+
+
+## January 2023
+
+### Features & enhancements
+
+<br />
+
+#### SSH for runtimes
+We added the option to configure SSH for runtime accounts. Generate the SSH private key for your Git provider and then In the List view for runtimes you can 
+
+Adding SSH to runtime accounts allows you to also use SSH to connect to Git repositories when creating or editing application definitions. 
+
+For details, see [Configure SSH for runtimes]({{site.baseurl}}/docs/runtime/monitor-manage-runtimes/#configure-ssh-for-runtimes).
+
+#### Artifact visualization in Argo Workflows
+
+Argo Workflows v3.4 introduced artifact visualization in the Argo UI. You can now visualize workflow artifacts right in Codefresh. Clicking the Artifacts tab in Workflows displays the artifact. In addition to viewing it, you can also download it if you need to. 
+
+
+#### Rollback for rollouts
+
+
+#### Application enhancements
+
+* Notification for disabled auto-sync
+  Whenever auto-sync is disabled for an application, the application header displays a notification of the same. 
+
+* SSH URLs for applications
+  When you create or edit an application, if your runtime has been configured with SSH, you can also define the app's URL as SSH.  
+  Select the SSH tab and the URL, and Codefresh auto-completes the URL definition in the format required for SSH.
+
+* Filter app resources through Resource Inventory
+  From this release, all resource types in the Resource Inventory (bottom-left in the Current State > Tree view) are also filters. Previously, you could filter only by the Out-of-sync resource type.
+  
+
+
+
+
+
+#### Argo Project enhancements
+
+* **New Workflow Templates in Codefresh Hub for Argo**  
+  We are always working on ways to make your work easier. And in this release, we added several Workflow templates that focus on worklfow commands to our Marketplace Hub. Check out the [Terminate, Stop, Suspend, and Resume templates](https://codefresh.io/argohub/workflow-template/argo-workflows){:target="\_blank"}. 
+
+
+* **Argo Rollouts upgrade**  
+  We have upgraded our Argo Rollouts version to 1.4rc-1. Read more in the [official blog](https://blog.argoproj.io/argo-rollouts-1-4-release-8275a0d364be){:target="\_blank"}.
+
+
 
 ## December 2022
 
