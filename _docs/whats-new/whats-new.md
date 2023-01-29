@@ -1,6 +1,7 @@
 ---
 title: "What's new in Codefresh?"
 description: ""
+canonical_url: 'https://codefresh.io/docs/docs/whats-new/gitops-whats-new/'
 group: whats-new
 redirect_from:
   - /docs/whats-new/

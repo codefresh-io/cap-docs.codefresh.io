@@ -1,6 +1,7 @@
 ---
 title: "Service Commitment"
 description: "Codefresh Cloud Service SLA"
+canonical_url: 'https://codefresh.io/docs/docs/terms-and-privacy-policy/sla/'
 group: terms-and-privacy-policy
 toc: true
 ---
