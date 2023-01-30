@@ -17,7 +17,17 @@ Built on Argo, the world’s most popular and fastest-growing open source softwa
 <br />
 
 #### SSH for runtimes
-We added the option to configure SSH for runtime accounts. Generate the SSH private key for your Git provider and then In the List view for runtimes you can 
+We added the option to configure SSH for runtime accounts, in addition to the default HTTPS. For SSH, you need the SSH private key for your Git provider, and paste the same  in the List view for runtimes, you can 
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-jan23-configure-ssh-for-runtimes.png"
+ url="/images/whats-new/rel-notes-jan23-configure-ssh-for-runtimes.png"
+ alt="SSH for runtime"
+ caption="SSH for runtime"
+ max-width="60%"
+%}
 
 Adding SSH to runtime accounts allows you to also use SSH to connect to Git repositories when creating or editing application definitions. 
 
@@ -25,37 +35,120 @@ For details, see [Configure SSH for runtimes]({{site.baseurl}}/docs/runtime/moni
 
 #### Artifact visualization in Argo Workflows
 
-Argo Workflows v3.4 introduced artifact visualization in the Argo UI. You can now visualize workflow artifacts right in Codefresh. Clicking the Artifacts tab in Workflows displays the artifact. In addition to viewing it, you can also download it if you need to. 
+Argo Workflows v3.4 introduced artifact visualization in the Argo UI. You can now visualize workflow artifacts in the Codefresh UI. Clicking the Artifacts tab in Workflows displays the artifact. You can also download it if you need to. 
 
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-jan23-workflow-artifact.png"
+ url="/images/whats-new/rel-notes-jan23-workflow-artifact.png"
+ alt="Artifact visualization for workflow"
+ caption="Artifact visualization for workflow"
+ max-width="60%"
+%}
 
-#### Rollback for rollouts
+#### Manual rollback for rollouts
+Manually rollback a completed rollout to a previous revision when and if needed. If after a successful analysis run and rollout, your application is not functioning as it should, you can revert, with a single click, to a prior revision available in the Rollout's revision history.
 
+The rollback is implemented from the Timeline tab by clicking first the rollout name, selecting the revision to rollback to, and finally the Rollback to button in the Rollout Player.
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-jan23-rollout-rollback.png"
+ url="/images/whats-new/rel-notes-jan23-rollout-rollback.png"
+ alt="Completed Rollout in Timeline"
+ caption="Completed Rollout in Timeline"
+ max-width="60%"
+%}
+
+Before you approve and commit the rollback, you can view the different revisions and the changes in each revision. 
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-jan23-rollout-rev-select.png"
+ url="/images/whats-new/rel-notes-jan23-rollout-rev-select.png"
+ alt="Select rollout revision for rollback"
+ caption="Select rollout revision for rollback"
+ max-width="60%"
+%}
 
 #### Application enhancements
 
 * Notification for disabled auto-sync
-  Whenever auto-sync is disabled for an application, the application header displays a notification of the same. 
+  Whenever auto-sync is disabled for an application, the application header displays that auto-sync is off. 
+
+  {% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-jan23-auto-sync-on-off.png"
+ url="/images/whats-new/rel-notes-jan23-auto-sync-on-off.png"
+ alt="Auto-sync OFF in application header"
+ caption="Auto-sync OFF in application header"
+ max-width="60%"
+%}
+
+* View all Unhealthy applications in Applications dashboard
+  The Health status filter in the Applications dashboard includes an option to filter by all statuses that are not Healthy, at the same time, instead of filtering by every status individually. **Select all Unhealthy statuses** selects the Degraded, Missing, Progressing, Suspended, Terminated and Unknown statuses. 
+  
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-jan23-unhealthy-status-filter.png"
+ url="/images/whats-new/rel-notes-jan23-unhealthy-status-filter.png"
+ alt="Applications dashboard: Unhealthy status filter"
+ caption="Applications dashboard: Unhealthy status filter"
+ max-width="60%"
+%}
 
 * SSH URLs for applications
   When you create or edit an application, if your runtime has been configured with SSH, you can also define the app's URL as SSH.  
   Select the SSH tab and the URL, and Codefresh auto-completes the URL definition in the format required for SSH.
 
+
+
+
 * Filter app resources through Resource Inventory
   From this release, all resource types in the Resource Inventory (bottom-left in the Current State > Tree view) are also filters. Previously, you could filter only by the Out-of-sync resource type.
   
-
-
-
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-jan23-inventory-filter-type.png"
+ url="/images/whats-new/rel-notes-jan23-inventory-filter-type.png"
+ alt="Current State > Tree View: Filter by resource type"
+ caption="Current State > Tree View: Filter by resource type"
+ max-width="60%"
+%}
 
 
 #### Argo Project enhancements
 
 * **New Workflow Templates in Codefresh Hub for Argo**  
-  We are always working on ways to make your work easier. And in this release, we added several Workflow templates that focus on worklfow commands to our Marketplace Hub. Check out the [Terminate, Stop, Suspend, and Resume templates](https://codefresh.io/argohub/workflow-template/argo-workflows){:target="\_blank"}. 
+  We are always working on ways to make your work easier. And in this release, we added several Workflow templates that focus on worklfow commands to Codefresh Hub for Argo. Check out the [Terminate, Stop, Suspend, and Resume templates](https://codefresh.io/argohub/workflow-template/argo-workflows){:target="\_blank"}. 
 
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-jan23-workflow-templates.png"
+ url="/images/whats-new/rel-notes-jan23-workflow-templates.png"
+ alt="New Workflow Templates in Codefresh Hub for Argo"
+ caption="New Workflow Templates in Codefresh Hub for Argo"
+ max-width="60%"
+%}
 
 * **Argo Rollouts upgrade**  
   We have upgraded our Argo Rollouts version to 1.4rc-1. Read more in the [official blog](https://blog.argoproj.io/argo-rollouts-1-4-release-8275a0d364be){:target="\_blank"}.
+
+
+### Bug fixes
+
+* Argo-hub pipeline does not work with PR from forked repo [CR-14822]
+* Runtime fails to install after autopilot-bootstrap when using a branch that is not the default one 
+* Workflow state not updated on clicking Retry.[CR-16676]
+* `jsonBody` displayed as an unknown field in AnalysisTemplate.
+* Incorrect data in Home and DORA dashboards.
 
 
 
