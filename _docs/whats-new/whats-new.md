@@ -17,7 +17,8 @@ Built on Argo, the world’s most popular and fastest-growing open source softwa
 <br />
 
 #### SSH for runtimes
-We added the option to configure SSH for runtime accounts, in addition to the default HTTPS. For SSH, you need the SSH private key for your Git provider, and paste the same  in the List view for runtimes, you can 
+We added the option to configure SSH for runtime accounts, in addition to the default HTTPS. You need the SSH private key for your Git provider, and add it to your Git credentials for the runtime in Codefresh.  Switch to the List view, and select **Update Git Runtime Credentials**. 
+
 
 {% include
  image.html
@@ -35,7 +36,7 @@ For details, see [Configure SSH for runtimes]({{site.baseurl}}/docs/runtime/moni
 
 #### Artifact visualization in Argo Workflows
 
-Argo Workflows v3.4 introduced artifact visualization in the Argo UI. You can now visualize workflow artifacts in the Codefresh UI. Clicking the Artifacts tab in Workflows displays the artifact. You can also download it if you need to. 
+Argo Workflows v3.4 introduced artifact visualization in the Argo UI. You can now visualize workflow artifacts in Codefresh through the Artifacts tab in Workflows. You can also download it if you need to. 
 
 {% include
  image.html
@@ -48,9 +49,9 @@ Argo Workflows v3.4 introduced artifact visualization in the Argo UI. You can no
 %}
 
 #### Manual rollback for rollouts
-Manually rollback a completed rollout to a previous revision when and if needed. If after a successful analysis run and rollout, your application is not functioning as it should, you can revert, with a single click, to a prior revision available in the Rollout's revision history.
+Manually rollback a completed rollout to a previous revision when and if needed. If after a successful analysis run and rollout, your application is not functioning as it should, you can rollback to a prior revision from the Rollout's revision history.
 
-The rollback is implemented from the Timeline tab by clicking first the rollout name, selecting the revision to rollback to, and finally the Rollback to button in the Rollout Player.
+The rollback is implemented from the Timeline tab by clicking first the rollout name, selecting the revision to rollback to, and finally clicking the Rollback to button in the Rollout Player.
 
 {% include
  image.html
@@ -62,7 +63,7 @@ The rollback is implemented from the Timeline tab by clicking first the rollout 
  max-width="60%"
 %}
 
-Before you approve and commit the rollback, you can view the different revisions and the changes in each revision. 
+Before you approve and commit the rollback, you can view the changes in each revision. 
 
 {% include
  image.html
@@ -76,7 +77,7 @@ Before you approve and commit the rollback, you can view the different revisions
 
 #### Application enhancements
 
-* Notification for disabled auto-sync
+* **Notification for disabled auto-sync**
   Whenever auto-sync is disabled for an application, the application header displays that auto-sync is off. 
 
   {% include
@@ -89,8 +90,8 @@ Before you approve and commit the rollback, you can view the different revisions
  max-width="60%"
 %}
 
-* View all Unhealthy applications in Applications dashboard
-  The Health status filter in the Applications dashboard includes an option to filter by all statuses that are not Healthy, at the same time, instead of filtering by every status individually. **Select all Unhealthy statuses** selects the Degraded, Missing, Progressing, Suspended, Terminated and Unknown statuses. 
+* **Single filter for _Unhealthy_ applications in Applications dashboard**
+  The Health status filter in the Applications dashboard includes an option to filter by all statuses that are not Healthy, at the same time. Instead of having to filter by each status individually, select the Degraded, Missing, Progressing, Suspended, Terminated and Unknown statuses with **Select all Unhealthy statuses**. 
   
 {% include
  image.html
@@ -102,14 +103,14 @@ Before you approve and commit the rollback, you can view the different revisions
  max-width="60%"
 %}
 
-* SSH URLs for applications
+* **SSH URLs for applications**
   When you create or edit an application, if your runtime has been configured with SSH, you can also define the app's URL as SSH.  
-  Select the SSH tab and the URL, and Codefresh auto-completes the URL definition in the format required for SSH.
+  Select the SSH tab and the URL, and let Codefresh auto-complete the URL definition in the format required for SSH.
 
 
 
 
-* Filter app resources through Resource Inventory
+* **Filter app resources through Resource Inventory**
   From this release, all resource types in the Resource Inventory (bottom-left in the Current State > Tree view) are also filters. Previously, you could filter only by the Out-of-sync resource type.
   
 {% include
@@ -144,11 +145,17 @@ Before you approve and commit the rollback, you can view the different revisions
 
 ### Bug fixes
 
-* Argo-hub pipeline does not work with PR from forked repo [CR-14822]
-* Runtime fails to install after autopilot-bootstrap when using a branch that is not the default one 
+**Runtimes**  
+* Hybrid runtime installation fails when Git repo definition includes subdirectory.
+* Unable to add GKE Autopilot Cluster to Hosted runtime.
+* Argo-hub pipeline does not work with PR from forked repo.
+* Runtime fails to install after autopilot-bootstrap with a non-default branch. 
+
+**Workflows and applications**  
 * Workflow state not updated on clicking Retry.[CR-16676]
 * `jsonBody` displayed as an unknown field in AnalysisTemplate.
 * Incorrect data in Home and DORA dashboards.
+* Cron event inconsistency.
 
 
 
