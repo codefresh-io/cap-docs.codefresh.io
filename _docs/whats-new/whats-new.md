@@ -77,8 +77,8 @@ Before you approve and commit the rollback, you can view the changes in each rev
 
 #### Application enhancements
 
-* **Notification for disabled auto-sync**
-  Whenever auto-sync is disabled for an application, the application header displays that auto-sync is off. 
+* **Indication for disabled auto-sync**
+  Whenever auto-sync is disabled for an application, the application header displays an indication that auto-sync is off. 
 
   {% include
  image.html
@@ -91,7 +91,7 @@ Before you approve and commit the rollback, you can view the changes in each rev
 %}
 
 * **Single filter for _Unhealthy_ applications in Applications dashboard**
-  The Health status filter in the Applications dashboard includes an option to filter by all statuses that are not Healthy, at the same time. Instead of having to filter by each status individually, select the Degraded, Missing, Progressing, Suspended, Terminated and Unknown statuses with **Select all Unhealthy statuses**. 
+  The Health status filter in the Applications dashboard includes an option to filter by all statuses that are not Healthy, at the same time. Instead of having to filter by each status individually, select **Select all Unhealthy statuses** to filter by Degraded, Missing, Progressing, Suspended, Terminated and Unknown statuses. 
   
 {% include
  image.html
@@ -127,7 +127,7 @@ Before you approve and commit the rollback, you can view the changes in each rev
 #### Argo Project enhancements
 
 * **New Workflow Templates in Codefresh Hub for Argo**  
-  We are always working on ways to make your work easier. And in this release, we added several Workflow templates that focus on worklfow commands to Codefresh Hub for Argo. Check out the [Terminate, Stop, Suspend, and Resume templates](https://codefresh.io/argohub/workflow-template/argo-workflows){:target="\_blank"}. 
+  We are always working on ways to make your work easier. And in this release, we added several Workflow templates that focus on workflow commands to Codefresh Hub for Argo. Check out the [Terminate, Stop, Suspend, and Resume templates](https://codefresh.io/argohub/workflow-template/argo-workflows){:target="\_blank"}. 
 
 {% include
  image.html
@@ -138,9 +138,11 @@ Before you approve and commit the rollback, you can view the changes in each rev
  caption="New Workflow Templates in Codefresh Hub for Argo"
  max-width="60%"
 %}
+*  **Argo CD upgrade**  
+  We have upgraded Argo CD version to 2.5. Read more on what this version includes in the [official documentation](https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/2.4-2.5/){:target="\_blank"}.  
 
 * **Argo Rollouts upgrade**  
-  We have upgraded our Argo Rollouts version to 1.4rc-1. Read more in the [official blog](https://blog.argoproj.io/argo-rollouts-1-4-release-8275a0d364be){:target="\_blank"}.
+  We have upgraded our Argo Rollouts version to 1.4rc-1. Read more this version of Argo Rollouts in their [official blog](https://blog.argoproj.io/argo-rollouts-1-4-release-8275a0d364be){:target="\_blank"}.
 
 
 ### Bug fixes
