@@ -27,7 +27,7 @@ We added the option to configure SSH for runtime accounts, in addition to the de
  url="/images/whats-new/rel-notes-jan23-configure-ssh-for-runtimes.png"
  alt="SSH for runtime"
  caption="SSH for runtime"
- max-width="60%"
+ max-width="50%"
 %}
 
 Adding SSH to runtime accounts allows you to also use SSH to connect to Git repositories when creating or editing application definitions. 
@@ -77,7 +77,7 @@ Before you approve and commit the rollback, you can view the changes in each rev
 
 #### Application enhancements
 
-* **Indication for disabled auto-sync**
+* **Indication for disabled auto-sync**  
   Whenever auto-sync is disabled for an application, the application header displays an indication that auto-sync is off. 
 
   {% include
@@ -90,7 +90,7 @@ Before you approve and commit the rollback, you can view the changes in each rev
  max-width="60%"
 %}
 
-* **Single filter for _Unhealthy_ applications in Applications dashboard**
+* **Single filter for _Unhealthy_ applications in Applications dashboard**  
   The Health status filter in the Applications dashboard includes an option to filter by all statuses that are not Healthy, at the same time. Instead of having to filter by each status individually, select **Select all Unhealthy statuses** to filter by Degraded, Missing, Progressing, Suspended, Terminated and Unknown statuses. 
   
 {% include
@@ -103,15 +103,15 @@ Before you approve and commit the rollback, you can view the changes in each rev
  max-width="60%"
 %}
 
-* **SSH URLs for applications**
+* **SSH URLs for applications**  
   When you create or edit an application, if your runtime has been configured with SSH, you can also define the app's URL as SSH.  
   Select the SSH tab and the URL, and let Codefresh auto-complete the URL definition in the format required for SSH.
 
 
 
 
-* **Filter app resources through Resource Inventory**
-  From this release, all resource types in the Resource Inventory (bottom-left in the Current State > Tree view) are also filters. Previously, you could filter only by the Out-of-sync resource type.
+* **Filter app resources through Resource Inventory**  
+  From this release, all resource types in the Resource Inventory (bottom-left in the Current State > Tree view) are work as filters. Previously, you could filter only by the Out-of-sync resource type.
   
 {% include
  image.html
