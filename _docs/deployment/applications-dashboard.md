@@ -741,7 +741,7 @@ Manual rollback changes the live state of the rollout resource to the state in t
 %}
 
 {:start="4"}
-1. From the **Choose version to Rollabck** dropdown, select the revision to rollback to.
+1. From the **Choose version to Rollback** dropdown, select the revision to rollback to.
 
 {% include
  image.html
