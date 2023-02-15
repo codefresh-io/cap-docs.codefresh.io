@@ -583,6 +583,9 @@ You can:
 * [Monitor CI details by deployments](#monitor-ci-details-by-deployment) 
 * [Monitor updated resources by deployment](#monitor-updated-resources-by-deployment)
 * [Monitor rollouts by deployment](#monitor-rollouts-by-deployment)
+* [Manually rollback completed rollout to previous revision](#manually-rollback-completed-rollout-to-previous-revision)
+
+
 
 
 **How to monitor deployments**
@@ -718,7 +721,41 @@ The table lists the controls in the Rollout Player to manage an ongoing rollout.
 | **Skip step** {::nomarkdown}<img src="../../../images/icons/rollout-skip-step.png" display=inline-block"> {:/}  | Skip execution of current step. Such steps are marked as Skipped in the rollout visualization. | 
 | **Promote full rollout** {::nomarkdown}<img src="../../../images/icons/rollout-promote-full.png" display=inline-block"> {:/}   | Skip remaining pause, traffic routing, and analysis steps, and deploy the current release. |                        
 
+#### Manually rollback completed rollout to previous revision
+<!--- add screenshots -->
+Manually rollback a completed rollout to a previous revision when and if needed. If after a successful analysis run and rollout, your application is not functioning as it should, you can rollback to a prior revision from the Rollout’s revision history. The revision depth is determined by the `spec.revisionHistoryLimit` parameter in the [Rollout Specification](https://argoproj.github.io/argo-rollouts/features/specification/#rollout-specification){:target="\_blank"}.
+Manual rollback changes the live state of the rollout resource to the state in the previous commit that you select.
 
+1. In the Codefresh UI, select [Applications](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
+1. Select the application and select the **Timeline** tab.
+1. Click the name of the rollout to rollback.
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-jan23-rollout-rollback.png"
+ url="/images/whats-new/rel-notes-jan23-rollout-rollback.png"
+ alt="Completed Rollout in Timeline"
+ caption="Completed Rollout in Timeline"
+ max-width="60%"
+%}
+
+{:start="4"}
+1. From the **Choose version to Rollabck** dropdown, select the revision to rollback to.
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/whats-new/rel-notes-jan23-rollout-rev-select.png"
+ url="/images/whats-new/rel-notes-jan23-rollout-rev-select.png"
+ alt="Select rollout revision for rollback"
+ caption="Select rollout revision for rollback"
+ max-width="60%"
+%}
+
+{:start="5"}
+1. Review the changes in the revision. 
+1. In the Rollout Player, click **Rollback to**.
  
 ##### View analysis run
 If you have defined an analysis template for the rollout, you can check the run results and the manifest. 
