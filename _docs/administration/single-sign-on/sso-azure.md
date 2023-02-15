@@ -162,22 +162,27 @@ After registering Codefresh, configure the permissions.
   max-width="30%"
   %}
 
-  * **Client Name**: For auto-generation, leave empty. Codefresh generates the client name once you save the settings. 
-  * **Display Name**: Meaningful name that identifies the SSO provider.
-  * **Application ID**: The Application ID in Azure
-  * **Client secret**: The key value you copied when you created the client secret in Azure
-  * **Tenant**: `<Your Microsoft Azure AD Domain>.onmicrosoft.com`
-  * **Object ID**: Your Azure Service Principal Object ID (from Enterprise Application configuration) 
+    * **Client Name**: For auto-generation, leave empty. Codefresh generates the client name once you save the settings. 
+    * **Display Name**: Meaningful name that identifies the SSO provider. This name is the one shown in Azure.
+    * **Access token** and **Application ID**: The Application ID from your Enterprise Application Properties in Azure.
+    * **Client secret**: The key value you copied when you created the client secret in Azure
+    * **Tenant**: `mycompany.onmicrosoft.com` or the ID of `0example1-0000-0aa0-a00a-1example0`
+    * **Object ID**: The Object ID from your Enterprise Application Properties in Azure AD.
 
+{:start="3"}
+1. Click **Save**.  
+  If you left the Client Name empty, Codefresh generates one (as in the example below). Codefresh uses this name to identify the SSO configuration.
+  You need this value when you configure the reply URL in the Azure portal.  
+  
   {% include image.html 
   lightbox="true" 
   file="/images/administration/sso/azure/client-name.png" 
   url="/images/administration/sso/azure/client-name.png"
-  alt="SSO Client Name"
-  caption="SSO Client Name"
+  alt="Example of Codefresh-generated Client Name for Azure"
+  caption="Example of Codefresh-generated Client Name for Azure"
   max-width="50%"
   %}
-  You need this value when you configure the reply URL in the Azure portal.
+
 
 ### Configure reply URLs
 This is the final step in SSO setup for Azure. Add the Codefresh callback URL to the allowed reply URLs for the created application in Azure AD. 
