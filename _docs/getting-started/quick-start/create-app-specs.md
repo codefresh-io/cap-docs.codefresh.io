@@ -1,6 +1,7 @@
 ---
 title: "Create and commit resources for application"
 description: ""
+canonical_url: 'https://codefresh.io/docs/docs/quick-start/gitops-quickstart/create-app-specs/'
 group: getting-started
 sub-group: quick-start
 toc: true

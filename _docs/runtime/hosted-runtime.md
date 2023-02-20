@@ -1,6 +1,7 @@
 ---
 title: "Set up a hosted runtime environment"
 description: ""
+canonical_url: 'https://codefresh.io/docs/docs/installation/gitops/hosted-runtime/'
 group: runtime
 toc: true
 ---

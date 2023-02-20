@@ -1,6 +1,7 @@
 ---
 title: "Provision a hosted runtime"
 description: ""
+canonical_url: 'https://codefresh.io/docs/docs/quick-start/gitops-quickstart/install-hosted/'
 group: getting-started
 sub-group: quick-start
 toc: true

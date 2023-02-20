@@ -1,6 +1,7 @@
 ---
 title: "User settings"
 description: ""
+canonical_url: 'https://codefresh.io/docs/docs/administration/user-self-management/user-settings/'
 group: administration
 toc: true
 ---

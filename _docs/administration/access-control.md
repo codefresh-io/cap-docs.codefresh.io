@@ -1,9 +1,9 @@
 ---
 title: "Access control"
 description: ""
+canonical_url: 'https://codefresh.io/docs/docs/administration/account-user-management/access-control/'
 group: administration
 toc: true
-
 ---
 Access control defines the access policy for resources within an enterprise.   
 In Codefresh, access control to an entity is derived from the entity type, which can be categorized into one of the following:

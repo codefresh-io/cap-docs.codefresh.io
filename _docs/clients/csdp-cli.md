@@ -1,6 +1,7 @@
 ---
 title: "Download/upgrade Codefresh CLI"
 description: ""
+canonical_url: 'https://codefresh.io/docs/docs/installation/gitops/upgrade-gitops-cli/'
 group: clients
 toc: true
 ---
