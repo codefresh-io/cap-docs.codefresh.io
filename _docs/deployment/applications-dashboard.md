@@ -145,7 +145,7 @@ max-width="50%"
 image.html
 lightbox="true"
 file="/images/applications/app-header-view-details.png"
-url="/images/applicationsapp-header-view-details.png"
+url="/images/applications/app-header-view-details.png"
 alt="View app details from the application header context menu"
 caption="View app details from the application header context menu"
 max-width="50%"
@@ -664,7 +664,7 @@ max-width="70%"
 A rollout is initiated when there is an Argo CD sync due to a change in the desired state.  
 Visualize ongoing and completed rollouts by deployments in **Services**. 
 
-> To view and manage a rollout, you must have an Argo `rollout` resource defined for your application, and [install Argo Rollouts in the cluster]({site.baseurl}}/docs/_docs/deployment/install-argo-rollouts).  
+> To view and manage a rollout, you must have an Argo `rollout` resource defined for your application, and [install Argo Rollouts in the cluster]({site.baseurl}}/docs/deployment/install-argo-rollouts).  
 
 For detailed information on Argo Rollouts, see [Argo Rollouts documentation](https://argoproj.github.io/argo-rollouts/){:target="\_blank"}.
 
