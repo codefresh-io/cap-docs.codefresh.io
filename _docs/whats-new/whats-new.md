@@ -154,7 +154,7 @@ Before you approve and commit the rollback, you can view the changes in each rev
 * Runtime fails to install after autopilot-bootstrap with a non-default branch. 
 
 **Workflows and applications**  
-* Workflow state not updated on clicking Retry.[CR-16676]
+* Workflow state not updated on clicking Retry.
 * `jsonBody` displayed as an unknown field in AnalysisTemplate.
 * Incorrect data in Home and DORA dashboards.
 * Cron event inconsistency.
