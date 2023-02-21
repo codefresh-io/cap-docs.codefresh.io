@@ -25,7 +25,7 @@ Codefresh supports OAuth2 or personal access tokens (PATs) for authentication:
   OAuth2 is the preferred authentication mechanism, supported for popular Git providers such as GitHub, GitHub Enterprise, GitLab Cloud and Server, and Bitbucket Cloud and Server.  
   You have the option to use the default predefined Codefresh OAuth Application, or a custom Oauth2 Application for Codefresh in your Git provider account.  
   Hosted runtime accounts automatically use Codefresh's predefined OAuth Application.  
-  To use a custom Oauth2 Application for Codefresh, first create the application in your Git provider account, then create a secret on your K8s cluster, and finally configure OAuth2 access for the custom application in Authentication > Settings. See [Create a custom OAuth2 Application for Git provider](#create-a-custom-oauth2-provider-account) in this article.
+  To use a custom Oauth2 Application for Codefresh, first create the application in your Git provider account, then create a secret on your K8s cluster, and finally configure OAuth2 access for the custom application in Authentication > Settings. See [Create a custom OAuth2 Application for Git provider](#create-a-custom-oauth2-application-for-git-provider) in this article.
 
 * Token-based authentication using PAT  
   With token-based authentication, users must generate personal access tokens from their Git providers with the required scopes and enter their personal access tokens when prompted to authorize access. See [Authorize Git access in Codefresh]({{site.baseurl}}/docs/administration/user-settings/#authorize-git-access-in-codefresh).
@@ -98,7 +98,7 @@ Create and register an OAuth App under your organization to authorize Codefresh.
       where:  
       `<ingressHost>` is the IP address or URL of the ingress host in the runtime cluster.
     
-    > OAuth2 is not supported for hybrid runtimes with Bitbucket Cloud as the Git provider. Users can authorize access with their [Git personal access tokens](({{site.baseurl}}/docs/administration/user-settings/#authorize-git-access-in-codefresh)) in such cases.
+    > OAuth2 is not supported for hybrid runtimes with Bitbucket Cloud as the Git provider. Users can authorize access with their [Git personal access tokens]({{site.baseurl}}/docs/administration/user-settings/#authorize-git-access-in-codefresh) in such cases.
 
 
 {:start="2"}

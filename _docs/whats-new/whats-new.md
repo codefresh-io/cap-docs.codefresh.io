@@ -755,7 +755,7 @@ Once defined, you can reference the integration by name in the CI platforms.
     max-width="70%"
 %}
 
-See [GitHub Container registry]({{site.baseurl}}/docs/integrations/ci-integrations/container-registries/github-cr/).
+See [GitHub Container registry]({{site.baseurl}}/docs/integrations/container-registries/github-cr/).
 
 #### Labels and annotations for managed clusters
 The Codefresh CLI supports labels and annotations for managed clusters.  
@@ -1110,7 +1110,7 @@ After defining the repository in which to store configuration settings, you can 
 
 Older versions of hybrid runtimes without the shared repository must be upgraded to the latest version  to  leverage the  shared configuration, specifically for integrations with CI platforms and tools.  
 
-For details, see [Shared runtime configuration]({{site.baseurl}}/docs/runtime/shared-configuration/).
+For details, see [Shared runtime configuration]({{site.baseurl}}/docs/reference/shared-configuration/).
 
 #### Logs for runtime components
 View and download logs for runtimes and runtime components. The logs record events from the time of application launch for all resources in the application.  
@@ -1194,7 +1194,7 @@ Logs are displayed if the resource has logs:
 * For online viewing, you have free-text search and line-wrap functionalities. 
 * For offline viewing and analysis, you can download the complete log into a text file.   
 
-For details, see [Current State Tree view]({{site.baseurl}}/docs/deployment/applications-dashboard/view-modes-for-application-resources/#working-with-resources-in-tree-view).
+For details, see [Current State Tree view]({{site.baseurl}}/docs/deployment/applications-dashboard/view-modes-for-application-resources/).
 
 #### Application rollout visualization 
 In addition to installing Argo Rollouts in your cluster, visualize Argo Rollout history and progress directly in the Applications (deployment) dashboard. Visualize rollouts from multiple clusters and runtimes in a single centralized location through the Deployment tab.

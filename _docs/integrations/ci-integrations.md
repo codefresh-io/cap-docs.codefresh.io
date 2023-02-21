@@ -60,7 +60,7 @@ max-width="50%"
 {% include image.html 
 lightbox="true" 
 file="/images/integrations/classic/classic-manifest.png" 
-url="/images/integrationsclassic/classic-manifest.png"
+url="/images/integrations/classic/classic-manifest.png"
 alt="Example of manifest generated for Codefresh Classic"
 caption="Example of manifest generated for Codefresh Classic"
 max-width="50%"
