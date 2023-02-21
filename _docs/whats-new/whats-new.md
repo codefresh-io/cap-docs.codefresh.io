@@ -49,7 +49,10 @@ Argo Workflows v3.4 introduced artifact visualization in the Argo UI. You can no
 %}
 
 #### Manual rollback for rollouts
-Manually rollback a completed rollout to a previous revision when and if needed. If after a successful analysis run and rollout, your application is not functioning as it should, you can rollback to a prior revision from the Rollout's revision history (path [`spec.revisionHistoryLimit`](https://argoproj.github.io/argo-rollouts/features/specification/#rollout-specification){:target="\_blank"}). Manual rollback changes the live state of the rollout resource to the state in the previous commit that you select. 
+
+
+Manually rollback a completed rollout to a previous revision when and if needed. If after a successful analysis run and rollout, your application is not functioning as it should, 
+you can rollback to a prior revision from the Rollout's revision history (path [`spec.revisionHistoryLimit`](https://argoproj.github.io/argo-rollouts/features/specification/#rollout-specification){:target="\_blank"}). Manual rollback changes the live state of the rollout resource to the state in the previous commit that you select. 
 
 The rollback is implemented from the Timeline tab by clicking first the rollout name, selecting the revision to rollback to, and finally clicking the **Rollback to** button in the Rollout Player.
 
@@ -1002,7 +1005,7 @@ Codefresh warns you of the implication of deleting the selected application in t
 max-width="50%"
 %}
 
-See [Update application configuration]({{site.baseurl}}/docs/deployment/create-application/#update-application-configuration) and [Delete an application]({{site.baseurl}}/docs/deployment/create-application/#delete-an-application).
+See [Update application configuration]({{site.baseurl}}/docs/deployment/create-application/#update-application-configuration) and [Delete an application]({{site.baseurl}}/docs/deployment/manage-application/#delete-an-application).
 
 {::nomarkdown}
 <br>
