@@ -1,6 +1,7 @@
 ---
 title: "Codefresh Classic"
 description: ""
+canonical_url: 'https://codefresh.io/docs/docs/gitops-integrations/ci-integrations/codefresh-classic/'
 group: integrations
 sub_group: ci-integrations
 toc: true

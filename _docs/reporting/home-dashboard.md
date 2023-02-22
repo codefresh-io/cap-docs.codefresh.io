@@ -1,6 +1,7 @@
 ---
 title: "Home dashboard"
-description: ""
+description: "Get visibility and analytics on your deployments"
+canonical_url: 'https://codefresh.io/docs/docs/dashboards/home-dashboard/'
 group: reporting
 toc: true
 ---

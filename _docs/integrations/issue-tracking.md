@@ -1,6 +1,7 @@
 ---
 title: "Issue tracking integrations"
 description: ""
+canonical_url: 'https://codefresh.io/docs/docs/gitops-integrations/issue-tracking/'
 group: integrations
 toc: true
 ---

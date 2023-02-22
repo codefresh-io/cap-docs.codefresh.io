@@ -1,6 +1,7 @@
 ---
 title: "Codefresh IP addresses"
 description: " "
+canonical_url: 'https://codefresh.io/docs/docs/administration/account-user-management/platform-ip-addresses/'
 group: administration
 toc: true
 

@@ -1,6 +1,7 @@
 ---
 title: "Pipeline creation"
 description: ""
+canonical_url: 'https://codefresh.io/docs/docs/workflows/create-pipeline/'
 group: pipelines
 toc: true
 ---

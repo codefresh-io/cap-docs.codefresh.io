@@ -1,6 +1,7 @@
 ---
 title: "Manage provisioned runtimes"
 description: ""
+canonical_url: 'https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/'
 group: runtime
 redirect_from:
   - /monitor-manage-runtimes/

@@ -1,6 +1,7 @@
 ---
 title: "JFrog Artifactory"
 description: ""
+canonical_url: 'https://codefresh.io/docs/docs/gitops-integrations/container-registries/jfrog/'
 group: integrations
 sub_group: container-registries
 toc: true

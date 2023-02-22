@@ -1,6 +1,7 @@
 ---
 title: "Images in Codefresh"
 description: ""
+canonical_url: 'https://codefresh.io/docs/docs/deployments/gitops/images/'
 group: deployment
 toc: true
 ---

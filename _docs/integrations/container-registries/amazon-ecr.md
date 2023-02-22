@@ -1,6 +1,7 @@
 ---
 title: "Amazon ECR"
 description: ""
+canonical_url: 'https://codefresh.io/docs/docs/gitops-integrations/container-registries/amazon-ecr/'
 group: integrations
 sub_group: container-registries
 toc: true

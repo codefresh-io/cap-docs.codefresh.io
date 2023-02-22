@@ -1,6 +1,7 @@
 ---
 title: "Nested workflows"
 description: ""
+canonical_url: 'https://codefresh.io/docs/docs/workflows/nested-workflows/'
 group: pipelines
 toc: true
 ---

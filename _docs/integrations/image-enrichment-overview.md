@@ -1,6 +1,7 @@
 ---
 title: "Image enrichment with integrations"
 description: ""
+canonical_url: 'https://codefresh.io/docs/docs/gitops-integrations/image-enrichment-overview/'
 group: integration
 toc: true
 ---

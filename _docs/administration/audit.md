@@ -1,6 +1,7 @@
 ---
 title: "Audit"
 description: ""
+canonical_url: 'https://codefresh.io/docs/docs/administration/account-user-management/audit/'
 group: administration
 toc: true
 ---
