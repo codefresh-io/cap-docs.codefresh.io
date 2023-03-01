@@ -1195,7 +1195,7 @@ Logs are displayed if the resource has logs:
 * For online viewing, you have free-text search and line-wrap functionalities. 
 * For offline viewing and analysis, you can download the complete log into a text file.   
 
-For details, see [Current State Tree view]({{site.baseurl}}/docs/deployment/applications-dashboard/view-modes-for-application-resources/).
+For details, see [Current State Tree view]({{site.baseurl}}/docs/deployment/applications-dashboard/#select-view-mode-for-the-applications-dashboard).
 
 #### Application rollout visualization 
 In addition to installing Argo Rollouts in your cluster, visualize Argo Rollout history and progress directly in the Applications (deployment) dashboard. Visualize rollouts from multiple clusters and runtimes in a single centralized location through the Deployment tab.

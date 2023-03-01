@@ -216,5 +216,5 @@ For a Git provider and a hybrid runtime, select the authentication mechanism: Co
 >Hosted runtimes can have either Codefresh or PAT token authentication mechanisms. Custom provider authentication is not supported.
 
 1. In the Codefresh UI, go to [Authentication](https://g.codefresh.io/2.0/account-settings/authentication?providerName=github){:target="\_blank"}.
-1. Select the runtime, and click ![](/images/administration/users/icon-Edit.png?display=inline-block) **Edit**. 
+1. Select the runtime, and click the **Edit** icon. 
 1. Select the OAuth authentication provider account.
