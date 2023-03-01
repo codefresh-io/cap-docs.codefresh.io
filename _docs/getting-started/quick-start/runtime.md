@@ -1,7 +1,7 @@
 ---
 title: "Install a hybrid runtime"
 description: ""
-canonical_url: 'https://codefresh.io/docs/docs/quick-start/gitops-quickstart/runtime/'
+canonical_url: 'https://codefresh.io/docs/docs/quick-start/gitops-quick-start/runtime/'
 group: getting-started
 sub-group: quick-start
 toc: true

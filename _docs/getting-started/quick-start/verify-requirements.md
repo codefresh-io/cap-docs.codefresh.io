@@ -1,7 +1,7 @@
 ---
 title: "Prepare for hybrid runtime installation"
 description: ""
-canonical_url: 'https://codefresh.io/docs/docs/quick-start/gitops-quickstart/verify-requirements/'
+canonical_url: 'https://codefresh.io/docs/docs/quick-start/gitops-quick-start/verify-requirements/'
 group: getting-started
 sub-group: quick-start
 toc: true

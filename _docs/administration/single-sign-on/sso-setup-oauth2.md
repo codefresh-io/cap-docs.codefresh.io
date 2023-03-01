@@ -157,6 +157,4 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-To fully automate this pipeline, set a [cron trigger]({{site.baseurl}}/docs/configure-ci-cd-pipeline/triggers/cron-triggers/) for this pipeline. The cron-trigger is responsible for running this pipeline, (and therefore synchronizing the teams), in a fully automated manner. 
-This way you can synchronize your teams every day/week/hour depending on you cron trigger setup.
 

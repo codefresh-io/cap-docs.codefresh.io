@@ -665,7 +665,7 @@ max-width="70%"
 A rollout is initiated when there is an Argo CD sync due to a change in the desired state.  
 Visualize ongoing and completed rollouts by deployments in **Services**. 
 
-> To view and manage a rollout, you must have an Argo `rollout` resource defined for your application, and [install Argo Rollouts in the cluster]({site.baseurl}}/docs/deployment/install-argo-rollouts).  
+> To view and manage a rollout, you must have an Argo `rollout` resource defined for your application, and [install Argo Rollouts in the cluster]({{site.baseurl}}/docs/deployment/install-argo-rollouts/).  
 
 For detailed information on Argo Rollouts, see [Argo Rollouts documentation](https://argoproj.github.io/argo-rollouts/){:target="\_blank"}.
 

@@ -1,7 +1,7 @@
 ---
 title: "Update image tag for application"
 description: ""
-canonical_url: 'https://codefresh.io/docs/docs/quick-start/gitops-quickstart/create-rollout/'
+canonical_url: 'https://codefresh.io/docs/docs/quick-start/gitops-quick-start/create-rollout/'
 group: getting-started
 sub-group: quick-start
 toc: true
