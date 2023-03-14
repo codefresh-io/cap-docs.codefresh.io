@@ -139,22 +139,6 @@ caption="SSO Client Name"
 max-width="40%"
 %}
 
-Even though you can run this command manually, it makes more sense to run it periodically as a job. And the obvious
-way to perform this is with a Codefresh pipeline. The CLI can be used as a [freestyle step]({{site.baseurl}}/docs/codefresh-yaml/steps/freestyle/).
 
-You can create a git repository with a [codefresh.yml]({{site.baseurl}}/docs/codefresh-yaml/what-is-the-codefresh-yaml/) file with the following contents:
-
-`YAML`
-{% highlight yaml %}
-{% raw %}
-version: '1.0'
-steps:
-  syncMyTeams:
-    title: syncTeams
-    image: codefresh/cli
-    commands:
-      - 'codefresh synchronize teams my-client-name -t azure'
-{% endraw %}
-{% endhighlight %}
 
 
