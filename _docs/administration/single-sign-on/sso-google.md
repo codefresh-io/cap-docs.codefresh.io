@@ -3,6 +3,7 @@ title: "Google Single Sign-On (SSO)"
 description: ""
 group: administration
 sub_group: single-sign-on
+canonical_url: 'https://codefresh.io/docs/docs/single-sign-on/oidc/oidc-google/'
 toc: true
 ---
 

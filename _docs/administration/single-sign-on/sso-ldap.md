@@ -5,6 +5,7 @@ group: administration
 sub_group: single-sign-on
 redirect_from:
   - /docs/enterprise/single-sign-on/sso-ldap/
+canonical_url: 'https://codefresh.io/docs/docs/single-sign-on/ldap/'
 toc: true
 ---
 
