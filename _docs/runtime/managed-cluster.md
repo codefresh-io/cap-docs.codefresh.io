@@ -219,7 +219,7 @@ secretGenerator:
   namespace: kube-system
  
 resources:
-  - https://github.com/codefresh-io/cli-v2/manifests/add-cluster/kustomize?ref=<runtimeVersion>
+  - https://github.com/codefresh-io/csdp-official/add-cluster/kustomize?ref=<runtimeVersion>
 ```
 
 
