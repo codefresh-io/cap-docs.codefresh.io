@@ -1,7 +1,6 @@
 ---
 title: "Install Argo Rollouts"
 description: ""
-canonical_url: 'https://codefresh.io/docs/docs/deployments/gitops/install-argo-rollouts/'
 group: deployment
 toc: true
 ---

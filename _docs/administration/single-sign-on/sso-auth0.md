@@ -1,7 +1,6 @@
 ---
 title: "Auth0"
 description: "Set Up Auth0 Single Sign-On (SSO)"
-canonical_url: 'https://codefresh.io/docs/docs/single-sign-on/oidc/oidc-auth0/'
 group: administration
 sub_group: single-sign-on
 redirect_from:

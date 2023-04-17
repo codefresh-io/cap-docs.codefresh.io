@@ -1,7 +1,6 @@
 ---
 title: "Access control"
 description: ""
-canonical_url: 'https://codefresh.io/docs/docs/administration/account-user-management/access-control/'
 group: administration
 toc: true
 ---

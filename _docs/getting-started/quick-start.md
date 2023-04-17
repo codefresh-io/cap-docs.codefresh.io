@@ -1,7 +1,6 @@
 ---
 title: "Quick start"
 description: ""
-canonical_url: 'https://codefresh.io/docs/docs/quick-start/gitops-quick-start/'
 group: getting-started
 toc: true
 ---

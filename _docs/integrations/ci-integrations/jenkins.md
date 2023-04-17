@@ -1,7 +1,6 @@
 ---
 title: "Jenkins"
 description: ""
-canonical_url: 'https://codefresh.io/docs/docs/gitops-integrations/ci-integrations/jenkins/'
 group: integrations
 sub_group: ci-integrations
 toc: true

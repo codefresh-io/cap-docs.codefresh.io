@@ -1,7 +1,6 @@
 ---
 title: "Add external clusters to runtimes"
 description: ""
-canonical_url: 'https://codefresh.io/docs/docs/installation/gitops/managed-cluster/'
 group: runtime
 toc: true
 ---

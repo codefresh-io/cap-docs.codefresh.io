@@ -1,7 +1,6 @@
 ---
 title: "Sharing file systems"
 description: ""
-canonical_url: 'https://codefresh.io/docs/docs/workflows/sharing-file-system/'
 group: pipelines
 toc: true
 ---

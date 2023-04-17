@@ -1,7 +1,6 @@
 ---
 title: "Privacy Policy"
 description: ""
-canonical_url: 'https://codefresh.io/docs/docs/terms-and-privacy-policy/privacy-policy/'
 group: terms-and-privacy-policy
 toc: true
 ---

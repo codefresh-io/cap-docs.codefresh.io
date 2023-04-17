@@ -1,7 +1,6 @@
 ---
 title: "Secrets"
 description: "Learn how Codefresh stores secrets"
-canonical_url: 'https://codefresh.io/docs/docs/reference/secrets/'
 group: reference
 toc: true
 ---

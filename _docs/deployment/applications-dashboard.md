@@ -1,7 +1,6 @@
 ---
 title: "Monitoring applications"
 description: ""
-canonical_url: 'https://codefresh.io/docs/docs/deployments/gitops/applications-dashboard/'
 group: deployment
 toc: true
 ---

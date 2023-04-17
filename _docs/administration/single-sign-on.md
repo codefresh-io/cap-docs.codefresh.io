@@ -1,7 +1,6 @@
 ---
 title: "Federated Single Sign-On (SSO) overview"
 description: ""
-canonical_url: 'https://codefresh.io/docs/docs/single-sign-on/single-sign-on/'
 group: administration
 redirect_from:
   - /docs/sso/federated-sso-overview/

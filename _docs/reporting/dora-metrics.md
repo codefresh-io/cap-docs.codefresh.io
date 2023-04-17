@@ -1,7 +1,6 @@
 ---
 title: "DORA metrics"
 description: "Get insights into your deployments"
-canonical_url: 'https://codefresh.io/docs/docs/dashboards/dora-metrics/'
 group: reporting
 toc: true
 ---

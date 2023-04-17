@@ -1,7 +1,6 @@
 ---
 title: "GitHub Actions"
 description: ""
-canonical_url: 'https://codefresh.io/docs/docs/gitops-integrations/ci-integrations/github-actions/'
 group: integrations
 sub_group: ci-integrations
 toc: true

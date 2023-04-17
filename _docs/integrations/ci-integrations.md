@@ -1,7 +1,6 @@
 ---
 title: "CI integrations"
 description: ""
-canonical_url: 'https://codefresh.io/docs/docs/gitops-integrations/ci-integrations/'
 group: integrations
 toc: true
 ---

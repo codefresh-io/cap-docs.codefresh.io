@@ -1,7 +1,6 @@
 ---
 title: "Set up OAuth2 authentication for Git providers"
 description: ""
-canonical_url: 'https://codefresh.io/docs/docs/administration/account-user-management/oauth-setup/'
 group: administration
 toc: true
 ---

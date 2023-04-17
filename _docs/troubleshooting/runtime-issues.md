@@ -1,7 +1,6 @@
 ---
 title: "Runtimes"
 description: ""
-canonical_url: 'https://codefresh.io/docs/docs/troubleshooting/runtime-issues/'
 group: troubleshooting
 toc: true
 ---

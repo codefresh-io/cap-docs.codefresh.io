@@ -1,7 +1,6 @@
 ---
 title: "Container registry integrations"
 description: ""
-canonical_url: 'https://codefresh.io/docs/docs/gitops-integrations/container-registries/'
 group: integrations
 toc: true
 ---

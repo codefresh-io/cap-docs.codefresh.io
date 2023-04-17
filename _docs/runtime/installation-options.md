@@ -1,6 +1,5 @@
 ---
 title: "Installation environments"
-canonical_url: 'https://codefresh.io/docs/docs/installation/installation-options/'
 description: ""
 group: runtime
 toc: true

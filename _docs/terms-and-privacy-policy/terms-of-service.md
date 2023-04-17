@@ -1,7 +1,6 @@
 ---
 title: ""
 description: ""
-canonical_url: 'https://codefresh.io/docs/docs/terms-and-privacy-policy/terms-of-service/'
 group: terms-and-privacy-policy
 redirect_from:
   - /docs/terms-of-service/

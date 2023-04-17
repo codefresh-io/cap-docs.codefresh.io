@@ -1,7 +1,6 @@
 ---
 title: "Managing applications"
 description: ""
-canonical_url: 'https://codefresh.io/docs/docs/deployments/gitops/manage-application/'
 group: deployment
 toc: true
 ---
